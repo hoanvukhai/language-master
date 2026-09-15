@@ -44,8 +44,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
               email: firebaseUser.email,
               role: 'user',
               createdAt: serverTimestamp(),
-              totalExp: 10,
-              currentStreak: 1,
+              totalExp: 0,
+              currentStreak: 0,
               lastLoginDate: getLocalISODate(new Date()),
               learnSettings: {
                 dailyNewWordLimit: 15,
@@ -63,8 +63,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             const now = new Date();
             const today = getLocalISODate(now);
             const lastLoginDate = data?.lastLoginDate;
-            let currentStreak = data?.currentStreak || 0;
-            let totalExp = data?.totalExp || 0;
+            let currentStreak = Number(data?.currentStreak) || 0;
+            let totalExp = Number(data?.totalExp) || 0;
 
             const yestDate = new Date(now);
             yestDate.setDate(yestDate.getDate() - 1);
@@ -75,21 +75,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             const todaySeconds = (data?.dailyStudyTime || {})[today] || 0;
             const isGoalMetToday = todayExp >= 10 || todaySeconds >= 180;
 
-            // 1. Nếu hôm nay đã hoàn thành mục tiêu học (10 EXP hoặc 3 phút) mà chưa nhận streak hôm nay
+            // 1. Khi HỌC ĐỦ mục tiêu hôm nay (10 EXP hoặc 3 phút học) -> MỚI TĂNG chuỗi
             if (isGoalMetToday && lastStreakDate !== today) {
+              let bonusExp = 0;
+
               if (lastStreakDate === yesterday) {
-                currentStreak += 1;
+                // Đã hoàn thành hôm qua và hôm nay học đủ -> Tăng chuỗi tiếp nối
+                currentStreak = currentStreak + 1;
+                if (currentStreak >= 30) bonusExp = 100;
+                else if (currentStreak >= 14) bonusExp = 50;
+                else if (currentStreak >= 7) bonusExp = 20;
+                else if (currentStreak >= 3) bonusExp = 10;
               } else {
+                // Ngày đầu tiên đạt mục tiêu hoặc bắt đầu lại sau khi đứt chuỗi -> Chuỗi bắt đầu từ 1
                 currentStreak = 1;
               }
 
-              // Thuật toán: Thưởng EXP theo chuỗi
-              let bonusExp = 0;
-              if (currentStreak >= 30) bonusExp = 100;
-              else if (currentStreak >= 14) bonusExp = 50;
-              else if (currentStreak >= 7) bonusExp = 20;
-              else if (currentStreak >= 3) bonusExp = 10;
-              
               const streakExp = 10 + bonusExp;
 
               await updateDoc(userRef, {
@@ -101,8 +102,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
               return;
             }
 
-            // 2. Nếu đã qua hơn 1 ngày không học mục tiêu -> Đứt chuỗi
-            if (!isGoalMetToday && lastStreakDate && lastStreakDate !== today && lastStreakDate !== yesterday) {
+            // 2. Khi CHƯA học đủ hôm nay:
+            // Chỉ bảo toàn chuỗi nếu hôm qua đã hoàn thành (chờ người dùng học nốt trong ngày)
+            // hoặc nếu hôm nay đã nhận streak rồi.
+            // Nếu không đạt (ví dụ: chưa học hôm qua, người dùng mới, hoặc dữ liệu cũ chưa có streak) -> Chuỗi phải là 0!
+            if (!isGoalMetToday && lastStreakDate !== today && lastStreakDate !== yesterday) {
               if (currentStreak > 0) {
                 currentStreak = 0;
                 await updateDoc(userRef, {
@@ -113,7 +117,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
               }
             }
 
-            // 3. Cập nhật lastLoginDate thông thường nếu là ngày mới
+            // 3. Cập nhật lastLoginDate thông thường nếu sang ngày mới
             if (lastLoginDate !== today) {
               await updateDoc(userRef, { lastLoginDate: today });
               return;
