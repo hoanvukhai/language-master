@@ -9,7 +9,7 @@ interface AudioContextType {
   playSfx: (type: SfxType) => void;
   playBgm: (type: 'lobby' | 'racing') => void;
   stopBgm: () => void;
-  playText: (text: string) => void;
+  playText: (text: string, lang?: string) => void;
 }
 
 const AudioContext = createContext<AudioContextType>({
@@ -59,12 +59,12 @@ export function AudioProvider({ children }: { children: ReactNode }) {
     synth.stopAllBgm();
   };
 
-  const playText = (text: string) => {
+  const playText = (text: string, lang: string = 'ja-JP') => {
     if (isMuted) return;
     if (!('speechSynthesis' in window)) return;
     if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'ja-JP';
+    utterance.lang = lang;
     window.speechSynthesis.speak(utterance);
   };
 

@@ -34,7 +34,7 @@ export default function Dictionary() {
   }
 
   const renderDictionary = () => {
-    if (course.subject === 'vocab') return <VocabDictionary data={course.data} />;
+    if (course.subject === 'vocab') return <VocabDictionary data={course.data} template={course.template} />;
     if (course.subject === 'grammar') return <GrammarDictionary data={course.data} />;
     if (course.subject === 'kanji_single') return <KanjiSingleDictionary data={course.data} />;
     if (course.subject === 'kanji_words') return <KanjiWordsDictionary data={course.data} />;

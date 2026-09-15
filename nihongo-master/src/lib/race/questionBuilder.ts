@@ -1,5 +1,6 @@
 // src/lib/race/questionBuilder.ts
 import type { Word, Kanji, GrammarItem, KanjiWord } from '../../types';
+import { formatDualIpa } from '../english/ipaHelper';
 
 // Các GameType hiện có: 'quiz' | 'matching' | 'typing' | 'truefalse'
 export type GameType = 'quiz' | 'matching' | 'typing' | 'truefalse';
@@ -750,6 +751,116 @@ export function buildGrammarQuestions(dataset: GrammarItem[], game: GameType, co
 
     for (let i = startLen; i < pool.length; i++) {
       pool[i].sourceItem = g;
+    }
+  });
+
+  return pickUniqueQuestions(pool, count);
+}
+
+// ── English Vocabulary Builder ─────────────────────────────────────────────
+
+/**
+ * ENGLISH VOCABULARY (`vocab` with template `english`)
+ * Chỉ dùng `word` (EN term) và `meaning.vi` (VN meaning).
+ * Không có kanji/hiragana → không có w2h, h2w directions.
+ * Typing: show meaning → type the English word (plain text, no romaji conversion)
+ */
+export function buildEnglishVocabQuestions(dataset: any[], game: GameType, count: number): RaceQuestionItem[] {
+  const pool: RaceQuestionItem[] = [];
+
+  const getWordStr = (item: any): string => item.word || '';
+  const getMeaningStr = (item: any): string => {
+    if (!item.meaning) return '';
+    return typeof item.meaning === 'object' ? item.meaning.vi : item.meaning;
+  };
+
+  dataset.forEach((v) => {
+    const startLen = pool.length;
+    const wordStr = getWordStr(v);
+    const meaningStr = getMeaningStr(v);
+    if (!wordStr || !meaningStr) return;
+
+    if (game === 'quiz') {
+      const dir: 'w2m' | 'm2w' = Math.random() < 0.5 ? 'w2m' : 'm2w';
+      const getPropFn = dir === 'w2m' ? getMeaningStr : getWordStr;
+      const wrongItems = pickUniqueOptionsBy(dataset, 3, v, getPropFn);
+      const allFour = shuffleArray([v, ...wrongItems]);
+
+      if (dir === 'w2m') {
+        pool.push({
+          id: `en_w2m_${v.id}`,
+          prompt: wordStr,
+          subPrompt: formatDualIpa(v) || 'Nghĩa tiếng Việt',
+          correctAnswer: meaningStr,
+          options: allFour.map(getMeaningStr),
+          direction: 'w2m',
+          sourceItem: v,
+        });
+      } else {
+        pool.push({
+          id: `en_m2w_${v.id}`,
+          prompt: meaningStr,
+          subPrompt: 'Từ tiếng Anh tương ứng',
+          correctAnswer: wordStr,
+          options: allFour.map(getWordStr),
+          direction: 'm2w',
+          sourceItem: v,
+        });
+      }
+    } else if (game === 'typing') {
+      // Always: show meaning → type the English word
+      const hasMeaningCollision = dataset.some(
+        item => getMeaningStr(item) === meaningStr && getWordStr(item) !== wordStr
+      );
+      const ipaHint = formatDualIpa(v);
+      pool.push({
+        id: `en_t_${v.id}`,
+        prompt: meaningStr,
+        subPrompt: ipaHint || (hasMeaningCollision ? `(Word starts with: ${wordStr[0]?.toUpperCase()})` : undefined),
+        correctAnswer: wordStr,
+        direction: 'm2w',
+        sourceItem: v,
+      });
+    } else if (game === 'truefalse') {
+      const isTrue = Math.random() > 0.5;
+      const dir: 'w2m' | 'm2w' = Math.random() < 0.5 ? 'w2m' : 'm2w';
+
+      if (dir === 'w2m') {
+        const fakeMeaning = isTrue ? meaningStr : pickFakeTrueFalseItem(dataset, v, getMeaningStr, getWordStr);
+        const ipaText = formatDualIpa(v);
+        pool.push({
+          id: `en_tf_w2m_${v.id}`,
+          prompt: wordStr,
+          subPrompt: `${ipaText ? `${ipaText} · ` : ''}Nghĩa: "${fakeMeaning}"?`,
+          correctAnswer: isTrue ? 'TRUE' : 'FALSE',
+          isTrue,
+          sourceItem: v,
+        });
+      } else {
+        const fakeWord = isTrue ? wordStr : pickFakeTrueFalseItem(dataset, v, getWordStr, getMeaningStr);
+        pool.push({
+          id: `en_tf_m2w_${v.id}`,
+          prompt: meaningStr,
+          subPrompt: `Từ: "${fakeWord}"?`,
+          correctAnswer: isTrue ? 'TRUE' : 'FALSE',
+          isTrue,
+          sourceItem: v,
+        });
+      }
+    } else if (game === 'matching') {
+      // Matching: pairs are built in setupMatchingRound, not here
+      // Still build a dummy quiz question as placeholder
+      pool.push({
+        id: `en_m_${v.id}`,
+        prompt: wordStr,
+        correctAnswer: meaningStr,
+        direction: 'w2m',
+        sourceItem: v,
+      });
+    }
+
+    for (let i = startLen; i < pool.length; i++) {
+      pool[i].sourceItem = v;
     }
   });
 

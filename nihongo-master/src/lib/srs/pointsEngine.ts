@@ -192,7 +192,7 @@ async function _checkAndSaveHighScoreWithoutExp(userId: string, gameKey: string,
  */
 export async function recordSrsExp(
   userId: string,
-  type: 'new' | 'review_up' | 'review' | 'maintain_max',
+  type: 'new' | 'review_up' | 'review' | 'maintain_max' | 'skip_to_lv2',
   courseId?: string,
   level?: number
 ): Promise<number> {
@@ -201,7 +201,7 @@ export async function recordSrsExp(
     const { userRef, dailyStats, today } = await getDailyStats(userId);
     
     let awardedExp = 0;
-    if (type === 'new') awardedExp = 5;
+    if (type === 'new' || type === 'skip_to_lv2') awardedExp = 5;
     else if (type === 'review_up') awardedExp = level || 1;
     else if (type === 'maintain_max') awardedExp = 7;
     else awardedExp = 1;

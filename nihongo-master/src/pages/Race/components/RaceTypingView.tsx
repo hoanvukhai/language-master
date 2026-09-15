@@ -20,6 +20,7 @@ interface RaceTypingViewProps {
   onChangeInput: (val: string) => void;
   onSubmitAnswer: (ans?: string) => void;
   language?: string;
+  skipRomaji?: boolean; // true for English or any plain-text course
 }
 
 export default function RaceTypingView({
@@ -30,9 +31,10 @@ export default function RaceTypingView({
   onChangeInput,
   onSubmitAnswer,
   language = 'vi',
+  skipRomaji = false,
 }: RaceTypingViewProps) {
   const isGrammar = subject === 'grammar';
-  const isExpectedKatakana = /^[\u30A0-\u30FF\u30FC\s]+$/.test(question.correctAnswer);
+  const isExpectedKatakana = !skipRomaji && /^[\u30A0-\u30FF\u30FC\s]+$/.test(question.correctAnswer);
 
   return (
     <motion.div
@@ -60,7 +62,8 @@ export default function RaceTypingView({
             value={typingInput}
             onChange={e => {
               const val = e.target.value;
-              if (subject === 'hanjt') {
+              if (skipRomaji || subject === 'hanjt') {
+                // Plain text – no romaji conversion
                 onChangeInput(val);
               } else {
                 onChangeInput(isExpectedKatakana ? romajiToKatakana(val) : romajiToHiragana(val));

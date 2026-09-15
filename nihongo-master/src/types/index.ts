@@ -115,11 +115,17 @@ export interface GrammarItem extends BaseLearningItem {
 export interface EnglishWord extends BaseLearningItem {
   template: 'english';
   word: string;
-  ipa: string;
-  cefrLevel: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
-  partOfSpeech: string;
-  meaning: { vi: string; en?: string };
-  examples?: { en: string; vi: string }[];
+  ipa?: string;
+  ipaBrE?: string; // Phiên âm Anh - Anh
+  ipaAmE?: string; // Phiên âm Anh - Mỹ
+  cefrLevel?: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
+  partOfSpeech?: string;
+  meaning: { vi: string; en?: string } | string;
+  examples?: { en: string; vi?: string }[];
+  lesson?: string;
+  audioFile?: string;
+  synonyms?: string[];
+  antonyms?: string[];
 }
 
 // ----------------------------------------------------

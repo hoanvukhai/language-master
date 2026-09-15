@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, CheckCircle2, RotateCcw, Trophy, Eye, EyeOff } from 'lucide-react';
 import { usePracticeContext } from '../Practice/PracticeContext';
-import type { Word } from '../../types';
 
 import VocabLessonChips from '../../components/vocabulary/VocabLessonChips';
 
@@ -25,8 +24,9 @@ interface Tile {
 
 export default function VocabMatching() {
   const { course } = usePracticeContext();
-  const data = course.data as Word[];
-  const lessons = Array.from(new Set(data.map(w => w.lesson).filter(Boolean))) as string[];
+  const data = course.data as any[];
+  const isEnglish = course.template === 'english';
+  const lessons = Array.from(new Set(data.map((w: any) => w.lesson).filter(Boolean))) as string[];
   const [selectedLessons, setSelectedLessons] = useState<string[]>([]);
   const [showFurigana, setShowFurigana] = useState(false);
   const [started, setStarted] = useState(false);
@@ -43,19 +43,25 @@ export default function VocabMatching() {
   const tiles: Tile[] = useMemo(() => {
     const shuffled = shuffle(fullPool).slice(0, PAIR_COUNT);
     const generatedTiles: Tile[] = [];
-    shuffled.forEach(word => {
+    shuffled.forEach((word: any) => {
+      // Template-aware label: English uses 'word', Japanese uses 'kanji || hiragana'
+      const tileLabel = isEnglish
+        ? (word.word || '')
+        : (word.alt_kanji ? `${word.kanji || word.hiragana} (${word.alt_kanji})` : (word.kanji || word.hiragana || ''));
+      const tileSub = isEnglish ? (word.ipa || null) : (word.hiragana || null);
+
       generatedTiles.push({
         id: `A_${word.id}`,
         pairId: word.id,
         type: 'A',
-        label: word.alt_kanji ? `${word.kanji || word.hiragana} (${word.alt_kanji})` : (word.kanji || word.hiragana),
-        sub: word.hiragana
+        label: tileLabel,
+        sub: tileSub,
       });
       generatedTiles.push({
         id: `B_${word.id}`,
         pairId: word.id,
         type: 'B',
-        label: typeof word.meaning === 'object' ? word.meaning.vi : word.meaning
+        label: typeof word.meaning === 'object' ? word.meaning.vi : word.meaning,
       });
     });
     return shuffle(generatedTiles);
@@ -134,7 +140,9 @@ export default function VocabMatching() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-semibold text-slate-600 dark:text-slate-300 mb-2">👁️ Hiển thị Kana (Cột Trái)</label>
+                <label className="block text-sm font-semibold text-slate-600 dark:text-slate-300 mb-2">
+                  {isEnglish ? '👁️ Hiển thị IPA (Thẻ từ)' : '👁️ Hiển thị Kana (Cột Trái)'}
+                </label>
                 <button
                   onClick={() => setShowFurigana(!showFurigana)}
                   className={`w-full p-4 rounded-xl border-2 transition-all flex items-center justify-between ${
@@ -194,7 +202,7 @@ export default function VocabMatching() {
               }`}
             >
               {showFurigana ? <Eye size={16} /> : <EyeOff size={16} />}
-              Kana
+              {isEnglish ? 'IPA' : 'Kana'}
             </button>
             <div className="flex items-center gap-4 text-sm font-medium">
               <span className="text-slate-500 dark:text-slate-400">Vòng {round + 1}</span>

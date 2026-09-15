@@ -202,6 +202,8 @@ export interface LeaderboardUser {
   raceScores?: Record<string, number>;
   courseRaceScores?: Record<string, number>;
   courseStudyScores?: Record<string, number>;
+  dailyStudyTime?: Record<string, number>;
+  activityHistory?: Record<string, number>;
   role?: string;
   rankPosition?: number;
 }
@@ -540,8 +542,8 @@ export async function batchUpdateWordMasteredStatus(
     }
     
     if (isMastered && itemIds.length > 0) {
-      // Thưởng +10 điểm / từ (vì nhảy lên Lv.2)
-      const awardedExp = itemIds.length * 10;
+      // Thưởng +5 điểm / từ (chuẩn hóa đồng nhất với học từ mới)
+      const awardedExp = itemIds.length * 5;
       const today = new Date().toLocaleDateString('en-CA');
       const userRef = doc(db, 'users', userId);
       batch.update(userRef, {
@@ -645,6 +647,8 @@ export async function fetchGlobalLeaderboard(type: 'study' | 'race'): Promise<Le
         raceScores: data.raceScores || {},
         courseRaceScores: data.courseRaceScores || {},
         courseStudyScores: data.courseStudyScores || {},
+        dailyStudyTime: data.dailyStudyTime || {},
+        activityHistory: data.activityHistory || {},
         role: data.role || 'user',
       };
     });
@@ -674,6 +678,8 @@ export async function fetchGlobalLeaderboard(type: 'study' | 'race'): Promise<Le
         raceScores: uData.raceScores || {},
         courseRaceScores: uData.courseRaceScores || {},
         courseStudyScores: uData.courseStudyScores || {},
+        dailyStudyTime: uData.dailyStudyTime || {},
+        activityHistory: uData.activityHistory || {},
         role: uData.role || 'user',
       });
     }
@@ -687,4 +693,34 @@ export async function fetchGlobalLeaderboard(type: 'study' | 'race'): Promise<Le
       : (b.totalRaceScore || 0) - (a.totalRaceScore || 0));
 
   return finalSortedList.slice(0, 50).map((u, i) => ({ ...u, rankPosition: i + 1 }));
+}
+
+/**
+ * Xóa toàn bộ tiến độ học (SRS) của một khóa học để học lại từ đầu
+ */
+export async function resetCourseProgress(userId: string, courseId: string): Promise<void> {
+  try {
+    const colRef = collection(db, 'users', userId, 'srs_progress');
+    const q = query(colRef, where('courseId', '==', courseId));
+    const snapshot = await getDocs(q);
+    
+    if (!snapshot.empty) {
+      const batch = writeBatch(db);
+      snapshot.docs.forEach((d) => {
+        batch.delete(d.ref);
+      });
+      await batch.commit();
+    }
+
+    // Xóa cache localStorage nếu có
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.removeItem(`user_srs_${userId}_${courseId}`);
+        localStorage.removeItem(`srs_progress_${courseId}`);
+      } catch (e) {}
+    }
+  } catch (err) {
+    console.error('Error resetting course progress:', err);
+    throw err;
+  }
 }

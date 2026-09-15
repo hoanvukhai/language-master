@@ -3,42 +3,44 @@ import React, { useMemo, useState } from 'react';
 interface ActivityHeatmapProps {
   // Now receives seconds from dailyStudyTime
   activityHistory: Record<string, number>;
+  selectedYear?: number;
+  onSelectYear?: (year: number) => void;
+  availableYears?: number[];
 }
 
 const MONTH_LABELS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const DAY_LABELS = ['Mon', '', 'Wed', '', 'Fri', '', ''];
 
-export function ActivityHeatmap({ activityHistory }: ActivityHeatmapProps) {
-  const [selectedYear, setSelectedYear] = useState<number | 'last_year'>('last_year');
+export function ActivityHeatmap({
+  activityHistory,
+  selectedYear: propSelectedYear,
+  onSelectYear: propOnSelectYear,
+  availableYears: propAvailableYears
+}: ActivityHeatmapProps) {
+  const currentYear = new Date().getFullYear();
+  const [internalYear, setInternalYear] = useState<number>(currentYear);
+  const activeYear = propSelectedYear ?? internalYear;
+  const handleSelectYear = propOnSelectYear ?? setInternalYear;
+
   const [tooltip, setTooltip] = useState<{ text: string, x: number, y: number } | null>(null);
 
-  const availableYears = useMemo(() => {
+  const internalAvailableYears = useMemo(() => {
     const years = new Set<number>();
-    years.add(new Date().getFullYear());
+    years.add(currentYear);
+    years.add(currentYear - 1);
+    years.add(currentYear - 2);
     Object.keys(activityHistory).forEach(dateStr => {
       const year = new Date(dateStr).getFullYear();
       if (!isNaN(year)) years.add(year);
     });
     return Array.from(years).sort((a, b) => b - a);
-  }, [activityHistory]);
+  }, [activityHistory, currentYear]);
+
+  const yearsList = propAvailableYears ?? internalAvailableYears;
 
   const { grid, monthLabels, totalMinutes } = useMemo(() => {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    let startDate = new Date();
-    let endDate = new Date();
-
-    if (selectedYear === 'last_year') {
-      endDate = new Date(today);
-      startDate = new Date(today);
-      startDate.setDate(today.getDate() - 364); 
-    } else {
-      startDate = new Date(selectedYear, 0, 1);
-      endDate = new Date(selectedYear, 11, 31);
-      // GitHub renders the full year (Jan 1 - Dec 31) even for the current year,
-      // so we do not cap endDate to today.
-    }
+    const startDate = new Date(activeYear, 0, 1);
+    const endDate = new Date(activeYear, 11, 31);
 
     const startDayOfWeek = (startDate.getDay() + 6) % 7; 
     const days: any[] = [];
@@ -82,7 +84,7 @@ export function ActivityHeatmap({ activityHistory }: ActivityHeatmapProps) {
     });
 
     return { grid: cols, monthLabels: mLabels, totalMinutes: Math.floor(totalSecs / 60) };
-  }, [activityHistory, selectedYear]);
+  }, [activityHistory, activeYear]);
 
   const colors = [
     'bg-slate-100 dark:bg-[#161b22] border-slate-200 dark:border-[#ffffff0d]', // 0
@@ -128,7 +130,7 @@ export function ActivityHeatmap({ activityHistory }: ActivityHeatmapProps) {
         {/* Left Side: Heatmap */}
         <div className="flex-1 overflow-hidden">
           <div className="mb-4 flex justify-between items-center text-sm">
-            <h2 className="text-xl font-medium">{formatTime(totalMinutes)} học trong {selectedYear === 'last_year' ? 'năm qua' : selectedYear}</h2>
+            <h2 className="text-xl font-medium">{formatTime(totalMinutes)} học trong năm {activeYear}</h2>
           </div>
 
           <div className="flex">
@@ -213,24 +215,14 @@ export function ActivityHeatmap({ activityHistory }: ActivityHeatmapProps) {
         </div>
 
         {/* Right Side: Year Selector */}
-        <div className="flex flex-col gap-2 min-w-[120px] pt-1">
-          <button
-            onClick={() => setSelectedYear('last_year')}
-            className={`text-left px-4 py-2 text-sm rounded-lg transition-colors ${
-              selectedYear === 'last_year' 
-                ? 'bg-blue-600 text-white font-semibold shadow-md' 
-                : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
-            }`}
-          >
-            Năm qua
-          </button>
-          {availableYears.map(year => (
+        <div className="flex flex-col gap-1.5 min-w-[100px] pt-1">
+          {yearsList.map(year => (
             <button
               key={year}
-              onClick={() => setSelectedYear(year)}
-              className={`text-left px-4 py-2 text-sm rounded-lg transition-colors ${
-                selectedYear === year 
-                  ? 'bg-blue-600 text-white font-semibold shadow-md' 
+              onClick={() => handleSelectYear(year)}
+              className={`text-left px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-colors ${
+                activeYear === year 
+                  ? 'bg-blue-600 text-white shadow-sm' 
                   : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
               }`}
             >

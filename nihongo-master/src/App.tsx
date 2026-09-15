@@ -6,6 +6,7 @@ import { AuthProvider } from './context/auth/AuthProvider';
 import Navbar from './components/Navbar';
 import ScrollToTop from './components/ScrollToTop';
 import { TimeTracker } from './components/shared/TimeTracker';
+import { FloatingStudyTimer } from './components/shared/FloatingStudyTimer';
 
 import Dictionary from './pages/Dictionary';
 
@@ -35,6 +36,7 @@ export default function App() {
             <BrowserRouter>
               <ScrollToTop />
               <TimeTracker />
+              <FloatingStudyTimer />
           <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-slate-900 transition-colors duration-300 font-sans">
             <Navbar />
             <main className="flex-1">

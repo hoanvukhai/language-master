@@ -42,8 +42,9 @@ interface LessonGroup {
 
 
 /** Xây danh sách phẳng từ course.data dựa trên course.subject */
-function buildFlatList(subject: string, data: any[]): any[] {
-  if (subject === 'vocab' || subject === 'grammar' || subject === 'special') {
+function buildFlatList(subject: string, data: any[], template?: string): any[] {
+  // English vocab: pass through directly like 'vocab'
+  if (subject === 'vocab' || subject === 'grammar' || subject === 'special' || template === 'english') {
     return data;
   }
 
@@ -165,7 +166,7 @@ export default function LearnCourseDetail() {
   const lessonGroups: LessonGroup[] = useMemo(() => {
     if (!course) return [];
 
-    const rawList = buildFlatList(course.subject, course.data as any[]);
+    const rawList = buildFlatList(course.subject, course.data as any[], course.template);
 
     const groupMap = new Map<string, any[]>();
     rawList.forEach((item: any) => {
@@ -208,8 +209,9 @@ export default function LearnCourseDetail() {
 
         return {
           id,
-          title: item.kanji || item.character || item.structure || item.hiragana,
-          sub: item.hanViet || item.hiragana || '',
+          // English: use 'word' as title, 'ipa' as sub; Japanese: use 'kanji'/'hiragana'
+          title: item.word || item.kanji || item.character || item.structure || item.hiragana,
+          sub: item.ipa || item.hanViet || item.hiragana || '',
           meaning: typeof item.meaning === 'object' ? item.meaning.vi : item.meaning,
           words: item.words,
           masteryLevel: lvl,

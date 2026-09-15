@@ -16,6 +16,7 @@ interface VocabTypingProps {
   countdown: number | null;
   onNext: () => void;
   resultSecs: number;
+  skipRomaji?: boolean; // true for English courses
 }
 
 export default function VocabTyping({
@@ -30,9 +31,10 @@ export default function VocabTyping({
   countdown,
   onNext,
   resultSecs,
+  skipRomaji = false,
 }: VocabTypingProps) {
   const hasHint = !!q.hintText && q.hintText.trim() !== '';
-  const isExpectedKatakana = /^[\u30A0-\u30FF\u30FC\s]+$/.test(q.answer);
+  const isExpectedKatakana = !skipRomaji && /^[\u30A0-\u30FF\u30FC\s]+$/.test(q.answer);
 
   return (
     <div className="space-y-3">
@@ -48,7 +50,10 @@ export default function VocabTyping({
           disabled={typingSubmitted}
           onChange={e => {
             if (!typingSubmitted) {
-              if (isExpectedKatakana) {
+              if (skipRomaji) {
+                // English: plain text input, no romaji conversion
+                setTypingInput(e.target.value);
+              } else if (isExpectedKatakana) {
                 setTypingInput(wanakana.toKatakana(e.target.value, { IMEMode: true }));
               } else {
                 setTypingInput(wanakana.toHiragana(e.target.value, { IMEMode: true }));
@@ -59,7 +64,7 @@ export default function VocabTyping({
             // Scroll input into view when mobile keyboard pops up
             setTimeout(() => e.target.scrollIntoView({ behavior: 'smooth', block: 'center' }), 300);
           }}
-          placeholder="Gõ Romaji → Hiragana..."
+          placeholder={skipRomaji ? 'Type the word...' : 'Gõ Romaji → Hiragana...'}
           autoComplete="off"
           autoCorrect="off"
           autoCapitalize="none"

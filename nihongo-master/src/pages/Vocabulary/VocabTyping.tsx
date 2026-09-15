@@ -6,8 +6,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, CheckCircle2, XCircle, Eye, EyeOff, Trophy, ArrowRight } from 'lucide-react';
 import * as wanakana from 'wanakana';
 import { usePracticeContext } from '../Practice/PracticeContext';
-import type { Word } from '../../types';
 import VocabLessonChips from '../../components/vocabulary/VocabLessonChips';
+import { formatDualIpa } from '../../lib/english/ipaHelper';
 
 function shuffle<T>(arr: T[]): T[] {
   return [...arr].sort(() => Math.random() - 0.5);
@@ -17,12 +17,19 @@ function shuffle<T>(arr: T[]): T[] {
 
 export default function VocabTyping() {
   const { course } = usePracticeContext();
-  const data = course.data as Word[];
-  const lessons = Array.from(new Set(data.map(w => w.lesson).filter(Boolean))) as string[];
+  const data = course.data as any[];
+  const isEnglish = course.template === 'english';
+  const lessons = Array.from(new Set(data.map((w: any) => w.lesson).filter(Boolean))) as string[];
   const [selectedLessons, setSelectedLessons] = useState<string[]>([]);
   const [direction, setDirection] = useState<'forward' | 'backward'>('forward');
   const [showFurigana, setShowFurigana] = useState(false);
   const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    if (isEnglish && direction !== 'forward') {
+      setDirection('forward');
+    }
+  }, [isEnglish, direction]);
 
   const pool = useMemo(() => {
     const base = selectedLessons.length === 0
@@ -42,16 +49,29 @@ export default function VocabTyping() {
   const inputRef = useRef<HTMLInputElement>(null);
   const current = pool[index];
 
-  const getMeaning = (w: Word) =>
+  const getMeaning = (w: any) =>
     typeof w.meaning === 'object' ? w.meaning.vi : w.meaning;
 
+  const getWordDisplay = (w: any): string =>
+    isEnglish ? (w.word || '') : (w.kanji || w.hiragana || '');
+
+  const getSubDisplay = (w: any): string =>
+    isEnglish ? formatDualIpa(w) : (w.hiragana || '');
+
+  // correctAnswer: for English typing:
+  //   forward (meaning shown)  → type the English word
+  //   backward (word shown)    → type the Vietnamese meaning
   const correctAnswer = current
-    ? direction === 'backward' 
-      ? current.hiragana 
-      : (() => {
-          const base = current.kanji || current.hiragana; // fallback to hiragana if kanji empty
-          return current.alt_kanji ? `${base} hoặc ${current.alt_kanji}` : base;
-        })()
+    ? isEnglish
+      ? direction === 'forward'
+        ? (current as any).word || ''
+        : getMeaning(current)
+      : direction === 'backward'
+        ? (current as any).hiragana
+        : (() => {
+            const base = (current as any).kanji || (current as any).hiragana;
+            return (current as any).alt_kanji ? `${base} hoặc ${(current as any).alt_kanji}` : base;
+          })()
     : '';
 
   useEffect(() => {
@@ -65,11 +85,21 @@ export default function VocabTyping() {
     if (!input.trim() || submitted) return;
 
     let check = false;
-    if (direction === 'forward') {
-      const expectedKanji = current.kanji || current.hiragana; // fallback
-      check = input.trim() === expectedKanji || (current.alt_kanji ? input.trim() === current.alt_kanji : false);
+    if (isEnglish) {
+      // English: case-insensitive plain text comparison
+      const trimmed = input.trim().toLowerCase();
+      if (direction === 'forward') {
+        check = trimmed === ((current as any).word || '').toLowerCase();
+      } else {
+        const meaningStr = (getMeaning(current) || '').toLowerCase();
+        const accepted = meaningStr.split(/[,;/~]/).map((s: string) => s.trim()).filter(Boolean);
+        check = accepted.includes(trimmed) || trimmed === meaningStr;
+      }
+    } else if (direction === 'forward') {
+      const expectedKanji = (current as any).kanji || (current as any).hiragana;
+      check = input.trim() === expectedKanji || ((current as any).alt_kanji ? input.trim() === (current as any).alt_kanji : false);
     } else {
-      check = input.trim() === current.hiragana;
+      check = input.trim() === (current as any).hiragana;
     }
 
     setIsCorrect(check);
@@ -125,14 +155,19 @@ export default function VocabTyping() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-semibold text-slate-600 dark:text-slate-300 mb-2">🔄 Hướng câu hỏi</label>
-                <div className="flex flex-col gap-3">
-                  {([
-                    { value: 'forward', label: 'Thuận (Nghĩa → gõ Kanji)' },
-                    { value: 'backward', label: 'Đảo ngược (Nghĩa → gõ Hiragana)' },
-                  ] as const).map(opt => (
+                  <div className="flex flex-col gap-3">
+                    {(isEnglish
+                      ? [
+                          { value: 'forward', label: 'Thuận (Nghĩa VI → gõ từ TA)' },
+                        ]
+                      : [
+                          { value: 'forward', label: 'Thuận (Nghĩa → gõ Kanji)' },
+                          { value: 'backward', label: 'Đảo ngược (Nghĩa → gõ Hiragana)' },
+                        ]
+                    ).map(opt => (
                     <button
                       key={opt.value}
-                      onClick={() => setDirection(opt.value)}
+                      onClick={() => setDirection(opt.value as 'forward' | 'backward')}
                       className={`py-3 px-4 rounded-xl border-2 font-medium text-left transition-all ${direction === opt.value
                           ? 'border-orange-500 bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400'
                           : 'border-slate-200 dark:border-slate-600 text-slate-500 dark:text-slate-400 hover:border-orange-300'
@@ -141,11 +176,18 @@ export default function VocabTyping() {
                       {opt.label}
                     </button>
                   ))}
+                  {isEnglish && (
+                    <p className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
+                      💡 Bài tập gõ tiếng Anh tập trung ghi nhớ mặt chữ và chính tả: Đọc nghĩa tiếng Việt → Gõ từ tiếng Anh tương ứng.
+                    </p>
+                  )}
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-600 dark:text-slate-300 mb-2">👁️ Hiển thị Kana (Gợi ý)</label>
+                <label className="block text-sm font-semibold text-slate-600 dark:text-slate-300 mb-2">
+                  {isEnglish ? '👁️ Hiển thị IPA (Gợi ý)' : '👁️ Hiển thị Kana (Gợi ý)'}
+                </label>
                 <button
                   onClick={() => setShowFurigana(!showFurigana)}
                   className={`w-full p-4 rounded-xl border-2 transition-all flex items-center justify-between ${showFurigana
@@ -228,7 +270,7 @@ export default function VocabTyping() {
               }`}
             >
               {showFurigana ? <Eye size={16} /> : <EyeOff size={16} />}
-              Kana
+              {isEnglish ? 'IPA' : 'Kana'}
             </button>
             <span className="text-sm font-bold text-slate-500 dark:text-slate-400">{index + 1} / {pool.length}</span>
           </div>
@@ -255,15 +297,19 @@ export default function VocabTyping() {
                 </span>
               )}
               <div className="text-4xl font-bold text-slate-800 dark:text-white mt-3 mb-2">
-                {getMeaning(current)}
+                {isEnglish
+                  ? (direction === 'forward' ? getMeaning(current) : getWordDisplay(current))
+                  : getMeaning(current)}
               </div>
               {showFurigana && (
                 <div className="text-lg text-slate-500 dark:text-slate-400 mb-2 font-medium">
-                  {current.hiragana}
+                  {isEnglish ? getSubDisplay(current) : current.hiragana}
                 </div>
               )}
               <div className="text-sm text-slate-400 dark:text-slate-500">
-                {direction === 'backward' ? 'Gõ Romaji → Hiragana' : 'Gõ Kanji trực tiếp'}
+                {isEnglish
+                  ? (direction === 'forward' ? 'Type the English word' : 'Type the Vietnamese meaning')
+                  : (direction === 'backward' ? 'Gõ Romaji → Hiragana' : 'Gõ Kanji trực tiếp')}
               </div>
             </div>
 
@@ -276,13 +322,22 @@ export default function VocabTyping() {
                 onChange={e => {
                   if (submitted) return;
                   const raw = e.target.value;
-                  const converted = direction === 'backward'
-                    ? wanakana.toHiragana(raw, { IMEMode: true })
-                    : raw;
-                  setInput(converted);
+                  if (isEnglish) {
+                    // No conversion for English — plain text input
+                    setInput(raw);
+                  } else {
+                    const converted = direction === 'backward'
+                      ? wanakana.toHiragana(raw, { IMEMode: true })
+                      : raw;
+                    setInput(converted);
+                  }
                 }}
                 disabled={submitted}
-                placeholder={direction === 'backward' ? 'VD: taberu → たべる' : 'VD: 食べる'}
+                placeholder={
+                  isEnglish
+                    ? direction === 'forward' ? 'Type the English word...' : 'Type Vietnamese meaning...'
+                    : direction === 'backward' ? 'VD: taberu → たべる' : 'VD: 食べる'
+                }
                 className={`w-full text-center text-3xl font-bold p-5 rounded-2xl border-2 outline-none transition-all dark:bg-slate-700 dark:text-white ${submitted
                     ? isCorrect
                       ? 'border-green-400 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400'
@@ -313,8 +368,11 @@ export default function VocabTyping() {
                     <div className="text-center p-4 bg-slate-50 dark:bg-slate-700/50 rounded-2xl border border-slate-200 dark:border-slate-600">
                       <p className="text-sm text-slate-500 dark:text-slate-400 mb-1">Đáp án đúng:</p>
                       <p className="text-3xl font-bold text-slate-800 dark:text-white">{correctAnswer}</p>
-                      {direction === 'forward' && (
-                        <p className="text-lg text-slate-400 mt-1">{current.hiragana}</p>
+                      {!isEnglish && direction === 'forward' && (
+                        <p className="text-lg text-slate-400 mt-1">{(current as any).hiragana}</p>
+                      )}
+                      {isEnglish && (
+                        <p className="text-sm text-slate-400 mt-1 italic">{(current as any).ipa}</p>
                       )}
                     </div>
                   )}

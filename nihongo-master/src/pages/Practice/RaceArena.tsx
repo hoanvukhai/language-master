@@ -11,7 +11,7 @@ import { useAudio } from '../../context/audio/useAudio';
 
 import { recordArenaRace } from '../../lib/srs/pointsEngine';
 import { romajiToHiragana } from '../../lib/romajiConverter';
-import { buildVocabQuestions, buildKanjiWordQuestions, buildHanjtQuestions, buildGrammarQuestions, shuffleArray as qbShuffle, getMeaning } from '../../lib/race/questionBuilder';
+import { buildVocabQuestions, buildKanjiWordQuestions, buildHanjtQuestions, buildGrammarQuestions, buildEnglishVocabQuestions, shuffleArray as qbShuffle, getMeaning } from '../../lib/race/questionBuilder';
 import type { RaceQuestionItem } from '../../lib/race/questionBuilder';
 
 
@@ -165,6 +165,9 @@ export default function RaceArena() {
     } else if (subject === 'grammar') {
       const grammarDataset = data as any[];
       pool = buildGrammarQuestions(grammarDataset, game, count);
+    } else if (course.template === 'english') {
+      // ── English vocabulary course ────────────────────────────────────
+      pool = buildEnglishVocabQuestions(data as any[], game, count);
     } else {
       const vocabDataset = data as any[];
       pool = buildVocabQuestions(vocabDataset, game, count);
@@ -206,15 +209,23 @@ export default function RaceArena() {
       });
       rawData = mixed;
       getPrompt = d => d.text; getMeaningStr = d => d.meaning;
+    } else if (course.template === 'english') {
+      // ── English vocabulary matching ────────────────────────────────────
+      rawData = data as any[];
+      getPrompt = (d: any) => d.word || '';
+      getMeaningStr = (d: any) => typeof d.meaning === 'object' ? d.meaning.vi : (d.meaning || '');
     } else if (sub === 'grammar') {
       const gData = data as any[];
       rawData = gData;
       getPrompt = d => stripParentheses(d.structure);
       getMeaningStr = d => stripParentheses(getMeaning(d));
     } else {
+      // Japanese vocab (default)
       rawData = data as any[];
-      getPrompt = d => d.kanji || d.hiragana;
-      getMeaningStr = useHiragana ? (d => (d.kanji && d.hiragana && d.kanji !== d.hiragana) ? d.hiragana : getMeaning(d)) : getMeaning;
+      getPrompt = (d: any) => d.kanji || d.hiragana;
+      getMeaningStr = useHiragana
+        ? (d: any) => (d.kanji && d.hiragana && d.kanji !== d.hiragana) ? d.hiragana : getMeaning(d)
+        : getMeaning;
     }
 
     let pool = rawData;
@@ -997,7 +1008,11 @@ if (!newHistory.find(item => getUniqueId(item.q) === getUniqueId(card2.originalI
               if (countdown === null) setUserTyping(val);
             }}
             onSubmitAnswer={ans => {
-              if (currentQ.isSingleKanjiChar) {
+              if (course.template === 'english') {
+                // English: plain case-insensitive comparison
+                const isOk = (ans || '').trim().toLowerCase() === currentQ.correctAnswer.trim().toLowerCase();
+                handleAnswerSubmit(isOk);
+              } else if (currentQ.isSingleKanjiChar) {
                 const isOk = (ans || '').trim().toUpperCase() === currentQ.correctAnswer.trim().toUpperCase();
                 handleAnswerSubmit(isOk);
               } else {
@@ -1021,6 +1036,7 @@ if (!newHistory.find(item => getUniqueId(item.q) === getUniqueId(card2.originalI
               }
             }}
             language={language}
+            skipRomaji={course.template === 'english'}
           />
         )}
 

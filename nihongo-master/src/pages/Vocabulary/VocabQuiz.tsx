@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, CheckCircle2, XCircle, ArrowRight, Trophy, Eye, EyeOff } from 'lucide-react';
 import { usePracticeContext } from '../Practice/PracticeContext';
-import type { Word } from '../../types';
 import VocabLessonChips from '../../components/vocabulary/VocabLessonChips';
+import { formatDualIpa } from '../../lib/english/ipaHelper';
 
 
 
@@ -14,15 +14,16 @@ function shuffle<T>(arr: T[]): T[] {
   return [...arr].sort(() => Math.random() - 0.5);
 }
 
-function buildOptions(correct: Word, pool: Word[]): Word[] {
+function buildOptions(correct: any, pool: any[]): any[] {
   const distractors = shuffle(pool.filter(w => w.id !== correct.id)).slice(0, 3);
   return shuffle([correct, ...distractors]);
 }
 
 export default function VocabQuiz() {
   const { course } = usePracticeContext();
-  const data = course.data as Word[];
-  const lessons = Array.from(new Set(data.map(w => w.lesson).filter(Boolean))) as string[];
+  const data = course.data as any[];
+  const isEnglish = course.template === 'english';
+  const lessons = Array.from(new Set(data.map((w: any) => w.lesson).filter(Boolean))) as string[];
   const [selectedLessons, setSelectedLessons] = useState<string[]>([]);
   const [showFurigana, setShowFurigana] = useState(false);
   const [direction, setDirection] = useState<'forward' | 'backward'>('forward');
@@ -36,7 +37,7 @@ export default function VocabQuiz() {
   }, [selectedLessons, data]);
 
   const [index, setIndex] = useState(0);
-  const [selected, setSelected] = useState<Word | null>(null);
+  const [selected, setSelected] = useState<any | null>(null);
   const [score, setScore] = useState(0);
   const [wrong, setWrong] = useState(0);
   const [done, setDone] = useState(false);
@@ -48,15 +49,18 @@ export default function VocabQuiz() {
     return buildOptions(current, pool);
   }, [current, pool]);
 
-  const getMeaning = (w: Word) =>
+  const getMeaning = (w: any) =>
     typeof w.meaning === 'object' ? w.meaning.vi : w.meaning;
 
-  const getKanjiDisplay = (w: Word) => {
-    const base = w.kanji || w.hiragana; // fallback to hiragana if kanji is empty
-    return w.alt_kanji ? `${base} (${w.alt_kanji})` : base;
-  };
+  const getWordDisplay = (w: any): string =>
+    isEnglish
+      ? (w.word || '')
+      : w.alt_kanji ? `${w.kanji || w.hiragana} (${w.alt_kanji})` : (w.kanji || w.hiragana || '');
 
-  const handleSelect = useCallback((opt: Word) => {
+  // Legacy alias
+  const getKanjiDisplay = getWordDisplay;
+
+  const handleSelect = useCallback((opt: any) => {
     if (selected !== null) return;
     setSelected(opt);
     if (opt.id === current.id) setScore(s => s + 1);
@@ -135,7 +139,9 @@ export default function VocabQuiz() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-600 dark:text-slate-300 mb-2">👁️ Hiển thị Kana (Gợi ý)</label>
+                <label className="block text-sm font-semibold text-slate-600 dark:text-slate-300 mb-2">
+                  {isEnglish ? '👁️ Hiển thị IPA (Gợi ý)' : '👁️ Hiển thị Kana (Gợi ý)'}
+                </label>
                 <button
                   onClick={() => setShowFurigana(!showFurigana)}
                   className={`w-full p-4 rounded-xl border-2 transition-all flex items-center justify-between ${
@@ -207,8 +213,10 @@ export default function VocabQuiz() {
 
   // ──────────── QUIZ ────────────
   const progress = (index / pool.length) * 100;
-  const questionText = direction === 'forward' ? getKanjiDisplay(current) : getMeaning(current);
-  const questionSub = direction === 'forward' && showFurigana ? current.hiragana : null;
+  const questionText = direction === 'forward' ? getWordDisplay(current) : getMeaning(current);
+  const questionSub = direction === 'forward' && showFurigana
+    ? (isEnglish ? formatDualIpa(current) : (current as any).hiragana)
+    : null;
 
   return (
     <div className="min-h-[calc(100vh-3.5rem)] bg-slate-50 dark:bg-slate-900 p-4 md:p-8 font-sans">
@@ -229,7 +237,7 @@ export default function VocabQuiz() {
               }`}
             >
               {showFurigana ? <Eye size={16} /> : <EyeOff size={16} />}
-              Kana
+              {isEnglish ? 'IPA' : 'Kana'}
             </button>
             <span className="text-sm font-bold text-slate-500 dark:text-slate-400">{index + 1} / {pool.length}</span>
           </div>
@@ -260,7 +268,9 @@ export default function VocabQuiz() {
                 <div className="text-lg text-slate-400 dark:text-slate-500 mt-2">{questionSub}</div>
               )}
               <div className="text-sm text-slate-400 mt-3">
-                {direction === 'forward' ? 'Chọn nghĩa tiếng Việt đúng' : 'Chọn Kanji đúng'}
+                {direction === 'forward'
+                  ? (isEnglish ? 'Chọn nghĩa tiếng Việt đúng' : 'Chọn nghĩa tiếng Việt đúng')
+                  : (isEnglish ? 'Chọn từ tiếng Anh đúng' : 'Chọn Kanji đúng')}
               </div>
             </div>
 
@@ -288,7 +298,9 @@ export default function VocabQuiz() {
                     <div className="flex-1 flex flex-col items-start">
                       <span>{optLabel}</span>
                       {direction === 'backward' && showFurigana && (
-                        <span className="text-sm opacity-70 font-medium mt-1">{opt.hiragana}</span>
+                        <span className="text-sm opacity-70 font-medium mt-1">
+                          {isEnglish ? formatDualIpa(opt as any) : (opt as any).hiragana}
+                        </span>
                       )}
                     </div>
                     {selected !== null && isCorrect && <CheckCircle2 size={24} className="text-green-500 flex-shrink-0" />}

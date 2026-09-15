@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Clock, Flame, Heart } from 'lucide-react';
 import { usePracticeContext } from '../Practice/PracticeContext';
-import type { Word } from '../../types';
 import {
   calculateMaxPossibleExp
 } from '../../lib/rankSystem';
@@ -45,7 +44,8 @@ export default function VocabFullRun() {
   const navigate = useNavigate();
   const { user } = useAuth();
   const { course } = usePracticeContext();
-  const data = course.data as Word[];
+  const data = course.data as any[];
+  const isEnglish = course.template === 'english';
   const BACK_PATH = `/course/${course.id}/practice`;
 
   // Setup state
@@ -59,7 +59,7 @@ export default function VocabFullRun() {
   const lvl = LEVEL_CONFIG[level];
 
   // Game state
-  const questions = useMemo(() => buildQuestions(data, { totalQ: lvl.questions }), [lvl.questions, seed, data]);
+  const questions = useMemo(() => buildQuestions(data, { totalQ: lvl.questions }, course), [lvl.questions, seed, data, course.template]);
   const maxExp = useMemo(() => calculateMaxPossibleExp(questions, level, lvl.blitzSecs, 'vocab'), [questions, level, lvl.blitzSecs]);
   const [qIdx, setQIdx] = useState(0);
   const [correct, setCorrect] = useState(0);
@@ -494,7 +494,10 @@ export default function VocabFullRun() {
                   e.preventDefault();
                   if (typingSubmitted) return;
                   const trimmedInput = typingInput.trim();
-                  const ok = trimmedInput !== '' && trimmedInput === (currentQ as TypingQ).answer;
+                  const expectedAnswer = (currentQ as TypingQ).answer;
+                  const ok = isEnglish
+                    ? trimmedInput.toLowerCase() === expectedAnswer.toLowerCase()
+                    : trimmedInput !== '' && trimmedInput === expectedAnswer;
                   setTypingCorrect(ok);
                   setTypingSubmitted(true);
                   triggerResult(ok);
@@ -502,6 +505,7 @@ export default function VocabFullRun() {
                 countdown={countdown}
                 onNext={commitAdvance}
                 resultSecs={RESULT_SECS}
+                skipRomaji={isEnglish}
               />
             )}
 

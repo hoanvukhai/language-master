@@ -1,0 +1,5102 @@
+[
+  {
+    "id": "en-exp1-001",
+    "template": "english",
+    "word": "a couple of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "một đôi, một cặp",
+      "en": "two persons and things joined or related in some way;"
+    },
+    "examples": [
+      {
+        "en": "The monkey has a couple of bananas.He arrived a couple of days ago. Bobby has a couple of pens in his pocket. A: Have you been to Europe? B: Yes, a couple of times."
+      }
+    ],
+    "lesson": "Unit 1",
+    "audioFile": "a couple of.mp3"
+  },
+  {
+    "id": "en-exp1-002",
+    "template": "english",
+    "word": "a long time ago",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "ngày xửa ngày xưa, nhiều năm trước đây, rất lâu rồi",
+      "en": "one upon a time; many years ago; ages ago; long ago;"
+    },
+    "examples": [
+      {
+        "en": "a long time ago, dinosaurs lived on the earth.a long time ago, there were no airplanes. My grandfather was a pilot a long time ago. A: When did you go to Germany? B: I went to Germany a long time ago, in 1963."
+      }
+    ],
+    "lesson": "Unit 1",
+    "audioFile": "a long time ago.mp3"
+  },
+  {
+    "id": "en-exp1-003",
+    "template": "english",
+    "word": "a lot of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "nhiều",
+      "en": "a large amount or number of something; lots of; plenty of;"
+    },
+    "examples": [
+      {
+        "en": "He has a lot of hair.The millionaire has a lot of money. a lot of students were absent because of the flu. A: Why aren't you feeling well? B: I think it's because I ate a lot of chocolate today."
+      }
+    ],
+    "lesson": "Unit 1",
+    "audioFile": "a lot of.mp3"
+  },
+  {
+    "id": "en-exp1-004",
+    "template": "english",
+    "word": "above all (else)",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "quan trọng nhất, trên tất cả",
+      "en": "most importantly; most of all;"
+    },
+    "examples": [
+      {
+        "en": "You must not smoke or drink. above all, you must exercise.“above all, you should obey your parents,” said my grandfather. above all, a soldier must be brave. A: What did you like about this book? B: It was interesting and exciting, but above all, it was funny."
+      }
+    ],
+    "lesson": "Unit 1",
+    "audioFile": "above all.mp3"
+  },
+  {
+    "id": "en-exp1-005",
+    "template": "english",
+    "word": "according to",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "theo, theo như",
+      "en": "as shown or said by;"
+    },
+    "examples": [
+      {
+        "en": "according to scientists, the earth is becoming warmer.according to this book, elephants are endangered. according to my mother, television is bad for you. A: Where are we? B: according to this map we're somewhere between Johnson Street and Second Avenue."
+      }
+    ],
+    "lesson": "Unit 1",
+    "audioFile": "according to.mp3"
+  },
+  {
+    "id": "en-exp1-006",
+    "template": "english",
+    "word": "after all",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "sau tất cả, tuy nhiên, cuối cùng(kết quả trái ngược với suy nghĩ ban đầu)",
+      "en": "in spite of what was expected; nevertheless; in the endangered;"
+    },
+    "examples": [
+      {
+        "en": "The tortoise won the race after all.He went with them after all. The small country won the battle after all. A: Who were you just talking to? B: I thought it was someone I know from college but it wasn't her after all."
+      }
+    ],
+    "lesson": "Unit 1",
+    "audioFile": "after all.mp3"
+  },
+  {
+    "id": "en-exp1-007",
+    "template": "english",
+    "word": "again and again",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "thường, lặp lại, nhắc đi nhắc lại",
+      "en": "often; repeatedly; over and over again;"
+    },
+    "examples": [
+      {
+        "en": "I told you again and again not to touch the electric fence!While babies learn to walk, they fall again and again. The child wanted to hear the same story again and again. A: This computer game is really fun! B: I think so, too. I want to play it again and again."
+      }
+    ],
+    "lesson": "Unit 1",
+    "audioFile": "again and again.mp3"
+  },
+  {
+    "id": "en-exp1-008",
+    "template": "english",
+    "word": "agree with",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đồng ý với",
+      "en": "have the same opinion with; share one's view;"
+    },
+    "examples": [
+      {
+        "en": "I agree with you. There's something strange about him.The teacher agreed with the students. Sharon agreed with her friend. A: Some people didn't like the movie, but I thought it was interesting. B: I agree with you. It was very interesting."
+      }
+    ],
+    "lesson": "Unit 1",
+    "audioFile": "agree with.mp3"
+  },
+  {
+    "id": "en-exp1-009",
+    "template": "english",
+    "word": "all of a sudden",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "bất thình lình; một cách bất ngờ",
+      "en": "all at once; suddenly; unexpectedly; without warning;"
+    },
+    "examples": [
+      {
+        "en": "all of a sudden, it started to rain very hard.all of a sudden, the dog began to bark loudly. all of a sudden, the earth began to shake. A: How did you break your leg? B: I was riding my bicycle, when all of a sudden I hit a bump and fell off."
+      }
+    ],
+    "lesson": "Unit 1",
+    "audioFile": "all of a sudden.mp3"
+  },
+  {
+    "id": "en-exp1-010",
+    "template": "english",
+    "word": "all over the world",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "khắp thế giới",
+      "en": "throughout the world; worldwide; everywhere;"
+    },
+    "examples": [
+      {
+        "en": "Ants live all over the world.English is spoken all over the world. Mozart is famous all over the world. A: I wish I could travel all over the world. B: That would be a lot of fun!"
+      }
+    ],
+    "lesson": "Unit 1",
+    "audioFile": "all over the world.mp3"
+  },
+  {
+    "id": "en-exp1-011",
+    "template": "english",
+    "word": "all the time",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "suốt; lúc nào cũng; luôn luôn",
+      "en": "constantly; always;"
+    },
+    "examples": [
+      {
+        "en": "He is tired all the time.Midori practices the violin all the time. Mark chews gum all the time. A: He looks very happy today. B: He looks happy all the time."
+      }
+    ],
+    "lesson": "Unit 2",
+    "audioFile": "all the time.mp3"
+  },
+  {
+    "id": "en-exp1-012",
+    "template": "english",
+    "word": "all the way",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "suốt chặng đường, suốt",
+      "en": "the whole distance; the whole way;"
+    },
+    "examples": [
+      {
+        "en": "The road goes all the way across the field.The car broke down and we had to walk all the way home. Sue was late. She ran all the way to school. A: Can you run all the way around the soccer field? B: No I can't. I can only run halfway around it, then I'm too tired to keep running."
+      }
+    ],
+    "lesson": "Unit 2",
+    "audioFile": "all the way.mp3"
+  },
+  {
+    "id": "en-exp1-013",
+    "template": "english",
+    "word": "and so on",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "vân vân, tiếp tục như vậy, tương tự như thế",
+      "en": "and so forth; and the like;"
+    },
+    "examples": [
+      {
+        "en": "They were always arguing. “I'm the fastest.” “No, I'm the fastest” “No way!” and so on.Potatoes, onions, carrots and so on are vegetables. There are many countries in Africa: Zambia, Kenya, Togo, and so on. A: What do you feed your pet snake? B: Small animals like mice, frogs, lizards, and so on."
+      }
+    ],
+    "lesson": "Unit 2",
+    "audioFile": "and so on.mp3"
+  },
+  {
+    "id": "en-exp1-014",
+    "template": "english",
+    "word": "arrive at/in",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đến nơi",
+      "en": "get to; come to; reach;"
+    },
+    "examples": [
+      {
+        "en": "Make sure you arrive at the house before 6:00.They arrived at the restaurant. The train arrived at the station. A: When will we get to the airport? B: We should arrive at the airport in five minutes."
+      }
+    ],
+    "lesson": "Unit 2",
+    "audioFile": "arrive at.mp3"
+  },
+  {
+    "id": "en-exp1-015",
+    "template": "english",
+    "word": "as a result",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "vì thế mà",
+      "en": "so; consequently;"
+    },
+    "examples": [
+      {
+        "en": "He ate too much. as a result, he got fat.She studied hard. as a result, she got an A on the test. Many roads were flooded, and, as a result, there were some delays. A: Did you study for the test? B: No, and, as a result, I got a bad grade."
+      }
+    ],
+    "lesson": "Unit 2",
+    "audioFile": "as a result.mp3"
+  },
+  {
+    "id": "en-exp1-016",
+    "template": "english",
+    "word": "as well as",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "và còn thêm, và cả",
+      "en": "in addition to;"
+    },
+    "examples": [
+      {
+        "en": "I like apples as well as peppers.I play tennis on weekdays as well as on Saturdays. There were adults as well as children in the park. A: Would you like a hamburger or some chicken? B: I'm really hungry. I'd like both as well as some cola."
+      }
+    ],
+    "lesson": "Unit 2",
+    "audioFile": "as well as.mp3"
+  },
+  {
+    "id": "en-exp1-017",
+    "template": "english",
+    "word": "ask for",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "yêu cầu, thỉnh cầu, đòi hỏi, gây ra",
+      "en": "request; wish for; demand;"
+    },
+    "examples": [
+      {
+        "en": "The magic genie will give you anything you ask for.For his birthday, Don asked for a new toy truck. The chef asked for a spoon. A: I asked for some money but my father said no. B: That's too bad. Now we can't go to see the movie tonight."
+      }
+    ],
+    "lesson": "Unit 2",
+    "audioFile": "ask for.mp3"
+  },
+  {
+    "id": "en-exp1-018",
+    "template": "english",
+    "word": "at a time",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "kế tiếp nhau; riêng biệt; mỗi/một lần",
+      "en": "at one time; at once; at the same time;"
+    },
+    "examples": [
+      {
+        "en": "They took showers one at a timeThe children went down the slide two at a time. The elevator holds five people at a time. A: Can you help me move these boxes? B: Yes, but they're heavy, so let's move them one at a time."
+      }
+    ],
+    "lesson": "Unit 2",
+    "audioFile": "at a time.mp3"
+  },
+  {
+    "id": "en-exp1-019",
+    "template": "english",
+    "word": "at any time",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "bất cứ khi /lúc nào, khi/lúc nào",
+      "en": "at any moment; any time;"
+    },
+    "examples": [
+      {
+        "en": "She may give birth at any time.The library is open 24 hours a day. I can study there at any time. People can call the police at any time. A: Can I visit you at three o'clock on Saturday? B: I'll be home all day. You can visit at any time."
+      }
+    ],
+    "lesson": "Unit 2",
+    "audioFile": "at any time.mp3"
+  },
+  {
+    "id": "en-exp1-020",
+    "template": "english",
+    "word": "a pair of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "một cặp",
+      "en": "two things of the same kind used together;"
+    },
+    "examples": [
+      {
+        "en": "I bought two pairs of shoes, one for my brother and the other for my sister.She wants to buy a pair of beautiful gloves. I need a pair of socks. A: What are you going to buy when you go shopping? B: I'm going to buy a pair of earrings."
+      }
+    ],
+    "lesson": "Unit 2",
+    "audioFile": "a pair of.mp3"
+  },
+  {
+    "id": "en-exp1-021",
+    "template": "english",
+    "word": "at first",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "lúc đầu, ban đầu",
+      "en": "initially; in the beginning;"
+    },
+    "examples": [
+      {
+        "en": "at first, I thought all Americans would be big and strong.She was afraid of dogs at first. Now she loves them. They didn't like cheese at first. A: Do you like studying English? B: at first I thought it was boring, but now I like it."
+      }
+    ],
+    "lesson": "Unit 3",
+    "audioFile": "at first.mp3"
+  },
+  {
+    "id": "en-exp1-022",
+    "template": "english",
+    "word": "at last",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "rốt cuộc là, cuối cùng thì (phải chờ đợi rất lâu mới xảy ra)",
+      "en": "finally; in the end;"
+    },
+    "examples": [
+      {
+        "en": "at last the sun came up over the horizon.After many years of war, there was peace at last. Robinson Crusoe was home at last. A: Did you finish cleaning your room? B: Yes! After two hours of cleaning I finished at last."
+      }
+    ],
+    "lesson": "Unit 3",
+    "audioFile": "at last.mp3"
+  },
+  {
+    "id": "en-exp1-023",
+    "template": "english",
+    "word": "at least",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "dù sao đi nữa; điều tốt là, tối thiểu là",
+      "en": "not less than;"
+    },
+    "examples": [
+      {
+        "en": "Some people recommend eating an apple at least once a day.You need to stay in bed for at least three days. Most people have been in love at least once. A: How many times have you been to the ocean? B: I've been there at least six times, maybe more."
+      }
+    ],
+    "lesson": "Unit 3",
+    "audioFile": "at least.mp3"
+  },
+  {
+    "id": "en-exp1-024",
+    "template": "english",
+    "word": "at once",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "ngay tức khắc, lập tức;, ngay lập tức",
+      "en": "immediately; right away;"
+    },
+    "examples": [
+      {
+        "en": "Son! Come back here at once!When we heard the fire alarm, we left at once. She went to her sick mother at once. A: Can I give you the money next week? B: No! I need it at once! Please come to my house now and pay me."
+      }
+    ],
+    "lesson": "Unit 3",
+    "audioFile": "at once.mp3"
+  },
+  {
+    "id": "en-exp1-025",
+    "template": "english",
+    "word": "at the top of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "(vị trí, chức vụ...) cao nhất",
+      "en": "at the highest part of;"
+    },
+    "examples": [
+      {
+        "en": "He graduated at the top of the class.I saw a flag at the top of the building. He was standing at the top of the stairs. A: What's at the top of the mountain? B: There's a place to sit down and have some water."
+      }
+    ],
+    "lesson": "Unit 3",
+    "audioFile": "at the top of.mp3"
+  },
+  {
+    "id": "en-exp1-026",
+    "template": "english",
+    "word": "be about to",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "sắp",
+      "en": "be almost doing; be just going to;"
+    },
+    "examples": [
+      {
+        "en": "He was about to push the button.He was about to fall asleep when the telephone rang.Look at the dark clouds; it is about to rain.A: Why didn't you go in the water? B: I was about to go in, but then I saw a jellyfish and ran away."
+      }
+    ],
+    "lesson": "Unit 3",
+    "audioFile": "be about to.mp3"
+  },
+  {
+    "id": "en-exp1-027",
+    "template": "english",
+    "word": "be absent from",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "vắng mặt, không có mặt",
+      "en": "is missing from; be away from;"
+    },
+    "examples": [
+      {
+        "en": "He was absent from class because he was sick.Mr. Jones was absent from the meeting. Our teacher is absent from school today because she is getting married. A: Why were you absent from school yesterday? B: I was sick, so I had to stay home."
+      }
+    ],
+    "lesson": "Unit 3",
+    "audioFile": "be absent from.mp3"
+  },
+  {
+    "id": "en-exp1-028",
+    "template": "english",
+    "word": "be afraid of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "sợ, e ngại, lấy làm tiếc",
+      "en": "have fear of; be fearful of;"
+    },
+    "examples": [
+      {
+        "en": "Many people are afraid of snakes.Children are afraid of the dark. The bird was afraid of flying at first. A: Why don't you like fishing? B: I am afraid of the water."
+      }
+    ],
+    "lesson": "Unit 3",
+    "audioFile": "be afraid of.mp3"
+  },
+  {
+    "id": "en-exp1-029",
+    "template": "english",
+    "word": "be angry with",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "giận dữ với, tức giận với",
+      "en": "be upset with; be mad at;"
+    },
+    "examples": [
+      {
+        "en": "The father was angry with his son.Cain was very angry with his brother, Abel. The police officer was angry with the drunk driver. A: Why was the teacher angry with the class? B: None of the students read the book."
+      }
+    ],
+    "lesson": "Unit 3",
+    "audioFile": "be angry with.mp3"
+  },
+  {
+    "id": "en-exp1-030",
+    "template": "english",
+    "word": "be anxious about",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "lo âu, lo lắng, áy náy về cái gì",
+      "en": "be nervous about; be worried about;"
+    },
+    "examples": [
+      {
+        "en": "The boy was anxious about taking the test.The president was anxious about meeting the reporters. Mr. Gates was anxious about the job interview. A: Are you anxious about going to the dentist? B: Yes! I don't like going to the dentist. It makes me nervous."
+      }
+    ],
+    "lesson": "Unit 3",
+    "audioFile": "be anxious about.mp3"
+  },
+  {
+    "id": "en-exp1-031",
+    "template": "english",
+    "word": "be anxious to",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "háo hức làm gì, phấn khích làm gì",
+      "en": "want strongly; be eager to; be keen to; would love to;"
+    },
+    "examples": [
+      {
+        "en": "The puppy is anxious to eat his dinner.The students are anxious to know the answer. When we saw the dark clouds, we were anxious to get home. A: I'm anxious to go to the amusement B: Me too. It's going to be fun! park this weekend."
+      }
+    ],
+    "lesson": "Unit 4",
+    "audioFile": "be anxious to.mp3"
+  },
+  {
+    "id": "en-exp1-032",
+    "template": "english",
+    "word": "be covered with",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "được bọc bằng, được bao phủ bằng",
+      "en": "have a lot on the surface;"
+    },
+    "examples": [
+      {
+        "en": "After sleeping in the woods, he was covered with insect bites.bite /bait/: vết cắnMy desk is covered with papers. The ground was covered with snow. A: Do you like cake? B: Yes, especially if it's covered with frosting!"
+      }
+    ],
+    "lesson": "Unit 4",
+    "audioFile": "be covered with.mp3"
+  },
+  {
+    "id": "en-exp1-033",
+    "template": "english",
+    "word": "be crowded with",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đầy ắp, đầy tràn",
+      "en": "have many things in one place; be full of; be packed with;"
+    },
+    "examples": [
+      {
+        "en": "The room was crowded with aliens.The subway was crowded with people. The shelf was crowded with books. A: Why is this store so crowded with people? B: It's crowded because there's a big sale today."
+      }
+    ],
+    "lesson": "Unit 4",
+    "audioFile": "be crowded with.mp3"
+  },
+  {
+    "id": "en-exp1-034",
+    "template": "english",
+    "word": "be different from",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "khác, khác biệt",
+      "en": "be not the same as; differ from;"
+    },
+    "examples": [
+      {
+        "en": "He always knew he was different from the others.My dog is different from yours. Canadians are different from Americans in many ways.A: Is Korean food different from Chinese food? B: Yes. Korean food is much spicier."
+      }
+    ],
+    "lesson": "Unit 4",
+    "audioFile": "be different from.mp3"
+  },
+  {
+    "id": "en-exp1-035",
+    "template": "english",
+    "word": "be disappointed with",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "thất vọng về",
+      "en": "be unhappy with;"
+    },
+    "examples": [
+      {
+        "en": "The woman was disappointed with her puppy.The teacher was disappointed with my low grade.When we lost the game, the coach was disappointed with my team. A: I'm disappointed with my test score. B: Me too. I only got a 64."
+      }
+    ],
+    "lesson": "Unit 4",
+    "audioFile": "be disappointed with.mp3"
+  },
+  {
+    "id": "en-exp1-036",
+    "template": "english",
+    "word": "be divided into",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "chia thành (các phần bằng nhau)",
+      "en": "be separated into; be split into;"
+    },
+    "examples": [
+      {
+        "en": "The juice was divided into 2 glasses.The essay was divided into three parts. The money was divided into three bags. A: The pizza is divided into eight pieces. B: Great! There are eight people, so everybody can have one piece."
+      }
+    ],
+    "lesson": "Unit 4",
+    "audioFile": "be divided into.mp3"
+  },
+  {
+    "id": "en-exp1-037",
+    "template": "english",
+    "word": "be dressed in",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "(đã) mặc (quần áo), diện (trang phục) (mặc trên người rồi)",
+      "en": "have clothes on; be clothed in; wear;"
+    },
+    "examples": [
+      {
+        "en": "He is dressed in a shirt and tie.The prince was dressed in fine clothes. The bride was dressed in a white gown. gown /gaun/: áo dài, áo choàng (của phụ nữ, mặc trong những dịp đặc biệt...)A: Why are you dressed in your winter coat? B: I'm going to buy some ice cream."
+      }
+    ],
+    "lesson": "Unit 4",
+    "audioFile": "be dressed in.mp3"
+  },
+  {
+    "id": "en-exp1-038",
+    "template": "english",
+    "word": "be excited about",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "hào hứng, phấn khích",
+      "en": "be happy about; be enthusiastic about; look forward to; be thrilled about;"
+    },
+    "examples": [
+      {
+        "en": "I'm excited about the concert!The fans were excited about the game. The children were excited about going to the zoo. A: I'm excited about the party on Friday. B: Me too. I love birthday parties."
+      }
+    ],
+    "lesson": "Unit 4",
+    "audioFile": "be excited about.mp3"
+  },
+  {
+    "id": "en-exp1-039",
+    "template": "english",
+    "word": "be familiar with",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "quen dùng vật gì, giỏi môn gì, quen thuộc với",
+      "en": "know well; be used to; be comfortable with;"
+    },
+    "examples": [
+      {
+        "en": "The pigs are familiar with each other.She is familiar with Russian culture. I am not familiar with this brand of computer. A: Do you know where the post office is? B: No, I don't. Let's ask someone who's familiar with this part of town."
+      }
+    ],
+    "lesson": "Unit 4",
+    "audioFile": "be familiar with.mp3"
+  },
+  {
+    "id": "en-exp1-040",
+    "template": "english",
+    "word": "be famous for",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "nổi tiếng về, nổi tiếng bởi",
+      "en": "be well known for; be noted for;"
+    },
+    "examples": [
+      {
+        "en": "He is famous for having the world's longest fingernails.Thomas Edison is famous for his inventions. Shakespeare is famous for his plays. A: What shall we order to eat? B: I'd like to order pizza. This restaurant is famous for it."
+      }
+    ],
+    "lesson": "Unit 4",
+    "audioFile": "be famous for.mp3"
+  },
+  {
+    "id": "en-exp1-041",
+    "template": "english",
+    "word": "be filled with",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "điền đầy, lấp kín",
+      "en": "have lot of the same thing inside; be full of;"
+    },
+    "examples": [
+      {
+        "en": "\"The bowl is filled with grapes.This donut is filled with cream.The book was filled with pictures. A: Wow! This garden is filled with flowers. B: It's beautiful.donut/ˈdəʊ.nʌt/ \""
+      }
+    ],
+    "lesson": "Unit 5",
+    "audioFile": "be filled with.mp3"
+  },
+  {
+    "id": "en-exp1-042",
+    "template": "english",
+    "word": "be fond of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "thích (ai), yêu",
+      "en": "get a lot of pleasure from; like; enjoy; love;"
+    },
+    "examples": [
+      {
+        "en": "He's really fond of baseball.Romeo and Juliet were very fond of each other.My grandmother and grandfather are fond of me. A: Have you heard of Picasso? B: Yes, I am fond of his paintings."
+      }
+    ],
+    "lesson": "Unit 5",
+    "audioFile": "be fond of.mp3"
+  },
+  {
+    "id": "en-exp1-043",
+    "template": "english",
+    "word": "be full of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đầy, tràn trề, no nê",
+      "en": "have many things inside; be filled with; be packed with;"
+    },
+    "examples": [
+      {
+        "en": "The box is full of toys.Her basket was full of apples. The vase is full of beautiful flowers. A: Why is your bag so heavy? B: It is full of books."
+      }
+    ],
+    "lesson": "Unit 5",
+    "audioFile": "be full of.mp3"
+  },
+  {
+    "id": "en-exp1-044",
+    "template": "english",
+    "word": "be good at",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "giỏi (về)",
+      "en": "be skilled or talented at;"
+    },
+    "examples": [
+      {
+        "en": "He's good at mathematics.Mike is good at languages. Jane is good at sports. A: You are very good at basketball. B: Not really, but I have fun playing it."
+      }
+    ],
+    "lesson": "Unit 5",
+    "audioFile": "be good at.mp3"
+  },
+  {
+    "id": "en-exp1-045",
+    "template": "english",
+    "word": "be impressed by",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "gây ấn tượng, làm cảm kích",
+      "en": "feel admiration for; be moved by; be touched by;"
+    },
+    "examples": [
+      {
+        "en": "We were impressed by his singing.She was impressed by his strength. I was impressed by the size of the house. A: Did you enjoy the art gallery? B: Yes, I did. I was impressed by all the beautiful paintings."
+      }
+    ],
+    "lesson": "Unit 5",
+    "audioFile": "be impressed by.mp3"
+  },
+  {
+    "id": "en-exp1-046",
+    "template": "english",
+    "word": "be in trouble",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "gặp rắc rối, gặp khó khăn",
+      "en": "get into trouble; be in a difficult situation;"
+    },
+    "examples": [
+      {
+        "en": "She is always in trouble.If you don't clean your room, you'll be in trouble The student was in trouble for cheating on the test. A: Why are you in the teacher's office? Are you in trouble? B: Yes I am. I did not do my homework last night."
+      }
+    ],
+    "lesson": "Unit 5",
+    "audioFile": "be in trouble.mp3"
+  },
+  {
+    "id": "en-exp1-047",
+    "template": "english",
+    "word": "be interested in",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "thích thú, có quan tâm",
+      "en": "be eager to; be attracted by; like;"
+    },
+    "examples": [
+      {
+        "en": "That's “Weird Eddie”. He's only interested in insects.I'm very interested in astronomy. When she was young, Josephine Baker was interested in dance.A: I am interested in learning how to play tennis. B: I can help you. I have been playing for a few years."
+      }
+    ],
+    "lesson": "Unit 5",
+    "audioFile": "be interested in.mp3"
+  },
+  {
+    "id": "en-exp1-048",
+    "template": "english",
+    "word": "be known for",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "biết đến bởi, được biết đến",
+      "en": "be recognized by;"
+    },
+    "examples": [
+      {
+        "en": "The tree frog is known for its green color.The tree is known for its delicious fruit. The girl was known for having long hair.A: Where is Joe? We've been waiting for 25 minutes.B: Well, he is known for being late.delicious /di'liʃəs/: thơm ngon"
+      }
+    ],
+    "lesson": "Unit 5",
+    "audioFile": "be known for.mp3"
+  },
+  {
+    "id": "en-exp1-049",
+    "template": "english",
+    "word": "be late for",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "trễ, muộn",
+      "en": "arrive after the expected time;"
+    },
+    "examples": [
+      {
+        "en": "He is late for work.The groom was late for the wedding.The boss was late for the meeting.A: Why are you driving so fast?B: I am going to be late for the concert."
+      }
+    ],
+    "lesson": "Unit 5",
+    "audioFile": "be late for.mp3"
+  },
+  {
+    "id": "en-exp1-050",
+    "template": "english",
+    "word": "be made of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "tạo bởi",
+      "en": "consist of; be made up of; be composed of;"
+    },
+    "examples": [
+      {
+        "en": "\"The house is made of brick.My pants are made of cotton. Jam is made of sugar and fruit.A: Is this bottle made of glass? B: No, I think it is made of plastic.made of: không thay đổi chất liệu VD: The house is made of brick --&gt; gạch vẫn là gạch, không thay đổi sau khi tạo thành ngôi nhà. This chair is made of wood --&gt; gỗ vẫn là gỗ (chất liệu không thay đổi, hình dạng thay đổi)made from: có sự thay đổi chất liệuVD: Wine is made from grape --&gt; nho không còn là nho nữa, nho đã thay đổi để tạo thành rượu vang made out of : được làm bằng gì (chú trọng vào các nguyên liệu trong quá trình làm ra )VD: This candy was made out of sugar, milk and chocolate.\""
+      }
+    ],
+    "lesson": "Unit 5",
+    "audioFile": "be made of.mp3"
+  },
+  {
+    "id": "en-exp1-051",
+    "template": "english",
+    "word": "be over",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "kết thúc, qua, xong hết; trên, vượt quá;",
+      "en": "come to the end; be finished; be done;"
+    },
+    "examples": [
+      {
+        "en": "Don't worry! The ride will be over soon.The meeting was over at 11 o'clock. When is the movie going to be over?A: What time will this class be over? B: It will finish at three o'clock.ride /raid/: sự đi chơi, cuộc đi chơi (bằng ngựa, xe đạp, xe ô tô, xe buýt, xe lửa...)"
+      }
+    ],
+    "lesson": "Unit 6",
+    "audioFile": "be over.mp3"
+  },
+  {
+    "id": "en-exp1-052",
+    "template": "english",
+    "word": "be pleased with",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "hài lòng",
+      "en": "be satisfied with; be happy with; be delighted with;"
+    },
+    "examples": [
+      {
+        "en": "You should be pleased with you grades.I was pleased with the quick service. She was pleased with the new wallpaper.A: Wow! That is a nice picture you are painting!B: Thanks. I hope my art teacher will be pleased."
+      }
+    ],
+    "lesson": "Unit 6",
+    "audioFile": "be pleased with .mp3"
+  },
+  {
+    "id": "en-exp1-053",
+    "template": "english",
+    "word": "be proud of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "từ hào (về ai/cái gì)",
+      "en": "feel pleased about; take pride in;"
+    },
+    "examples": [
+      {
+        "en": "The boy is proud of his painting.They were very proud of their son. I am proud of my country. A,: I got an A on the test. B: I'm very proud of you!"
+      }
+    ],
+    "lesson": "Unit 6",
+    "audioFile": "be proud of.mp3"
+  },
+  {
+    "id": "en-exp1-054",
+    "template": "english",
+    "word": "be ready to",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "sãn sàng",
+      "en": "be prepared to;"
+    },
+    "examples": [
+      {
+        "en": "The spider is ready to eat.She isn't ready to go yet. They were ready to go camping. A: Are you ready to go to school? B: No, I have to eat breakfast first."
+      }
+    ],
+    "lesson": "Unit 6",
+    "audioFile": "be ready to.mp3"
+  },
+  {
+    "id": "en-exp1-055",
+    "template": "english",
+    "word": "be responsible for",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "chịu trách nhiệm",
+      "en": "have to take care of; be in charge of;"
+    },
+    "examples": [
+      {
+        "en": "He is responsible for the whole group.A shepherd is responsible for his sheep. The doctor is responsible for his patient. A: Are you responsible for your little sister today? B: Yes I am. If she' does anything bad, my parents will be angry at me!"
+      }
+    ],
+    "lesson": "Unit 6",
+    "audioFile": "be responsible for.mp3"
+  },
+  {
+    "id": "en-exp1-056",
+    "template": "english",
+    "word": "be satisfied with",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "hài lòng với",
+      "en": "be happy with; be content with;"
+    },
+    "examples": [
+      {
+        "en": "The snake was satisfied with his meal.My father is satisfied with his new car. Miss Johnson is not satisfied with her job A: Are you satisfied with your meal? B: Yes, it tastes very good."
+      }
+    ],
+    "lesson": "Unit 6",
+    "audioFile": "be satisfied with.mp3"
+  },
+  {
+    "id": "en-exp1-057",
+    "template": "english",
+    "word": "be similar to",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "tương tự, đồng dạng",
+      "en": "have many things in common with; be like;"
+    },
+    "examples": [
+      {
+        "en": "Wasps are similar to bees.A turtle is similar to a tortoise. A leopard is similar to a tiger. A: Look! Is that your mom's car? B: No, it's not. But it is similar to her car. It is the same size and color."
+      }
+    ],
+    "lesson": "Unit 6",
+    "audioFile": "be similar to.mp3"
+  },
+  {
+    "id": "en-exp1-058",
+    "template": "english",
+    "word": "be supposed to",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đòi hỏi, đề nghị; cho rằng, nghĩ rằng",
+      "en": "be expected to; be scheduled to;"
+    },
+    "examples": [
+      {
+        "en": "You were supposed to save half the cake for me!The meeting is supposed to begin at 2 p.m. What time is the show supposed to start? A: Do you want to play soccer this afternoon? B: I do, but I can't, because I am supposed to meet my uncle at two o'clock."
+      }
+    ],
+    "lesson": "Unit 6",
+    "audioFile": "be supposed to.mp3"
+  },
+  {
+    "id": "en-exp1-059",
+    "template": "english",
+    "word": "be sure of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "chắc chắn về",
+      "en": "have no doubt about;"
+    },
+    "examples": [
+      {
+        "en": "The girl was sure of which puppy she wanted.Willy was sure of his answer. She isn't sure of the time of the party. A: Are you sure Rita wants the green shirt? B: I am sure of it. Yesterday she told me she wanted it.doubt /daut/: nghi ngờ, ngờ vực, hồ nghi"
+      }
+    ],
+    "lesson": "Unit 6",
+    "audioFile": "be sure of.mp3"
+  },
+  {
+    "id": "en-exp1-060",
+    "template": "english",
+    "word": "be surprised by (at)",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "ngạc nhiên bởi",
+      "en": "be taken aback by; express surprise at; be astonished at;"
+    },
+    "examples": [
+      {
+        "en": "She was surprised by her son's new hairstyle.Mr. Scrooge was surprised by the ghost. Nancy Drew was surprised by the noise. A: I am surprised by Nick's kindness these days. B: Me too. Last year he was a very mean boy."
+      }
+    ],
+    "lesson": "Unit 6",
+    "audioFile": "be surprised by.mp3"
+  },
+  {
+    "id": "en-exp1-061",
+    "template": "english",
+    "word": "be thankful for",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "cảm ơn vì, biết ơn vì",
+      "en": "appreciate; be grateful for;"
+    },
+    "examples": [
+      {
+        "en": "The baby kangaroo is thankful for his mother's love and care.The beggar was thankful for the coin. The criminal was thankful for the judge's mercy.A: Some people sleep in the subway station because they don't have a house or a bed.B: What would be terrible. I am very thankful for my home."
+      }
+    ],
+    "lesson": "Unit 7",
+    "audioFile": "be thankful for.mp3"
+  },
+  {
+    "id": "en-exp1-062",
+    "template": "english",
+    "word": "be used to",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "quen với, từng làm",
+      "en": "be familiar with; be accustomed to;"
+    },
+    "examples": [
+      {
+        "en": "It doesn't hurt anymore. I guess I'm used to it.She is used to getting up early in the morning. Tarzan was used to living in the jungle. A: You've lived in Mexico for six months. How do you like it? B: I like it, but my stomach isn't used to Mexican food yet!"
+      }
+    ],
+    "lesson": "Unit 7",
+    "audioFile": "be used to.mp3"
+  },
+  {
+    "id": "en-exp1-063",
+    "template": "english",
+    "word": "be willing to",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "muốn làm, sẵn sàng, quyết tâm",
+      "en": "be happy to; be inclined to; be prepared to;"
+    },
+    "examples": [
+      {
+        "en": "The soldier was willing to defend his country.Sam was willing to lend money to his friend. Miss Eyre was willing to teach in the small school. A: Are you willing to help me with my chemistry homework?B: Yes I am, but I am busy right now. I will help you tonight."
+      }
+    ],
+    "lesson": "Unit 7",
+    "audioFile": "be willing to.mp3"
+  },
+  {
+    "id": "en-exp1-064",
+    "template": "english",
+    "word": "be worried about",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "lo lắng về",
+      "en": "be anxious about; be concerned about;"
+    },
+    "examples": [
+      {
+        "en": "I am worried about the baby!The farmer was worried about the weather. He is worried about his health. A: I am worried about our dog. B: Me too. He hasn't eaten for three days."
+      }
+    ],
+    "lesson": "Unit 7",
+    "audioFile": "be worried about.mp3"
+  },
+  {
+    "id": "en-exp1-065",
+    "template": "english",
+    "word": "be worth (~ing)",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đáng giá, xứng đáng, bõ công",
+      "en": "be useful enough to; equal in value to;"
+    },
+    "examples": [
+      {
+        "en": "Diamonds are expensive, but some people think they are worth buying.The hotel is great! It's worth staying an extra night. Our car is old, but it's worth keeping. A: Is this movie worth watching? B: No it's not! I saw it last night, and it was terrible."
+      }
+    ],
+    "lesson": "Unit 7",
+    "audioFile": "be worth.mp3"
+  },
+  {
+    "id": "en-exp1-066",
+    "template": "english",
+    "word": "because of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "vì, bởi vì",
+      "en": "due to; as a result of; owing to; on account of;"
+    },
+    "examples": [
+      {
+        "en": "She is happy because of her new sweater.He can't ride the bicycle because it has a flat tire. We couldn't go because of the weather. A: Did you play baseball yesterday? B: No I didn't. We couldn't play because of the rain."
+      }
+    ],
+    "lesson": "Unit 7",
+    "audioFile": "because of.mp3"
+  },
+  {
+    "id": "en-exp1-067",
+    "template": "english",
+    "word": "before long",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "chẳng bao lâu nữa",
+      "en": "in a short time; pretty soon;"
+    },
+    "examples": [
+      {
+        "en": "before long, you'll be a big rabbit like me!Dinner will be ready before long. before long, Sandy will graduate from high school. A: The weather is getting colder. B: Yes it is, and before long I think it will start to snow."
+      }
+    ],
+    "lesson": "Unit 7",
+    "audioFile": "before long.mp3"
+  },
+  {
+    "id": "en-exp1-068",
+    "template": "english",
+    "word": "belong to",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "thuộc về",
+      "en": "be owned by; be the property of;"
+    },
+    "examples": [
+      {
+        "en": "The teddy bear belongs to my little brother.The yacht belonged to Mrs. Vanderbilt. This business belongs to me. A: Does this bag belong to Max? B: No it doesn't. It is Kathy's bag."
+      }
+    ],
+    "lesson": "Unit 7",
+    "audioFile": "belong to.mp3"
+  },
+  {
+    "id": "en-exp1-069",
+    "template": "english",
+    "word": "between you and me",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "chỉ có hai ta biết với nhau thôi (chuyện riêng)",
+      "en": "just between us; confidentially; off the record;"
+    },
+    "examples": [
+      {
+        "en": "\"between you and me, I think there's something wrong with that guy.between you and me, I think Greg is handsome. between you and me, I think the food here is terrible! A: Please don't tell anybody the story I just told you. B: I won't tell anybody else. I'll keep it between you and me.between you and me and the bedpostchỉ có hai ta biết với nhau thôi (chuyện riêng)bedpost /´bed¸poust / chân giường'Off the record' có từ record là sổ sách ghi chép các sự kiện, hay là hồ sơ. Vì thế 'off the record' nghĩa là không được công bố hay ghi chép công khai. Off the record còn được dùng như một tĩnh từ, và được đặt trước một danh từ, chẳn hạn như off-the-record remarks, là những tuyên bố được giữ kín, hay off-the-record information, là những thông tin được giữ kín.Ví dụThe city treasurer (thủ quỹ) mentioned (đề cập) to a newspaper reporter that she doesn’t trust (tin tưởng) the mayor. Sinceshe offered her opinion off the record, you won’t read it in the paper . It was made in strict (chặt chẽ) confidence (kín đáo).\""
+      }
+    ],
+    "lesson": "Unit 7",
+    "audioFile": "between you and me.mp3"
+  },
+  {
+    "id": "en-exp1-070",
+    "template": "english",
+    "word": "blow out",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "thổi tắt, thổi bay; làm nổ (cầu chì)",
+      "en": "put out a fire; extinguish;"
+    },
+    "examples": [
+      {
+        "en": "Make a wish when you blow out the candle.The wind blew out the fire. He blew out the candle before going to bed. A: Oh no! Why is it so dark in here? B: The wind blew out our candles."
+      }
+    ],
+    "lesson": "Unit 7",
+    "audioFile": "blow out.mp3"
+  },
+  {
+    "id": "en-exp1-071",
+    "template": "english",
+    "word": "break away from",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "thoát ra, thoát khỏi",
+      "en": "escape from; get away from; break free from;"
+    },
+    "examples": [
+      {
+        "en": "He wanted to break away from the group.He broke away from the crowd. The dog broke away from its owner. A: How did Sylvia win the race?B: She was with the other runners, then she broke away from them and crossed the finish line first!"
+      }
+    ],
+    "lesson": "Unit 8",
+    "audioFile": "break away from.mp3"
+  },
+  {
+    "id": "en-exp1-072",
+    "template": "english",
+    "word": "break out",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "bùng nổ / nổ ra (đám cháy, chiến tranh)thoát khỏi nơi nào (trốn thoát);",
+      "en": "occur with suddenness or force; happen;"
+    },
+    "examples": [
+      {
+        "en": "\"Suddenly, an argument broke out.He was just a child when war broke out in his country. A fight broke out at the baseball game A: Why were you late for work today? B : A fire broke out in my apartment this morning.broke out: xuất hiện (trên da)She broke out in a rash after eating some strawberries. (Cô ấy bị phát ban ngay sau khi ăn dâu tây).\""
+      }
+    ],
+    "lesson": "Unit 8",
+    "audioFile": "break out.mp3"
+  },
+  {
+    "id": "en-exp1-073",
+    "template": "english",
+    "word": "bring about",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "làm xảy ra, dẫn đến, gây ra",
+      "en": "cause to happen; lead to; result in;"
+    },
+    "examples": [
+      {
+        "en": "Rain in July will bring about floods.Years of stress brought about his illness. Hard work brought about his success. A: The weather is warmer this summer than it has been in the past. Why is that? B: I don't know. Some people think the warmer weather was brought about by air pollution."
+      }
+    ],
+    "lesson": "Unit 8",
+    "audioFile": "bring about.mp3"
+  },
+  {
+    "id": "en-exp1-074",
+    "template": "english",
+    "word": "bring in",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đưa vào, đem vào; đem lại",
+      "en": "get in; call in;"
+    },
+    "examples": [
+      {
+        "en": "\"My dog brings in the newspaper every morning.Make sure that you don't bring in dirt. \"\"bring in the next patient,\"\" said the doctor. A: Oh no! It's starting to rain on our picnic! B: No problem! I will carry the hamburgers to the house, and you can bring in the cake.\""
+      }
+    ],
+    "lesson": "Unit 8",
+    "audioFile": "bring in.mp3"
+  },
+  {
+    "id": "en-exp1-075",
+    "template": "english",
+    "word": "bring out",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "mang ra, tiết lộ, phát hành, công bốlàm nổi bật lên, làm lộ rõ ra",
+      "en": "reveal something to someone;"
+    },
+    "examples": [
+      {
+        "en": "\"He brought out a picture of his girlfriend.The old woman brought out a gold ring. bring out the two men. A: I'm going to get an orange from the refrigerator. Do you want anything? B: Yes. Could you bring out some watermelon, please?The next year they brought out a low-priced car to compete with Ford. (Năm tới họ sẽ tung ra một chiếc xe giá rẻ để cạnh tranh với Ford).She is bringing out an eagerly awaited solo album next month. (Cô ấy sẽ cho ra mắt một album solo được chờ đợi là sẽ rất thành công vào tháng tới).This kind of thing brings out the worst in me. (Điều này đã tiết lộ những mặt xấu trong con người tôi).Suzie BRINGS OUT the best in him. (Suzie làm hiện rõ cái đẹp nhất trong anh ấy.)You bring out the best in me, like no-one else can do.Em cho anh thấy những điều tốt đẹp trong anh mà không ai khác có thể làm được.\""
+      }
+    ],
+    "lesson": "Unit 8",
+    "audioFile": "bring out.mp3"
+  },
+  {
+    "id": "en-exp1-076",
+    "template": "english",
+    "word": "by oneself",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "tự mình, chính mìnhmột mình (không có ai giúp đỡ)",
+      "en": "alone; on one's own;"
+    },
+    "examples": [
+      {
+        "en": "He likes to play by himself.The girl went to the movie by herself. After a few days of practice, the children could swim by themselves. A: I want to go to the library by myself. B: Why? A: I have a lot of studying to do and don't want to be disturbed."
+      }
+    ],
+    "lesson": "Unit 8",
+    "audioFile": "by oneself.mp3"
+  },
+  {
+    "id": "en-exp1-077",
+    "template": "english",
+    "word": "by the way",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "à này, tiện thể, nhân tiện",
+      "en": "incidentally; in addition;"
+    },
+    "examples": [
+      {
+        "en": "by the way, her father is a doctor.by the way, may I borrow some money? by the way, when are you going to America? A: I heard that you're moving to a new house. B: Yes. by the way, do you need a sofa and some chairs?"
+      }
+    ],
+    "lesson": "Unit 8",
+    "audioFile": "by the way.mp3"
+  },
+  {
+    "id": "en-exp1-078",
+    "template": "english",
+    "word": "by way of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đi qua, bằng con đường, bằng cách",
+      "en": "by going through; via;"
+    },
+    "examples": [
+      {
+        "en": "You can get to Dundas by way of Lion Street.We sailed to Europe by way of the Mediterranean Sea. They came to North America by way of a land bridge. A: Did the teacher say that I have to read that book? B: No. She said by way of suggestion that you should read it."
+      }
+    ],
+    "lesson": "Unit 8",
+    "audioFile": "by way of.mp3"
+  },
+  {
+    "id": "en-exp1-079",
+    "template": "english",
+    "word": "call off",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "hủy (1 sự kiện), ngừng (làm việc gì)",
+      "en": "stop a planned event; cancel;"
+    },
+    "examples": [
+      {
+        "en": "He had to call off the birthday party because he felt sick.The boss called off the meeting. It rained so they called off the baseball game. A: They had to call off the soccer game yesterday. B: How come? A: One of the teams didn't have enough players."
+      }
+    ],
+    "lesson": "Unit 8",
+    "audioFile": "call off.mp3"
+  },
+  {
+    "id": "en-exp1-080",
+    "template": "english",
+    "word": "call on",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "ghé thăm (chốc lát)",
+      "en": "visit; come to see"
+    },
+    "examples": [
+      {
+        "en": "\"He went to call on his friends.She called on me but I wasn't home. Do you have time to call on your grandmother? A: Where is Donald? I thought he was going to play soccer with us tonight. B: He was going to, but some relatives called on him unexpectedly.She had to call on her reserves of courage to face the ordeal (Cô ấy phải lấy hết can đảm để đổi mặt với thử thách).reserve /ri'zə:v/: sự dự trữ\""
+      }
+    ],
+    "lesson": "Unit 8",
+    "audioFile": "call on.mp3"
+  },
+  {
+    "id": "en-exp1-081",
+    "template": "english",
+    "word": "call up",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "gọi điện, liên lạc qua điện thoại",
+      "en": "telephone; contact by telephone;"
+    },
+    "examples": [
+      {
+        "en": "He called up for more bananas.He called me up::... me ... at 2:30 in the morning. I always call up my grandmother on her birthday.A: I am hungry, but I don't want to cook. B: I am hungry too. Let's call up the pizza place and order a cheese pizza."
+      }
+    ],
+    "lesson": "Unit 9",
+    "audioFile": "call up.mp3"
+  },
+  {
+    "id": "en-exp1-082",
+    "template": "english",
+    "word": "calm down",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "bình tĩnh, kiềm chế cảm xúc quá mức",
+      "en": "become quiet; cool down;"
+    },
+    "examples": [
+      {
+        "en": "Some people have a cup of tea when they need to calm down.After the storm, the sea calmed down. The child calmed down when we gave him his teddy bear. A: Help! There's a spider on the desk! B: calm down. It is not going to hurt you."
+      }
+    ],
+    "lesson": "Unit 9",
+    "audioFile": "calm down.mp3"
+  },
+  {
+    "id": "en-exp1-083",
+    "template": "english",
+    "word": "can't afford",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "không đủ tiền, không thể chi trả",
+      "en": "be unable to pay for; don't have enough money;"
+    },
+    "examples": [
+      {
+        "en": "I'd love to buy that house but I can't afford it.I can't afford to buy a Mercedes Benz. He can't afford a new suit. A: Mom, can you buy me that computer? B: I'd like to, but I can't afford it. It's too expensive."
+      }
+    ],
+    "lesson": "Unit 9",
+    "audioFile": "can't afford.mp3"
+  },
+  {
+    "id": "en-exp1-084",
+    "template": "english",
+    "word": "can't help ~ing",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "không kiểm soát được, không thể làm khác đi",
+      "en": "can't avoid; be unable to stop; have no choice but to; can only;"
+    },
+    "examples": [
+      {
+        "en": "\"They can't help laughing at his strange appearance.Susan couldn't help eating all the cookies. I can't help falling in love with her. A: Please don't laugh at me when I sing! B: I can't help it. You sound really funny!I can't help thinking that the keys will turn up eventually (Tôi không thể ngừng suy nghĩ rằng chìa khóa sẽ xuất hiện trở lại lúc nào đó)can't help + V-ing: không thể nhịn/thôi làm gì.\""
+      }
+    ],
+    "lesson": "Unit 9",
+    "audioFile": "can't help -ing.mp3"
+  },
+  {
+    "id": "en-exp1-085",
+    "template": "english",
+    "word": "can't stand",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "không chịu được, hoàn toàn không thích",
+      "en": "dislike intensely; can't tolerate; can't bear; hate;"
+    },
+    "examples": [
+      {
+        "en": "I can't stand opera music.She can't stand traffic jams. They like pickles, but they can't stand mustard. A: Let's go see the new James Bond film. B: No, thanks. I can't stand action movies!pickle /'pikl/: hoa quả giầm, dưa gópmustard /'mʌstəd/: cây mù tạc, tương mù tạc"
+      }
+    ],
+    "lesson": "Unit 9",
+    "audioFile": "can't stand.mp3"
+  },
+  {
+    "id": "en-exp1-086",
+    "template": "english",
+    "word": "care for",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "quan tâm, chăm sóc",
+      "en": "look after; take care of;"
+    },
+    "examples": [
+      {
+        "en": "The mother cares for her child.Most people don't care for their house plants properly. Janet appreciated the way Rick cared for her when she was sick. A: How should I care for this plant? B: You have to give it water every day."
+      }
+    ],
+    "lesson": "Unit 9",
+    "audioFile": "care for.mp3"
+  },
+  {
+    "id": "en-exp1-087",
+    "template": "english",
+    "word": "catch up with",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đuổi kịp, theo kịp",
+      "en": "come up with; overtake;"
+    },
+    "examples": [
+      {
+        "en": "He just couldn't catch up with her.I missed a week of school, so I had to catch up with my class. We ran to catch up with Larry. A: Your team is really far behind. B: Yes. I don't think we can catch up with yours."
+      }
+    ],
+    "lesson": "Unit 9",
+    "audioFile": "catch up with.mp3"
+  },
+  {
+    "id": "en-exp1-088",
+    "template": "english",
+    "word": "check in",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đánh dấu, ghi tên khi đến, báo hiệu có mặt",
+      "en": "register at a hotel, or an airport, etc.; sign in;"
+    },
+    "examples": [
+      {
+        "en": "When you arrive. check in by signing your name on the list.You must check in at the front desk. Please check in with me when you get here. A: What time does your plane for Paris leave? B: It leaves at ten o'clock, but I have to check in by eight o'clock.Please check in when you come hotel. (Làm ơn báo hiệu sự có mặt khi bạn đến khách sạn nhé )I check in my bed when I come home ( Tôi sẽ đánh dấu giường của tôi khi tôi về đến nhà )."
+      }
+    ],
+    "lesson": "Unit 9",
+    "audioFile": "check in.mp3"
+  },
+  {
+    "id": "en-exp1-089",
+    "template": "english",
+    "word": "cheer up",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "động viên, vui lên;phấn khởi lên, vui lên (đừng buồn nữa)",
+      "en": "get in a better mood; help someone feel happier; lighten up;"
+    },
+    "examples": [
+      {
+        "en": "He is trying to cheer up his friend.He cheered up when he got a card and flowers. cheer up! Tomorrow, things will be better. A: Where are you going? B: I am going to Ann's house. She is sad because her dog died, so I am going to try to cheer her up::... her ...."
+      }
+    ],
+    "lesson": "Unit 9",
+    "audioFile": "cheer up.mp3"
+  },
+  {
+    "id": "en-exp1-090",
+    "template": "english",
+    "word": "come by",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đi qua, ghé qua; có được, vớ được",
+      "en": "pay a visit to; drop by; stop by;"
+    },
+    "examples": [
+      {
+        "en": "\"Why don't you come by my leaf sometime?The mailman usually comes by at ten o'clock. Ellen will come by this afternoon.A: Do you want to come by my house and see my new CD player? B: Sure, but I can only stay for a few minutes.Can you come by our place for a few minutes? (Bạn có thể ghé qua chỗ chúng tôi một chút được không?)Why don’t you come by for dinner? (Tại sao bạn không ghé qua để ăn tối?)A good assistant is hard to come by. (Một trợ lý tốt là điều khó có thể có được)How dis you come by this sum? (Làm thế nào bạn kiếm được khoản tiền đó vậy?)\""
+      }
+    ],
+    "lesson": "Unit 9",
+    "audioFile": "come by.mp3"
+  },
+  {
+    "id": "en-exp1-091",
+    "template": "english",
+    "word": "come out of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "ra khỏi",
+      "en": "leave a place;"
+    },
+    "examples": [
+      {
+        "en": "The frog was still wet after he came out of the water.The bear came out of the cave. She finally came out of the room. A: come out of the sun before you get a sunburn. B: That's a good idea. I'll sit in the shade with you."
+      }
+    ],
+    "lesson": "Unit 10",
+    "audioFile": "come out of.mp3"
+  },
+  {
+    "id": "en-exp1-092",
+    "template": "english",
+    "word": "come over",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đến (chỗ ai đó)",
+      "en": "pay a short visit;"
+    },
+    "examples": [
+      {
+        "en": "She liked it when her grandfather would come over on Sundays.Danny comes over to play after school. Jack, why don't you come over for dinner? A: Do you want to come over to my house this weekend? B: That sounds fun! Thank you for inviting me."
+      }
+    ],
+    "lesson": "Unit 10",
+    "audioFile": "come over.mp3"
+  },
+  {
+    "id": "en-exp1-093",
+    "template": "english",
+    "word": "come true",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "thành hiện thực, trở thành sự thật",
+      "en": "happen as wished;"
+    },
+    "examples": [
+      {
+        "en": "Some people think that a four-leaf clover will make your dreams come true.Joe's dream at last came true. I hope all your dreams will come true. A: I can't believe I won a trip to Europe! It is like a dream come true. B: Wow! You are really lucky."
+      }
+    ],
+    "lesson": "Unit 10",
+    "audioFile": "come true.mp3"
+  },
+  {
+    "id": "en-exp1-094",
+    "template": "english",
+    "word": "come up to",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "tiến gần đến (ai, nơi nào, một khoảng thời gian)",
+      "en": "reach; approach;"
+    },
+    "examples": [
+      {
+        "en": "The grass came up to his knees.I got more and more nervous as I came up to the door. The man came up to me and asked me for money. A: How deep is the water in the swimming pool? B: Not very deep. It only comes up to my waist.waist /weist/: chỗ thắt lưng"
+      }
+    ],
+    "lesson": "Unit 10",
+    "audioFile": "come up to.mp3"
+  },
+  {
+    "id": "en-exp1-095",
+    "template": "english",
+    "word": "congratulations on",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "chúc mừng",
+      "en": "praise;"
+    },
+    "examples": [
+      {
+        "en": "congratulations on your birthday!congratulations on your new baby! congratulations on graduating from high school!A: congratulations on winning the speech contest! B: Thank you. It was a great contest and I'm surprised I won.congratulation /kən,grætju'leiʃn/: chúc mừng"
+      }
+    ],
+    "lesson": "Unit 10",
+    "audioFile": "congratulations on.mp3"
+  },
+  {
+    "id": "en-exp1-096",
+    "template": "english",
+    "word": "consist of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "bao gồm",
+      "en": "be made (up) of; be composed from; comprise;"
+    },
+    "examples": [
+      {
+        "en": "A common fast-food meal consists of a hamburger, fries. and a drink.The package consisted of three books, some photos, and a candy bar. The United Kingdom consists of Great Britain and Northern Ireland. A: What did your English test consist of? B: It consisted of 30% speaking, 30% listening, and 40% writing."
+      }
+    ],
+    "lesson": "Unit 10",
+    "audioFile": "consist of.mp3"
+  },
+  {
+    "id": "en-exp1-097",
+    "template": "english",
+    "word": "cooperate with",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "hợp tác, cộng tác",
+      "en": "work together; act together;"
+    },
+    "examples": [
+      {
+        "en": "They always cooperate with each other.Our team lost because we didn't cooperate with each other. Sally cooperated with Paul on the science project.A: Why don't you want to be Bill's partner any longer?B: We can't cooperate with each other."
+      }
+    ],
+    "lesson": "Unit 10",
+    "audioFile": "cooperate with.mp3"
+  },
+  {
+    "id": "en-exp1-098",
+    "template": "english",
+    "word": "cope with",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đối phó, đương đầu",
+      "en": "deal successfully with; manage successfully;"
+    },
+    "examples": [
+      {
+        "en": "The mother is finding it hard to cope with her troubled son.I think I can cope with my new schedule. She has to cope with traffic every day. A: You look really sick. Do you want to go to see a doctor? B: I can cope with the pain until tomorrow. It's eleven o'clock and too late to go now."
+      }
+    ],
+    "lesson": "Unit 10",
+    "audioFile": "cope with.mp3"
+  },
+  {
+    "id": "en-exp1-099",
+    "template": "english",
+    "word": "count on",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "phụ thuộc vào, dựa vào, tin cậy vào",
+      "en": "depend on; rely on; trust;"
+    },
+    "examples": [
+      {
+        "en": "The politician said, “You can count on me!”You can count on him to do good job.I can count on my parents for support.A: I'd be happy to help you study. B: Thanks. I can always count on you."
+      }
+    ],
+    "lesson": "Unit 10",
+    "audioFile": "count on.mp3"
+  },
+  {
+    "id": "en-exp1-100",
+    "template": "english",
+    "word": "cry out for",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đòi hỏi, cần khẩn trương cái gì đó.",
+      "en": "ask for; call for;"
+    },
+    "examples": [
+      {
+        "en": "When the baby was hungry, she cried out for food.They are all crying out for change. Children often cry out for a candy. A: What did you do when the man stole your purse? B: I cried out for help and a security guard caught the thief."
+      }
+    ],
+    "lesson": "Unit 10",
+    "audioFile": "cry out for.mp3"
+  },
+  {
+    "id": "en-exp1-101",
+    "template": "english",
+    "word": "cut off",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "cắt",
+      "en": "remove; cut away;"
+    },
+    "examples": [
+      {
+        "en": "The boy cut off his sister's hair.She cut off all her hair. First, the cook cut off the fish's head. A: I want to eat this apple, but it looks rotten. B: Just cut off the rotten part and eat the rest."
+      }
+    ],
+    "lesson": "Unit 11",
+    "audioFile": "cut off.mp3"
+  },
+  {
+    "id": "en-exp1-102",
+    "template": "english",
+    "word": "dash off",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "rời một nơi nào đó nhanh chónglàm nhanh một việc gì đó",
+      "en": "leave very quickly; run off; hurry;"
+    },
+    "examples": [
+      {
+        "en": "The rabbit dashed off into the forest.He dashed off to deliver the message. She dashed off because she was late. A: Will May be gone for a long time? B: No, she just dashed off to the store to buy some milk."
+      }
+    ],
+    "lesson": "Unit 11",
+    "audioFile": "dash off.mp3"
+  },
+  {
+    "id": "en-exp1-103",
+    "template": "english",
+    "word": "depend on",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "phụ thuộc vào",
+      "en": "trust; rely on; count on; be dependent on;"
+    },
+    "examples": [
+      {
+        "en": "When they are young, the fish depend on their mother.The blind man depended on his dog. The old woman depended on her son. A: I'll drive you to the airport. B: Please don't forget! I'm depending on you."
+      }
+    ],
+    "lesson": "Unit 11",
+    "audioFile": "depend on.mp3"
+  },
+  {
+    "id": "en-exp1-104",
+    "template": "english",
+    "word": "die out",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "tuyệt chủng",
+      "en": "stop existing; disappear completely; become extinct;"
+    },
+    "examples": [
+      {
+        "en": "We must protect whales if we don't want them to die out.Mammoths died out a long time ago. I wish all the mosquitoes would die out.A: Why did the dinosaurs die out? B: Because the weather got very cold."
+      }
+    ],
+    "lesson": "Unit 11",
+    "audioFile": "die out.mp3"
+  },
+  {
+    "id": "en-exp1-105",
+    "template": "english",
+    "word": "differ from",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "khác biệt, khác với",
+      "en": "be not the same as; be different from;"
+    },
+    "examples": [
+      {
+        "en": "Red and green apples differ from each other in taste.My opinion differs from hers. The new house differs from the old one in many ways. A: How does this bicycle differ from the other one? B: This one has a more comfortable seat."
+      }
+    ],
+    "lesson": "Unit 11",
+    "audioFile": "differ from.mp3"
+  },
+  {
+    "id": "en-exp1-106",
+    "template": "english",
+    "word": "dispose of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "ném bỏ",
+      "en": "get rid of; throw out;"
+    },
+    "examples": [
+      {
+        "en": "It is dangerous to dispose of a lit cigarette in a garbage can.Bill disposed of the old bottles. The murderer tried to dispose of his knife. A: This fruit is almost rotten. B: Let's dispose of it before it starts to smell bad."
+      }
+    ],
+    "lesson": "Unit 11",
+    "audioFile": "dispose of.mp3"
+  },
+  {
+    "id": "en-exp1-107",
+    "template": "english",
+    "word": "do badly in",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đạt kết quả kém",
+      "en": "not be successful in; do poorly in;"
+    },
+    "examples": [
+      {
+        "en": "I always do badly in mathematics.She did not study, so she did badly on her test. The basketball player did badly in the game because of his injury. A: Do you get good grades in school? B: My grades are good except for history. I usually do badly in that class."
+      }
+    ],
+    "lesson": "Unit 11",
+    "audioFile": "do badly in.mp3"
+  },
+  {
+    "id": "en-exp1-108",
+    "template": "english",
+    "word": "do one's best",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "cố hết sức",
+      "en": "try hard; give one's best;"
+    },
+    "examples": [
+      {
+        "en": "\"The teacher told him, \"\"Just do your best!\"\"He did his best to stop the water. Although I didn't win, I was happy because I did my best. A: I am not very good at math. B: Don't worry. Just study hard and do your best and you will do alright.\""
+      }
+    ],
+    "lesson": "Unit 11",
+    "audioFile": "do one's best.mp3"
+  },
+  {
+    "id": "en-exp1-109",
+    "template": "english",
+    "word": "do one's homework",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "làm bài tập về nhà",
+      "en": "do schoolwork outside of class (at home)"
+    },
+    "examples": [
+      {
+        "en": "He is doing his homework.I usually do my homework at the library. He always does his homework before watching TV.A: What are you going to do after school? B: I am going to do my homework."
+      }
+    ],
+    "lesson": "Unit 11",
+    "audioFile": "do one's homework.mp3"
+  },
+  {
+    "id": "en-exp1-110",
+    "template": "english",
+    "word": "do well in",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "học giỏi, làm tốt",
+      "en": "be successful in; do a good job;"
+    },
+    "examples": [
+      {
+        "en": "He does very well in school.My sister always does well in math.Bonnie did well in the race. A: How can I do well in science class? B: You should review your notes every day and make sure you do all your homework."
+      }
+    ],
+    "lesson": "Unit 11",
+    "audioFile": "do well in.mp3"
+  },
+  {
+    "id": "en-exp1-111",
+    "template": "english",
+    "word": "don't mention it",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đừng bận tâm",
+      "en": "There's no need for thanks;"
+    },
+    "examples": [
+      {
+        "en": "\"When I thanked him for the gift, he said, \"\"don't mention it\"\"A: I appreciatedB: don't mention it.A: Thanks a lot. B: don't mention it. I was glad to help. A: Thanks for giving me a ride home. B: don't mention it. I'm happy I could give you a ride.\""
+      }
+    ],
+    "lesson": "Unit 12",
+    "audioFile": "don't mention it.mp3"
+  },
+  {
+    "id": "en-exp1-112",
+    "template": "english",
+    "word": "dream of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "mơ về, mơ ước",
+      "en": "wish or hope for; dream about;"
+    },
+    "examples": [
+      {
+        "en": "He often dreams of being big and strong.The Wright brothers dreamed of making a flying machine.Pinocchio dreamed of becoming a real boy.A: In winter I like to dream of hot, sunny places. B: Me too. I like hot weather more than cold weather."
+      }
+    ],
+    "lesson": "Unit 12",
+    "audioFile": "dream of.mp3"
+  },
+  {
+    "id": "en-exp1-113",
+    "template": "english",
+    "word": "drop by",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "ghé thăm, qua thăm",
+      "en": "go to see; pay a short visit; stop by;"
+    },
+    "examples": [
+      {
+        "en": "I dropped by at 3:00, but you weren't home.My neighbor dropped by with an apple pie. Eddie dropped by yesterday to say goodbye. A: Can we go to the department store now?B: Okay, but I have to drop by the bank first to get some money."
+      }
+    ],
+    "lesson": "Unit 12",
+    "audioFile": "drop by.mp3"
+  },
+  {
+    "id": "en-exp1-114",
+    "template": "english",
+    "word": "drop off",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "giao hàng, trả lại, thả",
+      "en": "deliver something or leave someone somewhere;"
+    },
+    "examples": [
+      {
+        "en": "I have to drop off the package today.My mother dropped me off::... me ... at school on her way to work. Laura dropped off the books at the library. A: Where are you going? B: I'm going to drop off my rollerblades at Sue's house. She is going to use them tomorrow.to drop off: đưa ai, cái gì đến một nơi nào đó và để họ hoặc nó ở đó"
+      }
+    ],
+    "lesson": "Unit 12",
+    "audioFile": "drop off.mp3"
+  },
+  {
+    "id": "en-exp1-115",
+    "template": "english",
+    "word": "enjoy oneself",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "hưởng thụ, thích thú, có được",
+      "en": "have a happy experience; have a good time; have fun"
+    },
+    "examples": [
+      {
+        "en": "They always enjoy themselves.We enjoyed ourselves at Disney World. He enjoyed himself at the picnic. A: enjoy yourself on your vacation! B: Thank you. I think it will be great!"
+      }
+    ],
+    "lesson": "Unit 12",
+    "audioFile": "enjoy oneself.mp3"
+  },
+  {
+    "id": "en-exp1-116",
+    "template": "english",
+    "word": "fall in love with",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "yêu (mãnh liệt, bất chợt)",
+      "en": "develop strong romantic feelings (for);"
+    },
+    "examples": [
+      {
+        "en": "I fell in love with her the first time I sow here.The young girls fell in love with the rock star. Anthony fell in love with Cleopatra. A: Does Wally like Sue? B: Yes, he really likes her. He has fallen in love with her, and he wants to marry her.to fall in love with: để diễn tả tình cảm mãnh liệt và bất chợt hơn khi bạn yêu ai đó, thay vì chỉ nói “I love you”"
+      }
+    ],
+    "lesson": "Unit 12",
+    "audioFile": "fall in love with.mp3"
+  },
+  {
+    "id": "en-exp1-117",
+    "template": "english",
+    "word": "far from",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "xa",
+      "en": "be a long way from a place"
+    },
+    "examples": [
+      {
+        "en": "The house is far from the city.He lives in a town, not far from his father. The forest was not far from Athens. A: Is your house far from the supermarket? B: No it isn't. It takes five minutes to walk there."
+      }
+    ],
+    "lesson": "Unit 12",
+    "audioFile": "far from.mp3"
+  },
+  {
+    "id": "en-exp1-118",
+    "template": "english",
+    "word": "feel like",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "muốn, thích, ao ước",
+      "en": "be inclined to; desire; want"
+    },
+    "examples": [
+      {
+        "en": "I feel like having a snack!She feels like crying because she lost her job. After the long walk, he felt like taking a shower. A: Do you feel like watching a video tonight? B: No, I feel like going bowling."
+      }
+    ],
+    "lesson": "Unit 12",
+    "audioFile": "feel like.mp3"
+  },
+  {
+    "id": "en-exp1-119",
+    "template": "english",
+    "word": "figure out",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "tìm ra",
+      "en": "understand; solve; make out"
+    },
+    "examples": [
+      {
+        "en": "You can use a calculator to figure out math problems.I figured out how to save money on my electric bill. Oedipus figured out the answer to the riddle. A: I can't figure out where I put my glasses. B: Look on your head!"
+      }
+    ],
+    "lesson": "Unit 12",
+    "audioFile": "figure out.mp3"
+  },
+  {
+    "id": "en-exp1-120",
+    "template": "english",
+    "word": "fill up with",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đổ đầy, điền dầy, lấp đầy",
+      "en": "make full; fill"
+    },
+    "examples": [
+      {
+        "en": "Please fill up the glass with::... the glass ... milk.I filled up the tank with::... the tank ... the tank with gas. We filled up the box with::... the box ... the box with old pictures. A: How much juice do you want? B: I'm very thirsty. Please fill up my cup."
+      }
+    ],
+    "lesson": "Unit 12",
+    "audioFile": "fill (up) -with.mp3"
+  },
+  {
+    "id": "en-exp1-121",
+    "template": "english",
+    "word": "find out",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "tìm ra",
+      "en": "learn; get information"
+    },
+    "examples": [
+      {
+        "en": "I want to find out if she has a boyfriend.She wanted to find out the name of the book. Diane found out where the money was. A: What time does the store close? B: I'll call and find out."
+      }
+    ],
+    "lesson": "Unit 13",
+    "audioFile": "find out.mp3"
+  },
+  {
+    "id": "en-exp1-122",
+    "template": "english",
+    "word": "for a long time",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đã lâu",
+      "en": "for many minutes, hours, days, weeks, months"
+    },
+    "examples": [
+      {
+        "en": "He hasn't cut his beard for a long time.He has been waiting for a long time. Miss O'Hara has owned this land for a long time.A: Have you been playing the piano for a long time? B: No, I've only been playing for three months."
+      }
+    ],
+    "lesson": "Unit 13",
+    "audioFile": "for a long time.mp3"
+  },
+  {
+    "id": "en-exp1-123",
+    "template": "english",
+    "word": "for a while",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "một lúc",
+      "en": "for a time; a while"
+    },
+    "examples": [
+      {
+        "en": "He has been underwater for a while.We have been sitting here for a while. I worked in that company for a while. A: I'm going to the store. Do you want to join me? B: No, I think I'll stay here and read for a while."
+      }
+    ],
+    "lesson": "Unit 13",
+    "audioFile": "for a while.mp3"
+  },
+  {
+    "id": "en-exp1-124",
+    "template": "english",
+    "word": "for example",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "ví dụ",
+      "en": "for instance; as an example; say;"
+    },
+    "examples": [
+      {
+        "en": "All of us are familiar with mammals. A cow, for example, is a mammal.I like sweet food. for example, I eat ice cream every day. We are different. I am older, for example. A: You said that Fred insults you. How does he insult you? B: Well, for example, yesterday he said that I was stupid."
+      }
+    ],
+    "lesson": "Unit 13",
+    "audioFile": "for example.mp3"
+  },
+  {
+    "id": "en-exp1-125",
+    "template": "english",
+    "word": "for some time",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "trong một khoảng thời gian, trong một thời gian dài",
+      "en": "for a period of time;"
+    },
+    "examples": [
+      {
+        "en": "The fish hasn't moved for some time.We have been waiting for some time. This song has been popular for some time. A: Have you seen Philip recently? B: No, I haven't seen him for some time."
+      }
+    ],
+    "lesson": "Unit 13",
+    "audioFile": "for some time.mp3"
+  },
+  {
+    "id": "en-exp1-126",
+    "template": "english",
+    "word": "for sure",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "chắc chắn; không nghi ngờ",
+      "en": "certainly; surely; for certain;"
+    },
+    "examples": [
+      {
+        "en": "The girl will beat the boy for sure.That girl will win the math contest for sure. You will get the job for sure. A: Is your sister going to help you clean the house? B: Yes. She said she would help me for sure."
+      }
+    ],
+    "lesson": "Unit 13",
+    "audioFile": "for sure.mp3"
+  },
+  {
+    "id": "en-exp1-127",
+    "template": "english",
+    "word": "for the first time",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "lần đầu tiên",
+      "en": "first; the initial time;"
+    },
+    "examples": [
+      {
+        "en": "He is getting kissed for the first time.The boy from Brazil saw snow for the first time. She flew in an airplane for the first time. A: Have you been to that restaurant before? B: No. I'm going for the first time."
+      }
+    ],
+    "lesson": "Unit 13",
+    "audioFile": "for the first time.mp3"
+  },
+  {
+    "id": "en-exp1-128",
+    "template": "english",
+    "word": "for the time being",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "trong thời điểm hiện nay; trong lúc này",
+      "en": "for the moment; for now; for the present;"
+    },
+    "examples": [
+      {
+        "en": "It's raining. Let's stay inside for the time being.She is sick, so she must stay in bed for the time being. His car is in the shop, so he's using mine for the time being. A: Where do you live? B: I'm living at my uncle's house for the time being, but I'm going to move into my own place next month."
+      }
+    ],
+    "lesson": "Unit 13",
+    "audioFile": "for the time being.mp3"
+  },
+  {
+    "id": "en-exp1-129",
+    "template": "english",
+    "word": "from now on",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "từ nay trở đi",
+      "en": "from now onwards; starting now and continuing;"
+    },
+    "examples": [
+      {
+        "en": "from now on, maybe you won't play in the street.from now on, I'm free! I promise to be good from now on. A: from now on I'm going to exercise every day. B: That's a good idea! You're going to be very healthy"
+      }
+    ],
+    "lesson": "Unit 13",
+    "audioFile": "from now on.mp3"
+  },
+  {
+    "id": "en-exp1-130",
+    "template": "english",
+    "word": "from time to time",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "1. Thỉnh thoảng đôi lúc; bất cứ lúc nào2. (nghĩa cũ) liên tục, liên miên",
+      "en": "sometimes; at times; once in a while; every now and then; occasionally;"
+    },
+    "examples": [
+      {
+        "en": "from time to time, he likes to go fishing.from time to time, I enjoy going to the opera. The department store has a sale from time to time. A: Do you see your grandmother often?B: No I don't. She lives in another city, so I only see her from time to time."
+      }
+    ],
+    "lesson": "Unit 13",
+    "audioFile": "from time to time.mp3"
+  },
+  {
+    "id": "en-exp1-131",
+    "template": "english",
+    "word": "generally speaking",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "nói chung",
+      "en": "in general; by and large; as a rule; on the whole;"
+    },
+    "examples": [
+      {
+        "en": "generally speaking, dogs are friendly animals.generally speaking, Mexican food is very spicy. generally speaking, people hate going to the dentist. A: Do you like sweet food? B: generally speaking no, but I do like a few sweet things like ice cream and juice."
+      }
+    ],
+    "lesson": "Unit 14",
+    "audioFile": "generally speaking.mp3"
+  },
+  {
+    "id": "en-exp1-132",
+    "template": "english",
+    "word": "get back",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "trở về, trở lại nơi nào đó hoặc liên hệ với ai đó sau",
+      "en": "return; come or go back;"
+    },
+    "examples": [
+      {
+        "en": "\"I need to get back home before dark.Dorothy wanted to get back to Kansas. I don't know how to get back to the hotel. A: When will you get back from your trip? B: I'll return in two weeks.- get back at somebody: trả thù- get back to somebody: trả lời ai (viết thư)- get back together (with somebody): nối lại quan hệ với aiI don't have the information you need just now, so I'll get back to you later.Tôi không có những thông tin mà anh cần ngay bây giờ, vậy tôi sẽ liên lạc với anh sau.\""
+      }
+    ],
+    "lesson": "Unit 14",
+    "audioFile": "get back.mp3"
+  },
+  {
+    "id": "en-exp1-133",
+    "template": "english",
+    "word": "get in touch with",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "giao tiếp với, tiếp xúc với",
+      "en": "communicate with; connect; contact;"
+    },
+    "examples": [
+      {
+        "en": "He gave me his business card, so I can get in touch with him.They can get in touch with me at this address. I've been trying to get in touch with him for weeks. A: We haven't talked to Julie recently. We should get in touch with her. B: Good idea. Let's call her tonight."
+      }
+    ],
+    "lesson": "Unit 14",
+    "audioFile": "get in touch with.mp3"
+  },
+  {
+    "id": "en-exp1-134",
+    "template": "english",
+    "word": "get involved in",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "liên quan, dính líu tới vấn đề nào đó",
+      "en": "be a part of; take part in; participate in;"
+    },
+    "examples": [
+      {
+        "en": "He didn't want to get involved in their argument.She wanted to get involved in her school dance team. I don't usually get involved in politics. A: Roman and Carla are broke. Should we try to help them? B: No. It's not our problem, so let's not get involved in it."
+      }
+    ],
+    "lesson": "Unit 14",
+    "audioFile": "get involved in.mp3"
+  },
+  {
+    "id": "en-exp1-135",
+    "template": "english",
+    "word": "get married to",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "kết hôn",
+      "en": "marry;"
+    },
+    "examples": [
+      {
+        "en": "Her parents didn't want her to get married to a mosquito.Prince Charles got married to Lady Diana Spencer. Sally will get married to Tom in March. A: Who is your brother going to marry? B: He's getting married to a girl he's been dating for a few years."
+      }
+    ],
+    "lesson": "Unit 14",
+    "audioFile": "get married to.mp3"
+  },
+  {
+    "id": "en-exp1-136",
+    "template": "english",
+    "word": "get off",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "xuống xe",
+      "en": "leave a vehicle;"
+    },
+    "examples": [
+      {
+        "en": "The spider got off the ball.The old lady is getting off the bus. He got off the subway at the wrong stop.A: How can I get to your house from here?B: Take bus number seven and get off at the third stop."
+      }
+    ],
+    "lesson": "Unit 14",
+    "audioFile": "get off.mp3"
+  },
+  {
+    "id": "en-exp1-137",
+    "template": "english",
+    "word": "get on",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "lên xe",
+      "en": "board; enter a vehicle;"
+    },
+    "examples": [
+      {
+        "en": "The spider got on the ball.He got on his horse and rode away. We got on the bus in front of City Hall. A: Can you wait while I go to the bathroom? B: No, the train is about to leave, so we have to get on now. You'll have to use the bathroom on the train."
+      }
+    ],
+    "lesson": "Unit 14",
+    "audioFile": "get on.mp3"
+  },
+  {
+    "id": "en-exp1-138",
+    "template": "english",
+    "word": "get out (of)",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "rời đi, đi khỏi, ra khỏi",
+      "en": "exit; leave; go out (of);"
+    },
+    "examples": [
+      {
+        "en": "\"get out of here!My father said to the dog, \"\"get out.\"\" get out of my room right now! A: Thanks for giving me a ride to the library. B: No problem! I'll stop the car in front of the library and you can get out quickly.\""
+      }
+    ],
+    "lesson": "Unit 14",
+    "audioFile": "get out (of).mp3"
+  },
+  {
+    "id": "en-exp1-139",
+    "template": "english",
+    "word": "get rid of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "vứt bỏ, loại bỏ, tống khứ, giũ bỏ",
+      "en": "remove; dispose of; throw away;"
+    },
+    "examples": [
+      {
+        "en": "He must get rid of his cold.I want to get rid of the ants in my room. My mothers got rid of her old dresses. A: Can we get rid of these old books? B: Yes. I don't want them anymore."
+      }
+    ],
+    "lesson": "Unit 14",
+    "audioFile": "get rid of.mp3"
+  },
+  {
+    "id": "en-exp1-140",
+    "template": "english",
+    "word": "get tired of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "mệt mỏi về, chán vì",
+      "en": "become bored with; get sick of;"
+    },
+    "examples": [
+      {
+        "en": "I will never get tired of hamburgers.She got tired of hearing the song over and over. He got tired of waiting, so he went home.A: I am getting tired of studying. B: Why don't you take a break?"
+      }
+    ],
+    "lesson": "Unit 14",
+    "audioFile": "get tired of.mp3"
+  },
+  {
+    "id": "en-exp1-141",
+    "template": "english",
+    "word": "get to",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đến nơi nào đó",
+      "en": "arrive at; reach;"
+    },
+    "examples": [
+      {
+        "en": "When he got to the house, it was snowing.Just ring the bell when you get to the door. I got to the store before it closed. A: How do you get to school everyday? B: I take the bus."
+      }
+    ],
+    "lesson": "Unit 15",
+    "audioFile": "get to.mp3"
+  },
+  {
+    "id": "en-exp1-142",
+    "template": "english",
+    "word": "get together",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "gặp mặt",
+      "en": "gather; meet;"
+    },
+    "examples": [
+      {
+        "en": "Everyone said that they should get together.We often got together at the cafe. Let's get together on Friday night. A: Let's get together on Saturday. B: Okay! Maybe we can go to a movie together."
+      }
+    ],
+    "lesson": "Unit 15",
+    "audioFile": "get together.mp3"
+  },
+  {
+    "id": "en-exp1-143",
+    "template": "english",
+    "word": "get up",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "thức dậy, ngủ dậy",
+      "en": "get out of bed; leave bed after sleeping;"
+    },
+    "examples": [
+      {
+        "en": "It's hard for him to get up in the morning.I have to get up early to catch the train. Time to get up! A: What time do you get up? B: Usually at 7:30, but on weekends I get up later."
+      }
+    ],
+    "lesson": "Unit 15",
+    "audioFile": "get up.mp3"
+  },
+  {
+    "id": "en-exp1-144",
+    "template": "english",
+    "word": "get well",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "khỏe lại",
+      "en": "become healthy; get over an illness;"
+    },
+    "examples": [
+      {
+        "en": "\"He received a get well card.I hope you get well! She got well faster than anticipated. A: My sister is sick, so I'm going to bring her some medicine. B: Tell her I hope she gets well soon.get-well card: a card that you give or send to someone who is ill, to say that you hope they are well again soon\""
+      }
+    ],
+    "lesson": "Unit 15",
+    "audioFile": "get well.mp3"
+  },
+  {
+    "id": "en-exp1-145",
+    "template": "english",
+    "word": "give a hand",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "giúp đỡ, giúp một tay",
+      "en": "help; assist; lend a hand;"
+    },
+    "examples": [
+      {
+        "en": "Can someone give me a hand with this?He gave her a hand with the yard work. They gave the boy a hand with the big box. A: This table is really heavy. Can you give me a hand moving it? B: Sure, I can help you."
+      }
+    ],
+    "lesson": "Unit 15",
+    "audioFile": "give a hand.mp3"
+  },
+  {
+    "id": "en-exp1-146",
+    "template": "english",
+    "word": "give away",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "trao đi, trao cho, bỏ đi",
+      "en": "donate; hand out;"
+    },
+    "examples": [
+      {
+        "en": "He gave away his last dollar.I wanted to sell my old radio, but I think I will just give it away::... it .... The company gave away free samples. A: Wow! You have a lot of books!B: I have too many. I think I should give away a lot of them."
+      }
+    ],
+    "lesson": "Unit 15",
+    "audioFile": "give away.mp3"
+  },
+  {
+    "id": "en-exp1-147",
+    "template": "english",
+    "word": "give back",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "trả lại",
+      "en": "return; hand back;"
+    },
+    "examples": [
+      {
+        "en": "He had to give back the stolen money.When are you going to give back my CD? She borrowed my car, but she hasn't given it back::... it .... A: Can I borrow your bicycle? B: Yes, as long as you give it back::... it ... by five o'clock.as long as :miễn là, chỉ cần"
+      }
+    ],
+    "lesson": "Unit 15",
+    "audioFile": "give back.mp3"
+  },
+  {
+    "id": "en-exp1-148",
+    "template": "english",
+    "word": "give it a try",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "Cố gắng làm thử điều gì đó",
+      "en": "try it; give it a go; give it a shot"
+    },
+    "examples": [
+      {
+        "en": "Why don't you give it a try?She decided to give it a try. I haven't played golf, but I'll give it a try. A: Have you had Mexican food? B: No, but I'd like to give it a try sometime."
+      }
+    ],
+    "lesson": "Unit 15",
+    "audioFile": "give it a try.mp3"
+  },
+  {
+    "id": "en-exp1-149",
+    "template": "english",
+    "word": "give up",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "bỏ cuộc, từ bỏ",
+      "en": "stop; abandon"
+    },
+    "examples": [
+      {
+        "en": "He should give up smoking.She did not give up hope of finding her dog. Don't give up! Keep trying! A: Learning to play the guitar is really hard. B: Don't give up! You will learn if you keep practicing."
+      }
+    ],
+    "lesson": "Unit 15",
+    "audioFile": "give up.mp3"
+  },
+  {
+    "id": "en-exp1-150",
+    "template": "english",
+    "word": "go away",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "rời đi xa, biến mất",
+      "en": "leave a place; get away;"
+    },
+    "examples": [
+      {
+        "en": "go away!Please don't go away. I hope your stomachache will go away soon.A: What a gloomy day! B: Yeah. I wish those clouds would go away."
+      }
+    ],
+    "lesson": "Unit 15",
+    "audioFile": "go away.mp3"
+  },
+  {
+    "id": "en-exp1-151",
+    "template": "english",
+    "word": "go off",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "diễn ra, xảy ra (nổ, kêu...), rời đi",
+      "en": "leave; go somewhere with a purpose;"
+    },
+    "examples": [
+      {
+        "en": "The camel went off across the desert to find water.Dorothy went off to have her car washed. She went off without even saying goodbye. A: Why is Mrs. Jones crying? B: Her son went off to fight in the war.go off: to leave a place and go somewhere elsego off: to happen in a particular waygo off: to become worse in qualityThat paper's really gone off since they got that new editor.If a light or a machine goes off, it stops working.If a bomb goes off, it explodes. If a gun goes off, it firesIf food or drink goes off, it is not good to eat or drink any more because it is too old or spoiled"
+      }
+    ],
+    "lesson": "Unit 16",
+    "audioFile": "go off.mp3"
+  },
+  {
+    "id": "en-exp1-152",
+    "template": "english",
+    "word": "go on",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "tiếp, tiếp tục",
+      "en": "continue; not stop; last;"
+    },
+    "examples": [
+      {
+        "en": "The road goes on for many miles.This cold weather has gone on for too long! The argument went on for a few minutes. A: This movie was really boring. B: Yes, it just seemed to go on for hours."
+      }
+    ],
+    "lesson": "Unit 16",
+    "audioFile": "go on .mp3"
+  },
+  {
+    "id": "en-exp1-153",
+    "template": "english",
+    "word": "go on a picnic",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đi dã ngoại",
+      "en": "bring some food and eat it outside;"
+    },
+    "examples": [
+      {
+        "en": "He is going on a picnic.Let's go on a picnic. I haven't gone on a picnic for years. A: What do you want to do this weekend?B: It's going to be sunny on Saturday, so I'd like to go on a picnic."
+      }
+    ],
+    "lesson": "Unit 16",
+    "audioFile": "go on a picnic.mp3"
+  },
+  {
+    "id": "en-exp1-154",
+    "template": "english",
+    "word": "grow up",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "lớn lên, trưởng thành",
+      "en": "become and adult; mature;"
+    },
+    "examples": [
+      {
+        "en": "When he grows up, he will be a strong lion.I grew up in a China and then moved to America. My son has grown up so fast. A: What kind of job do you want to have when you grow up? B: Actually, I would like to become a dentist."
+      }
+    ],
+    "lesson": "Unit 16",
+    "audioFile": "grow up.mp3"
+  },
+  {
+    "id": "en-exp1-155",
+    "template": "english",
+    "word": "had better",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "nên",
+      "en": "should; ought to;"
+    },
+    "examples": [
+      {
+        "en": "If you want to work here, you had better get a haircut!You'd better not work too late. She had better study if she wants to pass the test. A: Do you want to play computer games with me? B: I'd like to, but I'd better finish my homework.repellent /ri'pelənt/: thuốc trừ sâu, thuốc trừ rệp"
+      }
+    ],
+    "lesson": "Unit 16",
+    "audioFile": "had better.mp3"
+  },
+  {
+    "id": "en-exp1-156",
+    "template": "english",
+    "word": "hand in",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đệ trình, nộp, gửi cái gì cho ai",
+      "en": "give in; submit;"
+    },
+    "examples": [
+      {
+        "en": "After 60 minutes. the students had to hand in their tests.Please hand in the report by Friday. Even though she wasn't finished, she had to hand in the project.A: What are you writing? B: I'm writing an essay that I have to hand in to my teacher tomorrow ."
+      }
+    ],
+    "lesson": "Unit 16",
+    "audioFile": "hand in.mp3"
+  },
+  {
+    "id": "en-exp1-157",
+    "template": "english",
+    "word": "hang up",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "treo lên, kết thúc cuộc gọi",
+      "en": "put away something, especially clothes, on a hook or hanger;"
+    },
+    "examples": [
+      {
+        "en": "hang up your coat on the wall.Please hang up your wet towels! Jerry hung up his Elvis costume after the show.A: Where should I put my jacket? B: You can hang it up in the closet."
+      }
+    ],
+    "lesson": "Unit 16",
+    "audioFile": "hang up.mp3"
+  },
+  {
+    "id": "en-exp1-158",
+    "template": "english",
+    "word": "have a good time",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "thời gian vui vẻ, tận hưởng",
+      "en": "enjoy oneself; have fun;"
+    },
+    "examples": [
+      {
+        "en": "The aliens like to have a good time.The tourists had a good time in Paris. I had a good time at the party.A: have a good time at the birthday party! B: Thanks, I think it will be fun."
+      }
+    ],
+    "lesson": "Unit 16",
+    "audioFile": "have a good time.mp3"
+  },
+  {
+    "id": "en-exp1-159",
+    "template": "english",
+    "word": "have no idea",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "không có ý kiến, không biết",
+      "en": "don't know; not have a clue"
+    },
+    "examples": [
+      {
+        "en": "I have no idea why he is wearing this.She has no idea when the meeting is.They had no idea that the earth was round.A: I have no idea how to use this digital camera.B: Read the instruction booklet. That'll help you."
+      }
+    ],
+    "lesson": "Unit 16",
+    "audioFile": "have no idea.mp3"
+  },
+  {
+    "id": "en-exp1-160",
+    "template": "english",
+    "word": "have to do with",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "có liên hệ, có liên quan",
+      "en": "he closely connected with; he related to;"
+    },
+    "examples": [
+      {
+        "en": "These symbols all have to do with mathematics.The newspaper article has to do with the Queen's visit to Africa.The mother hoped that her son had nothing to do with::... nothing ... the broken window.A: What does math have to do with real life? B: Well, studying math helps us to add and subtract money, and many other things."
+      }
+    ],
+    "lesson": "Unit 16",
+    "audioFile": "have to do with.mp3"
+  },
+  {
+    "id": "en-exp1-161",
+    "template": "english",
+    "word": "have trouble with",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "có vấn đề với",
+      "en": "have a problem; have difficulty;"
+    },
+    "examples": [
+      {
+        "en": "He is having trouble with his battery.I am having trouble with this math homework. The soccer player had trouble with his knee. A: How are your tennis lessons? B: Good, but I'm having trouble with my serve."
+      }
+    ],
+    "lesson": "Unit 17",
+    "audioFile": "have trouble (with).mp3"
+  },
+  {
+    "id": "en-exp1-162",
+    "template": "english",
+    "word": "hear from",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "có thông tin, có liên lạc từ ai đóbị khiển trách bởi ai đó",
+      "en": "receive news from;"
+    },
+    "examples": [
+      {
+        "en": "\"He is waiting to hear from the doctor about his tests.I haven't heard from Dave recently. It's nice to hear from you. A: Has Mary called you since she went to China? B: Not yet. If I don't hear from her soon I'm going to start worrying.Hear from nghĩa là có thông tin, có liên lạc từ ai đó (nhận được tin nhắn, mail, cuộc gọi,…từ ai đó); hoặc có nghĩa là bị khiển trách bởi ai đó.- Have you heard from Tom recently? (Gần đây bạn có nghe được tin gì từ Tom không?)- Wait until you hear from the boss before making a decision. (Chờ cho đến khi nghe được điều gì đó từ ông chủ trước khi đưa ra quyết định).- He’d better apologize to you or he’ll be hearing from me! (Tốt hơn là anh ấy hãy xin lỗi tôi hoặc là anh ấy sẽ nghe sự trách móc từ tôi).- If you don’t do your homework, you’re going to hear from your teacher. (Nếu bạn không làm bài tập về nhà, bạn sẽ bị giáo viên khiển trách).\""
+      }
+    ],
+    "lesson": "Unit 17",
+    "audioFile": "hear from.mp3"
+  },
+  {
+    "id": "en-exp1-163",
+    "template": "english",
+    "word": "hear of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "biết về, biết được",
+      "en": "know about; hear about;"
+    },
+    "examples": [
+      {
+        "en": "Have you ever heard of a two-headed snake?I have never heard of an earthquake in this city. Yes, I've heard of that restaurant. I think it's in the north end of town. A: Let's go see a movie sometime. B: Okay. If I hear of a good one I'll tell you."
+      }
+    ],
+    "lesson": "Unit 17",
+    "audioFile": "hear of.mp3"
+  },
+  {
+    "id": "en-exp1-164",
+    "template": "english",
+    "word": "help oneself (to)",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "tự phục vụ, tự nhiên làm gì đó (ăn uống)",
+      "en": "take what one wants;"
+    },
+    "examples": [
+      {
+        "en": "He is helping himself to a cookie.help yourself to the cake. At the buffet, everyone helps themselves. A: Please help yourself to some pie. B: Thank you. It looks delicious."
+      }
+    ],
+    "lesson": "Unit 17",
+    "audioFile": "help oneself (to).mp3"
+  },
+  {
+    "id": "en-exp1-165",
+    "template": "english",
+    "word": "here you are",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đây cái anh đang cần đây; đây đúng là điều anh muốn biết đây",
+      "en": "here you go; here it is;"
+    },
+    "examples": [
+      {
+        "en": "here you are!A: Could I use your pen? B: Sure, here you are. A: I would like a chocolate ice cream cone, please. B: here you are. A: Can I have a sip of your water please? B: Sure. here you are."
+      }
+    ],
+    "lesson": "Unit 17",
+    "audioFile": "here you are .mp3"
+  },
+  {
+    "id": "en-exp1-166",
+    "template": "english",
+    "word": "hold on",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "giữ máy hoặc chờ đợi một chút;bám chặt, giữ chặt hay duy trì cái gì",
+      "en": "wait; hold the line"
+    },
+    "examples": [
+      {
+        "en": "\"We had to hold on while the traffic light was red.hold on, I'm coming!Please hold on while I find your file. A: Here is the pizza you ordered. B: hold on. I'll go get my wallet.Please hold on for a minute, I’ll come back now. (Làm ơn đợi một phút, tôi sẽ quay lại ngay.)Hold on! I’m not ready. (Chờ chút! Tớ chưa sẵn sàng.)She held on tightly to his waist. (Cô ấy đã nắm chặt thắt lưng anh ta.)waist /weist/: thắt lưng\""
+      }
+    ],
+    "lesson": "Unit 17",
+    "audioFile": "hold on.mp3"
+  },
+  {
+    "id": "en-exp1-167",
+    "template": "english",
+    "word": "hold up",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "giữ lại, trì hoãn, chống đỡ cái gì đó",
+      "en": "lift; raise; put up"
+    },
+    "examples": [
+      {
+        "en": "\"He held up the mouse for everyone to see.The soldier was holding up the flag. The class became silent when the teacher held up his hand. A: What do you do at your new job? B: I stand on the sidewalk and hold up a sign advertising the restaurant.Hold up the window sash while I prop it open. ( Giữ lấy cái khung cửa sổ trong khi tôi mở nó )I hope the spare tire holds up until we can get to a garage. ( Tôi hy vọng cái lốp thay thế này sẽ chống chọi được cho tới khi chúng ta đến gara)She is holding up well despite her financial problems. ( Cô ấy đang duy trì rất tốt mặc cho các vấn đề tài chính của mình.)Hold up a minute! ( Chờ chút!)\""
+      }
+    ],
+    "lesson": "Unit 17",
+    "audioFile": "hold up.mp3"
+  },
+  {
+    "id": "en-exp1-168",
+    "template": "english",
+    "word": "hurry up",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "nhanh lên",
+      "en": "do something quickly"
+    },
+    "examples": [
+      {
+        "en": "hurry up!hurry up, or we will be late! You will miss the bus if you don't hurry up. A: Let's hurry up and finish before dinner. B: Good idea. I'm hungry!"
+      }
+    ],
+    "lesson": "Unit 17",
+    "audioFile": "hurry up.mp3"
+  },
+  {
+    "id": "en-exp1-169",
+    "template": "english",
+    "word": "in a hurry",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "vội vàng, hối hả, gấp rút, dễ dàng",
+      "en": "in haste; in a rush"
+    },
+    "examples": [
+      {
+        "en": "He is in a hurry.Why are you in such a hurry::... such ...? Don't be in such a hurry::... such .... A: Why are you in a hurry? B: My piano lesson starts in five minutes, so I have to run if I don't want to be late.Today is a day I shall not forget in a hurryHôm nay la ngày mà tôi không thể dễ dàng quên được"
+      }
+    ],
+    "lesson": "Unit 17",
+    "audioFile": "in a hurry.mp3"
+  },
+  {
+    "id": "en-exp1-170",
+    "template": "english",
+    "word": "in a moment",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "một lát, một chốc, trong chốc lát",
+      "en": "in a short time; in a second/minute; soon"
+    },
+    "examples": [
+      {
+        "en": "He will be asleep in a moment.I'll be with you in a moment. She'll be back in a moment. A: Can I have a large cola please? B: Yes. I'll bring it to you in a moment."
+      }
+    ],
+    "lesson": "Unit 17",
+    "audioFile": "in a moment.mp3"
+  },
+  {
+    "id": "en-exp1-171",
+    "template": "english",
+    "word": "in case of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "trong trường hợp, nếu",
+      "en": "in the event something happens; if"
+    },
+    "examples": [
+      {
+        "en": "Take an umbrella in case of rain.in case of an emergency, press the red button. in case of fire, do not use the elevator. A: Please call 911 in case of a robbery. B: Okay. I'll remember that."
+      }
+    ],
+    "lesson": "Unit 18",
+    "audioFile": "in case of.mp3"
+  },
+  {
+    "id": "en-exp1-172",
+    "template": "english",
+    "word": "in fact",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "thực ra, thực tế",
+      "en": "as a matter of fact; actually; in reality"
+    },
+    "examples": [
+      {
+        "en": "in fact, there is no 'dark side' of the moon.I really like you. in fact, I love you! It rained a lot yesterday. in fact, it was the wettest day of the year so far. A: This is a great birthday party. Is Heinrich going to come too? B: Yes, he is. in fact, here he comes now!"
+      }
+    ],
+    "lesson": "Unit 18",
+    "audioFile": "in fact.mp3"
+  },
+  {
+    "id": "en-exp1-173",
+    "template": "english",
+    "word": "in front of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "trước, phía trước",
+      "en": "before; ahead of"
+    },
+    "examples": [
+      {
+        "en": "There is a dinosaur in front of the house.The conductor stood in front of the orchestra. She stood in front of the mirror. A: I'll meet you in front of the school at three o'clock.B: Okay. I'll see you then."
+      }
+    ],
+    "lesson": "Unit 18",
+    "audioFile": "in front of.mp3"
+  },
+  {
+    "id": "en-exp1-174",
+    "template": "english",
+    "word": "in general",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "nói chung, nhìn chung",
+      "en": "as a whole; overall; for the most part"
+    },
+    "examples": [
+      {
+        "en": "in general, Asian food is less fattening than western food.in general, I like cats. The movie was, in general, not very interesting. A: Do you like France? B: I like Europe in general, because each country is interesting."
+      }
+    ],
+    "lesson": "Unit 18",
+    "audioFile": "in general.mp3"
+  },
+  {
+    "id": "en-exp1-175",
+    "template": "english",
+    "word": "in harmony (with)",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "hòa thuận với, hòa hợp với.",
+      "en": "in a friendly relationship with; in accord with"
+    },
+    "examples": [
+      {
+        "en": "It is important that we live in harmony with nature.Dogs live in harmony with humans. The two countries worked in harmony. A: I'm glad that Jack and Jill got married. B: Yes. I hope that they can live in harmony."
+      }
+    ],
+    "lesson": "Unit 18",
+    "audioFile": "in harmony (with).mp3"
+  },
+  {
+    "id": "en-exp1-176",
+    "template": "english",
+    "word": "in honor of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "tôn vinh, vinh danh, tưởng nhớ",
+      "en": "giving respect to; remembering"
+    },
+    "examples": [
+      {
+        "en": "We lit the candle in honor of our grandmother.They had a party in honor of the man's retirement. The president gave a speech in honor of the soldiers. A: My parents have been married for twenty five years. B: You should have a party in honor of their anniversary."
+      }
+    ],
+    "lesson": "Unit 18",
+    "audioFile": "in honor of.mp3"
+  },
+  {
+    "id": "en-exp1-177",
+    "template": "english",
+    "word": "in just a minute",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "trong một thời gian ngắn",
+      "en": "in a short time; shortly"
+    },
+    "examples": [
+      {
+        "en": "in just a minute, it will be midnight.We will be leaving in just a minute. The movie will be starting in just a minute. A: Can you help me with this program? B: I'll be there in just a minute."
+      }
+    ],
+    "lesson": "Unit 18",
+    "audioFile": "in just a minute.mp3"
+  },
+  {
+    "id": "en-exp1-178",
+    "template": "english",
+    "word": "in search of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "tìm kiếm, đi tìm",
+      "en": "trying to find; looking for"
+    },
+    "examples": [
+      {
+        "en": "The helicopter went in search of the people missing mountains.We went in search of a good Italian restaurant. They went to Africa in search of the white elephant. A: It's late. Why are you here at the store? B: We were watching a video and we got hungry, so we're here in search of snacks."
+      }
+    ],
+    "lesson": "Unit 18",
+    "audioFile": "in search of.mp3"
+  },
+  {
+    "id": "en-exp1-179",
+    "template": "english",
+    "word": "in silence",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "không nói; không gây tiếng động; một cách im lặng.",
+      "en": "silently; not speaking; without a sound"
+    },
+    "examples": [
+      {
+        "en": "The boy behaved badly. so his mother made him sit in silence.They walked down the road in silence. The family ate in silence. A: Do you mind if I turn on the radio?B: Actually, I prefer to study in silence."
+      }
+    ],
+    "lesson": "Unit 18",
+    "audioFile": "in silence.mp3"
+  },
+  {
+    "id": "en-exp1-180",
+    "template": "english",
+    "word": "in the meantime",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "trong khi đó, trong khi",
+      "en": "meanwhile; while"
+    },
+    "examples": [
+      {
+        "en": "He had to wait for the bus. in the meantime he read the paper.My car is in the shop. I am using my sister's in the meantime. I will be late for the meeting. in the meantime, discuss next month's agenda. A: I know we should go to the store, but first I have to wash these. clothes. B: Okay, I'll read my book in the meantime."
+      }
+    ],
+    "lesson": "Unit 18",
+    "audioFile": "in the meantime.mp3"
+  },
+  {
+    "id": "en-exp1-181",
+    "template": "english",
+    "word": "in the middle of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "ở giữa",
+      "en": "at the center of; in the midst of"
+    },
+    "examples": [
+      {
+        "en": "The scarecrow is in the middle of the field.He was standing in the middle of the street. She turned off the TV in the middle of the show. A: What were you doing when I called you? B: I was in the middle of studying for tomorrow's big test.scarecrow /'skeəkrou/: bù nhìn"
+      }
+    ],
+    "lesson": "Unit 19",
+    "audioFile": "in the middle of.mp3"
+  },
+  {
+    "id": "en-exp1-182",
+    "template": "english",
+    "word": "in vain",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "không có kết quả, một cách vô ích",
+      "en": "for nothing; fruitless; vainly"
+    },
+    "examples": [
+      {
+        "en": "He tried in vain to get more food from the table.The trip was canceled. He had packed in vain. She washed her car in vain. It rained that afternoon. A: This is an important game. We have to win it. B: I know. If we don't win, our three months of practicing will have been in vain."
+      }
+    ],
+    "lesson": "Unit 19",
+    "audioFile": "in vain.mp3"
+  },
+  {
+    "id": "en-exp1-183",
+    "template": "english",
+    "word": "instead of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "thay vì, thay cho",
+      "en": "in place of; rather than; in preference to"
+    },
+    "examples": [
+      {
+        "en": "He chose the hamburger instead of the pizza.She went to New York instead of Paris. They met on Sunday instead of Saturday. A: Let's go on a picnic instead of watching a movie. B: Okay. It's a nice day to be outdoors."
+      }
+    ],
+    "lesson": "Unit 19",
+    "audioFile": "instead of.mp3"
+  },
+  {
+    "id": "en-exp1-184",
+    "template": "english",
+    "word": "just in time",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "vừa kịp lúc, đúng giờ, đúng thời điểm",
+      "en": "almost not in time; at the last minute"
+    },
+    "examples": [
+      {
+        "en": "The policeman caught the thief just in time.You are just in time for dinner. She got to the airport just in time to catch her plane. A: Wow! It's raining hard. We came in the house just in time. B: I know! If we would have stayed outside one more minute, we would be very wet right now.“On time” để nói về sự việc xảy ra chính xác đúng vào cái giờ mà mình đã lên kế hoạch. Còn “in time” có nghĩa là sớm hơn một chút so với các giờ đã lên kế hoạch."
+      }
+    ],
+    "lesson": "Unit 19",
+    "audioFile": "just in time.mp3"
+  },
+  {
+    "id": "en-exp1-185",
+    "template": "english",
+    "word": "keep away (from)",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "tránh xa",
+      "en": "avoid; stay away"
+    },
+    "examples": [
+      {
+        "en": "There are some areas that swimmers should keep away from.keep away from that old house! The shy boy kept away from the other children. A: Why did mom tell us to keep away from that dog? B: Because that dog is dangerous! It bit three kids last summer."
+      }
+    ],
+    "lesson": "Unit 19",
+    "audioFile": "keep away (from).mp3"
+  },
+  {
+    "id": "en-exp1-186",
+    "template": "english",
+    "word": "keep in mind",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "nhớ kĩ, ghi nhớ điều gì",
+      "en": "don't forget; remember; bear in mind"
+    },
+    "examples": [
+      {
+        "en": "keep in mind that he usually eats chopsticks.I'll keep that in mind::... that .... keep in mind that you've got a meeting at 3:00. A: I'm going to play soccer with my friends this afternoon! B: Okay, but keep in mind that dinner is at 6:00."
+      }
+    ],
+    "lesson": "Unit 19",
+    "audioFile": "keep in mind.mp3"
+  },
+  {
+    "id": "en-exp1-187",
+    "template": "english",
+    "word": "keep in touch",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "giữ liên lạc",
+      "en": "continue to communicate; stay in contact (with)"
+    },
+    "examples": [
+      {
+        "en": "He gave me his phone number so we could keep in touch.They kept in touch for twenty years. Please keep in touch while you are traveling. A: I'm going to live in America next year. B: After you go, please keep in touch with me."
+      }
+    ],
+    "lesson": "Unit 19",
+    "audioFile": "keep in touch.mp3"
+  },
+  {
+    "id": "en-exp1-188",
+    "template": "english",
+    "word": "keep on",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "tiếp tục (làm gì)",
+      "en": "do not stop; continue"
+    },
+    "examples": [
+      {
+        "en": "keep on pushing!His alarm went off, but he kept on sleeping. It's late, but I have to keep on working.A: Why did you sell your parrot?B: He kept on singing Elvis songs."
+      }
+    ],
+    "lesson": "Unit 19",
+    "audioFile": "keep on.mp3"
+  },
+  {
+    "id": "en-exp1-189",
+    "template": "english",
+    "word": "keep an eye on",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "canh chừng, để mắt tới, theo dõi",
+      "en": "watch; monitor"
+    },
+    "examples": [
+      {
+        "en": "They wanted to keep an eye on the strange newcomer.I'm going to the bathroom. Please keep an eye on my bag. My parents are gone, so I have to keep an eye on my little brother.A: keep an eye on the time. I have to leave at midnight.B: OK. It's only 11:15 now."
+      }
+    ],
+    "lesson": "Unit 19",
+    "audioFile": "keep an eye on.mp3"
+  },
+  {
+    "id": "en-exp1-190",
+    "template": "english",
+    "word": "keep out of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "ngăn cản, tránh xa, không xen vào",
+      "en": "stay out (of)"
+    },
+    "examples": [
+      {
+        "en": "keep your hands out of::... your hands ... my honey!The children were kept out of the graveyard. The high fence kept wolves out of::... wolves ... the farm.A: Why did you keep out of the game?B: I don't know how to play very well."
+      }
+    ],
+    "lesson": "Unit 19",
+    "audioFile": "keep out of.mp3"
+  },
+  {
+    "id": "en-exp1-191",
+    "template": "english",
+    "word": "laugh at",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "cười nhạo, chế nhạo",
+      "en": "ridicule; sneer"
+    },
+    "examples": [
+      {
+        "en": "People always laugh at his nose.The thoughtless teacher laughed at the student when he made a mistake. They laughed at him when he tripped.A: Why is Jimmy crying?B: The other children laughed at his haircut.trip /trip/: vấp ngã"
+      }
+    ],
+    "lesson": "Unit 20",
+    "audioFile": "laugh at.mp3"
+  },
+  {
+    "id": "en-exp1-192",
+    "template": "english",
+    "word": "lead to",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "hướng đến, dẫn đến",
+      "en": "go to a particular place"
+    },
+    "examples": [
+      {
+        "en": "The road leads to the castle.The guide will lead us to::... us ... the village. The dog led the police officer to::... police officer ... the robber's house.A: Where does this stairway go?B: It leads to the parking garage."
+      }
+    ],
+    "lesson": "Unit 20",
+    "audioFile": "lead to.mp3"
+  },
+  {
+    "id": "en-exp1-193",
+    "template": "english",
+    "word": "leave out",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "xa lánh, bỏ mặc, bỏ sót, bỏ rơi",
+      "en": "exclude; miss out; omit"
+    },
+    "examples": [
+      {
+        "en": "The message was nice, but they left out the A's!He packed his suitcase, but he left out one pair of socks. This argument is between you and me. leave my brother out::... my brother ... of it.A: Do you want a hamburger?B: Yes I do, but please leave out the pickles.pickles /'pikls/: rau giầm, hoa quả giầm, dưa góp"
+      }
+    ],
+    "lesson": "Unit 20",
+    "audioFile": "leave out .mp3"
+  },
+  {
+    "id": "en-exp1-194",
+    "template": "english",
+    "word": "listen to",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "nghe (1 cách chăm chú)",
+      "en": "give attention in order to hear"
+    },
+    "examples": [
+      {
+        "en": "He likes to listen to music.She listens to the radio on her way to work. We sat outside and listened to the birds singing.A: Why is Rita doing so badly in school?B: She never listens to her teacher."
+      }
+    ],
+    "lesson": "Unit 20",
+    "audioFile": "listen to.mp3"
+  },
+  {
+    "id": "en-exp1-195",
+    "template": "english",
+    "word": "little by little",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "từng chút một, dần, từ từ",
+      "en": "slowly; bit by bit; gradually"
+    },
+    "examples": [
+      {
+        "en": "\"little by little, the snail moved along the road.Peter learned Spanish little by little. little by little, they built their house.A: Your computer is expensive. How did you buy it?B: I worked for three years and saved my money little by little.✓ Little by little the sky cleared. Trời sáng dần.✓ We need improving little by little.Chúng ta cần cải thiện từng ít một.✓ Little by little does the trick.Từng chút từng chút một là bí quyết thành công.✓ The stars were dimmed little by little.Những vì sao dần dần mờ đi.✓ He cares for his baby little by little.Anh ta chăm sóc con bé từng li từng tí một.✓ His health seems to be improving little by little.Sức khỏe của anh ta dường như khả quan dần dần.\""
+      }
+    ],
+    "lesson": "Unit 20",
+    "audioFile": "little by little.mp3"
+  },
+  {
+    "id": "en-exp1-196",
+    "template": "english",
+    "word": "live on",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "sống nhờ, sống bằng cái gì",
+      "en": "keep oneself alive with food or money; survive (on)"
+    },
+    "examples": [
+      {
+        "en": "\"The bird lives on worms.The poor man lived on bread and water. In college, I lived on only $50 a week.A: Let's go out for a nice dinner.B: Good idea! I am tired of living on spaghetti and water!live on = live upon : sống nhờ, sống bằng cái gìlive on nghĩa là có một số tiền để mua những thứ bạn cần hoặc là để nói về việc chỉ ăn một loại thức ăn đặc biệt nào đó.I more or less live on spaghetti. (Tôi ít hay nhiều cũng chỉ ăn mì ống.)The job provides enough to live on. (Công việc cũng cung cấp đủ để sống).They have to live on a pension of £350 a month. (Họ phải sống với mức lương 350 bảng một tháng).These fish live on small sea creatures such as shrimp. (Những con cá ăn những sinh vật biển nhỏ như tôm).\""
+      }
+    ],
+    "lesson": "Unit 20",
+    "audioFile": "live on.mp3"
+  },
+  {
+    "id": "en-exp1-197",
+    "template": "english",
+    "word": "long for",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "khao khát",
+      "en": "want very much"
+    },
+    "examples": [
+      {
+        "en": "She longs for romance.The orphan longed for a home. He longed for a motorcycle of his own.A: I'm longing for the ocean.B: Okay. Let's go to the beach.(to) long for something / (to) long for somebody to do something: Muốn cái gì đó mà có vẻ không thể thực hiện ngayIt's just April but students seem to long for summer holidays"
+      }
+    ],
+    "lesson": "Unit 20",
+    "audioFile": "long for.mp3"
+  },
+  {
+    "id": "en-exp1-198",
+    "template": "english",
+    "word": "look after",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "chăm sóc, quan tâm",
+      "en": "care for; take care of"
+    },
+    "examples": [
+      {
+        "en": "She must look after her puppy.I had to look after my little sister. Please look after my plants while I am gone.A: I'll be gone for one week. Will you look after my dog?B: Yes. I'll give him food and walk him every day.puppy /'pʌpi/: chó con"
+      }
+    ],
+    "lesson": "Unit 20",
+    "audioFile": "look after.mp3"
+  },
+  {
+    "id": "en-exp1-199",
+    "template": "english",
+    "word": "look around",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "nhìn quanh, tìm quanh",
+      "en": "look in all directions"
+    },
+    "examples": [
+      {
+        "en": "He is looking around for bananas.We looked around the room for the remote. The new student looked around the class.A: I still haven't found my bag!B: look around at school tomorrow. Maybe it's there.look around/round for sth: tìm kiếm cái gì đó ở nhiều nơi"
+      }
+    ],
+    "lesson": "Unit 20",
+    "audioFile": "look around.mp3"
+  },
+  {
+    "id": "en-exp1-200",
+    "template": "english",
+    "word": "look at",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "nhìn, xem xét trước khi quyết định",
+      "en": "have a look at; take a look at; stare at"
+    },
+    "examples": [
+      {
+        "en": "They looked at each other for a long time.The doctor looked at the X-ray. Dawn looked at the painting.A: look at those beautiful flowers!B: Wow! I don't think I've seen any like those before."
+      }
+    ],
+    "lesson": "Unit 20",
+    "audioFile": "look at.mp3"
+  },
+  {
+    "id": "en-exp1-201",
+    "template": "english",
+    "word": "look down on",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đánh giá thấp, khinh thường, coi nhẹ (ai đó)",
+      "en": "despise; think you're better than someone else"
+    },
+    "examples": [
+      {
+        "en": "He was often looked down on for being different.The scholar looked down on the farmer. The rich man looked down on the beggar.A: Why do those rich kids look down on Sarah?B: Because Sarah's family is poor and she wears old clothes."
+      }
+    ],
+    "lesson": "Unit 21",
+    "audioFile": "look down on.mp3"
+  },
+  {
+    "id": "en-exp1-202",
+    "template": "english",
+    "word": "look for",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "tìm kiếm",
+      "en": "try to find; search for; seek"
+    },
+    "examples": [
+      {
+        "en": "He's looking for grass to eat.What are you looking for? Can you help me look for my glasses.A: Can I help you?B: Yes. I'm looking for the restroom."
+      }
+    ],
+    "lesson": "Unit 21",
+    "audioFile": "look for.mp3"
+  },
+  {
+    "id": "en-exp1-203",
+    "template": "english",
+    "word": "look forward to",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "mong đợi (một cách hân hoan)",
+      "en": "anticipate; wait happily for"
+    },
+    "examples": [
+      {
+        "en": "He is looking forward to the game.I am looking forward to my new job. We are looking forward to leaving this town.A: I'm looking forward to our vacation next month.B: Me too. It's going to be fun!"
+      }
+    ],
+    "lesson": "Unit 21",
+    "audioFile": "look forward to.mp3"
+  },
+  {
+    "id": "en-exp1-204",
+    "template": "english",
+    "word": "look like",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "trông giống như, có vẻ như",
+      "en": "resemble; have the appearance of; take after"
+    },
+    "examples": [
+      {
+        "en": "Sometimes. people look like their pets.A tiger looks like a big cat. That guy looks like my brother.A: Can you see that cloud?!B: Wow! It looks like an elephant!"
+      }
+    ],
+    "lesson": "Unit 21",
+    "audioFile": "look like.mp3"
+  },
+  {
+    "id": "en-exp1-205",
+    "template": "english",
+    "word": "look out",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "quan sát cẩn thận, canh chừng, coi chừng",
+      "en": "be careful; take care; watch out"
+    },
+    "examples": [
+      {
+        "en": "\"look out!You must look out for cars when you cross the street. look out! That rock is about to fall.A: look out! You almost stepped on my mouse.B: Sorry. I didn't see it.\"\"look out\"\": coi chừng, cẩn thận --&gt; dành cho trường hợp có nguy hiểm ngay tức thì. \"\"watch out\"\" coi chừng, cẩn thận --&gt; dùng khi chưa có gì xảy ra cả.\""
+      }
+    ],
+    "lesson": "Unit 21",
+    "audioFile": "look out.mp3"
+  },
+  {
+    "id": "en-exp1-206",
+    "template": "english",
+    "word": "look through",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "xem qua, lục soát",
+      "en": "search many things to find something"
+    },
+    "examples": [
+      {
+        "en": "She looked through the whole house until she found her spider.I looked through the drawer for an eraser. The woman looked through her purse for her car keys.A: Did you find any mistakes when you looked through my essay?B: Yes, I found a couple."
+      }
+    ],
+    "lesson": "Unit 21",
+    "audioFile": "look through.mp3"
+  },
+  {
+    "id": "en-exp1-207",
+    "template": "english",
+    "word": "look up to",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "ngưỡng mộ, coi trọng",
+      "en": "admire; respect"
+    },
+    "examples": [
+      {
+        "en": "The boy really looks up to his older brother.Jim looked up to his brave friend. We all look up to our grandfather.A: Why do you look up to Tim so much?B: Because he is a brave, honest and humble person."
+      }
+    ],
+    "lesson": "Unit 21",
+    "audioFile": "look up to.mp3"
+  },
+  {
+    "id": "en-exp1-208",
+    "template": "english",
+    "word": "make friends with",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "kết bạn với ai, kết bạn mới",
+      "en": "form a relationship with"
+    },
+    "examples": [
+      {
+        "en": "The monkey wants to make friends with the snake.I made friends with the new boy in school. It can be hard to make new friends::... new ....A: I'm going to go to a new school next year and I'll miss my friends.B: Don't worry. You'll make friends with people at your new school too!"
+      }
+    ],
+    "lesson": "Unit 21",
+    "audioFile": "make friends with.mp3"
+  },
+  {
+    "id": "en-exp1-209",
+    "template": "english",
+    "word": "make fun of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "chế nhạo, cười nhạo ai đó",
+      "en": "make unkind jokes about; tease; pull one's leg; make a fool of"
+    },
+    "examples": [
+      {
+        "en": "Everyone make fun of him.She made fun of my ugly shoes.The other reindeer made fun of Rudolph's red nose.A: Ha-ha-ha! You can't ski!B: Don't make fun of me! This is my first time skiing."
+      }
+    ],
+    "lesson": "Unit 21",
+    "audioFile": "make fun of.mp3"
+  },
+  {
+    "id": "en-exp1-210",
+    "template": "english",
+    "word": "make oneself at home",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "thư giãn, không khách sáotự nhiên như ở nhà",
+      "en": "make oneself comfortable; relax"
+    },
+    "examples": [
+      {
+        "en": "He is making himself at home on the sofa.Come in! make yourself at home. I made myself at home in my friend's apartment.A: Can I use one of your towels?B: Sure! You can use anything you need. make yourself at home."
+      }
+    ],
+    "lesson": "Unit 21",
+    "audioFile": "make oneself at home.mp3"
+  },
+  {
+    "id": "en-exp1-211",
+    "template": "english",
+    "word": "make sense",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "có lý, hợp lý, làm rõ",
+      "en": "have a clear meaning be understandable"
+    },
+    "examples": [
+      {
+        "en": "\"His words didn't make sense.It makes sense to stop smoking. The sentence makes no sense::... no ....A: Does that make sense?B: No, it doesn't. Maybe if you explain it again I'll understand.We will make sense of this – Chúng tôi sẽ làm rõ vấn đề này.Does it make sense now？- Bây giờ thì đã hợp lý chưa?Something doesn’t make sense – Có gì đó không hợp lý.I can’t make sense of anything he’s thinking. – Tôi chả hiểu mấy điều mà ông ấy đang suy nghĩ.\""
+      }
+    ],
+    "lesson": "Unit 22",
+    "audioFile": "make sense.mp3"
+  },
+  {
+    "id": "en-exp1-212",
+    "template": "english",
+    "word": "make the most of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "tận dụng",
+      "en": "use to the greatest advantage"
+    },
+    "examples": [
+      {
+        "en": "He is making the most of his arms to build his house quickly.She is making the most of a bad situation. I only have ten dollars. I'll have to make the most of it.A: It's too bad that you have to leave soon.B: I know. Let's just try to make the most of our time together."
+      }
+    ],
+    "lesson": "Unit 22",
+    "audioFile": "make the most of.mp3"
+  },
+  {
+    "id": "en-exp1-213",
+    "template": "english",
+    "word": "make up",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "sáng tạo, sáng tác, bịa đặt",
+      "en": "invent; fabricate"
+    },
+    "examples": [
+      {
+        "en": "He often made up stories.My grandfather makes up funny songs. I didn't want to tell the man my real name, so I made up a name.A: You'll be late for school. What will you tell the teacher?A: I'll make up an excuse."
+      }
+    ],
+    "lesson": "Unit 22",
+    "audioFile": "make up.mp3"
+  },
+  {
+    "id": "en-exp1-214",
+    "template": "english",
+    "word": "make up for",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "bù vào, bù đắp",
+      "en": "compensate for"
+    },
+    "examples": [
+      {
+        "en": "She started slowly, so she is trying to make up for lost time.She had to work overtime to make up the days of work she missed. He missed his daughter's birthday, so he tried to make up for it with a big gift.A: Why did you buy my lunch today?B: I wanted to make up for being late last week."
+      }
+    ],
+    "lesson": "Unit 22",
+    "audioFile": "make up for.mp3"
+  },
+  {
+    "id": "en-exp1-215",
+    "template": "english",
+    "word": "make up one's mind",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "quyết định",
+      "en": "decide; make a decision; resolve"
+    },
+    "examples": [
+      {
+        "en": "He is trying to make up his mind::... his ....You have to make up your mind::... your ...! I can't make up my mind::... my ....A: Is Jill going to study in America or Canada?B: She made up her mind::... her ... to study in Canada."
+      }
+    ],
+    "lesson": "Unit 22",
+    "audioFile": "make up one's mind.mp3"
+  },
+  {
+    "id": "en-exp1-216",
+    "template": "english",
+    "word": "make up with",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "hòa giải, dàn hòa",
+      "en": "become friends again with; reconcile"
+    },
+    "examples": [
+      {
+        "en": "After a big argument, they wanted to make up with each other.I don't think I can ever make up with him. Newlyweds fight and make up often.A: Why are you going to go to a movie with Tom? I thought you were angry at him.B: I was angry at him, but we made up with each other. Now we're good friends again!Newlyweds: người vừa lập gia đìnhreconcile /'rekənsail/: giải hoà, giảng hoà, làm cho hoà thuận"
+      }
+    ],
+    "lesson": "Unit 22",
+    "audioFile": "make up (with).mp3"
+  },
+  {
+    "id": "en-exp1-217",
+    "template": "english",
+    "word": "make use of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "tận dụng, lợi dụng",
+      "en": "utilize; take advantage of"
+    },
+    "examples": [
+      {
+        "en": "Farmers make use of the land.He made use of the wood and built a house. Can you make use of some old chairs.A: Is Ben making use of his math skills?B: Yes he is. He works at a bank."
+      }
+    ],
+    "lesson": "Unit 22",
+    "audioFile": "make use of.mp3"
+  },
+  {
+    "id": "en-exp1-218",
+    "template": "english",
+    "word": "no problem",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "không vấn đề, không có gì",
+      "en": "easy; no trouble; it doesn't matter"
+    },
+    "examples": [
+      {
+        "en": "He hopes that fixing the window will be no problem.It should be no problem to find tickets for the game. She said it was no problem to pick me up.A: Thanks for the cookie!B: no problem. I have a whole bag of them."
+      }
+    ],
+    "lesson": "Unit 22",
+    "audioFile": "no problem.mp3"
+  },
+  {
+    "id": "en-exp1-219",
+    "template": "english",
+    "word": "nothing but",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "không gì ngoài, chỉ, đơn thuần",
+      "en": "only; no more than; merely"
+    },
+    "examples": [
+      {
+        "en": "Robbers are nothing but bad.That boy is nothing but trouble. There was nothing but old cheese in the refrigerator.A: Your car looks nice. Is it a good car?B: No. I bought it two years ago and it has given me nothing but problems."
+      }
+    ],
+    "lesson": "Unit 22",
+    "audioFile": "nothing but.mp3"
+  },
+  {
+    "id": "en-exp1-220",
+    "template": "english",
+    "word": "now and then",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "thỉnh thoảng, không thường xuyên",
+      "en": "sometimes; occasionally; once in a while at times; from time to time"
+    },
+    "examples": [
+      {
+        "en": "now and then he likes to sing.He likes to watch a movie now and then. now and then there are concerts in the park.A: Do you come to this restaurant often?B: No. I only come here now and then."
+      }
+    ],
+    "lesson": "Unit 22",
+    "audioFile": "now and then.mp3"
+  },
+  {
+    "id": "en-exp1-221",
+    "template": "english",
+    "word": "of course",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "tất nhiên",
+      "en": "yes; certainly; sure; no problem"
+    },
+    "examples": [
+      {
+        "en": "\"of course I like your hairstyle.If you are busy, you don't have to come, of course. \"\"Can we go to the concert?\"\" \"\"of course we can..\"\"A: Do you like soccer?B: of course I like soccer! That's why I play it every day!\""
+      }
+    ],
+    "lesson": "Unit 23",
+    "audioFile": "of course.mp3"
+  },
+  {
+    "id": "en-exp1-222",
+    "template": "english",
+    "word": "on and on",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "liên tục, liên miên, kéo dài vô tận",
+      "en": "without stopping; continuously"
+    },
+    "examples": [
+      {
+        "en": "The road goes on and on.They worked on and on through the night. It rained on and on for days.A: Did your aunt call last night?B: Yes! She talked on and on for three hours!"
+      }
+    ],
+    "lesson": "Unit 23",
+    "audioFile": "on and on.mp3"
+  },
+  {
+    "id": "en-exp1-223",
+    "template": "english",
+    "word": "on foot",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đi bộ",
+      "en": "by walking"
+    },
+    "examples": [
+      {
+        "en": "He made the journey on foot.You can go everywhere on foot in my town. They had to go on foot after their car broke down.A: Do you go to school by bus?B: No, I don't. I go on foot."
+      }
+    ],
+    "lesson": "Unit 23",
+    "audioFile": "on foot.mp3"
+  },
+  {
+    "id": "en-exp1-224",
+    "template": "english",
+    "word": "on purpose",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "cố tình, cố ý, có tính toán",
+      "en": "deliberately; intentionally"
+    },
+    "examples": [
+      {
+        "en": "I'm sorry I spilt the drink. It wasn't on purpose.He missed the school bus on purpose because he didn't like school. She broke the cup on purpose.A: Hey! Did you hit me on purpose?B: No I didn't. It was an accident."
+      }
+    ],
+    "lesson": "Unit 23",
+    "audioFile": "on purpose.mp3"
+  },
+  {
+    "id": "en-exp1-225",
+    "template": "english",
+    "word": "on schedule",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đúng thời hạn, đúng giờ, đúng lịch trình",
+      "en": "without delay; on time"
+    },
+    "examples": [
+      {
+        "en": "The bus usually arrives on schedule.The meeting did not start on schedule. I hope that my plane is on schedule.A: Will the train be late today?B: No, it will arrive on schedule."
+      }
+    ],
+    "lesson": "Unit 23",
+    "audioFile": "on schedule.mp3"
+  },
+  {
+    "id": "en-exp1-226",
+    "template": "english",
+    "word": "on the contrary",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "ngược lại, trái lại",
+      "en": "no; not at all"
+    },
+    "examples": [
+      {
+        "en": "\"He's not lazy. on the contrary, he is very active.''Are you cold?\"\" \"\"on the contrary! I'm quite warm!\"\" You don't look exhausted. on the contrary, you seem very healthy.A: Was that movie bad?B: on the contrary, it was the best movie I've ever seen!On the contrary là một thành ngữ được đặt đầu câu để nhấn mạnh sự trái ngược về mặt ý nghĩa của câu đó với câu đằng trước... Thành ngữ này thường được thể dùng khi đưa ra một ý kiến trái ngược với ý kiến đã được đưa ra hoặc để giới thiệu một thông tin mới.\""
+      }
+    ],
+    "lesson": "Unit 23",
+    "audioFile": "on the contrary.mp3"
+  },
+  {
+    "id": "en-exp1-227",
+    "template": "english",
+    "word": "on the way",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "\"dọc đường, trên đường đang trên đường (đến, về)\"",
+      "en": "going or coming; during the journey"
+    },
+    "examples": [
+      {
+        "en": "There is a gas station on the way to the next city.on the way to work this morning she saw a deer. I will stop by the post office on my way::... my ... home.A: We don't have any milk. Can you buy some today?B: Okay. I'll buy some on the way home from school today.Is the main army on the way? ( Quân chủ lực đến chưa?)I am on the way coming to the office now. Please waitTôi đang trên đường đến công ty đây. Chờ chút nhé"
+      }
+    ],
+    "lesson": "Unit 23",
+    "audioFile": "on the one's way.mp3"
+  },
+  {
+    "id": "en-exp1-228",
+    "template": "english",
+    "word": "on the weekend",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "cuối tuần",
+      "en": "on Saturdays and Sundays"
+    },
+    "examples": [
+      {
+        "en": "They are going fishing on the weekend.We used to go hiking on weekends. I take my son to the park on the weekend.A: What are you going to do on the weekend?B: I'm going to play soccer on Saturday and go to church on Sunday."
+      }
+    ],
+    "lesson": "Unit 23",
+    "audioFile": "on the weekend.mp3"
+  },
+  {
+    "id": "en-exp1-229",
+    "template": "english",
+    "word": "on time",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đúng giờ",
+      "en": "on schedule; punctually"
+    },
+    "examples": [
+      {
+        "en": "He wanted to get to his meeting on time.Most of the people came on time. This train is always on time.A: Let's go to school now. I don't want to be late for class.B: Don't worry. We'll be on time.“On time” để nói về sự việc xảy ra chính xác đúng vào cái giờ mà mình đã lên kế hoạch. Còn “in time” có nghĩa là sớm hơn một chút so với các giờ đã lên kế hoạch."
+      }
+    ],
+    "lesson": "Unit 23",
+    "audioFile": "on time.mp3"
+  },
+  {
+    "id": "en-exp1-230",
+    "template": "english",
+    "word": "once in a while",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đôi khi, thỉnh thoảng",
+      "en": "sometimes; occasionally; now and then; at times"
+    },
+    "examples": [
+      {
+        "en": "once in a while, I like to eat seafood.My old friend calls me once in a while. once in a while, he goes to rock concerts.A: Do you like to go to movies?B: No, but I rent a video once in a while."
+      }
+    ],
+    "lesson": "Unit 23",
+    "audioFile": "once in a while.mp3"
+  },
+  {
+    "id": "en-exp1-231",
+    "template": "english",
+    "word": "out of breath",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "hết hơi, thở không ra hơi.",
+      "en": "breathless; hard to breathe"
+    },
+    "examples": [
+      {
+        "en": "\"After running so long, he was out of breath.She was out of breath after running up the stairs. By the time we reached the top, we were out of breath.A: Why are you out of breath?B: Because I ran here from my house.\"\"Out of breath\"\" có từ breath là hơi thở, hơi; vì thế cụm từ này nghĩa là hết hơi, thở không ra hơi.\""
+      }
+    ],
+    "lesson": "Unit 24",
+    "audioFile": "out of breath.mp3"
+  },
+  {
+    "id": "en-exp1-232",
+    "template": "english",
+    "word": "out of date",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "lỗi thời, cũ, quá hạnkhông còn đúng mốt nữa",
+      "en": "outdated; old-fashioned, obsolete"
+    },
+    "examples": [
+      {
+        "en": "His haircut is out of date.My computer is already out of date. Don't take medicine that is out of date.A: I can't find the new road on this map.B: It's probably out of date."
+      }
+    ],
+    "lesson": "Unit 24",
+    "audioFile": "out of date.mp3"
+  },
+  {
+    "id": "en-exp1-233",
+    "template": "english",
+    "word": "pass by",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đi qua, lướt qua, bỏ lỡ",
+      "en": "go past"
+    },
+    "examples": [
+      {
+        "en": "He said hello as he passed by his friends.I saw a big dog passing by my house around twoo'clock.People along the street waved as the parade passed by.A: Do you know where Ann's house is?B: Yes, I do. I pass by it every day when I walk home from school.to wave /weiv/: vẫy tay ra hiệuparade /pə'reid/: cuộc diễu hành, cuộc duyệt binhPass by nghĩa là đi qua, có thể là đi qua quá khứ hoặc điều gì đó đã đi qua cuộc đời bạn mà bạn không nhận thấy nó. Ngoài ra pass by cũng có nghĩa là bỏ lỡ cơ hội đã đến với bạn."
+      }
+    ],
+    "lesson": "Unit 24",
+    "audioFile": "pass by.mp3"
+  },
+  {
+    "id": "en-exp1-234",
+    "template": "english",
+    "word": "pass out",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "ngất xỉu, bất tỉnh",
+      "en": "faint; become unconscious"
+    },
+    "examples": [
+      {
+        "en": "\"He is passing out.She hit her head on the tree and passed out. You will pass out if you hold your breath for too long.A: Is he sleeping?B: No, he saw some blood and passed out!faint /feint/: chóng mặt, hay ngấtunconscious /ʌn'kɔnʃəs/: bất tỉnh, ngất điPass out được dùng để nói đến trường hợp bạn đột nhiên bị bất tỉnh (vì say rượu, ốm đau,…); phân phát cái gì đó cho ai đó. Ngoài ra nó nghĩa là chính thức hoàn thành một khóa học tại một trường quân sự hoặc cao đẳng cảnh sát.The new officers passed out from Britannia Royal Naval College on Thursday 1 August . (Những sĩ quan mới đã hoàn thành khóa học tại trường Đại học Hải quân Hoàng gia Anh vào thứ 5 ngày 1 tháng Tám).A few people passed out from the heat. (Một vài người đã bất tỉnh vì cái nóng).The teacher passed out the test results. (Giáo viên đã phát kết quả bài kiểm tra).Please pass those out to everyone. (Vui lòng phát những thứ đó cho mọi người).\""
+      }
+    ],
+    "lesson": "Unit 24",
+    "audioFile": "pass out.mp3"
+  },
+  {
+    "id": "en-exp1-235",
+    "template": "english",
+    "word": "pay a visit",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đến thăm, ghé thăm, thăm (ai, cái gì)",
+      "en": "visit; calI on; pay a call; go to see"
+    },
+    "examples": [
+      {
+        "en": "I will pay a visit to my grandma tomorrow.We paid a visit to our relatives.Let's pay a visit to them sometime.A: Let's pay a visit to Kevin.B: Good idea! I haven't seen him for a long time."
+      }
+    ],
+    "lesson": "Unit 24",
+    "audioFile": "pay a visit.mp3"
+  },
+  {
+    "id": "en-exp1-236",
+    "template": "english",
+    "word": "pay attention to",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "chú ý (tới)",
+      "en": "focus on; concentrate on"
+    },
+    "examples": [
+      {
+        "en": "You should pay attention to road signs when you are driving.He was not paying attention in class. pay attention to me.A: Does he pay attention to the teacher in class?B: No, he doesn't. He only talks to his friends and draws pictures on his desk."
+      }
+    ],
+    "lesson": "Unit 24",
+    "audioFile": "pay attention to.mp3"
+  },
+  {
+    "id": "en-exp1-237",
+    "template": "english",
+    "word": "pick out",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "chọn ra",
+      "en": "choose; single out"
+    },
+    "examples": [
+      {
+        "en": "pick out one you like!She picked out a nice dress for the party. I picked out the best apple in the basket.A: I want to buy a shirt, but I don't know which color to get.B: I'll help you pick out a color!"
+      }
+    ],
+    "lesson": "Unit 24",
+    "audioFile": "pick out.mp3"
+  },
+  {
+    "id": "en-exp1-238",
+    "template": "english",
+    "word": "pick up",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "nhặt lên, cầm lên",
+      "en": "lift"
+    },
+    "examples": [
+      {
+        "en": "\"pick up the hammer.He picked up the pen and wrote a letter. She picked up her hat and put it on.A: This room is a mess! pick up your toys.B: OK, Mom. I will.1. Nâng hoặc mang cái gì đó.She put her coat on, picked up her bag, and left.(Cô ta mặc áo khoác, mang túi xách, và đi).2. Học hỏi qua kinh nghiệm chứ không phải bằng sự cố gắng (học lỏm)When I got back from Tokyo I realised that I had picked up quite a few Japanese words.(Khi trở về từ Tokyo tôi nhận ra rằng tôi đã học được nhiều từ tiếng Nhật).3. Có sự tiến triển hoặc cải tiếnBusiness was very slow for the first few months, but it picked up in the new year.(Việc kinh doanh rất chậm trong những tháng đầu, nhưng nó có tiến triển trong năm mới).4. Mắc bệnh truyền nhiễmI picked up a chest infection towards the end of the week.(Tôi bị mắc bệnh truyền nhiễm ngực vào cuối tuần).5. Bắt giữ hoặc giam người nào đóThe bank was robbed at 6pm. The police had picked up 3 suspects by 9pm(Ngân hàng bị trộm vào lúc 6 giờ. Cảnh sát đã bắt giữ 3 người tình nghi vào lúc 9 giờ).6. Đón ai đó bằng xe hơiPick me up at 6 – I'll be waiting outside the train station.(Đón em vào lúc 6 giờ – em sẽ chờ anh trước nhà ga).7. Mua cái gì đóCould you pick up some milk on your way home please?(Anh mua sữa trên đường về nhé?)8. Trả hoá đơn, đặc biệt cho người khácWe went to a lovely restaurant, but I'm not sure how much it cost: John picked up the bill.(Chúng tôi đã ăn tại một nhà hàng xinh đẹp, nhưng tôi không biết giá bao nhiêu: John đã thanh toán hoá đơn).9. Tiếp tục một việc gì đó mà được tạm ngừng lại trong một thời gianWe're out of time, so we'll end the meeting now, but we can pick it up again next week.(Chúng ta không còn thời gian nữa, vì thế phải ngừng cuộc họp, nhưng chúng ta sẽ họp lại vào tuần tới).10. Nhận được sóng trên truyền hình, radioWe can't pick up channel 5 in this area.(Chúng tôi không xem được kênh 5 trong khu vực này)\""
+      }
+    ],
+    "lesson": "Unit 24",
+    "audioFile": "pick up.mp3"
+  },
+  {
+    "id": "en-exp1-239",
+    "template": "english",
+    "word": "piece by piece",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "từng chút một",
+      "en": "bit by bit; one by one; piecemeal"
+    },
+    "examples": [
+      {
+        "en": "He put the puzzle together piece by piece.She ate the whole cake piece by piece. He picked up the broken dish piece by piece.A: How did they move that big sculpture?B: They took it apart and moved it piece by piece."
+      }
+    ],
+    "lesson": "Unit 24",
+    "audioFile": "piece by piece.mp3"
+  },
+  {
+    "id": "en-exp1-240",
+    "template": "english",
+    "word": "play a trick on",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "chơi xỏ ai, chơi khăm ai",
+      "en": "play a joke on; play tricks on"
+    },
+    "examples": [
+      {
+        "en": "The dog is playing a trick on the cat.He got in trouble for playing a trick on his sister. Don't ever play a trick on me again.A: I like to untie my brother's shoes, hide his pencils, and put frogs in his bed.B: That's not nice! Do you always play tricks on him?"
+      }
+    ],
+    "lesson": "Unit 24",
+    "audioFile": "play a trick on.mp3"
+  },
+  {
+    "id": "en-exp1-241",
+    "template": "english",
+    "word": "protect A from B",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "bảo vệ khỏi",
+      "en": "shield A from B;"
+    },
+    "examples": [
+      {
+        "en": "A good coat can protect you from::... you ... the cold.The helmet protected his head from::... his head ... injury in the crash. Our dog protects our home from::... our home ... robbers.A: Why do you put a fence around your flowers?B: It protects them from::... them ... hungry rabbits."
+      }
+    ],
+    "lesson": "Unit 25",
+    "audioFile": "protect A from B.mp3"
+  },
+  {
+    "id": "en-exp1-242",
+    "template": "english",
+    "word": "prove to be",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "là (xác nhận)",
+      "en": "turn out to be;"
+    },
+    "examples": [
+      {
+        "en": "He proved to be the strongest.The man proved to be criminal. She proved to be an unfaithful friend.A: Why was the man let out of jail?B: The fingerprints on the gun proved to be someone else's."
+      }
+    ],
+    "lesson": "Unit 25",
+    "audioFile": "prove to be.mp3"
+  },
+  {
+    "id": "en-exp1-243",
+    "template": "english",
+    "word": "put down",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đặt xuống",
+      "en": "set something on a surface"
+    },
+    "examples": [
+      {
+        "en": "put down the wire!When he finished the letter, he put down his pencil. The bag was too heavy, so I put it down::... it ....A: Where do you want this box?B: Just put it down::... it ... by the door, thanks."
+      }
+    ],
+    "lesson": "Unit 25",
+    "audioFile": "put down.mp3"
+  },
+  {
+    "id": "en-exp1-244",
+    "template": "english",
+    "word": "put off",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "trì hoãn, hoãn, không còn thích",
+      "en": "delay; postpone; defer;"
+    },
+    "examples": [
+      {
+        "en": "\"He put off washing his shirt for too long!Don't put off doing your homework. You should not put it off::... it ... until tomorrow.A: Do you like cleaning your room?B: No. I put it off::... it ... as long as possible.Chúng ta sử dụng cụm từ “put off” khi muốn nói trì hoãn việc gì hoặc không còn thích ai hay thứ gì nữa. “Put off” cũng được dùng với nghĩa là làm phiền hay trốn tránh ai.I put off seeing the doctor until it was almost too late. (Tôi đã trì hoãn việc gặp bác sĩ cho tới khi mọi chuyện gần như đã quá muộn.)Her vacation was scheduled to begin next week, and she was afraid of putting it off. (Kì nghỉ của cô ấy được lên kế hoạch bắt đầu từ tuần sau nhưng cô ấy sợ rằng phải hoãn lại nó.)I was put off fish because the last time I had some it was spoiled. (Tôi không còn thích cá nữa vì lần cuối cùng ăn thì chúng bị hỏng.)You really put people off with your scowling face. (Cậu thực sự đã làm phiền mọi người với khuôn mặt cau có ấy.)I won’t talk to reporters now. Tell them something that will put them off. (Tôi không muốn nói chuyện với phóng viên bây giờ. Hãy nói với họ vài điều để tránh họ đi.)\""
+      }
+    ],
+    "lesson": "Unit 25",
+    "audioFile": "put off.mp3"
+  },
+  {
+    "id": "en-exp1-245",
+    "template": "english",
+    "word": "put on",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "mặc, đeo",
+      "en": "get dressed in; wear; have on;"
+    },
+    "examples": [
+      {
+        "en": "He put on his helmet before the game started.The girl put on her glasses to read. She put on her swimming suit.A: Let's go for a walk.B: OK. Let me put on my shoes.Wear và put on đều có nghĩa là mặc nhưng put on là động từ thể hiện hành động mặc vào, đeo (kính) vào, đi (giày) vào còn wear lại là động từ để chỉ trạng thái mặc thứ gì (quần áo, giày dép…)"
+      }
+    ],
+    "lesson": "Unit 25",
+    "audioFile": "put on.mp3"
+  },
+  {
+    "id": "en-exp1-246",
+    "template": "english",
+    "word": "put together",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "lắp ráp, ghép, tham gia, gia nhập",
+      "en": "join parts together; assemble;"
+    },
+    "examples": [
+      {
+        "en": "He put together a house of cards.The boy put together a model airplane. Let's put together that puzzle.A: I think we should put together a ski club.B: Good idea. I'll ask my friends at work."
+      }
+    ],
+    "lesson": "Unit 25",
+    "audioFile": "put together.mp3"
+  },
+  {
+    "id": "en-exp1-247",
+    "template": "english",
+    "word": "put up with",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "chịu đựng, chấp nhận",
+      "en": "suffer without complaining; stand; tolerate;"
+    },
+    "examples": [
+      {
+        "en": "I can't put up with cockroaches.She likes cats, but can't put up with their hair. He refuses to put up with people who smoke in the bathroom.A: Ha-Ha! You're stupid. You can't do math!B: Stop it! I can't put up with your teasing me anymore.cockroach /'kɔkroutʃ/: con giánteasing /'ti:ziɳ/: chòng nghẹo, trêu tức"
+      }
+    ],
+    "lesson": "Unit 25",
+    "audioFile": "put up with.mp3"
+  },
+  {
+    "id": "en-exp1-248",
+    "template": "english",
+    "word": "quite a few",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "kha khá, khá nhiều",
+      "en": "many; not a few; a number of; a lot of;"
+    },
+    "examples": [
+      {
+        "en": "There are quite a few fish in the group.There were quite a few people at the park. There are quite a few good movies at the cinema. A: About fifty people went to Kim's birthday party.B: Wow! That's quite a few people!"
+      }
+    ],
+    "lesson": "Unit 25",
+    "audioFile": "quite a few.mp3"
+  },
+  {
+    "id": "en-exp1-249",
+    "template": "english",
+    "word": "remind A of B",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "gợi nhớ",
+      "en": "make A think of B; be reminiscent of; evoke;"
+    },
+    "examples": [
+      {
+        "en": "\"He reminds me of::... me ... his father.The picture reminds him of::... him ... home.She reminds me of::... me ... a movie star.A: Why does this song remind you of::... you ... your grandfather?B: Because it was his favorite song.reminiscent /,remi'nisnt/adj: nhớ lại, gợi lạito evoke /i'vouk/: gợi lên (kí ức)\"\"REMIND OF\"\": nhắc, gợi nhớ đến điều gì (Việc đã diễn ra trong quá khứ, đã biết hoặc đã quen thuộc)\""
+      }
+    ],
+    "lesson": "Unit 25",
+    "audioFile": "remind A of B.mp3"
+  },
+  {
+    "id": "en-exp1-250",
+    "template": "english",
+    "word": "remove A from B",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "từ bỏ, bỏ đi",
+      "en": "get rid of; take away from;"
+    },
+    "examples": [
+      {
+        "en": "She wanted to remove the lock from::... the lock ... the door.I removed his name from::... his name ... the list. He removed the ring from::... the ring ... his finger.A: Whose shoes are those?B: They're mine. I'll remove them from::... them ... the room."
+      }
+    ],
+    "lesson": "Unit 25",
+    "audioFile": "remove A from B.mp3"
+  },
+  {
+    "id": "en-exp1-251",
+    "template": "english",
+    "word": "result from",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "gây ra bởi, là kết quả của, khiến cái gì xảy ra",
+      "en": "be caused by; arise from;"
+    },
+    "examples": [
+      {
+        "en": "A big stomach can result from eating too much.The flood resulted from too much rain. The fire resulted from a cigarette in the garbage can.A: Why did you do poorly on the test?B: It resulted from my not studying last night."
+      }
+    ],
+    "lesson": "Unit 26",
+    "audioFile": "result from.mp3"
+  },
+  {
+    "id": "en-exp1-252",
+    "template": "english",
+    "word": "right away",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "ngay tức thì, ngay lập tức",
+      "en": "immediately; without delay; at once; right now;"
+    },
+    "examples": [
+      {
+        "en": "He needs help right away.She has to go to hospital right away! Stay there! I am coming right away!A: Can you stay for a few more minutes?B: Sorry. I have to leave right away."
+      }
+    ],
+    "lesson": "Unit 26",
+    "audioFile": "right away.mp3"
+  },
+  {
+    "id": "en-exp1-253",
+    "template": "english",
+    "word": "run across",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "gặp tình cờ, vô tình tìm thấychạy ngang qua, thình lình bắt gặp",
+      "en": "find or meet by chance; come across; encounter; discover;"
+    },
+    "examples": [
+      {
+        "en": "He was surprised to run across the old record in his friends collection.She ran across her old boyfriend at the store. If you run across that file, please let me know.A: When did you find this great article?B: I ran across it in yesterday's newspaper."
+      }
+    ],
+    "lesson": "Unit 26",
+    "audioFile": "run across.mp3"
+  },
+  {
+    "id": "en-exp1-254",
+    "template": "english",
+    "word": "run after",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đuổi theo, bám theo",
+      "en": "chase; follow;"
+    },
+    "examples": [
+      {
+        "en": "\"The monster ran after the boy.The kids ran after the ice cream truck. The cat ran after the dog.A: Why is the police officer running after that man?B: Because he stole that woman's purse.purse /pə:s/: cái víRun after có nghĩa là đuổi theo, bám theo ai đó hoặc cái gì đó. Ngoài ra nó cũng được dùng với nghĩa là cố gắng làm cho ai đó chú ý đến bạn.The fox ran after the rabbit. (Con cáo đuổi theo con thỏ).She ran after me to hand me some papers I’d dropped. (Cô ấy đuổi theo tôi để đưa tôi một số giấy tờ tôi đã đánh rơi).Is Tom still running after Ann? (Tom vẫn còn đang theo đuổi Ann sao?)\""
+      }
+    ],
+    "lesson": "Unit 26",
+    "audioFile": "run after.mp3"
+  },
+  {
+    "id": "en-exp1-255",
+    "template": "english",
+    "word": "run away",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "chạy trốn, chạy thoát, bỏ trốn",
+      "en": "leave a place quickly; escape;"
+    },
+    "examples": [
+      {
+        "en": "They had to run away.He ran away from the bear. The boy ran away from home.A: Do you have any pets?B: I had a puppy, but it ran away two weeks ago."
+      }
+    ],
+    "lesson": "Unit 26",
+    "audioFile": "run away.mp3"
+  },
+  {
+    "id": "en-exp1-256",
+    "template": "english",
+    "word": "run out of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "hết (cái gì), cạn kiệt",
+      "en": "use up; finish; exhaust;"
+    },
+    "examples": [
+      {
+        "en": "We've run out of water.Oh no! The store ran out of bread! I ran out of money at the casino.A: Why did the car stop?!B: Because we just ran out of gas!"
+      }
+    ],
+    "lesson": "Unit 26",
+    "audioFile": "run out of.mp3"
+  },
+  {
+    "id": "en-exp1-257",
+    "template": "english",
+    "word": "see off",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "tạm biệt, từ biệt (bạn anh ấy, chị gái tôi, anh/bạn)",
+      "en": "say goodbye to;"
+    },
+    "examples": [
+      {
+        "en": "He came to see his friend off::... his friend ... on his journey.We went to see my sister off::... my sister ... at the airport. Can I come and see you off::... you ....A: I'm leaving for China tomorrow morning.B: Okay. I'll be there at the airport to see you off."
+      }
+    ],
+    "lesson": "Unit 26",
+    "audioFile": "see off.mp3"
+  },
+  {
+    "id": "en-exp1-258",
+    "template": "english",
+    "word": "set up",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "sắp xếp, chuẩn bị, thu xếp",
+      "en": "build; put up;"
+    },
+    "examples": [
+      {
+        "en": "They set up the bowling pins.He set up a hot dog stand at the fair. The campers set up their tent.A: Have you used the new computer that you got last week?B: No, I haven't. It's still in the box because I don't know how to set it up::... it ...!"
+      }
+    ],
+    "lesson": "Unit 26",
+    "audioFile": "set up.mp3"
+  },
+  {
+    "id": "en-exp1-259",
+    "template": "english",
+    "word": "shake hands with",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "bắt tay",
+      "en": "hold someone's hand and move it up and down as a greeting;"
+    },
+    "examples": [
+      {
+        "en": "They are shaking hands with each other'The president shook hands with the prime minister. I had the chance to shake hands with the movie star.A: Do American people bow when they meet each other for the first time?B: No they don't. They shake hands with each other"
+      }
+    ],
+    "lesson": "Unit 26",
+    "audioFile": "shake hands with.mp3"
+  },
+  {
+    "id": "en-exp1-260",
+    "template": "english",
+    "word": "show off",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "khoe, khoe khoang, phô trương",
+      "en": "show proudly; display proudly;"
+    },
+    "examples": [
+      {
+        "en": "She wanted to show off her expensive coat.He showed off his new shoes at school. The girl showed off her report card to her brother.A: Look! I got an A on my test!B: Stop showing off!"
+      }
+    ],
+    "lesson": "Unit 26",
+    "audioFile": "show off.mp3"
+  },
+  {
+    "id": "en-exp1-261",
+    "template": "english",
+    "word": "show up",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đến, xuất hiện (ở đâu)",
+      "en": "arrive at a place; turn up;"
+    },
+    "examples": [
+      {
+        "en": "The owl showed up late at night.She showed up three hours late. The man didn't show up for work.A: Is Nate coming to the party tonight?B: Yes. He said he would show up around 7:00."
+      }
+    ],
+    "lesson": "Unit 27",
+    "audioFile": "show up.mp3"
+  },
+  {
+    "id": "en-exp1-262",
+    "template": "english",
+    "word": "side by side",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "bên cạnh nhau, kề sát nhau",
+      "en": "next to each other;"
+    },
+    "examples": [
+      {
+        "en": "They walked side by side.The trees grew side by side along the river. They sat side by side on the bench.A: Do you sit next to Amy at school?B: Yes I do. We sit side by side at the same desk."
+      }
+    ],
+    "lesson": "Unit 27",
+    "audioFile": "side by side.mp3"
+  },
+  {
+    "id": "en-exp1-263",
+    "template": "english",
+    "word": "slow down",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "chậm lại, giảm tốc độ",
+      "en": "become slower; reduce speed;"
+    },
+    "examples": [
+      {
+        "en": "\"He should slow down.The train slowed down as it reached the station. She slowed down when she drove by the children.A: Please slow down! You're walking too fast.B: Sorry. I'll walk more slowly.Slow down được dùng để chỉ việc hoạt động ít hơn và thư giãn nhiều hơn.Slow down còn dùng để chỉ việc giảm tốc độ, di chuyển chậm lại hoặc hành động chậm chạp hơn.The illness slowed me down. (Căn bệnh làm tôi chậm lại).You need to slow down more and more. (Bạn cần thư giãn nhiều và nhiều hơn nữa).The car is slowed down as they gone traffic jam. (Chiếc xe bị chậm lại khi chúng rơi vào tình trạng tắc nghẽn giao thông)\""
+      }
+    ],
+    "lesson": "Unit 27",
+    "audioFile": "slow down.mp3"
+  },
+  {
+    "id": "en-exp1-264",
+    "template": "english",
+    "word": "so far",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "cho đến nay",
+      "en": "thus far; up to now;"
+    },
+    "examples": [
+      {
+        "en": "He's eaten seven hot dogs so far.The weather has been dry so far this year. I have met three new people so far.A: Are you almost finished with that book?B: No. I've only read two chapters so far."
+      }
+    ],
+    "lesson": "Unit 27",
+    "audioFile": "so far.mp3"
+  },
+  {
+    "id": "en-exp1-265",
+    "template": "english",
+    "word": "sooner or later",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "cuối cùng thì (chuyện gì đó sẽ xảy ra); sớm hay muộn, chẳng chóng thì chầy",
+      "en": "in the end; eventually; in time;"
+    },
+    "examples": [
+      {
+        "en": "sooner or later, he's going to hurt himself.The police will catch the thief sooner or later. Don't worry. She'll be here sooner or later.A: I love getting into movies for half- price.B: Be careful. sooner or later they are going to find out that you're not a college student!"
+      }
+    ],
+    "lesson": "Unit 27",
+    "audioFile": "sooner or later.mp3"
+  },
+  {
+    "id": "en-exp1-266",
+    "template": "english",
+    "word": "speak ill of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "chê trách, nói xấu, chỉ trích, chê trách",
+      "en": "say bad things about; speak badly of; condemn;"
+    },
+    "examples": [
+      {
+        "en": "He began to speak ill of his ex-girlfriend.The workers spoke ill of the factory owner. She spoke ill of the man who had married her friend.A: Why does everybody speak ill of Katie?B: Because she is greedy and unkind.greedy /'gri:di/: tham lam"
+      }
+    ],
+    "lesson": "Unit 27",
+    "audioFile": "speak ill of.mp3"
+  },
+  {
+    "id": "en-exp1-267",
+    "template": "english",
+    "word": "speak well of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "khen ngợi",
+      "en": "say good things about; speak highly of; praise;"
+    },
+    "examples": [
+      {
+        "en": "He always speaks well of his parents.The boss spoke well of the new worker. The teacher speaks well of your son.A: Do people speak well of her?B: Yes they do. They say she's very patient and kind."
+      }
+    ],
+    "lesson": "Unit 27",
+    "audioFile": "speak well of.mp3"
+  },
+  {
+    "id": "en-exp1-268",
+    "template": "english",
+    "word": "spend on",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "tiêu (tiền)",
+      "en": "use money to pay for something;"
+    },
+    "examples": [
+      {
+        "en": "How much did you spend on your pants'?He spends all his money on::... all his money ... gambling. I spent too much money on::... too much money ... that trip to Hawaii.A: How much do you spend on food each week?B: About $50, I guess. How about you?"
+      }
+    ],
+    "lesson": "Unit 27",
+    "audioFile": "spend on.mp3"
+  },
+  {
+    "id": "en-exp1-269",
+    "template": "english",
+    "word": "stand for",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đại diện cho, viết tắt của",
+      "en": "represent; mean; be a sign of;"
+    },
+    "examples": [
+      {
+        "en": "The dove stands for peace.The heart stands for love. In China the color red stands for good luck.A: What does your middle initial stand for?B: The S is for Simon. It was my grandfather's name"
+      }
+    ],
+    "lesson": "Unit 27",
+    "audioFile": "stand for.mp3"
+  },
+  {
+    "id": "en-exp1-270",
+    "template": "english",
+    "word": "stay up",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "thức",
+      "en": "not go to bed; remain awake;"
+    },
+    "examples": [
+      {
+        "en": "The boy stayed up late playing video games.The children were not allowed to stay up after 9:00. He had to stay up late to study last night.A: I went to sleep at 3:00 am last night.B: Wow! You stayed up late!"
+      }
+    ],
+    "lesson": "Unit 27",
+    "audioFile": "stay up.mp3"
+  },
+  {
+    "id": "en-exp1-271",
+    "template": "english",
+    "word": "stick to",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "giới hạn vào, bám vàogiữ, giữ vững",
+      "en": "follow; adhere to;"
+    },
+    "examples": [
+      {
+        "en": "The fish should stick to water.I tried playing the guitar, but I think I will just stick to piano. Her doctor said that she should stick to her current diet plan.A: I promised my parents I would study tonight, but I want to play computer games!B: Don't play computer games. stick to your promise!"
+      }
+    ],
+    "lesson": "Unit 28",
+    "audioFile": "stick to.mp3"
+  },
+  {
+    "id": "en-exp1-272",
+    "template": "english",
+    "word": "such as",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "như là, giống như",
+      "en": "for example; like; say;"
+    },
+    "examples": [
+      {
+        "en": "Animals such as monkeys and gorillas are primates.The store sells electronic goods such as radios, computers, and cameras. We visited many cities in Italy such as Rome, Venice, and Milan.A: What does your dad sell in his store?B: He sells sporting goods, such as basketballs, bicycles, and shoes.primates /prai'meiti:z/: linh trưởng"
+      }
+    ],
+    "lesson": "Unit 28",
+    "audioFile": "such as.mp3"
+  },
+  {
+    "id": "en-exp1-273",
+    "template": "english",
+    "word": "take advantage of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "lợi dung, tận dụng (ai, cái gì)",
+      "en": "make use of; profit from;"
+    },
+    "examples": [
+      {
+        "en": "We should take advantage of the nice weather and go to the beach.He took advantage of the low prices and bought a dozen pens. The kids took advantage of the holiday and went to the zoo.A: Bob works at a CD store. He can give us a discount!B: We shouldn't take advantage of him."
+      }
+    ],
+    "lesson": "Unit 28",
+    "audioFile": "take advantage of.mp3"
+  },
+  {
+    "id": "en-exp1-274",
+    "template": "english",
+    "word": "take after",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "giống với (người nào, vật gì)",
+      "en": "look like; resemble;"
+    },
+    "examples": [
+      {
+        "en": "The boy takes after his father.She really takes after her mother. You really take after your grandfather.A: Joe is an excellent soccer player.B: He takes after his father. He is very good at sports."
+      }
+    ],
+    "lesson": "Unit 28",
+    "audioFile": "take after.mp3"
+  },
+  {
+    "id": "en-exp1-275",
+    "template": "english",
+    "word": "take care of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "chăm sóc, để mắt đến",
+      "en": "look after; keep an eye on; protect;"
+    },
+    "examples": [
+      {
+        "en": "You must promise to take care of them.The nurse took care of the sick patient. My mother takes good care of::... good ... me.A: I'll be gone for one week. Can you take care of my cat?B: Yes. I'll give her food and water, and play with her every day."
+      }
+    ],
+    "lesson": "Unit 28",
+    "audioFile": "take care of.mp3"
+  },
+  {
+    "id": "en-exp1-276",
+    "template": "english",
+    "word": "take lessons",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "học",
+      "en": "learn;"
+    },
+    "examples": [
+      {
+        "en": "He is taking singing lessons::... singing ....The children take piano lessons::... piano .... I took lessons in dancing.A: How did she learn to play the guitar so well?B: She took lessons for six years."
+      }
+    ],
+    "lesson": "Unit 28",
+    "audioFile": "take lessons.mp3"
+  },
+  {
+    "id": "en-exp1-277",
+    "template": "english",
+    "word": "take off",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "cất cánh, rời đibỏ đi (mà không nói với ai)",
+      "en": "rise in flight; leave;"
+    },
+    "examples": [
+      {
+        "en": "The helicopter is ready to take off.She took off before I could say goodbye. The plane will be taking off on time.A: Let's go for a drive in the country.B: Okay! After I finish eating we'll take off."
+      }
+    ],
+    "lesson": "Unit 28",
+    "audioFile": "take off.mp3"
+  },
+  {
+    "id": "en-exp1-278",
+    "template": "english",
+    "word": "take part in",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "tham gia, tham dự",
+      "en": "be involved in; join in; participate in;"
+    },
+    "examples": [
+      {
+        "en": "I'm sorry. I don't think you can take part in our game.It is an honour to take part in the Olympics. She wanted to take part in the meeting.A: Are you going to take part in the science fair on Saturday?B: I want to, but I can't. I'm going to my grandmother's house on Saturday."
+      }
+    ],
+    "lesson": "Unit 28",
+    "audioFile": "take part in.mp3"
+  },
+  {
+    "id": "en-exp1-279",
+    "template": "english",
+    "word": "take place",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "xảy ra, diễn ra",
+      "en": "occur; happen; come about;"
+    },
+    "examples": [
+      {
+        "en": "An eclipse takes place every few years.The 2000 Olympics took place in Sydney, Australia. The conference will take place at the Hyatt Hote.A: Where will the school picnic be tomorrow?B: It'll take place at Simon's Park."
+      }
+    ],
+    "lesson": "Unit 28",
+    "audioFile": "take place.mp3"
+  },
+  {
+    "id": "en-exp1-280",
+    "template": "english",
+    "word": "take pride in",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "tự hào về",
+      "en": "be proud of; pride oneself on;"
+    },
+    "examples": [
+      {
+        "en": "He takes pride in his work.I take pride in my painting. She took pride in her son's good grades.A: Your mom always makes delicious food!B: Yes, she takes pride in her cooking."
+      }
+    ],
+    "lesson": "Unit 28",
+    "audioFile": "take pride in.mp3"
+  },
+  {
+    "id": "en-exp1-281",
+    "template": "english",
+    "word": "talk over",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "nói về, thảo luận",
+      "en": "talk about; speak about; discuss;"
+    },
+    "examples": [
+      {
+        "en": "The decided to talk over their problem.They talked over the plan. We talked over an idea for the next party.A: Can you go to the concert with us on Saturday night?B: I'm going to talk it over::... it ... with my dad tonight."
+      }
+    ],
+    "lesson": "Unit 29",
+    "audioFile": "talk over.mp3"
+  },
+  {
+    "id": "en-exp1-282",
+    "template": "english",
+    "word": "take turns",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "làm lần lượt việc gì; làm việc gì theo thứ tự lần lượt",
+      "en": "do one after another; do by turns; alternate;"
+    },
+    "examples": [
+      {
+        "en": "They took turns skipping.We take turns watching the baby. She took turns with her brother on the sled.A: It's going to be a long trip.B: Let's take turns driving."
+      }
+    ],
+    "lesson": "Unit 29",
+    "audioFile": "take turns.mp3"
+  },
+  {
+    "id": "en-exp1-283",
+    "template": "english",
+    "word": "thanks for",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "cảm ơn về/vì",
+      "en": "said to show gratitude for something;"
+    },
+    "examples": [
+      {
+        "en": "He says thanks for repairing the spaceship.thanks for all your help. Be sure to say thanks for the wonderful dinner.A: thanks for helping me clean my room!B: No problem. Now let's go outside and play."
+      }
+    ],
+    "lesson": "Unit 29",
+    "audioFile": "thanks for.mp3"
+  },
+  {
+    "id": "en-exp1-284",
+    "template": "english",
+    "word": "think about",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "nghĩ về/mơ về, suy nghĩ/cân nhắc",
+      "en": "recall or imagine fondly; dream of;"
+    },
+    "examples": [
+      {
+        "en": "\"He can't stop thinking about the girl.During the storm, I thought about sunshine. She thinks about her trip to Paris often.A: Do you miss your grandmother?B: Yes, I do. I think about her every day.think of - chỉ hành động hình dung ra trong đầu hình ảnh của ai/vật gì think about - thường dùng chỉ hành động suy nghĩ để đưa ra quyết định về việc gì/ai Tuy nhiên trong giao tiếp hàng ngày vẫn có thể dùng cả hai cụm này để cùng diễn đạt một ý\""
+      }
+    ],
+    "lesson": "Unit 29",
+    "audioFile": "think about.mp3"
+  },
+  {
+    "id": "en-exp1-285",
+    "template": "english",
+    "word": "think of",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "hình dung, tưởng tượng",
+      "en": "create a picture or idea in your imagination;"
+    },
+    "examples": [
+      {
+        "en": "He thought of a good idea for lunch.He couldn't think of the answer. Can you think of a better way.A: Can you think of a nice place for a vacation?B: How about Hawaii?Think of - chỉ hành động hình dung ra trong đầu hình ảnh của ai/vật gì Think about - thường dùng chỉ hành động suy nghĩ để đưa ra quyết định về việc gì/ai Tuy nhiên trong giao tiếp hàng ngày vẫn có thể dùng cả hai cụm này để cùng diễn đạt một ý"
+      }
+    ],
+    "lesson": "Unit 29",
+    "audioFile": "think of.mp3"
+  },
+  {
+    "id": "en-exp1-286",
+    "template": "english",
+    "word": "throw away",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "vứt bỏ, thoát khỏi,lãng phí (cơ hội)",
+      "en": "get rid of something; throw out;"
+    },
+    "examples": [
+      {
+        "en": "\"Please throw away your garbage.I don't want to throw away this old chair.He was angry because she threw away his favorite old hat.A: Can I throw away these boxes?B: Yes you can. I don't need them.When are you going to throw away those old magazines? (Khi nào bạn sẽ vứt những cuốn tạp chí cũ này?)It’s a chance to audition for the Metropolitan Opera – don’t throw it away. (Đây là cơ hội để thử giọng cho Metropolitan Opera – đừng bỏ lỡ nó).\""
+      }
+    ],
+    "lesson": "Unit 29",
+    "audioFile": "throw away.mp3"
+  },
+  {
+    "id": "en-exp1-287",
+    "template": "english",
+    "word": "to tell the truth",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "nói thật, nói sự thật",
+      "en": "to be honest; to be frank; in all honesty; honestly; frankly;"
+    },
+    "examples": [
+      {
+        "en": "to tell the truth, I ate the sheep.to tell the truth, I don't like her at all. to tell the truth, I got up late this morning.A: How about pizza for dinner?B: to tell the truth, I don't like pizza. Can we eat something else?"
+      }
+    ],
+    "lesson": "Unit 29",
+    "audioFile": "to tell the truth.mp3"
+  },
+  {
+    "id": "en-exp1-288",
+    "template": "english",
+    "word": "try on",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "mặc thử đồ",
+      "en": "put on clothes to check the style or fit;"
+    },
+    "examples": [
+      {
+        "en": "He is trying on a new sweater.Can I try these shoes on::... these shoes ...? He tried on the shorts, but they were too big.A: I like these pants, but I think they're too small.B: try them on::... them .... Maybe they'll fit.sweater /'swetə/: áo len dài tayTry on được dùng nhiều trong thời trang, may mặc. Nó có nghĩa là thử đồ lên người xem có phù hợp hay không."
+      }
+    ],
+    "lesson": "Unit 29",
+    "audioFile": "try on.mp3"
+  },
+  {
+    "id": "en-exp1-289",
+    "template": "english",
+    "word": "turn off",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "tắt, ngắt",
+      "en": "switch off; shut off; disconnect; unplug;"
+    },
+    "examples": [
+      {
+        "en": "turn off the lights.Please turn off the TV. I forgot to turn the stove off::... the stove ....A: Are you using the computer?B: No, you can turn it off::... it ...."
+      }
+    ],
+    "lesson": "Unit 29",
+    "audioFile": "turn off.mp3"
+  },
+  {
+    "id": "en-exp1-290",
+    "template": "english",
+    "word": "turn on",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "bật",
+      "en": "start the flow of power;"
+    },
+    "examples": [
+      {
+        "en": "turn on the lights.I want to turn on the air conditioner! Could you turn the fan on::... the fan ..., please?A: Let's listen to some music!B: Okay! I'll turn on the radio."
+      }
+    ],
+    "lesson": "Unit 29",
+    "audioFile": "turn on.mp3"
+  },
+  {
+    "id": "en-exp1-291",
+    "template": "english",
+    "word": "wait for",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đợi, chờ đợi",
+      "en": "hold on; hang on; await;"
+    },
+    "examples": [
+      {
+        "en": "He is waiting for the bus.What are you waiting for? I have to wait for my clothes to dry.A: He said he'd be here at 8:00, but it's 8:30. Should we wait for him?B: Yes. Maybe he got lost."
+      }
+    ],
+    "lesson": "Unit 30",
+    "audioFile": "wait for.mp3"
+  },
+  {
+    "id": "en-exp1-292",
+    "template": "english",
+    "word": "wake up",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "thức dậy",
+      "en": "arise from sleep; become awake;"
+    },
+    "examples": [
+      {
+        "en": "It is time for him to wake up.wake up! You're late for work! She woke up in the middle of the night.A: Be quiet! You'll wake up the baby!B: Sorry. I'll practice my trumpet outside."
+      }
+    ],
+    "lesson": "Unit 30",
+    "audioFile": "wake up.mp3"
+  },
+  {
+    "id": "en-exp1-293",
+    "template": "english",
+    "word": "watch out",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "coi chừng, cẩn thận",
+      "en": "look out; be careful; beware;"
+    },
+    "examples": [
+      {
+        "en": "\"watch out for that hole.watch out! There is a bee on your arm! The old monkey is very mean, so watch out.A: I'm going for a bike ride.B: watch out for cars!\"\"Look out\"\" có vẻ đặc biệt dành cho trường hợp có nguy hiểm ngay tức thì. \"\"watch out\"\" có thể dùng khi chưa có gì xảy ra cả.\""
+      }
+    ],
+    "lesson": "Unit 30",
+    "audioFile": "watch out.mp3"
+  },
+  {
+    "id": "en-exp1-294",
+    "template": "english",
+    "word": "wear out",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "làm rách, làm hỏng(đồ may mặc...)",
+      "en": "make useless; damage;"
+    },
+    "examples": [
+      {
+        "en": "The girl wore out the doll.He wore out two pairs of socks last year. She wears her pants out::... her pants ... very quickly.A: Wow! Your shoes have a lot of holes!B: I know. They wore out because I walked five miles in them everyday.Wear out nghĩa là làm cho ai đó cảm thấy mệt mỏi. Ngoài ra nó cũng được dùng với nghĩa là sử dụng một đồ vật gì đó rất nhiều khiến nó bị rách (như quần áo, giày dép,…), không thể sử dụng được nữa."
+      }
+    ],
+    "lesson": "Unit 30",
+    "audioFile": "wear out.mp3"
+  },
+  {
+    "id": "en-exp1-295",
+    "template": "english",
+    "word": "what's the matter (with)",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "có chuyện gì ?có vấn đề gì ?",
+      "en": "what's the problem; what's the wrong; what's the trouble;"
+    },
+    "examples": [
+      {
+        "en": "\"Mommy says, \"\"what's the matter?\"\"Please tell me what's the matter with my dog. She's crying. what's the matter with her.A: You don't look good. what's the matter?B: I have a bad headache and I'm very tired.\""
+      }
+    ],
+    "lesson": "Unit 30",
+    "audioFile": "what's the matter (with).mp3"
+  },
+  {
+    "id": "en-exp1-296",
+    "template": "english",
+    "word": "worthwhile to/~ing",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "đáng giá, bõ công",
+      "en": "worth the time and effort spent"
+    },
+    "examples": [
+      {
+        "en": "It would be worthwhile to stop smoking.It is worthwhile to study a foreign language. She thinks it is worthwhile saving money.A: I haven't been to the new aquarium. Would it be worthwhile to go?B: Yes! They have many beautiful fish and other interesting animals there.aquarium /ə'kweəriəm/: khu công viên có bể nuôi (cá, loài thuỷ sinh)"
+      }
+    ],
+    "lesson": "Unit 30",
+    "audioFile": "worthwhile to_-ing.mp3"
+  },
+  {
+    "id": "en-exp1-297",
+    "template": "english",
+    "word": "would like to",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "muốn (làm) gì(lịch sự)",
+      "en": "have a desire to do; want to; wish;"
+    },
+    "examples": [
+      {
+        "en": "The rabbit would like to fly.She would like to become a doctor. They would like to go to the beach.A: I would like to see that new movie. Do you want to go?B: Yes. Let's go this weekend."
+      }
+    ],
+    "lesson": "Unit 30",
+    "audioFile": "would like to.mp3"
+  },
+  {
+    "id": "en-exp1-298",
+    "template": "english",
+    "word": "would rather",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "thích.....hơn",
+      "en": "would prefer to; would sooner; prefer;"
+    },
+    "examples": [
+      {
+        "en": "He would rather eat Chinese food.I would rather live in a house than in an apartment. She would rather be fishing.A: would you rather::... you ...? go swimming or play computer games today?B: I would rather go swimming."
+      }
+    ],
+    "lesson": "Unit 30",
+    "audioFile": "would rather.mp3"
+  },
+  {
+    "id": "en-exp1-299",
+    "template": "english",
+    "word": "write back",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "hồi đáp, trả lời thư",
+      "en": "reply by letter; answer; acknowledge"
+    },
+    "examples": [
+      {
+        "en": "I have to write back to my friend.Have you written back to your grandmother? Please write back to me.A: Have you heard from Ted yet?B: Yes. He sent me a letter last week, and I'm going to write back to him tonight."
+      }
+    ],
+    "lesson": "Unit 30",
+    "audioFile": "write back.mp3"
+  },
+  {
+    "id": "en-exp1-300",
+    "template": "english",
+    "word": "write down",
+    "partOfSpeech": "phrase",
+    "meaning": {
+      "vi": "viết ra",
+      "en": "make a note of; put down; take down"
+    },
+    "examples": [
+      {
+        "en": "He wrote down the directions.Please write down this number. Her mother told him about his family history and he wrote it down::... it ....A: May I have your telephone number?B: Yes, I'll write it down::... it ... for you."
+      }
+    ],
+    "lesson": "Unit 30",
+    "audioFile": "write down.mp3"
+  }
+]

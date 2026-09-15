@@ -7,12 +7,29 @@ import { grammarN3 } from '../jlpt/n3/grammarN3';
 import { allN2Grammar } from '../jlpt/n2/grammar';
 import { keigoVerbs } from '../jlpt/keigo/keigoDb';
 import verbsConjugation from '../jlpt/conjugation/verbs.json';
+import {
+  essentialWordsStarter,
+  essentialWords1,
+  essentialWords2,
+  essentialWords3,
+  essentialWords4,
+  essentialWords5,
+  essentialWords6,
+  toeic600,
+  expressionsBook1,
+} from '../english/courses';
 
 export type SubjectType = 'vocab' | 'kanji_single' | 'kanji_words' | 'grammar' | 'special';
-export type LevelType = 'N5' | 'N4' | 'N3' | 'N2' | 'N1' | 'ALL';
+export type LevelType = 'N5' | 'N4' | 'N3' | 'N2' | 'N1' | 'ALL' | 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
 
 export type TemplateType = 'japanese' | 'english' | 'generic';
 export type ExtractType = 'all' | 'kanji_only' | 'vocabulary_only';
+
+export interface CourseAuthor {
+  name: string;
+  isOfficial?: boolean;
+  avatar?: string;
+}
 
 export interface Course {
   id: string;
@@ -24,6 +41,7 @@ export interface Course {
   data: any[]; // The raw data array
   template?: TemplateType;
   extractType?: ExtractType;
+  author?: CourseAuthor;
 }
 
 // Giả lập chia nhỏ các khóa học dựa trên Data tĩnh hiện tại
@@ -126,17 +144,123 @@ export const COURSE_REGISTRY: Course[] = [
     level: 'ALL',
     color: 'orange',
     data: verbsConjugation as any[]
-  }
+  },
+  // ── English Courses ────────────────────────────────────────────────────
+  {
+    id: 'en-essential-starter',
+    name: '4000 Essential Words – Starter & Phụ lục',
+    description: 'Từ điển hình ảnh cơ bản: Cơ thể, Gia đình, Màu sắc, Quần áo, Đồ ăn, Thể thao và Động thực vật.',
+    subject: 'vocab',
+    level: 'A1',
+    color: 'emerald',
+    template: 'english',
+    data: essentialWordsStarter as any[]
+  },
+  {
+    id: 'en-essential-1',
+    name: '4000 Essential English Words 1',
+    description: 'Quyển 1: 30 bài học xây dựng vốn từ vựng nền tảng tiếng Anh thực chiến (600 từ).',
+    subject: 'vocab',
+    level: 'A1',
+    color: 'teal',
+    template: 'english',
+    data: essentialWords1 as any[]
+  },
+  {
+    id: 'en-essential-2',
+    name: '4000 Essential English Words 2',
+    description: 'Quyển 2: 30 bài học phát triển từ vựng sơ trung cấp A2 (600 từ).',
+    subject: 'vocab',
+    level: 'A2',
+    color: 'cyan',
+    template: 'english',
+    data: essentialWords2 as any[]
+  },
+  {
+    id: 'en-essential-3',
+    name: '4000 Essential English Words 3',
+    description: 'Quyển 3: 30 bài học nâng cao phản xạ từ vựng trung cấp B1 (600 từ).',
+    subject: 'vocab',
+    level: 'B1',
+    color: 'blue',
+    template: 'english',
+    data: essentialWords3 as any[]
+  },
+  {
+    id: 'en-essential-4',
+    name: '4000 Essential English Words 4',
+    description: 'Quyển 4: 30 bài học từ vựng trung cao cấp B2 cho học thuật và đời sống (600 từ).',
+    subject: 'vocab',
+    level: 'B2',
+    color: 'indigo',
+    template: 'english',
+    data: essentialWords4 as any[]
+  },
+  {
+    id: 'en-essential-5',
+    name: '4000 Essential English Words 5',
+    description: 'Quyển 5: 30 bài học từ vựng cao cấp C1 phong phú và chuyên sâu (600 từ).',
+    subject: 'vocab',
+    level: 'C1',
+    color: 'violet',
+    template: 'english',
+    data: essentialWords5 as any[]
+  },
+  {
+    id: 'en-essential-6',
+    name: '4000 Essential English Words 6',
+    description: 'Quyển 6: 30 bài học chinh phục đỉnh cao từ vựng bản xứ C2 (600 từ).',
+    subject: 'vocab',
+    level: 'C2',
+    color: 'purple',
+    template: 'english',
+    data: essentialWords6 as any[]
+  },
+  {
+    id: 'en-toeic-600',
+    name: '600 Essential Words for the TOEIC',
+    description: '50 chủ đề từ vựng kinh điển của Barron luyện thi TOEIC và tiếng Anh công sở thực tế.',
+    subject: 'vocab',
+    level: 'B1',
+    color: 'amber',
+    template: 'english',
+    data: toeic600 as any[]
+  },
+  {
+    id: 'en-expressions-1',
+    name: 'English Expressions 1',
+    description: '30 bài học thành ngữ và cụm từ thông dụng nhất trong giao tiếp bản ngữ hàng ngày.',
+    subject: 'vocab',
+    level: 'ALL',
+    color: 'rose',
+    template: 'english',
+    data: expressionsBook1 as any[]
+  },
 ];
 
+export const OFFICIAL_AUTHOR: CourseAuthor = {
+  name: 'Hệ thống',
+  isOfficial: true
+};
+
 export function getCourseById(courseId: string): Course | undefined {
-  return COURSE_REGISTRY.find(c => c.id === courseId);
+  const course = COURSE_REGISTRY.find(c => c.id === courseId);
+  if (course && !course.author) {
+    return { ...course, author: OFFICIAL_AUTHOR };
+  }
+  return course;
 }
 
 export function getCoursesBySubject(subject: SubjectType): Course[] {
-  return COURSE_REGISTRY.filter(c => c.subject === subject);
+  return COURSE_REGISTRY.filter(c => c.subject === subject).map(c => ({
+    ...c,
+    author: c.author || OFFICIAL_AUTHOR
+  }));
 }
 
 export function getAllCourses(): Course[] {
-  return COURSE_REGISTRY;
+  return COURSE_REGISTRY.map(c => ({
+    ...c,
+    author: c.author || OFFICIAL_AUTHOR
+  }));
 }

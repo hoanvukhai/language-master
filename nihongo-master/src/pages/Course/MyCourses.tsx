@@ -1,15 +1,27 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAllCourses } from '../../data/courses/registry';
 import { useMyCourses } from '../../context/global/useMyCourses';
-import { Library, Compass, Flame, Loader2, Sparkles, Trophy } from 'lucide-react';
+import { Library, Compass, Flame, Loader2, Sparkles, Trophy, BadgeCheck, BookmarkX, RotateCcw, MoreVertical } from 'lucide-react';
 import { useAuth } from '../../context/auth/useAuth';
 import { useDashboardStats } from './useDashboardStats';
+import { resetCourseProgress } from '../../lib/srs/firestoreSync';
 
 export default function MyCourses() {
-  const { myCourseIds } = useMyCourses();
+  const { myCourseIds, removeCourse } = useMyCourses();
   const { user } = useAuth();
   const courses = getAllCourses();
   const navigate = useNavigate();
+  const [courseToUnbookmark, setCourseToUnbookmark] = useState<{ id: string; name: string } | null>(null);
+  const [courseToReset, setCourseToReset] = useState<{ id: string; name: string } | null>(null);
+  const [activeMenuCourseId, setActiveMenuCourseId] = useState<string | null>(null);
+  const [isResetting, setIsResetting] = useState(false);
+
+  useEffect(() => {
+    const handleClickOutside = () => setActiveMenuCourseId(null);
+    window.addEventListener('click', handleClickOutside);
+    return () => window.removeEventListener('click', handleClickOutside);
+  }, []);
 
   const myCourses = courses.filter(c => myCourseIds.includes(c.id));
 
@@ -79,20 +91,76 @@ export default function MyCourses() {
                     className="group flex flex-col p-6 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-2xl hover:border-indigo-500 dark:hover:border-indigo-500 transition-all hover:-translate-y-1 shadow-sm hover:shadow-xl cursor-pointer"
                   >
                     <div className="flex items-start justify-between mb-4">
-                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-md bg-${c.color}-500`} style={{ backgroundColor: c.color === 'emerald' ? '#10b981' : c.color === 'orange' ? '#f97316' : c.color === 'blue' ? '#3b82f6' : c.color === 'violet' ? '#8b5cf6' : c.color === 'fuchsia' ? '#d946ef' : '#6366f1' }}>
-                        {c.subject === 'vocab' ? 'Aa' : (c.subject === 'kanji_single' || c.subject === 'kanji_words') ? '漢' : c.subject === 'grammar' ? '📝' : '🌟'}
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-md font-bold text-lg`} style={{ backgroundColor: c.color === 'emerald' ? '#10b981' : c.color === 'orange' ? '#f97316' : c.color === 'blue' ? '#3b82f6' : c.color === 'violet' ? '#8b5cf6' : c.color === 'fuchsia' ? '#d946ef' : c.color === 'sky' ? '#0284c7' : '#6366f1' }}>
+                        {c.template === 'english' ? 'EN' : c.subject === 'vocab' ? 'Aa' : (c.subject === 'kanji_single' || c.subject === 'kanji_words') ? '漢' : c.subject === 'grammar' ? '📝' : '🌟'}
                       </div>
 
-                      {(courseStat?.highScore || 0) > 0 && (
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-xs font-bold rounded-lg border border-amber-200 dark:border-amber-800/50">
-                          <Trophy size={14} />
-                          Top: {courseStat?.highScore}
+                      <div className="flex items-center gap-2">
+                        {(courseStat?.highScore || 0) > 0 && (
+                          <div className="flex items-center gap-1.5 px-2.5 py-1 bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-xs font-bold rounded-lg border border-amber-200 dark:border-amber-800/50">
+                            <Trophy size={14} />
+                            Top: {courseStat?.highScore}
+                          </div>
+                        )}
+                        <div className="relative" onClick={(e) => e.stopPropagation()}>
+                          <button
+                            onClick={() => setActiveMenuCourseId(prev => prev === c.id ? null : c.id)}
+                            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+                            title="Tùy chọn khóa học"
+                          >
+                            <MoreVertical size={18} />
+                          </button>
+                          {activeMenuCourseId === c.id && (
+                            <div className="absolute right-0 top-full mt-1 w-56 bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 py-1.5 z-30 animate-in fade-in zoom-in-95 duration-150">
+                              <button
+                                onClick={() => {
+                                  setActiveMenuCourseId(null);
+                                  setCourseToUnbookmark({ id: c.id, name: c.name });
+                                }}
+                                className="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-rose-50 dark:hover:bg-rose-950/30 hover:text-rose-600 dark:hover:text-rose-400 transition-colors text-left"
+                              >
+                                <BookmarkX size={15} className="text-rose-500 shrink-0" />
+                                <span>Gỡ khỏi danh sách của tôi</span>
+                              </button>
+                              <button
+                                onClick={() => {
+                                  setActiveMenuCourseId(null);
+                                  setCourseToReset({ id: c.id, name: c.name });
+                                }}
+                                className="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-amber-50 dark:hover:bg-amber-950/30 hover:text-amber-600 dark:hover:text-amber-400 transition-colors text-left"
+                              >
+                                <RotateCcw size={15} className="text-amber-500 shrink-0" />
+                                <span>Đặt lại tiến độ học (Xóa dữ liệu)</span>
+                              </button>
+                            </div>
+                          )}
                         </div>
-                      )}
+                      </div>
                     </div>
 
-                    <h2 className="text-xl font-bold text-slate-800 dark:text-white group-hover:text-indigo-600 transition-colors mb-2">{c.name}</h2>
-                    <div className="flex items-center gap-2 mb-4">
+                    <h2 className="text-xl font-bold text-slate-800 dark:text-white group-hover:text-indigo-600 transition-colors mb-1">{c.name}</h2>
+
+                    {/* Author line */}
+                    {c.author && (
+                      <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 mb-2.5">
+                        <span>Tác giả:</span>
+                        <span className="font-semibold text-slate-700 dark:text-slate-300">{c.author.name}</span>
+                        {c.author.isOfficial && (
+                          <span className="inline-flex items-center gap-0.5 text-blue-600 dark:text-blue-400 font-bold text-[11px] bg-blue-50 dark:bg-blue-900/30 px-1.5 py-0.2 rounded-md border border-blue-200 dark:border-blue-800/40" title="Khóa học chính thức từ hệ thống">
+                            <BadgeCheck size={13} className="fill-blue-500 text-white dark:text-slate-900" />
+                            <span>Chính thức</span>
+                          </span>
+                        )}
+                      </div>
+                    )}
+                    <div className="flex items-center gap-2 mb-4 flex-wrap">
+                      <span className={`px-2 py-0.5 text-xs font-bold rounded ${
+                        c.template === 'english'
+                          ? 'bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300'
+                          : 'bg-rose-50 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300'
+                      }`}>
+                        {c.template === 'english' ? '🇬🇧 Tiếng Anh' : '🇯🇵 Tiếng Nhật'}
+                      </span>
                       <span className="px-2 py-0.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-bold rounded">
                         {c.level}
                       </span>
@@ -175,6 +243,92 @@ export default function MyCourses() {
           )}
         </div>
       </div>
+
+      {/* Modal xác nhận gỡ khỏi danh sách của tôi */}
+      {courseToUnbookmark && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 max-w-md w-full shadow-2xl border border-slate-200 dark:border-slate-700 space-y-4">
+            <div className="w-12 h-12 rounded-2xl bg-rose-50 dark:bg-rose-900/30 text-rose-500 flex items-center justify-center">
+              <BookmarkX size={24} />
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-1">
+                Gỡ khóa học khỏi danh sách?
+              </h3>
+              <p className="text-sm text-slate-500 dark:text-slate-400">
+                Bạn đang gỡ <strong className="text-slate-700 dark:text-slate-200">{courseToUnbookmark.name}</strong> khỏi Không gian làm việc của tôi. 
+                Tiến độ học tập và điểm số của bạn vẫn được lưu trữ nguyên vẹn trên hệ thống.
+              </p>
+            </div>
+            <div className="flex items-center justify-end gap-3 pt-2">
+              <button
+                onClick={() => setCourseToUnbookmark(null)}
+                className="px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-xl transition-colors"
+              >
+                Hủy bỏ
+              </button>
+              <button
+                onClick={async () => {
+                  await removeCourse(courseToUnbookmark.id);
+                  setCourseToUnbookmark(null);
+                }}
+                className="px-4 py-2 text-sm font-bold text-white bg-rose-600 hover:bg-rose-700 rounded-xl shadow-md shadow-rose-500/20 transition-all"
+              >
+                Xác nhận gỡ
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal xác nhận đặt lại tiến độ học */}
+      {courseToReset && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 max-w-md w-full shadow-2xl border border-slate-200 dark:border-slate-700 space-y-4">
+            <div className="w-12 h-12 rounded-2xl bg-amber-50 dark:bg-amber-900/30 text-amber-500 flex items-center justify-center">
+              <RotateCcw size={24} />
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-1">
+                Đặt lại toàn bộ tiến độ học?
+              </h3>
+              <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                Bạn có chắc chắn muốn đặt lại tiến độ của khóa <strong className="text-slate-700 dark:text-slate-200">{courseToReset.name}</strong> không?
+                Tất cả các từ đã thuộc sẽ trở về trạng thái Chưa học (Level 0) để bạn học lại từ đầu. Điểm EXP và Thời gian học tích lũy mùa giải vẫn được bảo toàn.
+              </p>
+            </div>
+            <div className="flex items-center justify-end gap-3 pt-2">
+              <button
+                disabled={isResetting}
+                onClick={() => setCourseToReset(null)}
+                className="px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-xl transition-colors"
+              >
+                Hủy bỏ
+              </button>
+              <button
+                disabled={isResetting}
+                onClick={async () => {
+                  if (!user) return;
+                  setIsResetting(true);
+                  try {
+                    await resetCourseProgress(user.uid, courseToReset.id);
+                    setCourseToReset(null);
+                    window.location.reload();
+                  } catch (err) {
+                    console.error('Failed to reset course progress:', err);
+                  } finally {
+                    setIsResetting(false);
+                  }
+                }}
+                className="px-4 py-2 text-sm font-bold text-white bg-amber-600 hover:bg-amber-700 rounded-xl shadow-md shadow-amber-500/20 transition-all flex items-center gap-2"
+              >
+                {isResetting && <Loader2 size={16} className="animate-spin" />}
+                Xác nhận đặt lại
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

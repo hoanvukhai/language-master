@@ -1,12 +1,12 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Info, X } from 'lucide-react';
-import type { Word } from '../../../types';
 import {
   RANKS,
   LEVEL_EXP_THRESHOLDS,
 } from '../../../lib/rankSystem';
 import shortcuts from '../../../data/jlpt/core/shortcuts.json';
+import { formatDualIpa } from '../../../lib/english/ipaHelper';
 
 // ── types ────────────────────────────────────────────────────────
 export type Level = 'easy' | 'normal' | 'hard';
@@ -65,8 +65,8 @@ export function shuffle<T>(arr: T[]): T[] {
   return [...arr].sort(() => Math.random() - 0.5);
 }
 
-export function getMeaning(w: Word): string {
-  return typeof w.meaning === 'object' ? w.meaning.vi : w.meaning;
+export function getMeaning(w: any): string {
+  return typeof w.meaning === 'object' ? w.meaning.vi : (w.meaning || '');
 }
 
 export const matchKey = (eKey: string, shortcut: string | string[]) => {
@@ -117,81 +117,143 @@ export function calcExp(baseScore: number, streak: number, timeLeft: number, lev
 }
 
 // ── buildQuestions ───────────────────────────────────────────────
-export function buildQuestions(pool: Word[], opts: { totalQ: number }): UnifiedQ[] {
+export function buildQuestions(pool: any[], opts: { totalQ: number }, course?: { template?: string }): UnifiedQ[] {
   const { totalQ } = opts;
   const sp = shuffle(pool);
   const qs: UnifiedQ[] = [];
   const types: QType[] = ['quiz', 'typing', 'flashcard', 'error', 'matching'];
   const perType = Math.floor(totalQ / types.length);
 
-  const hasKanji = (w: Word) => w.kanji && w.kanji !== w.hiragana && !/^[ァ-ヶー]+$/.test(w.kanji);
+  const isEnglish = course?.template === 'english';
+
+  // ── Japanese word helpers ─────────────────────────────────────────
+  const hasKanji = (w: any) => w.kanji && w.kanji !== w.hiragana && !/^[\u30A0-\u30FF\u30FC\u30A1-\u30F6]+$/.test(w.kanji);
+  const getJpLabel = (o: any) => o.kanji ? (o.alt_kanji ? `${o.kanji} (${o.alt_kanji})` : o.kanji) : (o.hiragana || '');
+  const getJpSubLabel = (o: any): string | undefined => o.kanji ? o.hiragana : undefined;
+
+  // ── English word helpers ──────────────────────────────────────────
+  const getEnLabel = (o: any): string => o.word || '';
+  const getEnSubLabel = (o: any): string | undefined => formatDualIpa(o) || undefined;
 
   types.forEach((type, ti) => {
     const slice = sp.slice(ti * perType, (ti + 1) * perType + 2);
     for (let i = 0; i < perType && i < slice.length; i++) {
       const w = slice[i];
       const id = `${type}-${ti}-${i}`;
-      const getJpLabel = (o: Word) => o.kanji ? (o.alt_kanji ? `${o.kanji} (${o.alt_kanji})` : o.kanji) : o.hiragana;
-      const getJpSubLabel = (o: Word) => o.kanji ? o.hiragana : undefined;
 
-      const label = getJpLabel(w);
       const meaning = getMeaning(w);
 
-      if (type === 'quiz') {
-        const distractors = shuffle(pool.filter(p => p.id !== w.id)).slice(0, 3);
-        const dirs = ['w2m', 'm2w'];
-        const dir = dirs[Math.floor(Math.random() * dirs.length)];
-        let exp = `Đáp án đúng:\n• ${w.kanji ? `${w.kanji} (${w.hiragana})` : w.hiragana}: ${meaning}`;
-        if (distractors.length > 0) {
-          exp += `\n\nChi tiết các phương án khác:\n` + distractors.map(d => `• ${d.kanji ? `${d.kanji} (${d.hiragana})` : d.hiragana}: ${getMeaning(d)}`).join('\n');
-        }
+      if (isEnglish) {
+        // ── English branch ─────────────────────────────────────────────
+        const label = getEnLabel(w);
+        const sub = getEnSubLabel(w);
 
-        if (dir === 'w2m') {
-          const opts = shuffle([w, ...distractors]).map(o => ({ id: o.id, label: getMeaning(o) }));
-          qs.push({ id, type: 'quiz', prompt: label, promptSub: w.hiragana, options: opts, correctId: w.id, explanation: exp });
-        } else if (dir === 'm2w') {
-          const opts = shuffle([w, ...distractors]).map(o => ({ id: o.id, label: getJpLabel(o), subLabel: getJpSubLabel(o) }));
-          qs.push({ id, type: 'quiz', prompt: meaning, options: opts, correctId: w.id, explanation: exp });
+        if (type === 'quiz') {
+          const distractors = shuffle(pool.filter((p: any) => p.id !== w.id)).slice(0, 3);
+          const dir = Math.random() > 0.5 ? 'w2m' : 'm2w';
+          const expWord = sub ? `${label} (${sub})` : label;
+          let exp = `Đáp án đúng:\n• ${expWord}: ${meaning}`;
+          if (distractors.length > 0) {
+            exp += `\n\nCác từ khác:\n` + distractors.map((d: any) => {
+              const dSub = getEnSubLabel(d);
+              return `• ${getEnLabel(d)}${dSub ? ` (${dSub})` : ''}: ${getMeaning(d)}`;
+            }).join('\n');
+          }
+          if (dir === 'w2m') {
+            const opts = shuffle([w, ...distractors]).map((o: any) => ({ id: o.id, label: getMeaning(o) }));
+            qs.push({ id, type: 'quiz', prompt: label, promptSub: sub, options: opts, correctId: w.id, explanation: exp });
+          } else {
+            const opts = shuffle([w, ...distractors]).map((o: any) => ({ id: o.id, label: getEnLabel(o), subLabel: getEnSubLabel(o) }));
+            qs.push({ id, type: 'quiz', prompt: meaning, options: opts, correctId: w.id, explanation: exp });
+          }
+        } else if (type === 'typing') {
+          // Show meaning → type the English word
+          const exp = `${label}${sub ? ` (${sub})` : ''} — Nghĩa: ${meaning}`;
+          qs.push({ id, type: 'typing', prompt: meaning, answer: label, answerDisplay: label, hintText: sub, explanation: exp });
+        } else if (type === 'flashcard') {
+          const dir = Math.random() > 0.5 ? 'w2m' : 'm2w';
+          const exp = `${label}${sub ? ` (${sub})` : ''} — Nghĩa: ${meaning}`;
+          if (dir === 'm2w') {
+            qs.push({ id, type: 'flashcard', front: meaning, back: label, backSub: sub, explanation: exp });
+          } else {
+            qs.push({ id, type: 'flashcard', front: label, frontSub: sub, back: meaning, explanation: exp });
+          }
+        } else if (type === 'error') {
+          const isCorrect = Math.random() > 0.5;
+          const distractorWord = shuffle(pool.filter((p: any) => p.id !== w.id))[0];
+          const displayed = isCorrect ? meaning : getMeaning(distractorWord || w);
+          let exp = `${label}${sub ? ` (${sub})` : ''} — Nghĩa đúng: ${meaning}`;
+          if (!isCorrect && distractorWord) {
+            exp += `\n\nNghĩa được hiển thị "${displayed}" là của từ:\n• ${getEnLabel(distractorWord)}: ${displayed}`;
+          }
+          qs.push({ id, type: 'error', word: label, hiragana: sub || '', displayedMeaning: displayed, isCorrect, actualMeaning: meaning, explanation: exp } as ErrorQ);
+        } else if (type === 'matching') {
+          if (i === 0) {
+            const mws = shuffle(pool).slice(0, 8);
+            const exp = mws.map((mw: any) => `${getEnLabel(mw)}${getEnSubLabel(mw) ? ` (${getEnSubLabel(mw)})` : ''} = ${getMeaning(mw)}`).join('\n');
+            qs.push({
+              id, type: 'matching',
+              pairs: mws.map((mw: any) => ({ jp: getEnLabel(mw), vi: getMeaning(mw), jpSub: getEnSubLabel(mw), pairId: mw.id })),
+              explanation: exp
+            } as MatchQ);
+          }
         }
-      } else if (type === 'typing') {
-        const dir = (Math.random() > 0.5 && hasKanji(w)) ? 'w2h' : 'm2h';
-        const exp = `${w.kanji ? `${w.kanji} (${w.hiragana})` : w.hiragana} — Nghĩa: ${meaning}`;
-        const isKatakanaWord = w.kanji && /^[\u30A0-\u30FF\u30FC]+$/.test(w.kanji);
-        const expectedAnswer = isKatakanaWord ? w.kanji : w.hiragana;
-        if (dir === 'm2h') {
-          qs.push({ id, type: 'typing', prompt: meaning, answer: expectedAnswer, answerDisplay: `${label} (${expectedAnswer})`, hintText: label, explanation: exp });
-        } else {
-          qs.push({ id, type: 'typing', prompt: label, answer: expectedAnswer, answerDisplay: expectedAnswer, hintText: meaning, explanation: exp });
-        }
-      } else if (type === 'flashcard') {
-        const dir = Math.random() > 0.5 ? 'w2m' : 'm2w';
-        const exp = `${w.kanji ? `${w.kanji} (${w.hiragana})` : w.hiragana} — Nghĩa: ${meaning}`;
-        if (dir === 'm2w') {
-          qs.push({ id, type: 'flashcard', front: meaning, back: label, backSub: w.hiragana, explanation: exp });
-        } else {
-          qs.push({ id, type: 'flashcard', front: label, frontSub: w.hiragana, back: meaning, explanation: exp });
-        }
-      } else if (type === 'error') {
-        const isCorrect = Math.random() > 0.5;
-        const distractorWord = shuffle(pool.filter(p => p.id !== w.id))[0];
-        const displayed = isCorrect ? meaning : getMeaning(distractorWord || w);
-        let exp = `${w.kanji ? `${w.kanji} (${w.hiragana})` : w.hiragana} — Nghĩa đúng: ${meaning}`;
-        if (!isCorrect && distractorWord) {
-          exp += `\n\nNghĩa được hiển thị "${displayed}" là của từ:\n• ${distractorWord.kanji ? `${distractorWord.kanji} (${distractorWord.hiragana})` : distractorWord.hiragana}: ${displayed}`;
-        }
-        qs.push({ id, type: 'error', word: label, hiragana: w.hiragana, displayedMeaning: displayed, isCorrect, actualMeaning: meaning, explanation: exp } as ErrorQ);
-      } else if (type === 'matching') {
-        if (i === 0) {
-          const mws = shuffle(pool).slice(0, 8); // 8 pairs = 16 items for 4x4 grid
-          const exp = mws.map(mw => `${mw.kanji ? `${mw.kanji} (${mw.hiragana})` : mw.hiragana} = ${getMeaning(mw)}`).join('\n');
-          qs.push({
-            id, type: 'matching',
-            pairs: mws.map(mw => ({
-              jp: getJpLabel(mw),
-              vi: getMeaning(mw), jpSub: getJpSubLabel(mw), pairId: mw.id
-            })),
-            explanation: exp
-          } as MatchQ);
+      } else {
+        // ── Japanese branch (original) ──────────────────────────────────
+        const label = getJpLabel(w);
+
+        if (type === 'quiz') {
+          const distractors = shuffle(pool.filter((p: any) => p.id !== w.id)).slice(0, 3);
+          const dirs = ['w2m', 'm2w'];
+          const dir = dirs[Math.floor(Math.random() * dirs.length)];
+          let exp = `Đáp án đúng:\n• ${w.kanji ? `${w.kanji} (${w.hiragana})` : w.hiragana}: ${meaning}`;
+          if (distractors.length > 0) {
+            exp += `\n\nChi tiết các phương án khác:\n` + distractors.map((d: any) => `• ${d.kanji ? `${d.kanji} (${d.hiragana})` : d.hiragana}: ${getMeaning(d)}`).join('\n');
+          }
+          if (dir === 'w2m') {
+            const opts = shuffle([w, ...distractors]).map((o: any) => ({ id: o.id, label: getMeaning(o) }));
+            qs.push({ id, type: 'quiz', prompt: label, promptSub: w.hiragana, options: opts, correctId: w.id, explanation: exp });
+          } else {
+            const opts = shuffle([w, ...distractors]).map((o: any) => ({ id: o.id, label: getJpLabel(o), subLabel: getJpSubLabel(o) }));
+            qs.push({ id, type: 'quiz', prompt: meaning, options: opts, correctId: w.id, explanation: exp });
+          }
+        } else if (type === 'typing') {
+          const dir = (Math.random() > 0.5 && hasKanji(w)) ? 'w2h' : 'm2h';
+          const exp = `${w.kanji ? `${w.kanji} (${w.hiragana})` : w.hiragana} — Nghĩa: ${meaning}`;
+          const isKatakanaWord = w.kanji && /^[\u30A0-\u30FF\u30FC]+$/.test(w.kanji);
+          const expectedAnswer = isKatakanaWord ? w.kanji : w.hiragana;
+          if (dir === 'm2h') {
+            qs.push({ id, type: 'typing', prompt: meaning, answer: expectedAnswer, answerDisplay: `${label} (${expectedAnswer})`, hintText: label, explanation: exp });
+          } else {
+            qs.push({ id, type: 'typing', prompt: label, answer: expectedAnswer, answerDisplay: expectedAnswer, hintText: meaning, explanation: exp });
+          }
+        } else if (type === 'flashcard') {
+          const dir = Math.random() > 0.5 ? 'w2m' : 'm2w';
+          const exp = `${w.kanji ? `${w.kanji} (${w.hiragana})` : w.hiragana} — Nghĩa: ${meaning}`;
+          if (dir === 'm2w') {
+            qs.push({ id, type: 'flashcard', front: meaning, back: label, backSub: w.hiragana, explanation: exp });
+          } else {
+            qs.push({ id, type: 'flashcard', front: label, frontSub: w.hiragana, back: meaning, explanation: exp });
+          }
+        } else if (type === 'error') {
+          const isCorrect = Math.random() > 0.5;
+          const distractorWord = shuffle(pool.filter((p: any) => p.id !== w.id))[0];
+          const displayed = isCorrect ? meaning : getMeaning(distractorWord || w);
+          let exp = `${w.kanji ? `${w.kanji} (${w.hiragana})` : w.hiragana} — Nghĩa đúng: ${meaning}`;
+          if (!isCorrect && distractorWord) {
+            exp += `\n\nNghĩa được hiển thị "${displayed}" là của từ:\n• ${distractorWord.kanji ? `${distractorWord.kanji} (${distractorWord.hiragana})` : distractorWord.hiragana}: ${displayed}`;
+          }
+          qs.push({ id, type: 'error', word: label, hiragana: w.hiragana, displayedMeaning: displayed, isCorrect, actualMeaning: meaning, explanation: exp } as ErrorQ);
+        } else if (type === 'matching') {
+          if (i === 0) {
+            const mws = shuffle(pool).slice(0, 8);
+            const exp = mws.map((mw: any) => `${mw.kanji ? `${mw.kanji} (${mw.hiragana})` : mw.hiragana} = ${getMeaning(mw)}`).join('\n');
+            qs.push({
+              id, type: 'matching',
+              pairs: mws.map((mw: any) => ({ jp: getJpLabel(mw), vi: getMeaning(mw), jpSub: getJpSubLabel(mw), pairId: mw.id })),
+              explanation: exp
+            } as MatchQ);
+          }
         }
       }
     }

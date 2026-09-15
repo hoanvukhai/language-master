@@ -1,12 +1,21 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { useAuth } from '../../context/auth/useAuth';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { updateProfile } from 'firebase/auth';
 import { db } from '../../lib/firebase';
 import { fetchGlobalLeaderboard, type LeaderboardUser } from '../../lib/srs/firestoreSync';
 import { ActivityHeatmap } from './components/ActivityHeatmap';
+import { WeeklyStudyChart } from './components/WeeklyStudyChart';
+import { ContributionTimeline } from './components/ContributionTimeline';
 import { LeaderboardWidget } from '../../components/shared/LeaderboardWidget';
-import { Trophy, Flame, Pencil, Check } from 'lucide-react';
+import { RankBadge } from '../../components/shared/RankBadge';
+import {
+  getSeasonInfo,
+  getAvailableSeasons,
+  calculateSeasonRank,
+  type SeasonInfo
+} from '../../lib/ranking/seasonRank';
+import { Trophy, Flame, Pencil, Check, Clock, Sparkles } from 'lucide-react';
 
 export default function Profile() {
   const { user, userProfile, role } = useAuth();
@@ -15,9 +24,11 @@ export default function Profile() {
 
 
   const [studyLeaderboard, setStudyLeaderboard] = useState<LeaderboardUser[]>([]);
-  const [raceLeaderboard, setRaceLeaderboard] = useState<LeaderboardUser[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_raceLeaderboard, setRaceLeaderboard] = useState<LeaderboardUser[]>([]);
   const [loadingStudy, setLoadingStudy] = useState(true);
-  const [loadingRace, setLoadingRace] = useState(true);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_loadingRace, setLoadingRace] = useState(true);
 
 
   const [modalLeaderboard, setModalLeaderboard] = useState<'study' | 'race' | null>(null);
@@ -31,8 +42,55 @@ export default function Profile() {
   const nameEditRef = useRef<HTMLDivElement>(null);
   const avatarEditRef = useRef<HTMLDivElement>(null);
 
+  const currentYear = new Date().getFullYear();
+  const [selectedContributionYear, setSelectedContributionYear] = useState<number>(currentYear);
 
+  // Season Rank & Historical Seasons State
+  const availableSeasons = useMemo(() => getAvailableSeasons(), []);
+  const [selectedSeason, setSelectedSeason] = useState<SeasonInfo>(() => getSeasonInfo());
+  const [leaderboardTab, setLeaderboardTab] = useState<'rank' | 'time' | 'exp'>('rank');
 
+  const dailyStudyTimeMap = (userData?.dailyStudyTime || {}) as Record<string, number>;
+  const activityHistoryMap = (userData?.activityHistory || {}) as Record<string, number>;
+
+  const availableContributionYears = useMemo(() => {
+    const years = new Set<number>();
+    years.add(currentYear);
+    years.add(currentYear - 1);
+    years.add(currentYear - 2);
+    Object.keys(dailyStudyTimeMap).forEach(d => {
+      const y = new Date(d).getFullYear();
+      if (!isNaN(y)) years.add(y);
+    });
+    Object.keys(activityHistoryMap).forEach(d => {
+      const y = new Date(d).getFullYear();
+      if (!isNaN(y)) years.add(y);
+    });
+    return Array.from(years).sort((a, b) => b - a);
+  }, [dailyStudyTimeMap, activityHistoryMap, currentYear]);
+
+  const seasonStats = useMemo(() => {
+    return calculateSeasonRank(activityHistoryMap, dailyStudyTimeMap, selectedSeason);
+  }, [activityHistoryMap, dailyStudyTimeMap, selectedSeason]);
+
+  // Active leaderboard sorting for 3 tabs
+  const activeLeaderboardList = useMemo(() => {
+    return [...studyLeaderboard].sort((a, b) => {
+      if (leaderboardTab === 'rank') {
+        const aSecs = Object.values((a as any).dailyStudyTime || {}).reduce((s: number, v: any) => s + (v || 0), 0);
+        const bSecs = Object.values((b as any).dailyStudyTime || {}).reduce((s: number, v: any) => s + (v || 0), 0);
+        const aScore = (a.totalStudyScore || 0) + Math.floor(aSecs / 60);
+        const bScore = (b.totalStudyScore || 0) + Math.floor(bSecs / 60);
+        return bScore - aScore;
+      } else if (leaderboardTab === 'time') {
+        const aSecs = Object.values((a as any).dailyStudyTime || {}).reduce((s: number, v: any) => s + (v || 0), 0);
+        const bSecs = Object.values((b as any).dailyStudyTime || {}).reduce((s: number, v: any) => s + (v || 0), 0);
+        return bSecs - aSecs;
+      } else {
+        return (b.totalStudyScore || 0) - (a.totalStudyScore || 0);
+      }
+    });
+  }, [studyLeaderboard, leaderboardTab]);
 
   // Click outside handlers
   useEffect(() => {
@@ -82,15 +140,11 @@ export default function Profile() {
     );
   }
 
-  const totalExp = userProfile?.totalExp || 0;
-  const totalRaceScore = userData?.totalRaceScore || 0;
-  const activityHistory = userData?.dailyStudyTime || {}; // Pass time instead of exp
   const currentStreak = userProfile?.currentStreak || 0;
-  // Tổng điểm học của tất cả các khóa = cộng tổng courseStudyScores (tách riêng khỏi Level EXP)
-  const totalStudyScore = Object.values(userData?.courseStudyScores || {}).reduce((sum: number, v: unknown) => sum + (v as number), 0);
   const displayName = userData?.displayName || user.email?.split('@')[0] || 'Học viên';
   const avatarUrl = userData?.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=random`;
 
+  const totalExp = userProfile?.totalExp || 0;
   const level = userProfile?.level || 1;
   const nextLevelExp = userProfile?.nextLevelExp || 100;
   const currentLevelExp = Math.pow(level - 1, 2) * 100;
@@ -157,8 +211,133 @@ export default function Profile() {
     <>
       <div className="max-w-5xl mx-auto px-4 py-4 pb-8 space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
 
+        {/* SEASON RANK BANNER */}
+        <div className="bg-gradient-to-br from-indigo-50/70 via-white to-amber-50/40 dark:from-slate-900 dark:via-indigo-950 dark:to-slate-900 text-slate-800 dark:text-white rounded-3xl p-6 sm:p-8 shadow-xl dark:shadow-2xl border border-indigo-200/70 dark:border-indigo-500/30 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/5 dark:bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-1/3 w-64 h-64 bg-amber-500/10 dark:bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Top Bar: Season Title & Selector */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200/80 dark:border-white/10 pb-4 relative z-10">
+            <div className="flex items-center gap-3">
+              <span className="text-3xl">{selectedSeason.seasonIcon}</span>
+              <div>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h2 className="text-xl sm:text-2xl font-black tracking-tight text-slate-900 dark:text-white">
+                    {selectedSeason.seasonName} {selectedSeason.year}
+                  </h2>
+                  {selectedSeason.isCurrentSeason ? (
+                    <span className="px-2 py-0.5 text-[10px] font-black uppercase tracking-wider bg-emerald-500 text-white rounded-md shadow-sm">
+                      Mùa hiện tại
+                    </span>
+                  ) : (
+                    <span className="px-2 py-0.5 text-[10px] font-black uppercase tracking-wider bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-md">
+                      Lịch sử mùa
+                    </span>
+                  )}
+                </div>
+                <p className="text-xs text-slate-500 dark:text-slate-300 mt-0.5 font-medium">
+                  {selectedSeason.isCurrentSeason
+                    ? `Còn ${selectedSeason.daysRemaining} ngày nữa kết thúc mùa giải (${selectedSeason.startDateStr} → ${selectedSeason.endDateStr})`
+                    : `Mùa giải đã khép lại (${selectedSeason.startDateStr} → ${selectedSeason.endDateStr})`}
+                </p>
+              </div>
+            </div>
+
+            {/* Season Selector Dropdown */}
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-slate-500 dark:text-slate-300 font-medium whitespace-nowrap">Đổi mùa giải:</span>
+              <select
+                value={`${selectedSeason.year}-${selectedSeason.seasonIndex}`}
+                onChange={(e) => {
+                  const [y, s] = e.target.value.split('-');
+                  const found = availableSeasons.find(item => item.year === parseInt(y) && item.seasonIndex === parseInt(s));
+                  if (found) setSelectedSeason(found);
+                }}
+                className="bg-white dark:bg-slate-800/90 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-white text-xs font-bold px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-700 outline-none focus:border-indigo-400 cursor-pointer shadow-sm transition-colors"
+              >
+                {availableSeasons.map((s) => (
+                  <option key={`${s.year}-${s.seasonIndex}`} value={`${s.year}-${s.seasonIndex}`}>
+                    {s.seasonIcon} {s.seasonName} {s.year} {s.isCurrentSeason ? '(Hiện tại)' : ''}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          {/* Main Rank Display Body */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 pt-6 relative z-10 items-center">
+            {/* Left: Rank Emblem & Tier Title */}
+            <div className="md:col-span-5 flex items-center gap-4">
+              <RankBadge tier={seasonStats.currentTier.tier} size="xl" />
+              <div>
+                <span className="text-xs font-bold text-slate-400 dark:text-slate-400 uppercase tracking-wider block">
+                  Bậc Rank Hiện Tại
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white flex items-center gap-2">
+                  {seasonStats.currentTier.name}
+                </h3>
+                <p className="text-xs text-slate-500 dark:text-slate-300 mt-1 max-w-xs leading-relaxed font-medium">
+                  {seasonStats.currentTier.description}
+                </p>
+              </div>
+            </div>
+
+            {/* Center / Right: Score & Stats & Progress Bar */}
+            <div className="md:col-span-7 space-y-4">
+              <div className="flex flex-wrap items-end justify-between gap-3">
+                <div>
+                  <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">
+                    Điểm Xếp Hạng Mùa
+                  </span>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-3xl sm:text-4xl font-black text-amber-500 dark:text-amber-400 font-mono tracking-tight">
+                      {seasonStats.seasonScore.toLocaleString()}
+                    </span>
+                    <span className="text-xs text-slate-500 dark:text-slate-300 font-semibold">điểm Rank</span>
+                  </div>
+                </div>
+
+                {/* Sub metrics: Hours & EXP */}
+                <div className="flex items-center gap-3 bg-slate-100/90 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3.5 py-2 rounded-2xl text-xs shadow-sm">
+                  <div className="flex items-center gap-1.5 text-slate-600 dark:text-slate-200">
+                    <Clock size={14} className="text-indigo-600 dark:text-cyan-400" />
+                    <span>Thời gian: <strong className="text-slate-900 dark:text-white">{seasonStats.studyHoursText}</strong></span>
+                  </div>
+                  <div className="w-px h-4 bg-slate-300 dark:bg-white/10" />
+                  <div className="flex items-center gap-1.5 text-slate-600 dark:text-slate-200">
+                    <Sparkles size={14} className="text-amber-500 dark:text-amber-400" />
+                    <span>EXP: <strong className="text-slate-900 dark:text-white">+{seasonStats.seasonExp.toLocaleString()}</strong></span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Progress Bar to Next Tier */}
+              <div className="space-y-1.5">
+                <div className="flex justify-between text-xs font-bold">
+                  <span className="text-slate-600 dark:text-slate-300">
+                    {seasonStats.nextTier
+                      ? `Tiến độ lên hạng ${seasonStats.nextTier.name}`
+                      : 'Đã đạt bậc Rank tối thượng!'}
+                  </span>
+                  <span className="text-amber-600 dark:text-amber-400">{seasonStats.progressPercent}%</span>
+                </div>
+                <div className="h-3 w-full bg-slate-200/80 dark:bg-slate-800/80 rounded-full overflow-hidden border border-slate-300/40 dark:border-white/10 p-0.5">
+                  <div
+                    className="h-full bg-gradient-to-r from-indigo-500 via-amber-400 to-amber-300 rounded-full transition-all duration-1000"
+                    style={{ width: `${seasonStats.progressPercent}%` }}
+                  />
+                </div>
+                {seasonStats.nextTier && (
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 text-right font-medium">
+                    Còn thiếu <strong className="text-amber-600 dark:text-amber-300 font-bold">{seasonStats.pointsToNextTier.toLocaleString()} điểm</strong> để thăng hạng {seasonStats.nextTier.name}
+                  </p>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
         {/* User Card */}
         <div className="lg:col-span-1 bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-xl border border-slate-200 dark:border-slate-700 flex flex-col items-center relative pt-8">
@@ -281,58 +460,66 @@ export default function Profile() {
           </div>
         </div>
 
-        {/* Compact Leaderboards (acting as Total Score Summaries) */}
-        <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {/* Unified 3-Tab Leaderboard Widget */}
+        <div className="lg:col-span-2">
           <div 
             onClick={() => setModalLeaderboard('study')}
-            className="cursor-pointer transition-transform hover:-translate-y-1 hover:shadow-lg rounded-3xl"
+            className="cursor-pointer transition-transform hover:-translate-y-0.5 hover:shadow-xl rounded-3xl"
           >
             <LeaderboardWidget
-              title="Tổng Học Tập"
-              subtitle={
-                <div className="flex flex-col items-center justify-center py-2">
-                  <span className="text-4xl font-black text-indigo-600 dark:text-indigo-400 tracking-tight">
-                    {totalStudyScore.toLocaleString()}
-                  </span>
+              title={
+                <div className="flex items-center justify-between w-full flex-wrap gap-2">
+                  <div className="flex items-center gap-2">
+                    <Trophy className="w-5 h-5 text-amber-500" />
+                    <span className="text-base font-black text-slate-800 dark:text-white">BẢNG XẾP HẠNG</span>
+                  </div>
+                  <div className="flex items-center bg-slate-100 dark:bg-slate-700/60 p-1 rounded-xl text-xs font-bold" onClick={(e) => e.stopPropagation()}>
+                    <button
+                      onClick={() => setLeaderboardTab('rank')}
+                      className={`px-3 py-1 rounded-lg transition-all ${leaderboardTab === 'rank' ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-slate-800'}`}
+                    >
+                      🏆 Rank Mùa
+                    </button>
+                    <button
+                      onClick={() => setLeaderboardTab('time')}
+                      className={`px-3 py-1 rounded-lg transition-all ${leaderboardTab === 'time' ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-slate-800'}`}
+                    >
+                      ⏱️ Giờ Học
+                    </button>
+                    <button
+                      onClick={() => setLeaderboardTab('exp')}
+                      className={`px-3 py-1 rounded-lg transition-all ${leaderboardTab === 'exp' ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-slate-800'}`}
+                    >
+                      🎯 Điểm EXP
+                    </button>
+                  </div>
                 </div>
               }
-              leaderboard={studyLeaderboard}
+              subtitle={
+                <div className="text-xs text-slate-500 dark:text-slate-400 pt-1">
+                  {leaderboardTab === 'rank' && 'Tổng hợp EXP và số phút học kiên trì của mùa'}
+                  {leaderboardTab === 'time' && 'Tôn vinh học viên có tổng thời gian học bền bỉ nhất (phút)'}
+                  {leaderboardTab === 'exp' && 'Tôn vinh học viên hoàn thành nhiều từ vựng và bài học nhất'}
+                </div>
+              }
+              leaderboard={activeLeaderboardList}
               loading={loadingStudy}
               currentUserId={user.uid}
-              getScore={(u) => u.totalStudyScore || 0}
+              getScore={(u) => {
+                if (leaderboardTab === 'time') {
+                  const secs = Object.values((u as any).dailyStudyTime || {}).reduce((s: number, v: any) => s + (v || 0), 0);
+                  return Math.floor(secs / 60);
+                } else if (leaderboardTab === 'rank') {
+                  const secs = Object.values((u as any).dailyStudyTime || {}).reduce((s: number, v: any) => s + (v || 0), 0);
+                  return (u.totalStudyScore || 0) + Math.floor(secs / 60);
+                }
+                return u.totalStudyScore || 0;
+              }}
               size="sm"
-              maxItems={4}
+              maxItems={5}
               footer={
                 <div className="w-full text-center py-2 text-xs font-bold text-slate-400 dark:text-slate-500 hover:text-indigo-500 transition-colors uppercase tracking-wider">
-                  Nhấn để xem toàn bộ ➔
-                </div>
-              }
-            />
-          </div>
-
-          <div 
-            onClick={() => setModalLeaderboard('race')}
-            className="cursor-pointer transition-transform hover:-translate-y-1 hover:shadow-lg rounded-3xl"
-          >
-            <LeaderboardWidget
-              title="Tổng Đua Top"
-              subtitle={
-                <div className="flex flex-col items-center justify-center py-2">
-                  <span className="text-4xl font-black text-orange-600 dark:text-orange-400 tracking-tight">
-                    {totalRaceScore.toLocaleString()}
-                  </span>
-                </div>
-              }
-              icon={<Trophy className="w-5 h-5 text-orange-500" />}
-              leaderboard={raceLeaderboard}
-              loading={loadingRace}
-              currentUserId={user.uid}
-              getScore={(u) => u.totalRaceScore || 0}
-              size="sm"
-              maxItems={4}
-              footer={
-                <div className="w-full text-center py-2 text-xs font-bold text-slate-400 dark:text-slate-500 hover:text-orange-500 transition-colors uppercase tracking-wider">
-                  Nhấn để xem toàn bộ ➔
+                  Nhấn để xem toàn bộ danh sách ➔
                 </div>
               }
             />
@@ -340,31 +527,49 @@ export default function Profile() {
         </div>
       </div>
 
+      {/* WEEKLY STUDY CHART */}
       <div className="mt-6">
-        {/* HEATMAP SECTION */}
-        <ActivityHeatmap activityHistory={activityHistory} />
+        <WeeklyStudyChart dailyStudyTime={dailyStudyTimeMap} dailyGoalMinutes={30} />
       </div>
 
+      {/* HEATMAP SECTION */}
+      <div className="mt-6 bg-white dark:bg-slate-800 rounded-3xl p-6 border border-slate-200 dark:border-slate-700 shadow-xl">
+        <ActivityHeatmap
+          activityHistory={dailyStudyTimeMap}
+          selectedYear={selectedContributionYear}
+          onSelectYear={setSelectedContributionYear}
+          availableYears={availableContributionYears}
+        />
+      </div>
 
+      {/* GITHUB-STYLE CONTRIBUTION ACTIVITY TIMELINE */}
+      <div className="mt-6 bg-white dark:bg-slate-800 rounded-3xl p-6 border border-slate-200 dark:border-slate-700 shadow-xl">
+        <ContributionTimeline
+          dailyStudyTime={dailyStudyTimeMap}
+          activityHistory={activityHistoryMap}
+          courseStudyScores={userData?.courseStudyScores || {}}
+          selectedYear={selectedContributionYear}
+        />
+      </div>
 
       </div>
 
-      {/* LEADERBOARD MODALS */}
+      {/* LEADERBOARD MODAL */}
       {modalLeaderboard && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-          {/* Backdrop */}
           <div
             className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm cursor-pointer"
             onClick={() => setModalLeaderboard(null)}
           />
 
-          {/* Modal Content */}
           <div className="relative w-full max-w-lg bg-white dark:bg-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
             <div className="p-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center bg-slate-50 dark:bg-slate-800/80 sticky top-0 z-10">
-              <h3 className="text-xl font-black text-slate-800 dark:text-white flex items-center gap-2">
-                <Trophy className={`w-6 h-6 ${modalLeaderboard === 'study' ? 'text-amber-500' : 'text-orange-500'}`} />
-                {modalLeaderboard === 'study' ? 'Bảng Xếp Hạng Học Giả' : 'Bảng Xếp Hạng Đua Top'}
-              </h3>
+              <div className="flex items-center gap-2">
+                <Trophy className="w-6 h-6 text-amber-500" />
+                <h3 className="text-xl font-black text-slate-800 dark:text-white">
+                  Bảng Xếp Hạng Toàn Thể
+                </h3>
+              </div>
               <button
                 onClick={() => setModalLeaderboard(null)}
                 className="p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full transition-colors text-slate-500"
@@ -373,28 +578,47 @@ export default function Profile() {
               </button>
             </div>
 
+            {/* Modal Tabs */}
+            <div className="flex bg-slate-100 dark:bg-slate-700/50 p-1 mx-4 mt-3 rounded-xl text-xs font-bold">
+              <button
+                onClick={() => setLeaderboardTab('rank')}
+                className={`flex-1 py-1.5 rounded-lg transition-all ${leaderboardTab === 'rank' ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm' : 'text-slate-500 dark:text-slate-400'}`}
+              >
+                🏆 Rank Mùa
+              </button>
+              <button
+                onClick={() => setLeaderboardTab('time')}
+                className={`flex-1 py-1.5 rounded-lg transition-all ${leaderboardTab === 'time' ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm' : 'text-slate-500 dark:text-slate-400'}`}
+              >
+                ⏱️ Giờ Học
+              </button>
+              <button
+                onClick={() => setLeaderboardTab('exp')}
+                className={`flex-1 py-1.5 rounded-lg transition-all ${leaderboardTab === 'exp' ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm' : 'text-slate-500 dark:text-slate-400'}`}
+              >
+                🎯 Điểm EXP
+              </button>
+            </div>
+
             <div className="overflow-y-auto p-4 scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-slate-700">
-              {modalLeaderboard === 'study' ? (
-                <LeaderboardWidget
-                  leaderboard={studyLeaderboard}
-                  loading={loadingStudy}
-                  currentUserId={user.uid}
-                  getScore={(u) => u.totalStudyScore || 0}
-                  size="md"
-                  maxItems={50}
-                  hideTitle={true}
-                />
-              ) : (
-                <LeaderboardWidget
-                  leaderboard={raceLeaderboard}
-                  loading={loadingRace}
-                  currentUserId={user.uid}
-                  getScore={(u) => u.totalRaceScore || 0}
-                  size="md"
-                  maxItems={50}
-                  hideTitle={true}
-                />
-              )}
+              <LeaderboardWidget
+                leaderboard={activeLeaderboardList}
+                loading={loadingStudy}
+                currentUserId={user.uid}
+                getScore={(u) => {
+                  if (leaderboardTab === 'time') {
+                    const secs = Object.values((u as any).dailyStudyTime || {}).reduce((s: number, v: any) => s + (v || 0), 0);
+                    return Math.floor(secs / 60);
+                  } else if (leaderboardTab === 'rank') {
+                    const secs = Object.values((u as any).dailyStudyTime || {}).reduce((s: number, v: any) => s + (v || 0), 0);
+                    return (u.totalStudyScore || 0) + Math.floor(secs / 60);
+                  }
+                  return u.totalStudyScore || 0;
+                }}
+                size="md"
+                maxItems={50}
+                hideTitle={true}
+              />
             </div>
           </div>
         </div>

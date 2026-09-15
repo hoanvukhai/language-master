@@ -66,13 +66,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             let currentStreak = data?.currentStreak || 0;
             let totalExp = data?.totalExp || 0;
 
-            if (lastLoginDate !== today) {
-              // Cập nhật điểm danh
-              const yestDate = new Date(now);
-              yestDate.setDate(yestDate.getDate() - 1);
-              const yesterday = getLocalISODate(yestDate);
-              
-              if (lastLoginDate === yesterday) {
+            const yestDate = new Date(now);
+            yestDate.setDate(yestDate.getDate() - 1);
+            const yesterday = getLocalISODate(yestDate);
+
+            const lastStreakDate = data?.lastStreakDate;
+            const todayExp = (data?.activityHistory || {})[today] || 0;
+            const todaySeconds = (data?.dailyStudyTime || {})[today] || 0;
+            const isGoalMetToday = todayExp >= 10 || todaySeconds >= 180;
+
+            // 1. Nếu hôm nay đã hoàn thành mục tiêu học (10 EXP hoặc 3 phút) mà chưa nhận streak hôm nay
+            if (isGoalMetToday && lastStreakDate !== today) {
+              if (lastStreakDate === yesterday) {
                 currentStreak += 1;
               } else {
                 currentStreak = 1;
@@ -89,10 +94,28 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
               await updateDoc(userRef, {
                 currentStreak,
+                lastStreakDate: today,
                 lastLoginDate: today,
                 totalExp: increment(streakExp)
               });
-              // Return sớm vì updateDoc sẽ trigger lại onSnapshot
+              return;
+            }
+
+            // 2. Nếu đã qua hơn 1 ngày không học mục tiêu -> Đứt chuỗi
+            if (!isGoalMetToday && lastStreakDate && lastStreakDate !== today && lastStreakDate !== yesterday) {
+              if (currentStreak > 0) {
+                currentStreak = 0;
+                await updateDoc(userRef, {
+                  currentStreak: 0,
+                  lastLoginDate: today
+                });
+                return;
+              }
+            }
+
+            // 3. Cập nhật lastLoginDate thông thường nếu là ngày mới
+            if (lastLoginDate !== today) {
+              await updateDoc(userRef, { lastLoginDate: today });
               return;
             }
 

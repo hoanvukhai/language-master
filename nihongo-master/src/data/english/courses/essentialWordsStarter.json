@@ -1,0 +1,3525 @@
+[
+  {
+    "id": "en-starter-001",
+    "template": "english",
+    "word": "backpack",
+    "ipa": "/ˈbækpæk/",
+    "ipaBrE": "/ˈbækpæk/",
+    "ipaAmE": "/ˈbækpæk/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "ba lô"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-002",
+    "template": "english",
+    "word": "bathrobe",
+    "ipa": "/ˈbɑːθrəʊb/",
+    "ipaBrE": "/ˈbɑːθrəʊb/",
+    "ipaAmE": "/ˈbæθroʊb/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "áo choàng tắm"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-003",
+    "template": "english",
+    "word": "belt",
+    "ipa": "/belt/",
+    "ipaBrE": "/belt/",
+    "ipaAmE": "/belt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "dây lưng, thắt lưng"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-004",
+    "template": "english",
+    "word": "blouse",
+    "ipa": "/blaʊz/",
+    "ipaBrE": "/blaʊz/",
+    "ipaAmE": "/blaʊs/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "áo cánh"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-005",
+    "template": "english",
+    "word": "boots",
+    "ipa": "/buːts/",
+    "ipaBrE": "/buːts/",
+    "ipaAmE": "/buːts/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "ủng"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-006",
+    "template": "english",
+    "word": "boxers",
+    "ipa": "/`bɒksə(r)z/",
+    "ipaBrE": "/`bɒksə(r)z/",
+    "ipaAmE": "/`bɑːksərz/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Boxer à?"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-007",
+    "template": "english",
+    "word": "cap",
+    "ipa": "/kæp/",
+    "ipaBrE": "/kæp/",
+    "ipaAmE": "/kæp/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "nắp đầu"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-008",
+    "template": "english",
+    "word": "circle",
+    "ipa": "/ˈsɜːkl/",
+    "ipaBrE": "/ˈsɜːkl/",
+    "ipaAmE": "/ˈsɜːrkl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "hình tròn"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-009",
+    "template": "english",
+    "word": "coat",
+    "ipa": "/kəʊt/",
+    "ipaBrE": "/kəʊt/",
+    "ipaAmE": "/koʊt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "áo choàng"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-010",
+    "template": "english",
+    "word": "cone",
+    "ipa": "/kəʊn/",
+    "ipaBrE": "/kəʊn/",
+    "ipaAmE": "/koʊn/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "nón"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-011",
+    "template": "english",
+    "word": "cube",
+    "ipa": "/kjuːb/",
+    "ipaBrE": "/kjuːb/",
+    "ipaAmE": "/kjuːb/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "(toán học) hình lập phương, hình khối"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-012",
+    "template": "english",
+    "word": "cylinder",
+    "ipa": "/ˈsɪlɪndə(r)/",
+    "ipaBrE": "/ˈsɪlɪndə(r)/",
+    "ipaAmE": "/ˈsɪlɪndər/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Kiểu ép: xi lanh"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-013",
+    "template": "english",
+    "word": "dress",
+    "ipa": "/dres/",
+    "ipaBrE": "/dres/",
+    "ipaAmE": "/dres/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "quần áo, mặc"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-014",
+    "template": "english",
+    "word": "earrings",
+    "ipa": "/ˈɪərɪŋz/",
+    "ipaBrE": "/ˈɪərɪŋz/",
+    "ipaAmE": "/ˈɪrɪŋz/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Hoa tai"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-015",
+    "template": "english",
+    "word": "gloves",
+    "ipa": "/glʌvz/",
+    "ipaBrE": "/glʌvz/",
+    "ipaAmE": "/glʌvz/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "găng tay"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-016",
+    "template": "english",
+    "word": "hat",
+    "ipa": "/hæt/",
+    "ipaBrE": "/hæt/",
+    "ipaAmE": "/hæt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cái mũ"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-017",
+    "template": "english",
+    "word": "jacket",
+    "ipa": "/ˈdʒækɪt/",
+    "ipaBrE": "/ˈdʒækɪt/",
+    "ipaAmE": "/ˈdʒækɪt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "áo vét"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-018",
+    "template": "english",
+    "word": "jeans",
+    "ipa": "/dʒiːnz/",
+    "ipaBrE": "/dʒiːnz/",
+    "ipaAmE": "/dʒiːnz/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "quần bò, quần zin"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-019",
+    "template": "english",
+    "word": "mittens",
+    "ipa": "/ˈmɪtnz/",
+    "ipaBrE": "/ˈmɪtnz/",
+    "ipaAmE": "/ˈmɪtnz/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "găng tay"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-020",
+    "template": "english",
+    "word": "necklace",
+    "ipa": "/ˈnekləs/",
+    "ipaBrE": "/ˈnekləs/",
+    "ipaAmE": "/ˈnekləs/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "dây chuyền"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-021",
+    "template": "english",
+    "word": "oval",
+    "ipa": "/ˈəʊvl/",
+    "ipaBrE": "/ˈəʊvl/",
+    "ipaAmE": "/ˈoʊvl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "hình trái xoan"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-022",
+    "template": "english",
+    "word": "overalls",
+    "ipa": "/ˌdʌŋɡəˈriːz/",
+    "ipaBrE": "/ˌdʌŋɡəˈriːz/",
+    "ipaAmE": "/ˌdʌŋɡəˈriːz/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Tổng quan"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-023",
+    "template": "english",
+    "word": "pajamas",
+    "ipa": "/pəˈdʒɑːməz/",
+    "ipaBrE": "/pəˈdʒɑːməz/",
+    "ipaAmE": "/pəˈdʒæməz/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Pyjama"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-024",
+    "template": "english",
+    "word": "pants",
+    "ipa": "/pænts/",
+    "ipaBrE": "/pænts/",
+    "ipaAmE": "/pænts/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "quần"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-025",
+    "template": "english",
+    "word": "prism",
+    "ipa": "/ˈprɪzəm/",
+    "ipaBrE": "/ˈprɪzəm/",
+    "ipaAmE": "/ˈprɪzəm/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "lăng trụ"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-026",
+    "template": "english",
+    "word": "pyramid",
+    "ipa": "/ˈpɪrəmɪd/",
+    "ipaBrE": "/ˈpɪrəmɪd/",
+    "ipaAmE": "/ˈpɪrəmɪd/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Chóp"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-027",
+    "template": "english",
+    "word": "rectangle",
+    "ipa": "/ˈrektæŋɡl/",
+    "ipaBrE": "/ˈrektæŋɡl/",
+    "ipaAmE": "/ˈrektæŋɡl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "hình chữ nhật"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-028",
+    "template": "english",
+    "word": "ring",
+    "ipa": "/noun,verb: [rɪŋ]; verb,noun: [rɪŋ/",
+    "ipaBrE": "/noun,verb: [rɪŋ]; verb,noun: [rɪŋ/",
+    "ipaAmE": "/noun,verb: [rɪŋ]; verb,noun: [rɪŋ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "chiếc nhẫn, đeo nhẫn cho ai"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-029",
+    "template": "english",
+    "word": "scarf",
+    "ipa": "/skɑːf/",
+    "ipaBrE": "/skɑːf/",
+    "ipaAmE": "/skɑːrf/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "khăn quàng cổ"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-030",
+    "template": "english",
+    "word": "semi-circle",
+    "ipa": "/ˈsɛmɪ-ˈsɜːkl/",
+    "ipaBrE": "/ˈsɛmɪ-ˈsɜːkl/",
+    "ipaAmE": "/ˈsɛmɪ-ˈsɜːrkl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "nửa vòng tròn"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-031",
+    "template": "english",
+    "word": "shirt",
+    "ipa": "/ʃɜːt/",
+    "ipaBrE": "/ʃɜːt/",
+    "ipaAmE": "/ʃɜːrt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "áo sơ mi"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-032",
+    "template": "english",
+    "word": "shoes",
+    "ipa": "/ʃuːz/",
+    "ipaBrE": "/ʃuːz/",
+    "ipaAmE": "/ʃuːz/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "giày dép"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-033",
+    "template": "english",
+    "word": "shorts",
+    "ipa": "/ʃɔːts/",
+    "ipaBrE": "/ʃɔːts/",
+    "ipaAmE": "/ʃɔːrts/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "số lượng còn thiếu"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-034",
+    "template": "english",
+    "word": "skirt",
+    "ipa": "/skɜːt/",
+    "ipaBrE": "/skɜːt/",
+    "ipaAmE": "/skɜːrt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "váy, đầm"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-035",
+    "template": "english",
+    "word": "slippers",
+    "ipa": "/ˈslɪpə(r)z/",
+    "ipaBrE": "/ˈslɪpə(r)z/",
+    "ipaAmE": "/ˈslɪpərz/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "dép"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-036",
+    "template": "english",
+    "word": "sneakers",
+    "ipa": "/'sniːkə(r)z/",
+    "ipaBrE": "/'sniːkə(r)z/",
+    "ipaAmE": "/'sniːkərz/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Giày ba-ta"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-037",
+    "template": "english",
+    "word": "socks",
+    "ipa": "/sɒks/",
+    "ipaBrE": "/sɒks/",
+    "ipaAmE": "/sɑːks/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "tất"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-038",
+    "template": "english",
+    "word": "sphere",
+    "ipa": "/sfɪə(r)/",
+    "ipaBrE": "/sfɪə(r)/",
+    "ipaAmE": "/sfɪr/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "hình cầu"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-039",
+    "template": "english",
+    "word": "square",
+    "ipa": "/skweə(r)/",
+    "ipaBrE": "/skweə(r)/",
+    "ipaAmE": "/skwer/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "diện tích"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-040",
+    "template": "english",
+    "word": "suit",
+    "ipa": "/suːt],[sjuːt/",
+    "ipaBrE": "/suːt],[sjuːt/",
+    "ipaAmE": "/suːt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "bộ com lê; bộ quần áo (áo + quần hoặc áo + váy)"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-041",
+    "template": "english",
+    "word": "sunglasses",
+    "ipa": "/ˈsʌnɡlɑːsɪz/",
+    "ipaBrE": "/ˈsʌnɡlɑːsɪz/",
+    "ipaAmE": "/ˈsʌnɡlæsɪz/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "kính râm"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-042",
+    "template": "english",
+    "word": "sweater",
+    "ipa": "/ˈswetə(r)/",
+    "ipaBrE": "/ˈswetə(r)/",
+    "ipaAmE": "/ˈswetər/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "kẻ bóc lột lao động"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-043",
+    "template": "english",
+    "word": "sweatshirt",
+    "ipa": "/ˈswetʃɜːt/",
+    "ipaBrE": "/ˈswetʃɜːt/",
+    "ipaAmE": "/ˈswetʃɜːrt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Áo nỉ"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-044",
+    "template": "english",
+    "word": "swimsuit",
+    "ipa": "/ˈswɪmsuːt],[ˈswɪmsjuːt/",
+    "ipaBrE": "/ˈswɪmsuːt],[ˈswɪmsjuːt/",
+    "ipaAmE": "/ˈswɪmsuːt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "đồ bơi"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-045",
+    "template": "english",
+    "word": "tie",
+    "ipa": "/taɪ/",
+    "ipaBrE": "/taɪ/",
+    "ipaAmE": "/taɪ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "hòa"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-046",
+    "template": "english",
+    "word": "triangle",
+    "ipa": "/ˈtraɪæŋɡl/",
+    "ipaBrE": "/ˈtraɪæŋɡl/",
+    "ipaAmE": "/ˈtraɪæŋɡl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "hình tam giác"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-047",
+    "template": "english",
+    "word": "T-shirt",
+    "ipa": "/'tiːʃɜːt/",
+    "ipaBrE": "/'tiːʃɜːt/",
+    "ipaAmE": "/'tiːʃɜːrt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Áo thun"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-048",
+    "template": "english",
+    "word": "tuxedo",
+    "ipa": "/tʌkˈsiːdəʊ/",
+    "ipaBrE": "/tʌkˈsiːdəʊ/",
+    "ipaAmE": "/tʌkˈsiːdoʊ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "áo tuxedo"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-049",
+    "template": "english",
+    "word": "umbrella",
+    "ipa": "/ʌmˈbrelə/",
+    "ipaBrE": "/ʌmˈbrelə/",
+    "ipaAmE": "/ʌmˈbrelə/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "ô, dù"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-050",
+    "template": "english",
+    "word": "underpants",
+    "ipa": "/ˈʌndəpænts/",
+    "ipaBrE": "/ˈʌndəpænts/",
+    "ipaAmE": "/ˈʌndərpænts/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "- Quần lót."
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-051",
+    "template": "english",
+    "word": "undershirt",
+    "ipa": "/ˈʌndəʃɜːt/",
+    "ipaBrE": "/ˈʌndəʃɜːt/",
+    "ipaAmE": "/ˈʌndərʃɜːrt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Áo mặc lót"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-052",
+    "template": "english",
+    "word": "vest",
+    "ipa": "/vest/",
+    "ipaBrE": "/vest/",
+    "ipaAmE": "/vest/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "áo vest"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-053",
+    "template": "english",
+    "word": "rainboots",
+    "ipa": "/reɪn buːts/",
+    "ipaBrE": "/reɪn buːts/",
+    "ipaAmE": "/reɪn buːts/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "giày ống đi mưa"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-054",
+    "template": "english",
+    "word": "raincoat",
+    "ipa": "/ˈreɪnkəʊt/",
+    "ipaBrE": "/ˈreɪnkəʊt/",
+    "ipaAmE": "/ˈreɪnkoʊt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Áo mưa"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-055",
+    "template": "english",
+    "word": "basketball",
+    "ipa": "/ˈbɑːskɪtbɔːl/",
+    "ipaBrE": "/ˈbɑːskɪtbɔːl/",
+    "ipaAmE": "/ˈbæskɪtbɔːl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "môn bóng rổ"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-056",
+    "template": "english",
+    "word": "boxing",
+    "ipa": "/ˈbɒksɪŋ/",
+    "ipaBrE": "/ˈbɒksɪŋ/",
+    "ipaAmE": "/ˈbɑːksɪŋ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "đấm bốc"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-057",
+    "template": "english",
+    "word": "wrestling",
+    "ipa": "/ˈreslɪŋ/",
+    "ipaBrE": "/ˈreslɪŋ/",
+    "ipaAmE": "/ˈreslɪŋ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "đấu vật"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-058",
+    "template": "english",
+    "word": "yoga",
+    "ipa": "/ˈjəʊɡə/",
+    "ipaBrE": "/ˈjəʊɡə/",
+    "ipaAmE": "/ˈjoʊɡə/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "yoga"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-059",
+    "template": "english",
+    "word": "archery",
+    "ipa": "/ˈɑːtʃəri/",
+    "ipaBrE": "/ˈɑːtʃəri/",
+    "ipaAmE": "/ˈɑːrtʃəri/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Bắn cung"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-060",
+    "template": "english",
+    "word": "baseball",
+    "ipa": "/ˈbeɪsbɔːl/",
+    "ipaBrE": "/ˈbeɪsbɔːl/",
+    "ipaAmE": "/ˈbeɪsbɔːl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "môn bóng chày"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-061",
+    "template": "english",
+    "word": "soccer",
+    "ipa": "/ˈsɒkə(r)/",
+    "ipaBrE": "/ˈsɒkə(r)/",
+    "ipaAmE": "/ˈsɑːkər/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "bóng đá"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-062",
+    "template": "english",
+    "word": "tennis",
+    "ipa": "/ˈtenɪs/",
+    "ipaBrE": "/ˈtenɪs/",
+    "ipaAmE": "/ˈtenɪs/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "quần vợt"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-063",
+    "template": "english",
+    "word": "volleyball",
+    "ipa": "/ˈvɒlibɔːl/",
+    "ipaBrE": "/ˈvɒlibɔːl/",
+    "ipaAmE": "/ˈvɑːlibɔːl],[ˈvɔːlibɔːl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Bóng chuyền"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-064",
+    "template": "english",
+    "word": "skiing",
+    "ipa": "/ˈskiːɪŋ/",
+    "ipaBrE": "/ˈskiːɪŋ/",
+    "ipaAmE": "/ˈskiːɪŋ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "trượt tuyết"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-065",
+    "template": "english",
+    "word": "snowboarding",
+    "ipa": "/ˈsnəʊbɔːdɪŋ/",
+    "ipaBrE": "/ˈsnəʊbɔːdɪŋ/",
+    "ipaAmE": "/ˈsnoʊbɔːrdɪŋ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "trượt tuyết"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-066",
+    "template": "english",
+    "word": "camel",
+    "ipa": "/ˈkæml/",
+    "ipaBrE": "/ˈkæml/",
+    "ipaAmE": "/ˈkæml/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "con lạc đà"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-067",
+    "template": "english",
+    "word": "coyote",
+    "ipa": "/kaɪˈəʊti],[kɔɪˈəʊti/",
+    "ipaBrE": "/kaɪˈəʊti],[kɔɪˈəʊti/",
+    "ipaAmE": "/kaɪˈoʊti],[ˈkaɪoʊt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Sói đồng cỏ Bắc Mỹ"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-068",
+    "template": "english",
+    "word": "lizard",
+    "ipa": "/ˈlɪzəd/",
+    "ipaBrE": "/ˈlɪzəd/",
+    "ipaAmE": "/ˈlɪzərd/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Tất cả đã hoàn thành ngay bây giờ"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-069",
+    "template": "english",
+    "word": "mountain lion",
+    "ipa": "/ˈmaʊntɪn ˈlaɪən/",
+    "ipaBrE": "/ˈmaʊntɪn ˈlaɪən/",
+    "ipaAmE": "/ˈmaʊntən ˈlaɪən/",
+    "partOfSpeech": "adjective",
+    "meaning": {
+      "vi": "Sư tử núi?"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-070",
+    "template": "english",
+    "word": "scorpion",
+    "ipa": "/ˈskɔːpiən/",
+    "ipaBrE": "/ˈskɔːpiən/",
+    "ipaAmE": "/ˈskɔːrpiən/",
+    "partOfSpeech": "adjective",
+    "meaning": {
+      "vi": "Bọ cạp"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-071",
+    "template": "english",
+    "word": "flamingo",
+    "ipa": "/fləˈmɪŋɡəʊ/",
+    "ipaBrE": "/fləˈmɪŋɡəʊ/",
+    "ipaAmE": "/fləˈmɪŋɡoʊ/",
+    "partOfSpeech": "adjective",
+    "meaning": {
+      "vi": "Hồng hạc"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-072",
+    "template": "english",
+    "word": "hummingbird",
+    "ipa": "/ˈhʌmɪŋbɜːd/",
+    "ipaBrE": "/ˈhʌmɪŋbɜːd/",
+    "ipaAmE": "/ˈhʌmɪŋbɜːrd/",
+    "partOfSpeech": "adjective",
+    "meaning": {
+      "vi": "Họ Chim ruồi"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-073",
+    "template": "english",
+    "word": "panther",
+    "ipa": "/ˈpænθə(r)/",
+    "ipaBrE": "/ˈpænθə(r)/",
+    "ipaAmE": "/ˈpænθər/",
+    "partOfSpeech": "adjective",
+    "meaning": {
+      "vi": "Giống con mèo."
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-074",
+    "template": "english",
+    "word": "parrot",
+    "ipa": "/ˈpærət/",
+    "ipaBrE": "/ˈpærət/",
+    "ipaAmE": "/ˈpærət/",
+    "partOfSpeech": "adjective",
+    "meaning": {
+      "vi": "Vẹt"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-075",
+    "template": "english",
+    "word": "giraffe",
+    "ipa": "/dʒəˈrɑːf/",
+    "ipaBrE": "/dʒəˈrɑːf/",
+    "ipaAmE": "/dʒəˈræf/",
+    "partOfSpeech": "adjective",
+    "meaning": {
+      "vi": "hươu cao cổ"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-076",
+    "template": "english",
+    "word": "hippopotamus",
+    "ipa": "/ˌhɪpəˈpɒtəməs/",
+    "ipaBrE": "/ˌhɪpəˈpɒtəməs/",
+    "ipaAmE": "/ˌhɪpəˈpɑːtəməs/",
+    "partOfSpeech": "adjective",
+    "meaning": {
+      "vi": "Hà mã"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-077",
+    "template": "english",
+    "word": "hyena",
+    "ipa": "/haɪˈiːnə/",
+    "ipaBrE": "/haɪˈiːnə/",
+    "ipaAmE": "/haɪˈiːnə/",
+    "partOfSpeech": "adjective",
+    "meaning": {
+      "vi": "Linh cẩu"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-078",
+    "template": "english",
+    "word": "ostrich",
+    "ipa": "/ˈɒstrɪtʃ/",
+    "ipaBrE": "/ˈɒstrɪtʃ/",
+    "ipaAmE": "/ˈɑːstrɪtʃ],[ˈɔːstrɪtʃ/",
+    "partOfSpeech": "adjective",
+    "meaning": {
+      "vi": "Đà điểu châu Phi"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-079",
+    "template": "english",
+    "word": "rhinoceros",
+    "ipa": "/raɪˈnɒsərəs/",
+    "ipaBrE": "/raɪˈnɒsərəs/",
+    "ipaAmE": "/raɪˈnɑːsərəs/",
+    "partOfSpeech": "adjective",
+    "meaning": {
+      "vi": "Tê giác"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-080",
+    "template": "english",
+    "word": "otter",
+    "ipa": "/ˈɒtə(r)/",
+    "ipaBrE": "/ˈɒtə(r)/",
+    "ipaAmE": "/ˈɑːtər/",
+    "partOfSpeech": "adjective",
+    "meaning": {
+      "vi": "Rái cá"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-081",
+    "template": "english",
+    "word": "penguin",
+    "ipa": "/ˈpeŋɡwɪn/",
+    "ipaBrE": "/ˈpeŋɡwɪn/",
+    "ipaAmE": "/ˈpeŋɡwɪn/",
+    "partOfSpeech": "adjective",
+    "meaning": {
+      "vi": "Chim cánh cụt. Rất vui được gặp cậu."
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-082",
+    "template": "english",
+    "word": "polar bear",
+    "ipa": "/ˈpəʊlə beə/",
+    "ipaBrE": "/ˈpəʊlə beə/",
+    "ipaAmE": "/ˈpoʊlər bɛr/",
+    "partOfSpeech": "adjective",
+    "meaning": {
+      "vi": "gấu Bắc cực"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-083",
+    "template": "english",
+    "word": "reindeer",
+    "ipa": "/ˈreɪndɪə(r)/",
+    "ipaBrE": "/ˈreɪndɪə(r)/",
+    "ipaAmE": "/ˈreɪndɪr/",
+    "partOfSpeech": "adjective",
+    "meaning": {
+      "vi": "Tuần lộc"
+    },
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+  },
+  {
+    "id": "en-starter-084",
+    "template": "english",
+    "word": "seal",
+    "ipa": "/siːl/",
+    "ipaBrE": "/siːl/",
+    "ipaAmE": "/siːl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "hải cầu; săn hải cầu"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-085",
+    "template": "english",
+    "word": "wolf",
+    "ipa": "/wʊlf/",
+    "ipaBrE": "/wʊlf/",
+    "ipaAmE": "/wʊlf/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "sói"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-086",
+    "template": "english",
+    "word": "blowfish",
+    "ipa": "/ˈbləʊfɪʃ/",
+    "ipaBrE": "/ˈbləʊfɪʃ/",
+    "ipaAmE": "/ˈbloʊfɪʃ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Blowfish†"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-087",
+    "template": "english",
+    "word": "octopus",
+    "ipa": "/ˈɒktəpəs/",
+    "ipaBrE": "/ˈɒktəpəs/",
+    "ipaAmE": "/ˈɑːktəpəs/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "con bạch tuộc"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-088",
+    "template": "english",
+    "word": "sea urchin",
+    "ipa": "/siː ˈɜːʧɪn/",
+    "ipaBrE": "/siː ˈɜːʧɪn/",
+    "ipaAmE": "/si ˈɜrʧən/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "NHÍM BIỂN"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-089",
+    "template": "english",
+    "word": "seagull",
+    "ipa": "/ˈsiːɡʌl/",
+    "ipaBrE": "/ˈsiːɡʌl/",
+    "ipaAmE": "/ˈsiːɡʌl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Mòng biển"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-090",
+    "template": "english",
+    "word": "shark",
+    "ipa": "/ʃɑːk/",
+    "ipaBrE": "/ʃɑːk/",
+    "ipaAmE": "/ʃɑːrk/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cá mập"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-091",
+    "template": "english",
+    "word": "squid",
+    "ipa": "/skwɪd/",
+    "ipaBrE": "/skwɪd/",
+    "ipaAmE": "/skwɪd/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Mực"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-092",
+    "template": "english",
+    "word": "starfish",
+    "ipa": "/ˈstɑːfɪʃ/",
+    "ipaBrE": "/ˈstɑːfɪʃ/",
+    "ipaAmE": "/ˈstɑːrfɪʃ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Sao biển"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-093",
+    "template": "english",
+    "word": "whale",
+    "ipa": "/weɪl/",
+    "ipaBrE": "/weɪl/",
+    "ipaAmE": "/weɪl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cá voi"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-094",
+    "template": "english",
+    "word": "beaver",
+    "ipa": "/ˈbiːvə(r)/",
+    "ipaBrE": "/ˈbiːvə(r)/",
+    "ipaAmE": "/ˈbiːvər/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Hải li"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-095",
+    "template": "english",
+    "word": "bobcat",
+    "ipa": "/ˈbɒbkæt/",
+    "ipaBrE": "/ˈbɒbkæt/",
+    "ipaAmE": "/ˈbɑːbkæt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "xe cút kít"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-096",
+    "template": "english",
+    "word": "mole",
+    "ipa": "/məʊl/",
+    "ipaBrE": "/məʊl/",
+    "ipaAmE": "/moʊl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "•"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-097",
+    "template": "english",
+    "word": "opossum",
+    "ipa": "/əˈpɒsəm/",
+    "ipaBrE": "/əˈpɒsəm/",
+    "ipaAmE": "/əˈpɑːsəm/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Chồn Opossum"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-098",
+    "template": "english",
+    "word": "porcupine",
+    "ipa": "/ˈpɔːkjupaɪn/",
+    "ipaBrE": "/ˈpɔːkjupaɪn/",
+    "ipaAmE": "/ˈpɔːrkjupaɪn/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Nhím"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-099",
+    "template": "english",
+    "word": "robin",
+    "ipa": "/ˈrɒbɪn/",
+    "ipaBrE": "/ˈrɒbɪn/",
+    "ipaAmE": "/ˈrɑːbɪn/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cá chào mào"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-100",
+    "template": "english",
+    "word": "skunk",
+    "ipa": "/skʌŋk/",
+    "ipaBrE": "/skʌŋk/",
+    "ipaAmE": "/skʌŋk/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Họ Chồn hôi"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-101",
+    "template": "english",
+    "word": "squirrel",
+    "ipa": "/ˈskwɪrəl/",
+    "ipaBrE": "/ˈskwɪrəl/",
+    "ipaAmE": "/ˈskwɜːrəl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Sóc"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-102",
+    "template": "english",
+    "word": "woodpecker",
+    "ipa": "/ˈwʊdpekə(r)/",
+    "ipaBrE": "/ˈwʊdpekə(r)/",
+    "ipaAmE": "/ˈwʊdpekər/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Họ Gõ kiến"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-103",
+    "template": "english",
+    "word": "butterfly",
+    "ipa": "/ˈbʌtəflaɪ/",
+    "ipaBrE": "/ˈbʌtəflaɪ/",
+    "ipaAmE": "/ˈbʌtərflaɪ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "con bướm"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-104",
+    "template": "english",
+    "word": "dragonfly",
+    "ipa": "/ˈdræɡənflaɪ/",
+    "ipaBrE": "/ˈdræɡənflaɪ/",
+    "ipaAmE": "/ˈdræɡənflaɪ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "con chuồn chuồn"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-105",
+    "template": "english",
+    "word": "caterpillar",
+    "ipa": "/ˈkætəpɪlə(r)/",
+    "ipaBrE": "/ˈkætəpɪlə(r)/",
+    "ipaAmE": "/ˈkætərpɪlər/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "con sâu bướm, xe dây xích"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-106",
+    "template": "english",
+    "word": "cricket",
+    "ipa": "/ˈkrɪkɪt/",
+    "ipaBrE": "/ˈkrɪkɪt/",
+    "ipaAmE": "/ˈkrɪkɪt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "dế mèn"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-107",
+    "template": "english",
+    "word": "firefly",
+    "ipa": "/ˈfaɪəflaɪ/",
+    "ipaBrE": "/ˈfaɪəflaɪ/",
+    "ipaAmE": "/ˈfaɪərflaɪ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "(con) đom đóm"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-108",
+    "template": "english",
+    "word": "grasshopper",
+    "ipa": "/ˈɡrɑːshɒpə(r)/",
+    "ipaBrE": "/ˈɡrɑːshɒpə(r)/",
+    "ipaAmE": "/ˈɡræshɑːpər/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Phân bộ Châu chấu"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-109",
+    "template": "english",
+    "word": "ladybug",
+    "ipa": "/ˈleɪdibɜːd/",
+    "ipaBrE": "/ˈleɪdibɜːd/",
+    "ipaAmE": "/ˈleɪdibɜːrd/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Bọ rùa"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-110",
+    "template": "english",
+    "word": "mosquito",
+    "ipa": "/məˈskiːtəʊ],[mɒskiːtəʊ/",
+    "ipaBrE": "/məˈskiːtəʊ],[mɒskiːtəʊ/",
+    "ipaAmE": "/məˈskiːtoʊ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Muỗi"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-111",
+    "template": "english",
+    "word": "moth",
+    "ipa": "/mɒθ/",
+    "ipaBrE": "/mɒθ/",
+    "ipaAmE": "/mɔːθ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "ngài"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-112",
+    "template": "english",
+    "word": "apple pie",
+    "ipa": "/ˈæpl paɪ/",
+    "ipaBrE": "/ˈæpl paɪ/",
+    "ipaAmE": "/ˈæpəl paɪ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Bánh táo"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-113",
+    "template": "english",
+    "word": "cereal",
+    "ipa": "/ˈsɪəriəl/",
+    "ipaBrE": "/ˈsɪəriəl/",
+    "ipaAmE": "/ˈsɪriəl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "món ăn (bằng) ngũ cốc"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-114",
+    "template": "english",
+    "word": "hamburger",
+    "ipa": "/ˈhæmbɜːɡə(r)/",
+    "ipaBrE": "/ˈhæmbɜːɡə(r)/",
+    "ipaAmE": "/ˈhæmbɜːrɡər/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "bánh hamburger"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-115",
+    "template": "english",
+    "word": "salad",
+    "ipa": "/ˈsæləd/",
+    "ipaBrE": "/ˈsæləd/",
+    "ipaAmE": "/ˈsæləd/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "món rau trộn"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-116",
+    "template": "english",
+    "word": "sandwich",
+    "ipa": "/ˈsænwɪtʃ],[ˈsænwɪdʒ/",
+    "ipaBrE": "/ˈsænwɪtʃ],[ˈsænwɪdʒ/",
+    "ipaAmE": "/ˈsænwɪtʃ],[ˈsænwɪdʒ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "bánh mì kẹp"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-117",
+    "template": "english",
+    "word": "taco",
+    "ipa": "/ˈtækəʊ/",
+    "ipaBrE": "/ˈtækəʊ/",
+    "ipaAmE": "/ˈtɑːkoʊ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "bánh taco"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-118",
+    "template": "english",
+    "word": "avocado",
+    "ipa": "/ˌævəˈkɑːdəʊ/",
+    "ipaBrE": "/ˌævəˈkɑːdəʊ/",
+    "ipaAmE": "/ˌævəˈkɑːdoʊ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Quả bơ"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-119",
+    "template": "english",
+    "word": "cherry",
+    "ipa": "/ˈtʃeri/",
+    "ipaBrE": "/ˈtʃeri/",
+    "ipaAmE": "/ˈtʃeri/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "quả anh đào"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-120",
+    "template": "english",
+    "word": "coconut",
+    "ipa": "/ˈkəʊkənʌt/",
+    "ipaBrE": "/ˈkəʊkənʌt/",
+    "ipaAmE": "/ˈkoʊkənʌt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "dừa"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-121",
+    "template": "english",
+    "word": "fig",
+    "ipa": "/fɪɡ/",
+    "ipaBrE": "/fɪɡ/",
+    "ipaAmE": "/fɪɡ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "FIG."
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-122",
+    "template": "english",
+    "word": "grapefruit",
+    "ipa": "/ˈɡreɪpfruːt/",
+    "ipaBrE": "/ˈɡreɪpfruːt/",
+    "ipaAmE": "/ˈɡreɪpfruːt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "bưởi đào"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-123",
+    "template": "english",
+    "word": "peach",
+    "ipa": "/piːtʃ/",
+    "ipaBrE": "/piːtʃ/",
+    "ipaAmE": "/piːtʃ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "đào tào"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-124",
+    "template": "english",
+    "word": "pear",
+    "ipa": "/peə(r)/",
+    "ipaBrE": "/peə(r)/",
+    "ipaAmE": "/per/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "quả lê"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-125",
+    "template": "english",
+    "word": "pineapple",
+    "ipa": "/ˈpaɪnæpl/",
+    "ipaBrE": "/ˈpaɪnæpl/",
+    "ipaAmE": "/ˈpaɪnæpl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "quả dứa"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-126",
+    "template": "english",
+    "word": "pomegranate",
+    "ipa": "/ˈpɒmɪɡrænɪt/",
+    "ipaBrE": "/ˈpɒmɪɡrænɪt/",
+    "ipaAmE": "/ˈpɑːmɪɡrænɪt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "quả lựu"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-127",
+    "template": "english",
+    "word": "almond",
+    "ipa": "/ˈɑːmənd/",
+    "ipaBrE": "/ˈɑːmənd/",
+    "ipaAmE": "/ˈɑːmənd/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "quả hạnh nhân"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-128",
+    "template": "english",
+    "word": "chestnut",
+    "ipa": "/ˈtʃesnʌt/",
+    "ipaBrE": "/ˈtʃesnʌt/",
+    "ipaAmE": "/ˈtʃesnʌt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "màu hạt dẻ"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-129",
+    "template": "english",
+    "word": "peanut",
+    "ipa": "/ˈpiːnʌt/",
+    "ipaBrE": "/ˈpiːnʌt/",
+    "ipaAmE": "/ˈpiːnʌt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Di chuyển theo hình đậu phộng"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-130",
+    "template": "english",
+    "word": "pecan",
+    "ipa": "/ˈpiːkən],[pɪˈkæn/",
+    "ipaBrE": "/ˈpiːkən],[pɪˈkæn/",
+    "ipaAmE": "/pɪˈkɑːn/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Quả hồ đào"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-131",
+    "template": "english",
+    "word": "pistachio",
+    "ipa": "/pɪˈstæʃiəʊ],[pɪˈstɑːʃiəʊ/",
+    "ipaBrE": "/pɪˈstæʃiəʊ],[pɪˈstɑːʃiəʊ/",
+    "ipaAmE": "/pɪˈstæʃioʊ],[pɪˈstɑːʃioʊ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Hồ trăn"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-132",
+    "template": "english",
+    "word": "walnut",
+    "ipa": "/ˈwɔːlnʌt/",
+    "ipaBrE": "/ˈwɔːlnʌt/",
+    "ipaAmE": "/ˈwɔːlnʌt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Óc chó"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-133",
+    "template": "english",
+    "word": "bacon",
+    "ipa": "/ˈbeɪkən/",
+    "ipaBrE": "/ˈbeɪkən/",
+    "ipaAmE": "/ˈbeɪkən/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "thịt lợn muối xông khói"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-134",
+    "template": "english",
+    "word": "beef",
+    "ipa": "/biːf/",
+    "ipaBrE": "/biːf/",
+    "ipaAmE": "/biːf/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "thịt bò"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-135",
+    "template": "english",
+    "word": "chicken",
+    "ipa": "/ˈtʃɪkɪn/",
+    "ipaBrE": "/ˈtʃɪkɪn/",
+    "ipaAmE": "/ˈtʃɪkɪn/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "gà"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-136",
+    "template": "english",
+    "word": "crab",
+    "ipa": "/kræb/",
+    "ipaBrE": "/kræb/",
+    "ipaAmE": "/kræb/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "quả táo dại"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-137",
+    "template": "english",
+    "word": "lobster",
+    "ipa": "/ˈlɒbstə(r)/",
+    "ipaBrE": "/ˈlɒbstə(r)/",
+    "ipaAmE": "/ˈlɑːbstər/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "tôm hùm"
+    },
+    "lesson": "Phần 2: Trang phục & Hình khối"
+  },
+  {
+    "id": "en-starter-138",
+    "template": "english",
+    "word": "oyster",
+    "ipa": "/ˈɔɪstə(r)/",
+    "ipaBrE": "/ˈɔɪstə(r)/",
+    "ipaAmE": "/ˈɔɪstər/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "hầu"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-139",
+    "template": "english",
+    "word": "pork",
+    "ipa": "/pɔːk/",
+    "ipaBrE": "/pɔːk/",
+    "ipaAmE": "/pɔːrk/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "thịt lợn"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-140",
+    "template": "english",
+    "word": "salmon",
+    "ipa": "/ˈsæmən/",
+    "ipaBrE": "/ˈsæmən/",
+    "ipaAmE": "/ˈsæmən/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "thịt cá hồicolor"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-141",
+    "template": "english",
+    "word": "sausage",
+    "ipa": "/ˈsɒsɪdʒ/",
+    "ipaBrE": "/ˈsɒsɪdʒ/",
+    "ipaAmE": "/ˈsɔːsɪdʒ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "xúc xích"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-142",
+    "template": "english",
+    "word": "shrimp",
+    "ipa": "/ʃrɪmp/",
+    "ipaBrE": "/ʃrɪmp/",
+    "ipaAmE": "/ʃrɪmp/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Tôm"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-143",
+    "template": "english",
+    "word": "broccoli",
+    "ipa": "/ˈbrɒkəli/",
+    "ipaBrE": "/ˈbrɒkəli/",
+    "ipaAmE": "/ˈbrɑːkəli/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Rou cai xanh"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-144",
+    "template": "english",
+    "word": "cabbage",
+    "ipa": "/ˈkæbɪdʒ/",
+    "ipaBrE": "/ˈkæbɪdʒ/",
+    "ipaAmE": "/ˈkæbɪdʒ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cải bắp"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-145",
+    "template": "english",
+    "word": "carrot",
+    "ipa": "/ˈkærət/",
+    "ipaBrE": "/ˈkærət/",
+    "ipaAmE": "/ˈkærət/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "củ cà rốt"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-146",
+    "template": "english",
+    "word": "celery",
+    "ipa": "/ˈseləri/",
+    "ipaBrE": "/ˈseləri/",
+    "ipaAmE": "/ˈseləri/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cần tây"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-147",
+    "template": "english",
+    "word": "cucumber",
+    "ipa": "/ˈkjuːkʌmbə(r)/",
+    "ipaBrE": "/ˈkjuːkʌmbə(r)/",
+    "ipaAmE": "/ˈkjuːkʌmbər/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "dưa chuột"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-148",
+    "template": "english",
+    "word": "garlic",
+    "ipa": "/ˈɡɑːlɪk/",
+    "ipaBrE": "/ˈɡɑːlɪk/",
+    "ipaAmE": "/ˈɡɑːrlɪk/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "tỏi"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-149",
+    "template": "english",
+    "word": "onion",
+    "ipa": "/ˈʌnjən/",
+    "ipaBrE": "/ˈʌnjən/",
+    "ipaAmE": "/ˈʌnjən/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "củ hành"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-150",
+    "template": "english",
+    "word": "potato",
+    "ipa": "/pəˈteɪtəʊ/",
+    "ipaBrE": "/pəˈteɪtəʊ/",
+    "ipaAmE": "/pəˈteɪtoʊ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "khoai tây"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-151",
+    "template": "english",
+    "word": "pumpkin",
+    "ipa": "/ˈpʌmpkɪn/",
+    "ipaBrE": "/ˈpʌmpkɪn/",
+    "ipaAmE": "/ˈpʌmpkɪn/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "bí ngô"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-152",
+    "template": "english",
+    "word": "carnation",
+    "ipa": "/kɑːˈneɪʃn/",
+    "ipaBrE": "/kɑːˈneɪʃn/",
+    "ipaAmE": "/kɑːrˈneɪʃn/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Hoa cẩm chướng"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-153",
+    "template": "english",
+    "word": "chrysanthemum",
+    "ipa": "/krɪˈsænθəməm],[krɪˈzænθəməm/",
+    "ipaBrE": "/krɪˈsænθəməm],[krɪˈzænθəməm/",
+    "ipaAmE": "/krɪˈsænθəməm],[krɪˈzænθəməm/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "hoa cúc"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-154",
+    "template": "english",
+    "word": "daisy",
+    "ipa": "/ˈdeɪzi/",
+    "ipaBrE": "/ˈdeɪzi/",
+    "ipaAmE": "/ˈdeɪzi/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "(thực vật học) cây cúc, hoa cúc"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-155",
+    "template": "english",
+    "word": "lily",
+    "ipa": "/ˈlɪli/",
+    "ipaBrE": "/ˈlɪli/",
+    "ipaAmE": "/ˈlɪli/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Lilium"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-156",
+    "template": "english",
+    "word": "lotus",
+    "ipa": "/ˈləʊtəs/",
+    "ipaBrE": "/ˈləʊtəs/",
+    "ipaAmE": "/ˈloʊtəs/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Lotus:"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-157",
+    "template": "english",
+    "word": "marigold",
+    "ipa": "/ˈmæriɡəʊld/",
+    "ipaBrE": "/ˈmæriɡəʊld/",
+    "ipaAmE": "/ˈmæriɡoʊld/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cúc vạn thọ"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-158",
+    "template": "english",
+    "word": "pansy",
+    "ipa": "/ˈpænzi/",
+    "ipaBrE": "/ˈpænzi/",
+    "ipaAmE": "/ˈpænzi/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "PANSY!"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-159",
+    "template": "english",
+    "word": "rose",
+    "ipa": "/rəʊz/",
+    "ipaBrE": "/rəʊz/",
+    "ipaAmE": "/roʊz/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "tăng"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-160",
+    "template": "english",
+    "word": "sunflower",
+    "ipa": "/ˈsʌnflaʊə(r)/",
+    "ipaBrE": "/ˈsʌnflaʊə(r)/",
+    "ipaAmE": "/ˈsʌnflaʊər/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cây hướng dương"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-161",
+    "template": "english",
+    "word": "tulip",
+    "ipa": "/ˈtjuːlɪp/",
+    "ipaBrE": "/ˈtjuːlɪp/",
+    "ipaAmE": "/ˈtuːlɪp/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "hoa tulip"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-162",
+    "template": "english",
+    "word": "bamboo",
+    "ipa": "/ˌbæmˈbuː/",
+    "ipaBrE": "/ˌbæmˈbuː/",
+    "ipaAmE": "/ˌbæmˈbuː/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cây tre"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-163",
+    "template": "english",
+    "word": "palm tree",
+    "ipa": "/pɑːm/",
+    "ipaBrE": "/pɑːm/",
+    "ipaAmE": "/pɑːm/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Họ Cau"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-164",
+    "template": "english",
+    "word": "maple tree",
+    "ipa": "/ˈmeɪpl/",
+    "ipaBrE": "/ˈmeɪpl/",
+    "ipaAmE": "/ˈmeɪpl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cây phong"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-165",
+    "template": "english",
+    "word": "pine tree",
+    "ipa": "/paɪn/",
+    "ipaBrE": "/paɪn/",
+    "ipaAmE": "/paɪn/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Cây Thông"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-166",
+    "template": "english",
+    "word": "willow tree",
+    "ipa": "/ˈwɪləʊ triː/",
+    "ipaBrE": "/ˈwɪləʊ triː/",
+    "ipaAmE": "/ˈwɪˌloʊ tri/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cây liễu"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-167",
+    "template": "english",
+    "word": "birch",
+    "ipa": "/bɜːtʃ/",
+    "ipaBrE": "/bɜːtʃ/",
+    "ipaAmE": "/bɜːrtʃ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Bạch dương"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-168",
+    "template": "english",
+    "word": "martial arts",
+    "ipa": "/ˈmɑːʃəl ɑːts/",
+    "ipaBrE": "/ˈmɑːʃəl ɑːts/",
+    "ipaAmE": "/ˈmɑrʃəl ɑrts/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "võ thuật"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-169",
+    "template": "english",
+    "word": "ping-pong",
+    "ipa": "/ˈpɪŋpɒŋ/",
+    "ipaBrE": "/ˈpɪŋpɒŋ/",
+    "ipaAmE": "/pɪŋ – pɔŋ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "- Bóng bàn?"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-170",
+    "template": "english",
+    "word": "football",
+    "ipa": "/ˈfʊtbɔːl/",
+    "ipaBrE": "/ˈfʊtbɔːl/",
+    "ipaAmE": "/ˈfʊtbɔːl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "bóng đá"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-171",
+    "template": "english",
+    "word": "vulture",
+    "ipa": "/ˈvʌltʃə(r)/",
+    "ipaBrE": "/ˈvʌltʃə(r)/",
+    "ipaAmE": "/ˈvʌltʃər/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Kên kên"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-172",
+    "template": "english",
+    "word": "alligator, crocodile",
+    "ipa": "/ˈælɪɡeɪtə(r)/",
+    "ipaBrE": "/ˈælɪɡeɪtə(r)/",
+    "ipaAmE": "/ˈælɪɡeɪtər/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cá sấu"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-173",
+    "template": "english",
+    "word": "gorilla",
+    "ipa": "/ɡəˈrɪlə/",
+    "ipaBrE": "/ɡəˈrɪlə/",
+    "ipaAmE": "/ɡəˈrɪlə/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Khỉ đột"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-174",
+    "template": "english",
+    "word": "buffalo",
+    "ipa": "/ˈbʌfələʊ/",
+    "ipaBrE": "/ˈbʌfələʊ/",
+    "ipaAmE": "/ˈbʌfəloʊ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "con trâu"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-175",
+    "template": "english",
+    "word": "jellyfish",
+    "ipa": "/ˈdʒelifɪʃ/",
+    "ipaBrE": "/ˈdʒelifɪʃ/",
+    "ipaAmE": "/ˈdʒelifɪʃ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Sứa"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-176",
+    "template": "english",
+    "word": "sea horse",
+    "ipa": "/siː hɔːs/",
+    "ipaBrE": "/siː hɔːs/",
+    "ipaAmE": "/si hɔrs/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "ngựa biển"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-177",
+    "template": "english",
+    "word": "deer",
+    "ipa": "/dɪə(r)/",
+    "ipaBrE": "/dɪə(r)/",
+    "ipaAmE": "/dɪr/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "con nai"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-178",
+    "template": "english",
+    "word": "beetle",
+    "ipa": "/ˈbiːtl/",
+    "ipaBrE": "/ˈbiːtl/",
+    "ipaAmE": "/ˈbiːtl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Bọ cánh cứng"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-179",
+    "template": "english",
+    "word": "fish and chips",
+    "ipa": "/fɪʃ ən(d) ʧɪps/",
+    "ipaBrE": "/fɪʃ ən(d) ʧɪps/",
+    "ipaAmE": "/fɪʃ ən(d) ʧɪps/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Cá và khoai tây chim"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-180",
+    "template": "english",
+    "word": "french fries",
+    "ipa": "/frɛnʧ fraɪz/",
+    "ipaBrE": "/frɛnʧ fraɪz/",
+    "ipaAmE": "/frɛnʧ fraɪz/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Khoai tây chiên"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-181",
+    "template": "english",
+    "word": "hot dog",
+    "ipa": "/hɒt dɒg/",
+    "ipaBrE": "/hɒt dɒg/",
+    "ipaAmE": "/hɑt dɔg/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "xúc xích chín"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-182",
+    "template": "english",
+    "word": "ice cream cone",
+    "ipa": "/aɪs kriːm kəʊn/",
+    "ipaBrE": "/aɪs kriːm kəʊn/",
+    "ipaAmE": "/aɪs krim koʊn/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "bánh quế dạng nón làm vỏ kem"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-183",
+    "template": "english",
+    "word": "apricot",
+    "ipa": "/ˈeɪprɪkɒt/",
+    "ipaBrE": "/ˈeɪprɪkɒt/",
+    "ipaAmE": "/ˈæprɪkɑːt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "quả mơ"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-184",
+    "template": "english",
+    "word": "hazel nut",
+    "ipa": "/heɪzl nʌt/",
+    "ipaBrE": "/heɪzl nʌt/",
+    "ipaAmE": "/ˈheɪzəl nʌt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "hạt phỉ"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-185",
+    "template": "english",
+    "word": "pine nuts",
+    "ipa": "/paɪn nʌts/",
+    "ipaBrE": "/paɪn nʌts/",
+    "ipaAmE": "/paɪn nʌts/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Hạt thông"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-186",
+    "template": "english",
+    "word": "eggplant",
+    "ipa": "/ˈeɡplɑːnt/",
+    "ipaBrE": "/ˈeɡplɑːnt/",
+    "ipaAmE": "/ˈeɡplænt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cà tím"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-187",
+    "template": "english",
+    "word": "oak tree",
+    "ipa": "/əʊk/",
+    "ipaBrE": "/əʊk/",
+    "ipaAmE": "/oʊk/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cây sồi"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-188",
+    "template": "english",
+    "word": "\"ice skating\"",
+    "ipa": "/aɪs ˈskeɪtɪŋ/",
+    "ipaBrE": "/aɪs ˈskeɪtɪŋ/",
+    "ipaAmE": "/aɪs ˈskeɪtɪŋ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Trượt Băng"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-189",
+    "template": "english",
+    "word": "hair",
+    "ipa": "/heə(r)/",
+    "ipaBrE": "/heə(r)/",
+    "ipaAmE": "/her/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "tóc"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-190",
+    "template": "english",
+    "word": "temple",
+    "ipa": "/ˈtempl/",
+    "ipaBrE": "/ˈtempl/",
+    "ipaAmE": "/ˈtempl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "đền thờ, miếu, thánh thất, thánh đường"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-191",
+    "template": "english",
+    "word": "ear",
+    "ipa": "/ɪə(r)/",
+    "ipaBrE": "/ɪə(r)/",
+    "ipaAmE": "/ɪr/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cái tai"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-192",
+    "template": "english",
+    "word": "nose",
+    "ipa": "/nəʊz/",
+    "ipaBrE": "/nəʊz/",
+    "ipaAmE": "/noʊz/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "mũi"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-193",
+    "template": "english",
+    "word": "lip",
+    "ipa": "/lɪp/",
+    "ipaBrE": "/lɪp/",
+    "ipaAmE": "/lɪp/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "môi"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-194",
+    "template": "english",
+    "word": "mouth",
+    "ipa": "/noun: [maʊθ]; verb: [maʊð/",
+    "ipaBrE": "/noun: [maʊθ]; verb: [maʊð/",
+    "ipaAmE": "/noun: [maʊθ]; verb: [maʊð/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "miệng"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-195",
+    "template": "english",
+    "word": "chin",
+    "ipa": "/tʃɪn/",
+    "ipaBrE": "/tʃɪn/",
+    "ipaAmE": "/tʃɪn/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cằm"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-196",
+    "template": "english",
+    "word": "tongue",
+    "ipa": "/tʌŋ/",
+    "ipaBrE": "/tʌŋ/",
+    "ipaAmE": "/tʌŋ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "lưỡi"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-197",
+    "template": "english",
+    "word": "tooth",
+    "ipa": "/tuːθ/",
+    "ipaBrE": "/tuːθ/",
+    "ipaAmE": "/tuːθ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "răng"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-198",
+    "template": "english",
+    "word": "jaw",
+    "ipa": "/dʒɔː/",
+    "ipaBrE": "/dʒɔː/",
+    "ipaAmE": "/dʒɔː/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Hàm"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-199",
+    "template": "english",
+    "word": "nostril",
+    "ipa": "/ˈnɒstrəl/",
+    "ipaBrE": "/ˈnɒstrəl/",
+    "ipaAmE": "/ˈnɑːstrəl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Lỗ mũi"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-200",
+    "template": "english",
+    "word": "cheek",
+    "ipa": "/tʃiːk/",
+    "ipaBrE": "/tʃiːk/",
+    "ipaAmE": "/tʃiːk/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "má"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-201",
+    "template": "english",
+    "word": "eyelash",
+    "ipa": "/ˈaɪlæʃ/",
+    "ipaBrE": "/ˈaɪlæʃ/",
+    "ipaAmE": "/ˈaɪlæʃ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "lông mi"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-202",
+    "template": "english",
+    "word": "eyelid",
+    "ipa": "/ˈaɪlɪd/",
+    "ipaBrE": "/ˈaɪlɪd/",
+    "ipaAmE": "/ˈaɪlɪd/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "mí mắt"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-203",
+    "template": "english",
+    "word": "eyebrow",
+    "ipa": "/ˈaɪbraʊ/",
+    "ipaBrE": "/ˈaɪbraʊ/",
+    "ipaAmE": "/ˈaɪbraʊ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "ô văng cửa tò vò"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-204",
+    "template": "english",
+    "word": "forehead",
+    "ipa": "/ˈfɔːhed],[ˈfɒrɪd/",
+    "ipaBrE": "/ˈfɔːhed],[ˈfɒrɪd/",
+    "ipaAmE": "/ˈfɔːrhed],[ˈfɔːred/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Trán"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-205",
+    "template": "english",
+    "word": "head",
+    "ipa": "/hed/",
+    "ipaBrE": "/hed/",
+    "ipaAmE": "/hed/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cái đầu ; chỉ huy, lãnh đạo, dẫn đầu"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-206",
+    "template": "english",
+    "word": "brain",
+    "ipa": "/breɪn/",
+    "ipaBrE": "/breɪn/",
+    "ipaAmE": "/breɪn/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "não"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-207",
+    "template": "english",
+    "word": "heart",
+    "ipa": "/hɑːt/",
+    "ipaBrE": "/hɑːt/",
+    "ipaAmE": "/hɑːrt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "trái tim"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-208",
+    "template": "english",
+    "word": "lung",
+    "ipa": "/lʌŋ/",
+    "ipaBrE": "/lʌŋ/",
+    "ipaAmE": "/lʌŋ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "phổi"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-209",
+    "template": "english",
+    "word": "liver",
+    "ipa": "/ˈlɪvə(r)/",
+    "ipaBrE": "/ˈlɪvə(r)/",
+    "ipaAmE": "/ˈlɪvər/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "gan"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-210",
+    "template": "english",
+    "word": "stomach",
+    "ipa": "/ˈstʌmək/",
+    "ipaBrE": "/ˈstʌmək/",
+    "ipaAmE": "/ˈstʌmək/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "dạ dày"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-211",
+    "template": "english",
+    "word": "kidney",
+    "ipa": "/ˈkɪdni/",
+    "ipaBrE": "/ˈkɪdni/",
+    "ipaAmE": "/ˈkɪdni/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "thận"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-212",
+    "template": "english",
+    "word": "neck",
+    "ipa": "/nek/",
+    "ipaBrE": "/nek/",
+    "ipaAmE": "/nek/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cổ"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-213",
+    "template": "english",
+    "word": "chest",
+    "ipa": "/tʃest/",
+    "ipaBrE": "/tʃest/",
+    "ipaAmE": "/tʃest/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "ngực"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-214",
+    "template": "english",
+    "word": "hand",
+    "ipa": "/hænd/",
+    "ipaBrE": "/hænd/",
+    "ipaAmE": "/hænd/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "bàn tay"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-215",
+    "template": "english",
+    "word": "thigh",
+    "ipa": "/θaɪ/",
+    "ipaBrE": "/θaɪ/",
+    "ipaAmE": "/θaɪ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "đùi"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-216",
+    "template": "english",
+    "word": "knee",
+    "ipa": "/niː/",
+    "ipaBrE": "/niː/",
+    "ipaAmE": "/niː/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "đầu gối"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-217",
+    "template": "english",
+    "word": "shin",
+    "ipa": "/ʃɪn/",
+    "ipaBrE": "/ʃɪn/",
+    "ipaAmE": "/ʃɪn/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cẳng chân"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-218",
+    "template": "english",
+    "word": "foot",
+    "ipa": "/fʊt/",
+    "ipaBrE": "/fʊt/",
+    "ipaAmE": "/fʊt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "chân trang"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-219",
+    "template": "english",
+    "word": "toenail",
+    "ipa": "/ˈtəʊneɪl/",
+    "ipaBrE": "/ˈtəʊneɪl/",
+    "ipaAmE": "/ˈtoʊneɪl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "móng chân"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-220",
+    "template": "english",
+    "word": "big toe",
+    "ipa": "/bɪg təʊ/",
+    "ipaBrE": "/bɪg təʊ/",
+    "ipaAmE": "/bɪg toʊ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "ngón chân cái"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-221",
+    "template": "english",
+    "word": "leg",
+    "ipa": "/leɡ/",
+    "ipaBrE": "/leɡ/",
+    "ipaAmE": "/leɡ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "chân"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-222",
+    "template": "english",
+    "word": "palm",
+    "ipa": "/pɑːm/",
+    "ipaBrE": "/pɑːm/",
+    "ipaAmE": "/pɑːm/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "lòng bàn tay"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-223",
+    "template": "english",
+    "word": "thumb",
+    "ipa": "/θʌm/",
+    "ipaBrE": "/θʌm/",
+    "ipaAmE": "/θʌm/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "ngón tay cái"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-224",
+    "template": "english",
+    "word": "wrist",
+    "ipa": "/rɪst/",
+    "ipaBrE": "/rɪst/",
+    "ipaAmE": "/rɪst/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cổ tay"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-225",
+    "template": "english",
+    "word": "arm",
+    "ipa": "/ɑːm/",
+    "ipaBrE": "/ɑːm/",
+    "ipaAmE": "/ɑːrm/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "trên"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-226",
+    "template": "english",
+    "word": "body",
+    "ipa": "/ˈbɒdi/",
+    "ipaBrE": "/ˈbɒdi/",
+    "ipaAmE": "/ˈbɑːdi/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "thân thể"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-227",
+    "template": "english",
+    "word": "armpit",
+    "ipa": "/ˈɑːmpɪt/",
+    "ipaBrE": "/ˈɑːmpɪt/",
+    "ipaAmE": "/ˈɑːrmpɪt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Vòng nách"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-228",
+    "template": "english",
+    "word": "back",
+    "ipa": "/bæk/",
+    "ipaBrE": "/bæk/",
+    "ipaAmE": "/bæk/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "quay lại"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-229",
+    "template": "english",
+    "word": "hip",
+    "ipa": "/hɪp/",
+    "ipaBrE": "/hɪp/",
+    "ipaAmE": "/hɪp/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "hỏng"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-230",
+    "template": "english",
+    "word": "bottom",
+    "ipa": "/ˈbɒtəm/",
+    "ipaBrE": "/ˈbɒtəm/",
+    "ipaAmE": "/ˈbɑːtəm/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "phần dưới cùng; đáy"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-231",
+    "template": "english",
+    "word": "heel",
+    "ipa": "/hiːl/",
+    "ipaBrE": "/hiːl/",
+    "ipaAmE": "/hiːl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "châm cứu"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-232",
+    "template": "english",
+    "word": "ankle",
+    "ipa": "/ˈæŋkl/",
+    "ipaBrE": "/ˈæŋkl/",
+    "ipaAmE": "/ˈæŋkl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "mắt cá chân"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-233",
+    "template": "english",
+    "word": "calf",
+    "ipa": "/kɑːf/",
+    "ipaBrE": "/kɑːf/",
+    "ipaAmE": "/kæf/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Bê con"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-234",
+    "template": "english",
+    "word": "fingernail",
+    "ipa": "/ˈfɪŋɡəneɪl/",
+    "ipaBrE": "/ˈfɪŋɡəneɪl/",
+    "ipaAmE": "/ˈfɪŋɡərneɪl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "móng tay"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-235",
+    "template": "english",
+    "word": "knuckle",
+    "ipa": "/ˈnʌkl/",
+    "ipaBrE": "/ˈnʌkl/",
+    "ipaAmE": "/ˈnʌkl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "khuỷu"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-236",
+    "template": "english",
+    "word": "waist",
+    "ipa": "/weɪst/",
+    "ipaBrE": "/weɪst/",
+    "ipaAmE": "/weɪst/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "eo, thắt lưng"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-237",
+    "template": "english",
+    "word": "fore arm",
+    "ipa": "/fɔːr ɑːm/",
+    "ipaBrE": "/fɔːr ɑːm/",
+    "ipaAmE": "/fɔr ɑrm/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cẳng tay, cẳng chi trước"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-238",
+    "template": "english",
+    "word": "elbow",
+    "ipa": "/ˈelbəʊ/",
+    "ipaBrE": "/ˈelbəʊ/",
+    "ipaAmE": "/ˈelboʊ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "khuỷu tay"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-239",
+    "template": "english",
+    "word": "upper arm",
+    "ipa": "/ˈʌpər ɑːm/",
+    "ipaBrE": "/ˈʌpər ɑːm/",
+    "ipaAmE": "/ˈʌpər ɑrm/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Bắp Tay"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-240",
+    "template": "english",
+    "word": "shoulder",
+    "ipa": "/ˈʃəʊldə(r)/",
+    "ipaBrE": "/ˈʃəʊldə(r)/",
+    "ipaAmE": "/ˈʃoʊldər/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "vai"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-241",
+    "template": "english",
+    "word": "brother",
+    "ipa": "/ˈbrʌðə(r)/",
+    "ipaBrE": "/ˈbrʌðə(r)/",
+    "ipaAmE": "/ˈbrʌðər/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "anh/em trai"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-242",
+    "template": "english",
+    "word": "sister",
+    "ipa": "/ˈsɪstə(r)/",
+    "ipaBrE": "/ˈsɪstə(r)/",
+    "ipaAmE": "/ˈsɪstər/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "chị, em gái"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-243",
+    "template": "english",
+    "word": "father, dad",
+    "ipa": "/ˈfɑːðə(r)/",
+    "ipaBrE": "/ˈfɑːðə(r)/",
+    "ipaAmE": "/ˈfɑːðər/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cha, cha"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-244",
+    "template": "english",
+    "word": "mother, mom",
+    "ipa": "/ˈmʌðə(r)/",
+    "ipaBrE": "/ˈmʌðə(r)/",
+    "ipaAmE": "/ˈmʌðər/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "mẹ, mẹ"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-245",
+    "template": "english",
+    "word": "my mother's husband",
+    "ipa": "/maɪ ˈmʌðəz ˈhʌzbənd/",
+    "ipaBrE": "/maɪ ˈmʌðəz ˈhʌzbənd/",
+    "ipaAmE": "/maɪ ˈmʌðərz ˈhʌzbənd/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "chồng của mẹ tôi"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-246",
+    "template": "english",
+    "word": "my father's wife",
+    "ipa": "/maɪ ˈfɑːðəz waɪf/",
+    "ipaBrE": "/maɪ ˈfɑːðəz waɪf/",
+    "ipaAmE": "/maɪ ˈfɑðərz waɪf/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "vợ của cha tôi"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-247",
+    "template": "english",
+    "word": "parents",
+    "ipa": "/ˈpeərənts/",
+    "ipaBrE": "/ˈpeərənts/",
+    "ipaAmE": "/ˈperənts/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "phụ huynh"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-248",
+    "template": "english",
+    "word": "grandfather, grandpa",
+    "ipa": "/ˈɡrænfɑːðə(r)/",
+    "ipaBrE": "/ˈɡrænfɑːðə(r)/",
+    "ipaAmE": "/ˈɡrænfɑːðər/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "ông nội, ông nội"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-249",
+    "template": "english",
+    "word": "grandmother, grandma",
+    "ipa": "/ˈɡrænmʌðə(r)/",
+    "ipaBrE": "/ˈɡrænmʌðə(r)/",
+    "ipaAmE": "/ˈɡrænmʌðər/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "bà, bà"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-250",
+    "template": "english",
+    "word": "grandparents",
+    "ipa": "/ˈgrænˌpeərənts/",
+    "ipaBrE": "/ˈgrænˌpeərənts/",
+    "ipaAmE": "/ˈgræn(d)ˌpɛrənts/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "Ông bà ngoại"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-251",
+    "template": "english",
+    "word": "uncle",
+    "ipa": "/ˈʌŋkl/",
+    "ipaBrE": "/ˈʌŋkl/",
+    "ipaAmE": "/ˈʌŋkl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "chủ, bác"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-252",
+    "template": "english",
+    "word": "aunt",
+    "ipa": "/ɑːnt/",
+    "ipaBrE": "/ɑːnt/",
+    "ipaAmE": "/ænt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cô, dì"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-253",
+    "template": "english",
+    "word": "cousin",
+    "ipa": "/ˈkʌzn/",
+    "ipaBrE": "/ˈkʌzn/",
+    "ipaAmE": "/ˈkʌzn/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "anh em họ"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-254",
+    "template": "english",
+    "word": "my parents' niece",
+    "ipa": "/maɪ ˈpeərənts niːs/",
+    "ipaBrE": "/maɪ ˈpeərənts niːs/",
+    "ipaAmE": "/maɪ ˈpɛrənts nis/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cháu gái của bố mẹ tôi"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-255",
+    "template": "english",
+    "word": "cousin",
+    "ipa": "/ˈkʌzn/",
+    "ipaBrE": "/ˈkʌzn/",
+    "ipaAmE": "/ˈkʌzn/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "anh em họ"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-256",
+    "template": "english",
+    "word": "my parents' nephew",
+    "ipa": "/maɪ ˈpeərənts ˈnɛvju(ː)/",
+    "ipaBrE": "/maɪ ˈpeərənts ˈnɛvju(ː)/",
+    "ipaAmE": "/maɪ ˈpɛrənts ˈnɛfju/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cháu trai của bố mẹ tôi"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-257",
+    "template": "english",
+    "word": "red",
+    "ipa": "/red/",
+    "ipaBrE": "/red/",
+    "ipaAmE": "/red/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "màu đỏ"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-258",
+    "template": "english",
+    "word": "pink",
+    "ipa": "/pɪŋk/",
+    "ipaBrE": "/pɪŋk/",
+    "ipaAmE": "/pɪŋk/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "màu hồng; hoa cẩm chướng, tình trạng tốt, hoàn hảo"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-259",
+    "template": "english",
+    "word": "green",
+    "ipa": "/ɡriːn/",
+    "ipaBrE": "/ɡriːn/",
+    "ipaAmE": "/ɡriːn/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "màu xanh lục"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-260",
+    "template": "english",
+    "word": "lime green",
+    "ipa": "/laɪm griːn/",
+    "ipaBrE": "/laɪm griːn/",
+    "ipaAmE": "/laɪm grin/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "vàng chanh"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-261",
+    "template": "english",
+    "word": "teal",
+    "ipa": "/tiːl/",
+    "ipaBrE": "/tiːl/",
+    "ipaAmE": "/tiːl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "xanh mòng két"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-262",
+    "template": "english",
+    "word": "blue",
+    "ipa": "/bluː/",
+    "ipaBrE": "/bluː/",
+    "ipaAmE": "/bluː/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "xanh"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-263",
+    "template": "english",
+    "word": "navy",
+    "ipa": "/ˈneɪvi/",
+    "ipaBrE": "/ˈneɪvi/",
+    "ipaAmE": "/ˈneɪvi/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "hải quân"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-264",
+    "template": "english",
+    "word": "yellow",
+    "ipa": "/ˈjeləʊ/",
+    "ipaBrE": "/ˈjeləʊ/",
+    "ipaAmE": "/ˈjeloʊ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "vàng"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-265",
+    "template": "english",
+    "word": "purple",
+    "ipa": "/ˈpɜːpl/",
+    "ipaBrE": "/ˈpɜːpl/",
+    "ipaAmE": "/ˈpɜːrpl/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "tím"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-266",
+    "template": "english",
+    "word": "brown",
+    "ipa": "/braʊn/",
+    "ipaBrE": "/braʊn/",
+    "ipaAmE": "/braʊn/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "nâu"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-267",
+    "template": "english",
+    "word": "beige",
+    "ipa": "/beɪʒ/",
+    "ipaBrE": "/beɪʒ/",
+    "ipaAmE": "/beɪʒ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "becolor"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-268",
+    "template": "english",
+    "word": "orange",
+    "ipa": "/ˈɒrɪndʒ/",
+    "ipaBrE": "/ˈɒrɪndʒ/",
+    "ipaAmE": "/ˈɔːrɪndʒ],[ˈɑːrɪndʒ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "cam"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-269",
+    "template": "english",
+    "word": "white",
+    "ipa": "/waɪt/",
+    "ipaBrE": "/waɪt/",
+    "ipaAmE": "/waɪt/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "trắng"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-270",
+    "template": "english",
+    "word": "black",
+    "ipa": "/blæk/",
+    "ipaBrE": "/blæk/",
+    "ipaAmE": "/blæk/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "màu đen"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  },
+  {
+    "id": "en-starter-271",
+    "template": "english",
+    "word": "gray",
+    "ipa": "/ɡreɪ/",
+    "ipaBrE": "/ɡreɪ/",
+    "ipaAmE": "/ɡreɪ/",
+    "partOfSpeech": "noun",
+    "meaning": {
+      "vi": "màu xám"
+    },
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+  }
+]

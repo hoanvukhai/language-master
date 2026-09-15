@@ -59,6 +59,21 @@ function buildRawList(course: Course): RawItem[] {
   const { subject, data } = course;
 
   if (subject === 'vocab') {
+    // ── English template ────────────────────────────────────────────
+    if (course.template === 'english') {
+      return data.map((w: any) => ({
+        id: w.id || w.word,
+        kanji: w.word,           // 'kanji' slot = English word
+        hiragana: w.ipa || '',   // 'hiragana' slot = IPA (not typed, just for display)
+        meaning: typeof w.meaning === 'object' ? w.meaning.vi : w.meaning,
+        lesson: w.lesson || 'Unit 1',
+        exampleKanji: w.examples?.[0]?.en,
+        exampleMeaning: w.examples?.[0]?.vi,
+        isSingleKanjiChar: false,
+        originalData: w,
+      }));
+    }
+    // ── Japanese template ────────────────────────────────────────────
     return data.map((w: any) => ({
       id: w.id || w.kanji || w.hiragana,
       kanji: w.kanji || w.hiragana,
@@ -237,9 +252,24 @@ const PreviewWordContent = ({ word, speak }: { word: any, speak: (text: string) 
             <h1 className="text-5xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-none break-words">
               {data?.kanji || word.kanji}
             </h1>
-            <p className="text-xl md:text-2xl font-bold text-slate-400 dark:text-slate-500 mb-1 tracking-wide">
-              {data?.hiragana || word.hiragana}
-            </p>
+            {data?.ipaBrE || data?.ipaAmE ? (
+              <div className="flex items-center gap-2 flex-wrap mb-1">
+                {data?.ipaBrE && (
+                  <span className="text-xs sm:text-sm font-mono px-2 py-0.5 rounded-lg bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/40">
+                    🇬🇧 UK: {data.ipaBrE}
+                  </span>
+                )}
+                {data?.ipaAmE && (
+                  <span className="text-xs sm:text-sm font-mono px-2 py-0.5 rounded-lg bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800/40">
+                    🇺🇸 US: {data.ipaAmE}
+                  </span>
+                )}
+              </div>
+            ) : (
+              <p className="text-xl md:text-2xl font-bold text-slate-400 dark:text-slate-500 mb-1 tracking-wide">
+                {data?.hiragana || word.hiragana}
+              </p>
+            )}
           </div>
           <button onClick={() => speak(data?.kanji || word.kanji)}
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-500 dark:text-indigo-400 hover:text-indigo-700 transition-colors">
@@ -261,7 +291,7 @@ const PreviewWordContent = ({ word, speak }: { word: any, speak: (text: string) 
               <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Ví dụ</p>
               {data.examples.map((ex: any, i: number) => (
                 <div key={i} className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 space-y-1.5">
-                  <p className="text-sm md:text-base font-medium text-slate-700 dark:text-slate-300">{ex.jp}</p>
+                  <p className="text-sm md:text-base font-medium text-slate-700 dark:text-slate-300">{(ex as any).en || ex.jp}</p>
                   <p className="text-sm text-slate-500 dark:text-slate-400">{ex.vi}</p>
                 </div>
               ))}
@@ -371,7 +401,9 @@ export default function LearnSession() {
     if (!('speechSynthesis' in window)) return;
     window.speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
-    u.lang = 'ja-JP'; u.rate = 0.9;
+    const preferredAccent = localStorage.getItem('english_accent') || 'en-US';
+    u.lang = course?.template === 'english' ? preferredAccent : 'ja-JP';
+    u.rate = 0.9;
     window.speechSynthesis.speak(u);
   };
 
@@ -835,13 +867,19 @@ export default function LearnSession() {
   const submitTyping = useCallback(() => {
     if (!currentQ || feedback !== 'none') return;
     const raw = currentQ.raw;
-    const target = raw.hiragana.trim();
     let correct = false;
-    if (raw.isSingleKanjiChar) {
-      correct = userTyping.trim().toUpperCase() === target.toUpperCase();
+
+    if (course?.template === 'english') {
+      // English: show meaning → type the English word (stored in raw.kanji)
+      correct = userTyping.trim().toLowerCase() === raw.kanji.toLowerCase();
+    } else if (raw.isSingleKanjiChar) {
+      correct = userTyping.trim().toUpperCase() === raw.hiragana.trim().toUpperCase();
     } else {
+      const target = raw.hiragana.trim();
       const converted = wanakana.toKana(userTyping.trim());
-      correct = wanakana.toHiragana(converted) === wanakana.toHiragana(target) || userTyping.trim().toLowerCase() === target.toLowerCase();
+      correct =
+        wanakana.toHiragana(converted) === wanakana.toHiragana(target) ||
+        userTyping.trim().toLowerCase() === target.toLowerCase();
     }
 
     handleAnswer(correct, raw);
@@ -858,7 +896,7 @@ export default function LearnSession() {
 
     // Đã biết từ này -> level lên thẳng 2 -> nhảy cóc (10 EXP)
     const { recordSrsExp } = await import('../../lib/srs/pointsEngine');
-    const exp = await recordSrsExp(user.uid, 'review_up', courseIdParam, 2);
+    const exp = await recordSrsExp(user.uid, 'skip_to_lv2', courseIdParam, 2);
     setSessionTotalExp(prev => prev + exp);
 
     savedIdsRef.current.add(raw.id);
@@ -1162,7 +1200,9 @@ export default function LearnSession() {
                 /* ─── QUIZ/TYPING PROMPT ─── */
                 <div>
                   <p className="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-400 dark:text-indigo-500 mb-1 md:mb-2">
-                    {currentQ.direction === 'fwd' ? '日本語 · Japanese' : 'Nghĩa · Vietnamese'}
+                    {currentQ.direction === 'fwd'
+                      ? (course?.template === 'english' ? 'English Word' : '日本語 · Japanese')
+                      : 'Nghĩa · Vietnamese'}
                   </p>
                   <h1 className={`font-black text-slate-900 dark:text-white tracking-tight leading-[1.1] break-words ${currentQ.direction === 'rev'
                       ? 'text-4xl md:text-5xl'
@@ -1211,11 +1251,13 @@ export default function LearnSession() {
                   <p className="text-xs text-slate-400 dark:text-slate-500 font-medium">
                     {currentQ.raw.isSingleKanjiChar
                       ? 'Gõ Âm Hán Việt (VD: NHIỆM)'
-                      : 'Gõ Romaji (sẽ tự chuyển Hiragana)'}
+                      : course?.template === 'english'
+                        ? 'Type the English word'
+                        : 'Gõ Romaji (sẽ tự chuyển Hiragana)'}
                   </p>
                   <input type="text" value={userTyping}
                     onChange={e => {
-                      if (!currentQ.raw.isSingleKanjiChar) {
+                      if (!currentQ.raw.isSingleKanjiChar && course?.template !== 'english') {
                         const isExpectedKatakana = /^[\u30A0-\u30FF\u30FC\s]+$/.test(currentQ.raw.hiragana);
                         if (isExpectedKatakana) {
                           setUserTyping(wanakana.toKatakana(e.target.value, { IMEMode: true }));
@@ -1227,7 +1269,11 @@ export default function LearnSession() {
                       }
                     }}
                     onKeyDown={e => { if (e.key === 'Enter') submitTyping(); }}
-                    placeholder={currentQ.raw.isSingleKanjiChar ? 'Âm Hán Việt...' : 'Romaji...'}
+                    placeholder={currentQ.raw.isSingleKanjiChar
+                      ? 'Âm Hán Việt...'
+                      : course?.template === 'english'
+                        ? 'Type the word...'
+                        : 'Romaji...'}
                     disabled={feedback !== 'none'}
                     autoFocus
                     autoComplete="off"
@@ -1239,7 +1285,7 @@ export default function LearnSession() {
 
                   {feedback === 'wrong' && (
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-sm font-bold text-red-500 dark:text-red-400 mt-2">
-                      Đáp án đúng: {currentQ.raw.hiragana}
+                      Đáp án đúng: {course?.template === 'english' ? currentQ.raw.kanji : currentQ.raw.hiragana}
                     </motion.div>
                   )}
                 </div>

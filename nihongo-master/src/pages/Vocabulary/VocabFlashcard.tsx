@@ -7,6 +7,7 @@ import { ArrowLeft, RotateCcw, ThumbsUp, ThumbsDown, CheckCircle2, Eye, EyeOff }
 import { usePracticeContext } from '../Practice/PracticeContext';
 import type { Word } from '../../types';
 import VocabLessonChips from '../../components/vocabulary/VocabLessonChips';
+import { formatDualIpa } from '../../lib/english/ipaHelper';
 
 
 function shuffle<T>(arr: T[]): T[] {
@@ -15,8 +16,9 @@ function shuffle<T>(arr: T[]): T[] {
 
 export default function VocabFlashcard() {
   const { course } = usePracticeContext();
-  const data = course.data as Word[];
-  const lessons = Array.from(new Set(data.map(w => w.lesson).filter(Boolean))) as string[];
+  const data = course.data as any[];
+  const isEnglish = course.template === 'english';
+  const lessons = Array.from(new Set(data.map((w: any) => w.lesson).filter(Boolean))) as string[];
   
   const [selectedLessons, setSelectedLessons] = useState<string[]>([]);
 
@@ -70,8 +72,14 @@ export default function VocabFlashcard() {
     setIsFlipped(false);
   };
 
-  const getMeaning = (w: Word) =>
+  const getMeaning = (w: any) =>
     typeof w.meaning === 'object' ? w.meaning.vi : w.meaning;
+
+  // Template-aware helpers
+  const getWordDisplay = (w: any): string =>
+    isEnglish ? (w.word || '') : (w.kanji || w.hiragana || '');
+  const getSubDisplay = (w: any): string =>
+    isEnglish ? formatDualIpa(w) : (w.hiragana || '');
 
   // ──────────── SETUP SCREEN ────────────
   if (!started) {
@@ -132,7 +140,7 @@ export default function VocabFlashcard() {
 
                 <div>
                   <label className="block text-sm font-semibold text-slate-600 dark:text-slate-300 mb-2">
-                    Hiển thị Kana (Mặt có Kanji)
+                    {isEnglish ? 'Hiển thị IPA (Mặt có từ vựng)' : 'Hiển thị Kana (Mặt có Kanji)'}
                   </label>
                   <button
                     onClick={() => setShowFurigana(!showFurigana)}
@@ -215,11 +223,6 @@ export default function VocabFlashcard() {
     );
   }
 
-  // ──────────── CARD SCREEN ────────────
-  const getKanjiDisplay = (w: Word) => {
-    const base = w.kanji || w.hiragana; // fallback to hiragana if kanji is empty
-    return w.alt_kanji ? `${base} (${w.alt_kanji})` : base;
-  };
 
   let frontContent = '';
   let backContent = '';
@@ -227,14 +230,15 @@ export default function VocabFlashcard() {
   let subBack = '';
 
   if (direction === 'forward') {
-    frontContent = getKanjiDisplay(current);
-    if (showFurigana) subFront = current.hiragana;
+    frontContent = getWordDisplay(current);
+    if (showFurigana) subFront = getSubDisplay(current);
     backContent = getMeaning(current);
-    subBack = current.hiragana;
+    subBack = getSubDisplay(current);
   } else {
     frontContent = getMeaning(current);
-    backContent = getKanjiDisplay(current);
-    if (showFurigana) subBack = current.hiragana;
+    backContent = getWordDisplay(current);
+    if (!isEnglish && showFurigana) subBack = getSubDisplay(current);
+    else if (isEnglish) subBack = getSubDisplay(current);
   }
 
   const progress = ((known.length + learning.length) / (known.length + learning.length + queue.length)) * 100;
@@ -258,7 +262,7 @@ export default function VocabFlashcard() {
               }`}
             >
               {showFurigana ? <Eye size={16} /> : <EyeOff size={16} />}
-              Kana
+              {isEnglish ? 'IPA' : 'Kana'}
             </button>
             <div className="text-sm font-bold text-slate-500 dark:text-slate-400">
               {known.length + learning.length} / {known.length + learning.length + queue.length}
@@ -321,7 +325,7 @@ export default function VocabFlashcard() {
                     </div>
                     {current.examples && current.examples[0] && (
                       <div className="mt-4 p-3 bg-white/10 rounded-xl text-left w-full">
-                        <div className="text-sm text-violet-100">{current.examples[0].jp}</div>
+                        <div className="text-sm text-violet-100">{(current.examples[0] as any).en || current.examples[0].jp}</div>
                         <div className="text-xs text-violet-200 mt-1">{current.examples[0].vi}</div>
                       </div>
                     )}

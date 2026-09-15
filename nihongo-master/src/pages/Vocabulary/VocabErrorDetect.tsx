@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, CheckCircle2, XCircle, Eye, EyeOff, Shuffle, MousePointerClick, ShieldAlert } from 'lucide-react';
 import { usePracticeContext } from '../Practice/PracticeContext';
 import VocabLessonChips from '../../components/vocabulary/VocabLessonChips';
-import type { Word } from '../../types';
 
 function shuffle<T>(arr: T[]): T[] {
   return [...arr].sort(() => Math.random() - 0.5);
@@ -25,8 +24,9 @@ type GameMode = 'truefalse' | 'pickwrong';
 
 export default function VocabErrorDetect() {
   const { course } = usePracticeContext();
-  const data = course.data as Word[];
-  const lessons = Array.from(new Set(data.map(w => w.lesson).filter(Boolean))) as string[];
+  const data = course.data as any[];
+  const isEnglish = course.template === 'english';
+  const lessons = Array.from(new Set(data.map((w: any) => w.lesson).filter(Boolean))) as string[];
   const [selectedLessons, setSelectedLessons] = useState<string[]>([]);
   const [started, setStarted] = useState(false);
   const [showFurigana, setShowFurigana] = useState(false);
@@ -52,15 +52,18 @@ export default function VocabErrorDetect() {
         if (otherWords.length > 0) {
           const randWord = otherWords[Math.floor(Math.random() * otherWords.length)];
           displayedMeaning = typeof randWord.meaning === 'object' ? randWord.meaning.vi : randWord.meaning;
-          wrongMeaningSourceWord = randWord.kanji || randWord.hiragana;
+          wrongMeaningSourceWord = isEnglish
+            ? ((randWord as any).word || '')
+            : ((randWord as any).kanji || (randWord as any).hiragana || '');
         }
       }
 
       items.push({
         id: w.id,
         isCorrect,
-        word: w.kanji || w.hiragana,
-        hiragana: w.hiragana,
+        // Template-aware: English uses 'word', Japanese uses 'kanji || hiragana'
+        word: isEnglish ? ((w as any).word || '') : ((w as any).kanji || (w as any).hiragana || ''),
+        hiragana: isEnglish ? ((w as any).ipa || '') : ((w as any).hiragana || ''),
         displayedMeaning,
         actualMeaning,
         wrongMeaningSourceWord,
@@ -231,7 +234,7 @@ export default function VocabErrorDetect() {
               {/* Toggles */}
               <div>
                 <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3">
-                  Hiển thị Kana
+                  {isEnglish ? 'Hiển thị IPA' : 'Hiển thị Kana'}
                 </label>
                 <button
                   onClick={() => setShowFurigana(!showFurigana)}
@@ -310,7 +313,7 @@ export default function VocabErrorDetect() {
               }`}
             >
               {showFurigana ? <Eye size={16} /> : <EyeOff size={16} />}
-              Kana
+              {isEnglish ? 'IPA' : 'Kana'}
             </button>
             <div className="text-sm font-bold bg-white dark:bg-slate-800 px-4 py-2 rounded-full shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-2">
               Điểm: <span className="text-rose-500">{score}</span>
