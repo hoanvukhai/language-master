@@ -8,9 +8,16 @@
     "ipaAmE": "/ˈbækpæk/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "ba lô"
+      "vi": "ba lô",
+      "en": "a bag with shoulder straps that allows it to be carried on someone's back"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "He packed his textbooks and notebook into his backpack.",
+        "vi": "Cậu ấy xếp sách giáo khoa và vở vào chiếc ba lô của mình."
+      }
+    ]
   },
   {
     "id": "en-starter-002",
@@ -21,9 +28,16 @@
     "ipaAmE": "/ˈbæθroʊb/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "áo choàng tắm"
+      "vi": "áo choàng tắm",
+      "en": "a loose piece of clothing worn before or after taking a bath or shower"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "She put on a soft bathrobe after taking a warm shower.",
+        "vi": "Cô ấy khoác chiếc áo choàng tắm mềm mại sau khi tắm nước ấm."
+      }
+    ]
   },
   {
     "id": "en-starter-003",
@@ -34,9 +48,16 @@
     "ipaAmE": "/belt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "dây lưng, thắt lưng"
+      "vi": "dây lưng, thắt lưng",
+      "en": "a strip of leather or material worn around the waist to support clothes"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "He tightened his leather belt around his waist.",
+        "vi": "Anh ấy thắt chặt chiếc thắt lưng da quanh eo."
+      }
+    ]
   },
   {
     "id": "en-starter-004",
@@ -47,9 +68,16 @@
     "ipaAmE": "/blaʊs/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "áo cánh"
+      "vi": "áo sơ mi nữ, áo cánh",
+      "en": "a piece of clothing like a shirt, worn by women and girls"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "She wore an elegant white silk blouse to work.",
+        "vi": "Cô ấy mặc một chiếc áo sơ mi nữ bằng lụa trắng thanh lịch đi làm."
+      }
+    ]
   },
   {
     "id": "en-starter-005",
@@ -60,22 +88,36 @@
     "ipaAmE": "/buːts/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "ủng"
+      "vi": "đôi ủng, giày bốt",
+      "en": "sturdy shoes covering the foot and part of the leg"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "He wore waterproof boots while walking through the mud.",
+        "vi": "Anh ấy đi đôi ủng chống nước khi đi qua vũng bùn."
+      }
+    ]
   },
   {
     "id": "en-starter-006",
     "template": "english",
     "word": "boxers",
-    "ipa": "/`bɒksə(r)z/",
-    "ipaBrE": "/`bɒksə(r)z/",
-    "ipaAmE": "/`bɑːksərz/",
+    "ipa": "/ˈbɒksə(r)z/",
+    "ipaBrE": "/ˈbɒksə(r)z/",
+    "ipaAmE": "/ˈbɑːksərz/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Boxer à?"
+      "vi": "quần đùi lót nam (boxer)",
+      "en": "men's loose-fitting underwear shorts"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "He bought several pairs of comfortable cotton boxers.",
+        "vi": "Anh ấy đã mua vài chiếc quần đùi lót cotton thoải mái."
+      }
+    ]
   },
   {
     "id": "en-starter-007",
@@ -86,9 +128,16 @@
     "ipaAmE": "/kæp/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "nắp đầu"
+      "vi": "mũ lưỡi trai",
+      "en": "a close-fitting hat with a visor or brim at the front"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "He wore a baseball cap to shield his eyes from the bright sun.",
+        "vi": "Cậu ấy đội chiếc mũ lưỡi trai để che mắt khỏi ánh nắng chói chang."
+      }
+    ]
   },
   {
     "id": "en-starter-008",
@@ -99,9 +148,16 @@
     "ipaAmE": "/ˈsɜːrkl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "hình tròn"
+      "vi": "hình tròn",
+      "en": "a completely round geometric shape with no corners"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "The children sat in a circle on the carpet to hear the story.",
+        "vi": "Lũ trẻ ngồi thành một hình tròn trên thảm để nghe kể chuyện."
+      }
+    ]
   },
   {
     "id": "en-starter-009",
@@ -112,9 +168,16 @@
     "ipaAmE": "/koʊt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "áo choàng"
+      "vi": "áo khoác ngoài, áo choàng",
+      "en": "an outer piece of clothing with sleeves, worn outdoors for warmth"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "You need a heavy winter coat when traveling to Canada in December.",
+        "vi": "Bạn cần một chiếc áo khoác mùa đông dày khi du lịch Canada vào tháng Mười Hai."
+      }
+    ]
   },
   {
     "id": "en-starter-010",
@@ -125,9 +188,16 @@
     "ipaAmE": "/koʊn/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "nón"
+      "vi": "hình nón, cọc tiêu hình nón",
+      "en": "a solid shape with a circular flat base and sides that narrow to a point"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "The boy ordered two scoops of vanilla ice cream on a crispy cone.",
+        "vi": "Cậu bé gọi hai viên kem vani trên một chiếc ốc quế hình nón giòn rụm."
+      }
+    ]
   },
   {
     "id": "en-starter-011",
@@ -138,9 +208,16 @@
     "ipaAmE": "/kjuːb/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "(toán học) hình lập phương, hình khối"
+      "vi": "hình lập phương, khối vuông",
+      "en": "a solid object with six equal square sides"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "She dropped two ice cubes into her glass of lemonade.",
+        "vi": "Cô ấy thả hai viên đá hình lập phương vào ly nước chanh của mình."
+      }
+    ]
   },
   {
     "id": "en-starter-012",
@@ -151,9 +228,16 @@
     "ipaAmE": "/ˈsɪlɪndər/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Kiểu ép: xi lanh"
+      "vi": "hình trụ",
+      "en": "a solid shape with two circular ends and straight parallel sides"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "A standard soda can has the shape of a metal cylinder.",
+        "vi": "Một lon nước ngọt tiêu chuẩn có dạng một hình trụ kim loại."
+      }
+    ]
   },
   {
     "id": "en-starter-013",
@@ -164,9 +248,16 @@
     "ipaAmE": "/dres/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "quần áo, mặc"
+      "vi": "váy đầm, đầm liền",
+      "en": "a one-piece piece of clothing for women or girls that covers the body and part of the legs"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "She wore a gorgeous floral dress to the summer wedding.",
+        "vi": "Cô ấy đã mặc một chiếc váy đầm hoa lộng lẫy đến đám cưới mùa hè."
+      }
+    ]
   },
   {
     "id": "en-starter-014",
@@ -177,9 +268,16 @@
     "ipaAmE": "/ˈɪrɪŋz/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Hoa tai"
+      "vi": "hoa tai, khuyên tai",
+      "en": "pieces of jewelry worn on or hanging from the earlobe"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "She received a pair of pearl earrings for her eighteenth birthday.",
+        "vi": "Cô ấy nhận được một đôi khuyên tai ngọc trai nhân dịp sinh nhật lần thứ mười tám."
+      }
+    ]
   },
   {
     "id": "en-starter-015",
@@ -190,9 +288,16 @@
     "ipaAmE": "/glʌvz/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "găng tay"
+      "vi": "đôi găng tay",
+      "en": "coverings for the hands with individual sections for each finger"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "Leather gloves protect your hands when riding a motorcycle.",
+        "vi": "Găng tay da bảo vệ đôi tay bạn khi đi xe máy."
+      }
+    ]
   },
   {
     "id": "en-starter-016",
@@ -203,9 +308,16 @@
     "ipaAmE": "/hæt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cái mũ"
+      "vi": "mũ, nón",
+      "en": "a covering for the head, often with a brim all around"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "He took off his hat as he walked into the church.",
+        "vi": "Anh ấy tháo mũ ra khi bước vào nhà thờ."
+      }
+    ]
   },
   {
     "id": "en-starter-017",
@@ -216,9 +328,16 @@
     "ipaAmE": "/ˈdʒækɪt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "áo vét"
+      "vi": "áo khoác ngắn, áo vét",
+      "en": "a short coat that extends to the waist or hips"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "He put on a denim jacket before going for a casual walk.",
+        "vi": "Anh ấy khoác chiếc áo khoác jean trước khi đi dạo."
+      }
+    ]
   },
   {
     "id": "en-starter-018",
@@ -229,9 +348,16 @@
     "ipaAmE": "/dʒiːnz/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "quần bò, quần zin"
+      "vi": "quần bò, quần jean",
+      "en": "casual trousers made of strong blue denim fabric"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "Blue jeans are worn by people of all ages worldwide.",
+        "vi": "Quần jean xanh được mọi người ở mọi lứa tuổi trên khắp thế giới mặc."
+      }
+    ]
   },
   {
     "id": "en-starter-019",
@@ -242,9 +368,16 @@
     "ipaAmE": "/ˈmɪtnz/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "găng tay"
+      "vi": "găng tay bao (không ngón)",
+      "en": "gloves with one section for the thumb and one for the other four fingers together"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "The toddler wore red woolen mittens while building a snowman.",
+        "vi": "Đứa trẻ mới biết đi đeo đôi găng tay bao bằng len đỏ khi đắp người tuyết."
+      }
+    ]
   },
   {
     "id": "en-starter-020",
@@ -255,9 +388,16 @@
     "ipaAmE": "/ˈnekləs/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "dây chuyền"
+      "vi": "dây chuyền, vòng cổ",
+      "en": "a piece of jewelry worn around the neck"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "She wore a sparkling gold necklace that belonged to her grandmother.",
+        "vi": "Cô ấy đeo chiếc dây chuyền vàng lấp lánh vốn thuộc về bà cô."
+      }
+    ]
   },
   {
     "id": "en-starter-021",
@@ -268,9 +408,16 @@
     "ipaAmE": "/ˈoʊvl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "hình trái xoan"
+      "vi": "hình bầu dục, hình ô-van",
+      "en": "a shape resembling an elongated circle or an egg"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "The large mirror in the hallway has an elegant oval frame.",
+        "vi": "Chiếc gương lớn ở hành lang có khung hình bầu dục thanh lịch."
+      }
+    ]
   },
   {
     "id": "en-starter-022",
@@ -281,9 +428,16 @@
     "ipaAmE": "/ˌdʌŋɡəˈriːz/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Tổng quan"
+      "vi": "quần yếm, bộ đồ bảo hộ",
+      "en": "trousers with a bib and shoulder straps, worn for protection over other clothes"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "The carpenter wore durable denim overalls while working in the workshop.",
+        "vi": "Người thợ mộc mặc chiếc quần yếm bền bỉ khi làm việc trong xưởng."
+      }
+    ]
   },
   {
     "id": "en-starter-023",
@@ -294,9 +448,16 @@
     "ipaAmE": "/pəˈdʒæməz/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Pyjama"
+      "vi": "bộ đồ ngủ (pyjama)",
+      "en": "a loose two-piece suit worn in bed or for lounging at home"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "I slipped into my warm pajamas right before going to sleep.",
+        "vi": "Tôi thay bộ đồ ngủ ấm áp ngay trước khi đi ngủ."
+      }
+    ]
   },
   {
     "id": "en-starter-024",
@@ -307,9 +468,16 @@
     "ipaAmE": "/pænts/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "quần"
+      "vi": "quần dài",
+      "en": "a piece of clothing covering the body from the waist to the ankles"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "He bought a pair of comfortable khaki pants for work.",
+        "vi": "Anh ấy đã mua một chiếc quần dài kaki thoải mái để đi làm."
+      }
+    ]
   },
   {
     "id": "en-starter-025",
@@ -320,9 +488,16 @@
     "ipaAmE": "/ˈprɪzəm/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "lăng trụ"
+      "vi": "hình lăng trụ, lăng kính",
+      "en": "a transparent solid optical element that refracts light into its spectrum"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "Sunlight passing through the glass prism created a bright rainbow on the wall.",
+        "vi": "Ánh nắng mặt trời đi qua lăng kính thủy tinh tạo nên dải cầu vồng rực rỡ trên tường."
+      }
+    ]
   },
   {
     "id": "en-starter-026",
@@ -333,9 +508,16 @@
     "ipaAmE": "/ˈpɪrəmɪd/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Chóp"
+      "vi": "hình kim tự tháp, hình chóp",
+      "en": "a structure or shape with triangular sides that meet at an apex"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "The Great Pyramid of Giza is one of the ancient wonders of the world.",
+        "vi": "Đại kim tự tháp Giza là một trong những kỳ quan cổ đại của thế giới."
+      }
+    ]
   },
   {
     "id": "en-starter-027",
@@ -346,22 +528,36 @@
     "ipaAmE": "/ˈrektæŋɡl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "hình chữ nhật"
+      "vi": "hình chữ nhật",
+      "en": "a four-sided geometric figure with four right angles and opposite sides equal"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "A standard computer screen has the shape of a wide rectangle.",
+        "vi": "Màn hình máy tính tiêu chuẩn có hình một chữ nhật rộng."
+      }
+    ]
   },
   {
     "id": "en-starter-028",
     "template": "english",
     "word": "ring",
-    "ipa": "/noun,verb: [rɪŋ]; verb,noun: [rɪŋ/",
-    "ipaBrE": "/noun,verb: [rɪŋ]; verb,noun: [rɪŋ/",
-    "ipaAmE": "/noun,verb: [rɪŋ]; verb,noun: [rɪŋ/",
+    "ipa": "/noun, verb: rɪŋ; verb, noun: rɪŋ/",
+    "ipaBrE": "/noun, verb: rɪŋ; verb, noun: rɪŋ/",
+    "ipaAmE": "/noun, verb: rɪŋ; verb, noun: rɪŋ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "chiếc nhẫn, đeo nhẫn cho ai"
+      "vi": "chiếc nhẫn",
+      "en": "a small circular band of precious metal worn on a finger"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "He placed a shining diamond ring on her wedding finger.",
+        "vi": "Anh ấy đeo chiếc nhẫn kim cương sáng lấp lánh vào ngón tay cưới của cô ấy."
+      }
+    ]
   },
   {
     "id": "en-starter-029",
@@ -372,9 +568,16 @@
     "ipaAmE": "/skɑːrf/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "khăn quàng cổ"
+      "vi": "khăn quàng cổ",
+      "en": "a length of warm fabric worn around the neck or shoulders"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "Wrap a thick woolen scarf around your neck to stay warm in the snow.",
+        "vi": "Hãy quấn một chiếc khăn quàng len dày quanh cổ để giữ ấm giữa trời tuyết."
+      }
+    ]
   },
   {
     "id": "en-starter-030",
@@ -385,9 +588,16 @@
     "ipaAmE": "/ˈsɛmɪ-ˈsɜːrkl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "nửa vòng tròn"
+      "vi": "hình bán nguyệt, nửa hình tròn",
+      "en": "half of a circle bounded by the diameter and half the circumference"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "The auditorium seats were arranged in a neat semi-circle facing the stage.",
+        "vi": "Các hàng ghế trong hội trường được bố trí thành hình bán nguyệt ngay ngắn hướng về sân khấu."
+      }
+    ]
   },
   {
     "id": "en-starter-031",
@@ -398,9 +608,16 @@
     "ipaAmE": "/ʃɜːrt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "áo sơ mi"
+      "vi": "áo sơ mi",
+      "en": "a garment worn on the upper body, usually with a collar, buttons, and sleeves"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "He ironed his formal blue shirt before the important interview.",
+        "vi": "Anh ấy ủi chiếc áo sơ mi xanh trang trọng trước buổi phỏng vấn quan trọng."
+      }
+    ]
   },
   {
     "id": "en-starter-032",
@@ -411,9 +628,16 @@
     "ipaAmE": "/ʃuːz/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "giày dép"
+      "vi": "đôi giày",
+      "en": "coverings for the feet, typically made of leather or fabric with a sturdy sole"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "Remember to take off your outdoor shoes before entering the house.",
+        "vi": "Hãy nhớ cởi giày đi ngoài đường trước khi bước vào nhà."
+      }
+    ]
   },
   {
     "id": "en-starter-033",
@@ -424,9 +648,16 @@
     "ipaAmE": "/ʃɔːrts/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "số lượng còn thiếu"
+      "vi": "quần soóc, quần đùi",
+      "en": "short trousers that reach down to or above the knees"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "He likes wearing comfortable athletic shorts during hot summer days.",
+        "vi": "Anh ấy thích mặc quần soóc thể thao thoải mái trong những ngày hè oi ả."
+      }
+    ]
   },
   {
     "id": "en-starter-034",
@@ -437,9 +668,16 @@
     "ipaAmE": "/skɜːrt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "váy, đầm"
+      "vi": "chân váy",
+      "en": "a piece of clothing that hangs from the waist and covers part or all of the legs"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "She wore a pleated black skirt with a white blouse.",
+        "vi": "Cô ấy mặc chiếc chân váy xếp ly màu đen cùng áo sơ mi trắng."
+      }
+    ]
   },
   {
     "id": "en-starter-035",
@@ -450,9 +688,16 @@
     "ipaAmE": "/ˈslɪpərz/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "dép"
+      "vi": "dép đi trong nhà",
+      "en": "comfortable, light slip-on shoes worn indoors"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "He put on his soft warm slippers as soon as he returned home from work.",
+        "vi": "Anh ấy xỏ đôi dép đi trong nhà mềm mại ngay khi vừa đi làm về."
+      }
+    ]
   },
   {
     "id": "en-starter-036",
@@ -463,9 +708,16 @@
     "ipaAmE": "/'sniːkərz/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Giày ba-ta"
+      "vi": "giày thể thao",
+      "en": "soft, comfortable athletic shoes with rubber soles designed for sport or casual wear"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "She laced up her running sneakers before heading to the park for a jog.",
+        "vi": "Cô ấy buộc dây đôi giày thể thao chạy bộ trước khi ra công viên chạy bộ."
+      }
+    ]
   },
   {
     "id": "en-starter-037",
@@ -476,9 +728,16 @@
     "ipaAmE": "/sɑːks/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "tất"
+      "vi": "đôi tất, vớ",
+      "en": "garments for the foot and lower part of the leg, worn inside shoes"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "Thick wool socks keep your feet warm and dry during winter walks.",
+        "vi": "Đôi tất len dày giữ cho bàn chân bạn ấm và khô ráo khi đi dạo vào mùa đông."
+      }
+    ]
   },
   {
     "id": "en-starter-038",
@@ -489,9 +748,16 @@
     "ipaAmE": "/sfɪr/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "hình cầu"
+      "vi": "hình cầu, khối cầu",
+      "en": "a round solid three-dimensional geometric figure like a ball"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "The Earth is roughly a sphere spinning continuously in space.",
+        "vi": "Trái Đất gần như là một khối cầu quay liên tục trong không gian."
+      }
+    ]
   },
   {
     "id": "en-starter-039",
@@ -502,22 +768,36 @@
     "ipaAmE": "/skwer/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "diện tích"
+      "vi": "hình vuông",
+      "en": "a flat geometric shape with four equal sides and four right angles"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "Draw a perfect square on the grid paper using your ruler.",
+        "vi": "Hãy vẽ một hình vuông hoàn hảo trên giấy kẻ ô bằng thước kẻ của bạn."
+      }
+    ]
   },
   {
     "id": "en-starter-040",
     "template": "english",
     "word": "suit",
-    "ipa": "/suːt],[sjuːt/",
-    "ipaBrE": "/suːt],[sjuːt/",
+    "ipa": "/suːt, sjuːt/",
+    "ipaBrE": "/suːt, sjuːt/",
     "ipaAmE": "/suːt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "bộ com lê; bộ quần áo (áo + quần hoặc áo + váy)"
+      "vi": "bộ com-lê, âu phục",
+      "en": "a set of outer clothes made of the same fabric, typically comprising a jacket and trousers or a skirt"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "He looked very handsome and professional in his tailored navy suit.",
+        "vi": "Anh ấy trông rất bảnh bao và chuyên nghiệp trong bộ com-lê xanh navy vừa vặn."
+      }
+    ]
   },
   {
     "id": "en-starter-041",
@@ -528,9 +808,16 @@
     "ipaAmE": "/ˈsʌnɡlæsɪz/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "kính râm"
+      "vi": "kính râm, kính mát",
+      "en": "glasses with tinted lenses to protect the eyes from bright sunlight"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "Don't forget to wear sunglasses when driving in bright sunny weather.",
+        "vi": "Đừng quên đeo kính râm khi lái xe dưới trời nắng chói chang."
+      }
+    ]
   },
   {
     "id": "en-starter-042",
@@ -541,9 +828,16 @@
     "ipaAmE": "/ˈswetər/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "kẻ bóc lột lao động"
+      "vi": "áo len, áo chui đầu",
+      "en": "a knitted garment worn over the upper body for warmth"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "Her grandmother knitted a soft wool sweater with colorful patterns for Christmas.",
+        "vi": "Bà cô ấy đã đan một chiếc áo len mềm mại có họa tiết rực rỡ cho dịp Giáng sinh."
+      }
+    ]
   },
   {
     "id": "en-starter-043",
@@ -554,22 +848,36 @@
     "ipaAmE": "/ˈswetʃɜːrt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Áo nỉ"
+      "vi": "áo nỉ dài tay (sweatshirt)",
+      "en": "a loose casual long-sleeved shirt made of heavy cotton fabric"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "He threw on a cozy gray sweatshirt after finishing his workout at the gym.",
+        "vi": "Anh ấy khoác chiếc áo nỉ xám ấm cúng sau khi kết thúc buổi tập tại phòng gym."
+      }
+    ]
   },
   {
     "id": "en-starter-044",
     "template": "english",
     "word": "swimsuit",
-    "ipa": "/ˈswɪmsuːt],[ˈswɪmsjuːt/",
-    "ipaBrE": "/ˈswɪmsuːt],[ˈswɪmsjuːt/",
+    "ipa": "/ˈswɪmsuːt, ˈswɪmsjuːt/",
+    "ipaBrE": "/ˈswɪmsuːt, ˈswɪmsjuːt/",
     "ipaAmE": "/ˈswɪmsuːt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "đồ bơi"
+      "vi": "đồ bơi, áo tắm",
+      "en": "a garment worn for swimming or sunbathing"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "She packed her new one-piece swimsuit for her beach vacation.",
+        "vi": "Cô ấy chuẩn bị bộ đồ bơi liền thân mới cho kỳ nghỉ ở bãi biển."
+      }
+    ]
   },
   {
     "id": "en-starter-045",
@@ -580,9 +888,16 @@
     "ipaAmE": "/taɪ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "hòa"
+      "vi": "cà vạt",
+      "en": "a long strip of fabric worn around the neck and tied in front under a shirt collar"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "He straightened his silk tie carefully before meeting the clients.",
+        "vi": "Anh ấy cẩn thận chỉnh lại chiếc cà vạt lụa trước khi gặp gỡ khách hàng."
+      }
+    ]
   },
   {
     "id": "en-starter-046",
@@ -593,9 +908,16 @@
     "ipaAmE": "/ˈtraɪæŋɡl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "hình tam giác"
+      "vi": "hình tam giác",
+      "en": "a flat geometric figure with three straight sides and three angles"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "The yellow traffic caution sign has the clear shape of a triangle.",
+        "vi": "Biển cảnh báo giao thông màu vàng có hình dáng tam giác rõ ràng."
+      }
+    ]
   },
   {
     "id": "en-starter-047",
@@ -606,9 +928,16 @@
     "ipaAmE": "/'tiːʃɜːrt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Áo thun"
+      "vi": "áo thun, áo phông",
+      "en": "a casual short-sleeved collarless shirt made of cotton"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "On hot summer afternoons, he prefers wearing a simple white T-shirt and shorts.",
+        "vi": "Vào những buổi chiều hè nóng bức, anh ấy thích mặc một chiếc áo phông trắng đơn giản và quần soóc."
+      }
+    ]
   },
   {
     "id": "en-starter-048",
@@ -619,9 +948,16 @@
     "ipaAmE": "/tʌkˈsiːdoʊ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "áo tuxedo"
+      "vi": "lễ phục tuxedo",
+      "en": "a man's formal evening suit, traditionally black with satin lapels"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "The groom looked striking in a classic black tuxedo with a black bow tie.",
+        "vi": "Chú rể trông rất nổi bật trong bộ tuxedo đen cổ điển cùng chiếc nơ đen."
+      }
+    ]
   },
   {
     "id": "en-starter-049",
@@ -632,9 +968,16 @@
     "ipaAmE": "/ʌmˈbrelə/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "ô, dù"
+      "vi": "chiếc ô, cái dù",
+      "en": "a portable canopy mounted on a folding frame used for protection against rain or sunlight"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "She opened her large black umbrella as the sudden rain began to pour down.",
+        "vi": "Cô ấy mở chiếc ô đen lớn khi cơn mưa rào bất chợt trút xuống."
+      }
+    ]
   },
   {
     "id": "en-starter-050",
@@ -645,9 +988,16 @@
     "ipaAmE": "/ˈʌndərpænts/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "- Quần lót."
+      "vi": "quần lót",
+      "en": "an undergarment worn under trousers or skirts next to the skin"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "Always pack several pairs of clean underpants when going on a trip.",
+        "vi": "Luôn chuẩn bị sẵn vài chiếc quần lót sạch khi đi du lịch."
+      }
+    ]
   },
   {
     "id": "en-starter-051",
@@ -658,9 +1008,16 @@
     "ipaAmE": "/ˈʌndərʃɜːrt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Áo mặc lót"
+      "vi": "áo lót trong, áo may ô",
+      "en": "a collarless undergarment with short sleeves or sleeveless, worn under a dress shirt"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "He always wears a plain white undershirt beneath his dress shirt for comfort.",
+        "vi": "Anh ấy luôn mặc một chiếc áo may ô trắng bên trong áo sơ mi để thấy dễ chịu."
+      }
+    ]
   },
   {
     "id": "en-starter-052",
@@ -671,9 +1028,16 @@
     "ipaAmE": "/vest/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "áo vest"
+      "vi": "áo gile, áo gi-lê",
+      "en": "a sleeveless garment worn on the upper body, often over a shirt and under a jacket"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "He wore an elegant matching vest as part of his three-piece wedding suit.",
+        "vi": "Anh ấy mặc một chiếc áo gile lịch lãm đồng bộ trong bộ âu phục ba món ngày cưới."
+      }
+    ]
   },
   {
     "id": "en-starter-053",
@@ -684,9 +1048,16 @@
     "ipaAmE": "/reɪn buːts/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "giày ống đi mưa"
+      "vi": "ủng đi mưa",
+      "en": "waterproof rubber boots worn to keep feet dry in wet, muddy conditions"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "The little girl put on her bright yellow rainboots and jumped joyfully into the puddle.",
+        "vi": "Bé gái xỏ đôi ủng đi mưa màu vàng tươi và vui sướng nhảy vào vũng nước."
+      }
+    ]
   },
   {
     "id": "en-starter-054",
@@ -697,9 +1068,16 @@
     "ipaAmE": "/ˈreɪnkoʊt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Áo mưa"
+      "vi": "áo mưa",
+      "en": "a waterproof coat worn to protect against the rain"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "Put on your hooded raincoat before you step out into the storm.",
+        "vi": "Hãy mặc chiếc áo mưa có mũ trước khi bạn bước ra ngoài trời giông bão."
+      }
+    ]
   },
   {
     "id": "en-starter-055",
@@ -710,9 +1088,16 @@
     "ipaAmE": "/ˈbæskɪtbɔːl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "môn bóng rổ"
+      "vi": "môn bóng rổ",
+      "en": "a team game played on a court where players score by tossing a ball through an elevated hoop"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "He plays basketball with his classmates on the school court every Friday.",
+        "vi": "Cậu ấy chơi bóng rổ cùng các bạn cùng lớp trên sân trường vào mỗi thứ Sáu."
+      }
+    ]
   },
   {
     "id": "en-starter-056",
@@ -723,9 +1108,16 @@
     "ipaAmE": "/ˈbɑːksɪŋ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "đấm bốc"
+      "vi": "môn quyền anh, đấm bốc",
+      "en": "a combat sport in which two people wearing padded gloves fight each other in a ring"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "Professional boxing demands extreme physical endurance, speed, and mental focus.",
+        "vi": "Môn quyền anh chuyên nghiệp đòi hỏi sức bền thể lực phi thường, tốc độ và sự tập trung cao độ."
+      }
+    ]
   },
   {
     "id": "en-starter-057",
@@ -736,9 +1128,16 @@
     "ipaAmE": "/ˈreslɪŋ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "đấu vật"
+      "vi": "môn đấu vật",
+      "en": "a sport or activity of grappling with an opponent and trying to throw or hold them down"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "Traditional wrestling has been an ancient Olympic sport for thousands of years.",
+        "vi": "Môn đấu vật truyền thống đã là môn thể thao Olympic cổ xưa từ hàng ngàn năm trước."
+      }
+    ]
   },
   {
     "id": "en-starter-058",
@@ -749,9 +1148,16 @@
     "ipaAmE": "/ˈjoʊɡə/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "yoga"
+      "vi": "môn yoga",
+      "en": "a Hindu spiritual and physical practice involving breath control, meditation, and bodily postures"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "Practicing yoga for thirty minutes each morning helps improve flexibility and peace of mind.",
+        "vi": "Tập yoga ba mươi phút mỗi sáng giúp tăng cường độ dẻo dai và đem lại sự an tĩnh cho tâm trí."
+      }
+    ]
   },
   {
     "id": "en-starter-059",
@@ -762,9 +1168,16 @@
     "ipaAmE": "/ˈɑːrtʃəri/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Bắn cung"
+      "vi": "môn bắn cung",
+      "en": "the sport or skill of shooting with a bow and arrows at a target"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "Archery requires steady hands, sharp eyesight, and intense concentration.",
+        "vi": "Môn bắn cung đòi hỏi đôi tay vững vàng, thị lực sắc bén và sự tập trung cao độ."
+      }
+    ]
   },
   {
     "id": "en-starter-060",
@@ -775,9 +1188,16 @@
     "ipaAmE": "/ˈbeɪsbɔːl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "môn bóng chày"
+      "vi": "môn bóng chày",
+      "en": "a ball game played with a bat and ball between two teams of nine players"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "Thousands of excited fans gathered at the stadium to watch the championship baseball game.",
+        "vi": "Hàng ngàn người hâm mộ hào hứng đã tụ họp tại sân vận động để xem trận chung kết bóng chày."
+      }
+    ]
   },
   {
     "id": "en-starter-061",
@@ -788,9 +1208,16 @@
     "ipaAmE": "/ˈsɑːkər/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "bóng đá"
+      "vi": "môn bóng đá",
+      "en": "a game played by two teams of eleven players who kick a round ball into the opponent's goal"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "Soccer is celebrated as the most popular and widely played sport on the planet.",
+        "vi": "Bóng đá được vinh danh là môn thể thao phổ biến và được chơi nhiều nhất trên hành tinh."
+      }
+    ]
   },
   {
     "id": "en-starter-062",
@@ -801,9 +1228,16 @@
     "ipaAmE": "/ˈtenɪs/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "quần vợt"
+      "vi": "môn quần vợt, tennis",
+      "en": "a game played with rackets and a felt ball across a net on a rectangular court"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "She plays tennis every Saturday morning to keep fit and healthy.",
+        "vi": "Cô ấy chơi quần vợt vào mỗi sáng thứ Bảy để giữ gìn vóc dáng và sức khỏe."
+      }
+    ]
   },
   {
     "id": "en-starter-063",
@@ -811,12 +1245,19 @@
     "word": "volleyball",
     "ipa": "/ˈvɒlibɔːl/",
     "ipaBrE": "/ˈvɒlibɔːl/",
-    "ipaAmE": "/ˈvɑːlibɔːl],[ˈvɔːlibɔːl/",
+    "ipaAmE": "/ˈvɑːlibɔːl, ˈvɔːlibɔːl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Bóng chuyền"
+      "vi": "môn bóng chuyền",
+      "en": "a team game in which players hit an inflated ball back and forth over a high net with their hands"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "They enjoyed playing beach volleyball under the warm afternoon sun.",
+        "vi": "Họ thích thú chơi bóng chuyền bãi biển dưới ánh nắng chiều ấm áp."
+      }
+    ]
   },
   {
     "id": "en-starter-064",
@@ -827,9 +1268,16 @@
     "ipaAmE": "/ˈskiːɪŋ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "trượt tuyết"
+      "vi": "môn trượt tuyết (ván dài)",
+      "en": "the sport or recreational activity of gliding over snow on long flat runners called skis"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "The Swiss Alps offer world-class slopes for tourists who love winter skiing.",
+        "vi": "Dãy Alps ở Thụy Sĩ có những sườn dốc đẳng cấp thế giới dành cho du khách yêu thích trượt tuyết mùa đông."
+      }
+    ]
   },
   {
     "id": "en-starter-065",
@@ -840,9 +1288,16 @@
     "ipaAmE": "/ˈsnoʊbɔːrdɪŋ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "trượt tuyết"
+      "vi": "môn trượt ván tuyết",
+      "en": "the sport of descending a snow-covered slope on a single wide board attached to the feet"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "Snowboarding has become extremely popular among adventurous young athletes.",
+        "vi": "Trượt ván tuyết đã trở nên cực kỳ phổ biến trong giới vận động viên trẻ ưa mạo hiểm."
+      }
+    ]
   },
   {
     "id": "en-starter-066",
@@ -853,22 +1308,36 @@
     "ipaAmE": "/ˈkæml/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "con lạc đà"
+      "vi": "con lạc đà",
+      "en": "a large mammal of dry regions with long legs and one or two humps on its back"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "A camel can travel for days across harsh dry deserts without drinking water.",
+        "vi": "Một con lạc đà có thể di chuyển nhiều ngày qua sa mạc khô cằn khắc nghiệt mà không cần uống nước."
+      }
+    ]
   },
   {
     "id": "en-starter-067",
     "template": "english",
     "word": "coyote",
-    "ipa": "/kaɪˈəʊti],[kɔɪˈəʊti/",
-    "ipaBrE": "/kaɪˈəʊti],[kɔɪˈəʊti/",
-    "ipaAmE": "/kaɪˈoʊti],[ˈkaɪoʊt/",
+    "ipa": "/kaɪˈəʊti, kɔɪˈəʊti/",
+    "ipaBrE": "/kaɪˈəʊti, kɔɪˈəʊti/",
+    "ipaAmE": "/kaɪˈoʊti, ˈkaɪoʊt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Sói đồng cỏ Bắc Mỹ"
+      "vi": "chó sói đồng cỏ Bắc Mỹ",
+      "en": "a small wild canine native to North America, known for its mournful howl"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "We heard a distant coyote howling in the quiet mountain valley after sunset.",
+        "vi": "Chúng tôi nghe tiếng sói đồng cỏ hú từ xa trong thung lũng núi yên tĩnh sau khi hoàng hôn buông xuống."
+      }
+    ]
   },
   {
     "id": "en-starter-068",
@@ -879,9 +1348,16 @@
     "ipaAmE": "/ˈlɪzərd/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Tất cả đã hoàn thành ngay bây giờ"
+      "vi": "con thằn lằn",
+      "en": "a reptile with a long body, four legs, scaly skin, and a movable tail"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "A small green lizard basked quietly on the sun-warmed stone wall.",
+        "vi": "Một chú thằn lằn xanh nhỏ nằm sưởi nắng yên lặng trên bức tường đá ấm áp."
+      }
+    ]
   },
   {
     "id": "en-starter-069",
@@ -890,11 +1366,18 @@
     "ipa": "/ˈmaʊntɪn ˈlaɪən/",
     "ipaBrE": "/ˈmaʊntɪn ˈlaɪən/",
     "ipaAmE": "/ˈmaʊntən ˈlaɪən/",
-    "partOfSpeech": "adjective",
+    "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Sư tử núi?"
+      "vi": "sư tử núi, báo sư tử",
+      "en": "a large wild feline native to the Americas, also known as a cougar or puma"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "Hikers spotted the solitary mountain lion moving stealthily among the high rocky cliffs.",
+        "vi": "Những người đi bộ đường dài phát hiện con báo sư tử đơn độc đang lén lút di chuyển giữa các vách đá cao."
+      }
+    ]
   },
   {
     "id": "en-starter-070",
@@ -903,11 +1386,18 @@
     "ipa": "/ˈskɔːpiən/",
     "ipaBrE": "/ˈskɔːpiən/",
     "ipaAmE": "/ˈskɔːrpiən/",
-    "partOfSpeech": "adjective",
+    "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Bọ cạp"
+      "vi": "con bọ cạp",
+      "en": "an arachnid with lobster-like pincers and a venomous curved stinger at the tip of its tail"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "Shake out your hiking boots before wearing them to ensure no scorpion crawled inside.",
+        "vi": "Hãy giũ kỹ ủng đi rừng trước khi xỏ vào để đảm bảo không có con bọ cạp nào bò vào bên trong."
+      }
+    ]
   },
   {
     "id": "en-starter-071",
@@ -916,11 +1406,18 @@
     "ipa": "/fləˈmɪŋɡəʊ/",
     "ipaBrE": "/fləˈmɪŋɡəʊ/",
     "ipaAmE": "/fləˈmɪŋɡoʊ/",
-    "partOfSpeech": "adjective",
+    "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Hồng hạc"
+      "vi": "chim hồng hạc",
+      "en": "a tall wading bird with pink or reddish feathers, long legs, and a hooked bill"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "A flock of flamingos stood gracefully on one leg in the calm shallow waters.",
+        "vi": "Một đàn chim hồng hạc đứng duyên dáng bằng một chân trên vùng nước nông tĩnh lặng."
+      }
+    ]
   },
   {
     "id": "en-starter-072",
@@ -929,11 +1426,18 @@
     "ipa": "/ˈhʌmɪŋbɜːd/",
     "ipaBrE": "/ˈhʌmɪŋbɜːd/",
     "ipaAmE": "/ˈhʌmɪŋbɜːrd/",
-    "partOfSpeech": "adjective",
+    "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Họ Chim ruồi"
+      "vi": "chim ruồi",
+      "en": "a tiny colorful bird whose rapidly beating wings make a humming sound as it hovers"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "The tiny hummingbird hovered effortlessly while sipping sweet nectar from the garden flower.",
+        "vi": "Chú chim ruồi bé xíu lơ lửng nhẹ nhàng trong khi hút mật ngọt từ bông hoa trong vườn."
+      }
+    ]
   },
   {
     "id": "en-starter-073",
@@ -942,11 +1446,18 @@
     "ipa": "/ˈpænθə(r)/",
     "ipaBrE": "/ˈpænθə(r)/",
     "ipaAmE": "/ˈpænθər/",
-    "partOfSpeech": "adjective",
+    "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Giống con mèo."
+      "vi": "báo đen",
+      "en": "a large powerful wild cat, especially a black leopard or black jaguar"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "The sleek black panther stalked its prey silently under the dense jungle canopy.",
+        "vi": "Chú báo đen bóng bẩy lén rình con mồi một cách lặng lẽ dưới tán rừng rậm rạp."
+      }
+    ]
   },
   {
     "id": "en-starter-074",
@@ -955,11 +1466,18 @@
     "ipa": "/ˈpærət/",
     "ipaBrE": "/ˈpærət/",
     "ipaAmE": "/ˈpærət/",
-    "partOfSpeech": "adjective",
+    "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Vẹt"
+      "vi": "con vẹt",
+      "en": "a brightly colored tropical bird with a curved beak, known for imitating human speech"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "The clever green parrot repeated every greeting spoken by the visitors.",
+        "vi": "Chú vẹt xanh thông minh lặp lại từng lời chào mà khách tham quan nói ra."
+      }
+    ]
   },
   {
     "id": "en-starter-075",
@@ -968,11 +1486,18 @@
     "ipa": "/dʒəˈrɑːf/",
     "ipaBrE": "/dʒəˈrɑːf/",
     "ipaAmE": "/dʒəˈræf/",
-    "partOfSpeech": "adjective",
+    "partOfSpeech": "noun",
     "meaning": {
-      "vi": "hươu cao cổ"
+      "vi": "hươu cao cổ",
+      "en": "a very tall African mammal with an exceptionally long neck and spotted coat"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "The tall giraffe easily reached the tender fresh leaves at the top of the acacia tree.",
+        "vi": "Chú hươu cao cổ dễ dàng vươn tới những chiếc lá tươi non trên ngọn cây keo."
+      }
+    ]
   },
   {
     "id": "en-starter-076",
@@ -981,11 +1506,18 @@
     "ipa": "/ˌhɪpəˈpɒtəməs/",
     "ipaBrE": "/ˌhɪpəˈpɒtəməs/",
     "ipaAmE": "/ˌhɪpəˈpɑːtəməs/",
-    "partOfSpeech": "adjective",
+    "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Hà mã"
+      "vi": "con hà mã",
+      "en": "a large heavy semiaquatic mammal native to African rivers and lakes"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "The huge hippopotamus spent the blazing afternoon submerged in the cool river.",
+        "vi": "Chú hà mã to lớn ngâm mình dưới dòng sông mát lành suốt buổi chiều nắng gắt."
+      }
+    ]
   },
   {
     "id": "en-starter-077",
@@ -994,11 +1526,18 @@
     "ipa": "/haɪˈiːnə/",
     "ipaBrE": "/haɪˈiːnə/",
     "ipaAmE": "/haɪˈiːnə/",
-    "partOfSpeech": "adjective",
+    "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Linh cẩu"
+      "vi": "linh cẩu",
+      "en": "a carnivorous dog-like mammal native to Africa and Asia, famous for its eerie laughing cry"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "The hungry hyenas waited patiently for the lions to abandon their fresh kill.",
+        "vi": "Những con linh cẩu đói kiên nhẫn chờ lũ sư tử bỏ lại con mồi vừa săn được."
+      }
+    ]
   },
   {
     "id": "en-starter-078",
@@ -1006,12 +1545,19 @@
     "word": "ostrich",
     "ipa": "/ˈɒstrɪtʃ/",
     "ipaBrE": "/ˈɒstrɪtʃ/",
-    "ipaAmE": "/ˈɑːstrɪtʃ],[ˈɔːstrɪtʃ/",
-    "partOfSpeech": "adjective",
+    "ipaAmE": "/ˈɑːstrɪtʃ, ˈɔːstrɪtʃ/",
+    "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Đà điểu châu Phi"
+      "vi": "đà điểu châu Phi",
+      "en": "a very large flightless African bird that can sprint at high speeds"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "Although the ostrich cannot fly, its powerful long legs allow it to outrun most predators.",
+        "vi": "Mặc dù đà điểu không thể bay, đôi chân dài khỏe mạnh giúp nó chạy nhanh hơn phần lớn thú săn mồi."
+      }
+    ]
   },
   {
     "id": "en-starter-079",
@@ -1020,11 +1566,18 @@
     "ipa": "/raɪˈnɒsərəs/",
     "ipaBrE": "/raɪˈnɒsərəs/",
     "ipaAmE": "/raɪˈnɑːsərəs/",
-    "partOfSpeech": "adjective",
+    "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Tê giác"
+      "vi": "con tê giác",
+      "en": "a massive thick-skinned herbivore with one or two horns projecting from its snout"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "Park rangers work day and night to protect the endangered black rhinoceros from poachers.",
+        "vi": "Các nhân viên kiểm lâm làm việc ngày đêm để bảo vệ loài tê giác đen nguy cấp khỏi bọn săn trộm."
+      }
+    ]
   },
   {
     "id": "en-starter-080",
@@ -1033,11 +1586,18 @@
     "ipa": "/ˈɒtə(r)/",
     "ipaBrE": "/ˈɒtə(r)/",
     "ipaAmE": "/ˈɑːtər/",
-    "partOfSpeech": "adjective",
+    "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Rái cá"
+      "vi": "con rái cá",
+      "en": "a playful semiaquatic mammal with dense fur, webbed feet, and a streamlined body"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "The playful river otter floated on its back while cracking open a clam shell.",
+        "vi": "Chú rái cá tinh nghịch ngửa bụng nổi trên mặt nước trong khi dùng đá đập vỡ vỏ sò."
+      }
+    ]
   },
   {
     "id": "en-starter-081",
@@ -1046,11 +1606,18 @@
     "ipa": "/ˈpeŋɡwɪn/",
     "ipaBrE": "/ˈpeŋɡwɪn/",
     "ipaAmE": "/ˈpeŋɡwɪn/",
-    "partOfSpeech": "adjective",
+    "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Chim cánh cụt. Rất vui được gặp cậu."
+      "vi": "chim cánh cụt",
+      "en": "a flightless sea bird of cold southern regions, with flippers for swimming and black-and-white plumage"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "A colony of emperor penguins huddled tightly together to endure the freezing Antarctic blizzard.",
+        "vi": "Một bầy chim cánh cụt hoàng đế tụm sát lại với nhau để chịu đựng cơn bão tuyết băng giá ở Nam Cực."
+      }
+    ]
   },
   {
     "id": "en-starter-082",
@@ -1059,11 +1626,18 @@
     "ipa": "/ˈpəʊlə beə/",
     "ipaBrE": "/ˈpəʊlə beə/",
     "ipaAmE": "/ˈpoʊlər bɛr/",
-    "partOfSpeech": "adjective",
+    "partOfSpeech": "noun",
     "meaning": {
-      "vi": "gấu Bắc cực"
+      "vi": "gấu Bắc Cực",
+      "en": "a large white bear native to the icy Arctic Circle, highly adapted for cold and sea hunting"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "The majestic polar bear walked miles across drifting pack ice in search of ringed seals.",
+        "vi": "Chú gấu Bắc Cực oai vệ đi bộ hàng dặm trên các tảng băng trôi để tìm săn hải cẩu."
+      }
+    ]
   },
   {
     "id": "en-starter-083",
@@ -1072,11 +1646,18 @@
     "ipa": "/ˈreɪndɪə(r)/",
     "ipaBrE": "/ˈreɪndɪə(r)/",
     "ipaAmE": "/ˈreɪndɪr/",
-    "partOfSpeech": "adjective",
+    "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Tuần lộc"
+      "vi": "tuần lộc",
+      "en": "a deer of cold northern regions, with large branching antlers in both sexes"
     },
-    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc"
+    "lesson": "Phần 1: Cơ thể, Gia đình & Màu sắc",
+    "examples": [
+      {
+        "en": "Indigenous herders guide large migrations of reindeer across the snow-covered Arctic tundra.",
+        "vi": "Những người chăn gia súc bản địa dẫn đàn tuần lộc di cư qua vùng lãnh nguyên Bắc Cực phủ đầy tuyết."
+      }
+    ]
   },
   {
     "id": "en-starter-084",
@@ -1087,9 +1668,16 @@
     "ipaAmE": "/siːl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "hải cầu; săn hải cầu"
+      "vi": "con hải cẩu",
+      "en": "a fish-eating aquatic mammal with flippers that lives on seashores and in cold oceans"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "A spotted seal hauled out onto a flat rock to bask lazily in the afternoon sun.",
+        "vi": "Một chú hải cẩu đốm trèo lên phiến đá phẳng để lười biếng phơi mình dưới nắng chiều."
+      }
+    ]
   },
   {
     "id": "en-starter-085",
@@ -1100,9 +1688,16 @@
     "ipaAmE": "/wʊlf/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "sói"
+      "vi": "chó sói",
+      "en": "a wild carnivorous canine that hunts in organized packs"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "The pack of gray wolves communicated across the pine forest with haunting howls.",
+        "vi": "Đàn sói xám giao tiếp với nhau qua rừng thông bằng những tiếng hú vang vọng."
+      }
+    ]
   },
   {
     "id": "en-starter-086",
@@ -1113,9 +1708,16 @@
     "ipaAmE": "/ˈbloʊfɪʃ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Blowfish†"
+      "vi": "cá nóc",
+      "en": "a spiny fish that puffs itself up into a round ball when threatened, often carrying lethal toxin"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "The blowfish inflates its body like a spiky balloon to scare off aggressive predators.",
+        "vi": "Cá nóc phồng to thân hình như quả bóng đầy gai để dọa các loài thú săn mồi hung dữ."
+      }
+    ]
   },
   {
     "id": "en-starter-087",
@@ -1126,9 +1728,16 @@
     "ipaAmE": "/ˈɑːktəpəs/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "con bạch tuộc"
+      "vi": "con bạch tuộc",
+      "en": "a sea creature with a soft oval body and eight flexible arms equipped with suction cups"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "The clever octopus squirted a cloud of dark ink to escape from a nearby predator.",
+        "vi": "Con bạch tuộc thông minh phun ra một đám mực đen ngòm để trốn thoát kẻ săn mồi gần đó."
+      }
+    ]
   },
   {
     "id": "en-starter-088",
@@ -1139,9 +1748,16 @@
     "ipaAmE": "/si ˈɜrʧən/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "NHÍM BIỂN"
+      "vi": "con nhím biển, cầu gai",
+      "en": "a small spiny sea animal with a spherical shell found on rocky ocean floors"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "Be careful when walking among coral reefs so you do not step on a sharp sea urchin.",
+        "vi": "Hãy cẩn thận khi đi dạo giữa rạn san hô để không giẫm phải con nhím biển đầy gai nhọn."
+      }
+    ]
   },
   {
     "id": "en-starter-089",
@@ -1152,9 +1768,16 @@
     "ipaAmE": "/ˈsiːɡʌl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Mòng biển"
+      "vi": "chim mòng biển",
+      "en": "a common coastal bird with gray and white feathers and a loud screeching cry"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "A noisy flock of seagulls soared over the fishing harbor looking for scraps of fish.",
+        "vi": "Một đàn chim mòng biển ồn ào lượn trên cảng cá để tìm những mẩu cá thừa."
+      }
+    ]
   },
   {
     "id": "en-starter-090",
@@ -1165,9 +1788,16 @@
     "ipaAmE": "/ʃɑːrk/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cá mập"
+      "vi": "cá mập",
+      "en": "a large carnivorous marine fish with a cartilage skeleton and sharp triangular teeth"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "The great white shark is an apex predator known for its extraordinary sense of smell.",
+        "vi": "Cá mập trắng lớn là loài săn mồi đỉnh cao nổi tiếng với khứu giác phi thường."
+      }
+    ]
   },
   {
     "id": "en-starter-091",
@@ -1178,9 +1808,16 @@
     "ipaAmE": "/skwɪd/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Mực"
+      "vi": "con mực",
+      "en": "an elongated, fast-swimming cephalopod mollusk with ten arms and a soft body"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "Giant squids inhabit the mysterious deep waters of the ocean.",
+        "vi": "Mực khổng lồ sinh sống ở những vùng nước sâu thẳm đầy bí ẩn của đại dương."
+      }
+    ]
   },
   {
     "id": "en-starter-092",
@@ -1191,9 +1828,16 @@
     "ipaAmE": "/ˈstɑːrfɪʃ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Sao biển"
+      "vi": "sao biển",
+      "en": "a marine echinoderm with five or more radiating arms arranged around a central disk"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "The child found a bright orange starfish resting in a shallow tide pool.",
+        "vi": "Đứa trẻ tìm thấy một con sao biển màu cam rực rỡ nằm trong vũng nước triều nông."
+      }
+    ]
   },
   {
     "id": "en-starter-093",
@@ -1204,9 +1848,16 @@
     "ipaAmE": "/weɪl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cá voi"
+      "vi": "cá voi",
+      "en": "a very large marine mammal with a streamlined body and a blowhole on top of its head"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "The blue whale is recognized as the largest living creature on planet Earth.",
+        "vi": "Cá voi xanh được công nhận là sinh vật sống to lớn nhất trên hành tinh Trái Đất."
+      }
+    ]
   },
   {
     "id": "en-starter-094",
@@ -1217,9 +1868,16 @@
     "ipaAmE": "/ˈbiːvər/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Hải li"
+      "vi": "con hải ly",
+      "en": "a large semiaquatic rodent with thick brown fur and a broad paddle-shaped tail, known for building dams"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "The industrious beaver used tree branches and mud to construct a sturdy dam across the stream.",
+        "vi": "Chú hải ly cần cù dùng cành cây và bùn để xây một con đập vững chắc chắn ngang con suối."
+      }
+    ]
   },
   {
     "id": "en-starter-095",
@@ -1230,9 +1888,16 @@
     "ipaAmE": "/ˈbɑːbkæt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "xe cút kít"
+      "vi": "linh miêu Bắc Mỹ, mèo rừng đuôi cộc",
+      "en": "a North American wildcat with a short tail and tufted ears"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "The secretive bobcat stalked rabbits quietly through the snowy forest thicket.",
+        "vi": "Con linh miêu lén lút rình thỏ một cách êm ái qua bụi rậm của khu rừng phủ đầy tuyết."
+      }
+    ]
   },
   {
     "id": "en-starter-096",
@@ -1243,9 +1908,16 @@
     "ipaAmE": "/moʊl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "•"
+      "vi": "chuột chũi, nốt ruồi",
+      "en": "a small burrowing mammal with dark velvety fur and spade-like front feet used for digging underground tunnels"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "A busy mole dug complex subterranean tunnels beneath the green lawn.",
+        "vi": "Một chú chuột chũi bận rộn đào những đường hầm phức tạp bên dưới bãi cỏ xanh."
+      }
+    ]
   },
   {
     "id": "en-starter-097",
@@ -1256,9 +1928,16 @@
     "ipaAmE": "/əˈpɑːsəm/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Chồn Opossum"
+      "vi": "thú có túi ô-pốt (chồn túi Bắc Mỹ)",
+      "en": "an American marsupial that carries its young in a pouch and plays dead when threatened"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "When frightened by danger, an opossum frequently plays dead until the threat passes.",
+        "vi": "Khi sợ hãi trước mối nguy hiểm, con thú túi thường giả chết cho đến khi hiểm nguy qua đi."
+      }
+    ]
   },
   {
     "id": "en-starter-098",
@@ -1269,9 +1948,16 @@
     "ipaAmE": "/ˈpɔːrkjupaɪn/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Nhím"
+      "vi": "con nhím",
+      "en": "a rodent with a coat of sharp protective quills or spines"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "The clever dog quickly learned to stay away from the sharp quills of the porcupine.",
+        "vi": "Chú chó thông minh nhanh chóng học được cách tránh xa những chiếc gai nhọn của con nhím."
+      }
+    ]
   },
   {
     "id": "en-starter-099",
@@ -1282,9 +1968,16 @@
     "ipaAmE": "/ˈrɑːbɪn/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cá chào mào"
+      "vi": "chim cổ đỏ",
+      "en": "a small songbird with a distinctive reddish-orange breast"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "The cheerful robin chirped melodiously on a blossoming apple tree branch at dawn.",
+        "vi": "Chú chim cổ đỏ vui vẻ hót líu lo trên cành cây táo nở hoa lúc bình minh."
+      }
+    ]
   },
   {
     "id": "en-starter-100",
@@ -1295,9 +1988,16 @@
     "ipaAmE": "/skʌŋk/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Họ Chồn hôi"
+      "vi": "chồn hôi",
+      "en": "a black-and-white mammal that defends itself by spraying a foul-smelling liquid"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "A threatened skunk will raise its bushy tail and release a pungent, blinding spray.",
+        "vi": "Một con chồn hôi khi bị đe dọa sẽ giơ chiếc đuôi xù lên và phun ra chất dịch cay nồng."
+      }
+    ]
   },
   {
     "id": "en-starter-101",
@@ -1308,9 +2008,16 @@
     "ipaAmE": "/ˈskwɜːrəl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Sóc"
+      "vi": "con sóc",
+      "en": "a bushy-tailed tree-dwelling rodent that feeds mainly on nuts and seeds"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "The quick gray squirrel hid acorns under the oak tree to prepare for cold winter.",
+        "vi": "Chú sóc xám nhanh nhẹn giấu những quả sồi dưới gốc cây để chuẩn bị cho mùa đông giá rét."
+      }
+    ]
   },
   {
     "id": "en-starter-102",
@@ -1321,9 +2028,16 @@
     "ipaAmE": "/ˈwʊdpekər/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Họ Gõ kiến"
+      "vi": "chim gõ kiến",
+      "en": "a bird with a strong chisel-like bill that pecks into tree trunks to search for insects"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "We could hear the rhythmic tapping of a woodpecker high up in the hollow pine tree.",
+        "vi": "Chúng tôi có thể nghe thấy tiếng gõ đều đặn của chú chim gõ kiến ở tít trên ngọn cây thông rỗng."
+      }
+    ]
   },
   {
     "id": "en-starter-103",
@@ -1334,9 +2048,16 @@
     "ipaAmE": "/ˈbʌtərflaɪ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "con bướm"
+      "vi": "con bướm",
+      "en": "a nectar-feeding insect with two pairs of large, colorful patterned wings"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "A brightly colored monarch butterfly fluttered gently from flower to flower.",
+        "vi": "Một chú bướm chúa sặc sỡ bay dập dờn nhẹ nhàng từ bông hoa này sang bông hoa khác."
+      }
+    ]
   },
   {
     "id": "en-starter-104",
@@ -1347,9 +2068,16 @@
     "ipaAmE": "/ˈdræɡənflaɪ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "con chuồn chuồn"
+      "vi": "con chuồn chuồn",
+      "en": "a fast-flying insect with a long slender body and two pairs of transparent wings"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "A glittering blue dragonfly hovered motionless over the surface of the lily pond.",
+        "vi": "Một chú chuồn chuồn xanh óng ánh bay lơ lửng bất động trên mặt hồ hoa súng."
+      }
+    ]
   },
   {
     "id": "en-starter-105",
@@ -1360,9 +2088,16 @@
     "ipaAmE": "/ˈkætərpɪlər/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "con sâu bướm, xe dây xích"
+      "vi": "con sâu bướm",
+      "en": "the worm-like larva of a butterfly or moth"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "The green caterpillar munched greedily on fresh leaves before spinning its cocoon.",
+        "vi": "Con sâu bướm xanh ngấu nghiến những chiếc lá tươi non trước khi nhả tơ làm kén."
+      }
+    ]
   },
   {
     "id": "en-starter-106",
@@ -1373,9 +2108,16 @@
     "ipaAmE": "/ˈkrɪkɪt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "dế mèn"
+      "vi": "con dế mèn",
+      "en": "a jumping insect related to grasshoppers, known for the male's chirping sound"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "The rhythmic chirping of crickets filled the peaceful country night.",
+        "vi": "Tiếng dế mèn rả rích đều đặn làm rộn vang màn đêm thôn quê yên bình."
+      }
+    ]
   },
   {
     "id": "en-starter-107",
@@ -1386,9 +2128,16 @@
     "ipaAmE": "/ˈfaɪərflaɪ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "(con) đom đóm"
+      "vi": "con đom đóm",
+      "en": "a soft-bodied beetle whose abdomen glows with bioluminescent light at night"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "Dozens of glowing fireflies illuminated the warm summer evening like tiny lanterns.",
+        "vi": "Hàng chục con đom đóm phát sáng thắp sáng buổi tối mùa hè ấm áp như những chiếc lồng đèn tí hon."
+      }
+    ]
   },
   {
     "id": "en-starter-108",
@@ -1399,9 +2148,16 @@
     "ipaAmE": "/ˈɡræshɑːpər/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Phân bộ Châu chấu"
+      "vi": "con châu chấu",
+      "en": "a plant-eating insect with long hind legs adapted for jumping"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "A green grasshopper leaped gracefully through the tall meadow grass.",
+        "vi": "Một con châu chấu xanh nhảy thoăn thoắt qua bãi cỏ đồng cỏ cao."
+      }
+    ]
   },
   {
     "id": "en-starter-109",
@@ -1412,22 +2168,36 @@
     "ipaAmE": "/ˈleɪdibɜːrd/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Bọ rùa"
+      "vi": "con bọ rùa",
+      "en": "a small round beetle with bright red or yellow wing covers spotted with black"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "Gardeners appreciate the little ladybug because it eats harmful aphids.",
+        "vi": "Người làm vườn rất quý chú bọ rùa nhỏ vì nó chuyên ăn các loài rệp gây hại."
+      }
+    ]
   },
   {
     "id": "en-starter-110",
     "template": "english",
     "word": "mosquito",
-    "ipa": "/məˈskiːtəʊ],[mɒskiːtəʊ/",
-    "ipaBrE": "/məˈskiːtəʊ],[mɒskiːtəʊ/",
+    "ipa": "/məˈskiːtəʊ, mɒskiːtəʊ/",
+    "ipaBrE": "/məˈskiːtəʊ, mɒskiːtəʊ/",
     "ipaAmE": "/məˈskiːtoʊ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Muỗi"
+      "vi": "con muỗi",
+      "en": "a slender long-legged fly whose females bite animals and humans to feed on blood"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "Apply insect repellent to prevent annoying mosquito bites while camping in the woods.",
+        "vi": "Hãy xịt thuốc chống côn trùng để tránh bị muỗi đốt phiền toái khi cắm trại trong rừng."
+      }
+    ]
   },
   {
     "id": "en-starter-111",
@@ -1438,9 +2208,16 @@
     "ipaAmE": "/mɔːθ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "ngài"
+      "vi": "con bướm đêm, con ngài",
+      "en": "a winged insect closely related to butterflies, typically nocturnal with duller colors"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "The brown moth was drawn irresistibly to the bright porch lamp outside.",
+        "vi": "Con bướm đêm màu nâu bị thu hút một cách mãnh liệt bởi ánh đèn hiên nhà sáng rực bên ngoài."
+      }
+    ]
   },
   {
     "id": "en-starter-112",
@@ -1451,9 +2228,16 @@
     "ipaAmE": "/ˈæpəl paɪ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Bánh táo"
+      "vi": "bánh nướng nhân táo, bánh pie táo",
+      "en": "a baked dessert pie with a pastry crust filled with sweetened sliced apples and spices"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "Mom served a warm slice of homemade apple pie topped with vanilla ice cream.",
+        "vi": "Mẹ mời một lát bánh pie táo nhà làm ấm nóng ăn kèm với kem vani."
+      }
+    ]
   },
   {
     "id": "en-starter-113",
@@ -1464,9 +2248,16 @@
     "ipaAmE": "/ˈsɪriəl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "món ăn (bằng) ngũ cốc"
+      "vi": "ngũ cốc ăn sáng",
+      "en": "a breakfast food made from roasted grain, typically eaten cold with milk"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "He poured crunchy whole-grain cereal and cold milk into his bowl for a quick breakfast.",
+        "vi": "Cậu ấy đổ ngũ cốc nguyên hạt giòn rụm cùng sữa tươi lạnh vào bát cho bữa sáng nhanh gọn."
+      }
+    ]
   },
   {
     "id": "en-starter-114",
@@ -1477,9 +2268,16 @@
     "ipaAmE": "/ˈhæmbɜːrɡər/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "bánh hamburger"
+      "vi": "bánh kẹp hamburger",
+      "en": "a round patty of ground beef inside a sliced bun, usually served with condiments and toppings"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "He ordered a juicy grilled hamburger with crispy golden french fries.",
+        "vi": "Anh ấy đã gọi một chiếc bánh hamburger nướng mọng nước ăn kèm khoai tây chiên vàng giòn."
+      }
+    ]
   },
   {
     "id": "en-starter-115",
@@ -1490,22 +2288,36 @@
     "ipaAmE": "/ˈsæləd/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "món rau trộn"
+      "vi": "món rau trộn (salad)",
+      "en": "a cold dish of mixed vegetables, often seasoned with oil, vinegar, or dressing"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "She tossed a fresh green salad containing lettuce, cucumbers, cherry tomatoes, and olive oil.",
+        "vi": "Cô ấy trộn một đĩa salad xanh tươi gồm xà lách, dưa chuột, cà chua bi và dầu ô liu."
+      }
+    ]
   },
   {
     "id": "en-starter-116",
     "template": "english",
     "word": "sandwich",
-    "ipa": "/ˈsænwɪtʃ],[ˈsænwɪdʒ/",
-    "ipaBrE": "/ˈsænwɪtʃ],[ˈsænwɪdʒ/",
-    "ipaAmE": "/ˈsænwɪtʃ],[ˈsænwɪdʒ/",
+    "ipa": "/ˈsænwɪtʃ, ˈsænwɪdʒ/",
+    "ipaBrE": "/ˈsænwɪtʃ, ˈsænwɪdʒ/",
+    "ipaAmE": "/ˈsænwɪtʃ, ˈsænwɪdʒ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "bánh mì kẹp"
+      "vi": "bánh mì kẹp (sandwich)",
+      "en": "an item of food consisting of two pieces of bread with meat, cheese, or vegetables between them"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "He packed a turkey and Swiss cheese sandwich in his lunchbox.",
+        "vi": "Cậu ấy chuẩn bị một chiếc bánh mì kẹp thịt gà tây và phô mai Thụy Sĩ trong hộp cơm trưa."
+      }
+    ]
   },
   {
     "id": "en-starter-117",
@@ -1516,9 +2328,16 @@
     "ipaAmE": "/ˈtɑːkoʊ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "bánh taco"
+      "vi": "bánh taco (món Mexico)",
+      "en": "a traditional Mexican dish consisting of a folded tortilla filled with seasoned meat, beans, and salsa"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "We celebrated Tuesday night with delicious homemade beef tacos and guacamole.",
+        "vi": "Chúng tôi liên hoan tối thứ Ba với những chiếc bánh taco thịt bò tự làm thơm ngon và sốt bơ."
+      }
+    ]
   },
   {
     "id": "en-starter-118",
@@ -1529,9 +2348,16 @@
     "ipaAmE": "/ˌævəˈkɑːdoʊ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Quả bơ"
+      "vi": "quả bơ",
+      "en": "a pear-shaped tropical fruit with rough green skin, oily creamy green flesh, and a large pit"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "He spread mashed ripe avocado on toasted sourdough bread for a healthy snack.",
+        "vi": "Anh ấy quết quả bơ chín nghiền lên bánh mì nướng cho một bữa ăn nhẹ lành mạnh."
+      }
+    ]
   },
   {
     "id": "en-starter-119",
@@ -1542,9 +2368,16 @@
     "ipaAmE": "/ˈtʃeri/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "quả anh đào"
+      "vi": "quả anh đào (cherry)",
+      "en": "a small, round stone fruit that is typically bright or dark red when ripe"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "She picked a basket of sweet red cherries from the orchard tree.",
+        "vi": "Cô ấy hái một giỏ quả anh đào đỏ ngọt ngào từ cây trong vườn."
+      }
+    ]
   },
   {
     "id": "en-starter-120",
@@ -1555,9 +2388,16 @@
     "ipaAmE": "/ˈkoʊkənʌt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "dừa"
+      "vi": "quả dừa",
+      "en": "a large oval seed of a tropical palm tree, with a hard fibrous shell, edible white flesh, and sweet water"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "He drank sweet, refreshing coconut water straight from the freshly cracked shell.",
+        "vi": "Cậu ấy uống nước dừa ngọt mát sảng khoái trực tiếp từ quả dừa vừa mới bổ."
+      }
+    ]
   },
   {
     "id": "en-starter-121",
@@ -1568,9 +2408,16 @@
     "ipaAmE": "/fɪɡ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "FIG."
+      "vi": "quả sung, quả vả ngọt",
+      "en": "a soft, sweet pear-shaped fruit with many tiny seeds and thin skin"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "Fresh ripe figs taste delicious when paired with mild goat cheese and honey.",
+        "vi": "Quả sung ngọt tươi chín ăn rất ngon khi kết hợp cùng phô mai dê dịu nhẹ và mật ong."
+      }
+    ]
   },
   {
     "id": "en-starter-122",
@@ -1581,9 +2428,16 @@
     "ipaAmE": "/ˈɡreɪpfruːt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "bưởi đào"
+      "vi": "quả bưởi chùm (grapefruit)",
+      "en": "a large round citrus fruit with a yellow-orange rind and juicy, sour-to-sweet pink or white flesh"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "She started her morning with half a freshly cut pink grapefruit sprinkled with a little sugar.",
+        "vi": "Cô ấy bắt đầu buổi sáng với nửa quả bưởi chùm hồng tươi cắt đôi rắc thêm một chút đường."
+      }
+    ]
   },
   {
     "id": "en-starter-123",
@@ -1594,9 +2448,16 @@
     "ipaAmE": "/piːtʃ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "đào tào"
+      "vi": "quả đào",
+      "en": "a round juicy fruit with velvety yellowish-pink skin and a rough stone inside"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "He took a big bite of the sweet, juicy peach on a hot summer day.",
+        "vi": "Anh ấy cắn một miếng quả đào thơm ngọt mọng nước vào ngày hè oi bức."
+      }
+    ]
   },
   {
     "id": "en-starter-124",
@@ -1607,9 +2468,16 @@
     "ipaAmE": "/per/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "quả lê"
+      "vi": "quả lê",
+      "en": "a sweet juicy fruit that is narrow at the stalk and wider at the base"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "The ripe golden pear was crisp, refreshing, and full of natural sweet juice.",
+        "vi": "Quả lê vàng chín giòn, tươi mát và ngập tràn vị ngọt tự nhiên."
+      }
+    ]
   },
   {
     "id": "en-starter-125",
@@ -1620,9 +2488,16 @@
     "ipaAmE": "/ˈpaɪnæpl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "quả dứa"
+      "vi": "quả dứa, quả thơm",
+      "en": "a large tropical fruit with sweet yellow flesh, a spiky rind, and a tuft of stiff leaves on top"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "She sliced the ripe golden pineapple into bite-sized chunks for fruit salad.",
+        "vi": "Cô ấy gọt quả dứa vàng chín thành từng miếng nhỏ vừa ăn cho món salad hoa quả."
+      }
+    ]
   },
   {
     "id": "en-starter-126",
@@ -1633,9 +2508,16 @@
     "ipaAmE": "/ˈpɑːmɪɡrænɪt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "quả lựu"
+      "vi": "quả lựu",
+      "en": "a round fruit with a tough reddish rind containing many juicy jewel-like red seeds"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "The tart red seeds of the ripe pomegranate sparkled like jewels in the dessert bowl.",
+        "vi": "Những hạt lựu đỏ mọng chua ngọt lấp lánh như những viên ngọc quý trong bát tráng miệng."
+      }
+    ]
   },
   {
     "id": "en-starter-127",
@@ -1646,9 +2528,16 @@
     "ipaAmE": "/ˈɑːmənd/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "quả hạnh nhân"
+      "vi": "hạt hạnh nhân",
+      "en": "an oval edible nut with a woody shell, growing on a tree native to the Mediterranean"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "Eating a handful of raw almonds daily provides healthy fats and essential nutrients.",
+        "vi": "Ăn một nắm hạt hạnh nhân mỗi ngày cung cấp chất béo tốt và các chất dinh dưỡng thiết yếu."
+      }
+    ]
   },
   {
     "id": "en-starter-128",
@@ -1659,9 +2548,16 @@
     "ipaAmE": "/ˈtʃesnʌt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "màu hạt dẻ"
+      "vi": "hạt dẻ",
+      "en": "an edible glossy brown nut with a sweet flavor that grows inside a spiky burr"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "Vendors sold warm roasted chestnuts on the chilly city streets in winter.",
+        "vi": "Những người bán hàng rong bán hạt dẻ nướng ấm nóng trên đường phố mùa đông buốt giá."
+      }
+    ]
   },
   {
     "id": "en-starter-129",
@@ -1672,35 +2568,56 @@
     "ipaAmE": "/ˈpiːnʌt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Di chuyển theo hình đậu phộng"
+      "vi": "củ lạc, đậu phộng",
+      "en": "an edible seed that grows in an underground pod, commonly eaten roasted or made into butter"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "Children love spreading creamy peanut butter and fruit jam on sandwich bread.",
+        "vi": "Trẻ nhỏ rất thích quết bơ đậu phộng béo ngậy và mứt hoa quả lên bánh mì sandwich."
+      }
+    ]
   },
   {
     "id": "en-starter-130",
     "template": "english",
     "word": "pecan",
-    "ipa": "/ˈpiːkən],[pɪˈkæn/",
-    "ipaBrE": "/ˈpiːkən],[pɪˈkæn/",
+    "ipa": "/ˈpiːkən, pɪˈkæn/",
+    "ipaBrE": "/ˈpiːkən, pɪˈkæn/",
     "ipaAmE": "/pɪˈkɑːn/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Quả hồ đào"
+      "vi": "quả hồ đào",
+      "en": "a smooth, brownish nut with edible sweet kernels, native to North America"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "Grandma baked an authentic Southern pecan pie filled with caramelized nuts.",
+        "vi": "Bà đã nướng một chiếc bánh hồ đào miền Nam đích thực đầy những hạt hạt tẩm caramel."
+      }
+    ]
   },
   {
     "id": "en-starter-131",
     "template": "english",
     "word": "pistachio",
-    "ipa": "/pɪˈstæʃiəʊ],[pɪˈstɑːʃiəʊ/",
-    "ipaBrE": "/pɪˈstæʃiəʊ],[pɪˈstɑːʃiəʊ/",
-    "ipaAmE": "/pɪˈstæʃioʊ],[pɪˈstɑːʃioʊ/",
+    "ipa": "/pɪˈstæʃiəʊ, pɪˈstɑːʃiəʊ/",
+    "ipaBrE": "/pɪˈstæʃiəʊ, pɪˈstɑːʃiəʊ/",
+    "ipaAmE": "/pɪˈstæʃioʊ, pɪˈstɑːʃioʊ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Hồ trăn"
+      "vi": "hạt dẻ cười, quả hồ trăn",
+      "en": "a small greenish edible nut that grows inside a partly opened beige shell"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "He enjoyed cracking open salty roasted pistachios while watching the football match.",
+        "vi": "Anh ấy thích thú tách những hạt dẻ cười rang muối trong khi theo dõi trận đấu bóng đá."
+      }
+    ]
   },
   {
     "id": "en-starter-132",
@@ -1711,9 +2628,16 @@
     "ipaAmE": "/ˈwɔːlnʌt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Óc chó"
+      "vi": "quả óc chó",
+      "en": "an edible nut with two bumpy wrinkled lobes enclosed in a hard brown shell"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "Walnuts are packed with heart-healthy omega-3 fatty acids and antioxidants.",
+        "vi": "Quả óc chó chứa đầy axit béo omega-3 và chất chống oxy hóa rất tốt cho tim mạch."
+      }
+    ]
   },
   {
     "id": "en-starter-133",
@@ -1724,9 +2648,16 @@
     "ipaAmE": "/ˈbeɪkən/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "thịt lợn muối xông khói"
+      "vi": "thịt xông khói, thịt ba chỉ muối xông khói",
+      "en": "cured meat from the sides or back of a pig, typically cut into thin strips and fried crispy"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "The delicious smell of crispy fried bacon and eggs filled the warm kitchen.",
+        "vi": "Mùi thơm lừng của thịt xông khói rán giòn và trứng lan tỏa khắp căn bếp ấm áp."
+      }
+    ]
   },
   {
     "id": "en-starter-134",
@@ -1737,9 +2668,16 @@
     "ipaAmE": "/biːf/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "thịt bò"
+      "vi": "thịt bò",
+      "en": "the meat from a cow, bull, or steer used as food"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "They grilled tender cuts of beef over charcoal for their family barbecue.",
+        "vi": "Họ nướng những miếng thịt bò mềm trên than hoa cho bữa tiệc nướng của gia đình."
+      }
+    ]
   },
   {
     "id": "en-starter-135",
@@ -1750,9 +2688,16 @@
     "ipaAmE": "/ˈtʃɪkɪn/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "gà"
+      "vi": "thịt gà, con gà",
+      "en": "a common domestic fowl raised for its eggs and meat"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "Mom roasted a whole seasoned chicken with potatoes and carrots for Sunday dinner.",
+        "vi": "Mẹ đã nướng nguyên một con gà ướp gia vị cùng khoai tây và cà rốt cho bữa tối Chủ nhật."
+      }
+    ]
   },
   {
     "id": "en-starter-136",
@@ -1763,9 +2708,16 @@
     "ipaAmE": "/kræb/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "quả táo dại"
+      "vi": "con cua",
+      "en": "a sea creature with a broad shell, ten legs including two large pincers"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "We cracked open steamed king crab legs dipped in melted garlic butter.",
+        "vi": "Chúng tôi bẻ đôi những chiếc chân cua hoàng đế hấp chấm vào bơ tỏi tan chảy."
+      }
+    ]
   },
   {
     "id": "en-starter-137",
@@ -1776,9 +2728,16 @@
     "ipaAmE": "/ˈlɑːbstər/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "tôm hùm"
+      "vi": "tôm hùm",
+      "en": "a large marine crustacean with a hard shell, eight walking legs, and two powerful large claws"
     },
-    "lesson": "Phần 2: Trang phục & Hình khối"
+    "lesson": "Phần 2: Trang phục & Hình khối",
+    "examples": [
+      {
+        "en": "The coastal restaurant is famous for serving fresh Maine lobster with drawn butter.",
+        "vi": "Nhà hàng ven biển nổi tiếng với món tôm hùm Maine tươi sống ăn cùng bơ đun chảy."
+      }
+    ]
   },
   {
     "id": "en-starter-138",
@@ -1789,9 +2748,16 @@
     "ipaAmE": "/ˈɔɪstər/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "hầu"
+      "vi": "con hàu",
+      "en": "a shellfish with a rough irregular shell, often eaten raw as a luxury delicacy"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He squeezed fresh lemon juice over the raw oyster on the half shell.",
+        "vi": "Anh ấy vắt nước chanh tươi lên con hàu sống đặt trên nửa mảnh vỏ."
+      }
+    ]
   },
   {
     "id": "en-starter-139",
@@ -1802,9 +2768,16 @@
     "ipaAmE": "/pɔːrk/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "thịt lợn"
+      "vi": "thịt lợn, thịt heo",
+      "en": "the culinary meat of a domestic pig"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "The chef marinated the tender pork chops in honey, garlic, and soy sauce.",
+        "vi": "Đầu bếp ướp những miếng sườn lợn mềm với mật ong, tỏi và nước tương."
+      }
+    ]
   },
   {
     "id": "en-starter-140",
@@ -1815,9 +2788,16 @@
     "ipaAmE": "/ˈsæmən/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "thịt cá hồicolor"
+      "vi": "cá hồi",
+      "en": "a large edible fish with rich pink flesh that migrates between rivers and oceans"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Pan-seared Atlantic salmon served with asparagus makes an elegant, nutritious meal.",
+        "vi": "Cá hồi Đại Tây Dương áp chảo ăn kèm măng tây tạo nên một bữa ăn thanh lịch và bổ dưỡng."
+      }
+    ]
   },
   {
     "id": "en-starter-141",
@@ -1828,9 +2808,16 @@
     "ipaAmE": "/ˈsɔːsɪdʒ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "xúc xích"
+      "vi": "xúc xích, lạp xưởng",
+      "en": "minced seasoned meat stuffed into a cylindrical casing and cooked or dried"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He sizzled traditional German bratwurst sausage on the barbecue grill.",
+        "vi": "Anh ấy nướng xèo xèo những chiếc xúc xích bratwurst truyền thống của Đức trên vỉ nướng."
+      }
+    ]
   },
   {
     "id": "en-starter-142",
@@ -1841,9 +2828,16 @@
     "ipaAmE": "/ʃrɪmp/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Tôm"
+      "vi": "con tôm",
+      "en": "a small edible free-swimming marine crustacean with an elongated body"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "She tossed spicy grilled shrimp into garlic noodles for a tasty supper.",
+        "vi": "Cô ấy trộn tôm nướng cay vào đĩa mì tỏi cho một bữa tối ngon lành."
+      }
+    ]
   },
   {
     "id": "en-starter-143",
@@ -1854,9 +2848,16 @@
     "ipaAmE": "/ˈbrɑːkəli/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Rou cai xanh"
+      "vi": "súp lơ xanh, bông cải xanh",
+      "en": "a cultivated plant whose dense green flowering heads and stalks are eaten as a vegetable"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Steaming broccoli lightly preserves its vibrant green color and high vitamin C content.",
+        "vi": "Hấp nhẹ bông cải xanh giúp giữ lại màu xanh tươi tắn và hàm lượng vitamin C dồi dào."
+      }
+    ]
   },
   {
     "id": "en-starter-144",
@@ -1867,9 +2868,16 @@
     "ipaAmE": "/ˈkæbɪdʒ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cải bắp"
+      "vi": "bắp cải",
+      "en": "a leafy garden plant forming a dense round head of green, white, or red leaves"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "She finely shredded crisp green cabbage to make a bowl of homemade coleslaw.",
+        "vi": "Cô ấy bào mỏng chiếc bắp cải xanh giòn để làm một tô salad bắp cải tại nhà."
+      }
+    ]
   },
   {
     "id": "en-starter-145",
@@ -1880,9 +2888,16 @@
     "ipaAmE": "/ˈkærət/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "củ cà rốt"
+      "vi": "củ cà rốt",
+      "en": "a tapering orange root vegetable that is eaten raw or cooked"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Crunchy fresh carrots are a great healthy snack packed with vitamin A.",
+        "vi": "Những củ cà rốt tươi giòn là món ăn vặt lành mạnh chứa đầy vitamin A."
+      }
+    ]
   },
   {
     "id": "en-starter-146",
@@ -1893,9 +2908,16 @@
     "ipaAmE": "/ˈseləri/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cần tây"
+      "vi": "rau cần tây",
+      "en": "a cultivated plant with crisp, juicy green stalks eaten raw in salads or cooked in soups"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He dipped crisp stalks of fresh celery into creamy peanut butter.",
+        "vi": "Cậu ấy chấm những cọng cần tây tươi giòn vào bơ đậu phộng béo ngậy."
+      }
+    ]
   },
   {
     "id": "en-starter-147",
@@ -1906,9 +2928,16 @@
     "ipaAmE": "/ˈkjuːkʌmbər/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "dưa chuột"
+      "vi": "quả dưa chuột, dưa leo",
+      "en": "a long green-skinned fruit with watery flesh, widely eaten raw in fresh salads"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Chilled slices of fresh cucumber add refreshing crispness to any summer salad.",
+        "vi": "Những lát dưa chuột tươi ướp lạnh đem lại độ giòn tươi mát cho mọi đĩa salad mùa hè."
+      }
+    ]
   },
   {
     "id": "en-starter-148",
@@ -1919,9 +2948,16 @@
     "ipaAmE": "/ˈɡɑːrlɪk/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "tỏi"
+      "vi": "củ tỏi",
+      "en": "a pungent bulb used globally as a flavorful seasoning in cooking"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He sautéed two crushed cloves of fresh garlic in fragrant olive oil.",
+        "vi": "Anh ấy phi thơm hai tép tỏi tươi băm nhỏ trong dầu ô liu ngát hương."
+      }
+    ]
   },
   {
     "id": "en-starter-149",
@@ -1932,9 +2968,16 @@
     "ipaAmE": "/ˈʌnjən/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "củ hành"
+      "vi": "củ hành tây",
+      "en": "a pungent vegetable with layered fleshy bulbs widely used in culinary dishes"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "She chopped a yellow onion finely, wiping tears from her eyes as she worked.",
+        "vi": "Cô ấy băm nhỏ củ hành tây vàng, vừa làm vừa quệt những giọt nước mắt cay nồng."
+      }
+    ]
   },
   {
     "id": "en-starter-150",
@@ -1945,9 +2988,16 @@
     "ipaAmE": "/pəˈteɪtoʊ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "khoai tây"
+      "vi": "củ khoai tây",
+      "en": "a starchy edible tuber that grows underground, eaten boiled, baked, or fried"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Mashed potatoes whipped with butter and cream are a beloved comfort food.",
+        "vi": "Khoai tây nghiền đánh mịn cùng bơ và kem sữa là món ăn ấm lòng được nhiều người yêu thích."
+      }
+    ]
   },
   {
     "id": "en-starter-151",
@@ -1958,9 +3008,16 @@
     "ipaAmE": "/ˈpʌmpkɪn/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "bí ngô"
+      "vi": "quả bí ngô, quả bí đỏ",
+      "en": "a large round orange autumn squash with a thick rind and edible sweet pulp and seeds"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Every October, families carve cheerful jack-o'-lantern faces into bright orange pumpkins.",
+        "vi": "Cứ mỗi độ tháng Mười, các gia đình lại khắc những gương mặt đèn lồng vui tươi lên quả bí ngô cam rực rỡ."
+      }
+    ]
   },
   {
     "id": "en-starter-152",
@@ -1971,22 +3028,36 @@
     "ipaAmE": "/kɑːrˈneɪʃn/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Hoa cẩm chướng"
+      "vi": "hoa cẩm chướng",
+      "en": "a cultivated flower with ruffled petals and a spicy clove-like scent, often given on Mother's Day"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He gave his mother a lovely bouquet of pink carnations on Mother's Day.",
+        "vi": "Anh ấy đã tặng mẹ một bó hoa cẩm chướng hồng xinh xắn vào Ngày của Mẹ."
+      }
+    ]
   },
   {
     "id": "en-starter-153",
     "template": "english",
     "word": "chrysanthemum",
-    "ipa": "/krɪˈsænθəməm],[krɪˈzænθəməm/",
-    "ipaBrE": "/krɪˈsænθəməm],[krɪˈzænθəməm/",
-    "ipaAmE": "/krɪˈsænθəməm],[krɪˈzænθəməm/",
+    "ipa": "/krɪˈsænθəməm, krɪˈzænθəməm/",
+    "ipaBrE": "/krɪˈsænθəməm, krɪˈzænθəməm/",
+    "ipaAmE": "/krɪˈsænθəməm, krɪˈzænθəməm/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "hoa cúc"
+      "vi": "hoa cúc",
+      "en": "a popular garden plant of the daisy family, with brightly colored autumn flower heads"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Yellow chrysanthemums bloomed brilliantly in the courtyard during late autumn.",
+        "vi": "Những khóm hoa cúc vàng nở rực rỡ trong sân nhà khi tiết trời sang cuối thu."
+      }
+    ]
   },
   {
     "id": "en-starter-154",
@@ -1997,9 +3068,16 @@
     "ipaAmE": "/ˈdeɪzi/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "(thực vật học) cây cúc, hoa cúc"
+      "vi": "hoa cúc dại, hoa họa mi",
+      "en": "a small wild or garden flower with white petals radiating around a yellow center"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "The little girl picked white daisies in the green field to weave a flower crown.",
+        "vi": "Bé gái hái những bông hoa cúc dại trắng trên đồng cỏ xanh để kết thành vương miện hoa."
+      }
+    ]
   },
   {
     "id": "en-starter-155",
@@ -2010,9 +3088,16 @@
     "ipaAmE": "/ˈlɪli/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Lilium"
+      "vi": "hoa loa kèn, hoa ly, hoa huệ tây",
+      "en": "a plant with large, trumpet-shaped, fragrant flowers grown from a bulb"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Fragrant white lilies stood proudly in the tall glass vase on the dining table.",
+        "vi": "Những bông hoa ly trắng thơm ngát đứng kiêu hãnh trong chiếc lọ thủy tinh cao trên bàn ăn."
+      }
+    ]
   },
   {
     "id": "en-starter-156",
@@ -2023,9 +3108,16 @@
     "ipaAmE": "/ˈloʊtəs/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Lotus:"
+      "vi": "hoa sen",
+      "en": "an aquatic water lily with large showy sacred flowers floating above the water"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "The pristine pink lotus flower blossomed gracefully above the muddy pond waters.",
+        "vi": "Bông hoa sen hồng tinh khiết vươn mình nở rộ duyên dáng trên làn nước ao bùn."
+      }
+    ]
   },
   {
     "id": "en-starter-157",
@@ -2036,9 +3128,16 @@
     "ipaAmE": "/ˈmæriɡoʊld/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cúc vạn thọ"
+      "vi": "hoa cúc vạn thọ",
+      "en": "a garden plant of the daisy family with pungent foliage and bright yellow or orange flowers"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Bright orange marigolds were planted along the garden borders to ward off insect pests.",
+        "vi": "Những luống hoa cúc vạn thọ cam rực rỡ được trồng dọc mép vườn để xua đuổi sâu bọ."
+      }
+    ]
   },
   {
     "id": "en-starter-158",
@@ -2049,9 +3148,16 @@
     "ipaAmE": "/ˈpænzi/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "PANSY!"
+      "vi": "hoa păng-xê, hoa bướm",
+      "en": "a cultivated flower with velvety petals in varied colors resembling a miniature face"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Velvety purple and yellow pansies blossomed brightly in the window planter box.",
+        "vi": "Những bông hoa păng-xê tím vàng mượt như nhung nở bừng trong bồn hoa bên cửa sổ."
+      }
+    ]
   },
   {
     "id": "en-starter-159",
@@ -2062,9 +3168,16 @@
     "ipaAmE": "/roʊz/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "tăng"
+      "vi": "hoa hồng",
+      "en": "a prickly bush or shrub that bears fragrant, beautiful flowers in various colors"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He surprised his sweetheart with a dozen fragrant red roses on Valentine's Day.",
+        "vi": "Anh ấy đã làm người thương bất ngờ với một bó hoa hồng đỏ ngát hương vào ngày Lễ Tình Nhân."
+      }
+    ]
   },
   {
     "id": "en-starter-160",
@@ -2075,9 +3188,16 @@
     "ipaAmE": "/ˈsʌnflaʊər/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cây hướng dương"
+      "vi": "hoa hướng dương",
+      "en": "a tall plant with a very large golden flower head that turns towards the sun"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "The towering sunflowers turned their bright golden faces toward the morning sun.",
+        "vi": "Những cây hoa hướng dương cao vút hướng những gương mặt vàng óng ả về phía ánh mặt trời buổi sớm."
+      }
+    ]
   },
   {
     "id": "en-starter-161",
@@ -2088,9 +3208,16 @@
     "ipaAmE": "/ˈtuːlɪp/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "hoa tulip"
+      "vi": "hoa uất kim hương, hoa tulip",
+      "en": "a spring-blooming plant with cup-shaped colorful flowers grown from bulbs"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Thousands of bright red and yellow tulips bloomed across the Dutch fields in April.",
+        "vi": "Hàng ngàn bông hoa tulip đỏ vàng rực rỡ đua nở khắp những cánh đồng Hà Lan vào tháng Tư."
+      }
+    ]
   },
   {
     "id": "en-starter-162",
@@ -2101,9 +3228,16 @@
     "ipaAmE": "/ˌbæmˈbuː/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cây tre"
+      "vi": "cây tre",
+      "en": "a giant woody grass with hollow stems that grows rapidly in tropical and warm regions"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Giant pandas feed almost exclusively on the tender shoots and leaves of bamboo.",
+        "vi": "Gấu trúc khổng lồ hầu như chỉ ăn măng non và lá của cây tre."
+      }
+    ]
   },
   {
     "id": "en-starter-163",
@@ -2114,9 +3248,16 @@
     "ipaAmE": "/pɑːm/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Họ Cau"
+      "vi": "cây cọ, cây dừa",
+      "en": "a tropical unbranched tree with a crown of large feather-like or fan-like fronds"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Tall palm trees swayed gently in the warm ocean breeze along the sandy beach.",
+        "vi": "Những rặng dừa cao vút đung đưa nhẹ nhàng trong làn gió biển ấm áp dọc bờ cát trắng."
+      }
+    ]
   },
   {
     "id": "en-starter-164",
@@ -2127,9 +3268,16 @@
     "ipaAmE": "/ˈmeɪpl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cây phong"
+      "vi": "cây phong",
+      "en": "a deciduous tree famous for its distinctive lobed leaves that turn brilliant red and gold in autumn"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "In October, the leaves of the maple tree turned breathtaking shades of scarlet and crimson.",
+        "vi": "Vào tháng Mười, những chiếc lá phong chuyển sang sắc đỏ tươi và đỏ thắm đẹp đến ngỡ ngàng."
+      }
+    ]
   },
   {
     "id": "en-starter-165",
@@ -2140,9 +3288,16 @@
     "ipaAmE": "/paɪn/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Cây Thông"
+      "vi": "cây thông",
+      "en": "an evergreen coniferous tree with needle-shaped leaves and woody seed cones"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "The crisp mountain air carried the fresh, relaxing scent of evergreen pine trees.",
+        "vi": "Bầu không khí trong lành miền núi mang theo hương thơm thanh khiết, thư thái của những rặng thông xanh ngắt."
+      }
+    ]
   },
   {
     "id": "en-starter-166",
@@ -2153,9 +3308,16 @@
     "ipaAmE": "/ˈwɪˌloʊ tri/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cây liễu"
+      "vi": "cây liễu",
+      "en": "a water-loving tree with slender drooping branches and narrow leaves"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "The long graceful branches of the weeping willow tree brushed the quiet surface of the river.",
+        "vi": "Những cành liễu rủ dài duyên dáng khẽ lướt trên mặt sông tĩnh lặng."
+      }
+    ]
   },
   {
     "id": "en-starter-167",
@@ -2166,9 +3328,16 @@
     "ipaAmE": "/bɜːrtʃ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Bạch dương"
+      "vi": "cây bạch dương",
+      "en": "a slender deciduous tree with distinctive white peeling bark"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "A stand of slender white birch trees gleamed brightly against the dark forest backdrop.",
+        "vi": "Một rặng cây bạch dương trắng thanh mảnh tỏa sáng rực rỡ trên nền rừng sẫm màu."
+      }
+    ]
   },
   {
     "id": "en-starter-168",
@@ -2179,9 +3348,16 @@
     "ipaAmE": "/ˈmɑrʃəl ɑrts/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "võ thuật"
+      "vi": "võ thuật",
+      "en": "traditional sports or skills of self-defense and combat, such as karate, judo, and taekwondo"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Training in martial arts builds self-discipline, balance, and physical agility.",
+        "vi": "Tập luyện võ thuật giúp xây dựng tính kỷ luật, khả năng giữ thăng bằng và sự nhanh nhẹn của cơ thể."
+      }
+    ]
   },
   {
     "id": "en-starter-169",
@@ -2192,9 +3368,16 @@
     "ipaAmE": "/pɪŋ – pɔŋ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "- Bóng bàn?"
+      "vi": "bóng bàn",
+      "en": "a game resembling tennis, played on a table divided by a net using small paddles and a lightweight hollow ball"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "They challenged each other to a fast-paced game of ping-pong in the rec room.",
+        "vi": "Họ thách đấu nhau một ván bóng bàn tốc độ cao trong phòng giải trí."
+      }
+    ]
   },
   {
     "id": "en-starter-170",
@@ -2205,9 +3388,16 @@
     "ipaAmE": "/ˈfʊtbɔːl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "bóng đá"
+      "vi": "môn bóng đá (hoặc bóng bầu dục)",
+      "en": "a popular team ball sport, referring to soccer or American gridiron football"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He watched the championship football game with excitement on Sunday afternoon.",
+        "vi": "Anh ấy hào hứng theo dõi trận chung kết bóng đá vào chiều Chủ nhật."
+      }
+    ]
   },
   {
     "id": "en-starter-171",
@@ -2218,9 +3408,16 @@
     "ipaAmE": "/ˈvʌltʃər/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Kên kên"
+      "vi": "chim kên kên",
+      "en": "a large scavenging bird of prey with a naked head and neck that feeds on dead animal carcasses"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Several vultures circled patiently high in the thermal air currents above the desert.",
+        "vi": "Vài con kên kên kiên nhẫn lượn vòng trên các luồng khí nóng ở tít trên cao giữa sa mạc."
+      }
+    ]
   },
   {
     "id": "en-starter-172",
@@ -2231,9 +3428,16 @@
     "ipaAmE": "/ˈælɪɡeɪtər/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cá sấu"
+      "vi": "con cá sấu",
+      "en": "large predatory semiaquatic reptiles with powerful jaws, sharp teeth, and armored skin"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "A watchful alligator floated silently near the edge of the murky swamp.",
+        "vi": "Một con cá sấu cảnh giác lững lờ trôi lặng lẽ gần bờ đầm lầy đục ngầu."
+      }
+    ]
   },
   {
     "id": "en-starter-173",
@@ -2244,9 +3448,16 @@
     "ipaAmE": "/ɡəˈrɪlə/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Khỉ đột"
+      "vi": "khỉ đột",
+      "en": "the largest living primate, a ground-dwelling predominantly herbivorous ape inhabiting African forests"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "The mighty silverback gorilla calmly watched over the other members of his troop.",
+        "vi": "Con khỉ đột lưng bạc hùng dũng điềm tĩnh trông chừng các thành viên khác trong đàn của mình."
+      }
+    ]
   },
   {
     "id": "en-starter-174",
@@ -2257,9 +3468,16 @@
     "ipaAmE": "/ˈbʌfəloʊ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "con trâu"
+      "vi": "con trâu, bò rừng bison",
+      "en": "a heavily built wild ox with horns, or the North American bison"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Huge herds of American buffalo once roamed freely across the vast Great Plains.",
+        "vi": "Những đàn trâu rừng khổng lồ từng lang thang tự do khắp vùng đồng bằng vĩ đại rộng lớn."
+      }
+    ]
   },
   {
     "id": "en-starter-175",
@@ -2270,9 +3488,16 @@
     "ipaAmE": "/ˈdʒelifɪʃ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Sứa"
+      "vi": "con sứa",
+      "en": "a free-swimming marine coelenterate with a translucent umbrella-shaped body and stinging tentacles"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Swimmers were warned about transparent jellyfish drifting near the shoreline.",
+        "vi": "Những người đi bơi được cảnh báo về những con sứa trong suốt dạt vào gần bờ biển."
+      }
+    ]
   },
   {
     "id": "en-starter-176",
@@ -2283,9 +3508,16 @@
     "ipaAmE": "/si hɔrs/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "ngựa biển"
+      "vi": "con cá ngựa",
+      "en": "a small marine fish with an upright posture, horse-like head, and a prehensile tail"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "A tiny sea horse anchored itself firmly to seagrass with its curled tail.",
+        "vi": "Một chú cá ngựa bé xíu bám chặt chiếc đuôi uốn cong vào ngọn cỏ biển."
+      }
+    ]
   },
   {
     "id": "en-starter-177",
@@ -2296,9 +3528,16 @@
     "ipaAmE": "/dɪr/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "con nai"
+      "vi": "con hươu, con nai",
+      "en": "a hoofed grazing or browsing animal with branching antlers typically borne only by the males"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "A graceful mother deer and her spotted fawn stepped quietly into the forest clearing.",
+        "vi": "Một chú nai mẹ duyên dáng cùng chú nai con đốm nhẹ nhàng bước vào khoảng rừng trống."
+      }
+    ]
   },
   {
     "id": "en-starter-178",
@@ -2309,9 +3548,16 @@
     "ipaAmE": "/ˈbiːtl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Bọ cánh cứng"
+      "vi": "bọ cánh cứng",
+      "en": "an insect with hard front wings that form a protective shell over its abdomen and hindwings"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "A shiny black beetle crawled slowly across the fallen autumn leaves.",
+        "vi": "Một con bọ cánh cứng màu đen bóng bò chầm chậm qua đống lá thu rụng."
+      }
+    ]
   },
   {
     "id": "en-starter-179",
@@ -2322,9 +3568,16 @@
     "ipaAmE": "/fɪʃ ən(d) ʧɪps/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Cá và khoai tây chim"
+      "vi": "món cá và khoai tây chiên",
+      "en": "a classic British hot dish consisting of deep-fried battered fish served with fried potato chips"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "We bought authentic hot fish and chips seasoned with vinegar and sea salt by the seaside pier.",
+        "vi": "Chúng tôi mua món cá và khoai tây chiên nóng hổi rưới giấm và muối biển ngay cạnh cầu tàu ven biển."
+      }
+    ]
   },
   {
     "id": "en-starter-180",
@@ -2335,9 +3588,16 @@
     "ipaAmE": "/frɛnʧ fraɪz/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Khoai tây chiên"
+      "vi": "khoai tây chiên",
+      "en": "thin strips of deep-fried potato seasoned with salt"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Crispy salted french fries dipped in ketchup are a beloved fast-food favorite.",
+        "vi": "Món khoai tây chiên giòn rụm chấm tương cà là món ăn nhanh được vô vàn người yêu thích."
+      }
+    ]
   },
   {
     "id": "en-starter-181",
@@ -2348,9 +3608,16 @@
     "ipaAmE": "/hɑt dɔg/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "xúc xích chín"
+      "vi": "bánh mì kẹp xúc xích (hot dog)",
+      "en": "a cooked sausage served in a sliced bread bun, typically garnished with mustard, ketchup, or relish"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He bought a hot dog with mustard and onions at the ballpark.",
+        "vi": "Anh ấy mua một chiếc bánh mì kẹp xúc xích với mù tạt và hành tây tại sân bóng chày."
+      }
+    ]
   },
   {
     "id": "en-starter-182",
@@ -2361,9 +3628,16 @@
     "ipaAmE": "/aɪs krim koʊn/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "bánh quế dạng nón làm vỏ kem"
+      "vi": "ốc quế kem, kem ốc quế",
+      "en": "a crisp wafer shaped like a cone that holds one or more scoops of ice cream"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "The child smiled happily as he licked his chocolate ice cream cone.",
+        "vi": "Đứa trẻ mỉm cười hạnh phúc khi liếm que kem ốc quế vị sô-cô-la."
+      }
+    ]
   },
   {
     "id": "en-starter-183",
@@ -2374,9 +3648,16 @@
     "ipaAmE": "/ˈæprɪkɑːt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "quả mơ"
+      "vi": "quả mơ",
+      "en": "a small, round, yellowish-orange stone fruit resembling a small peach with sweet, tangy flesh"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Dried sweet apricots make an excellent, portable snack for long hikes.",
+        "vi": "Quả mơ khô ngọt ngào là món ăn nhẹ tuyệt vời và tiện lợi cho những chuyến đi bộ đường dài."
+      }
+    ]
   },
   {
     "id": "en-starter-184",
@@ -2387,9 +3668,16 @@
     "ipaAmE": "/ˈheɪzəl nʌt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "hạt phỉ"
+      "vi": "hạt phỉ",
+      "en": "the round, edible brown nut of the hazel tree, widely used in chocolate and confectionary"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Chocolate spread made with roasted hazelnuts tastes rich and delicious.",
+        "vi": "Sốt sô-cô-la làm từ hạt phỉ rang có hương vị béo ngậy và thơm ngon tuyệt hảo."
+      }
+    ]
   },
   {
     "id": "en-starter-185",
@@ -2400,9 +3688,16 @@
     "ipaAmE": "/paɪn nʌts/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Hạt thông"
+      "vi": "hạt thông",
+      "en": "the small edible ivory-colored seeds harvested from the cones of certain species of pine trees"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Traditional Italian pesto sauce is prepared with fresh basil, garlic, parmesan, and pine nuts.",
+        "vi": "Sốt pesto truyền thống của Ý được chế biến từ húng tây tươi, tỏi, phô mai parmesan và hạt thông."
+      }
+    ]
   },
   {
     "id": "en-starter-186",
@@ -2413,9 +3708,16 @@
     "ipaAmE": "/ˈeɡplænt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cà tím"
+      "vi": "quả cà tím",
+      "en": "a large pear-shaped vegetable with smooth, glossy dark purple skin and spongy white flesh"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "She roasted sliced eggplant with olive oil, garlic, and fresh herbs.",
+        "vi": "Cô ấy nướng những lát cà tím với dầu ô liu, tỏi và rau thơm tươi."
+      }
+    ]
   },
   {
     "id": "en-starter-187",
@@ -2426,22 +3728,36 @@
     "ipaAmE": "/oʊk/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cây sồi"
+      "vi": "cây sồi",
+      "en": "a large, sturdy deciduous tree that bears acorns and produces strong, durable hardwood"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "The majestic centuries-old oak tree provided deep shade over the entire courtyard.",
+        "vi": "Cây sồi cổ thụ hàng trăm năm tuổi tỏa bóng mát rượi khắp cả khoảng sân."
+      }
+    ]
   },
   {
     "id": "en-starter-188",
     "template": "english",
-    "word": "\"ice skating\"",
+    "word": "ice skating",
     "ipa": "/aɪs ˈskeɪtɪŋ/",
     "ipaBrE": "/aɪs ˈskeɪtɪŋ/",
     "ipaAmE": "/aɪs ˈskeɪtɪŋ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Trượt Băng"
+      "vi": "môn trượt băng",
+      "en": "the sport or recreation of gliding across a surface of ice on bladed ice skates"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Many couples enjoy romantic outdoor ice skating at the city rink in winter.",
+        "vi": "Nhiều cặp đôi thích trượt băng lãng mạn ngoài trời tại sân trượt thành phố vào mùa đông."
+      }
+    ]
   },
   {
     "id": "en-starter-189",
@@ -2452,9 +3768,16 @@
     "ipaAmE": "/her/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "tóc"
+      "vi": "tóc, sợi tóc",
+      "en": "the fine thread-like strands growing from the skin of humans, especially covering the scalp"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "She brushed her long, shiny brown hair in front of the mirror.",
+        "vi": "Cô ấy chải mái tóc nâu dài óng ả của mình trước gương."
+      }
+    ]
   },
   {
     "id": "en-starter-190",
@@ -2465,9 +3788,16 @@
     "ipaAmE": "/ˈtempl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "đền thờ, miếu, thánh thất, thánh đường"
+      "vi": "thái dương (vùng đầu)",
+      "en": "the flat area on either side of the human forehead, between the eye and the ear"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He gently massaged his temples to relieve the pressure of a pounding headache.",
+        "vi": "Anh ấy nhẹ nhàng xoa hai bên thái dương để giảm bớt cơn đau đầu như búa bổ."
+      }
+    ]
   },
   {
     "id": "en-starter-191",
@@ -2478,9 +3808,16 @@
     "ipaAmE": "/ɪr/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cái tai"
+      "vi": "cái tai",
+      "en": "the organ of hearing and balance in humans and other vertebrates"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "She whispered the exciting secret softly into her friend's ear.",
+        "vi": "Cô ấy thì thầm bí mật thú vị vào tai người bạn của mình."
+      }
+    ]
   },
   {
     "id": "en-starter-192",
@@ -2491,9 +3828,16 @@
     "ipaAmE": "/noʊz/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "mũi"
+      "vi": "chiếc mũi",
+      "en": "the part of the face that projects above the mouth, containing the nostrils and used for breathing and smelling"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "A cold winter wind made the tip of his nose turn red.",
+        "vi": "Cơn gió mùa đông lạnh buốt khiến đầu mũi cậu ấy ửng đỏ."
+      }
+    ]
   },
   {
     "id": "en-starter-193",
@@ -2504,22 +3848,36 @@
     "ipaAmE": "/lɪp/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "môi"
+      "vi": "đôi môi, bờ môi",
+      "en": "either of the two fleshy margins of the human mouth opening"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Apply lip balm to prevent your lips from becoming dry and chapped in winter.",
+        "vi": "Thoa son dưỡng để tránh môi bị khô nẻ vào mùa đông."
+      }
+    ]
   },
   {
     "id": "en-starter-194",
     "template": "english",
     "word": "mouth",
-    "ipa": "/noun: [maʊθ]; verb: [maʊð/",
-    "ipaBrE": "/noun: [maʊθ]; verb: [maʊð/",
-    "ipaAmE": "/noun: [maʊθ]; verb: [maʊð/",
+    "ipa": "/noun: maʊθ; verb: maʊð/",
+    "ipaBrE": "/noun: maʊθ; verb: maʊð/",
+    "ipaAmE": "/noun: maʊθ; verb: maʊð/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "miệng"
+      "vi": "miệng",
+      "en": "the opening in the lower part of the face through which food is taken in and speech is produced"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "The dentist instructed the patient to open his mouth wide for examination.",
+        "vi": "Nha sĩ yêu cầu bệnh nhân mở to miệng để kiểm tra."
+      }
+    ]
   },
   {
     "id": "en-starter-195",
@@ -2530,9 +3888,16 @@
     "ipaAmE": "/tʃɪn/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cằm"
+      "vi": "cái cằm",
+      "en": "the protruding lower portion of the human face below the lower lip"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He rested his chin thoughtfully on his hand while contemplating the answer.",
+        "vi": "Anh ấy trầm ngâm chống cằm lên tay trong khi suy nghĩ câu trả lời."
+      }
+    ]
   },
   {
     "id": "en-starter-196",
@@ -2543,9 +3908,16 @@
     "ipaAmE": "/tʌŋ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "lưỡi"
+      "vi": "chiếc lưỡi",
+      "en": "the fleshy muscular organ in the mouth used for tasting, licking, swallowing, and speaking"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Taste buds on the surface of your tongue detect sweet, sour, salty, and bitter flavors.",
+        "vi": "Các nụ vị giác trên bề mặt lưỡi giúp bạn nhận biết các vị ngọt, chua, mặn và đắng."
+      }
+    ]
   },
   {
     "id": "en-starter-197",
@@ -2556,9 +3928,16 @@
     "ipaAmE": "/tuːθ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "răng"
+      "vi": "chiếc răng",
+      "en": "each of a set of hard, white bony enamel-coated structures in the jaw used for biting and chewing"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Dentists recommend brushing each tooth thoroughly twice a day.",
+        "vi": "Các nha sĩ khuyên nên chải từng chiếc răng thật kỹ hai lần mỗi ngày."
+      }
+    ]
   },
   {
     "id": "en-starter-198",
@@ -2569,9 +3948,16 @@
     "ipaAmE": "/dʒɔː/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Hàm"
+      "vi": "xương hàm, quai hàm",
+      "en": "each of the upper and lower bony frameworks of the mouth containing the teeth"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He clenched his jaw tightly when he heard the frustrating news.",
+        "vi": "Anh ấy nghiến chặt quai hàm khi nghe thấy tin tức bực bội."
+      }
+    ]
   },
   {
     "id": "en-starter-199",
@@ -2582,9 +3968,16 @@
     "ipaAmE": "/ˈnɑːstrəl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Lỗ mũi"
+      "vi": "lỗ mũi",
+      "en": "either of the two external openings of the nasal cavity that admit air to the lungs"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Taking a deep breath in through both nostrils fills your lungs with fresh air.",
+        "vi": "Hít một hơi thật sâu qua cả hai lỗ mũi giúp làm đầy phổi bằng không khí trong lành."
+      }
+    ]
   },
   {
     "id": "en-starter-200",
@@ -2595,9 +3988,16 @@
     "ipaAmE": "/tʃiːk/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "má"
+      "vi": "gò má, má",
+      "en": "either side of the face below the eye and between the nose and ear"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Her cheeks flushed with rosy color after walking briskly in the cold morning.",
+        "vi": "Đôi má cô ấy ửng hồng sau khi đi bộ nhanh trong buổi sáng lạnh giá."
+      }
+    ]
   },
   {
     "id": "en-starter-201",
@@ -2608,9 +4008,16 @@
     "ipaAmE": "/ˈaɪlæʃ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "lông mi"
+      "vi": "lông mi",
+      "en": "each of the short curved hairs growing on the edges of the eyelids to protect the eyes from dust"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Long curved eyelashes help shield sensitive eyes from airborne particles.",
+        "vi": "Hàng lông mi dài cong vút giúp bảo vệ đôi mắt nhạy cảm khỏi các hạt bụi trong không khí."
+      }
+    ]
   },
   {
     "id": "en-starter-202",
@@ -2621,9 +4028,16 @@
     "ipaAmE": "/ˈaɪlɪd/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "mí mắt"
+      "vi": "mí mắt",
+      "en": "each of the upper and lower folds of skin that cover and protect the eye"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "His heavy eyelids fluttered and closed as he succumbed to deep sleep.",
+        "vi": "Mí mắt nặng trĩu của cậu ấy khẽ rung rồi nhắm nghiền khi chìm vào giấc ngủ sâu."
+      }
+    ]
   },
   {
     "id": "en-starter-203",
@@ -2634,22 +4048,36 @@
     "ipaAmE": "/ˈaɪbraʊ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "ô văng cửa tò vò"
+      "vi": "lông mày",
+      "en": "the arch of hair growing on the ridge above the eye socket"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "She raised an eyebrow in curiosity when he made his unexpected announcement.",
+        "vi": "Cô ấy nhướng một bên lông mày tò mò khi anh đưa ra thông báo đầy bất ngờ."
+      }
+    ]
   },
   {
     "id": "en-starter-204",
     "template": "english",
     "word": "forehead",
-    "ipa": "/ˈfɔːhed],[ˈfɒrɪd/",
-    "ipaBrE": "/ˈfɔːhed],[ˈfɒrɪd/",
-    "ipaAmE": "/ˈfɔːrhed],[ˈfɔːred/",
+    "ipa": "/ˈfɔːhed, ˈfɒrɪd/",
+    "ipaBrE": "/ˈfɔːhed, ˈfɒrɪd/",
+    "ipaAmE": "/ˈfɔːrhed, ˈfɔːred/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Trán"
+      "vi": "vùng trán",
+      "en": "the part of the face above the eyebrows and below the hairline"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "The concerned mother placed her cool palm on her sick child's feverish forehead.",
+        "vi": "Người mẹ lo lắng đặt lòng bàn tay mát rượi lên vầng trán sốt nóng của đứa con thơ."
+      }
+    ]
   },
   {
     "id": "en-starter-205",
@@ -2660,9 +4088,16 @@
     "ipaAmE": "/hed/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cái đầu ; chỉ huy, lãnh đạo, dẫn đầu"
+      "vi": "cái đầu",
+      "en": "the upper part of the human body containing the brain, eyes, ears, nose, and mouth"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Always wear a protective helmet on your head when riding a bicycle.",
+        "vi": "Luôn đội mũ bảo hiểm bảo vệ trên đầu khi đi xe đạp."
+      }
+    ]
   },
   {
     "id": "en-starter-206",
@@ -2673,9 +4108,16 @@
     "ipaAmE": "/breɪn/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "não"
+      "vi": "bộ não",
+      "en": "the central organ of the nervous system housed within the skull, controlling thought, memory, and feeling"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "The human brain contains billions of interconnected neurons processing information constantly.",
+        "vi": "Bộ não con người chứa hàng tỷ tế bào thần kinh liên kết với nhau liên tục xử lý thông tin."
+      }
+    ]
   },
   {
     "id": "en-starter-207",
@@ -2686,9 +4128,16 @@
     "ipaAmE": "/hɑːrt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "trái tim"
+      "vi": "trái tim",
+      "en": "a hollow muscular organ that pumps oxygenated blood through the circulatory system"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Cardio exercise strengthens your heart and improves overall circulation.",
+        "vi": "Tập thể dục nhịp điệu giúp củng cố trái tim và cải thiện tuần hoàn máu toàn cơ thể."
+      }
+    ]
   },
   {
     "id": "en-starter-208",
@@ -2699,9 +4148,16 @@
     "ipaAmE": "/lʌŋ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "phổi"
+      "vi": "lá phổi",
+      "en": "either of the pair of respiratory organs in the chest that oxygenate the blood"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Smoking causes severe long-term damage to the delicate tissue of the lungs.",
+        "vi": "Hút thuốc lá gây tổn hại nghiêm trọng lâu dài đến mô mỏng manh của lá phổi."
+      }
+    ]
   },
   {
     "id": "en-starter-209",
@@ -2712,9 +4168,16 @@
     "ipaAmE": "/ˈlɪvər/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "gan"
+      "vi": "lá gan",
+      "en": "a large glandular organ in the abdomen that detoxifies metabolic wastes and produces bile"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "The liver plays an essential role in filtering toxins and metabolizing nutrients.",
+        "vi": "Lá gan đóng vai trò thiết yếu trong việc lọc độc tố và chuyển hóa các chất dinh dưỡng."
+      }
+    ]
   },
   {
     "id": "en-starter-210",
@@ -2725,9 +4188,16 @@
     "ipaAmE": "/ˈstʌmək/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "dạ dày"
+      "vi": "dạ dày, bụng",
+      "en": "the muscular organ in the digestive system where food is broken down by gastric acid"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "His empty stomach grumbled loudly during the long morning meeting.",
+        "vi": "Cái dạ dày trống rỗng của anh ấy sôi lên ùng ục trong cuộc họp sáng kéo dài."
+      }
+    ]
   },
   {
     "id": "en-starter-211",
@@ -2738,9 +4208,16 @@
     "ipaAmE": "/ˈkɪdni/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "thận"
+      "vi": "quả thận",
+      "en": "either of a pair of bean-shaped organs that filter waste products from blood to produce urine"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Drinking sufficient clean water daily helps maintain optimal kidney function.",
+        "vi": "Uống đủ nước sạch mỗi ngày giúp duy trì chức năng thận hoạt động tối ưu."
+      }
+    ]
   },
   {
     "id": "en-starter-212",
@@ -2751,9 +4228,16 @@
     "ipaAmE": "/nek/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cổ"
+      "vi": "chiếc cổ",
+      "en": "the part of the body connecting the head to the shoulders and trunk"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He had a stiff neck after sleeping in an awkward position on the airplane.",
+        "vi": "Anh ấy bị cứng cổ sau khi ngủ ở tư thế gượng gạo trên máy bay."
+      }
+    ]
   },
   {
     "id": "en-starter-213",
@@ -2764,9 +4248,16 @@
     "ipaAmE": "/tʃest/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "ngực"
+      "vi": "lồng ngực, ngực",
+      "en": "the front surface of a person's body between the neck and the stomach"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Take a deep breath and feel your chest expand fully with air.",
+        "vi": "Hãy hít một hơi thật sâu và cảm nhận lồng ngực của bạn căng tràn không khí."
+      }
+    ]
   },
   {
     "id": "en-starter-214",
@@ -2777,9 +4268,16 @@
     "ipaAmE": "/hænd/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "bàn tay"
+      "vi": "bàn tay",
+      "en": "the end part of a person's arm beyond the wrist, including the palm, fingers, and thumb"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Wash your hands thoroughly with soap and warm water before eating meals.",
+        "vi": "Rửa kỹ bàn tay bằng xà phòng và nước ấm trước khi ăn cơm."
+      }
+    ]
   },
   {
     "id": "en-starter-215",
@@ -2790,9 +4288,16 @@
     "ipaAmE": "/θaɪ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "đùi"
+      "vi": "bắp đùi",
+      "en": "the upper part of the human leg between the hip and the knee"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Squats and lunges are effective exercises for strengthening your thigh muscles.",
+        "vi": "Các bài tập squat và chùng chân rất hiệu quả để tăng cường sức mạnh cơ đùi."
+      }
+    ]
   },
   {
     "id": "en-starter-216",
@@ -2803,9 +4308,16 @@
     "ipaAmE": "/niː/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "đầu gối"
+      "vi": "đầu gối",
+      "en": "the joint between the thigh and the lower leg in humans"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He bent his knees to safely lift the heavy cardboard box from the floor.",
+        "vi": "Anh ấy gập đầu gối xuống để nhấc chiếc thùng các-tông nặng từ sàn nhà một cách an toàn."
+      }
+    ]
   },
   {
     "id": "en-starter-217",
@@ -2816,9 +4328,16 @@
     "ipaAmE": "/ʃɪn/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cẳng chân"
+      "vi": "cẳng chân, ống đồng",
+      "en": "the front part of the lower leg between the knee and the ankle"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Soccer players must wear sturdy shin guards to protect their lower legs from kicks.",
+        "vi": "Các cầu thủ bóng đá phải đeo bọc ống đồng chắc chắn để bảo vệ cẳng chân khỏi va chạm."
+      }
+    ]
   },
   {
     "id": "en-starter-218",
@@ -2829,9 +4348,16 @@
     "ipaAmE": "/fʊt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "chân trang"
+      "vi": "bàn chân",
+      "en": "the lower extremity of the leg below the ankle, upon which a person stands or walks"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He kicked the ball across the goal line with his powerful left foot.",
+        "vi": "Cậu ấy sút quả bóng qua vạch vôi bằng chiếc bàn chân trái đầy uy lực."
+      }
+    ]
   },
   {
     "id": "en-starter-219",
@@ -2842,9 +4368,16 @@
     "ipaAmE": "/ˈtoʊneɪl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "móng chân"
+      "vi": "móng chân",
+      "en": "the hard protective covering on the upper surface of the tip of each toe"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "She painted her toenails with bright coral polish before wearing open sandals.",
+        "vi": "Cô ấy sơn móng chân màu san hô rực rỡ trước khi diện đôi xăng đan hở ngón."
+      }
+    ]
   },
   {
     "id": "en-starter-220",
@@ -2855,9 +4388,16 @@
     "ipaAmE": "/bɪg toʊ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "ngón chân cái"
+      "vi": "ngón chân cái",
+      "en": "the innermost and largest digit on the human foot"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He painfully stubbed his big toe against the hard wooden bedpost.",
+        "vi": "Cậu ấy đau điếng khi vấp ngón chân cái vào chân giường gỗ cứng."
+      }
+    ]
   },
   {
     "id": "en-starter-221",
@@ -2868,9 +4408,16 @@
     "ipaAmE": "/leɡ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "chân"
+      "vi": "đôi chân, cẳng chân",
+      "en": "each of the limbs on which a person or animal walks and stands"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Running every morning helps build strong, toned legs and high endurance.",
+        "vi": "Chạy bộ mỗi sáng giúp xây dựng đôi chân săn chắc, khỏe khoắn và sức bền cao."
+      }
+    ]
   },
   {
     "id": "en-starter-222",
@@ -2881,9 +4428,16 @@
     "ipaAmE": "/pɑːm/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "lòng bàn tay"
+      "vi": "lòng bàn tay",
+      "en": "the inner surface of the hand between the wrist and the bases of the fingers"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "She held the tiny injured sparrow gently in the warm palm of her hand.",
+        "vi": "Cô ấy nhẹ nhàng nâng niu chú chim sẻ nhỏ bị thương trong lòng bàn tay ấm áp."
+      }
+    ]
   },
   {
     "id": "en-starter-223",
@@ -2894,9 +4448,16 @@
     "ipaAmE": "/θʌm/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "ngón tay cái"
+      "vi": "ngón tay cái",
+      "en": "the short, thick first digit of the human hand, opposable to each of the other four digits"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He gave a cheerful thumbs-up sign to signal that everything was going well.",
+        "vi": "Anh ấy giơ ngón tay cái vui vẻ để ra hiệu rằng mọi việc đều đang diễn ra tốt đẹp."
+      }
+    ]
   },
   {
     "id": "en-starter-224",
@@ -2907,9 +4468,16 @@
     "ipaAmE": "/rɪst/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cổ tay"
+      "vi": "cổ tay",
+      "en": "the flexible joint connecting the human hand with the forearm"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He strapped his new digital fitness watch securely onto his left wrist.",
+        "vi": "Anh ấy đeo chiếc đồng hồ theo dõi sức khỏe kỹ thuật số mới một cách chắc chắn vào cổ tay trái."
+      }
+    ]
   },
   {
     "id": "en-starter-225",
@@ -2920,9 +4488,16 @@
     "ipaAmE": "/ɑːrm/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "trên"
+      "vi": "cánh tay",
+      "en": "each of the two upper limbs of the human body from the shoulder to the hand"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He stretched both arms wide overhead after sitting at the desk for hours.",
+        "vi": "Anh ấy vươn rộng hai cánh tay qua đầu sau khi ngồi nhiều giờ tại bàn làm việc."
+      }
+    ]
   },
   {
     "id": "en-starter-226",
@@ -2933,9 +4508,16 @@
     "ipaAmE": "/ˈbɑːdi/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "thân thể"
+      "vi": "cơ thể, thân thể",
+      "en": "the physical structure of a human or animal, including bones, flesh, and organs"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Regular exercise and wholesome food keep your entire body fit and healthy.",
+        "vi": "Tập thể dục đều đặn và ăn uống lành mạnh giữ cho toàn bộ cơ thể luôn khỏe mạnh."
+      }
+    ]
   },
   {
     "id": "en-starter-227",
@@ -2946,9 +4528,16 @@
     "ipaAmE": "/ˈɑːrmpɪt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Vòng nách"
+      "vi": "hõm nách, nách",
+      "en": "the hollow area beneath the junction of the arm and shoulder"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Apply deodorant under each armpit to stay fresh and odor-free all day long.",
+        "vi": "Thoa lăn khử mùi dưới mỗi hõm nách để luôn cảm thấy sảng khoái và thơm tho suốt ngày dài."
+      }
+    ]
   },
   {
     "id": "en-starter-228",
@@ -2959,9 +4548,16 @@
     "ipaAmE": "/bæk/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "quay lại"
+      "vi": "lưng",
+      "en": "the rear surface of the human body from the shoulders down to the hips"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Maintaining good posture prevents chronic pain in your lower back.",
+        "vi": "Duy trì tư thế ngồi đúng giúp ngăn ngừa những cơn đau mãn tính ở vùng lưng dưới."
+      }
+    ]
   },
   {
     "id": "en-starter-229",
@@ -2972,9 +4568,16 @@
     "ipaAmE": "/hɪp/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "hỏng"
+      "vi": "hông",
+      "en": "the projecting joint where the pelvis and the upper thigh bone meet"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "She rested her hands confidently on her hips while delivering the presentation.",
+        "vi": "Cô ấy tự tin chống hai tay lên hông trong lúc thuyết trình."
+      }
+    ]
   },
   {
     "id": "en-starter-230",
@@ -2985,9 +4588,16 @@
     "ipaAmE": "/ˈbɑːtəm/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "phần dưới cùng; đáy"
+      "vi": "mông, phần mông",
+      "en": "the buttocks or rear lower part of the body upon which a person sits"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He slipped on the icy patch and landed directly on his bottom.",
+        "vi": "Cậu ấy trượt chân trên tảng băng và ngã phịch mông xuống đất."
+      }
+    ]
   },
   {
     "id": "en-starter-231",
@@ -2998,9 +4608,16 @@
     "ipaAmE": "/hiːl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "châm cứu"
+      "vi": "gót chân",
+      "en": "the back part of the human foot below the ankle joint"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "The stiff new leather shoes rubbed painfully against the back of his heel.",
+        "vi": "Đôi giày da mới cứng chà xát gây đau rát phía sau gót chân của anh ấy."
+      }
+    ]
   },
   {
     "id": "en-starter-232",
@@ -3011,9 +4628,16 @@
     "ipaAmE": "/ˈæŋkl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "mắt cá chân"
+      "vi": "mắt cá chân, cổ chân",
+      "en": "the joint connecting the foot with the lower leg"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He twisted his ankle awkwardly while running down the steep hiking trail.",
+        "vi": "Anh ấy trẹo cổ chân khi đang chạy xuống con đường mòn đi bộ dốc đứng."
+      }
+    ]
   },
   {
     "id": "en-starter-233",
@@ -3024,9 +4648,16 @@
     "ipaAmE": "/kæf/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Bê con"
+      "vi": "bắp chân (hoặc con bê)",
+      "en": "the muscular back part of the human lower leg below the knee"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "A sudden painful cramp tightened in the calf muscle of his right leg.",
+        "vi": "Một cơn chuột rút đau nhói bất ngờ co rút ở bắp chân phải của anh ấy."
+      }
+    ]
   },
   {
     "id": "en-starter-234",
@@ -3037,9 +4668,16 @@
     "ipaAmE": "/ˈfɪŋɡərneɪl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "móng tay"
+      "vi": "móng tay",
+      "en": "the hard protective translucent plate covering the upper tip of each finger"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Keep your fingernails clean and neatly trimmed to practice good personal hygiene.",
+        "vi": "Hãy giữ móng tay sạch sẽ và cắt tỉa gọn gàng để duy trì vệ sinh cá nhân tốt."
+      }
+    ]
   },
   {
     "id": "en-starter-235",
@@ -3050,9 +4688,16 @@
     "ipaAmE": "/ˈnʌkl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "khuỷu"
+      "vi": "khớp ngón tay, đốt ngón tay",
+      "en": "each of the joints of a finger, especially the prominent ones connecting the fingers to the hand"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "His knuckles turned white as he gripped the steering wheel tightly in the storm.",
+        "vi": "Các khớp ngón tay của anh ấy trắng bệch khi nắm chặt vô lăng giữa cơn giông bão."
+      }
+    ]
   },
   {
     "id": "en-starter-236",
@@ -3063,9 +4708,16 @@
     "ipaAmE": "/weɪst/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "eo, thắt lưng"
+      "vi": "vòng eo, thắt lưng",
+      "en": "the narrower middle part of the human torso between the ribs and the hips"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "She wrapped a measuring tape around her waist to check her dress size.",
+        "vi": "Cô ấy quấn thước dây quanh eo để đo kích cỡ chiếc váy của mình."
+      }
+    ]
   },
   {
     "id": "en-starter-237",
@@ -3076,9 +4728,16 @@
     "ipaAmE": "/fɔr ɑrm/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cẳng tay, cẳng chi trước"
+      "vi": "cẳng tay",
+      "en": "the part of the human arm between the elbow and the wrist"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He rolled up the sleeves of his shirt to reveal his muscular forearms.",
+        "vi": "Anh ấy xắn tay áo sơ mi lên để lộ cánh cẳng tay vạm vỡ."
+      }
+    ]
   },
   {
     "id": "en-starter-238",
@@ -3089,9 +4748,16 @@
     "ipaAmE": "/ˈelboʊ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "khuỷu tay"
+      "vi": "khuỷu tay",
+      "en": "the flexible hinge joint between the forearm and the upper arm"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He rested his elbows lightly on the table while listening attentively.",
+        "vi": "Anh ấy chống nhẹ hai khuỷu tay lên bàn trong khi chăm chú lắng nghe."
+      }
+    ]
   },
   {
     "id": "en-starter-239",
@@ -3102,9 +4768,16 @@
     "ipaAmE": "/ˈʌpər ɑrm/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Bắp Tay"
+      "vi": "bắp tay, phần trên cánh tay",
+      "en": "the segment of the human arm between the shoulder and the elbow, containing the biceps and triceps"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He received his annual influenza vaccination high on his left upper arm.",
+        "vi": "Anh ấy tiêm phòng cúm hàng năm ở phần trên bắp tay trái."
+      }
+    ]
   },
   {
     "id": "en-starter-240",
@@ -3115,9 +4788,16 @@
     "ipaAmE": "/ˈʃoʊldər/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "vai"
+      "vi": "bờ vai, bả vai",
+      "en": "the upper joint of the human arm and the adjacent part of the body between neck and arm"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He carried his sleepy little daughter comfortably on his broad shoulders.",
+        "vi": "Anh ấy cõng cô con gái nhỏ đang buồn ngủ trên bờ vai rộng của mình một cách êm ái."
+      }
+    ]
   },
   {
     "id": "en-starter-241",
@@ -3128,9 +4808,16 @@
     "ipaAmE": "/ˈbrʌðər/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "anh/em trai"
+      "vi": "anh trai, em trai",
+      "en": "a male sibling sharing the same biological parents"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "My older brother is studying computer science at the state university.",
+        "vi": "Anh trai tôi đang theo học ngành khoa học máy tính tại trường đại học công lập."
+      }
+    ]
   },
   {
     "id": "en-starter-242",
@@ -3141,9 +4828,16 @@
     "ipaAmE": "/ˈsɪstər/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "chị, em gái"
+      "vi": "chị gái, em gái",
+      "en": "a female sibling sharing the same biological parents"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "My little sister loves painting colorful pictures with watercolors.",
+        "vi": "Em gái tôi rất thích vẽ những bức tranh rực rỡ sắc màu bằng màu nước."
+      }
+    ]
   },
   {
     "id": "en-starter-243",
@@ -3154,9 +4848,16 @@
     "ipaAmE": "/ˈfɑːðər/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cha, cha"
+      "vi": "cha, bố, ba",
+      "en": "a male parent who raises and cares for a child"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "My father taught me how to ride a two-wheel bicycle when I was seven.",
+        "vi": "Bố tôi đã dạy tôi cách đi xe đạp hai bánh khi tôi lên bảy tuổi."
+      }
+    ]
   },
   {
     "id": "en-starter-244",
@@ -3167,9 +4868,16 @@
     "ipaAmE": "/ˈmʌðər/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "mẹ, mẹ"
+      "vi": "mẹ, má",
+      "en": "a female parent who gives birth to and cares for a child"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "My mom prepares warm, wholesome home-cooked dinners every evening.",
+        "vi": "Mẹ tôi chuẩn bị những bữa tối nấu tại nhà ấm cúng và bổ dưỡng vào mỗi buổi tối."
+      }
+    ]
   },
   {
     "id": "en-starter-245",
@@ -3180,9 +4888,16 @@
     "ipaAmE": "/maɪ ˈmʌðərz ˈhʌzbənd/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "chồng của mẹ tôi"
+      "vi": "chồng của mẹ tôi (bố hoặc cha dượng)",
+      "en": "the man married to one's mother, typically one's father or stepfather"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "My mother's husband is a dedicated teacher who loves reading books.",
+        "vi": "Chồng của mẹ tôi là một người thầy tận tụy rất thích đọc sách."
+      }
+    ]
   },
   {
     "id": "en-starter-246",
@@ -3193,9 +4908,16 @@
     "ipaAmE": "/maɪ ˈfɑðərz waɪf/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "vợ của cha tôi"
+      "vi": "vợ của cha tôi (mẹ hoặc mẹ kế)",
+      "en": "the woman married to one's father, typically one's mother or stepmother"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "My father's wife always makes sure everyone in the family feels loved and supported.",
+        "vi": "Vợ của cha tôi luôn chăm lo chu đáo để mọi thành viên trong gia đình cảm nhận được yêu thương."
+      }
+    ]
   },
   {
     "id": "en-starter-247",
@@ -3206,9 +4928,16 @@
     "ipaAmE": "/ˈperənts/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "phụ huynh"
+      "vi": "bố mẹ, cha mẹ, phụ huynh",
+      "en": "a mother and father considered together as primary caretakers of children"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "His supportive parents attended every one of his graduation ceremonies with pride.",
+        "vi": "Cha mẹ luôn ủng hộ và tự hào tham dự mọi buổi lễ tốt nghiệp của anh ấy."
+      }
+    ]
   },
   {
     "id": "en-starter-248",
@@ -3219,9 +4948,16 @@
     "ipaAmE": "/ˈɡrænfɑːðər/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "ông nội, ông nội"
+      "vi": "ông, ông nội, ông ngoại",
+      "en": "the father of one's father or mother"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "My kind grandpa always tells fascinating stories about his youth by the fireplace.",
+        "vi": "Người ông hiền từ của tôi luôn kể những câu chuyện thú vị về thời trai trẻ bên bếp lửa."
+      }
+    ]
   },
   {
     "id": "en-starter-249",
@@ -3232,9 +4968,16 @@
     "ipaAmE": "/ˈɡrænmʌðər/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "bà, bà"
+      "vi": "bà, bà nội, bà ngoại",
+      "en": "the mother of one's father or mother"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Grandma baked warm cinnamon cookies that made the whole kitchen smell wonderful.",
+        "vi": "Bà nướng những chiếc bánh quy quế thơm lừng làm nức mũi khắp căn bếp."
+      }
+    ]
   },
   {
     "id": "en-starter-250",
@@ -3245,9 +4988,16 @@
     "ipaAmE": "/ˈgræn(d)ˌpɛrənts/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Ông bà ngoại"
+      "vi": "ông bà (nội ngoại)",
+      "en": "the parents of a person's father or mother collectively"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "The whole family gathered at the grandparents' countryside house for the holidays.",
+        "vi": "Cả gia đình quây quần tại nhà của ông bà ở miền quê trong kỳ nghỉ lễ."
+      }
+    ]
   },
   {
     "id": "en-starter-251",
@@ -3258,9 +5008,16 @@
     "ipaAmE": "/ˈʌŋkl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "chủ, bác"
+      "vi": "chú, bác, cậu",
+      "en": "the brother of one's father or mother, or the husband of one's aunt"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "My favorite uncle brought me a wonderful souvenir from his trip to Japan.",
+        "vi": "Người chú yêu quý đã mang về cho tôi một món quà lưu niệm tuyệt vời từ chuyến đi Nhật Bản."
+      }
+    ]
   },
   {
     "id": "en-starter-252",
@@ -3271,9 +5028,16 @@
     "ipaAmE": "/ænt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cô, dì"
+      "vi": "cô, dì, bác gái, thím",
+      "en": "the sister of one's father or mother, or the wife of one's uncle"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Aunt Sarah invited all the cousins over for a joyful Sunday picnic.",
+        "vi": "Dì Sarah mời tất cả anh chị em họ đến dự buổi dã ngoại vui tươi vào Chủ nhật."
+      }
+    ]
   },
   {
     "id": "en-starter-253",
@@ -3284,9 +5048,16 @@
     "ipaAmE": "/ˈkʌzn/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "anh em họ"
+      "vi": "anh chị em họ",
+      "en": "a child of one's uncle or aunt"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "My cousin and I grew up together like close best friends.",
+        "vi": "Anh họ và tôi lớn lên cùng nhau như những người bạn thân thiết nhất."
+      }
+    ]
   },
   {
     "id": "en-starter-254",
@@ -3297,9 +5068,16 @@
     "ipaAmE": "/maɪ ˈpɛrənts nis/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cháu gái của bố mẹ tôi"
+      "vi": "cháu gái của bố mẹ tôi (chị em họ)",
+      "en": "a daughter of one's parent's sibling, who is one's female cousin"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "My parents' niece came over to study for her high school entrance exams with us.",
+        "vi": "Cháu gái của bố mẹ tôi (chị họ tôi) đã qua nhà để cùng ôn thi vào cấp ba với chúng tôi."
+      }
+    ]
   },
   {
     "id": "en-starter-255",
@@ -3310,9 +5088,16 @@
     "ipaAmE": "/ˈkʌzn/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "anh em họ"
+      "vi": "anh chị em họ",
+      "en": "a child of one's uncle or aunt"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "My cousin and I grew up together like close best friends.",
+        "vi": "Anh họ và tôi lớn lên cùng nhau như những người bạn thân thiết nhất."
+      }
+    ]
   },
   {
     "id": "en-starter-256",
@@ -3323,9 +5108,16 @@
     "ipaAmE": "/maɪ ˈpɛrənts ˈnɛfju/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cháu trai của bố mẹ tôi"
+      "vi": "cháu trai của bố mẹ tôi (anh em họ)",
+      "en": "a son of one's parent's sibling, who is one's male cousin"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "My parents' nephew is a talented young artist who paints breathtaking landscapes.",
+        "vi": "Cháu trai của bố mẹ tôi (anh họ tôi) là một họa sĩ trẻ tài năng chuyên vẽ những bức phong cảnh tuyệt đẹp."
+      }
+    ]
   },
   {
     "id": "en-starter-257",
@@ -3336,9 +5128,16 @@
     "ipaAmE": "/red/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "màu đỏ"
+      "vi": "màu đỏ",
+      "en": "the color of ripe strawberries or fresh blood"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "The bright red sports car drew everyone's attention on the avenue.",
+        "vi": "Chiếc xe thể thao màu đỏ tươi thu hút sự chú ý của mọi người trên đại lộ."
+      }
+    ]
   },
   {
     "id": "en-starter-258",
@@ -3349,9 +5148,16 @@
     "ipaAmE": "/pɪŋk/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "màu hồng; hoa cẩm chướng, tình trạng tốt, hoàn hảo"
+      "vi": "màu hồng",
+      "en": "a delicate pale red color made by mixing red and white"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Cherry blossoms bloom in delicate shades of soft pink every spring.",
+        "vi": "Hoa anh đào nở rộ với sắc hồng dịu dàng tinh tế vào mỗi độ xuân về."
+      }
+    ]
   },
   {
     "id": "en-starter-259",
@@ -3362,9 +5168,16 @@
     "ipaAmE": "/ɡriːn/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "màu xanh lục"
+      "vi": "màu xanh lá cây, xanh lục",
+      "en": "the color of fresh grass and growing foliage"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "The lush green grass sparkled with morning dew in the garden.",
+        "vi": "Bãi cỏ xanh mướt lấp lánh những giọt sương mai trong khu vườn."
+      }
+    ]
   },
   {
     "id": "en-starter-260",
@@ -3375,9 +5188,16 @@
     "ipaAmE": "/laɪm grin/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "vàng chanh"
+      "vi": "màu xanh chanh, xanh nõn chuối",
+      "en": "a bright, vibrant yellowish-green color resembling the skin of a lime"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "The cyclist wore a high-visibility lime green jacket for road safety.",
+        "vi": "Người đi xe đạp mặc chiếc áo khoác màu xanh chanh phản quang nổi bật để đảm bảo an toàn giao thông."
+      }
+    ]
   },
   {
     "id": "en-starter-261",
@@ -3388,9 +5208,16 @@
     "ipaAmE": "/tiːl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "xanh mòng két"
+      "vi": "màu xanh mòng két (xanh lam ánh lục)",
+      "en": "a deep greenish-blue color resembling the colored plumage of the teal duck"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "She painted her bedroom accent wall in a calming shade of rich teal.",
+        "vi": "Cô ấy sơn bức tường điểm nhấn phòng ngủ bằng gam màu xanh mòng két dịu êm."
+      }
+    ]
   },
   {
     "id": "en-starter-262",
@@ -3401,9 +5228,16 @@
     "ipaAmE": "/bluː/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "xanh"
+      "vi": "màu xanh da trời, xanh lam",
+      "en": "the primary color of the clear daytime sky and deep calm ocean waters"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "The bright blue sky was clear and without a single white cloud.",
+        "vi": "Bầu trời trong xanh rực rỡ không một gợn mây trắng."
+      }
+    ]
   },
   {
     "id": "en-starter-263",
@@ -3414,9 +5248,16 @@
     "ipaAmE": "/ˈneɪvi/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "hải quân"
+      "vi": "màu xanh navy, xanh than",
+      "en": "a very dark, elegant shade of blue widely used in suits and uniforms"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "School students are required to wear classic navy blazers on formal ceremonies.",
+        "vi": "Học sinh được yêu cầu mặc áo khoác blazer màu xanh navy cổ điển vào các buổi lễ trang trọng."
+      }
+    ]
   },
   {
     "id": "en-starter-264",
@@ -3427,9 +5268,16 @@
     "ipaAmE": "/ˈjeloʊ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "vàng"
+      "vi": "màu vàng",
+      "en": "the bright color of ripe lemons, dandelions, and warm sunlight"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "A cheerful bright yellow school bus arrived to pick up the children.",
+        "vi": "Chiếc xe buýt trường học màu vàng tươi rạng rỡ đã đến đón các em học sinh."
+      }
+    ]
   },
   {
     "id": "en-starter-265",
@@ -3440,9 +5288,16 @@
     "ipaAmE": "/ˈpɜːrpl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "tím"
+      "vi": "màu tím",
+      "en": "a rich royal color intermediate between red and blue"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Clusters of sweet purple grapes hung heavily from the sunny vineyard vines.",
+        "vi": "Những chùm nho tím ngọt ngào trĩu nặng trên những giàn nho ngập nắng."
+      }
+    ]
   },
   {
     "id": "en-starter-266",
@@ -3453,9 +5308,16 @@
     "ipaAmE": "/braʊn/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "nâu"
+      "vi": "màu nâu",
+      "en": "the earthy color of rich soil, tree bark, and dark chocolate"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He wore a well-crafted brown leather belt and matching boots.",
+        "vi": "Anh ấy đeo chiếc thắt lưng da màu nâu tinh xảo cùng đôi ủng đồng màu."
+      }
+    ]
   },
   {
     "id": "en-starter-267",
@@ -3466,9 +5328,16 @@
     "ipaAmE": "/beɪʒ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "becolor"
+      "vi": "màu be (vàng nâu nhạt)",
+      "en": "a light, neutral sandy yellowish-brown color"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "The modern living room was decorated in soothing tones of cream and beige.",
+        "vi": "Phòng khách hiện đại được bài trí với tông màu kem và be dịu nhẹ."
+      }
+    ]
   },
   {
     "id": "en-starter-268",
@@ -3476,12 +5345,19 @@
     "word": "orange",
     "ipa": "/ˈɒrɪndʒ/",
     "ipaBrE": "/ˈɒrɪndʒ/",
-    "ipaAmE": "/ˈɔːrɪndʒ],[ˈɑːrɪndʒ/",
+    "ipaAmE": "/ˈɔːrɪndʒ, ˈɑːrɪndʒ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cam"
+      "vi": "màu cam",
+      "en": "the bright warm color between red and yellow, like that of a ripe orange fruit"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "The autumn sky glowed in shades of fiery orange and gold at sunset.",
+        "vi": "Bầu trời mùa thu rực rỡ sắc cam cháy và vàng óng lúc hoàng hôn."
+      }
+    ]
   },
   {
     "id": "en-starter-269",
@@ -3492,9 +5368,16 @@
     "ipaAmE": "/waɪt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "trắng"
+      "vi": "màu trắng",
+      "en": "the color of pure fresh snow, milk, or clean chalk"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "The bride looked radiant in a flowing pure white wedding gown.",
+        "vi": "Cô dâu trông rạng rỡ trong chiếc váy cưới màu trắng tinh khôi thướt tha."
+      }
+    ]
   },
   {
     "id": "en-starter-270",
@@ -3505,9 +5388,16 @@
     "ipaAmE": "/blæk/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "màu đen"
+      "vi": "màu đen",
+      "en": "the darkest color, resulting from the complete absence or absorption of light"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "He chose an elegant black tuxedo for the prestigious charity gala.",
+        "vi": "Anh ấy đã chọn bộ lễ phục tuxedo đen lịch lãm cho dạ tiệc từ thiện danh giá."
+      }
+    ]
   },
   {
     "id": "en-starter-271",
@@ -3518,8 +5408,15 @@
     "ipaAmE": "/ɡreɪ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "màu xám"
+      "vi": "màu xám, màu ghi",
+      "en": "a neutral or achromatic color intermediate between black and white"
     },
-    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống"
+    "lesson": "Phần 3: Thể thao, Động thực vật & Đời sống",
+    "examples": [
+      {
+        "en": "Heavy gray rain clouds gathered ominously over the city skyline before the storm.",
+        "vi": "Những đám mây mưa xám xịt nặng trĩu tụ lại đầy vẻ đe dọa trên nền trời thành phố trước cơn bão."
+      }
+    ]
   }
 ]
