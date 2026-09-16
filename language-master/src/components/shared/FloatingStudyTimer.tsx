@@ -1,45 +1,74 @@
 // src/components/shared/FloatingStudyTimer.tsx
-// Tiện ích Hẹn giờ học tập nổi (Floating Docked Study Timer)
-// Popup cố định đứng im, có xử lý click ngoài để đóng, hỗ trợ đổi góc neo
+// Tiện ích Hẹn giờ học tập nổi (Draggable Floating Study Timer)
+// - Hỗ trợ kéo thả (drag & drop) tự do khắp màn hình, lưu vị trí
+// - Bấm vào sẽ mở popup hẹn giờ ở CHÍNH GIỮA MÀN HÌNH
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Timer, Play, Pause, RotateCcw, X, Coffee, Settings2 } from 'lucide-react';
+import { Timer, Play, Pause, RotateCcw, X, Coffee, GripVertical } from 'lucide-react';
 
 type TimerMode = 'pomodoro' | 'stopwatch';
-type CornerPosition = 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left';
 
 export function FloatingStudyTimer() {
   const [isOpen, setIsOpen] = useState(false);
   const [mode, setMode] = useState<TimerMode>('pomodoro');
-  
-  // Dock position preference
-  const [corner, setCorner] = useState<CornerPosition>(() => {
-    return (localStorage.getItem('timer_dock_pos') as CornerPosition) || 'bottom-right';
-  });
 
   // Pomodoro settings (seconds)
   const [pomoPreset, setPomoPreset] = useState<number>(25 * 60);
   const [timeLeft, setTimeLeft] = useState<number>(25 * 60);
   const [isRunning, setIsRunning] = useState<boolean>(false);
-  
+
   // Stopwatch
   const [stopwatchSeconds, setStopwatchSeconds] = useState<number>(0);
 
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  // Click outside to close expanded popup
-  useEffect(() => {
-    if (!isOpen) return;
-    const handleClickOutside = (e: MouseEvent | TouchEvent) => {
-      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
-        setIsOpen(false);
+  // Draggable position state
+  const [pos, setPos] = useState<{ x: number; y: number }>(() => {
+    if (typeof window === 'undefined') return { x: 100, y: 100 };
+    const savedX = localStorage.getItem('timer_pos_x');
+    const savedY = localStorage.getItem('timer_pos_y');
+    if (savedX !== null && savedY !== null) {
+      const x = parseFloat(savedX);
+      const y = parseFloat(savedY);
+      if (!isNaN(x) && !isNaN(y)) {
+        return {
+          x: Math.min(Math.max(12, x), window.innerWidth - 190),
+          y: Math.min(Math.max(12, y), window.innerHeight - 70),
+        };
       }
+    }
+    // Default position: bottom-right
+    return {
+      x: Math.max(16, window.innerWidth - 200),
+      y: Math.max(16, window.innerHeight - 80),
     };
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('touchstart', handleClickOutside);
+  });
+
+  const buttonRef = useRef<HTMLDivElement>(null);
+  const isDraggingRef = useRef(false);
+  const dragStartPosRef = useRef({ x: 0, y: 0 });
+  const buttonStartPosRef = useRef({ x: 0, y: 0 });
+  const hasDraggedRef = useRef(false);
+
+  // Keep button within bounds on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setPos(prev => ({
+        x: Math.min(Math.max(12, prev.x), window.innerWidth - 190),
+        y: Math.min(Math.max(12, prev.y), window.innerHeight - 70),
+      }));
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('touchstart', handleClickOutside);
+      document.body.style.overflow = '';
     };
   }, [isOpen]);
 
@@ -115,182 +144,219 @@ export function FloatingStudyTimer() {
     }
   };
 
-  const cycleCorner = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    const corners: CornerPosition[] = ['bottom-right', 'bottom-left', 'top-left', 'top-right'];
-    const nextIdx = (corners.indexOf(corner) + 1) % corners.length;
-    const next = corners[nextIdx];
-    setCorner(next);
-    localStorage.setItem('timer_dock_pos', next);
-  };
+  // Drag Pointer Handlers
+  const handlePointerDown = (e: React.PointerEvent) => {
+    // Only respond to primary mouse button or touch
+    if (e.button !== 0) return;
 
-  // Position classes
-  const getCornerClasses = () => {
-    switch (corner) {
-      case 'bottom-left':
-        return 'bottom-6 left-6 items-start';
-      case 'top-right':
-        return 'top-20 right-6 items-end';
-      case 'top-left':
-        return 'top-20 left-6 items-start';
-      case 'bottom-right':
-      default:
-        return 'bottom-6 right-6 items-end';
-    }
+    isDraggingRef.current = true;
+    hasDraggedRef.current = false;
+    dragStartPosRef.current = { x: e.clientX, y: e.clientY };
+    buttonStartPosRef.current = { x: pos.x, y: pos.y };
+
+    const handlePointerMove = (moveEv: PointerEvent) => {
+      if (!isDraggingRef.current) return;
+      const dx = moveEv.clientX - dragStartPosRef.current.x;
+      const dy = moveEv.clientY - dragStartPosRef.current.y;
+
+      // Threshold to detect genuine drag
+      if (Math.hypot(dx, dy) > 4) {
+        hasDraggedRef.current = true;
+      }
+
+      const buttonWidth = buttonRef.current?.offsetWidth || 180;
+      const buttonHeight = buttonRef.current?.offsetHeight || 50;
+
+      const nextX = Math.min(Math.max(8, buttonStartPosRef.current.x + dx), window.innerWidth - buttonWidth - 8);
+      const nextY = Math.min(Math.max(8, buttonStartPosRef.current.y + dy), window.innerHeight - buttonHeight - 8);
+
+      setPos({ x: nextX, y: nextY });
+    };
+
+    const handlePointerUp = () => {
+      isDraggingRef.current = false;
+      window.removeEventListener('pointermove', handlePointerMove);
+      window.removeEventListener('pointerup', handlePointerUp);
+
+      // Persist to localStorage
+      setPos(current => {
+        localStorage.setItem('timer_pos_x', String(current.x));
+        localStorage.setItem('timer_pos_y', String(current.y));
+        return current;
+      });
+
+      // If user tapped/clicked without moving, open the modal!
+      if (!hasDraggedRef.current) {
+        setIsOpen(prev => !prev);
+      }
+    };
+
+    window.addEventListener('pointermove', handlePointerMove);
+    window.addEventListener('pointerup', handlePointerUp);
   };
 
   return (
-    <div
-      ref={containerRef}
-      className={`fixed z-[9999] flex flex-col pointer-events-auto select-none ${getCornerClasses()}`}
-    >
-      {/* Expanded Popup (Stationary / Đứng im) */}
+    <>
+      {/* ================= DRAGGABLE MINI FLOATING BUTTON ================= */}
+      <div
+        ref={buttonRef}
+        onPointerDown={handlePointerDown}
+        style={{ left: `${pos.x}px`, top: `${pos.y}px` }}
+        className={`fixed z-[9990] flex items-center gap-2 px-3.5 py-2.5 rounded-full shadow-2xl backdrop-blur-md border transition-shadow cursor-grab active:cursor-grabbing select-none touch-none ${
+          isRunning
+            ? 'bg-indigo-600 hover:bg-indigo-700 text-white border-indigo-400/60 ring-4 ring-indigo-500/25 shadow-indigo-500/30'
+            : 'bg-white/95 dark:bg-slate-800/95 text-slate-800 dark:text-slate-100 hover:bg-white dark:hover:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-slate-900/15'
+        }`}
+        title="Kéo để di chuyển • Nhấp để mở Hẹn giờ ở giữa màn hình"
+      >
+        <GripVertical size={14} className="text-slate-400 dark:text-slate-500 opacity-60 shrink-0 pointer-events-none" />
+        <Timer size={16} className={isRunning ? 'text-amber-300 animate-pulse' : 'text-indigo-600 dark:text-indigo-400'} />
+        <span className="font-mono font-bold text-sm tracking-wider">{displayTime}</span>
+        {isRunning && (
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping shrink-0" />
+        )}
+      </div>
+
+      {/* ================= CENTERED POPUP MODAL ================= */}
       {isOpen && (
         <div
-          className={`w-72 sm:w-80 bg-white dark:bg-slate-800 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden text-slate-800 dark:text-slate-100 animate-in fade-in zoom-in-95 duration-200 mb-3 ${
-            corner.startsWith('top') ? 'order-2 mt-3 mb-0' : 'order-1'
-          }`}
+          className="fixed inset-0 z-[10000] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200"
+          onClick={() => setIsOpen(false)}
         >
-          {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3 bg-slate-50 dark:bg-slate-800/90 border-b border-slate-100 dark:border-slate-700">
-            <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-bold text-xs uppercase tracking-wider">
-              <Timer size={16} />
-              <span>Đồng Hồ Tập Trung</span>
-            </div>
-            <div className="flex items-center gap-1">
-              <button
-                onClick={cycleCorner}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-200/50 dark:hover:bg-slate-700 transition-colors"
-                title={`Vị trí: ${corner} (Bấm để đổi góc)`}
-              >
-                <Settings2 size={14} />
-              </button>
+          <div
+            className="relative w-full max-w-sm sm:max-w-md bg-white dark:bg-slate-800 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden text-slate-800 dark:text-slate-100 animate-in zoom-in-95 duration-200"
+            onClick={e => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between px-5 py-4 bg-slate-50/80 dark:bg-slate-800/90 border-b border-slate-100 dark:border-slate-700">
+              <div className="flex items-center gap-2.5 text-indigo-600 dark:text-indigo-400 font-bold text-xs uppercase tracking-wider">
+                <Timer size={18} />
+                <span>Đồng Hồ Tập Trung</span>
+              </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-rose-500 hover:bg-slate-200/50 dark:hover:bg-slate-700 transition-colors"
-                title="Thu nhỏ"
+                className="p-2 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-700 transition-colors"
+                title="Đóng (Thu nhỏ)"
               >
-                <X size={15} />
-              </button>
-            </div>
-          </div>
-
-          {/* Body */}
-          <div className="p-5 space-y-4">
-            {/* Mode Switcher */}
-            <div className="flex bg-slate-100 dark:bg-slate-700/50 p-1 rounded-xl">
-              <button
-                onClick={() => { setMode('pomodoro'); setIsRunning(false); }}
-                className={`flex-1 py-1.5 text-xs font-bold rounded-lg transition-all ${
-                  mode === 'pomodoro'
-                    ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm'
-                    : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
-                }`}
-              >
-                Pomodoro
-              </button>
-              <button
-                onClick={() => { setMode('stopwatch'); setIsRunning(false); }}
-                className={`flex-1 py-1.5 text-xs font-bold rounded-lg transition-all ${
-                  mode === 'stopwatch'
-                    ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm'
-                    : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
-                }`}
-              >
-                Bấm Giờ
+                <X size={18} />
               </button>
             </div>
 
-            {/* Presets (for Pomodoro) */}
-            {mode === 'pomodoro' && (
-              <div className="flex items-center justify-center gap-2">
-                {[
-                  { label: '25p', min: 25 },
-                  { label: '50p', min: 50 },
-                  { label: '5p nghỉ', min: 5, isBreak: true },
-                ].map(p => (
-                  <button
-                    key={p.min}
-                    onClick={() => handleSelectPreset(p.min)}
-                    className={`px-3 py-1 rounded-xl text-xs font-bold transition-all ${
-                      pomoPreset === p.min * 60
-                        ? 'bg-indigo-50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-700'
-                        : 'bg-slate-50 dark:bg-slate-700/30 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-700 border border-transparent'
-                    }`}
-                  >
-                    {p.isBreak && <Coffee size={12} className="inline mr-1 -mt-0.5" />}
-                    {p.label}
-                  </button>
-                ))}
+            {/* Body */}
+            <div className="p-6 space-y-5">
+              {/* Mode Switcher */}
+              <div className="flex bg-slate-100 dark:bg-slate-700/50 p-1 rounded-2xl">
+                <button
+                  onClick={() => {
+                    setMode('pomodoro');
+                    setIsRunning(false);
+                  }}
+                  className={`flex-1 py-2 text-xs font-bold rounded-xl transition-all ${
+                    mode === 'pomodoro'
+                      ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm'
+                      : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
+                  }`}
+                >
+                  Pomodoro
+                </button>
+                <button
+                  onClick={() => {
+                    setMode('stopwatch');
+                    setIsRunning(false);
+                  }}
+                  className={`flex-1 py-2 text-xs font-bold rounded-xl transition-all ${
+                    mode === 'stopwatch'
+                      ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm'
+                      : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
+                  }`}
+                >
+                  Bấm Giờ
+                </button>
               </div>
-            )}
 
-            {/* Big Timer Display */}
-            <div className="text-center py-2">
-              <div className={`text-5xl font-black font-mono tracking-tight transition-colors ${
-                isRunning ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-800 dark:text-white'
-              }`}>
-                {displayTime}
+              {/* Presets (Pomodoro only) */}
+              {mode === 'pomodoro' && (
+                <div className="flex items-center justify-center gap-2">
+                  {[
+                    { label: '25p Tập trung', min: 25 },
+                    { label: '50p Chuyên sâu', min: 50 },
+                    { label: '5p Nghỉ', min: 5, isBreak: true },
+                  ].map(p => (
+                    <button
+                      key={p.min}
+                      onClick={() => handleSelectPreset(p.min)}
+                      className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                        pomoPreset === p.min * 60
+                          ? 'bg-indigo-50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-700 shadow-sm'
+                          : 'bg-slate-50 dark:bg-slate-700/30 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-700 border border-transparent'
+                      }`}
+                    >
+                      {p.isBreak && <Coffee size={13} className="inline mr-1 -mt-0.5" />}
+                      {p.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {/* Big Timer Display */}
+              <div className="text-center py-3 bg-slate-50/60 dark:bg-slate-900/30 rounded-3xl border border-slate-100 dark:border-slate-700/50">
+                <div
+                  className={`text-6xl font-black font-mono tracking-tight transition-colors ${
+                    isRunning
+                      ? 'text-indigo-600 dark:text-indigo-400'
+                      : 'text-slate-800 dark:text-white'
+                  }`}
+                >
+                  {displayTime}
+                </div>
+                <p className="text-xs text-slate-400 dark:text-slate-500 mt-2 font-medium">
+                  {isRunning
+                    ? mode === 'pomodoro'
+                      ? '🔥 Đang trong phiên tập trung...'
+                      : '⏱️ Đang đếm thời gian học...'
+                    : '⏸️ Đã tạm dừng'}
+                </p>
               </div>
-              <p className="text-[11px] text-slate-400 mt-1">
-                {isRunning
-                  ? (mode === 'pomodoro' ? 'Đang trong phiên tập trung...' : 'Đang đếm thời gian...')
-                  : 'Đã tạm dừng'}
+
+              {/* Action Controls */}
+              <div className="flex items-center justify-center gap-3 pt-1">
+                <button
+                  onClick={handleReset}
+                  className="p-3.5 rounded-2xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-300 transition-colors"
+                  title="Đặt lại thời gian"
+                >
+                  <RotateCcw size={18} />
+                </button>
+                <button
+                  onClick={() => setIsRunning(r => !r)}
+                  className={`flex-1 py-3.5 px-6 rounded-2xl font-bold flex items-center justify-center gap-2 shadow-lg transition-all text-sm active:scale-95 ${
+                    isRunning
+                      ? 'bg-amber-500 hover:bg-amber-600 text-white shadow-amber-500/25'
+                      : 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-indigo-600/25'
+                  }`}
+                >
+                  {isRunning ? (
+                    <>
+                      <Pause size={18} />
+                      <span>Tạm dừng</span>
+                    </>
+                  ) : (
+                    <>
+                      <Play size={18} />
+                      <span>Bắt đầu tập trung</span>
+                    </>
+                  )}
+                </button>
+              </div>
+
+              {/* Hint */}
+              <p className="text-center text-[11px] text-slate-400 dark:text-slate-500">
+                💡 Nút đồng hồ thu nhỏ có thể kéo thả tự do đến bất kỳ vị trí nào trên màn hình.
               </p>
-            </div>
-
-            {/* Controls */}
-            <div className="flex items-center justify-center gap-3 pt-1">
-              <button
-                onClick={handleReset}
-                className="p-3 rounded-2xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-300 transition-colors"
-                title="Đặt lại"
-              >
-                <RotateCcw size={18} />
-              </button>
-              <button
-                onClick={() => setIsRunning(r => !r)}
-                className={`px-6 py-3 rounded-2xl font-bold flex items-center gap-2 shadow-lg transition-all ${
-                  isRunning
-                    ? 'bg-amber-500 hover:bg-amber-600 text-white shadow-amber-500/25'
-                    : 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-indigo-600/25'
-                }`}
-              >
-                {isRunning ? (
-                  <>
-                    <Pause size={18} />
-                    <span>Tạm dừng</span>
-                  </>
-                ) : (
-                  <>
-                    <Play size={18} />
-                    <span>Bắt đầu</span>
-                  </>
-                )}
-              </button>
             </div>
           </div>
         </div>
       )}
-
-      {/* Collapsed Docked Pill Button */}
-      <button
-        onClick={() => setIsOpen(o => !o)}
-        className={`flex items-center gap-2.5 px-4 py-2.5 rounded-full shadow-xl backdrop-blur-md border transition-all cursor-pointer ${
-          corner.startsWith('top') ? 'order-1' : 'order-2'
-        } ${
-          isRunning
-            ? 'bg-indigo-600 hover:bg-indigo-700 text-white border-indigo-400/50 ring-4 ring-indigo-500/20 animate-pulse'
-            : 'bg-white/95 dark:bg-slate-800/95 text-slate-800 dark:text-slate-100 hover:bg-white dark:hover:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-slate-900/10'
-        }`}
-        title="Bấm để mở / đóng bảng Hẹn giờ tập trung"
-      >
-        <Timer size={16} className={isRunning ? 'text-amber-300' : 'text-indigo-600 dark:text-indigo-400'} />
-        <span className="font-mono font-bold text-sm tracking-wider">{displayTime}</span>
-        {isRunning && (
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-        )}
-      </button>
-    </div>
+    </>
   );
 }
