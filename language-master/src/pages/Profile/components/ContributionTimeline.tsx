@@ -136,14 +136,8 @@ export function ContributionTimeline({
         }
       }
 
-      // 2. Số lượt ôn & học của tháng (tăng level hoặc tụt level thực tế)
-      let monthReviews = monthlyReviewsMap[monthKey] || 0;
-      if (monthReviews === 0 && srsOverview?.monthlyReviews?.[monthKey]) {
-        monthReviews = srsOverview.monthlyReviews[monthKey];
-      }
-      if (monthReviews === 0 && monthExp > 0) {
-        monthReviews = Math.max(1, monthLearnedWords > 0 ? monthLearnedWords : Math.round(monthExp / 10));
-      }
+      // 2. Số lượt ôn & học của tháng (lấy chuẩn xác từ activityReviews trong database)
+      const monthReviews = monthlyReviewsMap[monthKey] || 0;
 
       // 3. Tiến độ thực tế của từng khóa học:
       // Tính theo: Số từ đã thuộc (Level >= 1) / Tổng số từ trong khóa học

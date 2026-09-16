@@ -181,6 +181,18 @@ export async function syncMasteredStatusToFirestore(
         },
         { merge: true }
       );
+
+      // Ghi nhận +1 lượt học khi người dùng đánh dấu đã thuộc (thăng cấp Level 2)
+      try {
+        const today = new Date().toLocaleDateString('en-CA');
+        const userRef = doc(db, 'users', userId);
+        await updateDoc(userRef, {
+          [`activityReviews.${today}`]: increment(1),
+          lastActivityDate: today,
+        });
+      } catch (e) {
+        console.error('Error updating activityReviews on manual mastery:', e);
+      }
     } else {
       await deleteDoc(docRef);
     }
