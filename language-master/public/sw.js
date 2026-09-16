@@ -1,15 +1,15 @@
 // public/sw.js
 // Service Worker cho Language Master: Cache App Shell & Hỗ trợ học Offline
 
-const CACHE_NAME = 'language-master-v2';
+const CACHE_NAME = 'language-master-v3';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
   '/manifest.json',
+  '/favicon.svg',
   '/favicon.png',
   '/icon-192.png',
   '/icon-512.png',
-  '/logo.png',
 ];
 
 // 1. Install: Cache app shell & lập tức kích hoạt
