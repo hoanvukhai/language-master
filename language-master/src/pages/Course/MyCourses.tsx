@@ -6,7 +6,8 @@ import { Library, Compass, Flame, Loader2, Sparkles, Trophy, BadgeCheck, Bookmar
 import { useAuth } from '../../context/auth/useAuth';
 import { useDashboardStats } from './useDashboardStats';
 import { resetCourseProgress } from '../../lib/srs/firestoreSync';
-import { CourseSettingsModal } from './components/CourseSettingsModal';
+import { CourseOfflineModal } from '../../components/course/CourseOfflineModal';
+import { getAllOfflineMeta } from '../../lib/offline/offlineStorage';
 
 export default function MyCourses() {
   const { myCourseIds, removeCourse } = useMyCourses();
@@ -16,13 +17,25 @@ export default function MyCourses() {
   const [courseToUnbookmark, setCourseToUnbookmark] = useState<{ id: string; name: string } | null>(null);
   const [courseToReset, setCourseToReset] = useState<{ id: string; name: string } | null>(null);
   const [activeMenuCourseId, setActiveMenuCourseId] = useState<string | null>(null);
-  const [selectedCourseForSettings, setSelectedCourseForSettings] = useState<string | null>(null);
+  const [selectedCourseForOffline, setSelectedCourseForOffline] = useState<string | null>(null);
+  const [offlineCourseIds, setOfflineCourseIds] = useState<Set<string>>(new Set());
   const [isResetting, setIsResetting] = useState(false);
 
   useEffect(() => {
     const handleClickOutside = () => setActiveMenuCourseId(null);
     window.addEventListener('click', handleClickOutside);
     return () => window.removeEventListener('click', handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    const loadOffline = () => {
+      getAllOfflineMeta().then(list => {
+        setOfflineCourseIds(new Set(list.map(item => item.id)));
+      });
+    };
+    loadOffline();
+    window.addEventListener('offline_course_changed', loadOffline);
+    return () => window.removeEventListener('offline_course_changed', loadOffline);
   }, []);
 
   const myCourses = courses.filter(c => myCourseIds.includes(c.id));
@@ -98,6 +111,12 @@ export default function MyCourses() {
                       </div>
 
                       <div className="flex items-center gap-2">
+                        {offlineCourseIds.has(c.id) && (
+                          <div className="flex items-center gap-1 px-2 py-1 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 text-xs font-bold rounded-lg border border-emerald-200 dark:border-emerald-800/50" title="Khóa học đã tải về thiết bị để học ngoại tuyến">
+                            <HardDrive size={13} />
+                            <span>Offline</span>
+                          </div>
+                        )}
                         {(courseStat?.highScore || 0) > 0 && (
                           <div className="flex items-center gap-1.5 px-2.5 py-1 bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-xs font-bold rounded-lg border border-amber-200 dark:border-amber-800/50">
                             <Trophy size={14} />
@@ -117,12 +136,12 @@ export default function MyCourses() {
                               <button
                                 onClick={() => {
                                   setActiveMenuCourseId(null);
-                                  setSelectedCourseForSettings(c.id);
+                                  setSelectedCourseForOffline(c.id);
                                 }}
                                 className="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-indigo-950/30 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors text-left"
                               >
                                 <HardDrive size={15} className="text-indigo-500 shrink-0" />
-                                <span>Cài đặt & Tải ngoại tuyến</span>
+                                <span>Quản lý dữ liệu ngoại tuyến</span>
                               </button>
                               <button
                                 onClick={() => {
@@ -342,11 +361,11 @@ export default function MyCourses() {
         </div>
       )}
 
-      {/* Course Settings & Offline Modal */}
-      <CourseSettingsModal
-        isOpen={!!selectedCourseForSettings}
-        onClose={() => setSelectedCourseForSettings(null)}
-        courseId={selectedCourseForSettings || undefined}
+      {/* Course Offline Storage Modal */}
+      <CourseOfflineModal
+        isOpen={!!selectedCourseForOffline}
+        onClose={() => setSelectedCourseForOffline(null)}
+        courseId={selectedCourseForOffline}
       />
     </div>
   );
