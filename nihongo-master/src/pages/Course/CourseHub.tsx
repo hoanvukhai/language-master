@@ -6,6 +6,7 @@ import CourseSettings from './CourseSettings';
 import CourseTheory from './CourseTheory';
 import LearnCourseDetail from '../Learn/LearnCourseDetail';
 import { PracticeProvider } from '../Practice/PracticeContext';
+import OfflineGuard from '../../components/shared/OfflineGuard';
 import { ArrowLeft, Gamepad2, Trophy, Settings, Sparkles, Flame, Plus, Book, FileText, Crown } from 'lucide-react';
 import { useAuth } from '../../context/auth/useAuth';
 import { useMyCourses } from '../../context/global/useMyCourses';
@@ -78,7 +79,14 @@ export default function CourseHub() {
           <Route path="theory" element={<CourseTheory />} />
           <Route path="settings" element={<CourseSettings />} />
           <Route path="practice/*" element={<CoursePracticeHub />} />
-          <Route path="race/*" element={<CourseRaceHub />} />
+          <Route
+            path="race/*"
+            element={
+              <OfflineGuard featureName="Đua Top Nitro" backUrl={`/course/${course.id}`}>
+                <CourseRaceHub />
+              </OfflineGuard>
+            }
+          />
         </Routes>
       </PracticeProvider>
     );

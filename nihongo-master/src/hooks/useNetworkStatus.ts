@@ -1,0 +1,25 @@
+// src/hooks/useNetworkStatus.ts
+// Hook theo dõi trạng thái kết nối mạng thời gian thực (Online / Offline)
+
+import { useState, useEffect } from 'react';
+
+export function useNetworkStatus() {
+  const [isOnline, setIsOnline] = useState<boolean>(() => {
+    return typeof navigator !== 'undefined' ? navigator.onLine : true;
+  });
+
+  useEffect(() => {
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => setIsOnline(false);
+
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
+  }, []);
+
+  return { isOnline };
+}

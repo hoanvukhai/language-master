@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Menu, X, UserCircle, LogIn, Library, Compass, Settings } from 'lucide-react';
+import { Menu, X, UserCircle, LogIn, Library, Compass, Settings, WifiOff } from 'lucide-react';
 import { useSettings } from '../context/global/useSettings';
 import { useAuth } from '../context/auth/useAuth';
+import { useNetworkStatus } from '../hooks/useNetworkStatus';
 import { motion, AnimatePresence } from 'framer-motion';
 import UserMenu from './auth/UserMenu';
 
 export default function Navbar() {
   const { language } = useSettings();
   const { user } = useAuth();
+  const { isOnline } = useNetworkStatus();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -63,6 +65,16 @@ export default function Navbar() {
                 </NavLink>
               );
             })}
+            {/* Offline indicator badge */}
+            {!isOnline && (
+              <div
+                className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/40 text-xs font-bold animate-pulse"
+                title="Đang mất kết nối mạng. Bạn đang ở chế độ Ngoại tuyến."
+              >
+                <WifiOff size={13} />
+                <span className="hidden md:inline">Ngoại tuyến</span>
+              </div>
+            )}
             {/* Settings & Auth area */}
             <div className="ml-2 pl-2 border-l border-slate-200 dark:border-slate-600 flex items-center gap-2">
               {user ? (
@@ -79,14 +91,24 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile hamburger */}
-          <button
-            className="sm:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
-            onClick={() => setMenuOpen(o => !o)}
-            aria-label="Menu"
-          >
-            {menuOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
+          {/* Mobile right items */}
+          <div className="flex sm:hidden items-center gap-2">
+            {!isOnline && (
+              <div
+                className="p-1.5 rounded-lg bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-800/40"
+                title="Đang ở chế độ Ngoại tuyến"
+              >
+                <WifiOff size={16} />
+              </div>
+            )}
+            <button
+              className="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+              onClick={() => setMenuOpen(o => !o)}
+              aria-label="Menu"
+            >
+              {menuOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </div>
       </nav>
 

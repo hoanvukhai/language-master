@@ -25,6 +25,7 @@ import Profile from './pages/Profile/Profile';
 // Learn (SRS)
 import LearnSession from './pages/Learn/LearnSession';
 
+import OfflineGuard from './components/shared/OfflineGuard';
 import { AudioProvider } from './context/audio/useAudio';
 
 export default function App() {
@@ -47,7 +48,14 @@ export default function App() {
                 <Route path="/explore" element={<Explore />} />
                 <Route path="/dictionary" element={<Dictionary />} />
                 <Route path="/settings" element={<Settings />} />
-                <Route path="/profile" element={<Profile />} />
+                <Route
+                  path="/profile"
+                  element={
+                    <OfflineGuard featureName="Hồ Sơ Cá Nhân">
+                      <Profile />
+                    </OfflineGuard>
+                  }
+                />
 
                 {/* === COURSES === */}
                 <Route path="/course/:courseId/*" element={<CourseHub />} />
@@ -57,7 +65,14 @@ export default function App() {
                 <Route path="/study/dictionary" element={<Dictionary />} />
 
                 {/* === LEARN (SRS) === */}
-                <Route path="/learn/session" element={<LearnSession />} />
+                <Route
+                  path="/learn/session"
+                  element={
+                    <OfflineGuard featureName="Phiên Học SRS">
+                      <LearnSession />
+                    </OfflineGuard>
+                  }
+                />
 
                 {/* === LOGIN === */}
                 <Route path="/login" element={<LoginScreen />} />
