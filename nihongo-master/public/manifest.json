@@ -1,20 +1,20 @@
 {
-  "name": "Nihongo Master",
-  "short_name": "日本語",
-  "description": "Website created by Vu Khai Hoan",
+  "name": "Language Master | Học Ngôn Ngữ",
+  "short_name": "LangMaster",
+  "description": "Nền tảng tự học ngôn ngữ thông minh với SRS Flashcard, Từ điển và Luyện tập ngoại tuyến.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f172a",
   "theme_color": "#6366f1",
   "icons": [
     {
-      "src": "/test.png",
+      "src": "/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/test.png",
+      "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

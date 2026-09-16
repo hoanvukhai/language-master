@@ -6,7 +6,8 @@ const STATIC_ASSETS = [
   '/',
   '/index.html',
   '/manifest.json',
-  '/test.png',
+  '/icon-192.png',
+  '/icon-512.png',
 ];
 
 // 1. Install: Cache app shell
