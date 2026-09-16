@@ -265,8 +265,12 @@ export function ContributionTimeline({
                 <div className="text-sm text-slate-600 dark:text-slate-300 font-medium">
                   {m.reviewsCount > 0 || m.learnedWordsCount > 0 ? (
                     <>
-                      Đã hoàn thành <strong className="text-slate-900 dark:text-white font-bold">{m.reviewsCount} lượt ôn & học</strong>
-                      {m.learnedWordsCount > 0 && <> và ghi nhớ <strong className="text-slate-900 dark:text-white font-bold">{m.learnedWordsCount} từ vựng</strong></>}
+                      {m.reviewsCount > 0 && (
+                        <>Đã hoàn thành <strong className="text-slate-900 dark:text-white font-bold">{m.reviewsCount} lượt ôn & học</strong></>
+                      )}
+                      {m.learnedWordsCount > 0 && (
+                        <>{m.reviewsCount > 0 ? ' và ghi nhớ ' : 'Đã ghi nhớ '}<strong className="text-slate-900 dark:text-white font-bold">{m.learnedWordsCount} từ vựng</strong></>
+                      )}
                       {m.courses.length > 0 && <> trong {m.courses.length} khóa học</>}
                     </>
                   ) : (m.totalExp > 0 || m.totalMinutes > 0 ? (
