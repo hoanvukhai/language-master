@@ -21,13 +21,16 @@ export function SeasonRankModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200"
+      onClick={onClose}
+    >
       <div
         className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-2xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-5 border-b border-slate-100 dark:border-slate-800 bg-gradient-to-r from-indigo-50/50 via-white to-amber-50/50 dark:from-slate-900 dark:via-indigo-950/40 dark:to-slate-900">
+        <div className="flex items-center justify-between px-6 py-5 border-b border-slate-100 dark:border-slate-800 bg-gradient-to-r from-indigo-50/50 via-white to-amber-50/50 dark:from-slate-900 dark:via-indigo-950/40 dark:to-slate-900 shrink-0">
           <div>
             <h2 className="text-xl font-black text-slate-900 dark:text-white flex items-center gap-2">
               🏆 Bảng Hệ Thống 7 Bậc Rank
@@ -45,7 +48,7 @@ export function SeasonRankModal({
         </div>
 
         {/* Rank List Body */}
-        <div className="p-6 overflow-y-auto space-y-3.5 divide-y divide-slate-100 dark:divide-slate-800/60">
+        <div className="p-6 overflow-y-auto custom-scrollbar space-y-3.5 divide-y divide-slate-100 dark:divide-slate-800/60 flex-1">
           {RANK_TIERS.map((tierInfo) => {
             const isCurrent = tierInfo.tier === currentTier;
             const isUnlocked = userScore >= tierInfo.minPoints;

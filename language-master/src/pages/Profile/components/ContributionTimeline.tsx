@@ -7,12 +7,13 @@ interface ContributionTimelineProps {
   dailyStudyTime: Record<string, number>; // Seconds per date
   activityHistory?: Record<string, number>; // EXP per date
   courseStudyScores?: Record<string, number>; // Score per course
+  myCourseIds?: string[]; // IDs of user's enrolled courses
   selectedYear?: number;
 }
 
 interface MonthActivity {
   monthKey: string; // YYYY-MM
-  monthName: string; // e.g. "September 2026" / "Tháng 9 2026"
+  monthName: string; // e.g. "Tháng 9 2026"
   totalMinutes: number;
   totalExp: number;
   activeDays: number;
@@ -20,6 +21,8 @@ interface MonthActivity {
   courses: {
     id: string;
     name: string;
+    template?: string;
+    level?: string;
     color: string;
     reviewsCount: number;
     percent: number;
@@ -36,10 +39,11 @@ export function ContributionTimeline({
   dailyStudyTime = {},
   activityHistory = {},
   courseStudyScores = {},
+  myCourseIds = [],
   selectedYear
 }: ContributionTimelineProps) {
   const allCourses = useMemo(() => getAllCourses(), []);
-  const [visibleCount, setVisibleCount] = useState<number>(3); // Hiển thị 3 tháng gần nhất, có nút xem thêm
+  const [visibleCount, setVisibleCount] = useState<number>(3);
 
   // Reset pagination khi đổi năm
   useEffect(() => {
@@ -85,7 +89,19 @@ export function ContributionTimeline({
 
     const sortedMonthKeys = Object.keys(monthsMap).sort().reverse();
 
-    // Tính tỷ lệ đóng góp khóa học dựa trên courseStudyScores
+    // Xác định danh sách khóa học thực tế của người dùng:
+    // 1. Các khóa có điểm học trong courseStudyScores
+    // 2. Hoặc các khóa người dùng đã đăng ký (myCourseIds)
+    const userRelevantCourses = allCourses.filter(c => {
+      const hasScore = (courseStudyScores[c.id] || 0) > 0;
+      const isEnrolled = myCourseIds.includes(c.id);
+      return hasScore || isEnrolled;
+    });
+
+    // Nếu người dùng chưa thêm khóa nào, chỉ dùng khóa đầu tiên của họ hoặc khóa phổ biến
+    const baseCourses = userRelevantCourses.length > 0 
+      ? userRelevantCourses 
+      : allCourses.filter(c => myCourseIds.length > 0 ? myCourseIds.includes(c.id) : c.id === 'essential-starter');
 
     return sortedMonthKeys.map(monthKey => {
       const [yearStr, mStr] = monthKey.split('-');
@@ -94,52 +110,52 @@ export function ContributionTimeline({
       const data = monthsMap[monthKey];
       const totalMinutes = Math.floor(data.seconds / 60);
 
-      // Phân bổ danh sách khóa học hoạt động
-      const activeCoursesList = allCourses
-        .map(c => {
-          const score = courseStudyScores[c.id] || 0;
-          return {
-            id: c.id,
-            name: c.name,
-            color: c.color,
-            score
-          };
-        })
-        .filter(c => c.score > 0)
-        .sort((a, b) => b.score - a.score);
+      // Tính số lượt ôn tập và số từ vựng dựa trên DỮ LIỆU CỦA THÁNG ĐÓ (không dùng all-time chia sẻ)
+      const monthExp = data.exp;
+      const monthReviews = monthExp > 0
+        ? Math.max(1, Math.round(monthExp / 3))
+        : (totalMinutes > 0 ? Math.max(1, Math.round(totalMinutes / 10)) : 0);
 
-      // Nếu người dùng mới chưa có nhiều khóa hoặc điểm, hiển thị các khóa đang thêm
-      const maxScore = Math.max(...activeCoursesList.map(c => c.score), 1);
+      const monthLearnedWords = monthExp > 0
+        ? Math.max(1, Math.round(monthExp / 5))
+        : 0;
 
-      const courses = activeCoursesList.map(c => ({
-        id: c.id,
-        name: c.name,
-        color: c.color,
-        reviewsCount: Math.round(c.score / 3) || 1, // ước tính lượt ôn
-        percent: Math.min(100, Math.max(15, Math.round((c.score / maxScore) * 100)))
-      }));
+      // Phân bổ lượt ôn tập của tháng vào các khóa học thực tế của người dùng
+      const coursesForMonth = baseCourses.slice(0, 3).map((c, idx) => {
+        const cScore = courseStudyScores[c.id] || 0;
+        const totalBaseScores = baseCourses.reduce((sum, item) => sum + (courseStudyScores[item.id] || 0), 0);
 
-      const totalWords = Math.round(data.exp / 4) || (totalMinutes > 0 ? Math.max(1, Math.round(totalMinutes / 2)) : 0);
+        let cReviews = 0;
+        if (monthReviews > 0) {
+          if (totalBaseScores > 0) {
+            cReviews = Math.max(1, Math.round((cScore / totalBaseScores) * monthReviews));
+          } else {
+            cReviews = idx === 0 ? monthReviews : 0;
+          }
+        }
+
+        return {
+          id: c.id,
+          name: c.name,
+          template: c.template,
+          level: c.level,
+          color: c.color,
+          reviewsCount: cReviews,
+          percent: monthReviews > 0 ? Math.min(100, Math.max(25, Math.round((cReviews / monthReviews) * 100))) : 0
+        };
+      }).filter(c => c.reviewsCount > 0);
 
       return {
         monthKey,
         monthName: `${MONTH_NAMES[monthIndex]} ${year}`,
         totalMinutes,
-        totalExp: data.exp,
+        totalExp: monthExp,
         activeDays: data.activeDays.size,
-        learnedWordsCount: totalWords,
-        courses: courses.length > 0 ? courses : [
-          {
-            id: allCourses[0]?.id || 'essential-1',
-            name: allCourses[0]?.name || '4000 Essential English Words - Book 1',
-            color: 'sky',
-            reviewsCount: Math.max(1, Math.round(data.exp / 3)),
-            percent: 65
-          }
-        ]
+        learnedWordsCount: monthLearnedWords,
+        courses: coursesForMonth
       };
     });
-  }, [dailyStudyTime, activityHistory, courseStudyScores, allCourses, selectedYear]);
+  }, [dailyStudyTime, activityHistory, courseStudyScores, myCourseIds, allCourses, selectedYear]);
 
   const displayedMonths = monthlyData.slice(0, visibleCount);
   const targetYear = selectedYear ?? new Date().getFullYear();
@@ -177,7 +193,7 @@ export function ContributionTimeline({
             return (
               <div key={m.monthKey} className="relative space-y-3">
                 {/* Timeline Dot / Icon */}
-                <div className="absolute -left-6 sm:-left-8 top-0.5 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-slate-100 dark:bg-slate-800 border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shadow-sm">
+                <div className="absolute -left-6 sm:-left-8 top-0.5 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white dark:bg-slate-800 border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shadow-sm">
                   <div className="w-2 h-2 rounded-full bg-emerald-500" />
                 </div>
 
@@ -191,64 +207,80 @@ export function ContributionTimeline({
 
                 {/* Monthly Stats Badges */}
                 <div className="flex items-center gap-2 flex-wrap">
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/50">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/50 shadow-xs">
                     <Clock size={13} />
                     {formatHours(m.totalMinutes)}
                   </span>
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/50">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/50 shadow-xs">
                     <Flame size={13} />
                     {m.activeDays} ngày học tập
                   </span>
                   {m.learnedWordsCount > 0 && (
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800/50">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-semibold bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800/50 shadow-xs">
                       <BookOpen size={13} />
                       {m.learnedWordsCount} từ đã thuộc
                     </span>
                   )}
                   {m.totalExp > 0 && (
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/50">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-semibold bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/50 shadow-xs">
                       <Sparkles size={13} />
                       +{m.totalExp} EXP
                     </span>
                   )}
                 </div>
 
-                {/* Summary Statement like GitHub: "Created 15 commits in 2 repositories" */}
+                {/* Summary Statement */}
                 <div className="text-sm text-slate-600 dark:text-slate-300 font-medium">
-                  Đã hoàn thành <strong className="text-slate-800 dark:text-white font-bold">{totalReviews} lượt ôn tập</strong>
-                  {m.learnedWordsCount > 0 && <> và ghi nhớ <strong className="text-slate-800 dark:text-white font-bold">{m.learnedWordsCount} từ vựng</strong></>} trong {m.courses.length} khóa học
+                  {totalReviews > 0 ? (
+                    <>
+                      Đã hoàn thành <strong className="text-slate-900 dark:text-white font-bold">{totalReviews} lượt học & ôn tập</strong>
+                      {m.learnedWordsCount > 0 && <> và ghi nhớ <strong className="text-slate-900 dark:text-white font-bold">{m.learnedWordsCount} từ vựng</strong></>}
+                      {m.courses.length > 0 && <> trong {m.courses.length} khóa học</>}
+                    </>
+                  ) : (
+                    <span className="text-slate-400">Chưa có lượt học nào trong tháng này.</span>
+                  )}
                 </div>
 
-                {/* Course Progress Bars (Exact GitHub Commit Bar Style) */}
-                <div className="space-y-2 bg-slate-50/50 dark:bg-slate-850/40 p-3 sm:p-4 rounded-2xl border border-slate-100 dark:border-slate-700/40">
-                  {m.courses.map((c) => (
-                    <div key={c.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4 text-xs py-1">
-                      {/* Course Link */}
-                      <div className="flex items-center gap-2 min-w-0">
-                        <Link
-                          to={`/course/${c.id}`}
-                          className="font-bold text-indigo-600 dark:text-indigo-400 hover:underline truncate max-w-[280px] sm:max-w-[360px]"
-                          title={c.name}
-                        >
-                          {c.name}
-                        </Link>
-                        <span className="text-slate-400 dark:text-slate-500 font-medium shrink-0">
-                          {c.reviewsCount} lượt
-                        </span>
-                      </div>
+                {/* Course Progress Bars (High Contrast, Crisp GitHub Style) */}
+                {m.courses.length > 0 && (
+                  <div className="space-y-3 bg-slate-50 dark:bg-slate-800/70 p-4 rounded-2xl border border-slate-200/80 dark:border-slate-700/60 shadow-xs">
+                    {m.courses.map((c) => (
+                      <div key={c.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4 text-xs">
+                        {/* Course Link & Language Badge */}
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <span className={`px-1.5 py-0.5 rounded text-[10px] font-black uppercase shrink-0 ${
+                            c.template === 'english'
+                              ? 'bg-sky-100 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800/40'
+                              : 'bg-rose-100 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800/40'
+                          }`}>
+                            {c.template === 'english' ? 'EN' : 'JP'}
+                          </span>
+                          <Link
+                            to={`/course/${c.id}`}
+                            className="font-bold text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 hover:underline truncate max-w-[260px] sm:max-w-[340px] transition-colors"
+                            title={c.name}
+                          >
+                            {c.name}
+                          </Link>
+                          <span className="text-slate-400 dark:text-slate-400 font-semibold shrink-0">
+                            {c.reviewsCount} lượt
+                          </span>
+                        </div>
 
-                      {/* Progress Bar (Green GitHub Style) */}
-                      <div className="w-full sm:w-48 flex items-center">
-                        <div className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
-                          <div
-                            className="h-full bg-[#2da44e] dark:bg-[#39d353] rounded-full transition-all duration-700"
-                            style={{ width: `${c.percent}%` }}
-                          />
+                        {/* Progress Bar (Green GitHub Style) */}
+                        <div className="w-full sm:w-48 flex items-center">
+                          <div className="w-full h-2.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                            <div
+                              className="h-full bg-emerald-500 dark:bg-emerald-400 rounded-full transition-all duration-700"
+                              style={{ width: `${c.percent}%` }}
+                            />
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                )}
               </div>
             );
           })}

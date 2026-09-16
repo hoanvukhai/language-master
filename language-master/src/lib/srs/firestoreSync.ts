@@ -666,28 +666,46 @@ export async function fetchGlobalLeaderboard(type: 'study' | 'race'): Promise<Le
       if (uSnap.exists()) uData = uSnap.data();
     } catch (e) {}
 
-    if (uData && !isPresent) {
-      cloudList.push({
-        uid: currentUser.uid,
-        displayName: uData.displayName || uData.email?.split('@')[0] || 'Học viên',
-        photoURL: uData.photoURL || null,
-        totalExp: uData.totalExp || 0,
-        totalStudyScore: uData.totalStudyScore || 0,
-        totalRaceScore: uData.totalRaceScore || 0,
-        raceExp: uData.raceExp || 0,
-        raceScores: uData.raceScores || {},
-        courseRaceScores: uData.courseRaceScores || {},
-        courseStudyScores: uData.courseStudyScores || {},
-        dailyStudyTime: uData.dailyStudyTime || {},
-        activityHistory: uData.activityHistory || {},
-        role: uData.role || 'user',
-      });
+    if (uData) {
+      if (!isPresent) {
+        cloudList.push({
+          uid: currentUser.uid,
+          displayName: uData.displayName || uData.email?.split('@')[0] || 'Học viên',
+          photoURL: uData.photoURL || null,
+          totalExp: uData.totalExp || 0,
+          totalStudyScore: uData.totalStudyScore || 0,
+          totalRaceScore: uData.totalRaceScore || 0,
+          raceExp: uData.raceExp || 0,
+          raceScores: uData.raceScores || {},
+          courseRaceScores: uData.courseRaceScores || {},
+          courseStudyScores: uData.courseStudyScores || {},
+          dailyStudyTime: uData.dailyStudyTime || {},
+          activityHistory: uData.activityHistory || {},
+          role: uData.role || 'user',
+        });
+      } else {
+        const idx = cloudList.findIndex(u => u.uid === currentUser.uid);
+        if (idx !== -1) {
+          cloudList[idx].dailyStudyTime = uData.dailyStudyTime || cloudList[idx].dailyStudyTime || {};
+          cloudList[idx].activityHistory = uData.activityHistory || cloudList[idx].activityHistory || {};
+          cloudList[idx].totalStudyScore = uData.totalStudyScore ?? cloudList[idx].totalStudyScore ?? 0;
+          cloudList[idx].totalRaceScore = uData.totalRaceScore ?? cloudList[idx].totalRaceScore ?? 0;
+        }
+      }
     }
   }
 
-  // Sort one last time to ensure correct positioning if current user was appended
+  // Sort and filter: Include users who have study score, study time, race score, or is the current user
   const finalSortedList = cloudList
-    .filter(u => type === 'study' ? (u.totalStudyScore || 0) > 0 : (u.totalRaceScore || 0) > 0)
+    .filter(u => {
+      if (u.uid === currentUser?.uid) return true; // Always show current user on leaderboard
+      if (type === 'study') {
+        const hasScore = (u.totalStudyScore || 0) > 0;
+        const totalSecs = Object.values((u as any).dailyStudyTime || {}).reduce((s: number, v: any) => s + (v || 0), 0);
+        return hasScore || totalSecs > 0;
+      }
+      return (u.totalRaceScore || 0) > 0;
+    })
     .sort((a, b) => type === 'study' 
       ? (b.totalStudyScore || 0) - (a.totalStudyScore || 0) 
       : (b.totalRaceScore || 0) - (a.totalRaceScore || 0));

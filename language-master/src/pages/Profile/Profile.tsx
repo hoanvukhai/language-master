@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { useAuth } from '../../context/auth/useAuth';
+import { useMyCourses } from '../../context/global/useMyCourses';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { updateProfile } from 'firebase/auth';
 import { db } from '../../lib/firebase';
@@ -20,6 +21,7 @@ import { Trophy, Flame, Pencil, Check, Clock, Sparkles } from 'lucide-react';
 
 export default function Profile() {
   const { user, userProfile, role } = useAuth();
+  const { myCourseIds } = useMyCourses();
 
   const [userData, setUserData] = useState<any>(null);
 
@@ -75,9 +77,33 @@ export default function Profile() {
     return calculateSeasonRank(activityHistoryMap, dailyStudyTimeMap, selectedSeason);
   }, [activityHistoryMap, dailyStudyTimeMap, selectedSeason]);
 
-  // Active leaderboard sorting for 3 tabs
+  // Active leaderboard sorting for 3 tabs (with guaranteed presence of current user)
   const activeLeaderboardList = useMemo(() => {
-    return [...studyLeaderboard].sort((a, b) => {
+    const list = [...studyLeaderboard];
+    const userIdx = list.findIndex(u => u.uid === user?.uid);
+    if (userIdx !== -1 && userData) {
+      list[userIdx] = {
+        ...list[userIdx],
+        dailyStudyTime: userData.dailyStudyTime || list[userIdx].dailyStudyTime || {},
+        activityHistory: userData.activityHistory || list[userIdx].activityHistory || {},
+        totalStudyScore: userData.totalStudyScore ?? list[userIdx].totalStudyScore ?? 0,
+        displayName: userData.displayName || list[userIdx].displayName,
+        photoURL: userData.photoURL || list[userIdx].photoURL,
+      };
+    } else if (user && userData && userIdx === -1) {
+      list.push({
+        uid: user.uid,
+        displayName: userData.displayName || user.email?.split('@')[0] || 'Học viên',
+        photoURL: userData.photoURL || null,
+        totalExp: userData.totalExp || 0,
+        totalStudyScore: userData.totalStudyScore || 0,
+        dailyStudyTime: userData.dailyStudyTime || {},
+        activityHistory: userData.activityHistory || {},
+        role: userData.role || 'user',
+      });
+    }
+
+    return list.sort((a, b) => {
       if (leaderboardTab === 'rank') {
         const aSecs = Object.values((a as any).dailyStudyTime || {}).reduce((s: number, v: any) => s + (v || 0), 0);
         const bSecs = Object.values((b as any).dailyStudyTime || {}).reduce((s: number, v: any) => s + (v || 0), 0);
@@ -92,7 +118,7 @@ export default function Profile() {
         return (b.totalStudyScore || 0) - (a.totalStudyScore || 0);
       }
     });
-  }, [studyLeaderboard, leaderboardTab]);
+  }, [studyLeaderboard, leaderboardTab, user, userData]);
 
   // Click outside handlers
   useEffect(() => {
@@ -563,6 +589,7 @@ export default function Profile() {
           dailyStudyTime={dailyStudyTimeMap}
           activityHistory={activityHistoryMap}
           courseStudyScores={userData?.courseStudyScores || {}}
+          myCourseIds={myCourseIds}
           selectedYear={selectedContributionYear}
         />
       </div>
@@ -615,7 +642,7 @@ export default function Profile() {
               </button>
             </div>
 
-            <div className="overflow-y-auto p-4 scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-slate-700">
+            <div className="overflow-y-auto custom-scrollbar p-4">
               <LeaderboardWidget
                 leaderboard={activeLeaderboardList}
                 loading={loadingStudy}

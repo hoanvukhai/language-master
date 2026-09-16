@@ -47,9 +47,9 @@ export default function Navbar() {
           {/* Logo */}
           <div
             onClick={() => navigate('/')}
-            className="text-lg font-bold text-slate-800 dark:text-white flex items-center gap-2.5 transition-colors flex-shrink-0 cursor-pointer select-none"
+            className="text-lg font-bold text-slate-800 dark:text-white flex items-center gap-2.5 transition-colors flex-shrink-0 cursor-pointer select-none group"
           >
-            <img src="/favicon.png" alt="Logo" className="w-7 h-7 rounded-lg shadow-sm" />
+            <img src="/favicon.svg" alt="Language Master" className="w-8 h-8 rounded-xl shadow-md transition-transform group-hover:scale-105" />
             <span className="hidden sm:inline font-black tracking-tight bg-gradient-to-r from-blue-600 via-indigo-600 to-amber-500 bg-clip-text text-transparent">
               Language Master
             </span>
