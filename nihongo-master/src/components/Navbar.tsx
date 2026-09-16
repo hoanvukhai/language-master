@@ -47,11 +47,13 @@ export default function Navbar() {
           {/* Logo */}
           <div
             onClick={() => navigate('/')}
-            className="text-lg font-bold text-slate-800 dark:text-white flex items-center gap-2 transition-colors flex-shrink-0 cursor-pointer"
+            className="text-lg font-bold text-slate-800 dark:text-white flex items-center gap-2.5 transition-colors flex-shrink-0 cursor-pointer select-none"
           >
-            <span className="text-blue-600 text-xl font-black">あ</span>
-            <span className="hidden sm:inline">Nihongo Master</span>
-            <span className="sm:hidden">NM</span>
+            <img src="/favicon.png" alt="Logo" className="w-7 h-7 rounded-lg shadow-sm" />
+            <span className="hidden sm:inline font-black tracking-tight bg-gradient-to-r from-blue-600 via-indigo-600 to-amber-500 bg-clip-text text-transparent">
+              Language Master
+            </span>
+            <span className="sm:hidden font-black text-blue-600">LM</span>
           </div>
 
           {/* Desktop links */}
@@ -137,9 +139,11 @@ export default function Navbar() {
             >
               {/* Drawer header */}
               <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100 dark:border-slate-700">
-                <div className="text-lg font-bold text-slate-800 dark:text-white flex items-center gap-2">
-                  <span className="text-blue-600 text-xl font-black">あ</span>
-                  Nihongo Master
+                <div className="text-lg font-bold text-slate-800 dark:text-white flex items-center gap-2.5">
+                  <img src="/favicon.png" alt="Logo" className="w-7 h-7 rounded-lg shadow-sm" />
+                  <span className="font-black tracking-tight bg-gradient-to-r from-blue-600 via-indigo-600 to-amber-500 bg-clip-text text-transparent">
+                    Language Master
+                  </span>
                 </div>
                 <button
                   onClick={() => setMenuOpen(false)}

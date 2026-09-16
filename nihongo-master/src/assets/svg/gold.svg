@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="goldBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe259"/>
+      <stop offset="50%" stop-color="#ffa751"/>
+      <stop offset="100%" stop-color="#c67a00"/>
+    </linearGradient>
+    <linearGradient id="goldBorder" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff4b8"/>
+      <stop offset="100%" stop-color="#804e00"/>
+    </linearGradient>
+  </defs>
+  <!-- Viền hoa văn sắc cạnh -->
+  <polygon points="50,3 90,24 85,70 50,97 15,70 10,24" fill="none" stroke="url(#goldBorder)" stroke-width="4"/>
+  <polygon points="50,11 81,28 77,66 50,89 23,66 19,28" fill="url(#goldBg)"/>
+  <polygon points="50,11 50,89 77,66 81,28" fill="#000000" opacity="0.15"/>
+  <!-- Vương miện nhỏ ở tâm -->
+  <polygon points="35,58 32,42 42,48 50,36 58,48 68,42 65,58" fill="#fff5cc"/>
+  <polygon points="35,58 50,65 65,58 50,60" fill="#cc8800"/>
+</svg>

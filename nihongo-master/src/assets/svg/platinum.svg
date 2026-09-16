@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="platBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a8ffeb"/>
+      <stop offset="50%" stop-color="#2bd1a7"/>
+      <stop offset="100%" stop-color="#0f6b56"/>
+    </linearGradient>
+    <linearGradient id="platBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4fff5"/>
+      <stop offset="100%" stop-color="#093f33"/>
+    </linearGradient>
+  </defs>
+  <!-- Viền nhọn kiểu khiên cách điệu -->
+  <polygon points="50,4 92,20 84,68 50,96 16,68 8,20" fill="none" stroke="url(#platBorder)" stroke-width="4.5"/>
+  <polygon points="50,12 83,26 76,64 50,88 24,64 17,26" fill="url(#platBg)"/>
+  <polygon points="50,12 50,88 76,64 83,26" fill="#000000" opacity="0.18"/>
+  <!-- Viên ngọc lục bảo giữa -->
+  <polygon points="50,28 66,42 66,58 50,72 34,58 34,42" fill="#d5fef4" opacity="0.75"/>
+  <polygon points="50,34 60,45 60,55 50,64 40,55 40,45" fill="#147c64"/>
+</svg>

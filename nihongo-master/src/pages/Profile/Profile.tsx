@@ -9,6 +9,7 @@ import { WeeklyStudyChart } from './components/WeeklyStudyChart';
 import { ContributionTimeline } from './components/ContributionTimeline';
 import { LeaderboardWidget } from '../../components/shared/LeaderboardWidget';
 import { RankBadge } from '../../components/shared/RankBadge';
+import { SeasonRankModal } from '../../components/ranking/SeasonRankModal';
 import {
   getSeasonInfo,
   getAvailableSeasons,
@@ -32,6 +33,7 @@ export default function Profile() {
 
 
   const [modalLeaderboard, setModalLeaderboard] = useState<'study' | 'race' | null>(null);
+  const [showRankModal, setShowRankModal] = useState(false);
 
   const [isEditingName, setIsEditingName] = useState(false);
   const [isEditingAvatar, setIsEditingAvatar] = useState(false);
@@ -268,12 +270,25 @@ export default function Profile() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 pt-6 relative z-10 items-center">
             {/* Left: Rank Emblem & Tier Title */}
             <div className="md:col-span-5 flex items-center gap-4">
-              <RankBadge tier={seasonStats.currentTier.tier} size="xl" />
+              <RankBadge
+                tier={seasonStats.currentTier.tier}
+                size="xl"
+                onClick={() => setShowRankModal(true)}
+              />
               <div>
-                <span className="text-xs font-bold text-slate-400 dark:text-slate-400 uppercase tracking-wider block">
-                  Bậc Rank Hiện Tại
-                </span>
-                <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white flex items-center gap-2">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-bold text-slate-400 dark:text-slate-400 uppercase tracking-wider block">
+                    Bậc Rank Hiện Tại
+                  </span>
+                  <button
+                    onClick={() => setShowRankModal(true)}
+                    className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-950/50 dark:hover:bg-indigo-900/60 text-indigo-600 dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-800/50 transition-colors shadow-xs"
+                    title="Xem chi tiết 7 bậc rank mùa giải"
+                  >
+                    Xem tất cả bậc
+                  </button>
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white flex items-center gap-2 mt-0.5">
                   {seasonStats.currentTier.name}
                 </h3>
                 <p className="text-xs text-slate-500 dark:text-slate-300 mt-1 max-w-xs leading-relaxed font-medium">
@@ -623,6 +638,14 @@ export default function Profile() {
           </div>
         </div>
       )}
+
+      {/* 7 RANK TIERS MODAL */}
+      <SeasonRankModal
+        isOpen={showRankModal}
+        onClose={() => setShowRankModal(false)}
+        currentTier={seasonStats.currentTier.tier}
+        userScore={seasonStats.seasonScore}
+      />
     </>
   );
 }
