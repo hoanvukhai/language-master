@@ -266,7 +266,11 @@ export default function CourseHub() {
 
       <GateComponent />
 
-      <CourseSettingsModal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
+      <CourseSettingsModal
+        isOpen={isSettingsOpen}
+        onClose={() => setIsSettingsOpen(false)}
+        courseId={course?.id}
+      />
     </PracticeProvider>
   );
 }

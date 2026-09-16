@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAllCourses } from '../../data/courses/registry';
 import { useMyCourses } from '../../context/global/useMyCourses';
-import { Library, Compass, Flame, Loader2, Sparkles, Trophy, BadgeCheck, BookmarkX, RotateCcw, MoreVertical } from 'lucide-react';
+import { Library, Compass, Flame, Loader2, Sparkles, Trophy, BadgeCheck, BookmarkX, RotateCcw, MoreVertical, HardDrive } from 'lucide-react';
 import { useAuth } from '../../context/auth/useAuth';
 import { useDashboardStats } from './useDashboardStats';
 import { resetCourseProgress } from '../../lib/srs/firestoreSync';
+import { CourseSettingsModal } from './components/CourseSettingsModal';
 
 export default function MyCourses() {
   const { myCourseIds, removeCourse } = useMyCourses();
@@ -15,6 +16,7 @@ export default function MyCourses() {
   const [courseToUnbookmark, setCourseToUnbookmark] = useState<{ id: string; name: string } | null>(null);
   const [courseToReset, setCourseToReset] = useState<{ id: string; name: string } | null>(null);
   const [activeMenuCourseId, setActiveMenuCourseId] = useState<string | null>(null);
+  const [selectedCourseForSettings, setSelectedCourseForSettings] = useState<string | null>(null);
   const [isResetting, setIsResetting] = useState(false);
 
   useEffect(() => {
@@ -112,6 +114,16 @@ export default function MyCourses() {
                           </button>
                           {activeMenuCourseId === c.id && (
                             <div className="absolute right-0 top-full mt-1 w-56 bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 py-1.5 z-30 animate-in fade-in zoom-in-95 duration-150">
+                              <button
+                                onClick={() => {
+                                  setActiveMenuCourseId(null);
+                                  setSelectedCourseForSettings(c.id);
+                                }}
+                                className="w-full flex items-center gap-2.5 px-3.5 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-indigo-950/30 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors text-left"
+                              >
+                                <HardDrive size={15} className="text-indigo-500 shrink-0" />
+                                <span>Cài đặt & Tải ngoại tuyến</span>
+                              </button>
                               <button
                                 onClick={() => {
                                   setActiveMenuCourseId(null);
@@ -329,6 +341,13 @@ export default function MyCourses() {
           </div>
         </div>
       )}
+
+      {/* Course Settings & Offline Modal */}
+      <CourseSettingsModal
+        isOpen={!!selectedCourseForSettings}
+        onClose={() => setSelectedCourseForSettings(null)}
+        courseId={selectedCourseForSettings || undefined}
+      />
     </div>
   );
 }

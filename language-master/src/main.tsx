@@ -14,9 +14,20 @@ if ('serviceWorker' in navigator && (import.meta.env.PROD || window.location.hos
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js').then((reg) => {
       console.log('[SW] Registered successfully:', reg.scope);
+
+      // Tự động kiểm tra bản cập nhật mới định kỳ khi người dùng active tab
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') {
+          reg.update().catch(() => {});
+        }
+      });
     }).catch((err) => {
       console.warn('[SW] Registration failed:', err);
     });
+
+    // Khi Service Worker mới kích hoạt và tiếp quản, reload nhẹ nếu cần hoặc ghi nhận
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      console.log('[SW] Controller changed: New version active.');
+    });
   });
 }
-
