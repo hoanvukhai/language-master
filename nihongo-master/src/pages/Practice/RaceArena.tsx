@@ -13,6 +13,7 @@ import { recordArenaRace } from '../../lib/srs/pointsEngine';
 import { romajiToHiragana } from '../../lib/romajiConverter';
 import { buildVocabQuestions, buildKanjiWordQuestions, buildHanjtQuestions, buildGrammarQuestions, buildEnglishVocabQuestions, shuffleArray as qbShuffle, getMeaning } from '../../lib/race/questionBuilder';
 import type { RaceQuestionItem } from '../../lib/race/questionBuilder';
+import { checkEnglishWordMatch } from '../../lib/english/ipaHelper';
 
 
 
@@ -1009,8 +1010,8 @@ if (!newHistory.find(item => getUniqueId(item.q) === getUniqueId(card2.originalI
             }}
             onSubmitAnswer={ans => {
               if (course.template === 'english') {
-                // English: plain case-insensitive comparison
-                const isOk = (ans || '').trim().toLowerCase() === currentQ.correctAnswer.trim().toLowerCase();
+                // English: support multi-word variants (e.g. "mother, mom")
+                const isOk = checkEnglishWordMatch(ans, currentQ.correctAnswer);
                 handleAnswerSubmit(isOk);
               } else if (currentQ.isSingleKanjiChar) {
                 const isOk = (ans || '').trim().toUpperCase() === currentQ.correctAnswer.trim().toUpperCase();

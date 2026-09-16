@@ -7,7 +7,7 @@ import { ArrowLeft, CheckCircle2, XCircle, Eye, EyeOff, Trophy, ArrowRight } fro
 import * as wanakana from 'wanakana';
 import { usePracticeContext } from '../Practice/PracticeContext';
 import VocabLessonChips from '../../components/vocabulary/VocabLessonChips';
-import { formatDualIpa } from '../../lib/english/ipaHelper';
+import { formatDualIpa, checkEnglishWordMatch, formatWordVariantsDisplay } from '../../lib/english/ipaHelper';
 
 function shuffle<T>(arr: T[]): T[] {
   return [...arr].sort(() => Math.random() - 0.5);
@@ -64,7 +64,7 @@ export default function VocabTyping() {
   const correctAnswer = current
     ? isEnglish
       ? direction === 'forward'
-        ? (current as any).word || ''
+        ? formatWordVariantsDisplay((current as any).word) || ''
         : getMeaning(current)
       : direction === 'backward'
         ? (current as any).hiragana
@@ -89,7 +89,7 @@ export default function VocabTyping() {
       // English: case-insensitive plain text comparison
       const trimmed = input.trim().toLowerCase();
       if (direction === 'forward') {
-        check = trimmed === ((current as any).word || '').toLowerCase();
+        check = checkEnglishWordMatch(input, (current as any).word);
       } else {
         const meaningStr = (getMeaning(current) || '').toLowerCase();
         const accepted = meaningStr.split(/[,;/~]/).map((s: string) => s.trim()).filter(Boolean);
@@ -372,7 +372,7 @@ export default function VocabTyping() {
                         <p className="text-lg text-slate-400 mt-1">{(current as any).hiragana}</p>
                       )}
                       {isEnglish && (
-                        <p className="text-sm text-slate-400 mt-1 italic">{(current as any).ipa}</p>
+                        <p className="text-sm text-slate-400 mt-1 italic">{formatDualIpa(current)}</p>
                       )}
                     </div>
                   )}
@@ -381,7 +381,9 @@ export default function VocabTyping() {
                   {current.examples && current.examples[0] && (
                     <div className="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-2xl border border-orange-200 dark:border-orange-800/40">
                       <p className="text-sm font-medium text-orange-700 dark:text-orange-400 mb-1">Ví dụ:</p>
-                      <p className="text-slate-700 dark:text-slate-200">{current.examples[0].jp}</p>
+                      <p className="text-slate-700 dark:text-slate-200">
+                        {isEnglish ? current.examples[0].en : current.examples[0].jp}
+                      </p>
                       <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">{current.examples[0].vi}</p>
                     </div>
                   )}

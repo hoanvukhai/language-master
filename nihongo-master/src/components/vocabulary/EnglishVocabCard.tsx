@@ -69,14 +69,44 @@ export default function EnglishVocabCard({
             {item.ipaBrE || item.ipaAmE ? (
               <div className="flex items-center gap-1.5 flex-wrap">
                 {item.ipaBrE && (
-                  <span className="text-xs font-mono px-1.5 py-0.5 rounded bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800/40">
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setAccent('en-GB');
+                      localStorage.setItem('english_accent', 'en-GB');
+                      playText(item.word, 'en-GB');
+                    }}
+                    className={`text-xs font-mono px-2 py-0.5 rounded flex items-center gap-1 transition-all active:scale-95 cursor-pointer ${
+                      accent === 'en-GB'
+                        ? 'bg-amber-100 dark:bg-amber-900/60 text-amber-800 dark:text-amber-200 border border-amber-400 dark:border-amber-600 font-bold'
+                        : 'bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800/40 hover:bg-amber-100'
+                    }`}
+                    title="Nhấn để nghe phát âm Anh (UK)"
+                  >
                     🇬🇧 UK: {item.ipaBrE}
-                  </span>
+                    <Volume2 size={11} className="opacity-70" />
+                  </button>
                 )}
                 {item.ipaAmE && (
-                  <span className="text-xs font-mono px-1.5 py-0.5 rounded bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-400 border border-sky-200 dark:border-sky-800/40">
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setAccent('en-US');
+                      localStorage.setItem('english_accent', 'en-US');
+                      playText(item.word, 'en-US');
+                    }}
+                    className={`text-xs font-mono px-2 py-0.5 rounded flex items-center gap-1 transition-all active:scale-95 cursor-pointer ${
+                      accent === 'en-US'
+                        ? 'bg-sky-100 dark:bg-sky-900/60 text-sky-800 dark:text-sky-200 border border-sky-400 dark:border-sky-600 font-bold'
+                        : 'bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-400 border border-sky-200 dark:border-sky-800/40 hover:bg-sky-100'
+                    }`}
+                    title="Nhấn để nghe phát âm Mỹ (US)"
+                  >
                     🇺🇸 US: {item.ipaAmE}
-                  </span>
+                    <Volume2 size={11} className="opacity-70" />
+                  </button>
                 )}
               </div>
             ) : item.ipa ? (

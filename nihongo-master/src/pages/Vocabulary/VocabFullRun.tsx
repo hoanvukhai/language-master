@@ -10,6 +10,7 @@ import {
 import { useAuth } from '../../context/auth/useAuth';
 import { syncPersonalHighScore } from '../../lib/srs/firestoreSync';
 import shortcuts from '../../data/jlpt/core/shortcuts.json';
+import { checkEnglishWordMatch } from '../../lib/english/ipaHelper';
 
 // Import local components and types
 import {
@@ -496,7 +497,7 @@ export default function VocabFullRun() {
                   const trimmedInput = typingInput.trim();
                   const expectedAnswer = (currentQ as TypingQ).answer;
                   const ok = isEnglish
-                    ? trimmedInput.toLowerCase() === expectedAnswer.toLowerCase()
+                    ? checkEnglishWordMatch(trimmedInput, expectedAnswer)
                     : trimmedInput !== '' && trimmedInput === expectedAnswer;
                   setTypingCorrect(ok);
                   setTypingSubmitted(true);

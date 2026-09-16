@@ -10,6 +10,7 @@ import { Volume2, RotateCcw, Sparkles, ChevronRight, X, ChevronsUp, MousePointer
 
 
 import * as wanakana from 'wanakana';
+import { formatDualIpa, checkEnglishWordMatch, formatWordVariantsDisplay } from '../../lib/english/ipaHelper';
 import {
   saveWordProgress,
   getLearnedItemIds,
@@ -64,7 +65,7 @@ function buildRawList(course: Course): RawItem[] {
       return data.map((w: any) => ({
         id: w.id || w.word,
         kanji: w.word,           // 'kanji' slot = English word
-        hiragana: w.ipa || '',   // 'hiragana' slot = IPA (not typed, just for display)
+        hiragana: formatDualIpa(w) || w.ipa || '',   // 'hiragana' slot = IPA (not typed, just for display)
         meaning: typeof w.meaning === 'object' ? w.meaning.vi : w.meaning,
         lesson: w.lesson || 'Unit 1',
         exampleKanji: w.examples?.[0]?.en,
@@ -145,7 +146,19 @@ function buildBatchQueue(items: RawItem[], mode: string): QueueItem[] {
 
 
 
-const PreviewWordContent = ({ word, speak }: { word: any, speak: (text: string) => void }) => {
+const PreviewWordContent = ({
+  word,
+  speak,
+  accent = 'en-US',
+  onToggleAccent,
+  isEnglish = false,
+}: {
+  word: any;
+  speak: (text: string, overrideAccent?: 'en-US' | 'en-GB') => void;
+  accent?: 'en-US' | 'en-GB';
+  onToggleAccent?: () => void;
+  isEnglish?: boolean;
+}) => {
   const data = word.originalData;
   const isKanjiSingle = word.isSingleKanjiChar && data?.character;
   const isKanjiWord = word.isSingleKanjiChar && data?.word; // from kanji.words array
@@ -255,14 +268,34 @@ const PreviewWordContent = ({ word, speak }: { word: any, speak: (text: string) 
             {data?.ipaBrE || data?.ipaAmE ? (
               <div className="flex items-center gap-2 flex-wrap mb-1">
                 {data?.ipaBrE && (
-                  <span className="text-xs sm:text-sm font-mono px-2 py-0.5 rounded-lg bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/40">
+                  <button
+                    type="button"
+                    onClick={() => speak(data?.kanji || word.kanji, 'en-GB')}
+                    className={`text-xs sm:text-sm font-mono px-2.5 py-1 rounded-lg border flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer ${
+                      accent === 'en-GB'
+                        ? 'bg-amber-100 dark:bg-amber-900/60 text-amber-800 dark:text-amber-200 border-amber-400 dark:border-amber-600 ring-2 ring-amber-400/30 font-bold'
+                        : 'bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800/40 hover:bg-amber-100 dark:hover:bg-amber-900/50'
+                    }`}
+                    title="Nhấn để nghe phát âm Anh (UK)"
+                  >
                     🇬🇧 UK: {data.ipaBrE}
-                  </span>
+                    <Volume2 className="w-3.5 h-3.5 opacity-70" />
+                  </button>
                 )}
                 {data?.ipaAmE && (
-                  <span className="text-xs sm:text-sm font-mono px-2 py-0.5 rounded-lg bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800/40">
+                  <button
+                    type="button"
+                    onClick={() => speak(data?.kanji || word.kanji, 'en-US')}
+                    className={`text-xs sm:text-sm font-mono px-2.5 py-1 rounded-lg border flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer ${
+                      accent === 'en-US'
+                        ? 'bg-sky-100 dark:bg-sky-900/60 text-sky-800 dark:text-sky-200 border-sky-400 dark:border-sky-600 ring-2 ring-sky-400/30 font-bold'
+                        : 'bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border-sky-200 dark:border-sky-800/40 hover:bg-sky-100 dark:hover:bg-sky-900/50'
+                    }`}
+                    title="Nhấn để nghe phát âm Mỹ (US)"
+                  >
                     🇺🇸 US: {data.ipaAmE}
-                  </span>
+                    <Volume2 className="w-3.5 h-3.5 opacity-70" />
+                  </button>
                 )}
               </div>
             ) : (
@@ -271,11 +304,23 @@ const PreviewWordContent = ({ word, speak }: { word: any, speak: (text: string) 
               </p>
             )}
           </div>
-          <button onClick={() => speak(data?.kanji || word.kanji)}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-500 dark:text-indigo-400 hover:text-indigo-700 transition-colors">
-            <Volume2 className="w-4 h-4" /> Phát âm
-            <kbd className="hidden md:inline bg-slate-100 dark:bg-slate-800 px-1.5 rounded text-[10px] text-slate-500 ml-1">S</kbd>
-          </button>
+          <div className="flex items-center gap-3 flex-wrap">
+            <button onClick={() => speak(data?.kanji || word.kanji)}
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-500 dark:text-indigo-400 hover:text-indigo-700 transition-colors">
+              <Volume2 className="w-4 h-4" /> Phát âm
+              <kbd className="hidden md:inline bg-slate-100 dark:bg-slate-800 px-1.5 rounded text-[10px] text-slate-500 ml-1">S</kbd>
+            </button>
+            {isEnglish && onToggleAccent && (
+              <button
+                type="button"
+                onClick={onToggleAccent}
+                className="text-xs font-bold px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition-colors flex items-center gap-1 cursor-pointer"
+                title="Nhấn để chuyển đổi giữa giọng Anh (UK) và Anh (US)"
+              >
+                Giọng: <span className="text-indigo-600 dark:text-indigo-400 font-extrabold">{accent === 'en-US' ? '🇺🇸 US' : '🇬🇧 UK'}</span>
+              </button>
+            )}
+          </div>
           
           <div className="w-12 h-1 rounded-full bg-indigo-300 dark:bg-indigo-700" />
           
@@ -397,14 +442,31 @@ export default function LearnSession() {
   const progressMapRef = useRef<Map<string, WordProgress>>(new Map());
 
   // ���� Audio ��������������������������������������������������������������������������������������������������������������������������
-  const speak = (text: string) => {
+  const [englishAccent, setEnglishAccent] = useState<'en-US' | 'en-GB'>(() => {
+    return (localStorage.getItem('english_accent') as 'en-US' | 'en-GB') || 'en-US';
+  });
+
+  const speak = (text: string, overrideAccent?: 'en-US' | 'en-GB') => {
     if (!('speechSynthesis' in window)) return;
     window.speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
-    const preferredAccent = localStorage.getItem('english_accent') || 'en-US';
-    u.lang = course?.template === 'english' ? preferredAccent : 'ja-JP';
+    const targetAccent = overrideAccent || englishAccent || localStorage.getItem('english_accent') || 'en-US';
+    if (overrideAccent && overrideAccent !== englishAccent) {
+      setEnglishAccent(overrideAccent);
+      localStorage.setItem('english_accent', overrideAccent);
+    }
+    u.lang = course?.template === 'english' ? targetAccent : 'ja-JP';
     u.rate = 0.9;
     window.speechSynthesis.speak(u);
+  };
+
+  const toggleEnglishAccent = () => {
+    const next = englishAccent === 'en-US' ? 'en-GB' : 'en-US';
+    setEnglishAccent(next);
+    localStorage.setItem('english_accent', next);
+    if (phaseRef2.current === 'preview' && currentBatchRef.current[previewIdxRef2.current]) {
+      speak(currentBatchRef.current[previewIdxRef2.current].kanji, next);
+    }
   };
 
   // ���� Navigation ������������������������������������������������������������������������������������������������������������������
@@ -871,7 +933,7 @@ export default function LearnSession() {
 
     if (course?.template === 'english') {
       // English: show meaning → type the English word (stored in raw.kanji)
-      correct = userTyping.trim().toLowerCase() === raw.kanji.toLowerCase();
+      correct = checkEnglishWordMatch(userTyping, raw.kanji);
     } else if (raw.isSingleKanjiChar) {
       correct = userTyping.trim().toUpperCase() === raw.hiragana.trim().toUpperCase();
     } else {
@@ -1072,7 +1134,13 @@ export default function LearnSession() {
                 transition={{ duration: 0.3, ease: 'easeOut' }}
                 className="flex-1 min-h-0 overflow-y-auto pr-2 space-y-5 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-slate-200 dark:[&::-webkit-scrollbar-thumb]:bg-slate-700 [&::-webkit-scrollbar-thumb]:rounded-full pb-12"
               >
-                <PreviewWordContent word={previewWord} speak={speak} />
+                <PreviewWordContent
+                  word={previewWord}
+                  speak={speak}
+                  accent={englishAccent}
+                  onToggleAccent={toggleEnglishAccent}
+                  isEnglish={course?.template === 'english'}
+                />
               </motion.div>
 
               {/* Right Side Column (Next + Mastered) */}
@@ -1195,7 +1263,13 @@ export default function LearnSession() {
             >
               {/* ─── PREVIEW (Re-learn) ─── */}
               {currentQ.phase === 'preview' ? (
-                <PreviewWordContent word={currentQ.raw} speak={speak} />
+                <PreviewWordContent
+                  word={currentQ.raw}
+                  speak={speak}
+                  accent={englishAccent}
+                  onToggleAccent={toggleEnglishAccent}
+                  isEnglish={course?.template === 'english'}
+                />
               ) : (
                 /* ─── QUIZ/TYPING PROMPT ─── */
                 <div>
@@ -1285,7 +1359,7 @@ export default function LearnSession() {
 
                   {feedback === 'wrong' && (
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-sm font-bold text-red-500 dark:text-red-400 mt-2">
-                      Đáp án đúng: {course?.template === 'english' ? currentQ.raw.kanji : currentQ.raw.hiragana}
+                      Đáp án đúng: {course?.template === 'english' ? formatWordVariantsDisplay(currentQ.raw.kanji) : currentQ.raw.hiragana}
                     </motion.div>
                   )}
                 </div>

@@ -60,3 +60,41 @@ export function getDualIpaParts(item?: IpaItem | null): {
     fallback: def || br || am,
   };
 }
+
+/**
+ * Tách các biến thể của từ tiếng Anh (ví dụ: "mother, mom" -> ["mother", "mom"])
+ */
+export function splitWordVariants(target?: string | null): string[] {
+  if (!target) return [];
+  return target
+    .split(/[,/|;]+/)
+    .map(s => s.trim())
+    .filter(Boolean);
+}
+
+/**
+ * Kiểm tra câu trả lời nhập liệu có khớp với bất kỳ biến thể nào của từ tiếng Anh hay không
+ * Chấp nhận: "mother" hoặc "mom" hoặc "mother, mom"
+ */
+export function checkEnglishWordMatch(input?: string | null, target?: string | null): boolean {
+  if (!input || !target) return false;
+  const normInput = input.trim().toLowerCase();
+  const normTarget = target.trim().toLowerCase();
+
+  if (normInput === normTarget) return true;
+
+  const variants = splitWordVariants(normTarget);
+  return variants.some(v => v.toLowerCase() === normInput);
+}
+
+/**
+ * Định dạng hiển thị đáp án thân thiện khi có nhiều từ đồng nghĩa
+ * Ví dụ: "mother, mom" -> "mother (hoặc mom)"
+ */
+export function formatWordVariantsDisplay(target?: string | null): string {
+  if (!target) return '';
+  const variants = splitWordVariants(target);
+  if (variants.length <= 1) return target;
+  return `${variants[0]} (hoặc ${variants.slice(1).join(', ')})`;
+}
+

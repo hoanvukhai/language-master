@@ -208,9 +208,10 @@ export default function VocabDictionary({ data, template }: Props) {
     return word.meaning || '';
   };
 
-  const handleSpeak = (text: string, e?: React.MouseEvent) => {
+  const handleSpeak = (text: string, e?: React.MouseEvent, overrideAccent?: 'en-US' | 'en-GB') => {
     e?.stopPropagation();
-    playText(text, isEnglish ? 'en-US' : 'ja-JP');
+    const preferredAccent = overrideAccent || (localStorage.getItem('english_accent') as 'en-US' | 'en-GB') || 'en-US';
+    playText(text, isEnglish ? preferredAccent : 'ja-JP');
   };
 
   return (
@@ -302,10 +303,30 @@ export default function VocabDictionary({ data, template }: Props) {
                     </td>
                     <td className="py-4 px-6 text-slate-500 dark:text-slate-400 whitespace-nowrap font-medium">
                       {isEnglish ? (
-                        word.ipaBrE && word.ipaAmE && word.ipaBrE !== word.ipaAmE ? (
-                          <div className="flex flex-col gap-0.5 text-xs font-mono">
-                            <span className="text-amber-600 dark:text-amber-400 font-semibold">🇬🇧 UK: {word.ipaBrE}</span>
-                            <span className="text-sky-600 dark:text-sky-400 font-semibold">🇺🇸 US: {word.ipaAmE}</span>
+                        word.ipaBrE || word.ipaAmE ? (
+                          <div className="flex flex-col gap-1 text-xs font-mono">
+                            {word.ipaBrE && (
+                              <button
+                                type="button"
+                                onClick={(e) => handleSpeak(word.word, e, 'en-GB')}
+                                className="inline-flex items-center gap-1 text-left hover:text-amber-700 dark:hover:text-amber-300 transition-colors cursor-pointer group/btn"
+                                title="Nghe phát âm Anh (UK)"
+                              >
+                                <span className="text-amber-600 dark:text-amber-400 font-semibold">🇬🇧 UK: {word.ipaBrE}</span>
+                                <Volume2 size={11} className="opacity-0 group-hover/btn:opacity-100 transition-opacity text-amber-500" />
+                              </button>
+                            )}
+                            {word.ipaAmE && (
+                              <button
+                                type="button"
+                                onClick={(e) => handleSpeak(word.word, e, 'en-US')}
+                                className="inline-flex items-center gap-1 text-left hover:text-sky-700 dark:hover:text-sky-300 transition-colors cursor-pointer group/btn"
+                                title="Nghe phát âm Mỹ (US)"
+                              >
+                                <span className="text-sky-600 dark:text-sky-400 font-semibold">🇺🇸 US: {word.ipaAmE}</span>
+                                <Volume2 size={11} className="opacity-0 group-hover/btn:opacity-100 transition-opacity text-sky-500" />
+                              </button>
+                            )}
                           </div>
                         ) : (
                           <span className="font-mono text-sm">{formatDualIpa(word) || '-'}</span>
@@ -371,9 +392,36 @@ export default function VocabDictionary({ data, template }: Props) {
                     <div className="flex items-baseline gap-2 flex-wrap">
                       <h3 className="font-bold text-xl text-slate-800 dark:text-white">{primaryText}</h3>
                       {isEnglish ? (
-                        <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
-                          {formatDualIpa(word)}
-                        </span>
+                        word.ipaBrE || word.ipaAmE ? (
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            {word.ipaBrE && (
+                              <button
+                                type="button"
+                                onClick={(e) => handleSpeak(word.word, e, 'en-GB')}
+                                className="text-[11px] font-mono px-1.5 py-0.5 rounded bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800/40 flex items-center gap-1 active:scale-95"
+                                title="Nghe phát âm Anh (UK)"
+                              >
+                                🇬🇧 UK: {word.ipaBrE}
+                                <Volume2 size={10} className="opacity-70" />
+                              </button>
+                            )}
+                            {word.ipaAmE && (
+                              <button
+                                type="button"
+                                onClick={(e) => handleSpeak(word.word, e, 'en-US')}
+                                className="text-[11px] font-mono px-1.5 py-0.5 rounded bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-400 border border-sky-200 dark:border-sky-800/40 flex items-center gap-1 active:scale-95"
+                                title="Nghe phát âm Mỹ (US)"
+                              >
+                                🇺🇸 US: {word.ipaAmE}
+                                <Volume2 size={10} className="opacity-70" />
+                              </button>
+                            )}
+                          </div>
+                        ) : (
+                          <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
+                            {formatDualIpa(word)}
+                          </span>
+                        )
                       ) : (
                         subText && <span className="text-sm text-slate-400 dark:text-slate-500">{subText}</span>
                       )}
