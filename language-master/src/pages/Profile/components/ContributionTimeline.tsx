@@ -17,14 +17,13 @@ interface MonthActivity {
   totalMinutes: number;
   totalExp: number;
   activeDays: number;
-  learnedWordsCount: number;
   courses: {
     id: string;
     name: string;
     template?: string;
     level?: string;
     color: string;
-    reviewsCount: number;
+    score: number;
     percent: number;
   }[];
 }
@@ -109,29 +108,16 @@ export function ContributionTimeline({
       const year = parseInt(yearStr, 10);
       const data = monthsMap[monthKey];
       const totalMinutes = Math.floor(data.seconds / 60);
-
-      // Tính số lượt ôn tập và số từ vựng dựa trên DỮ LIỆU CỦA THÁNG ĐÓ (không dùng all-time chia sẻ)
       const monthExp = data.exp;
-      const monthReviews = monthExp > 0
-        ? Math.max(1, Math.round(monthExp / 3))
-        : (totalMinutes > 0 ? Math.max(1, Math.round(totalMinutes / 10)) : 0);
 
-      const monthLearnedWords = monthExp > 0
-        ? Math.max(1, Math.round(monthExp / 5))
-        : 0;
+      // Phân bổ mức độ học tập vào các khóa thực tế của người dùng
+      const totalBaseScores = baseCourses.reduce((sum, item) => sum + (courseStudyScores[item.id] || 0), 0);
 
-      // Phân bổ lượt ôn tập của tháng vào các khóa học thực tế của người dùng
-      const coursesForMonth = baseCourses.slice(0, 3).map((c, idx) => {
+      const coursesForMonth = baseCourses.slice(0, 3).map((c) => {
         const cScore = courseStudyScores[c.id] || 0;
-        const totalBaseScores = baseCourses.reduce((sum, item) => sum + (courseStudyScores[item.id] || 0), 0);
-
-        let cReviews = 0;
-        if (monthReviews > 0) {
-          if (totalBaseScores > 0) {
-            cReviews = Math.max(1, Math.round((cScore / totalBaseScores) * monthReviews));
-          } else {
-            cReviews = idx === 0 ? monthReviews : 0;
-          }
+        let percent = 30;
+        if (totalBaseScores > 0) {
+          percent = Math.min(100, Math.max(20, Math.round((cScore / totalBaseScores) * 100)));
         }
 
         return {
@@ -140,10 +126,10 @@ export function ContributionTimeline({
           template: c.template,
           level: c.level,
           color: c.color,
-          reviewsCount: cReviews,
-          percent: monthReviews > 0 ? Math.min(100, Math.max(25, Math.round((cReviews / monthReviews) * 100))) : 0
+          score: cScore,
+          percent: cScore > 0 ? percent : 20
         };
-      }).filter(c => c.reviewsCount > 0);
+      });
 
       return {
         monthKey,
@@ -151,7 +137,6 @@ export function ContributionTimeline({
         totalMinutes,
         totalExp: monthExp,
         activeDays: data.activeDays.size,
-        learnedWordsCount: monthLearnedWords,
         courses: coursesForMonth
       };
     });
@@ -188,8 +173,6 @@ export function ContributionTimeline({
         /* Timeline Container */
         <div className="relative pl-6 sm:pl-8 space-y-8 before:absolute before:left-2 sm:before:left-3 before:top-3 before:bottom-3 before:w-0.5 before:bg-slate-200 dark:before:bg-slate-700">
           {displayedMonths.map((m) => {
-            const totalReviews = m.courses.reduce((sum, c) => sum + c.reviewsCount, 0);
-
             return (
               <div key={m.monthKey} className="relative space-y-3">
                 {/* Timeline Dot / Icon */}
@@ -215,30 +198,24 @@ export function ContributionTimeline({
                     <Flame size={13} />
                     {m.activeDays} ngày học tập
                   </span>
-                  {m.learnedWordsCount > 0 && (
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-semibold bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800/50 shadow-xs">
-                      <BookOpen size={13} />
-                      {m.learnedWordsCount} từ đã thuộc
-                    </span>
-                  )}
                   {m.totalExp > 0 && (
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-semibold bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/50 shadow-xs">
                       <Sparkles size={13} />
-                      +{m.totalExp} EXP
+                      +{m.totalExp.toLocaleString()} EXP
                     </span>
                   )}
                 </div>
 
                 {/* Summary Statement */}
                 <div className="text-sm text-slate-600 dark:text-slate-300 font-medium">
-                  {totalReviews > 0 ? (
+                  {m.totalExp > 0 || m.totalMinutes > 0 ? (
                     <>
-                      Đã hoàn thành <strong className="text-slate-900 dark:text-white font-bold">{totalReviews} lượt học & ôn tập</strong>
-                      {m.learnedWordsCount > 0 && <> và ghi nhớ <strong className="text-slate-900 dark:text-white font-bold">{m.learnedWordsCount} từ vựng</strong></>}
+                      Đã tích lũy <strong className="text-slate-900 dark:text-white font-bold">+{m.totalExp.toLocaleString()} EXP</strong>
+                      {m.totalMinutes > 0 && <> qua <strong className="text-slate-900 dark:text-white font-bold">{formatHours(m.totalMinutes)}</strong> học tập</>}
                       {m.courses.length > 0 && <> trong {m.courses.length} khóa học</>}
                     </>
                   ) : (
-                    <span className="text-slate-400">Chưa có lượt học nào trong tháng này.</span>
+                    <span className="text-slate-400">Chưa có hoạt động học tập nào trong tháng này.</span>
                   )}
                 </div>
 
@@ -263,9 +240,15 @@ export function ContributionTimeline({
                           >
                             {c.name}
                           </Link>
-                          <span className="text-slate-400 dark:text-slate-400 font-semibold shrink-0">
-                            {c.reviewsCount} lượt
-                          </span>
+                          {c.score > 0 ? (
+                            <span className="text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">
+                              +{c.score.toLocaleString()} EXP
+                            </span>
+                          ) : (
+                            <span className="text-slate-400 dark:text-slate-500 font-normal shrink-0">
+                              Đang học
+                            </span>
+                          )}
                         </div>
 
                         {/* Progress Bar (Green GitHub Style) */}
@@ -302,7 +285,7 @@ export function ContributionTimeline({
 
       {/* Footer text */}
       <div className="pt-2 text-xs text-slate-400 dark:text-slate-500 text-center">
-        Seeing something unexpected? Nhật ký hoạt động ghi nhận lượt ôn tập, học mới và thời gian học tập theo chuẩn đóng góp GitHub.
+        Seeing something unexpected? Nhật ký hoạt động ghi nhận điểm tích lũy (EXP), ngày hoạt động và thời gian học tập thực tế theo chuẩn đóng góp GitHub.
       </div>
     </div>
   );
