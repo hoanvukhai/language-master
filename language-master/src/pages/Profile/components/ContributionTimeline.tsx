@@ -1,14 +1,17 @@
 import { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, Clock, ChevronDown, Flame, Sparkles } from 'lucide-react';
+import { BookOpen, Clock, ChevronDown, Flame, Sparkles, RotateCcw } from 'lucide-react';
 import { getAllCourses } from '../../../data/courses/registry';
+import type { UserSRSOverview } from '../../../lib/srs/firestoreSync';
 
 interface ContributionTimelineProps {
   dailyStudyTime: Record<string, number>; // Seconds per date
   activityHistory?: Record<string, number>; // EXP per date
+  activityReviews?: Record<string, number>; // Reviews count per date
   courseStudyScores?: Record<string, number>; // Score per course
   myCourseIds?: string[]; // IDs of user's enrolled courses
   selectedYear?: number;
+  srsOverview?: UserSRSOverview | null;
 }
 
 interface MonthActivity {
@@ -17,6 +20,8 @@ interface MonthActivity {
   totalMinutes: number;
   totalExp: number;
   activeDays: number;
+  learnedWordsCount: number;
+  reviewsCount: number;
   courses: {
     id: string;
     name: string;
@@ -24,6 +29,8 @@ interface MonthActivity {
     level?: string;
     color: string;
     score: number;
+    learnedCount: number;
+    totalWords: number;
     percent: number;
   }[];
 }
@@ -37,9 +44,11 @@ const MONTH_NAMES = [
 export function ContributionTimeline({
   dailyStudyTime = {},
   activityHistory = {},
+  activityReviews = {},
   courseStudyScores = {},
   myCourseIds = [],
-  selectedYear
+  selectedYear,
+  srsOverview = null
 }: ContributionTimelineProps) {
   const allCourses = useMemo(() => getAllCourses(), []);
   const [visibleCount, setVisibleCount] = useState<number>(3);
@@ -79,6 +88,15 @@ export function ContributionTimeline({
       monthsMap[monthKey].activeDays.add(dateStr);
     });
 
+    // Đếm số lượt ôn của từng tháng từ activityReviews
+    const monthlyReviewsMap: Record<string, number> = {};
+    Object.entries(activityReviews).forEach(([dateStr, count]) => {
+      if (!count || count <= 0) return;
+      if (!dateStr.startsWith(yearPrefix)) return;
+      const monthKey = dateStr.slice(0, 7);
+      monthlyReviewsMap[monthKey] = (monthlyReviewsMap[monthKey] || 0) + count;
+    });
+
     // Đảm bảo tháng hiện tại có mặt nếu là năm hiện tại và chưa có data
     const now = new Date();
     const currentMonthKey = now.toISOString().slice(0, 7);
@@ -110,14 +128,35 @@ export function ContributionTimeline({
       const totalMinutes = Math.floor(data.seconds / 60);
       const monthExp = data.exp;
 
-      // Phân bổ mức độ học tập vào các khóa thực tế của người dùng
-      const totalBaseScores = baseCourses.reduce((sum, item) => sum + (courseStudyScores[item.id] || 0), 0);
+      // 1. Số từ đã thuộc của tháng (Level >= 1 thực tế từ srs_progress)
+      let monthLearnedWords = srsOverview?.monthlyLearnedWords?.[monthKey] || 0;
+      if (monthLearnedWords === 0 && (srsOverview?.totalLearnedWords || 0) > 0) {
+        if (monthKey === sortedMonthKeys[0]) {
+          monthLearnedWords = srsOverview?.totalLearnedWords || 0;
+        }
+      }
 
+      // 2. Số lượt ôn & học của tháng (tăng level hoặc tụt level thực tế)
+      let monthReviews = monthlyReviewsMap[monthKey] || 0;
+      if (monthReviews === 0 && srsOverview?.monthlyReviews?.[monthKey]) {
+        monthReviews = srsOverview.monthlyReviews[monthKey];
+      }
+      if (monthReviews === 0 && monthExp > 0) {
+        monthReviews = Math.max(1, monthLearnedWords > 0 ? monthLearnedWords : Math.round(monthExp / 10));
+      }
+
+      // 3. Tiến độ thực tế của từng khóa học:
+      // Tính theo: Số từ đã thuộc (Level >= 1) / Tổng số từ trong khóa học
       const coursesForMonth = baseCourses.slice(0, 3).map((c) => {
         const cScore = courseStudyScores[c.id] || 0;
-        let percent = 30;
-        if (totalBaseScores > 0) {
-          percent = Math.min(100, Math.max(20, Math.round((cScore / totalBaseScores) * 100)));
+        const learned = srsOverview?.courseLearnedCounts?.[c.id] || 0;
+        const totalWords = c.data?.length || 100;
+
+        let percent = 0;
+        if (learned > 0) {
+          percent = Math.min(100, Math.max(8, Math.round((learned / totalWords) * 100)));
+        } else if (cScore > 0) {
+          percent = 15;
         }
 
         return {
@@ -127,7 +166,9 @@ export function ContributionTimeline({
           level: c.level,
           color: c.color,
           score: cScore,
-          percent: cScore > 0 ? percent : 20
+          learnedCount: learned,
+          totalWords: totalWords,
+          percent: percent
         };
       });
 
@@ -137,10 +178,12 @@ export function ContributionTimeline({
         totalMinutes,
         totalExp: monthExp,
         activeDays: data.activeDays.size,
+        learnedWordsCount: monthLearnedWords,
+        reviewsCount: monthReviews,
         courses: coursesForMonth
       };
     });
-  }, [dailyStudyTime, activityHistory, courseStudyScores, myCourseIds, allCourses, selectedYear]);
+  }, [dailyStudyTime, activityHistory, activityReviews, courseStudyScores, myCourseIds, allCourses, selectedYear, srsOverview]);
 
   const displayedMonths = monthlyData.slice(0, visibleCount);
   const targetYear = selectedYear ?? new Date().getFullYear();
@@ -198,6 +241,18 @@ export function ContributionTimeline({
                     <Flame size={13} />
                     {m.activeDays} ngày học tập
                   </span>
+                  {m.learnedWordsCount > 0 && (
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-semibold bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800/50 shadow-xs">
+                      <BookOpen size={13} />
+                      {m.learnedWordsCount} từ đã thuộc
+                    </span>
+                  )}
+                  {m.reviewsCount > 0 && (
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-semibold bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800/50 shadow-xs">
+                      <RotateCcw size={13} />
+                      {m.reviewsCount} lượt ôn & học
+                    </span>
+                  )}
                   {m.totalExp > 0 && (
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-semibold bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/50 shadow-xs">
                       <Sparkles size={13} />
@@ -208,7 +263,13 @@ export function ContributionTimeline({
 
                 {/* Summary Statement */}
                 <div className="text-sm text-slate-600 dark:text-slate-300 font-medium">
-                  {m.totalExp > 0 || m.totalMinutes > 0 ? (
+                  {m.reviewsCount > 0 || m.learnedWordsCount > 0 ? (
+                    <>
+                      Đã hoàn thành <strong className="text-slate-900 dark:text-white font-bold">{m.reviewsCount} lượt ôn & học</strong>
+                      {m.learnedWordsCount > 0 && <> và ghi nhớ <strong className="text-slate-900 dark:text-white font-bold">{m.learnedWordsCount} từ vựng</strong></>}
+                      {m.courses.length > 0 && <> trong {m.courses.length} khóa học</>}
+                    </>
+                  ) : (m.totalExp > 0 || m.totalMinutes > 0 ? (
                     <>
                       Đã tích lũy <strong className="text-slate-900 dark:text-white font-bold">+{m.totalExp.toLocaleString()} EXP</strong>
                       {m.totalMinutes > 0 && <> qua <strong className="text-slate-900 dark:text-white font-bold">{formatHours(m.totalMinutes)}</strong> học tập</>}
@@ -216,7 +277,7 @@ export function ContributionTimeline({
                     </>
                   ) : (
                     <span className="text-slate-400">Chưa có hoạt động học tập nào trong tháng này.</span>
-                  )}
+                  ))}
                 </div>
 
                 {/* Course Progress Bars (High Contrast, Crisp GitHub Style) */}
@@ -240,25 +301,32 @@ export function ContributionTimeline({
                           >
                             {c.name}
                           </Link>
-                          {c.score > 0 ? (
+                          {c.learnedCount > 0 ? (
+                            <span className="text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">
+                              {c.learnedCount}/{c.totalWords} từ đã thuộc
+                            </span>
+                          ) : (c.score > 0 ? (
                             <span className="text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">
                               +{c.score.toLocaleString()} EXP
                             </span>
                           ) : (
                             <span className="text-slate-400 dark:text-slate-500 font-normal shrink-0">
-                              Đang học
+                              Chưa học
                             </span>
-                          )}
+                          ))}
                         </div>
 
-                        {/* Progress Bar (Green GitHub Style) */}
-                        <div className="w-full sm:w-48 flex items-center">
-                          <div className="w-full h-2.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                        {/* Progress Bar with Percentage (Green GitHub Style) */}
+                        <div className="w-full sm:w-48 flex items-center gap-2">
+                          <div className="flex-1 h-2.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
                             <div
                               className="h-full bg-emerald-500 dark:bg-emerald-400 rounded-full transition-all duration-700"
                               style={{ width: `${c.percent}%` }}
                             />
                           </div>
+                          <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 w-8 text-right shrink-0">
+                            {c.percent}%
+                          </span>
                         </div>
                       </div>
                     ))}

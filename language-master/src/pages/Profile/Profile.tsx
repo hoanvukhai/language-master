@@ -4,7 +4,7 @@ import { useMyCourses } from '../../context/global/useMyCourses';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { updateProfile } from 'firebase/auth';
 import { db } from '../../lib/firebase';
-import { fetchGlobalLeaderboard, type LeaderboardUser } from '../../lib/srs/firestoreSync';
+import { fetchGlobalLeaderboard, fetchUserSRSOverview, type LeaderboardUser, type UserSRSOverview } from '../../lib/srs/firestoreSync';
 import { ActivityHeatmap } from './components/ActivityHeatmap';
 import { WeeklyStudyChart } from './components/WeeklyStudyChart';
 import { ContributionTimeline } from './components/ContributionTimeline';
@@ -24,6 +24,7 @@ export default function Profile() {
   const { myCourseIds } = useMyCourses();
 
   const [userData, setUserData] = useState<any>(null);
+  const [srsOverview, setSrsOverview] = useState<UserSRSOverview | null>(null);
 
 
   const [studyLeaderboard, setStudyLeaderboard] = useState<LeaderboardUser[]>([]);
@@ -143,6 +144,8 @@ export default function Profile() {
         if (snap.exists()) {
           setUserData(snap.data());
         }
+        const ov = await fetchUserSRSOverview(user.uid);
+        setSrsOverview(ov);
       } catch (e) {
         console.error("Error loading user data", e);
       }
@@ -588,9 +591,11 @@ export default function Profile() {
         <ContributionTimeline
           dailyStudyTime={dailyStudyTimeMap}
           activityHistory={activityHistoryMap}
+          activityReviews={(userData?.activityReviews || {}) as Record<string, number>}
           courseStudyScores={userData?.courseStudyScores || {}}
           myCourseIds={myCourseIds}
           selectedYear={selectedContributionYear}
+          srsOverview={srsOverview}
         />
       </div>
 

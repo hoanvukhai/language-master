@@ -210,7 +210,8 @@ export async function recordSrsExp(
       lastActivityDate: today,
       dailyStats,
       totalStudyScore: increment(awardedExp),
-      [`activityHistory.${today}`]: increment(awardedExp)
+      [`activityHistory.${today}`]: increment(awardedExp),
+      [`activityReviews.${today}`]: increment(1)
     };
 
     // Dùng increment() (atomic) thay vì đọc-ghi thủ công để tránh race condition

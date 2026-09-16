@@ -621,7 +621,62 @@ export async function getMasteryStats(
   return stats;
 }
 
+export interface UserSRSOverview {
+  totalLearnedWords: number; // Tổng số từ có masteryLevel >= 1
+  courseLearnedCounts: Record<string, number>; // courseId -> số từ có masteryLevel >= 1
+  monthlyLearnedWords: Record<string, number>; // YYYY-MM -> số từ học
+  monthlyReviews: Record<string, number>; // YYYY-MM -> số lượt ôn (totalCorrect + totalWrong)
+}
 
+/**
+ * Lấy toàn bộ tổng quan tiến độ SRS của người dùng từ Firestore (đếm từ thực tế Level >= 1)
+ */
+export async function fetchUserSRSOverview(userId: string): Promise<UserSRSOverview> {
+  const overview: UserSRSOverview = {
+    totalLearnedWords: 0,
+    courseLearnedCounts: {},
+    monthlyLearnedWords: {},
+    monthlyReviews: {},
+  };
+
+  if (!userId) return overview;
+
+  try {
+    const colRef = collection(db, 'users', userId, 'srs_progress');
+    const snapshot = await getDocs(colRef);
+
+    snapshot.docs.forEach((docSnap) => {
+      const data = docSnap.data() as WordProgressFirestore;
+      const level = data.masteryLevel ?? 0;
+      const isLearned = level >= 1 || data.isMasteredUserMarked;
+      const courseId = data.courseId || 'unknown';
+
+      if (isLearned) {
+        overview.totalLearnedWords++;
+        overview.courseLearnedCounts[courseId] = (overview.courseLearnedCounts[courseId] || 0) + 1;
+
+        if (data.lastStudiedDate) {
+          const date = data.lastStudiedDate.toDate ? data.lastStudiedDate.toDate() : new Date(data.lastStudiedDate);
+          const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+          overview.monthlyLearnedWords[monthKey] = (overview.monthlyLearnedWords[monthKey] || 0) + 1;
+        }
+      }
+
+      // Tổng lượt ôn: số lần làm đúng + làm sai của từ
+      const reviews = (data.totalCorrect || 0) + (data.totalWrong || 0);
+      if (reviews > 0 && data.lastStudiedDate) {
+        const date = data.lastStudiedDate.toDate ? data.lastStudiedDate.toDate() : new Date(data.lastStudiedDate);
+        const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+        overview.monthlyReviews[monthKey] = (overview.monthlyReviews[monthKey] || 0) + reviews;
+      }
+    });
+
+    return overview;
+  } catch (err) {
+    console.error('Error fetching user SRS overview:', err);
+    return overview;
+  }
+}
 
 export async function fetchGlobalLeaderboard(type: 'study' | 'race'): Promise<LeaderboardUser[]> {
   let cloudList: LeaderboardUser[] = [];

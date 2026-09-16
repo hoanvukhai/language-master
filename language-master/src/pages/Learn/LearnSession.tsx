@@ -756,6 +756,18 @@ export default function LearnSession() {
     if (existing) {
       const updated = onWrongLongTerm(existing);
       await saveWordProgress(user.uid, updated);
+
+      try {
+        const { doc, updateDoc, increment } = await import('firebase/firestore');
+        const { db } = await import('../../lib/firebase');
+        const today = new Date().toLocaleDateString('en-CA');
+        const userRef = doc(db, 'users', user.uid);
+        await updateDoc(userRef, {
+          [`activityReviews.${today}`]: increment(1)
+        });
+      } catch (e) {
+        console.error('Error recording review wrong count:', e);
+      }
     }
   }, [user]);
 
