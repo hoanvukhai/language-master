@@ -123,7 +123,6 @@ export interface EnglishWord extends BaseLearningItem {
   meaning: { vi: string; en?: string } | string;
   examples?: { en: string; vi?: string }[];
   lesson?: string;
-  audioFile?: string;
   synonyms?: string[];
   antonyms?: string[];
 }
