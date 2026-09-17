@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, CheckCircle2, XCircle, Eye, EyeOff, Trophy, ArrowRight } from 'lucide-react';
 import * as wanakana from 'wanakana';
 import { usePracticeContext } from '../Practice/PracticeContext';
+import { useSettings } from '../../context/global/useSettings';
 import VocabLessonChips from '../../components/vocabulary/VocabLessonChips';
 import { formatDualIpa, checkEnglishWordMatch, formatWordVariantsDisplay } from '../../lib/english/ipaHelper';
 
@@ -17,6 +18,7 @@ function shuffle<T>(arr: T[]): T[] {
 
 export default function VocabTyping() {
   const { course } = usePracticeContext();
+  const { language } = useSettings();
   const data = course.data as any[];
   const isEnglish = course.template === 'english';
   const lessons = Array.from(new Set(data.map((w: any) => w.lesson).filter(Boolean))) as string[];
@@ -50,7 +52,9 @@ export default function VocabTyping() {
   const current = pool[index];
 
   const getMeaning = (w: any) =>
-    typeof w.meaning === 'object' ? w.meaning.vi : w.meaning;
+    typeof w.meaning === 'object' 
+      ? (language === 'en' && w.meaning.en ? w.meaning.en : w.meaning.vi)
+      : w.meaning;
 
   const getWordDisplay = (w: any): string =>
     isEnglish ? (w.word || '') : (w.kanji || w.hiragana || '');

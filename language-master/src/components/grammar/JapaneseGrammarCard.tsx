@@ -152,14 +152,8 @@ export default function JapaneseGrammarCard({ item, showFurigana, language, inde
                             )}
                             
                             <div className="text-sm text-slate-600 dark:text-slate-300 font-medium">
-                              {ex.vi}
+                              {language === 'en' && ex.en ? ex.en : ex.vi}
                             </div>
-                            
-                            {language === 'en' && ex.en && (
-                              <div className="text-xs text-slate-400 dark:text-slate-500 mt-1 italic font-medium">
-                                {ex.en}
-                              </div>
-                            )}
                           </div>
 
                           <button

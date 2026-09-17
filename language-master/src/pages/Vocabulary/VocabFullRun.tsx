@@ -8,6 +8,7 @@ import {
   calculateMaxPossibleExp
 } from '../../lib/rankSystem';
 import { useAuth } from '../../context/auth/useAuth';
+import { useSettings } from '../../context/global/useSettings';
 import { syncPersonalHighScore } from '../../lib/srs/firestoreSync';
 import shortcuts from '../../data/jlpt/core/shortcuts.json';
 import { checkEnglishWordMatch } from '../../lib/english/ipaHelper';
@@ -44,6 +45,7 @@ const RESULT_SECS = 5;
 export default function VocabFullRun() {
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { language } = useSettings();
   const { course } = usePracticeContext();
   const data = course.data as any[];
   const isEnglish = course.template === 'english';
@@ -60,7 +62,7 @@ export default function VocabFullRun() {
   const lvl = LEVEL_CONFIG[level];
 
   // Game state
-  const questions = useMemo(() => buildQuestions(data, { totalQ: lvl.questions }, course), [lvl.questions, seed, data, course.template]);
+  const questions = useMemo(() => buildQuestions(data, { totalQ: lvl.questions, language }, course), [lvl.questions, seed, data, course.template, language]);
   const maxExp = useMemo(() => calculateMaxPossibleExp(questions, level, lvl.blitzSecs, 'vocab'), [questions, level, lvl.blitzSecs]);
   const [qIdx, setQIdx] = useState(0);
   const [correct, setCorrect] = useState(0);

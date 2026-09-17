@@ -130,9 +130,11 @@ export function pickFakeTrueFalseItem<T>(dataset: T[], correctItem: T, getProp: 
   return pickRandoms(dataset.map(getProp), 1, correctProp)[0];
 }
 
-export function getMeaning(item: any): string {
-  if (!item.meaning) return '';
-  return typeof item.meaning === 'object' ? item.meaning.vi : item.meaning;
+export function getMeaning(item: any, lang: string = 'vi'): string {
+  if (!item || !item.meaning) return '';
+  return typeof item.meaning === 'object'
+    ? (lang === 'en' && item.meaning.en ? item.meaning.en : (item.meaning.vi || item.meaning.en || ''))
+    : item.meaning;
 }
 
 // Hàm chuẩn hóa Kana (xóa dấu ngã, dấu câu, khoảng trắng)
@@ -148,13 +150,13 @@ export function normalizeKana(str: string): string {
  * VOCABULARY (`vocab`)
  * Từ vựng thông thường
  */
-export function buildVocabQuestions(dataset: Word[], game: GameType, count: number): RaceQuestionItem[] {
+export function buildVocabQuestions(dataset: Word[], game: GameType, count: number, lang: string = 'vi'): RaceQuestionItem[] {
   const pool: RaceQuestionItem[] = [];
 
   dataset.forEach((v) => {
     const startLen = pool.length;
     const wordStr = v.kanji || v.hiragana;
-    const meaningStr = getMeaning(v);
+    const meaningStr = getMeaning(v, lang);
     const hiraganaStr = v.hiragana;
     
     if (game === 'quiz') {
@@ -171,7 +173,7 @@ export function buildVocabQuestions(dataset: Word[], game: GameType, count: numb
           : (r < 0.5 ? 'w2m' : 'm2w');
       }
       
-      const getPropFn = dir === 'w2m' ? getMeaning 
+      const getPropFn = dir === 'w2m' ? ((item: any) => getMeaning(item, lang)) 
                       : (dir === 'w2h' ? (item: any) => item.hiragana 
                       : (item: any) => item.kanji || item.hiragana);
                       
@@ -180,7 +182,7 @@ export function buildVocabQuestions(dataset: Word[], game: GameType, count: numb
       const optionsData = allFour.map(item => ({
         kanji: item.kanji,
         hiragana: item.hiragana,
-        meaning: getMeaning(item)
+        meaning: getMeaning(item, lang)
       }));
       
       if (dir === 'w2m') {
@@ -272,7 +274,7 @@ export function buildVocabQuestions(dataset: Word[], game: GameType, count: numb
       }
       
       if (dir === 'w2m') {
-        const fakeMeaning = isTrue ? meaningStr : pickFakeTrueFalseItem(dataset, v, getMeaning, item => item.kanji || item.hiragana);
+        const fakeMeaning = isTrue ? meaningStr : pickFakeTrueFalseItem(dataset, v, (item: any) => getMeaning(item, lang), item => item.kanji || item.hiragana);
         pool.push({
           id: `rvtf_${v.id}`,
           prompt: wordStr,
@@ -281,7 +283,7 @@ export function buildVocabQuestions(dataset: Word[], game: GameType, count: numb
           isTrue
         });
       } else if (dir === 'm2w') {
-        const fakeWord = isTrue ? wordStr : pickFakeTrueFalseItem(dataset, v, item => item.kanji || item.hiragana, getMeaning);
+        const fakeWord = isTrue ? wordStr : pickFakeTrueFalseItem(dataset, v, item => item.kanji || item.hiragana, (item: any) => getMeaning(item, lang));
         pool.push({
           id: `rvtf_m2w_${v.id}`,
           prompt: meaningStr,
@@ -322,7 +324,7 @@ export function buildVocabQuestions(dataset: Word[], game: GameType, count: numb
  * KANJI TỪ VỰNG (`kanji`)
  * Chỉ lấy từ con (words[]), đố Nghĩa tiếng Việt và Hiragana
  */
-export function buildKanjiWordQuestions(dataset: Kanji[], game: GameType, count: number): RaceQuestionItem[] {
+export function buildKanjiWordQuestions(dataset: Kanji[], game: GameType, count: number, lang: string = 'vi'): RaceQuestionItem[] {
   const pool: RaceQuestionItem[] = [];
   
   // Extract all words
@@ -337,7 +339,7 @@ export function buildKanjiWordQuestions(dataset: Kanji[], game: GameType, count:
 
   datasetWords.forEach((w) => {
     const startLen = pool.length;
-    const meaningStr = getMeaning(w);
+    const meaningStr = getMeaning(w, lang);
     const wordStr = w.word;
     const hiraganaStr = w.hiragana;
 
@@ -352,7 +354,7 @@ export function buildKanjiWordQuestions(dataset: Kanji[], game: GameType, count:
         dir = r < 0.5 ? 'w2m' : 'm2w';
       }
       
-      const getPropFn = dir === 'w2m' ? getMeaning 
+      const getPropFn = dir === 'w2m' ? ((item: any) => getMeaning(item, lang)) 
                       : (dir === 'w2h' ? (item: any) => item.hiragana 
                       : (item: any) => item.word || item.hiragana);
                       
@@ -361,7 +363,7 @@ export function buildKanjiWordQuestions(dataset: Kanji[], game: GameType, count:
       const optionsData = allFour.map(item => ({
         kanji: item.word,
         hiragana: item.hiragana,
-        meaning: getMeaning(item)
+        meaning: getMeaning(item, lang)
       }));
       
       if (dir === 'w2m') {
@@ -495,7 +497,7 @@ export function buildKanjiWordQuestions(dataset: Kanji[], game: GameType, count:
  * HÁN TỰ (`hanjt`)
  * Trộn Kanji cha và Từ con (Chỉ đố Âm Hán Việt)
  */
-export function buildHanjtQuestions(dataset: Kanji[], game: GameType, count: number): RaceQuestionItem[] {
+export function buildHanjtQuestions(dataset: Kanji[], game: GameType, count: number, lang: string = 'vi'): RaceQuestionItem[] {
   const poolSingle: RaceQuestionItem[] = [];
   const poolMulti: RaceQuestionItem[] = [];
   
@@ -581,7 +583,7 @@ export function buildHanjtQuestions(dataset: Kanji[], game: GameType, count: num
     const startLen = poolMulti.length;
     const hvStr = w.hanVietWord as string;
     const wordStr = w.word;
-    const meaningStr = getMeaning(w);
+    const meaningStr = getMeaning(w, lang);
 
     const isSingleHV = hvStr.trim().split(/\s+/).length === 1;
     const isSingleJp = countKanji(wordStr) === 1;
@@ -661,12 +663,12 @@ export function buildHanjtQuestions(dataset: Kanji[], game: GameType, count: num
 // Hàm loại bỏ nội dung trong ngoặc đơn (và khoảng trắng dư thừa)
 export const stripParentheses = (str: string) => str.replace(/\s*[（(][^）)]*[）)]\s*/g, ' ').trim() || str;
 
-export function buildGrammarQuestions(dataset: GrammarItem[], game: GameType, count: number): RaceQuestionItem[] {
+export function buildGrammarQuestions(dataset: GrammarItem[], game: GameType, count: number, lang: string = 'vi'): RaceQuestionItem[] {
   const pool: RaceQuestionItem[] = [];
 
   dataset.forEach((g) => {
     const startLen = pool.length;
-    const meaningStr = stripParentheses(getMeaning(g));
+    const meaningStr = stripParentheses(getMeaning(g, lang));
     const structureStr = stripParentheses(g.structure);
 
     if (game === 'quiz') {
@@ -765,13 +767,12 @@ export function buildGrammarQuestions(dataset: GrammarItem[], game: GameType, co
  * Không có kanji/hiragana → không có w2h, h2w directions.
  * Typing: show meaning → type the English word (plain text, no romaji conversion)
  */
-export function buildEnglishVocabQuestions(dataset: any[], game: GameType, count: number): RaceQuestionItem[] {
+export function buildEnglishVocabQuestions(dataset: any[], game: GameType, count: number, lang: string = 'vi'): RaceQuestionItem[] {
   const pool: RaceQuestionItem[] = [];
 
   const getWordStr = (item: any): string => item.word || '';
   const getMeaningStr = (item: any): string => {
-    if (!item.meaning) return '';
-    return typeof item.meaning === 'object' ? item.meaning.vi : item.meaning;
+    return getMeaning(item, lang);
   };
 
   dataset.forEach((v) => {

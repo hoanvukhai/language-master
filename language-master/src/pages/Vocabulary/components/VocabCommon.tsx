@@ -65,8 +65,11 @@ export function shuffle<T>(arr: T[]): T[] {
   return [...arr].sort(() => Math.random() - 0.5);
 }
 
-export function getMeaning(w: any): string {
-  return typeof w.meaning === 'object' ? w.meaning.vi : (w.meaning || '');
+export function getMeaning(w: any, lang: string = 'vi'): string {
+  if (!w || !w.meaning) return '';
+  return typeof w.meaning === 'object'
+    ? (lang === 'en' && w.meaning.en ? w.meaning.en : (w.meaning.vi || w.meaning.en || ''))
+    : (w.meaning || '');
 }
 
 export const matchKey = (eKey: string, shortcut: string | string[]) => {
@@ -117,8 +120,9 @@ export function calcExp(baseScore: number, streak: number, timeLeft: number, lev
 }
 
 // ── buildQuestions ───────────────────────────────────────────────
-export function buildQuestions(pool: any[], opts: { totalQ: number }, course?: { template?: string }): UnifiedQ[] {
+export function buildQuestions(pool: any[], opts: { totalQ: number; language?: string }, course?: { template?: string }): UnifiedQ[] {
   const { totalQ } = opts;
+  const lang = opts.language || 'vi';
   const sp = shuffle(pool);
   const qs: UnifiedQ[] = [];
   const types: QType[] = ['quiz', 'typing', 'flashcard', 'error', 'matching'];
@@ -141,7 +145,7 @@ export function buildQuestions(pool: any[], opts: { totalQ: number }, course?: {
       const w = slice[i];
       const id = `${type}-${ti}-${i}`;
 
-      const meaning = getMeaning(w);
+      const meaning = getMeaning(w, lang);
 
       if (isEnglish) {
         // ── English branch ─────────────────────────────────────────────
@@ -156,11 +160,11 @@ export function buildQuestions(pool: any[], opts: { totalQ: number }, course?: {
           if (distractors.length > 0) {
             exp += `\n\nCác từ khác:\n` + distractors.map((d: any) => {
               const dSub = getEnSubLabel(d);
-              return `• ${getEnLabel(d)}${dSub ? ` (${dSub})` : ''}: ${getMeaning(d)}`;
+              return `• ${getEnLabel(d)}${dSub ? ` (${dSub})` : ''}: ${getMeaning(d, lang)}`;
             }).join('\n');
           }
           if (dir === 'w2m') {
-            const opts = shuffle([w, ...distractors]).map((o: any) => ({ id: o.id, label: getMeaning(o) }));
+            const opts = shuffle([w, ...distractors]).map((o: any) => ({ id: o.id, label: getMeaning(o, lang) }));
             qs.push({ id, type: 'quiz', prompt: label, promptSub: sub, options: opts, correctId: w.id, explanation: exp });
           } else {
             const opts = shuffle([w, ...distractors]).map((o: any) => ({ id: o.id, label: getEnLabel(o), subLabel: getEnSubLabel(o) }));
@@ -181,7 +185,7 @@ export function buildQuestions(pool: any[], opts: { totalQ: number }, course?: {
         } else if (type === 'error') {
           const isCorrect = Math.random() > 0.5;
           const distractorWord = shuffle(pool.filter((p: any) => p.id !== w.id))[0];
-          const displayed = isCorrect ? meaning : getMeaning(distractorWord || w);
+          const displayed = isCorrect ? meaning : getMeaning(distractorWord || w, lang);
           let exp = `${label}${sub ? ` (${sub})` : ''} — Nghĩa đúng: ${meaning}`;
           if (!isCorrect && distractorWord) {
             exp += `\n\nNghĩa được hiển thị "${displayed}" là của từ:\n• ${getEnLabel(distractorWord)}: ${displayed}`;
@@ -190,10 +194,10 @@ export function buildQuestions(pool: any[], opts: { totalQ: number }, course?: {
         } else if (type === 'matching') {
           if (i === 0) {
             const mws = shuffle(pool).slice(0, 8);
-            const exp = mws.map((mw: any) => `${getEnLabel(mw)}${getEnSubLabel(mw) ? ` (${getEnSubLabel(mw)})` : ''} = ${getMeaning(mw)}`).join('\n');
+            const exp = mws.map((mw: any) => `${getEnLabel(mw)}${getEnSubLabel(mw) ? ` (${getEnSubLabel(mw)})` : ''} = ${getMeaning(mw, lang)}`).join('\n');
             qs.push({
               id, type: 'matching',
-              pairs: mws.map((mw: any) => ({ jp: getEnLabel(mw), vi: getMeaning(mw), jpSub: getEnSubLabel(mw), pairId: mw.id })),
+              pairs: mws.map((mw: any) => ({ jp: getEnLabel(mw), vi: getMeaning(mw, lang), jpSub: getEnSubLabel(mw), pairId: mw.id })),
               explanation: exp
             } as MatchQ);
           }
@@ -208,10 +212,10 @@ export function buildQuestions(pool: any[], opts: { totalQ: number }, course?: {
           const dir = dirs[Math.floor(Math.random() * dirs.length)];
           let exp = `Đáp án đúng:\n• ${w.kanji ? `${w.kanji} (${w.hiragana})` : w.hiragana}: ${meaning}`;
           if (distractors.length > 0) {
-            exp += `\n\nChi tiết các phương án khác:\n` + distractors.map((d: any) => `• ${d.kanji ? `${d.kanji} (${d.hiragana})` : d.hiragana}: ${getMeaning(d)}`).join('\n');
+            exp += `\n\nChi tiết các phương án khác:\n` + distractors.map((d: any) => `• ${d.kanji ? `${d.kanji} (${d.hiragana})` : d.hiragana}: ${getMeaning(d, lang)}`).join('\n');
           }
           if (dir === 'w2m') {
-            const opts = shuffle([w, ...distractors]).map((o: any) => ({ id: o.id, label: getMeaning(o) }));
+            const opts = shuffle([w, ...distractors]).map((o: any) => ({ id: o.id, label: getMeaning(o, lang) }));
             qs.push({ id, type: 'quiz', prompt: label, promptSub: w.hiragana, options: opts, correctId: w.id, explanation: exp });
           } else {
             const opts = shuffle([w, ...distractors]).map((o: any) => ({ id: o.id, label: getJpLabel(o), subLabel: getJpSubLabel(o) }));
@@ -238,7 +242,7 @@ export function buildQuestions(pool: any[], opts: { totalQ: number }, course?: {
         } else if (type === 'error') {
           const isCorrect = Math.random() > 0.5;
           const distractorWord = shuffle(pool.filter((p: any) => p.id !== w.id))[0];
-          const displayed = isCorrect ? meaning : getMeaning(distractorWord || w);
+          const displayed = isCorrect ? meaning : getMeaning(distractorWord || w, lang);
           let exp = `${w.kanji ? `${w.kanji} (${w.hiragana})` : w.hiragana} — Nghĩa đúng: ${meaning}`;
           if (!isCorrect && distractorWord) {
             exp += `\n\nNghĩa được hiển thị "${displayed}" là của từ:\n• ${distractorWord.kanji ? `${distractorWord.kanji} (${distractorWord.hiragana})` : distractorWord.hiragana}: ${displayed}`;
@@ -247,10 +251,10 @@ export function buildQuestions(pool: any[], opts: { totalQ: number }, course?: {
         } else if (type === 'matching') {
           if (i === 0) {
             const mws = shuffle(pool).slice(0, 8);
-            const exp = mws.map((mw: any) => `${mw.kanji ? `${mw.kanji} (${mw.hiragana})` : mw.hiragana} = ${getMeaning(mw)}`).join('\n');
+            const exp = mws.map((mw: any) => `${mw.kanji ? `${mw.kanji} (${mw.hiragana})` : mw.hiragana} = ${getMeaning(mw, lang)}`).join('\n');
             qs.push({
               id, type: 'matching',
-              pairs: mws.map((mw: any) => ({ jp: getJpLabel(mw), vi: getMeaning(mw), jpSub: getJpSubLabel(mw), pairId: mw.id })),
+              pairs: mws.map((mw: any) => ({ jp: getJpLabel(mw), vi: getMeaning(mw, lang), jpSub: getJpSubLabel(mw), pairId: mw.id })),
               explanation: exp
             } as MatchQ);
           }

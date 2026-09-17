@@ -159,19 +159,19 @@ export default function RaceArena() {
 
     if (subject === 'kanji_words' || subject === 'kanji_single') {
       const kanjiDataset: Kanji[] = data as Kanji[];
-      pool = buildKanjiWordQuestions(kanjiDataset, game, count);
+      pool = buildKanjiWordQuestions(kanjiDataset, game, count, language);
     } else if ((subject as string) === 'hanjt') {
       const kanjiDataset: Kanji[] = data as Kanji[];
-      pool = buildHanjtQuestions(kanjiDataset, game, count);
+      pool = buildHanjtQuestions(kanjiDataset, game, count, language);
     } else if (subject === 'grammar') {
       const grammarDataset = data as any[];
-      pool = buildGrammarQuestions(grammarDataset, game, count);
+      pool = buildGrammarQuestions(grammarDataset, game, count, language);
     } else if (course.template === 'english') {
       // ── English vocabulary course ────────────────────────────────────
-      pool = buildEnglishVocabQuestions(data as any[], game, count);
+      pool = buildEnglishVocabQuestions(data as any[], game, count, language);
     } else {
       const vocabDataset = data as any[];
-      pool = buildVocabQuestions(vocabDataset, game, count);
+      pool = buildVocabQuestions(vocabDataset, game, count, language);
     }
 
     if (game === 'matching') {
@@ -197,7 +197,7 @@ export default function RaceArena() {
       kanjiDataset.forEach(k => k.words?.forEach((w: any) => allWords.push(w)));
       rawData = allWords; 
       getPrompt = d => d.word; 
-      getMeaningStr = useHiragana ? (d => d.hiragana || getMeaning(d)) : getMeaning;
+      getMeaningStr = useHiragana ? (d => d.hiragana || getMeaning(d, language)) : (d => getMeaning(d, language));
     } else if ((sub as string) === 'hanjt') {
       const kanjiDataset = data as Kanji[];
       const mixed: any[] = [];
@@ -214,19 +214,19 @@ export default function RaceArena() {
       // ── English vocabulary matching ────────────────────────────────────
       rawData = data as any[];
       getPrompt = (d: any) => d.word || '';
-      getMeaningStr = (d: any) => typeof d.meaning === 'object' ? d.meaning.vi : (d.meaning || '');
+      getMeaningStr = (d: any) => getMeaning(d, language);
     } else if (sub === 'grammar') {
       const gData = data as any[];
       rawData = gData;
       getPrompt = d => stripParentheses(d.structure);
-      getMeaningStr = d => stripParentheses(getMeaning(d));
+      getMeaningStr = d => stripParentheses(getMeaning(d, language));
     } else {
       // Japanese vocab (default)
       rawData = data as any[];
       getPrompt = (d: any) => d.kanji || d.hiragana;
       getMeaningStr = useHiragana
-        ? (d: any) => (d.kanji && d.hiragana && d.kanji !== d.hiragana) ? d.hiragana : getMeaning(d)
-        : getMeaning;
+        ? (d: any) => (d.kanji && d.hiragana && d.kanji !== d.hiragana) ? d.hiragana : getMeaning(d, language)
+        : (d => getMeaning(d, language));
     }
 
     let pool = rawData;

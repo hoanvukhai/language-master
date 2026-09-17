@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, RotateCcw, ThumbsUp, ThumbsDown, CheckCircle2, Eye, EyeOff } from 'lucide-react';
 import { usePracticeContext } from '../Practice/PracticeContext';
+import { useSettings } from '../../context/global/useSettings';
 import type { Word } from '../../types';
 import VocabLessonChips from '../../components/vocabulary/VocabLessonChips';
 import { formatDualIpa } from '../../lib/english/ipaHelper';
@@ -16,6 +17,7 @@ function shuffle<T>(arr: T[]): T[] {
 
 export default function VocabFlashcard() {
   const { course } = usePracticeContext();
+  const { language } = useSettings();
   const data = course.data as any[];
   const isEnglish = course.template === 'english';
   const lessons = Array.from(new Set(data.map((w: any) => w.lesson).filter(Boolean))) as string[];
@@ -73,7 +75,9 @@ export default function VocabFlashcard() {
   };
 
   const getMeaning = (w: any) =>
-    typeof w.meaning === 'object' ? w.meaning.vi : w.meaning;
+    typeof w.meaning === 'object' 
+      ? (language === 'en' && w.meaning.en ? w.meaning.en : w.meaning.vi)
+      : w.meaning;
 
   // Template-aware helpers
   const getWordDisplay = (w: any): string =>
@@ -325,8 +329,12 @@ export default function VocabFlashcard() {
                     </div>
                     {current.examples && current.examples[0] && (
                       <div className="mt-4 p-3 bg-white/10 rounded-xl text-left w-full">
-                        <div className="text-sm text-violet-100">{(current.examples[0] as any).en || current.examples[0].jp}</div>
-                        <div className="text-xs text-violet-200 mt-1">{current.examples[0].vi}</div>
+                        <div className="text-sm text-violet-100">
+                          {isEnglish ? (current.examples[0].en || current.examples[0].jp) : (current.examples[0].jp || current.examples[0].en)}
+                        </div>
+                        <div className="text-xs text-violet-200 mt-1">
+                          {isEnglish ? current.examples[0].vi : (language === 'en' && current.examples[0].en ? current.examples[0].en : current.examples[0].vi)}
+                        </div>
                       </div>
                     )}
                   </>

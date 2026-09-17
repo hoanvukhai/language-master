@@ -5,6 +5,7 @@
 import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../context/auth/useAuth';
+import { useSettings } from '../../context/global/useSettings';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Volume2, RotateCcw, Sparkles, ChevronRight, X, ChevronsUp, MousePointerClick, Keyboard, Check, Swords } from 'lucide-react';
 
@@ -56,7 +57,7 @@ interface QueueItem {
 // ���� Helpers ��������������������������������������������������������������������������������������������������������������������������������
 
 /** Xây danh sách raw items từ course data */
-function buildRawList(course: Course): RawItem[] {
+function buildRawList(course: Course, language: string = 'vi'): RawItem[] {
   const { subject, data } = course;
 
   if (subject === 'vocab') {
@@ -66,10 +67,10 @@ function buildRawList(course: Course): RawItem[] {
         id: w.id || w.word,
         kanji: w.word,           // 'kanji' slot = English word
         hiragana: formatDualIpa(w) || w.ipa || '',   // 'hiragana' slot = IPA (not typed, just for display)
-        meaning: typeof w.meaning === 'object' ? w.meaning.vi : w.meaning,
+        meaning: typeof w.meaning === 'object' ? (language === 'en' && w.meaning.en ? w.meaning.en : w.meaning.vi) : w.meaning,
         lesson: w.lesson || 'Unit 1',
-        exampleKanji: w.examples?.[0]?.en,
-        exampleMeaning: w.examples?.[0]?.vi,
+        exampleKanji: w.examples?.[0]?.en || w.examples?.[0]?.jp,
+        exampleMeaning: language === 'en' && w.examples?.[0]?.en ? w.examples[0].en : (w.examples?.[0]?.vi || w.examples?.[0]?.en),
         isSingleKanjiChar: false,
         originalData: w,
       }));
@@ -79,10 +80,14 @@ function buildRawList(course: Course): RawItem[] {
       id: w.id || w.kanji || w.hiragana,
       kanji: w.kanji || w.hiragana,
       hiragana: w.hiragana,
-      meaning: typeof w.meaning === 'object' ? w.meaning.vi : w.meaning,
+      meaning: typeof w.meaning === 'object' ? (language === 'en' && w.meaning.en ? w.meaning.en : w.meaning.vi) : w.meaning,
       lesson: w.lesson || 'Bài 1',
-      exampleKanji: w.example?.kanji,
-      exampleMeaning: typeof w.example?.meaning === 'object' ? w.example?.meaning?.vi : w.example?.meaning,
+      exampleKanji: w.examples?.[0]?.jp || w.example?.kanji || w.examples?.[0]?.en,
+      exampleMeaning: typeof w.examples?.[0] === 'object'
+        ? (language === 'en' && w.examples[0].en ? w.examples[0].en : (w.examples[0].vi || w.examples[0].en))
+        : (typeof w.example?.meaning === 'object'
+            ? (language === 'en' && w.example.meaning.en ? w.example.meaning.en : w.example.meaning.vi)
+            : w.example?.meaning),
       isSingleKanjiChar: false,
       originalData: w,
     }));
@@ -93,7 +98,7 @@ function buildRawList(course: Course): RawItem[] {
     data.forEach((k: any) => {
       items.push({ id: k.id || k.character, kanji: k.character, hiragana: k.hanViet, meaning: `Âm Hán Việt: ${k.hanViet}`, lesson: k.lesson || 'Bài 1', isSingleKanjiChar: true, originalData: k });
       if (k.words) k.words.forEach((w: any) => {
-        const m = typeof w.meaning === 'object' ? w.meaning.vi : w.meaning;
+        const m = typeof w.meaning === 'object' ? (language === 'en' && w.meaning.en ? w.meaning.en : w.meaning.vi) : w.meaning;
         items.push({ id: w.id || `${k.character}_${w.word}`, kanji: w.word, hiragana: w.hanVietWord || k.hanViet, meaning: `Từ Ghép: ${w.hanVietWord || k.hanViet} · ${m}`, lesson: k.lesson || 'Bài 1', isSingleKanjiChar: true, originalData: w });
       });
     });
@@ -104,14 +109,34 @@ function buildRawList(course: Course): RawItem[] {
     const items: RawItem[] = [];
     data.forEach((k: any) => {
       if (k.words) k.words.forEach((w: any) => {
-        items.push({ id: w.id || `${k.character}_${w.word}`, kanji: w.word, hiragana: w.hiragana, meaning: typeof w.meaning === 'object' ? w.meaning.vi : w.meaning, lesson: k.lesson || 'Bài 1', exampleKanji: w.examples?.[0]?.jp, exampleMeaning: w.examples?.[0]?.vi, isSingleKanjiChar: false, originalData: w });
+        items.push({
+          id: w.id || `${k.character}_${w.word}`,
+          kanji: w.word,
+          hiragana: w.hiragana,
+          meaning: typeof w.meaning === 'object' ? (language === 'en' && w.meaning.en ? w.meaning.en : w.meaning.vi) : w.meaning,
+          lesson: k.lesson || 'Bài 1',
+          exampleKanji: w.examples?.[0]?.jp || w.examples?.[0]?.en,
+          exampleMeaning: typeof w.examples?.[0] === 'object'
+            ? (language === 'en' && w.examples[0].en ? w.examples[0].en : (w.examples[0].vi || w.examples[0].en))
+            : '',
+          isSingleKanjiChar: false,
+          originalData: w
+        });
       });
     });
     return items;
   }
 
   if (subject === 'grammar') {
-    return data.map((g: any) => ({ id: g.id || g.structure, kanji: g.structure, hiragana: g.structure, meaning: typeof g.meaning === 'object' ? g.meaning.vi : g.meaning, lesson: g.lesson || 'Bài 1', isSingleKanjiChar: false, originalData: g }));
+    return data.map((g: any) => ({
+      id: g.id || g.structure,
+      kanji: g.structure,
+      hiragana: g.structure,
+      meaning: typeof g.meaning === 'object' ? (language === 'en' && g.meaning.en ? g.meaning.en : g.meaning.vi) : g.meaning,
+      lesson: g.lesson || 'Bài 1',
+      isSingleKanjiChar: false,
+      originalData: g
+    }));
   }
 
   return [];
@@ -159,6 +184,7 @@ const PreviewWordContent = ({
   onToggleAccent?: () => void;
   isEnglish?: boolean;
 }) => {
+  const { language } = useSettings();
   const data = word.originalData;
   const isKanjiSingle = word.isSingleKanjiChar && data?.character;
   const isKanjiWord = word.isSingleKanjiChar && data?.word; // from kanji.words array
@@ -206,7 +232,7 @@ const PreviewWordContent = ({
                 {data.words.slice(0, 4).map((w: any, i: number) => (
                   <div key={i} className="p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex flex-col">
                     <span className="font-black text-slate-800 dark:text-slate-100">{w.word} <span className="text-xs font-normal text-slate-500">({w.hiragana})</span></span>
-                    <span className="text-xs text-slate-500 dark:text-slate-400 mt-1">{typeof w.meaning === 'object' ? w.meaning.vi : w.meaning}</span>
+                    <span className="text-xs text-slate-500 dark:text-slate-400 mt-1">{typeof w.meaning === 'object' ? (language === 'en' && w.meaning.en ? w.meaning.en : w.meaning.vi) : w.meaning}</span>
                   </div>
                 ))}
               </div>
@@ -239,7 +265,7 @@ const PreviewWordContent = ({
           <div>
             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-violet-400 dark:text-violet-500 mb-1">Nghĩa</p>
             <p className="text-xl md:text-2xl font-bold text-slate-800 dark:text-slate-100 leading-tight">
-              {typeof data.meaning === 'object' ? data.meaning.vi : data.meaning}
+              {typeof data.meaning === 'object' ? (language === 'en' && data.meaning.en ? data.meaning.en : data.meaning.vi) : data.meaning}
             </p>
           </div>
           
@@ -248,8 +274,8 @@ const PreviewWordContent = ({
               <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Ví dụ</p>
               {data.examples.map((ex: any, i: number) => (
                 <div key={i} className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 space-y-1.5">
-                  <p className="text-sm md:text-base font-medium text-slate-700 dark:text-slate-300">{ex.jp}</p>
-                  <p className="text-sm text-slate-500 dark:text-slate-400">{ex.vi}</p>
+                  <p className="text-sm md:text-base font-medium text-slate-700 dark:text-slate-300">{ex.jp || ex.en}</p>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">{language === 'en' && ex.en ? ex.en : ex.vi}</p>
                 </div>
               ))}
             </div>
@@ -327,19 +353,25 @@ const PreviewWordContent = ({
           <div>
             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-violet-400 dark:text-violet-500 mb-1">Nghĩa</p>
             <p className="text-xl md:text-2xl font-bold text-slate-800 dark:text-slate-100 leading-tight">
-              {data?.meaning && typeof data.meaning === 'object' ? data.meaning.vi : (data?.meaning || word.meaning)}
+              {data?.meaning && typeof data.meaning === 'object' ? (language === 'en' && data.meaning.en ? data.meaning.en : data.meaning.vi) : (data?.meaning || word.meaning)}
             </p>
           </div>
           
           {data?.examples && data.examples.length > 0 && (
             <div className="space-y-3 pt-2">
               <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Ví dụ</p>
-              {data.examples.map((ex: any, i: number) => (
-                <div key={i} className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 space-y-1.5">
-                  <p className="text-sm md:text-base font-medium text-slate-700 dark:text-slate-300">{(ex as any).en || ex.jp}</p>
-                  <p className="text-sm text-slate-500 dark:text-slate-400">{ex.vi}</p>
-                </div>
-              ))}
+              {data.examples.map((ex: any, i: number) => {
+                const exTarget = isEnglish ? (ex.en || ex.jp) : (ex.jp || ex.en);
+                const exTrans = isEnglish 
+                  ? ex.vi 
+                  : (language === 'en' && ex.en ? ex.en : (ex.vi || ex.en));
+                return (
+                  <div key={i} className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 space-y-1.5">
+                    <p className="text-sm md:text-base font-medium text-slate-700 dark:text-slate-300">{exTarget}</p>
+                    <p className="text-sm text-slate-500 dark:text-slate-400">{exTrans}</p>
+                  </div>
+                );
+              })}
             </div>
           )}
           {(!data?.examples || data.examples.length === 0) && word.exampleKanji && (
@@ -365,7 +397,7 @@ const PreviewWordContent = ({
           <div>
             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-violet-400 dark:text-violet-500 mb-1">Ý nghĩa</p>
             <p className="text-lg md:text-xl font-bold text-slate-800 dark:text-slate-100 leading-relaxed">
-              {typeof data.meaning === 'object' ? data.meaning.vi : data.meaning}
+              {typeof data.meaning === 'object' ? (language === 'en' && data.meaning.en ? data.meaning.en : data.meaning.vi) : data.meaning}
             </p>
           </div>
           
@@ -382,7 +414,7 @@ const PreviewWordContent = ({
               {data.examples.map((ex: any, i: number) => (
                 <div key={i} className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 space-y-1.5">
                   <p className="text-sm md:text-base font-medium text-slate-700 dark:text-slate-300">{ex.jp}</p>
-                  <p className="text-sm text-slate-500 dark:text-slate-400">{ex.vi}</p>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">{language === 'en' && ex.en ? ex.en : (ex.vi || ex.en)}</p>
                 </div>
               ))}
             </div>
@@ -396,6 +428,7 @@ const PreviewWordContent = ({
 export default function LearnSession() {
 
   const { user, loading: authLoading } = useAuth();
+  const { language } = useSettings();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
@@ -649,7 +682,7 @@ export default function LearnSession() {
       setEmptyState(null);
       try {
         if (!course) { setEmptyState('no_items'); return; }
-        const rawAll = buildRawList(course);
+        const rawAll = buildRawList(course, language);
         setAllRawItems(rawAll);
 
         let scopeList = lessonParam ? rawAll.filter(i => i.lesson === lessonParam) : rawAll;
@@ -718,7 +751,7 @@ export default function LearnSession() {
       }
     }
     init();
-  }, [courseIdParam, modeParam, lessonParam, user, authLoading, refreshKey]);
+  }, [courseIdParam, modeParam, lessonParam, user, authLoading, refreshKey, language]);
 
 
   //    Computed: batch hi!n tại                                            

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, CheckCircle2, XCircle, ArrowRight, Trophy, Eye, EyeOff } from 'lucide-react';
 import { usePracticeContext } from '../Practice/PracticeContext';
+import { useSettings } from '../../context/global/useSettings';
 import VocabLessonChips from '../../components/vocabulary/VocabLessonChips';
 import { formatDualIpa } from '../../lib/english/ipaHelper';
 
@@ -21,6 +22,7 @@ function buildOptions(correct: any, pool: any[]): any[] {
 
 export default function VocabQuiz() {
   const { course } = usePracticeContext();
+  const { language } = useSettings();
   const data = course.data as any[];
   const isEnglish = course.template === 'english';
   const lessons = Array.from(new Set(data.map((w: any) => w.lesson).filter(Boolean))) as string[];
@@ -50,7 +52,9 @@ export default function VocabQuiz() {
   }, [current, pool]);
 
   const getMeaning = (w: any) =>
-    typeof w.meaning === 'object' ? w.meaning.vi : w.meaning;
+    typeof w.meaning === 'object' 
+      ? (language === 'en' && w.meaning.en ? w.meaning.en : w.meaning.vi)
+      : w.meaning;
 
   const getWordDisplay = (w: any): string =>
     isEnglish

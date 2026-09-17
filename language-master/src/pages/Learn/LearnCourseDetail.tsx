@@ -12,6 +12,7 @@ import MasterySVG from '../../components/srs/MasterySVG';
 import { fetchAllProgress, batchUpdateWordMasteredStatus } from '../../lib/srs/firestoreSync';
 import { useAuthGate } from '../../hooks/useAuthGate';
 import { useMyCourses } from '../../context/global/useMyCourses';
+import { useSettings } from '../../context/global/useSettings';
 import { type WordProgress, type SRSSubject } from '../../lib/srs/srsTypes';
 import { getCourseById } from '../../data/courses/registry';
 
@@ -127,6 +128,7 @@ export default function LearnCourseDetail() {
     : `/course/${courseId}`;
 
   const { user } = useAuth();
+  const { language } = useSettings();
   const navigate = useNavigate();
   const { executeWithGate, GateComponent } = useAuthGate();
 
@@ -212,7 +214,7 @@ export default function LearnCourseDetail() {
           // English: use 'word' as title, 'ipa' as sub; Japanese: use 'kanji'/'hiragana'
           title: item.word || item.kanji || item.character || item.structure || item.hiragana,
           sub: item.ipa || item.hanViet || item.hiragana || '',
-          meaning: typeof item.meaning === 'object' ? item.meaning.vi : item.meaning,
+          meaning: typeof item.meaning === 'object' ? (language === 'en' && item.meaning.en ? item.meaning.en : item.meaning.vi) : item.meaning,
           words: item.words,
           masteryLevel: lvl,
           isMastered,
@@ -231,7 +233,7 @@ export default function LearnCourseDetail() {
       const numB = parseInt(b.lessonName.replace(/\D/g, '')) || 0;
       return numA - numB;
     });
-  }, [course, progressMap]);
+  }, [course, progressMap, language]);
 
   // ── Batch Selection Handlers ───────────────────────────────────────────
 
