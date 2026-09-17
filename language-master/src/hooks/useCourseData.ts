@@ -1,17 +1,61 @@
 import { useMemo, useState, useEffect, useRef } from 'react';
 import type { LearningItem } from '../types';
-import { getCourseById } from '../data/courses/registry';
+import { getCourseById, type Course } from '../data/courses/registry';
 import { getOfflineCourseData, saveCourseOffline } from '../lib/offline/offlineStorage';
 import { useNetworkStatus } from './useNetworkStatus';
+import { getCustomCourseById, customDocToCourse } from '../lib/customCourses/customCourseService';
 
 export function useCourseData(courseId: string | undefined) {
   const { isOnline } = useNetworkStatus();
   const [offlineData, setOfflineData] = useState<any[] | null>(null);
+  const [customCourse, setCustomCourse] = useState<Course | null>(null);
+  const [loading, setLoading] = useState<boolean>(() => {
+    if (!courseId) return false;
+    return courseId.startsWith('custom_');
+  });
   const syncedRef = useRef<string | null>(null);
 
-  const course = useMemo(() => {
+  const staticCourse = useMemo(() => {
     return getCourseById(courseId || '');
   }, [courseId]);
+
+  // Load custom course if courseId is custom_...
+  useEffect(() => {
+    if (!courseId || !courseId.startsWith('custom_')) {
+      setCustomCourse(null);
+      setLoading(false);
+      return;
+    }
+    let isCancelled = false;
+    setLoading(true);
+
+    const loadCustom = async () => {
+      try {
+        const docData = await getCustomCourseById(courseId);
+        if (!isCancelled) {
+          if (docData) {
+            setCustomCourse(customDocToCourse(docData));
+          } else {
+            setCustomCourse(null);
+          }
+        }
+      } catch (err) {
+        console.error('Failed to load custom course in useCourseData:', err);
+      } finally {
+        if (!isCancelled) setLoading(false);
+      }
+    };
+
+    loadCustom();
+    const handler = () => { loadCustom(); };
+    window.addEventListener('custom_courses_changed', handler);
+    return () => {
+      isCancelled = true;
+      window.removeEventListener('custom_courses_changed', handler);
+    };
+  }, [courseId]);
+
+  const course = staticCourse || customCourse;
 
   useEffect(() => {
     if (!courseId) return;
@@ -87,6 +131,7 @@ export function useCourseData(courseId: string | undefined) {
 
   return {
     course,
+    loading,
     rawDataset,
     isOfflineData: isUsingOfflineSource,
     isDownloadedOffline,

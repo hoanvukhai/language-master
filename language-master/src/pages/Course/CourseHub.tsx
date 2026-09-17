@@ -1,5 +1,5 @@
 import { useParams, Routes, Route, Link, useNavigate, useLocation, useSearchParams } from 'react-router-dom';
-import { getCourseById } from '../../data/courses/registry';
+import { useCourseData } from '../../hooks/useCourseData';
 import CoursePracticeHub from './CoursePracticeHub';
 import CourseRaceHub from './CourseRaceHub';
 import CourseSettings from './CourseSettings';
@@ -34,7 +34,7 @@ export default function CourseHub() {
   const selectedLesson = searchParams.get('lesson');
   const { executeWithGate, GateComponent } = useAuthGate();
 
-  const course = getCourseById(courseId || '');
+  const { course, loading: courseLoading } = useCourseData(courseId);
 
   // Lấy data dashboard
   const { stats } = useDashboardStats(user?.uid, [course?.id || '']);
@@ -57,6 +57,15 @@ export default function CourseHub() {
     totalItems = (course.data as any[]).reduce((acc, k) => acc + (k.words?.length || 0), 0);
   }
   const percent = Math.min(100, Math.round((learnedCount / totalItems) * 100));
+
+  if (courseLoading) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[60vh] p-8">
+        <div className="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mb-4" />
+        <p className="text-slate-500 font-medium">Đang tải thông tin khóa học...</p>
+      </div>
+    );
+  }
 
   if (!course) {
     return (

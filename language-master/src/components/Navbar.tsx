@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import { LogIn, Library, Compass, WifiOff } from 'lucide-react';
+import { LogIn, Library, Compass, WifiOff, BookOpen } from 'lucide-react';
 import { useSettings } from '../context/global/useSettings';
 import { useAuth } from '../context/auth/useAuth';
 import { useNetworkStatus } from '../hooks/useNetworkStatus';
@@ -12,13 +12,14 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const t = {
-    vi: { myCourses: 'Của tôi', explore: 'Khám phá', settings: 'Cài đặt', login: 'Đăng nhập', profile: 'Hồ sơ' },
-    en: { myCourses: 'My Courses', explore: 'Explore', settings: 'Settings', login: 'Login', profile: 'Profile' }
+    vi: { myCourses: 'Của tôi', explore: 'Khám phá', dictionary: 'Từ điển', settings: 'Cài đặt', login: 'Đăng nhập', profile: 'Hồ sơ' },
+    en: { myCourses: 'My Courses', explore: 'Explore', dictionary: 'Dictionary', settings: 'Settings', login: 'Login', profile: 'Profile' }
   }[language];
 
   const links = [
     { to: '/', end: true, icon: Library, label: t.myCourses },
     { to: '/explore', end: false, icon: Compass, label: t.explore },
+    { to: '/dictionary', end: false, icon: BookOpen, label: t.dictionary },
   ];
 
   const navClass = ({ isActive }: { isActive: boolean }) =>

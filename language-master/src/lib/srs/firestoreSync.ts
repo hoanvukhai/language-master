@@ -12,7 +12,6 @@ import {
   writeBatch,
   query,
   where,
-  orderBy,
   limit,
   increment,
   Timestamp,
@@ -301,20 +300,8 @@ export async function fetchRaceLeaderboard(modeKey?: string): Promise<Leaderboar
 
   try {
     const usersRef = collection(db, 'users');
-    // Determine the sorting field based on modeKey
-    let sortField = 'totalRaceScore';
-    if (modeKey) {
-      if (modeKey.includes('_')) {
-        // Specific Game in a Course
-        sortField = `raceScores.${modeKey}`;
-      } else {
-        // Entire Course Total
-        sortField = `courseRaceScores.${modeKey}`;
-      }
-    }
-    
     // Create query
-    const q = query(usersRef, orderBy(sortField, 'desc'), limit(modeKey ? 100 : 50));
+    const q = query(usersRef, limit(100));
     const snapshot = await getDocs(q);
 
     cloudList = snapshot.docs.map(d => {
@@ -422,14 +409,12 @@ export async function fetchStudyLeaderboard(courseId: string): Promise<Leaderboa
 
   try {
     const usersRef = collection(db, 'users');
-    const sortField = `courseStudyScores.${courseId}`;
-    
     // Create query
-    const q = query(usersRef, orderBy(sortField, 'desc'), limit(50));
+    const q = query(usersRef, limit(100));
     const snapshot = await getDocs(q);
 
     cloudList = snapshot.docs.map(d => {
-      const data = d.data();
+      const data: any = d.data();
       return {
         uid: d.id,
         displayName: data.displayName || data.email?.split('@')[0] || 'Học viên',
@@ -492,7 +477,7 @@ export async function fetchLeaderboard(): Promise<LeaderboardUser[]> {
   // Try Cloud Firestore Query
   try {
     const usersRef = collection(db, 'users');
-    const q = query(usersRef, orderBy('totalStudyScore', 'desc'), limit(50));
+    const q = query(usersRef, limit(100));
     const snapshot = await getDocs(q);
 
     cloudList = snapshot.docs.map((d, index) => {
@@ -695,10 +680,9 @@ export async function fetchGlobalLeaderboard(type: 'study' | 'race'): Promise<Le
 
   try {
     const usersRef = collection(db, 'users');
-    const sortField = type === 'study' ? 'totalStudyScore' : 'totalRaceScore';
     
-    // Create query
-    const q = query(usersRef, orderBy(sortField, 'desc'), limit(50));
+    // Create query without orderBy to ensure all users are returned even if sortField is missing
+    const q = query(usersRef, limit(100));
     const snapshot = await getDocs(q);
 
     cloudList = snapshot.docs.map(d => {

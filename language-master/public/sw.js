@@ -71,7 +71,11 @@ self.addEventListener('fetch', (event) => {
         .catch(async () => {
           // Khi MẤT MẠNG: Lấy index.html từ cache để React Router mount giao diện offline
           const cachedHtml = await caches.match('/index.html');
-          return cachedHtml || caches.match('/');
+          const fallback = cachedHtml || await caches.match('/');
+          return fallback || new Response('<html><body>Offline</body></html>', {
+            status: 503,
+            headers: { 'Content-Type': 'text/html' }
+          });
         })
     );
     return;
@@ -84,15 +88,17 @@ self.addEventListener('fetch', (event) => {
         if (cachedResponse) {
           return cachedResponse;
         }
-        return fetch(request).then((networkResponse) => {
-          if (networkResponse && networkResponse.status === 200) {
-            const responseClone = networkResponse.clone();
-            caches.open(CACHE_NAME).then((cache) => {
-              cache.put(request, responseClone);
-            });
-          }
-          return networkResponse;
-        });
+        return fetch(request)
+          .then((networkResponse) => {
+            if (networkResponse && networkResponse.status === 200) {
+              const responseClone = networkResponse.clone();
+              caches.open(CACHE_NAME).then((cache) => {
+                cache.put(request, responseClone);
+              });
+            }
+            return networkResponse;
+          })
+          .catch(() => new Response('', { status: 404, statusText: 'Not Found' }));
       })
     );
     return;
@@ -110,6 +116,9 @@ self.addEventListener('fetch', (event) => {
         }
         return networkResponse;
       })
-      .catch(() => caches.match(request))
+      .catch(async () => {
+        const cached = await caches.match(request);
+        return cached || new Response('', { status: 404, statusText: 'Not Found' });
+      })
   );
 });

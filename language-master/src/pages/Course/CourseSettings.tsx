@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getCourseById } from '../../data/courses/registry';
+import { useCourseData } from '../../hooks/useCourseData';
 import { ArrowLeft, Download, RefreshCw, Trash2, CheckCircle2, HardDrive, AlertCircle } from 'lucide-react';
 import { useMyCourses } from '../../context/global/useMyCourses';
 import {
@@ -14,7 +14,7 @@ import {
 export default function CourseSettings() {
   const { courseId } = useParams();
   const navigate = useNavigate();
-  const course = getCourseById(courseId || '');
+  const { course, loading } = useCourseData(courseId);
 
   const { removeCourse } = useMyCourses();
   const [offlineMeta, setOfflineMeta] = useState<OfflineMeta | null>(null);
@@ -25,6 +25,15 @@ export default function CourseSettings() {
     if (!courseId) return;
     getOfflineCourseMeta(courseId).then(setOfflineMeta);
   }, [courseId]);
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[60vh] p-8">
+        <div className="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mb-4" />
+        <p className="text-slate-500 font-medium">Đang tải...</p>
+      </div>
+    );
+  }
 
   if (!course) return null;
 

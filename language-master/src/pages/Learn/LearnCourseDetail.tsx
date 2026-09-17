@@ -14,7 +14,7 @@ import { useAuthGate } from '../../hooks/useAuthGate';
 import { useMyCourses } from '../../context/global/useMyCourses';
 import { useSettings } from '../../context/global/useSettings';
 import { type WordProgress, type SRSSubject } from '../../lib/srs/srsTypes';
-import { getCourseById } from '../../data/courses/registry';
+import { useCourseData } from '../../hooks/useCourseData';
 
 // ── Types ─────────────────────────────────────────────────────────────────
 
@@ -112,8 +112,8 @@ export default function LearnCourseDetail() {
   const { courseId = '' } = useParams<{ courseId: string }>();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // [FIX-3] Lấy course object từ registry thay vì dùng biến undefined
-  const course = getCourseById(courseId);
+  // Lấy course object từ useCourseData (hỗ trợ cả khóa hệ thống và custom course)
+  const { course } = useCourseData(courseId);
 
   // Sync selected lesson với URL param ?lesson=Bài%201
   const selectedLesson = searchParams.get('lesson');

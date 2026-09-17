@@ -28,7 +28,8 @@ import {
 import { shuffleArray, generateQuizOptions } from '../../lib/srs/sessionManager';
 import MasteryIcon from '../../components/srs/MasteryIcon';
 import type { SRSSubject, WordProgress } from '../../lib/srs/srsTypes';
-import { getCourseById, type Course } from '../../data/courses/registry';
+import { type Course } from '../../data/courses/registry';
+import { useCourseData } from '../../hooks/useCourseData';
 
 // ── Types ────────────────────────────────────────────────────────────
 
@@ -75,6 +76,20 @@ function buildRawList(course: Course, language: string = 'vi'): RawItem[] {
         originalData: w,
       }));
     }
+    // ── Generic template (Thuật ngữ & Định nghĩa) ───────────────────
+    if (course.template === 'generic') {
+      return data.map((w: any) => ({
+        id: w.id || w.kanji || w.word || w.term,
+        kanji: w.term || w.kanji || w.word || '',
+        hiragana: '',
+        meaning: typeof w.meaning === 'object' ? (language === 'en' && w.meaning.en ? w.meaning.en : w.meaning.vi) : (w.definition || w.meaning || ''),
+        lesson: w.lesson || 'Bài 1',
+        exampleKanji: w.exampleKanji || w.example?.kanji || w.examples?.[0]?.jp || w.examples?.[0]?.en || '',
+        exampleMeaning: w.exampleMeaning || (typeof w.example?.meaning === 'object' ? (language === 'en' && w.example.meaning.en ? w.example.meaning.en : w.example.meaning.vi) : (w.example?.meaning || w.examples?.[0]?.vi || '')),
+        isSingleKanjiChar: false,
+        originalData: w,
+      }));
+    }
     // ── Japanese template ────────────────────────────────────────────
     return data.map((w: any) => ({
       id: w.id || w.kanji || w.hiragana,
@@ -82,12 +97,12 @@ function buildRawList(course: Course, language: string = 'vi'): RawItem[] {
       hiragana: w.hiragana,
       meaning: typeof w.meaning === 'object' ? (language === 'en' && w.meaning.en ? w.meaning.en : w.meaning.vi) : w.meaning,
       lesson: w.lesson || 'Bài 1',
-      exampleKanji: w.examples?.[0]?.jp || w.example?.kanji || w.examples?.[0]?.en,
+      exampleKanji: w.examples?.[0]?.jp || w.example?.kanji || w.examples?.[0]?.en || w.exampleKanji,
       exampleMeaning: typeof w.examples?.[0] === 'object'
         ? (language === 'en' && w.examples[0].en ? w.examples[0].en : (w.examples[0].vi || w.examples[0].en))
         : (typeof w.example?.meaning === 'object'
             ? (language === 'en' && w.example.meaning.en ? w.example.meaning.en : w.example.meaning.vi)
-            : w.example?.meaning),
+            : (w.example?.meaning || w.exampleMeaning)),
       isSingleKanjiChar: false,
       originalData: w,
     }));
@@ -378,7 +393,7 @@ const PreviewWordContent = ({
             <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 space-y-1.5">
               <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500">Ví dụ</p>
               <p className="text-base md:text-lg font-medium text-slate-700 dark:text-slate-300">{word.exampleKanji}</p>
-              <p className="text-sm text-slate-500 dark:text-slate-400">{word.exampleMeaning}</p>
+              {word.exampleMeaning && <p className="text-sm text-slate-500 dark:text-slate-400">{word.exampleMeaning}</p>}
             </div>
           )}
         </div>
@@ -437,7 +452,7 @@ export default function LearnSession() {
   const lessonParam = searchParams.get('lesson') || null;
   const returnUrl = searchParams.get('returnUrl') || null;
 
-  const course = getCourseById(courseIdParam);
+  const { course, loading: courseLoading } = useCourseData(courseIdParam);
   const subjectTitle = course ? course.name : courseIdParam;
 
   // ���� Data States ����������������������������������������������������������������������������������������������������������������
@@ -488,7 +503,15 @@ export default function LearnSession() {
       setEnglishAccent(overrideAccent);
       localStorage.setItem('english_accent', overrideAccent);
     }
-    u.lang = course?.template === 'english' ? targetAccent : 'ja-JP';
+    if (course?.template === 'english') {
+      u.lang = targetAccent;
+    } else if (course?.template === 'generic') {
+      const isJp = /[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff]/.test(text);
+      const isVi = /[àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]/i.test(text);
+      u.lang = isJp ? 'ja-JP' : (isVi ? 'vi-VN' : targetAccent);
+    } else {
+      u.lang = 'ja-JP';
+    }
     u.rate = 0.9;
     window.speechSynthesis.speak(u);
   };
@@ -676,12 +699,14 @@ export default function LearnSession() {
   // ���� Init Session ��������������������������������������������������������������������������������������������������������������
   useEffect(() => {
     if (authLoading) return;
+    // Chờ custom course load xong (quan trọng cho courseId = custom_xxx)
+    if (courseLoading) return;
 
     async function init() {
       setLoading(true);
       setEmptyState(null);
       try {
-        if (!course) { setEmptyState('no_items'); return; }
+        if (!course) return;
         const rawAll = buildRawList(course, language);
         setAllRawItems(rawAll);
 
@@ -751,7 +776,7 @@ export default function LearnSession() {
       }
     }
     init();
-  }, [courseIdParam, modeParam, lessonParam, user, authLoading, refreshKey, language]);
+  }, [courseIdParam, modeParam, lessonParam, user, authLoading, courseLoading, refreshKey, language, course]);
 
 
   //    Computed: batch hi!n tại                                            
@@ -979,6 +1004,9 @@ export default function LearnSession() {
     if (course?.template === 'english') {
       // English: show meaning → type the English word (stored in raw.kanji)
       correct = checkEnglishWordMatch(userTyping, raw.kanji);
+    } else if (course?.template === 'generic') {
+      // Generic: show definition → type the term
+      correct = userTyping.trim().toLowerCase() === raw.kanji.trim().toLowerCase();
     } else if (raw.isSingleKanjiChar) {
       correct = userTyping.trim().toUpperCase() === raw.hiragana.trim().toUpperCase();
     } else {
@@ -1021,7 +1049,7 @@ export default function LearnSession() {
   };
 
   // ── Render Loading ─────────────────────────────────────────────────────
-  if (loading || authLoading) {
+  if (loading || authLoading || courseLoading) {
     return (
       <div className="min-h-[calc(100dvh-57px)] bg-slate-50 dark:bg-slate-900 flex items-center justify-center">
         <div className="text-center space-y-4">
@@ -1320,15 +1348,25 @@ export default function LearnSession() {
                 <div>
                   <p className="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-400 dark:text-indigo-500 mb-1 md:mb-2">
                     {currentQ.direction === 'fwd'
-                      ? (course?.template === 'english' ? 'English Word' : '日本語 · Japanese')
-                      : 'Nghĩa · Vietnamese'}
+                      ? (course?.template === 'english' ? 'English Word' : (course?.template === 'generic' ? 'Thuật ngữ / Khái niệm' : '日本語 · Japanese'))
+                      : (course?.template === 'generic' ? 'Định nghĩa' : 'Nghĩa · Vietnamese')}
                   </p>
-                  <h1 className={`font-black text-slate-900 dark:text-white tracking-tight leading-[1.1] break-words ${currentQ.direction === 'rev'
-                      ? 'text-4xl md:text-5xl'
-                      : 'text-6xl md:text-7xl'
-                    }`}>
-                    {currentQ.direction === 'fwd' ? currentQ.raw.kanji : currentQ.raw.meaning}
-                  </h1>
+                  <div className="flex items-start justify-between gap-3">
+                    <h1 className={`font-black text-slate-900 dark:text-white tracking-tight leading-[1.1] break-words flex-1 ${currentQ.direction === 'rev'
+                        ? 'text-4xl md:text-5xl'
+                        : 'text-6xl md:text-7xl'
+                      }`}>
+                      {currentQ.direction === 'fwd' ? currentQ.raw.kanji : currentQ.raw.meaning}
+                    </h1>
+                    <button
+                      type="button"
+                      onClick={() => speak(currentQ.raw.kanji)}
+                      className="p-2.5 rounded-2xl bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 border border-indigo-200/60 dark:border-indigo-800/40 transition-all cursor-pointer shrink-0 active:scale-95 shadow-xs"
+                      title="Phát âm thuật ngữ (Phím tắt: S)"
+                    >
+                      <Volume2 className="w-5 h-5" />
+                    </button>
+                  </div>
                 </div>
               )}
 
@@ -1372,11 +1410,13 @@ export default function LearnSession() {
                       ? 'Gõ Âm Hán Việt (VD: NHIỆM)'
                       : course?.template === 'english'
                         ? 'Type the English word'
-                        : 'Gõ Romaji (sẽ tự chuyển Hiragana)'}
+                        : course?.template === 'generic'
+                          ? 'Gõ chính xác thuật ngữ'
+                          : 'Gõ Romaji (sẽ tự chuyển Hiragana)'}
                   </p>
                   <input type="text" value={userTyping}
                     onChange={e => {
-                      if (!currentQ.raw.isSingleKanjiChar && course?.template !== 'english') {
+                      if (!currentQ.raw.isSingleKanjiChar && course?.template !== 'english' && course?.template !== 'generic') {
                         const isExpectedKatakana = /^[\u30A0-\u30FF\u30FC\s]+$/.test(currentQ.raw.hiragana);
                         if (isExpectedKatakana) {
                           setUserTyping(wanakana.toKatakana(e.target.value, { IMEMode: true }));
@@ -1392,7 +1432,9 @@ export default function LearnSession() {
                       ? 'Âm Hán Việt...'
                       : course?.template === 'english'
                         ? 'Type the word...'
-                        : 'Romaji...'}
+                        : course?.template === 'generic'
+                          ? 'Nhập thuật ngữ...'
+                          : 'Romaji...'}
                     disabled={feedback !== 'none'}
                     autoFocus
                     autoComplete="off"
@@ -1404,7 +1446,7 @@ export default function LearnSession() {
 
                   {feedback === 'wrong' && (
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-sm font-bold text-red-500 dark:text-red-400 mt-2">
-                      Đáp án đúng: {course?.template === 'english' ? formatWordVariantsDisplay(currentQ.raw.kanji) : currentQ.raw.hiragana}
+                      Đáp án đúng: {course?.template === 'english' ? formatWordVariantsDisplay(currentQ.raw.kanji) : (course?.template === 'generic' ? currentQ.raw.kanji : currentQ.raw.hiragana)}
                     </motion.div>
                   )}
                 </div>

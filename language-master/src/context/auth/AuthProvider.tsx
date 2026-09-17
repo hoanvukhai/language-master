@@ -45,8 +45,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
               role: 'user',
               createdAt: serverTimestamp(),
               totalExp: 0,
+              totalStudyScore: 0,
+              totalRaceScore: 0,
               currentStreak: 0,
               lastLoginDate: getLocalISODate(new Date()),
+              myCourseIds: [],
+              dailyStudyTime: {},
+              activityHistory: {},
               learnSettings: {
                 dailyNewWordLimit: 15,
                 maxPendingWords: 50,
@@ -55,10 +60,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                 showKana: true,
               },
             };
-            await setDoc(userRef, defaultData);
+            await setDoc(userRef, defaultData, { merge: true });
           } else {
             const data = snap.data();
             setRole(data?.role === 'admin' ? 'admin' : 'user');
+            
+            // Tự động bổ sung các trường thiếu cho tài khoản cũ
+            const missingUpdates: Record<string, any> = {};
+            if (data?.totalStudyScore === undefined) missingUpdates.totalStudyScore = 0;
+            if (data?.totalRaceScore === undefined) missingUpdates.totalRaceScore = 0;
+            if (data?.myCourseIds === undefined) missingUpdates.myCourseIds = [];
+            if (data?.dailyStudyTime === undefined) missingUpdates.dailyStudyTime = {};
+            if (data?.activityHistory === undefined) missingUpdates.activityHistory = {};
+            if (Object.keys(missingUpdates).length > 0) {
+              await updateDoc(userRef, missingUpdates);
+              return;
+            }
             
             const now = new Date();
             const today = getLocalISODate(now);

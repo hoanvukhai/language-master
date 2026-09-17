@@ -48,13 +48,15 @@ export default function VocabDictionary({ data, template }: Props) {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedItem, setSelectedItem] = useState<any | null>(null);
 
-  const isEnglish = template === 'english' || data.some((d: any) => d.template === 'english' || (d.word && !d.kanji));
+  const isGeneric = template === 'generic';
+  const isEnglish = !isGeneric && (template === 'english' || data.some((d: any) => d.template === 'english' || (d.word && !d.kanji)));
 
   const pageSize = 20;
 
   // ── Data-driven Dynamic Filters ──────────────────────────────────────
   // Chỉ hiển thị các bộ lọc thực sự tồn tại trong tập dữ liệu hiện tại
   const filtersList = useMemo(() => {
+    if (isGeneric) return [];
     if (isEnglish) {
       const posSet = new Set<string>();
       const cefrSet = new Set<string>();
@@ -211,7 +213,7 @@ export default function VocabDictionary({ data, template }: Props) {
   const handleSpeak = (text: string, e?: React.MouseEvent, overrideAccent?: 'en-US' | 'en-GB') => {
     e?.stopPropagation();
     const preferredAccent = overrideAccent || (localStorage.getItem('english_accent') as 'en-US' | 'en-GB') || 'en-US';
-    playText(text, isEnglish ? preferredAccent : 'ja-JP');
+    playText(text, isEnglish ? preferredAccent : (isGeneric ? 'vi-VN' : 'ja-JP'));
   };
 
   return (
@@ -223,9 +225,11 @@ export default function VocabDictionary({ data, template }: Props) {
           <input
             type="text"
             placeholder={
-              isEnglish
-                ? language === 'en' ? 'Search by word, IPA, or meaning...' : 'Tìm theo từ tiếng Anh, phiên âm, hoặc nghĩa...'
-                : language === 'en' ? 'Search by Kanji, Hiragana or Meaning...' : 'Tìm theo Kanji, Hiragana hoặc Nghĩa...'
+              isGeneric
+                ? (language === 'en' ? 'Search by term or definition...' : 'Tìm theo thuật ngữ hoặc định nghĩa...')
+                : isEnglish
+                  ? language === 'en' ? 'Search by word, IPA, or meaning...' : 'Tìm theo từ tiếng Anh, phiên âm, hoặc nghĩa...'
+                  : language === 'en' ? 'Search by Kanji, Hiragana or Meaning...' : 'Tìm theo Kanji, Hiragana hoặc Nghĩa...'
             }
             value={searchTerm}
             onChange={(e) => {
@@ -280,17 +284,23 @@ export default function VocabDictionary({ data, template }: Props) {
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="bg-slate-50 dark:bg-slate-900 border-b border-gray-100 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-sm">
-              <th className="py-4 px-6 font-semibold whitespace-nowrap">{isEnglish ? 'Từ vựng (Word)' : 'Kanji'}</th>
-              <th className="py-4 px-6 font-semibold">{isEnglish ? 'Phiên âm (IPA)' : 'Hiragana'}</th>
+              <th className="py-4 px-6 font-semibold whitespace-nowrap">
+                {isGeneric ? 'Thuật ngữ (Term)' : (isEnglish ? 'Từ vựng (Word)' : 'Kanji')}
+              </th>
+              {!isGeneric && (
+                <th className="py-4 px-6 font-semibold">
+                  {isEnglish ? 'Phiên âm (IPA)' : 'Hiragana'}
+                </th>
+              )}
               {isEnglish && <th className="py-4 px-6 font-semibold whitespace-nowrap">Loại từ / Level</th>}
-              <th className="py-4 px-6 font-semibold">{language === 'en' ? 'Meaning' : 'Ý nghĩa'}</th>
+              <th className="py-4 px-6 font-semibold">{isGeneric ? 'Định nghĩa / Diễn giải' : (language === 'en' ? 'Meaning' : 'Ý nghĩa')}</th>
               <th className="py-4 px-6 font-semibold text-center w-20">Âm thanh</th>
             </tr>
           </thead>
           <tbody>
             {paginatedData.length > 0 ? (
               paginatedData.map((word) => {
-                const primaryText = isEnglish ? word.word : word.kanji;
+                const primaryText = isGeneric ? (word.term || word.kanji || word.word) : (isEnglish ? word.word : word.kanji);
                 const subText = isEnglish ? word.ipa : word.hiragana;
                 return (
                   <tr
@@ -301,7 +311,8 @@ export default function VocabDictionary({ data, template }: Props) {
                     <td className="py-4 px-6 font-bold text-xl text-slate-800 dark:text-white whitespace-nowrap group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                       {primaryText}
                     </td>
-                    <td className="py-4 px-6 text-slate-500 dark:text-slate-400 whitespace-nowrap font-medium">
+                    {!isGeneric && (
+                      <td className="py-4 px-6 text-slate-500 dark:text-slate-400 whitespace-nowrap font-medium">
                       {isEnglish ? (
                         word.ipaBrE || word.ipaAmE ? (
                           <div className="flex flex-col gap-1 text-xs font-mono">
@@ -335,6 +346,7 @@ export default function VocabDictionary({ data, template }: Props) {
                         subText || '-'
                       )}
                     </td>
+                    )}
                     {isEnglish && (
                       <td className="py-4 px-6 whitespace-nowrap">
                         {word.partOfSpeech && (
@@ -366,7 +378,7 @@ export default function VocabDictionary({ data, template }: Props) {
               })
             ) : (
               <tr>
-                <td colSpan={isEnglish ? 5 : 4} className="py-12 text-center text-gray-400 dark:text-gray-500">
+                <td colSpan={isGeneric ? 3 : (isEnglish ? 5 : 4)} className="py-12 text-center text-gray-400 dark:text-gray-500">
                   {language === 'en' ? 'No matching results found.' : 'Không tìm thấy kết quả nào phù hợp.'}
                 </td>
               </tr>

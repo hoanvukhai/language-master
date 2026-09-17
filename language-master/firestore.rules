@@ -28,6 +28,16 @@ service cloud.firestore {
       }
     }
 
+    // ── Collection: custom_courses (Bộ từ vựng người dùng tự tạo) ───────────
+    match /custom_courses/{courseId} {
+      // Đọc: Cho phép đọc để hiển thị Khám phá cộng đồng và danh sách của tôi
+      allow read: if true;
+      // Tạo: Chỉ người dùng đã đăng nhập
+      allow create: if request.auth != null;
+      // Cập nhật, Xóa: Tác giả tạo ra khóa học hoặc chính chủ
+      allow update, delete: if request.auth != null && (resource.data.authorId == request.auth.uid || request.resource.data.authorId == request.auth.uid);
+    }
+
     // Các collection khác: mặc định từ chối
     match /{document=**} {
       allow read, write: if false;

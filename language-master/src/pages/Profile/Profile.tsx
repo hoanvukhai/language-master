@@ -17,7 +17,7 @@ import {
   calculateSeasonRank,
   type SeasonInfo
 } from '../../lib/ranking/seasonRank';
-import { Trophy, Flame, Pencil, Check, Clock, Sparkles } from 'lucide-react';
+import { Trophy, Flame, Pencil, Check, Clock, Sparkles, BookOpen } from 'lucide-react';
 
 export default function Profile() {
   const { user, userProfile, role } = useAuth();
@@ -28,11 +28,7 @@ export default function Profile() {
 
 
   const [studyLeaderboard, setStudyLeaderboard] = useState<LeaderboardUser[]>([]);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_raceLeaderboard, setRaceLeaderboard] = useState<LeaderboardUser[]>([]);
   const [loadingStudy, setLoadingStudy] = useState(true);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_loadingRace, setLoadingRace] = useState(true);
 
 
   const [modalLeaderboard, setModalLeaderboard] = useState<'study' | 'race' | null>(null);
@@ -156,11 +152,6 @@ export default function Profile() {
       setStudyLeaderboard(data);
       setLoadingStudy(false);
     });
-
-    fetchGlobalLeaderboard('race').then(data => {
-      setRaceLeaderboard(data);
-      setLoadingRace(false);
-    });
   }, [user]);
 
   if (!user) {
@@ -226,10 +217,10 @@ export default function Profile() {
       if (field === 'name') setIsEditingName(false);
       if (field === 'avatar') setIsEditingAvatar(false);
 
-      const newStudy = await fetchGlobalLeaderboard('study');
-      setStudyLeaderboard(newStudy);
-      const newRace = await fetchGlobalLeaderboard('race');
-      setRaceLeaderboard(newRace);
+      // Cập nhật trực tiếp local leaderboard state mà không cần tốn query Firestore
+      setStudyLeaderboard(prev =>
+        prev.map(u => u.uid === user.uid ? { ...u, displayName: finalName, photoURL: finalAvatar || null } : u)
+      );
 
     } catch (error) {
       console.error("Error saving profile:", error);
@@ -501,6 +492,31 @@ export default function Profile() {
             <p className="text-[10px] text-slate-500 mt-2 text-center">
               Còn <span className="font-bold text-blue-500">{expNeededInLevel - expInLevel} EXP</span> nữa để lên cấp!
             </p>
+          </div>
+
+          {/* Mini Stats: Tổng từ đã học & Chuỗi ngày học */}
+          <div className="grid grid-cols-2 gap-2.5 w-full mt-4">
+            <div className="flex flex-col items-center justify-center p-3 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900/40 text-center">
+              <div className="flex items-center gap-1 text-[11px] font-bold text-indigo-600 dark:text-indigo-400 mb-0.5">
+                <BookOpen size={13} />
+                <span>Từ đã học</span>
+              </div>
+              <span className="text-xl font-black text-slate-800 dark:text-white">
+                {srsOverview?.totalLearnedWords ?? 0}
+              </span>
+              <span className="text-[10px] text-slate-400">mục (SRS Lv.1+)</span>
+            </div>
+
+            <div className="flex flex-col items-center justify-center p-3 rounded-2xl bg-orange-50/60 dark:bg-orange-950/30 border border-orange-100 dark:border-orange-900/40 text-center">
+              <div className="flex items-center gap-1 text-[11px] font-bold text-orange-600 dark:text-orange-400 mb-0.5">
+                <Flame size={13} />
+                <span>Chuỗi học</span>
+              </div>
+              <span className="text-xl font-black text-slate-800 dark:text-white">
+                {currentStreak}
+              </span>
+              <span className="text-[10px] text-slate-400">ngày liên tục</span>
+            </div>
           </div>
         </div>
 

@@ -15,7 +15,7 @@ import {
   Loader2,
   AlertTriangle,
 } from 'lucide-react';
-import { getCourseById } from '../../data/courses/registry';
+import { useCourseData } from '../../hooks/useCourseData';
 import {
   saveCourseOffline,
   getOfflineCourseMeta,
@@ -63,7 +63,7 @@ export function CourseManageModal({
   // Toast message
   const [toast, setToast] = useState<{ text: string; type: 'success' | 'error' } | null>(null);
 
-  const course = courseId ? getCourseById(courseId) : null;
+  const { course } = useCourseData(courseId || undefined);
 
   const loadMeta = () => {
     if (!courseId) return;

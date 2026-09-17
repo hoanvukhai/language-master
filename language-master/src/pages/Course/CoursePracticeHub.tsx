@@ -1,5 +1,5 @@
 import { useParams, Routes, Route, Link, useNavigate, useLocation, Navigate } from 'react-router-dom';
-import { getCourseById } from '../../data/courses/registry';
+import { useCourseData } from '../../hooks/useCourseData';
 import { Layers, CheckSquare, GitMerge, Keyboard, ShieldAlert, Zap, Edit3, ArrowLeft } from 'lucide-react';
 
 // Import Practice components
@@ -32,10 +32,19 @@ export default function CoursePracticeHub() {
   const { courseId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const course = getCourseById(courseId || '');
+  const { course, loading: courseLoading } = useCourseData(courseId);
 
   // Dashboard View (if not playing a game)
   const isDashboard = location.pathname.endsWith('/practice') || location.pathname.endsWith('/practice/');
+
+  if (courseLoading) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[60vh] p-8">
+        <div className="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mb-4" />
+        <p className="text-slate-500 font-medium">Đang tải...</p>
+      </div>
+    );
+  }
 
   if (!course) {
     return (

@@ -4,7 +4,7 @@ import { useAuth } from '../../../context/auth/useAuth';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../../../lib/firebase';
 import { DEFAULT_LEARN_SETTINGS, type LearnSettings } from '../../../lib/srs/srsTypes';
-import { getCourseById } from '../../../data/courses/registry';
+import { useCourseData } from '../../../hooks/useCourseData';
 
 interface Props {
   isOpen: boolean;
@@ -19,7 +19,7 @@ export function CourseSettingsModal({ isOpen, onClose, courseId }: Props) {
   const [saved, setSaved] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const course = courseId ? getCourseById(courseId) : null;
+  const { course } = useCourseData(courseId);
 
   // Fetch settings từ Firestore
   useEffect(() => {
