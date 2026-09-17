@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAllCourses } from '../../data/courses/registry';
 import { useMyCourses } from '../../context/global/useMyCourses';
-import { Library, Compass, Flame, Loader2, Sparkles, Trophy, BadgeCheck, MoreVertical, HardDrive } from 'lucide-react';
+import { Library, Flame, Loader2, Sparkles, Trophy, BadgeCheck, MoreVertical, HardDrive } from 'lucide-react';
 import { useAuth } from '../../context/auth/useAuth';
 import { useDashboardStats } from './useDashboardStats';
 import { CourseManageModal } from '../../components/course/CourseManageModal';
@@ -37,24 +37,14 @@ export default function MyCourses() {
       <div className="max-w-6xl mx-auto space-y-8">
 
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-          <div>
-            <h1 className="text-3xl font-black text-slate-800 dark:text-white mb-2 flex items-center gap-3">
-              <Library className="text-indigo-500" size={32} />
-              Khóa Học Của Tôi
-            </h1>
-            <p className="text-slate-500">
-              {user ? `Chào mừng trở lại, ${user.displayName || user.email?.split('@')[0]}!` : 'Hãy đăng nhập để đồng bộ tiến độ học tập của bạn trên mọi thiết bị.'}
-            </p>
-          </div>
-
-          <button
-            onClick={() => navigate('/explore')}
-            className="flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-white font-bold rounded-xl transition-all shadow-sm border border-slate-200 dark:border-slate-700"
-          >
-            <Compass size={18} className="text-indigo-500" />
-            Khám phá thêm
-          </button>
+        <div>
+          <h1 className="text-3xl font-black text-slate-800 dark:text-white mb-2 flex items-center gap-3">
+            <Library className="text-indigo-500" size={32} />
+            Khóa Học Của Tôi
+          </h1>
+          <p className="text-slate-500">
+            {user ? `Chào mừng trở lại, ${user.displayName || user.email?.split('@')[0]}!` : 'Hãy đăng nhập để đồng bộ tiến độ học tập của bạn trên mọi thiết bị.'}
+          </p>
         </div>
 
         {/* My Courses Grid */}

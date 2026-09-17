@@ -3,14 +3,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { getAllCourses, type Course } from '../../data/courses/registry';
 import { useMyCourses } from '../../context/global/useMyCourses';
 import { Plus, Check, Compass, Search, BookOpen, BadgeCheck } from 'lucide-react';
-import { useAuth } from '../../context/auth/useAuth';
 
 type LangFilter = 'all' | 'ja' | 'en';
 type SubjectFilter = 'all' | 'vocab' | 'kanji' | 'grammar' | 'special';
 
 export default function Explore() {
   const { myCourseIds, addCourse } = useMyCourses();
-  const { user } = useAuth();
   const allCourses = getAllCourses();
   const navigate = useNavigate();
 
@@ -19,12 +17,7 @@ export default function Explore() {
   const [subjectFilter, setSubjectFilter] = useState<SubjectFilter>('all');
 
   const handleAddCourse = (courseId: string) => {
-    if (!user) {
-      navigate('/login');
-      return;
-    }
     addCourse(courseId);
-    navigate(`/course/${courseId}`, { state: { from: '/explore' } });
   };
 
   const filteredCourses = useMemo(() => {
