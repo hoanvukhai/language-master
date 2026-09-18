@@ -8,6 +8,7 @@ export interface CourseStats {
   progressPercent: number; // this is actually learnedCount
   highScore: number;
   masteryCounts: number[];
+  lastStudiedAt: number; // timestamp ms của lần học gần nhất
 }
 
 export function useDashboardStats(userId: string | undefined, courseIds: string[]) {
@@ -33,6 +34,15 @@ export function useDashboardStats(userId: string | undefined, courseIds: string[
         // raceScores[courseId_gameMode] = kỷ lục từng trò riêng lẻ
         const courseRaceScores = userSnap.exists() ? (userSnap.data()?.courseRaceScores || {}) : {};
 
+        // Đọc thêm thời gian truy cập gần nhất từ localStorage nếu có
+        let localAccessMap: Record<string, number> = {};
+        try {
+          const rawAccess = localStorage.getItem('nihongo_last_course_access');
+          if (rawAccess) localAccessMap = JSON.parse(rawAccess);
+        } catch (_) {
+          localAccessMap = {};
+        }
+
         const newStats: Record<string, CourseStats> = {};
         const now = new Date();
 
@@ -46,6 +56,7 @@ export function useDashboardStats(userId: string | undefined, courseIds: string[
             let dueCount = 0;
             let learnedCount = 0;
             let masteryCounts = [0, 0, 0, 0, 0, 0, 0, 0];
+            let maxStudiedTime = localAccessMap[courseId] || 0;
             
             progressList.forEach((p) => {
               if (p.status !== 'new') {
@@ -58,6 +69,13 @@ export function useDashboardStats(userId: string | undefined, courseIds: string[
                 if (p.nextReviewDate <= now) {
                   dueCount++;
                 }
+
+                if (p.lastStudiedDate) {
+                  const t = p.lastStudiedDate instanceof Date ? p.lastStudiedDate.getTime() : new Date(p.lastStudiedDate).getTime();
+                  if (!isNaN(t) && t > maxStudiedTime) {
+                    maxStudiedTime = t;
+                  }
+                }
               }
             });
 
@@ -65,7 +83,8 @@ export function useDashboardStats(userId: string | undefined, courseIds: string[
               dueCount,
               progressPercent: learnedCount,
               highScore: courseRaceScores[courseId] || 0,
-              masteryCounts
+              masteryCounts,
+              lastStudiedAt: maxStudiedTime
             };
           })
         );
