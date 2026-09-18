@@ -36,6 +36,43 @@ export function shuffleArray<T>(arr: T[]): T[] {
 }
 
 /**
+ * Loại bỏ các từ tiếng Anh hoặc giải thích trong ngoặc có nguy cơ làm lộ đáp án khi làm bài trắc nghiệm / học SRS
+ */
+export function cleanQuizMeaning(meaning: string, word?: string): string {
+  if (!meaning || typeof meaning !== 'string') return meaning;
+
+  let cleaned = meaning;
+
+  // 1. Nếu có từ vựng mục tiêu, loại bỏ mọi ngoặc đơn chứa từ đó hoặc từ tương tự
+  if (word && word.trim().length >= 3) {
+    const cleanWord = word.trim().toLowerCase();
+    cleaned = cleaned.replace(/\s*\([^)]*\)\s*/g, (match) => {
+      const inner = match.toLowerCase();
+      if (inner.includes(cleanWord) || cleanWord.includes(inner.replace(/[()]/g, '').trim())) {
+        return ' ';
+      }
+      return match;
+    });
+  }
+
+  // 2. Tự động lược bỏ các ngoặc đơn thuần chữ Latinh tiếng Anh (thường là từ đồng nghĩa/chú thích làm lộ đáp án)
+  cleaned = cleaned.replace(/\s*\(([a-zA-Z\s,;'+/-]+)\)\s*/g, (match, inner) => {
+    const lower = inner.trim().toLowerCase();
+    const pos = new Set(['n', 'v', 'adj', 'adv', 'prep', 'conj', 'pron']);
+    if (pos.has(lower)) return match; // Giữ lại từ loại nếu là (n), (v)...
+    return ' ';
+  });
+
+  return cleaned
+    .replace(/\s*;\s*;/g, ';')
+    .replace(/\s*,\s*,/g, ',')
+    .replace(/;\s*$/, '')
+    .replace(/,\s*$/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/**
  * Tạo danh sách câu hỏi 4 lựa chọn cho Quiz
  */
 export function generateQuizOptions(correctAnswer: string, allPossibleAnswers: string[]): string[] {
@@ -45,3 +82,4 @@ export function generateQuizOptions(correctAnswer: string, allPossibleAnswers: s
     .slice(0, 3);
   return shuffleArray([correctAnswer, ...distractors]);
 }
+

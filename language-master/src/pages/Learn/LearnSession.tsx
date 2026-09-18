@@ -25,7 +25,7 @@ import {
   onWrongLongTerm,
   markAsMasteredUser,
 } from '../../lib/srs/srsEngine';
-import { shuffleArray, generateQuizOptions } from '../../lib/srs/sessionManager';
+import { shuffleArray, generateQuizOptions, cleanQuizMeaning } from '../../lib/srs/sessionManager';
 import MasteryIcon from '../../components/srs/MasteryIcon';
 import type { SRSSubject, WordProgress } from '../../lib/srs/srsTypes';
 import { type Course } from '../../data/courses/registry';
@@ -455,7 +455,7 @@ export default function LearnSession() {
   const { course, loading: courseLoading } = useCourseData(courseIdParam);
   const subjectTitle = course ? course.name : courseIdParam;
 
-  // ���� Data States ����������������������������������������������������������������������������������������������������������������
+  //    Data States                                                         
   const [loading, setLoading] = useState(true);
   const [emptyState, setEmptyState] = useState<'no_due' | 'no_new' | 'no_items' | null>(null);
   const [allRawItems, setAllRawItems] = useState<RawItem[]>([]);
@@ -483,13 +483,22 @@ export default function LearnSession() {
   const [initialTestCount, setInitialTestCount] = useState(0);
   const [correctTestCount, setCorrectTestCount] = useState(0);
 
+  // Khóa đệm chống bấm nhầm câu hỏi tiếp theo khi vừa chuyển câu (300ms)
+  const [isInputBlocked, setIsInputBlocked] = useState(false);
+  const isInputBlockedRef = useRef(false);
+  const inputBlockTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    isInputBlockedRef.current = isInputBlocked;
+  }, [isInputBlocked]);
+
   // Ref để auto-save khi unmount và tracking
   const savedIdsRef = useRef<Set<string>>(new Set());
   const wrongIdsRef = useRef<Set<string>>(new Set());
   const sessionItemsRef = useRef<RawItem[]>([]);
   const progressMapRef = useRef<Map<string, WordProgress>>(new Map());
 
-  // ���� Audio ��������������������������������������������������������������������������������������������������������������������������
+  // ── Audio ────────────────────────────────────────────────────────────
   const [englishAccent, setEnglishAccent] = useState<'en-US' | 'en-GB'>(() => {
     return (localStorage.getItem('english_accent') as 'en-US' | 'en-GB') || 'en-US';
   });
@@ -497,18 +506,30 @@ export default function LearnSession() {
   const speak = (text: string, overrideAccent?: 'en-US' | 'en-GB') => {
     if (!('speechSynthesis' in window)) return;
     window.speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
+    const cleanText = text ? text.trim() : '';
+    if (!cleanText) return;
+
+    const u = new SpeechSynthesisUtterance(cleanText);
     const targetAccent = overrideAccent || englishAccent || localStorage.getItem('english_accent') || 'en-US';
     if (overrideAccent && overrideAccent !== englishAccent) {
       setEnglishAccent(overrideAccent);
       localStorage.setItem('english_accent', overrideAccent);
     }
+
+    const isJp = /[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff]/.test(cleanText);
+    const isVi = /[àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]/i.test(cleanText);
+    const isKo = /[\uac00-\ud7af\u1100-\u11ff]/.test(cleanText);
+
     if (course?.template === 'english') {
       u.lang = targetAccent;
-    } else if (course?.template === 'generic') {
-      const isJp = /[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff]/.test(text);
-      const isVi = /[àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]/i.test(text);
-      u.lang = isJp ? 'ja-JP' : (isVi ? 'vi-VN' : targetAccent);
+    } else if (isJp) {
+      u.lang = 'ja-JP';
+    } else if (isVi) {
+      u.lang = 'vi-VN';
+    } else if (isKo) {
+      u.lang = 'ko-KR';
+    } else if (/^[a-zA-Z0-9\s.,!?'"()/-]+$/.test(cleanText)) {
+      u.lang = targetAccent;
     } else {
       u.lang = 'ja-JP';
     }
@@ -611,8 +632,8 @@ export default function LearnSession() {
         return;
       }
 
-      // QUIZ: 1-4 & Enter
-      if (cQ.phase === 'quiz') {
+      // QUIZ: 1-4 & Enter (chỉ nhận khi không bị khóa đệm 300ms)
+      if (cQ.phase === 'quiz' && !isInputBlockedRef.current) {
         const quizOpts = (cQ as any).quizOptions?.length ? (cQ as any).quizOptions : opts;
         if (e.key === 'Enter') {
           e.preventDefault();
@@ -623,8 +644,8 @@ export default function LearnSession() {
         }
       }
 
-      // TYPING: Enter
-      if (cQ.phase === 'typing' && e.key === 'Enter') {
+      // TYPING: Enter (chỉ nhận khi không bị khóa đệm 300ms)
+      if (cQ.phase === 'typing' && e.key === 'Enter' && !isInputBlockedRef.current) {
         e.preventDefault();
         submitTypingRef.current(); // Không cần check trống, submitTyping tự xử lý
       }
@@ -695,6 +716,18 @@ export default function LearnSession() {
       });
     };
   }, [user]); // eslint-disable-line
+
+  // Dọn dẹp âm thanh và timer khi người dùng thoát phiên học
+  useEffect(() => {
+    return () => {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+      if (inputBlockTimerRef.current) {
+        clearTimeout(inputBlockTimerRef.current);
+      }
+    };
+  }, []);
 
   // ���� Init Session ��������������������������������������������������������������������������������������������������������������
   useEffect(() => {
@@ -881,9 +914,15 @@ export default function LearnSession() {
     }
   }, [phase, previewItemIdx, currentBatch]);
 
-  //    Handle Answer                                                       
+  // ── Handle Answer ──────────────────────────────────────────────────
   const handleAnswer = useCallback((isCorrect: boolean, raw: RawItem) => {
     setFeedback(isCorrect ? 'correct' : 'wrong');
+
+    // Tự động phát âm thanh của THUẬT NGỮ (raw.kanji) khi biết kết quả đúng/sai
+    // Tuyệt đối chỉ đọc thuật ngữ (raw.kanji), không bao giờ đọc định nghĩa/nghĩa tiếng Việt
+    if (raw?.kanji) {
+      speak(raw.kanji);
+    }
 
     if (isCorrect) {
       setCorrectTestCount(c => c + 1);
@@ -904,16 +943,17 @@ export default function LearnSession() {
       next.set(raw.id, current + (isCorrect ? 1 : 0));
       return next;
     });
-
-    // Moved save logic inside setCorrectCounts to prevent race condition
-
-    // Không tự động nhảy câu. Sẽ nhảy khi user gọi advanceNext() thông qua phím tắt hoặc nút bấm.
-  }, [currentQIdx, testQueue, saveItem, handleBatchDone, modeParam, handleReviewWrong]);
+  }, [saveItem]);
 
 
   const advanceNext = useCallback(() => {
     if (!currentQ) return;
     if (feedback === 'none' && currentQ.phase !== 'preview') return;
+
+    // Ngắt ngay lập tức mọi âm thanh đang phát để không bị lọt sang câu sau
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
 
     if (currentQ.phase === 'preview') {
       const nextIdx = currentQIdx + 1;
@@ -924,6 +964,15 @@ export default function LearnSession() {
       }
       return;
     }
+
+    // Kích hoạt khóa đệm an toàn 300ms chống bấm nhầm câu sau khi vừa chuyển câu
+    setIsInputBlocked(true);
+    isInputBlockedRef.current = true;
+    if (inputBlockTimerRef.current) clearTimeout(inputBlockTimerRef.current);
+    inputBlockTimerRef.current = setTimeout(() => {
+      setIsInputBlocked(false);
+      isInputBlockedRef.current = false;
+    }, 300);
 
     setFeedback('none');
 
@@ -964,40 +1013,36 @@ export default function LearnSession() {
   const advanceNextRef = useRef(advanceNext);
   useEffect(() => { advanceNextRef.current = advanceNext; }, [advanceNext]);
 
-  // Auto-advance for feedback
+  // Auto-advance for feedback: Cả Đúng và Sai đều là 2.0s (2000ms) để nghe trọn vẹn phát âm
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
-    if (feedback === 'wrong') {
+    if (feedback === 'wrong' || feedback === 'correct') {
       timer = setTimeout(() => {
         advanceNextRef.current();
-      }, 1200); // 1.2s wait before moving to preview
-    } else if (feedback === 'correct') {
-      timer = setTimeout(() => {
-        advanceNextRef.current();
-      }, 1000); // 1s wait before moving to next question
+      }, 2000); // 2.0s
     }
     return () => clearTimeout(timer);
   }, [feedback]);
 
-  //    Skip Button Logic
+  // ── Skip Button Logic ──────────────────────────────────────────────
   const handleSkip = useCallback(() => {
-    if (!currentQ || feedback !== 'none') return;
+    if (!currentQ || feedback !== 'none' || isInputBlocked) return;
     handleAnswer(false, currentQ.raw);
-  }, [currentQ, feedback, handleAnswer]);
+  }, [currentQ, feedback, isInputBlocked, handleAnswer]);
 
 
-  //    Quiz Submit                                                         
+  // ── Quiz Submit ────────────────────────────────────────────────────
   const submitQuiz = useCallback((selected: string) => {
-    if (!currentQ || feedback !== 'none') return;
+    if (!currentQ || feedback !== 'none' || isInputBlocked) return;
     setSelectedOpt(selected);
     const correct = currentQ.direction === 'fwd' ? currentQ.raw.meaning : currentQ.raw.kanji;
     handleAnswer(selected === correct, currentQ.raw);
-  }, [currentQ, feedback, handleAnswer]);
+  }, [currentQ, feedback, isInputBlocked, handleAnswer]);
   useEffect(() => { submitQuizRef.current = submitQuiz; }, [submitQuiz]);
 
-  //    Typing Submit                                                       
+  // ── Typing Submit ──────────────────────────────────────────────────
   const submitTyping = useCallback(() => {
-    if (!currentQ || feedback !== 'none') return;
+    if (!currentQ || feedback !== 'none' || isInputBlocked) return;
     const raw = currentQ.raw;
     let correct = false;
 
@@ -1018,7 +1063,7 @@ export default function LearnSession() {
     }
 
     handleAnswer(correct, raw);
-  }, [currentQ, feedback, userTyping, handleAnswer]);
+  }, [currentQ, feedback, isInputBlocked, course, userTyping, handleAnswer]);
   useEffect(() => { submitTypingRef.current = submitTyping; }, [submitTyping]);
   useEffect(() => { speakRef.current = speak; }, [speak]);
   useEffect(() => { currentQRef2.current = currentQ; }, [currentQ]);
@@ -1356,16 +1401,18 @@ export default function LearnSession() {
                         ? 'text-4xl md:text-5xl'
                         : 'text-6xl md:text-7xl'
                       }`}>
-                      {currentQ.direction === 'fwd' ? currentQ.raw.kanji : currentQ.raw.meaning}
+                      {currentQ.direction === 'fwd' ? currentQ.raw.kanji : cleanQuizMeaning(currentQ.raw.meaning, currentQ.raw.kanji)}
                     </h1>
-                    <button
-                      type="button"
-                      onClick={() => speak(currentQ.raw.kanji)}
-                      className="p-2.5 rounded-2xl bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 border border-indigo-200/60 dark:border-indigo-800/40 transition-all cursor-pointer shrink-0 active:scale-95 shadow-xs"
-                      title="Phát âm thuật ngữ (Phím tắt: S)"
-                    >
-                      <Volume2 className="w-5 h-5" />
-                    </button>
+                    {feedback !== 'none' && (
+                      <button
+                        type="button"
+                        onClick={() => speak(currentQ.raw.kanji)}
+                        className="p-2.5 rounded-2xl bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 border border-indigo-200/60 dark:border-indigo-800/40 transition-all cursor-pointer shrink-0 active:scale-95 shadow-xs animate-in fade-in zoom-in duration-200"
+                        title="Nghe lại phát âm thuật ngữ (Phím tắt: S)"
+                      >
+                        <Volume2 className="w-5 h-5" />
+                      </button>
+                    )}
                   </div>
                 </div>
               )}
@@ -1378,7 +1425,7 @@ export default function LearnSession() {
                     const isSelectedWrong = feedback === 'wrong' && opt === selectedOpt;
                     const isDimmed = feedback !== 'none' && !isCorrectOpt && !isSelectedWrong;
                     return (
-                      <button key={i} onClick={() => submitQuiz(opt)} disabled={feedback !== 'none'}
+                      <button key={i} onClick={() => submitQuiz(opt)} disabled={feedback !== 'none' || isInputBlocked}
                         className={`group py-3 md:py-4 px-4 md:px-5 rounded-2xl text-sm font-semibold border-2 transition-all text-left flex items-center gap-3 ${isCorrectOpt
                           ? 'bg-emerald-50 dark:bg-emerald-900/30 border-emerald-400 dark:border-emerald-500 text-emerald-700 dark:text-emerald-300'
                           : isSelectedWrong
@@ -1391,7 +1438,7 @@ export default function LearnSession() {
                           : isSelectedWrong ? 'bg-red-200 dark:bg-red-700/50 text-red-700 dark:text-red-300'
                             : 'bg-slate-100 dark:bg-slate-800 text-slate-500 group-hover:bg-indigo-100 dark:group-hover:bg-indigo-800 group-hover:text-indigo-600 dark:group-hover:text-indigo-400'
                           }`}>{i + 1}</span>
-                        <span className="leading-snug">{opt}</span>
+                        <span className="leading-snug">{currentQ.direction === 'fwd' ? cleanQuizMeaning(opt, currentQ.raw.kanji) : opt}</span>
                       </button>
                     );
                   })}
@@ -1435,7 +1482,7 @@ export default function LearnSession() {
                         : course?.template === 'generic'
                           ? 'Nhập thuật ngữ...'
                           : 'Romaji...'}
-                    disabled={feedback !== 'none'}
+                    disabled={feedback !== 'none' || isInputBlocked}
                     autoFocus
                     autoComplete="off"
                     autoCorrect="off"

@@ -1,5 +1,5 @@
 // src/pages/Grammar/GrammarQuiz.tsx
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, RotateCcw, AlertTriangle, CheckCircle2, XCircle, Eye, EyeOff } from 'lucide-react';
@@ -84,7 +84,16 @@ export default function GrammarQuiz() {
   };
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [showCaution, setShowCaution] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false); // Hiá»ƒn thá»‹ banner Ä‘Ãºng thá»§ cÃ´ng
+  const [showSuccess, setShowSuccess] = useState(false); // Hiển thị banner đúng thủ công
+  const [isTransitionBlocked, setIsTransitionBlocked] = useState(false);
+  const isTransitionBlockedRef = useRef(false);
+  const blockTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (blockTimerRef.current) clearTimeout(blockTimerRef.current);
+    };
+  }, []);
 
   const current = queue[0];
 
@@ -129,7 +138,7 @@ export default function GrammarQuiz() {
   };
 
   const handleAnswer = (ans: string) => {
-    if (selectedAnswer !== null) return;
+    if (selectedAnswer !== null || isTransitionBlockedRef.current) return;
     setSelectedAnswer(ans);
     const correct = ans === current.correctAnswer;
     if (correct) {
@@ -145,6 +154,13 @@ export default function GrammarQuiz() {
     setSelectedAnswer(null);
     setShowCaution(false);
     setShowSuccess(false);
+    setIsTransitionBlocked(true);
+    isTransitionBlockedRef.current = true;
+    if (blockTimerRef.current) clearTimeout(blockTimerRef.current);
+    blockTimerRef.current = setTimeout(() => {
+      setIsTransitionBlocked(false);
+      isTransitionBlockedRef.current = false;
+    }, 300);
   };
 
   const getTargetStyle = (text: string) => {
@@ -357,7 +373,7 @@ export default function GrammarQuiz() {
                     <button
                       key={i}
                       onClick={() => handleAnswer(opt)}
-                      disabled={selectedAnswer !== null}
+                      disabled={selectedAnswer !== null || isTransitionBlocked}
                       className={`p-4 rounded-2xl border-2 transition-all min-h-[3.5rem] flex flex-col items-center justify-center text-center ${btnClass} ${getOptionStyle(opt)}`}
                     >
                       <span className="flex items-center gap-2">

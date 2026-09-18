@@ -202,7 +202,7 @@ export function FloatingStudyTimer() {
         ref={buttonRef}
         onPointerDown={handlePointerDown}
         style={{ left: `${pos.x}px`, top: `${pos.y}px` }}
-        className={`fixed z-[9990] flex items-center gap-2 px-3.5 py-2.5 rounded-full shadow-2xl backdrop-blur-md border transition-shadow cursor-grab active:cursor-grabbing select-none touch-none ${
+        className={`fixed z-40 flex items-center gap-2 px-3.5 py-2.5 rounded-full shadow-2xl backdrop-blur-md border transition-shadow cursor-grab active:cursor-grabbing select-none touch-none ${
           isRunning
             ? 'bg-indigo-600 hover:bg-indigo-700 text-white border-indigo-400/60 ring-4 ring-indigo-500/25 shadow-indigo-500/30'
             : 'bg-white/95 dark:bg-slate-800/95 text-slate-800 dark:text-slate-100 hover:bg-white dark:hover:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-slate-900/15'

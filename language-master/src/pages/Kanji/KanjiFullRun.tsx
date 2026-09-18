@@ -99,6 +99,9 @@ export default function KanjiFullRun() {
   const [matchCorrectCount, setMatchCorrectCount] = useState(0);
   const [matchWrongCount, setMatchWrongCount] = useState(0);
   const [blitzPaused, setBlitzPaused] = useState(false);
+  const [_isTransitionBlocked, setIsTransitionBlocked] = useState(false);
+  const isTransitionBlockedRef = useRef(false);
+  const blockTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const pendingAdvanceRef = useRef<{ correct: boolean; added: number; baseScore?: number } | null>(null);
   const commitAdvanceRef = useRef<() => void>(() => {});
@@ -230,12 +233,27 @@ export default function KanjiFullRun() {
     resetQ();
   }, [level, currentQ, qTimeLeft, hintUsed, totalQ, lvl.questions, quizSelected, typingInput, errorSelected, matchCorrectCount, matchWrongCount, resetQ]);
 
+  useEffect(() => {
+    return () => {
+      if (blockTimerRef.current) clearTimeout(blockTimerRef.current);
+    };
+  }, []);
+
   const commitAdvance = useCallback(() => {
     const pa = pendingAdvanceRef.current;
     pendingAdvanceRef.current = null;
     setBlitzPaused(false);
     setCountdown(null);
-    if (pa !== null) advance(pa.correct, pa.added, pa.baseScore);
+    if (pa !== null) {
+      advance(pa.correct, pa.added, pa.baseScore);
+      setIsTransitionBlocked(true);
+      isTransitionBlockedRef.current = true;
+      if (blockTimerRef.current) clearTimeout(blockTimerRef.current);
+      blockTimerRef.current = setTimeout(() => {
+        setIsTransitionBlocked(false);
+        isTransitionBlockedRef.current = false;
+      }, 300);
+    }
   }, [advance]);
 
   commitAdvanceRef.current = commitAdvance;
@@ -288,6 +306,8 @@ export default function KanjiFullRun() {
         commitAdvanceRef.current();
         return;
       }
+
+      if (isTransitionBlockedRef.current) return;
 
       const isQuizType = currentQ.type === 'quiz' || currentQ.type === 'hanviet_quiz';
       if (isQuizType && !quizSelected) {
@@ -478,6 +498,7 @@ export default function KanjiFullRun() {
                 quizSelected={quizSelected}
                 quizCorrect={quizCorrect}
                 onSelect={(optId, ok) => {
+                  if (isTransitionBlockedRef.current) return;
                   setQuizSelected(optId);
                   setQuizCorrect(ok);
                   triggerResult(ok);
@@ -499,7 +520,7 @@ export default function KanjiFullRun() {
                 inputRef={inputRef}
                 onSubmit={e => {
                   e.preventDefault();
-                  if (typingSubmitted) return;
+                  if (typingSubmitted || isTransitionBlockedRef.current) return;
                   const ans = (currentQ as TypingQ).answer.trim().toLowerCase();
                   const ok = typingInput.trim() !== '' && 
                     (typingInput.trim().toLowerCase() === ans || 
@@ -520,7 +541,10 @@ export default function KanjiFullRun() {
                 showKana={showKana}
                 flashFlipped={flashFlipped}
                 setFlashFlipped={setFlashFlipped}
-                onAnswer={ok => advance(ok)}
+                onAnswer={ok => {
+                  if (isTransitionBlockedRef.current) return;
+                  advance(ok);
+                }}
                 urgent={level === 'hard' && qTimeLeft !== null && qTimeLeft <= 2}
               />
             )}
@@ -532,6 +556,7 @@ export default function KanjiFullRun() {
                 errorSelected={errorSelected}
                 errorCorrect={errorCorrect}
                 onSelect={(choice, ok) => {
+                  if (isTransitionBlockedRef.current) return;
                   setErrorSelected(choice);
                   setErrorCorrect(ok);
                   triggerResult(ok);

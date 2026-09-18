@@ -1,25 +1,29 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import { X, Plus, FolderPlus, BookmarkCheck, Check, AlertCircle, LogIn } from 'lucide-react';
 import { useCustomCourses } from '../../context/customCourses/useCustomCourses';
 import { addWordToCustomCourse, createCustomCourse } from '../../lib/customCourses/customCourseService';
 import { useAuth } from '../../context/auth/useAuth';
 import type { DictionaryEntry } from '../../lib/dictionary/localDictionaryIndex';
+import type { CustomCourseDoc } from '../../lib/customCourses/customCourseService';
 
 interface Props {
   isOpen: boolean;
   onClose: () => void;
   entry: DictionaryEntry | null;
   onSuccess?: (courseName: string) => void;
+  courses?: CustomCourseDoc[];
 }
 
-export default function AddToDeckModal({ isOpen, onClose, entry, onSuccess }: Props) {
+export default function AddToDeckModal({ isOpen, onClose, entry, onSuccess, courses }: Props) {
   const { user } = useAuth();
   const { customCourses = [], myCourses: hookCourses } = useCustomCourses();
-  const myCourses = hookCourses || customCourses || [];
+  const myCourses = (courses && courses.length > 0) ? courses : (hookCourses || customCourses || []);
   const navigate = useNavigate();
 
   const [selectedCourseId, setSelectedCourseId] = useState<string>('');
+  const [courseSearch, setCourseSearch] = useState('');
   const [selectedLesson, setSelectedLesson] = useState<string>('');
   const [isCreatingNewLesson, setIsCreatingNewLesson] = useState(false);
   const [newLessonName, setNewLessonName] = useState('');
@@ -37,6 +41,7 @@ export default function AddToDeckModal({ isOpen, onClose, entry, onSuccess }: Pr
     if (isOpen) {
       setError(null);
       setSuccess(false);
+      setCourseSearch('');
       setIsCreatingNewLesson(false);
       setNewLessonName('');
 
@@ -52,6 +57,17 @@ export default function AddToDeckModal({ isOpen, onClose, entry, onSuccess }: Pr
   }, [isOpen, myCourses]);
 
   const activeCourse = (myCourses || []).find(c => c.id === selectedCourseId);
+
+  const filteredCourses = (myCourses || []).filter(c => {
+    if (!courseSearch.trim()) return true;
+    return c.title.toLowerCase().includes(courseSearch.trim().toLowerCase());
+  });
+
+  const isDuplicate = Boolean(
+    activeCourse?.words?.some(
+      w => (w.kanji || '').trim().toLowerCase() === (entry?.term || '').trim().toLowerCase()
+    )
+  );
 
   // Khi đổi course, cập nhật lesson đầu tiên
   const handleCourseChange = (cId: string) => {
@@ -92,20 +108,20 @@ export default function AddToDeckModal({ isOpen, onClose, entry, onSuccess }: Pr
           description: 'Bộ từ được tạo nhanh từ tra cứu Từ điển.',
           template: 'generic',
           color: 'indigo',
-          lessons: ['Bài 1: Từ vựng đã lưu'],
+          lessons: ['Bài 1'],
           words: [],
         });
         targetCourseId = created.id;
-        targetLessonName = 'Bài 1: Từ vựng đã lưu';
+        targetLessonName = 'Bài 1';
       }
 
-      // Thêm từ vào bộ từ
+      // Thêm từ vào bộ từ (Chỉ lấy Từ, Nghĩa, Reading; bỏ ví dụ để người dùng tự nhập)
       const wordToAdd = {
         kanji: entry.term,
-        hiragana: entry.reading,
+        hiragana: entry.reading || '',
         meaning: entry.meaning,
-        exampleKanji: entry.example || '',
-        exampleMeaning: entry.exampleMeaning || '',
+        exampleKanji: '',
+        exampleMeaning: '',
         lesson: targetLessonName,
       };
 
@@ -126,9 +142,25 @@ export default function AddToDeckModal({ isOpen, onClose, entry, onSuccess }: Pr
     }
   };
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="relative bg-white dark:bg-slate-800 rounded-3xl w-full max-w-md shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-700 flex flex-col max-h-[90vh]">
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
+  const modalContent = (
+    <div 
+      onClick={onClose}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm animate-in fade-in duration-200"
+    >
+      <div 
+        onClick={(e) => e.stopPropagation()}
+        className="relative bg-white dark:bg-slate-800 rounded-3xl w-full max-w-md shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-700 flex flex-col max-h-[90vh]"
+      >
         
         {/* Header */}
         <div className="p-5 border-b border-slate-100 dark:border-slate-700 flex items-center justify-between">
@@ -138,7 +170,7 @@ export default function AddToDeckModal({ isOpen, onClose, entry, onSuccess }: Pr
             </div>
             <div>
               <h3 className="font-bold text-slate-800 dark:text-white text-base">Thêm vào bộ từ của bạn</h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400">Lưu từ vựng để ôn luyện SRS sau này</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400">Lưu từ vựng để ôn luyện SRS độc lập</p>
             </div>
           </div>
           <button onClick={onClose} className="p-1.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
@@ -157,17 +189,19 @@ export default function AddToDeckModal({ isOpen, onClose, entry, onSuccess }: Pr
               )}
             </div>
             <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 line-clamp-2">{entry.meaning}</p>
-            {entry.example && (
-              <p className="text-[11px] text-slate-400 italic mt-1 border-t border-indigo-100/60 dark:border-indigo-900/30 pt-1 line-clamp-1">
-                {entry.example}
-              </p>
-            )}
           </div>
 
           {error && (
             <div className="p-3 rounded-xl bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-xs flex items-center gap-2">
               <AlertCircle size={16} className="shrink-0" />
               <span>{error}</span>
+            </div>
+          )}
+
+          {!isCreatingNewCourse && isDuplicate && (
+            <div className="p-3 rounded-xl bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300 text-xs flex items-center gap-2 border border-amber-200 dark:border-amber-800/40">
+              <AlertCircle size={16} className="shrink-0 text-amber-500" />
+              <span>Từ "{entry.term}" đã có trong bộ từ này (vẫn có thể lưu thêm).</span>
             </div>
           )}
 
@@ -186,12 +220,23 @@ export default function AddToDeckModal({ isOpen, onClose, entry, onSuccess }: Pr
                     <Plus size={12} /> Tạo bộ từ mới
                   </button>
                 </div>
+
+                {myCourses.length > 3 && (
+                  <input
+                    type="text"
+                    value={courseSearch}
+                    onChange={(e) => setCourseSearch(e.target.value)}
+                    placeholder="Tìm bộ từ..."
+                    className="w-full mb-1.5 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-xs outline-none focus:border-indigo-500"
+                  />
+                )}
+
                 <select
                   value={selectedCourseId}
                   onChange={(e) => handleCourseChange(e.target.value)}
                   className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 text-sm focus:border-indigo-500 outline-none"
                 >
-                  {myCourses.map(c => (
+                  {filteredCourses.map(c => (
                     <option key={c.id} value={c.id}>
                       {c.title} ({c.words?.length || 0} từ)
                     </option>
@@ -249,7 +294,7 @@ export default function AddToDeckModal({ isOpen, onClose, entry, onSuccess }: Pr
                 />
               </div>
               <p className="text-[11px] text-slate-400">
-                Từ vựng này sẽ được lưu vào bài học mặc định <span className="font-semibold text-slate-600 dark:text-slate-300">Bài 1: Từ vựng đã lưu</span>.
+                Bài học đầu tiên sẽ được đặt mặc định là <strong>"Bài 1"</strong>.
               </p>
               {myCourses.length > 0 && (
                 <button
@@ -314,4 +359,6 @@ export default function AddToDeckModal({ isOpen, onClose, entry, onSuccess }: Pr
       </div>
     </div>
   );
+
+  return typeof document !== 'undefined' ? createPortal(modalContent, document.body) : null;
 }

@@ -477,6 +477,7 @@ export default function MyCourses() {
       const created = await createCourse(data);
       // Tự động thêm vào danh sách và ghim vào không gian học tập
       await addCourse(created.id);
+      navigate(`/course/${created.id}`);
     }
   };
 

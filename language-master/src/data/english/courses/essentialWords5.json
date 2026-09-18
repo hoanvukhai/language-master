@@ -258,7 +258,7 @@
     "ipa": "/reɪt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "tốc độ, giá, chi phí, mức (lương...), tỷ lệ, hạng, loại",
+      "vi": "tốc độ, giá, chi phí, mức (lương...) , tỷ lệ, hạng, loại",
       "en": "A rate is the speed at which something happens."
     },
     "examples": [
@@ -1032,7 +1032,7 @@
     "ipa": "/swɪtʃ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "chuyển (câu chuyện, ý nghĩ...), công tắc, chuyển mạch",
+      "vi": "chuyển (câu chuyện, ý nghĩ...) , công tắc, chuyển mạch",
       "en": "To switch means to change something to something else."
     },
     "examples": [
@@ -2274,7 +2274,7 @@
     "ipa": "/ˈhæbɪtæt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "nơi sống (của cây cối động vật); nhà, chỗ ở (người)",
+      "vi": "nơi sống (của cây cối động vật) ; nhà, chỗ ở (người)",
       "en": "A habitat is the natural home of animals or plants."
     },
     "examples": [
@@ -2832,7 +2832,7 @@
     "ipa": "/ˈvælɪd/",
     "partOfSpeech": "adjective",
     "meaning": {
-      "vi": "vững chắc, có căn cứ(pháp lý) có giá trị, có hiệu lực; hợp lệ",
+      "vi": "vững chắc, có căn cứ (pháp lý) có giá trị, có hiệu lực; hợp lệ",
       "en": "When something is valid, it is correct or based on good reasoning."
     },
     "examples": [
@@ -3552,7 +3552,7 @@
     "ipa": "/səˈrendər/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "giao lại, dâng, nộp (thành trì... để đầu hàng), bỏ, từ bỏ",
+      "vi": "giao lại, dâng, nộp (thành trì... để đầu hàng) , bỏ, từ bỏ",
       "en": "To surrender something is to give it up."
     },
     "examples": [
@@ -3858,7 +3858,7 @@
     "ipa": "/ˈɪmpækt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "tác động, ảnh hưởng (noun&verb)",
+      "vi": "tác động, ảnh hưởng",
       "en": "An impact is the effect someone or something has."
     },
     "examples": [
@@ -4092,7 +4092,7 @@
     "ipa": "/ˈkɜːrənt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "dòng (nước); luồng (gió, không khí); (điện học) dòng điện",
+      "vi": "dòng (nước) ; luồng (gió, không khí) ; (điện học) dòng điện",
       "en": "A current is a steady and constant flow of air or water in a river or ocean."
     },
     "examples": [
@@ -4344,7 +4344,7 @@
     "ipa": "/ˈɔːtəɡræf/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "chữ viết tay (của một người); chữ ký riêng",
+      "vi": "chữ viết tay (của một người) ; chữ ký riêng",
       "en": "An autograph is the written name of a famous person."
     },
     "examples": [
@@ -4578,7 +4578,7 @@
     "ipa": "/stʌf/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "thứ (đồ đạc), món (đồ đạc)",
+      "vi": "thứ (đồ đạc) , món (đồ đạc)",
       "en": "Stuff is a word used to refer to things without mentioning the things by name."
     },
     "examples": [
@@ -4668,7 +4668,7 @@
     "ipa": "/zuːm/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "chạy vọt qua (ô tô), bay vọt lên (máy bay), phóng to (ảnh)",
+      "vi": "chạy vọt qua (ô tô) , bay vọt lên (máy bay) , phóng to (ảnh)",
       "en": "To zoom is to move quickly."
     },
     "examples": [
@@ -5208,7 +5208,7 @@
     "ipa": "/ˈfɜːrnɪs/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "lò (luyện kim, nấu thuỷ tinh...), lò sưởi",
+      "vi": "lò (luyện kim, nấu thuỷ tinh...) , lò sưởi",
       "en": "A furnace is a place where heat is made."
     },
     "examples": [
@@ -5442,7 +5442,7 @@
     "ipa": "/bruːz/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "vết thâm tím (trên người), vết thâm (trên hoa quả)",
+      "vi": "vết thâm tím (trên người) , vết thâm (trên hoa quả)",
       "en": "A bruise is a dark mark caused by being hit by something."
     },
     "examples": [
@@ -6270,7 +6270,7 @@
     "ipa": "/dɪˈklaɪn/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "từ chối, khước từ, suy dần (sức khoẻ); sụt xuống (giá cả...)",
+      "vi": "từ chối, khước từ, suy dần (sức khoẻ) ; sụt xuống (giá cả...)",
       "en": "To decline an offer or invitation means to say no to it."
     },
     "examples": [
@@ -6450,7 +6450,7 @@
     "ipa": "/slæm/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "đóng sầm (cửa, sách), ném phịch (vật gì, xuống bàn...)",
+      "vi": "đóng sầm (cửa, sách) , ném phịch (vật gì, xuống bàn...)",
       "en": "To slam is to close something hard."
     },
     "examples": [
@@ -6594,7 +6594,7 @@
     "ipa": "/ˈtʃæptər/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "chương (sách), đề tài, vấn đề",
+      "vi": "chương (sách) , đề tài, vấn đề",
       "en": "A chapter is a part of a book that usually has a number or a title."
     },
     "examples": [
@@ -6954,7 +6954,7 @@
     "ipa": "/keɪv/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "lỗ (trong fomat)",
+      "vi": "lỗ",
       "en": "A cave is an open space or hole underground or inside a mountain or cliff."
     },
     "examples": [
@@ -8232,7 +8232,7 @@
     "ipa": "/ˈstrɪkən/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "tấn công,, đánh đập",
+      "vi": "tấn công, đánh đập",
       "en": "If someone or something is stricken by a disease or problem, they are badly affected by it."
     },
     "examples": [
@@ -8466,7 +8466,7 @@
     "ipa": "/məˈʃiːn/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "máy móc&#10;",
+      "vi": "máy móc&#10",
       "en": "A machine is made by people and does work for us."
     },
     "examples": [
@@ -8538,7 +8538,7 @@
     "ipa": "/piːl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "bóc vỏ, gọt vỏ; lột (da...)",
+      "vi": "bóc vỏ, gọt vỏ; lột",
       "en": "To peel fruits and vegetables is to remove their skin."
     },
     "examples": [
@@ -9510,7 +9510,7 @@
     "ipa": "/dɪˈpɑːzɪt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "gửi (tiền, đồ vật...), đặt cọc, ký quỹ",
+      "vi": "gửi (tiền, đồ vật...) , đặt cọc, ký quỹ",
       "en": "To deposit something is to put it into a place or another thing."
     },
     "examples": [
@@ -10248,7 +10248,7 @@
     "ipa": "/ˈɪntərvl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "khoảng (thời gian, không gian), khoảng cách",
+      "vi": "khoảng (thời gian, không gian) , khoảng cách",
       "en": "An interval is the time between two things happening."
     },
     "examples": [
@@ -10392,7 +10392,7 @@
     "ipa": "/ˈterətɔːri/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "lãnh thổ; (US) hạt (vùng chưa được hưởng những quyền lợi như một bang)",
+      "vi": "lãnh thổ; hạt (vùng chưa được hưởng những quyền lợi như một bang)",
       "en": "A territory is a piece of land that belongs to a country but isn’t a state."
     },
     "examples": [

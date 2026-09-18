@@ -1,5 +1,5 @@
 // src/pages/Kanji/KanjiQuiz.tsx
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, RotateCcw, Eye, EyeOff } from 'lucide-react';
@@ -68,20 +68,30 @@ export default function KanjiQuiz() {
   const [queue, setQueue] = useState<GeneratedQuestion[]>([]);
   const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  const [isTransitionBlocked, setIsTransitionBlocked] = useState(false);
+  const isTransitionBlockedRef = useRef(false);
+  const blockTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const current = queue[0];
 
   useEffect(() => { if (started) window.scrollTo(0, 0); }, [started]);
+  useEffect(() => {
+    return () => {
+      if (blockTimerRef.current) clearTimeout(blockTimerRef.current);
+    };
+  }, []);
 
   const handleStart = () => {
     setQueue(pool);
     setScore(0);
     setSelectedAnswer(null);
+    setIsTransitionBlocked(false);
+    isTransitionBlockedRef.current = false;
     setStarted(true);
   };
 
   const handleAnswer = (ans: string) => {
-    if (selectedAnswer !== null || !current) return;
+    if (selectedAnswer !== null || isTransitionBlockedRef.current || !current) return;
 
     setSelectedAnswer(ans);
     const correct = ans === current.correctAnswer;
@@ -93,6 +103,13 @@ export default function KanjiQuiz() {
     setTimeout(() => {
       setQueue(q => q.slice(1));
       setSelectedAnswer(null);
+      setIsTransitionBlocked(true);
+      isTransitionBlockedRef.current = true;
+      if (blockTimerRef.current) clearTimeout(blockTimerRef.current);
+      blockTimerRef.current = setTimeout(() => {
+        setIsTransitionBlocked(false);
+        isTransitionBlockedRef.current = false;
+      }, 300);
     }, 1200);
   };
 
@@ -307,7 +324,7 @@ export default function KanjiQuiz() {
                   <button
                     key={i}
                     onClick={() => handleAnswer(optText)}
-                    disabled={selectedAnswer !== null}
+                    disabled={selectedAnswer !== null || isTransitionBlocked}
                     className={`p-4 rounded-2xl border-2 transition-all min-h-[4rem] flex items-center justify-center text-center ${btnClass} ${getOptionSize(optText)}`}
                   >
                     <span>{optText}</span>

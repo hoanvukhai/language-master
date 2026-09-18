@@ -1,5 +1,6 @@
 // src/pages/Dictionary.tsx
 import { useState, useMemo, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 import { useCourseData } from '../hooks/useCourseData';
 import { useAudio } from '../context/audio/useAudio';
@@ -10,7 +11,6 @@ import {
 } from '../lib/dictionary/localDictionaryIndex';
 import AddToDeckModal from '../components/dictionary/AddToDeckModal';
 import Pagination from '../components/ui/Pagination';
-import { useDebounce } from '../hooks/useDebounce';
 
 import {
   ArrowLeft,
@@ -26,7 +26,6 @@ import {
   BookMarked,
   RotateCcw,
   ExternalLink,
-  Loader2,
 } from 'lucide-react';
 
 import VocabDictionary from '../components/dictionary/VocabDictionary';
@@ -50,8 +49,7 @@ export default function Dictionary() {
 
   // ─── GLOBAL DICTIONARY STATES ──────────────────────────────────────────
   const [query, setQuery] = useState('');
-  const debouncedQuery = useDebounce(query, 250);
-  const isTyping = query !== debouncedQuery;
+  const [submittedQuery, setSubmittedQuery] = useState('');
 
   const [activeLangTab, setActiveLangTab] = useState<'all' | 'japanese' | 'english' | 'custom'>('all');
   const [activeSubject, setActiveSubject] = useState<'all' | 'vocab' | 'kanji' | 'grammar'>('all');
@@ -69,6 +67,29 @@ export default function Dictionary() {
 
   const searchInputRef = useRef<HTMLInputElement>(null);
 
+  // Xử lý thực thi tìm kiếm (khi nhấn Enter hoặc click nút Tìm kiếm)
+  const handleSearch = (e?: React.FormEvent) => {
+    e?.preventDefault();
+    const trimmed = query.trim();
+    setSubmittedQuery(trimmed);
+    setCurrentPage(1);
+  };
+
+  // Xóa trắng ô tìm kiếm và đặt lại trạng thái
+  const handleClear = () => {
+    setQuery('');
+    setSubmittedQuery('');
+    setCurrentPage(1);
+    searchInputRef.current?.focus();
+  };
+
+  // Click vào gợi ý từ khóa -> tìm kiếm ngay lập tức
+  const handleTagClick = (tag: string) => {
+    setQuery(tag);
+    setSubmittedQuery(tag);
+    setCurrentPage(1);
+  };
+
   // Lắng nghe phím tắt "/" để focus nhanh vào ô tìm kiếm
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -81,23 +102,23 @@ export default function Dictionary() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Kiểm tra người dùng có đang thực hiện tìm kiếm không (Chỉ cần có từ khóa tìm kiếm)
-  const isSearching = debouncedQuery.trim().length > 0;
+  // Kiểm tra người dùng có đang thực hiện tìm kiếm không (khi đã submit từ khóa)
+  const isSearching = submittedQuery.trim().length > 0;
 
-  // Kết quả tìm kiếm toàn cục: Chỉ thực hiện tra cứu với debouncedQuery để chống giật lag
+  // Kết quả tìm kiếm toàn cục: Chỉ thực hiện tra cứu khi đã submit từ khóa (Enter / nút Tìm kiếm)
   const searchResult = useMemo(() => {
     if (courseId || !isSearching) return { total: 0, results: [] };
 
     return searchGlobalDictionary(
       {
-        query: debouncedQuery.trim(),
+        query: submittedQuery.trim(),
         language: activeLangTab,
         subject: activeSubject,
         limit: 200,
       },
       myCourses
     );
-  }, [debouncedQuery, isSearching, activeLangTab, activeSubject, courseId, myCourses]);
+  }, [submittedQuery, isSearching, activeLangTab, activeSubject, courseId, myCourses]);
 
   // Phân trang
   const paginatedResults = useMemo(() => {
@@ -223,35 +244,43 @@ export default function Dictionary() {
           </p>
 
           {/* Ô tìm kiếm trung tâm */}
-          <div className="relative mt-6 max-w-2xl mx-auto">
-            <div className="relative flex items-center">
-              <Search className="absolute left-4.5 text-slate-400 dark:text-slate-500 w-5 h-5 pointer-events-none" />
+          <form
+            onSubmit={handleSearch}
+            className="relative mt-6 max-w-2xl mx-auto"
+          >
+            <div className="relative flex items-center bg-white rounded-2xl shadow-2xl p-1.5 focus-within:ring-4 focus-within:ring-blue-400/40 transition-all">
+              <Search className="ml-3.5 text-slate-400 dark:text-slate-500 w-5 h-5 shrink-0 pointer-events-none" />
               <input
                 ref={searchInputRef}
                 type="text"
                 value={query}
-                onChange={(e) => {
-                  setQuery(e.target.value);
-                  setCurrentPage(1);
-                }}
-                placeholder="Nhập từ vựng, Kanji, Romaji, IPA hoặc nghĩa tiếng Việt... (Nhấn / để tìm)"
-                className="w-full pl-12 pr-12 py-4 bg-white text-slate-800 placeholder:text-slate-400 rounded-2xl shadow-2xl font-medium text-base md:text-lg focus:outline-none focus:ring-4 focus:ring-blue-400/40 transition-all"
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Nhập từ vựng, Kanji, Romaji, IPA hoặc nghĩa... (Nhấn Enter hoặc ấn Tìm kiếm)"
+                className="w-full pl-3 pr-2 py-3.5 bg-transparent text-slate-800 placeholder:text-slate-400 font-medium text-base md:text-lg focus:outline-none"
                 autoComplete="off"
               />
-              {isTyping ? (
-                <div className="absolute right-4 text-indigo-400 animate-spin pointer-events-none">
-                  <Loader2 size={18} />
-                </div>
-              ) : query ? (
+
+              {query && (
                 <button
-                  onClick={() => { setQuery(''); setCurrentPage(1); }}
-                  className="absolute right-4 p-1.5 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors"
+                  type="button"
+                  onClick={handleClear}
+                  className="p-2 rounded-xl hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors shrink-0 mr-1"
+                  title="Xóa ô nhập"
                 >
                   <X size={18} />
                 </button>
-              ) : null}
+              )}
+
+              <button
+                type="submit"
+                className="flex items-center gap-1.5 px-5 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 active:scale-95 text-white font-bold text-sm md:text-base shadow-md transition-all shrink-0 cursor-pointer"
+                title="Nhấn Enter hoặc bấm vào đây để tìm kiếm"
+              >
+                <span>Tìm kiếm</span>
+                <kbd className="hidden sm:inline-block text-[10px] font-mono opacity-80 bg-white/20 px-1.5 py-0.5 rounded ml-0.5">Enter ↵</kbd>
+              </button>
             </div>
-          </div>
+          </form>
         </div>
 
         {/* Trang trí background */}
@@ -295,7 +324,9 @@ export default function Dictionary() {
 
           <div className="text-xs font-bold text-slate-500 dark:text-slate-400">
             {isSearching ? (
-              <>Tìm thấy: <span className="text-blue-600 dark:text-blue-400 font-extrabold">{searchResult.results.length}</span> kết quả</>
+              <>
+                Từ khóa: <span className="text-indigo-600 dark:text-indigo-400 font-extrabold font-mono">"{submittedQuery}"</span> &bull; Tìm thấy: <span className="text-blue-600 dark:text-blue-400 font-extrabold">{searchResult.results.length}</span> kết quả
+              </>
             ) : (
               <span>Sẵn sàng tra cứu</span>
             )}
@@ -361,10 +392,7 @@ export default function Dictionary() {
                 <button
                   key={tag}
                   type="button"
-                  onClick={() => {
-                    setQuery(tag);
-                    setCurrentPage(1);
-                  }}
+                  onClick={() => handleTagClick(tag)}
                   className="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700/60 hover:bg-indigo-50 dark:hover:bg-indigo-900/40 text-slate-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-indigo-400 text-xs font-semibold transition-all border border-slate-200/60 dark:border-slate-700 shadow-xs active:scale-95"
                 >
                   {tag}
@@ -478,10 +506,11 @@ export default function Dictionary() {
               ? 'Bộ từ cá nhân của bạn hiện tập trung vào từ vựng & thuật ngữ. Để tra cứu Chữ Hán hoặc Ngữ pháp, bạn hãy chọn tab Tiếng Nhật hoặc Tất cả ngôn ngữ.'
               : 'Hãy thử tìm bằng từ khóa khác hoặc chuyển tab sang "Tất cả ngôn ngữ".'}
           </p>
-          {(query || activeLangTab !== 'all' || activeSubject !== 'all') && (
+          {(submittedQuery || query || activeLangTab !== 'all' || activeSubject !== 'all') && (
             <button
               onClick={() => {
                 setQuery('');
+                setSubmittedQuery('');
                 setActiveLangTab('all');
                 setActiveSubject('all');
                 setCurrentPage(1);
@@ -515,14 +544,15 @@ export default function Dictionary() {
         isOpen={!!deckModalEntry}
         onClose={() => setDeckModalEntry(null)}
         entry={deckModalEntry}
+        courses={myCourses}
         onSuccess={(courseName) => {
           showToast(`Đã thêm từ "${deckModalEntry?.term}" vào bộ từ "${courseName}"!`);
         }}
       />
 
       {/* MODAL CHI TIẾT TỪ VỰNG KHI CLICK VÀO CARD */}
-      {detailEntry && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm animate-in fade-in duration-200">
+      {detailEntry && typeof document !== 'undefined' && createPortal(
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm animate-in fade-in duration-200">
           <div className="relative bg-white dark:bg-slate-800 rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-700 flex flex-col max-h-[90vh]">
             {/* Header */}
             <div className="p-5 border-b border-slate-100 dark:border-slate-700 flex items-center justify-between">
@@ -626,12 +656,13 @@ export default function Dictionary() {
               </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
       {/* TOAST THÔNG BÁO THÀNH CÔNG */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 animate-in slide-in-from-bottom duration-300">
+        <div className="fixed bottom-6 right-6 z-[110] animate-in slide-in-from-bottom duration-300">
           <div className="flex items-center gap-2.5 px-4 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl shadow-xl border border-slate-700 dark:border-slate-200 text-xs font-bold">
             <CheckCircle2 size={18} className="text-emerald-400 dark:text-emerald-600 shrink-0" />
             <span>{toastMessage}</span>

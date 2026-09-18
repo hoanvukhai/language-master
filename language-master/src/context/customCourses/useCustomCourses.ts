@@ -1,5 +1,5 @@
 // src/context/customCourses/useCustomCourses.ts
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useAuth } from '../auth/useAuth';
 import { 
   getUserCustomCourses, 
@@ -18,8 +18,11 @@ export function useCustomCourses() {
   const { user, userProfile } = useAuth();
   const [customCourses, setCustomCourses] = useState<CustomCourseDoc[]>([]);
   const [loading, setLoading] = useState(true);
+  const isFetchingRef = useRef(false);
 
   const fetchCourses = useCallback(async () => {
+    if (isFetchingRef.current) return;
+    isFetchingRef.current = true;
     setLoading(true);
     try {
       const list = await getUserCustomCourses(user?.uid);
@@ -28,13 +31,16 @@ export function useCustomCourses() {
       console.error('Error in useCustomCourses fetchCourses:', e);
     } finally {
       setLoading(false);
+      isFetchingRef.current = false;
     }
-  }, [user]);
+  }, [user?.uid]);
 
   useEffect(() => {
     // 1. Luôn tải danh sách ban đầu và lắng nghe event cục bộ
     fetchCourses();
-    const handler = () => fetchCourses();
+    const handler = () => {
+      fetchCourses();
+    };
     window.addEventListener('custom_courses_changed', handler);
 
     // 2. Nếu đã đăng nhập -> Lắng nghe realtime từ tài liệu người dùng (có sẵn quyền 100%)
@@ -52,7 +58,6 @@ export function useCustomCourses() {
         setLoading(false);
       }, (err) => {
         console.warn('useCustomCourses listener fallback to local:', err);
-        fetchCourses();
       });
     }
 
@@ -60,7 +65,7 @@ export function useCustomCourses() {
       unsubscribe();
       window.removeEventListener('custom_courses_changed', handler);
     };
-  }, [user, fetchCourses]);
+  }, [user?.uid, fetchCourses]);
 
   const createCourse = async (input: CreateCustomCourseInput) => {
     const created = await createCustomCourse(user?.uid, userProfile || user, input);

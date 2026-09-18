@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import type { KeigoVerb } from '../../types/keigo';
 import { keigoVocabList } from '../../data/jlpt/keigo/keigoVocabDb';
 import type { KeigoVocab } from '../../data/jlpt/keigo/keigoVocabDb';
@@ -196,10 +197,10 @@ export default function KeigoDictionary({ data }: Props) {
       />
 
       {/* MODAL VERBS */}
-      {selectedVerb && (
+      {selectedVerb && typeof document !== 'undefined' && createPortal(
         <div 
           onClick={() => setSelectedVerb(null)}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-in fade-in duration-200"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-in fade-in duration-200"
         >
           <div 
             onClick={(e) => e.stopPropagation()}
@@ -258,14 +259,15 @@ export default function KeigoDictionary({ data }: Props) {
               )}
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
       {/* MODAL VOCAB */}
-      {selectedVocab && (
+      {selectedVocab && typeof document !== 'undefined' && createPortal(
         <div 
           onClick={() => setSelectedVocab(null)}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-in fade-in duration-200"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-in fade-in duration-200"
         >
           <div 
             onClick={(e) => e.stopPropagation()}
@@ -316,7 +318,8 @@ export default function KeigoDictionary({ data }: Props) {
               )}
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );

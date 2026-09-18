@@ -58,6 +58,16 @@ export function CourseSettingsModal({ isOpen, onClose, courseId }: Props) {
     };
   }, [isOpen]);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   const handleSave = async () => {
     if (!user) return;
     setSaving(true);

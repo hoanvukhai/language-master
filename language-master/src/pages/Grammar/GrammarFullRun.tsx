@@ -89,6 +89,9 @@ export default function GrammarFullRun() {
   const [matchCorrectCount, setMatchCorrectCount] = useState(0);
   const [matchWrongCount, setMatchWrongCount] = useState(0);
   const [blitzPaused, setBlitzPaused] = useState(false);
+  const [_isTransitionBlocked, setIsTransitionBlocked] = useState(false);
+  const isTransitionBlockedRef = useRef(false);
+  const blockTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const pendingAdvanceRef = useRef<{ correct: boolean; added: number; baseScore?: number } | null>(null);
   const commitAdvanceRef = useRef<() => void>(() => {});
@@ -221,12 +224,27 @@ export default function GrammarFullRun() {
     resetQ();
   }, [level, currentQ, qTimeLeft, hintUsed, totalQ, lvl.questions, quizSelected, errorSelected, matchCorrectCount, matchWrongCount, resetQ]);
 
+  useEffect(() => {
+    return () => {
+      if (blockTimerRef.current) clearTimeout(blockTimerRef.current);
+    };
+  }, []);
+
   const commitAdvance = useCallback(() => {
     const pa = pendingAdvanceRef.current;
     pendingAdvanceRef.current = null;
     setBlitzPaused(false);
     setCountdown(null);
-    if (pa !== null) advance(pa.correct, pa.added, pa.baseScore);
+    if (pa !== null) {
+      advance(pa.correct, pa.added, pa.baseScore);
+      setIsTransitionBlocked(true);
+      isTransitionBlockedRef.current = true;
+      if (blockTimerRef.current) clearTimeout(blockTimerRef.current);
+      blockTimerRef.current = setTimeout(() => {
+        setIsTransitionBlocked(false);
+        isTransitionBlockedRef.current = false;
+      }, 300);
+    }
   }, [advance]);
 
   commitAdvanceRef.current = commitAdvance;
@@ -273,6 +291,8 @@ export default function GrammarFullRun() {
         commitAdvanceRef.current();
         return;
       }
+
+      if (isTransitionBlockedRef.current) return;
 
       const isQuizType = currentQ.type === 'quiz' || currentQ.type === 'fill_blank';
       if (isQuizType && !quizSelected) {
@@ -425,6 +445,7 @@ export default function GrammarFullRun() {
                 quizSelected={quizSelected}
                 quizCorrect={quizCorrect}
                 onSelect={(optId, ok) => {
+                  if (isTransitionBlockedRef.current) return;
                   setQuizSelected(optId);
                   setQuizCorrect(ok);
                   triggerResult(ok);
@@ -441,7 +462,10 @@ export default function GrammarFullRun() {
                 showKana={showKana}
                 flashFlipped={flashFlipped}
                 setFlashFlipped={setFlashFlipped}
-                onAnswer={ok => advance(ok)}
+                onAnswer={ok => {
+                  if (isTransitionBlockedRef.current) return;
+                  advance(ok);
+                }}
                 blitzPaused={blitzPaused}
               />
             )}
@@ -453,6 +477,7 @@ export default function GrammarFullRun() {
                 showTranslation={showTranslation}
                 errorCorrect={errorCorrect}
                 onSelect={(choice, ok) => {
+                  if (isTransitionBlockedRef.current) return;
                   setErrorSelected(choice);
                   setErrorCorrect(ok);
                   triggerResult(ok);

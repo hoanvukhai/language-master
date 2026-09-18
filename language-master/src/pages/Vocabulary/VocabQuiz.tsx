@@ -1,6 +1,4 @@
-// src/pages/Vocabulary/VocabQuiz.tsx
-// Trắc nghiệm 4 đáp án — 2 chế độ: JP→VI hoặc VI→JP
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, CheckCircle2, XCircle, ArrowRight, Trophy, Eye, EyeOff } from 'lucide-react';
@@ -8,8 +6,7 @@ import { usePracticeContext } from '../Practice/PracticeContext';
 import { useSettings } from '../../context/global/useSettings';
 import VocabLessonChips from '../../components/vocabulary/VocabLessonChips';
 import { formatDualIpa } from '../../lib/english/ipaHelper';
-
-
+import { cleanQuizMeaning } from '../../lib/srs/sessionManager';
 
 function shuffle<T>(arr: T[]): T[] {
   return [...arr].sort(() => Math.random() - 0.5);
@@ -51,10 +48,12 @@ export default function VocabQuiz() {
     return buildOptions(current, pool);
   }, [current, pool]);
 
-  const getMeaning = (w: any) =>
-    typeof w.meaning === 'object' 
+  const getMeaning = (w: any) => {
+    const raw = typeof w.meaning === 'object' 
       ? (language === 'en' && w.meaning.en ? w.meaning.en : w.meaning.vi)
       : w.meaning;
+    return cleanQuizMeaning(raw, isEnglish ? (w.word || '') : (w.kanji || w.hiragana || ''));
+  };
 
   const getWordDisplay = (w: any): string =>
     isEnglish
@@ -64,8 +63,18 @@ export default function VocabQuiz() {
   // Legacy alias
   const getKanjiDisplay = getWordDisplay;
 
+  const [isTransitionBlocked, setIsTransitionBlocked] = useState(false);
+  const isTransitionBlockedRef = useRef(false);
+  const blockTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (blockTimerRef.current) clearTimeout(blockTimerRef.current);
+    };
+  }, []);
+
   const handleSelect = useCallback((opt: any) => {
-    if (selected !== null) return;
+    if (selected !== null || isTransitionBlockedRef.current) return;
     setSelected(opt);
     if (opt.id === current.id) setScore(s => s + 1);
     else setWrong(s => s + 1);
@@ -77,6 +86,13 @@ export default function VocabQuiz() {
     } else {
       setIndex(i => i + 1);
       setSelected(null);
+      setIsTransitionBlocked(true);
+      isTransitionBlockedRef.current = true;
+      if (blockTimerRef.current) clearTimeout(blockTimerRef.current);
+      blockTimerRef.current = setTimeout(() => {
+        setIsTransitionBlocked(false);
+        isTransitionBlockedRef.current = false;
+      }, 300);
     }
   };
 
@@ -296,7 +312,7 @@ export default function VocabQuiz() {
                   <button
                     key={i}
                     onClick={() => handleSelect(opt)}
-                    disabled={selected !== null}
+                    disabled={selected !== null || isTransitionBlocked}
                     className={`w-full p-4 rounded-2xl border-2 font-bold text-lg transition-all ${btnClass} flex items-center justify-between`}
                   >
                     <div className="flex-1 flex flex-col items-start">

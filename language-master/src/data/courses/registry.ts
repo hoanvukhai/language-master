@@ -42,6 +42,8 @@ export interface Course {
   template?: TemplateType;
   extractType?: ExtractType;
   author?: CourseAuthor;
+  authorId?: string;
+  lessons?: string[];
 }
 
 // Giả lập chia nhỏ các khóa học dựa trên Data tĩnh hiện tại

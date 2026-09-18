@@ -2,14 +2,16 @@ import { useState, useMemo, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAllCourses, type Course } from '../../data/courses/registry';
 import { useMyCourses } from '../../context/global/useMyCourses';
-import { Plus, Check, Compass, Search, BookOpen, BadgeCheck, Users } from 'lucide-react';
-import { getPublishedCustomCourses, customDocToCourse } from '../../lib/customCourses/customCourseService';
+import { Plus, Check, Compass, Search, BookOpen, BadgeCheck, Users, Copy, Loader2, CheckCircle2 } from 'lucide-react';
+import { getPublishedCustomCourses, customDocToCourse, cloneFullCourse } from '../../lib/customCourses/customCourseService';
+import { useAuth } from '../../context/auth/useAuth';
 
 type LangFilter = 'all' | 'ja' | 'en';
 type SubjectFilter = 'all' | 'vocab' | 'kanji' | 'grammar' | 'special';
 type SourceFilter = 'all' | 'official' | 'community';
 
 export default function Explore() {
+  const { user } = useAuth();
   const { myCourseIds, addCourse } = useMyCourses();
   const staticCourses = getAllCourses();
   const navigate = useNavigate();
@@ -19,6 +21,8 @@ export default function Explore() {
   const [subjectFilter, setSubjectFilter] = useState<SubjectFilter>('all');
   const [sourceFilter, setSourceFilter] = useState<SourceFilter>('all');
   const [communityCourses, setCommunityCourses] = useState<Course[]>([]);
+  const [cloningId, setCloningId] = useState<string | null>(null);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   useEffect(() => {
     const loadCommunity = async () => {
@@ -308,23 +312,51 @@ export default function Explore() {
                   </p>
 
                   <div className="z-10 mt-auto">
-                    {isAdded ? (
+                    <div className="flex items-center gap-2">
+                      {isAdded ? (
+                        <button
+                          onClick={(e) => { e.preventDefault(); navigate(`/course/${c.id}`, { state: { from: '/explore' } }); }}
+                          className="flex-1 py-3 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+                        >
+                          <Check size={18} className="text-green-500" />
+                          Vào học ngay
+                        </button>
+                      ) : (
+                        <button
+                          onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleAddCourse(c.id); }}
+                          className="flex-1 py-3 bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-900/20 dark:hover:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400 font-bold rounded-xl flex items-center justify-center gap-2 border border-indigo-200 dark:border-indigo-800/50 transition-colors"
+                        >
+                          <Plus size={18} />
+                          Thêm vào của tôi
+                        </button>
+                      )}
+
                       <button
-                        onClick={(e) => { e.preventDefault(); navigate(`/course/${c.id}`, { state: { from: '/explore' } }); }}
-                        className="w-full py-3 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+                        onClick={async (e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          if (cloningId) return;
+                          setCloningId(c.id);
+                          try {
+                            const cloned = await cloneFullCourse(user?.uid, user, c);
+                            setToastMessage(`Đã sao chép thành công "${cloned.title}"!`);
+                            setTimeout(() => {
+                              navigate(`/course/${cloned.id}`);
+                            }, 1200);
+                          } catch (err) {
+                            console.error(err);
+                            setToastMessage('Lỗi khi sao chép khóa học.');
+                          } finally {
+                            setCloningId(null);
+                          }
+                        }}
+                        disabled={cloningId === c.id}
+                        className="p-3 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-300 rounded-xl transition-all border border-slate-200 dark:border-slate-600 shrink-0"
+                        title="Sao chép toàn bộ khóa học này thành bộ từ cá nhân để tự do chỉnh sửa"
                       >
-                        <Check size={18} className="text-green-500" />
-                        Vào học ngay
+                        {cloningId === c.id ? <Loader2 size={18} className="animate-spin text-indigo-500" /> : <Copy size={18} />}
                       </button>
-                    ) : (
-                      <button
-                        onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleAddCourse(c.id); }}
-                        className="w-full py-3 bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-900/20 dark:hover:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400 font-bold rounded-xl flex items-center justify-center gap-2 border border-indigo-200 dark:border-indigo-800/50 transition-colors"
-                      >
-                        <Plus size={18} />
-                        Thêm vào của tôi
-                      </button>
-                    )}
+                    </div>
                   </div>
                 </div>
               );
@@ -350,6 +382,13 @@ export default function Explore() {
           </div>
         )}
       </div>
+      {/* Toast thông báo */}
+      {toastMessage && (
+        <div className="fixed bottom-6 right-6 z-50 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-2.5 text-xs md:text-sm font-bold animate-in slide-in-from-bottom-5 duration-300 border border-slate-800 dark:border-slate-200">
+          <CheckCircle2 size={18} className="text-emerald-400 dark:text-emerald-600 shrink-0" />
+          <span>{toastMessage}</span>
+        </div>
+      )}
     </div>
   );
 }

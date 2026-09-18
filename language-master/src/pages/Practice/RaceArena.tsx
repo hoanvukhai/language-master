@@ -75,6 +75,11 @@ export default function RaceArena() {
   const feedbackTimeRef = useRef<number>(0);
   const livesRef = useRef(3); // Sync ref to avoid stale closure in advanceToNext
 
+  // Anti-misfire: Khóa đệm an toàn 300ms chống bấm nhầm câu hỏi tiếp theo khi vừa chuyển câu
+  const [isTransitionBlocked, setIsTransitionBlocked] = useState(false);
+  const isTransitionBlockedRef = useRef(false);
+  const transitionBlockTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   // Matching Cards State
   const [matchingCards, setMatchingCards] = useState<{ id: string; text: string; pairId: string; type: 'prompt' | 'answer'; isMatched?: boolean; originalItem?: any }[]>([]);
   const [selectedMatchCard, setSelectedMatchCard] = useState<number | null>(null);
@@ -289,7 +294,10 @@ export default function RaceArena() {
   // ── 1.5 Countdown Engine ─────────────────────────────────────────────
   useEffect(() => {
     // Stop BGM if user exits early
-    return () => stopBgm();
+    return () => {
+      stopBgm();
+      if (transitionBlockTimerRef.current) clearTimeout(transitionBlockTimerRef.current);
+    };
   }, []);
 
   useEffect(() => {
@@ -485,6 +493,15 @@ export default function RaceArena() {
       setSelectedOption(null);
       setIsAnswerCorrect(null);
       setUserTyping('');
+
+      // Khóa đệm an toàn 300ms chống double-click/misfire vào đáp án câu mới
+      setIsTransitionBlocked(true);
+      isTransitionBlockedRef.current = true;
+      if (transitionBlockTimerRef.current) clearTimeout(transitionBlockTimerRef.current);
+      transitionBlockTimerRef.current = setTimeout(() => {
+        setIsTransitionBlocked(false);
+        isTransitionBlockedRef.current = false;
+      }, 300);
       
       setQIdx(i => i + 1);
       resetTimer(timePerQ);
@@ -670,7 +687,7 @@ if (!newHistory.find(item => getUniqueId(item.q) === getUniqueId(card2.originalI
       // Ignore other shortcuts if typing in an input
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
 
-      if (gameState !== 'playing' || loading || showingFeedback || countdown !== null) return;
+      if (gameState !== 'playing' || loading || showingFeedback || countdown !== null || isTransitionBlockedRef.current) return;
 
       // Quiz: 1-4
       if (game === 'quiz' && questions[qIdx]?.options) {
@@ -978,6 +995,7 @@ if (!newHistory.find(item => getUniqueId(item.q) === getUniqueId(card2.originalI
             selectedOption={selectedOption}
             isAnswerCorrect={isAnswerCorrect}
             onSelectOption={opt => {
+              if (isTransitionBlockedRef.current) return;
               setSelectedOption(opt);
               handleAnswerSubmit(opt === currentQ.correctAnswer);
             }}
@@ -1009,6 +1027,7 @@ if (!newHistory.find(item => getUniqueId(item.q) === getUniqueId(card2.originalI
               if (countdown === null) setUserTyping(val);
             }}
             onSubmitAnswer={ans => {
+              if (isTransitionBlockedRef.current) return;
               if (course.template === 'english') {
                 // English: support multi-word variants (e.g. "mother, mom")
                 const isOk = checkEnglishWordMatch(ans, currentQ.correctAnswer);
@@ -1044,8 +1063,9 @@ if (!newHistory.find(item => getUniqueId(item.q) === getUniqueId(card2.originalI
       {game === 'truefalse' && currentQ && (
         <RaceTrueFalseView
           question={currentQ}
-          disabled={showingFeedback}
+          disabled={showingFeedback || isTransitionBlocked}
           onSelectTrueFalse={choice => {
+            if (isTransitionBlockedRef.current) return;
             handleAnswerSubmit(choice === currentQ.isTrue);
           }}
           language={language}

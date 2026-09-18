@@ -120,11 +120,13 @@ export function getStorageCourses(): CustomCourseDoc[] {
   }
 }
 
-/** Lưu các khóa custom vào LocalStorage */
-export function saveStorageCourses(courses: CustomCourseDoc[]) {
+/** Lưu các khóa custom vào LocalStorage. Mặc định KHÔNG dispatch event để tránh loop; chỉ dispatch khi emitEvent = true */
+export function saveStorageCourses(courses: CustomCourseDoc[], emitEvent: boolean = false) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(courses));
-    window.dispatchEvent(new CustomEvent('custom_courses_changed'));
+    if (emitEvent) {
+      window.dispatchEvent(new CustomEvent('custom_courses_changed'));
+    }
   } catch (e) {
     console.error('Failed to save local custom courses:', e);
   }
@@ -147,6 +149,8 @@ export function customDocToCourse(docData: CustomCourseDoc): Course {
     color: docData.color || 'indigo',
     template: docData.template || 'japanese',
     author,
+    authorId: docData.authorId,
+    lessons: docData.lessons && docData.lessons.length > 0 ? docData.lessons : ['Bài 1'],
     data: docData.words.map((w, idx) => ({
       id: w.id || `w_${idx + 1}`,
       word: w.kanji,
@@ -361,8 +365,8 @@ export async function getUserCustomCourses(userId: string | null | undefined): P
     const snap = await getDoc(userRef);
     if (snap.exists() && Array.isArray(snap.data().customCourses)) {
       const firestoreList: CustomCourseDoc[] = snap.data().customCourses.map(sanitizeCourseDoc);
-      // Đồng bộ vào localStorage để dùng khi offline
-      saveStorageCourses(firestoreList);
+      // Đồng bộ vào localStorage để dùng khi offline (KHÔNG dispatch event để tránh vòng lặp tải vô tận)
+      saveStorageCourses(firestoreList, false);
       return firestoreList;
     }
     return localList;
@@ -453,6 +457,48 @@ export async function getCustomCourseById(courseId: string): Promise<CustomCours
 }
 
 /** Thêm nhanh một từ vựng vào một bộ từ đã có */
+/** Đồng bộ thay đổi của 1 khóa học vào LocalStorage và Firestore */
+async function syncSingleCourse(
+  courseId: string, 
+  updatedDoc: CustomCourseDoc, 
+  userId: string | null | undefined
+): Promise<void> {
+  const localList = getStorageCourses();
+  const idx = localList.findIndex(c => c.id === courseId);
+  if (idx !== -1) {
+    localList[idx] = updatedDoc;
+  } else {
+    localList.unshift(updatedDoc);
+  }
+  saveStorageCourses(localList);
+
+  if (userId && userId !== 'guest') {
+    try {
+      const userRef = doc(db, 'users', userId);
+      const userSnap = await getDoc(userRef);
+      if (userSnap.exists() && Array.isArray(userSnap.data().customCourses)) {
+        const existing = userSnap.data().customCourses.map(sanitizeCourseDoc);
+        const nextList = existing.map((c: CustomCourseDoc) => c.id === courseId ? updatedDoc : c);
+        if (!existing.some((c: CustomCourseDoc) => c.id === courseId)) {
+          nextList.unshift(updatedDoc);
+        }
+        await updateDoc(userRef, { customCourses: nextList });
+      }
+      try {
+        const rootRef = doc(db, 'custom_courses', courseId);
+        await setDoc(rootRef, updatedDoc, { merge: true });
+      } catch (rootErr) {
+        // ignore
+      }
+    } catch (err) {
+      console.warn('Could not sync custom course to Firestore:', err);
+    }
+  }
+
+  window.dispatchEvent(new CustomEvent('custom_courses_changed'));
+}
+
+/** Thêm nhanh một từ vựng vào một bộ từ đã có */
 export async function addWordToCustomCourse(
   courseId: string,
   userId: string | null | undefined,
@@ -485,10 +531,342 @@ export async function addWordToCustomCourse(
     updatedAt: new Date().toISOString(),
   });
 
+  await syncSingleCourse(courseId, updatedDoc, userId);
+  return updatedDoc;
+}
+
+/** Cập nhật một từ vựng trong bộ từ */
+export async function updateWordInCustomCourse(
+  courseId: string,
+  userId: string | null | undefined,
+  updatedWord: CustomWord
+): Promise<CustomCourseDoc> {
+  const localList = getStorageCourses();
+  const idx = localList.findIndex(c => c.id === courseId);
+  if (idx === -1) throw new Error('Không tìm thấy bộ từ vựng.');
+
+  const course = localList[idx];
+  const sanitized = sanitizeWord(updatedWord, 0, updatedWord.lesson || 'Bài 1');
+  const words = course.words.map(w => w.id === updatedWord.id ? sanitized : w);
+
+  const updatedDoc = sanitizeCourseDoc({
+    ...course,
+    words,
+    updatedAt: new Date().toISOString(),
+  });
+
+  await syncSingleCourse(courseId, updatedDoc, userId);
+  return updatedDoc;
+}
+
+/** Xóa một từ vựng khỏi bộ từ */
+export async function deleteWordFromCustomCourse(
+  courseId: string,
+  userId: string | null | undefined,
+  wordId: string
+): Promise<CustomCourseDoc> {
+  const localList = getStorageCourses();
+  const idx = localList.findIndex(c => c.id === courseId);
+  if (idx === -1) throw new Error('Không tìm thấy bộ từ vựng.');
+
+  const course = localList[idx];
+  const words = course.words.filter(w => w.id !== wordId);
+
+  const updatedDoc = sanitizeCourseDoc({
+    ...course,
+    words,
+    wordCount: words.length,
+    updatedAt: new Date().toISOString(),
+  });
+
+  await syncSingleCourse(courseId, updatedDoc, userId);
+  return updatedDoc;
+}
+
+/** Thêm hàng loạt từ vựng vào một bài học */
+export async function bulkAddWordsToCustomCourse(
+  courseId: string,
+  userId: string | null | undefined,
+  rawWords: Partial<CustomWord>[],
+  targetLesson?: string
+): Promise<CustomCourseDoc> {
+  const localList = getStorageCourses();
+  const idx = localList.findIndex(c => c.id === courseId);
+  if (idx === -1) throw new Error('Không tìm thấy bộ từ vựng.');
+
+  const course = localList[idx];
+  const lesson = targetLesson || (course.lessons && course.lessons[0]) || 'Bài 1';
+  const lessons = Array.from(new Set([...(course.lessons || []), lesson]));
+
+  const newWords = rawWords.map((rw, i) => sanitizeWord({
+    ...rw,
+    lesson: rw.lesson || lesson,
+  }, course.words.length + i, lesson));
+
+  const words = [...course.words, ...newWords];
+  const updatedDoc = sanitizeCourseDoc({
+    ...course,
+    lessons,
+    words,
+    wordCount: words.length,
+    updatedAt: new Date().toISOString(),
+  });
+
+  await syncSingleCourse(courseId, updatedDoc, userId);
+  return updatedDoc;
+}
+
+/** Thêm một bài học mới vào bộ từ */
+export async function addLessonToCustomCourse(
+  courseId: string,
+  userId: string | null | undefined,
+  lessonName: string
+): Promise<CustomCourseDoc> {
+  const localList = getStorageCourses();
+  const idx = localList.findIndex(c => c.id === courseId);
+  if (idx === -1) throw new Error('Không tìm thấy bộ từ vựng.');
+
+  const course = localList[idx];
+  const trimmed = lessonName.trim();
+  if (!trimmed) throw new Error('Tên bài học không được để trống.');
+
+  if (course.lessons.includes(trimmed)) return course;
+
+  const lessons = [...course.lessons, trimmed];
+  const updatedDoc = sanitizeCourseDoc({
+    ...course,
+    lessons,
+    updatedAt: new Date().toISOString(),
+  });
+
+  await syncSingleCourse(courseId, updatedDoc, userId);
+  return updatedDoc;
+}
+
+/** Đổi tên bài học trong bộ từ */
+export async function renameLessonInCustomCourse(
+  courseId: string,
+  userId: string | null | undefined,
+  oldName: string,
+  newName: string
+): Promise<CustomCourseDoc> {
+  const localList = getStorageCourses();
+  const idx = localList.findIndex(c => c.id === courseId);
+  if (idx === -1) throw new Error('Không tìm thấy bộ từ vựng.');
+
+  const course = localList[idx];
+  const trimmedOld = oldName.trim();
+  const trimmedNew = newName.trim();
+  if (!trimmedNew || trimmedOld === trimmedNew) return course;
+
+  const lessons = course.lessons.map(l => l === trimmedOld ? trimmedNew : l);
+  const words = course.words.map(w => w.lesson === trimmedOld ? { ...w, lesson: trimmedNew } : w);
+
+  const updatedDoc = sanitizeCourseDoc({
+    ...course,
+    lessons,
+    words,
+    updatedAt: new Date().toISOString(),
+  });
+
+  await syncSingleCourse(courseId, updatedDoc, userId);
+  return updatedDoc;
+}
+
+/** Xóa một bài học khỏi bộ từ (từ vựng chuyển sang bài đầu tiên) */
+export async function deleteLessonFromCustomCourse(
+  courseId: string,
+  userId: string | null | undefined,
+  lessonName: string
+): Promise<CustomCourseDoc> {
+  const localList = getStorageCourses();
+  const idx = localList.findIndex(c => c.id === courseId);
+  if (idx === -1) throw new Error('Không tìm thấy bộ từ vựng.');
+
+  const course = localList[idx];
+  if (course.lessons.length <= 1) {
+    // Nếu là bài học duy nhất, xóa sạch từ vựng và reset về 'Bài 1'
+    const updatedDoc = sanitizeCourseDoc({
+      ...course,
+      lessons: ['Bài 1'],
+      words: [],
+      updatedAt: new Date().toISOString(),
+    });
+    await syncSingleCourse(courseId, updatedDoc, userId);
+    return updatedDoc;
+  }
+
+  const remaining = course.lessons.filter(l => l !== lessonName);
+  const fallback = remaining[0];
+  const words = course.words.map(w => w.lesson === lessonName ? { ...w, lesson: fallback } : w);
+
+  const updatedDoc = sanitizeCourseDoc({
+    ...course,
+    lessons: remaining,
+    words,
+    updatedAt: new Date().toISOString(),
+  });
+
+  await syncSingleCourse(courseId, updatedDoc, userId);
+  return updatedDoc;
+}
+
+/** Đổi toàn bộ thứ tự các bài học trong bộ từ */
+export async function reorderLessonsInCustomCourse(
+  courseId: string,
+  userId: string | null | undefined,
+  newLessonsOrder: string[]
+): Promise<CustomCourseDoc> {
+  const localList = getStorageCourses();
+  const idx = localList.findIndex(c => c.id === courseId);
+  if (idx === -1) throw new Error('Không tìm thấy bộ từ vựng.');
+
+  const course = localList[idx];
+  const updatedDoc = sanitizeCourseDoc({
+    ...course,
+    lessons: newLessonsOrder,
+    updatedAt: new Date().toISOString(),
+  });
+
+  await syncSingleCourse(courseId, updatedDoc, userId);
+  return updatedDoc;
+}
+
+/** Di chuyển vị trí một bài học lên hoặc xuống */
+export async function moveLessonPosition(
+  courseId: string,
+  userId: string | null | undefined,
+  lessonName: string,
+  direction: 'up' | 'down'
+): Promise<CustomCourseDoc> {
+  const localList = getStorageCourses();
+  const idx = localList.findIndex(c => c.id === courseId);
+  if (idx === -1) throw new Error('Không tìm thấy bộ từ vựng.');
+
+  const course = localList[idx];
+  const lessons = [...course.lessons];
+  const curIdx = lessons.indexOf(lessonName);
+  if (curIdx === -1) return course;
+
+  const targetIdx = direction === 'up' ? curIdx - 1 : curIdx + 1;
+  if (targetIdx < 0 || targetIdx >= lessons.length) return course;
+
+  // Hoán đổi vị trí
+  const temp = lessons[curIdx];
+  lessons[curIdx] = lessons[targetIdx];
+  lessons[targetIdx] = temp;
+
+  return await reorderLessonsInCustomCourse(courseId, userId, lessons);
+}
+
+/**
+ * Trích xuất từ vựng chuẩn hóa để sao chép (Chỉ lấy Từ, Nghĩa, Cách đọc; bỏ ví dụ; sinh ID mới)
+ */
+export function extractCopyWord(item: any, idx: number, targetLesson = 'Bài 1'): CustomWord {
+  const term = String(item.kanji || item.word || item.character || item.structure || item.term || '').trim();
+  
+  let meaning = '';
+  if (typeof item.meaning === 'object' && item.meaning !== null) {
+    meaning = String(item.meaning.vi || item.meaning.en || '').trim();
+  } else {
+    meaning = String(item.meaning || item.definition || '').trim();
+  }
+
+  const reading = String(item.hiragana || item.ipa || item.reading || item.hanViet || '').trim();
+  const lesson = String(item.lesson || targetLesson).trim() || targetLesson;
+
+  return {
+    id: `w_custom_${Date.now()}_${idx + 1}_${Math.random().toString(36).substring(2, 6)}`,
+    kanji: term,
+    hiragana: reading,
+    meaning: meaning,
+    exampleKanji: '',    // Cố tình để trống theo yêu cầu
+    exampleMeaning: '',  // Cố tình để trống theo yêu cầu
+    lesson: lesson,
+  };
+}
+
+/**
+ * Sao chép toàn bộ một khóa học (khóa hệ thống hoặc custom course) thành một khóa cá nhân mới
+ */
+export async function cloneFullCourse(
+  userId: string | null | undefined,
+  userProfile: any,
+  sourceCourse: any
+): Promise<CustomCourseDoc> {
+  const sourceName = sourceCourse.name || sourceCourse.title || 'Khóa học';
+  const cloneTitle = `[Bản sao] ${sourceName}`;
+  const rawData: any[] = Array.isArray(sourceCourse.data) ? sourceCourse.data : (Array.isArray(sourceCourse.words) ? sourceCourse.words : []);
+
+  // Lấy danh sách bài học
+  const lessonSet = new Set<string>();
+  if (Array.isArray(sourceCourse.lessons) && sourceCourse.lessons.length > 0) {
+    sourceCourse.lessons.forEach((l: any) => lessonSet.add(String(l).trim()));
+  }
+
+  const words: CustomWord[] = rawData.map((item, idx) => {
+    const w = extractCopyWord(item, idx, sourceCourse.lessons?.[0] || 'Bài 1');
+    if (w.lesson) lessonSet.add(w.lesson);
+    return w;
+  });
+
+  if (lessonSet.size === 0) lessonSet.add('Bài 1');
+  const lessons = Array.from(lessonSet);
+
+  let template: 'japanese' | 'english' | 'generic' = 'generic';
+  if (sourceCourse.template === 'japanese' || sourceCourse.template === 'english') {
+    template = sourceCourse.template;
+  }
+
+  return await createCustomCourse(userId, userProfile, {
+    title: cloneTitle,
+    description: sourceCourse.description ? `Bản sao từ: ${sourceCourse.description}` : `Bản sao tạo từ ${sourceName}`,
+    template,
+    color: sourceCourse.color || 'indigo',
+    lessons,
+    words,
+  });
+}
+
+/**
+ * Sao chép hàng loạt từ vựng vào một bộ từ và bài học đích
+ */
+export async function copyWordsToCustomCourse(
+  courseId: string,
+  userId: string | null | undefined,
+  wordsToCopy: any[],
+  targetLesson: string
+): Promise<{ addedCount: number; course: CustomCourseDoc }> {
+  const localList = getStorageCourses();
+  const idx = localList.findIndex(c => c.id === courseId);
+  if (idx === -1) {
+    throw new Error('Không tìm thấy bộ từ vựng mục tiêu.');
+  }
+
+  const course = localList[idx];
+  const lesson = targetLesson.trim() || (course.lessons && course.lessons[0]) || 'Bài 1';
+
+  // Đảm bảo bài có trong danh sách lessons
+  const lessons = Array.from(new Set([...(course.lessons || []), lesson]));
+
+  const newWords: CustomWord[] = wordsToCopy.map((w, i) => {
+    const extracted = extractCopyWord(w, course.words.length + i, lesson);
+    extracted.lesson = lesson;
+    return extracted;
+  });
+
+  const updatedWords = [...course.words, ...newWords];
+  const updatedDoc = sanitizeCourseDoc({
+    ...course,
+    lessons,
+    words: updatedWords,
+    wordCount: updatedWords.length,
+    updatedAt: new Date().toISOString(),
+  });
+
   localList[idx] = updatedDoc;
   saveStorageCourses(localList);
 
-  // Lưu Firestore nếu có user
   if (userId && userId !== 'guest') {
     try {
       const userRef = doc(db, 'users', userId);
@@ -499,11 +877,11 @@ export async function addWordToCustomCourse(
         await updateDoc(userRef, { customCourses: nextList });
       }
     } catch (err) {
-      console.warn('Could not sync word to Firestore customCourses:', err);
+      console.warn('Could not sync copyWords to Firestore customCourses:', err);
     }
   }
 
   window.dispatchEvent(new CustomEvent('custom_courses_changed'));
-  return updatedDoc;
+  return { addedCount: newWords.length, course: updatedDoc };
 }
 

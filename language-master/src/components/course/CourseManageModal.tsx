@@ -2,6 +2,8 @@
 // Popup Quản Lý Khóa Học Toàn Diện: Ngoại Tuyến + Đặt Lại Tiến Độ + Gỡ Khóa Học
 
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   X,
   HardDrive,
@@ -14,6 +16,7 @@ import {
   BookmarkX,
   Loader2,
   AlertTriangle,
+  Copy,
 } from 'lucide-react';
 import { useCourseData } from '../../hooks/useCourseData';
 import {
@@ -27,6 +30,7 @@ import { useNetworkStatus } from '../../hooks/useNetworkStatus';
 import { useAuth } from '../../context/auth/useAuth';
 import { useMyCourses } from '../../context/global/useMyCourses';
 import { resetCourseProgress } from '../../lib/srs/firestoreSync';
+import { cloneFullCourse } from '../../lib/customCourses/customCourseService';
 
 interface CourseManageModalProps {
   isOpen: boolean;
@@ -43,9 +47,13 @@ export function CourseManageModal({
   onCourseRemoved,
   onCourseReset,
 }: CourseManageModalProps) {
+  const navigate = useNavigate();
   const { user } = useAuth();
   const { removeCourse } = useMyCourses();
   const { isOnline } = useNetworkStatus();
+
+  // Clone course state
+  const [isCloning, setIsCloning] = useState(false);
 
   // Offline state
   const [offlineMeta, setOfflineMeta] = useState<OfflineMeta | null>(null);
@@ -92,6 +100,16 @@ export function CourseManageModal({
       document.body.style.overflow = '';
     };
   }, [isOpen]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
 
   if (!isOpen || !course) return null;
 
@@ -171,8 +189,27 @@ export function CourseManageModal({
     }
   };
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+  // --- Clone Course Handler ---
+  const handleCloneCourse = async () => {
+    if (!course) return;
+    setIsCloning(true);
+    try {
+      const cloned = await cloneFullCourse(user?.uid, user, course);
+      showToast(`Đã sao chép thành công khóa "${cloned.title}"!`);
+      setTimeout(() => {
+        onClose();
+        navigate(`/course/${cloned.id}`);
+      }, 1200);
+    } catch (err) {
+      console.error('Failed to clone course:', err);
+      showToast('Lỗi khi sao chép khóa học. Vui lòng thử lại.', 'error');
+    } finally {
+      setIsCloning(false);
+    }
+  };
+
+  const modalContent = (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       {/* Backdrop */}
       <div
         className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"
@@ -243,6 +280,28 @@ export function CourseManageModal({
               <span>{toast.text}</span>
             </div>
           )}
+
+          {/* ================= SECTION: CLONE COURSE ================= */}
+          <div className="p-4 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/30 border border-indigo-200/80 dark:border-indigo-800/60 space-y-3">
+            <div className="flex items-center gap-2 text-indigo-700 dark:text-indigo-400 font-bold text-xs uppercase tracking-wider">
+              <Copy size={15} />
+              <span>Sao Chép Thành Khóa Cá Nhân (Clone)</span>
+            </div>
+
+            <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Tạo bản sao độc lập của khóa học này vào <strong>Bộ từ của tôi</strong>. Toàn bộ từ vựng và bài học sẽ được nhân bản sang ID mới để bạn tự do chỉnh sửa, thêm bớt từ và học SRS từ đầu.
+            </p>
+
+            <button
+              type="button"
+              disabled={isCloning}
+              onClick={handleCloneCourse}
+              className="w-full py-2.5 px-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-bold text-xs transition-all flex items-center justify-center gap-2 shadow-sm shadow-indigo-500/20 disabled:opacity-50 cursor-pointer"
+            >
+              {isCloning ? <Loader2 size={14} className="animate-spin" /> : <Copy size={14} />}
+              <span>{isCloning ? 'Đang sao chép khóa học...' : 'Sao chép thành khóa cá nhân'}</span>
+            </button>
+          </div>
 
           {/* ================= SECTION 1: OFFLINE DATA ================= */}
           <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200/80 dark:border-slate-700/60 space-y-3">
@@ -448,4 +507,6 @@ export function CourseManageModal({
       </div>
     </div>
   );
+
+  return typeof document !== 'undefined' ? createPortal(modalContent, document.body) : null;
 }
