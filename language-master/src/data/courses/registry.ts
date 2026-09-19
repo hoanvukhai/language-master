@@ -17,7 +17,22 @@ import {
   essentialWords6,
   toeic600,
   expressionsBook1,
+  vocabInUseElementary,
+  vocabInUsePreInt,
+  vocabInUseUpperInt,
+  vocabInUseAdvanced,
+  oxford3000A1,
+  oxford3000A2,
+  oxford3000B1,
+  oxford3000B2,
+  oxford5000C1,
+  ieltsIntermediate,
+  ieltsAdvanced,
+  destinationB1,
+  destinationB2,
+  destinationC1C2,
 } from '../english/courses';
+
 
 export type SubjectType = 'vocab' | 'kanji_single' | 'kanji_words' | 'grammar' | 'special';
 export type LevelType = 'N5' | 'N4' | 'N3' | 'N2' | 'N1' | 'ALL' | 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
@@ -238,7 +253,148 @@ export const COURSE_REGISTRY: Course[] = [
     template: 'english',
     data: expressionsBook1 as any[]
   },
+  {
+    id: 'en-viu-elementary',
+    name: 'English Vocabulary in Use - Elementary',
+    description: '60 bài học từ vựng nền tảng A1-A2 (1.192 từ) chuẩn Cambridge kèm ví dụ song ngữ và câu hỏi đục lỗ.',
+    subject: 'vocab',
+    level: 'A2',
+    color: 'emerald',
+    template: 'english',
+    data: vocabInUseElementary as any[]
+  },
+  {
+    id: 'en-viu-pre-intermediate',
+    name: 'English Vocabulary in Use - Pre-intermediate & Intermediate',
+    description: '100 bài học từ vựng sơ trung cấp B1 (2.608 từ) mở rộng vốn từ giao tiếp và làm việc thực tế.',
+    subject: 'vocab',
+    level: 'B1',
+    color: 'teal',
+    template: 'english',
+    data: vocabInUsePreInt as any[]
+  },
+  {
+    id: 'en-viu-upper-intermediate',
+    name: 'English Vocabulary in Use - Upper-Intermediate',
+    description: '101 bài học từ vựng trung cao cấp B2 (3.305 từ) bản 4th Edition chuẩn xác, kết thúc bằng bài học Anh - Mỹ.',
+    subject: 'vocab',
+    level: 'B2',
+    color: 'indigo',
+    template: 'english',
+    data: vocabInUseUpperInt as any[]
+  },
+  {
+    id: 'en-viu-advanced',
+    name: 'English Vocabulary in Use - Advanced',
+    description: '100 bài học từ vựng cao cấp C1-C2 (2.625 từ) làm chủ văn phong học thuật và diễn đạt tự nhiên như người bản ngữ.',
+    subject: 'vocab',
+    level: 'C1',
+    color: 'purple',
+    template: 'english',
+    data: vocabInUseAdvanced as any[]
+  },
+  {
+    id: 'en-oxford-a1',
+    name: 'Oxford 3000 - Căn bản (A1)',
+    description: '30 bài học (874 từ) nền tảng căn bản nhất của Đại học Oxford, đầy đủ định nghĩa Anh-Anh, ví dụ và bài tập đục lỗ.',
+    subject: 'vocab',
+    level: 'A1',
+    color: 'emerald',
+    template: 'english',
+    data: oxford3000A1 as any[]
+  },
+  {
+    id: 'en-oxford-a2',
+    name: 'Oxford 3000 - Sơ cấp (A2)',
+    description: '30 bài học (855 từ) giao tiếp hàng ngày cốt lõi của Đại học Oxford, hoàn thiện vốn từ sinh hoạt và diễn đạt tự tin.',
+    subject: 'vocab',
+    level: 'A2',
+    color: 'teal',
+    template: 'english',
+    data: oxford3000A2 as any[]
+  },
+  {
+    id: 'en-oxford-b1',
+    name: 'Oxford 3000 - Trung cấp (B1)',
+    description: '28 bài học (795 từ) trung cấp của Đại học Oxford, mở rộng khả năng tranh luận, công việc và học tập thực tế.',
+    subject: 'vocab',
+    level: 'B1',
+    color: 'blue',
+    template: 'english',
+    data: oxford3000B1 as any[]
+  },
+  {
+    id: 'en-oxford-b2',
+    name: 'Oxford 3000 - Trung cao cấp (B2)',
+    description: '25 bài học (699 từ) hoàn thiện bộ The Oxford 3000, sẵn sàng cho các kỳ thi quốc tế B2 First, IELTS 5.5 - 6.5.',
+    subject: 'vocab',
+    level: 'B2',
+    color: 'indigo',
+    template: 'english',
+    data: oxford3000B2 as any[]
+  },
+  {
+    id: 'en-oxford-c1',
+    name: 'Oxford 5000 - Cao cấp (C1)',
+    description: '45 bài học (1.352 từ) cao cấp của Đại học Oxford, làm chủ từ vựng học thuật chuyên sâu và chinh phục IELTS 7.0 - 8.5+.',
+    subject: 'vocab',
+    level: 'C1',
+    color: 'purple',
+    template: 'english',
+    data: oxford5000C1 as any[]
+  },
+  {
+    id: 'en-ielts-intermediate',
+    name: 'Cambridge Vocabulary for IELTS (Band 5.5 - 6.5)',
+    description: '60 bài học (1.890 từ) bao quát toàn diện 20 chủ đề trọng điểm của bài thi IELTS từ giáo trình chính thức của Cambridge.',
+    subject: 'vocab',
+    level: 'B2',
+    color: 'amber',
+    template: 'english',
+    data: ieltsIntermediate as any[]
+  },
+  {
+    id: 'en-ielts-advanced',
+    name: 'Cambridge Vocabulary for IELTS - Advanced (Band 7.0 - 8.5+)',
+    description: '25 bài học (519 từ) học thuật tinh tuyển của Cambridge, bứt phá band điểm Writing Task 2 và Speaking tự nhiên như người bản ngữ.',
+    subject: 'vocab',
+    level: 'C1',
+    color: 'rose',
+    template: 'english',
+    data: ieltsAdvanced as any[]
+  },
+  {
+    id: 'en-destination-b1',
+    name: 'Destination B1: Vocabulary & Phrasal Verbs',
+    description: 'Giáo trình Macmillan Destination B1: 42 bài học (527 từ & cụm động từ) kèm 2.072 collocations, word formations và bài tập thực chiến.',
+    subject: 'vocab',
+    level: 'B1',
+    color: 'teal',
+    template: 'english',
+    data: destinationB1 as any[]
+  },
+  {
+    id: 'en-destination-b2',
+    name: 'Destination B2: Vocabulary & Phrasal Verbs',
+    description: 'Giáo trình Macmillan Destination B2: 28 bài học (594 từ & cụm động từ) chuẩn Upper-Intermediate, mở rộng vốn từ vựng và cụm từ nâng cao.',
+    subject: 'vocab',
+    level: 'B2',
+    color: 'sky',
+    template: 'english',
+    data: destinationB2 as any[]
+  },
+  {
+    id: 'en-destination-c1c2',
+    name: 'Destination C1 & C2: Advanced Vocabulary',
+    description: 'Giáo trình đỉnh cao Macmillan Destination C1 & C2: 1.505 từ vựng học thuật cao cấp, chuẩn bị cho IELTS 7.5 - 9.0 và Cambridge CAE/CPE.',
+    subject: 'vocab',
+    level: 'C1',
+    color: 'fuchsia',
+    template: 'english',
+    data: destinationC1C2 as any[]
+  },
 ];
+
 
 export const OFFICIAL_AUTHOR: CourseAuthor = {
   name: 'Hệ thống',

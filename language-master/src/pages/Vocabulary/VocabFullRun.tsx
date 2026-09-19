@@ -292,7 +292,11 @@ export default function VocabFullRun() {
 
   // Auto-focus typing
   useEffect(() => {
-    if (started && currentQ?.type === 'typing') setTimeout(() => inputRef.current?.focus(), 250);
+    if (started && currentQ?.type === 'typing') {
+      inputRef.current?.focus({ preventScroll: true });
+      const timer = setTimeout(() => inputRef.current?.focus({ preventScroll: true }), 100);
+      return () => clearTimeout(timer);
+    }
   }, [qIdx, started, currentQ?.type]);
 
   // Keyboard shortcuts - unified coordinator

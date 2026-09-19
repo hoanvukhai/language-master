@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
 import * as synth from '../../lib/audio/synthesizer';
+import { speakWithVoiceEngine } from '../../lib/audio/voiceEngine';
 
 type SfxType = 'correct' | 'wrong' | 'countdownTick' | 'countdownGo' | 'gameover' | 'ticktock' | 'combo' | 'victory';
 
@@ -61,11 +62,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
 
   const playText = (text: string, lang: string = 'ja-JP') => {
     if (isMuted) return;
-    if (!('speechSynthesis' in window)) return;
-    if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = lang;
-    window.speechSynthesis.speak(utterance);
+    speakWithVoiceEngine(text, { lang });
   };
 
   return (

@@ -9,16 +9,8 @@ import {
 import { doc, setDoc, updateDoc, serverTimestamp, onSnapshot, increment } from 'firebase/firestore';
 import { auth, db } from '../../lib/firebase';
 import { AuthContext, type UserProfile } from './AuthContext';
+import { calculateUserStreak, getLocalISODate } from '../../lib/srs/streakCalculator';
 
-
-
-
-function getLocalISODate(d: Date): string {
-  const year = d.getFullYear();
-  const month = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
-}
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
@@ -80,63 +72,45 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             const now = new Date();
             const today = getLocalISODate(now);
             const lastLoginDate = data?.lastLoginDate;
-            let currentStreak = Number(data?.currentStreak) || 0;
-            let totalExp = Number(data?.totalExp) || 0;
+            const lastStreakAwardedDate = data?.lastStreakDate;
+            const totalExp = Number(data?.totalExp) || 0;
+            const dailyStudyTime = (data?.dailyStudyTime || {}) as Record<string, number>;
+            const activityHistory = (data?.activityHistory || {}) as Record<string, number>;
 
-            const yestDate = new Date(now);
-            yestDate.setDate(yestDate.getDate() - 1);
-            const yesterday = getLocalISODate(yestDate);
+            // Tính toán chuỗi streak thực tế chuẩn xác dựa trên nhật ký học tập (dailyStudyTime & activityHistory)
+            const { currentStreak, isGoalMetToday } = calculateUserStreak(
+              dailyStudyTime,
+              activityHistory,
+              now
+            );
 
-            const lastStreakDate = data?.lastStreakDate;
-            const todayExp = (data?.activityHistory || {})[today] || 0;
-            const todaySeconds = (data?.dailyStudyTime || {})[today] || 0;
-            const isGoalMetToday = todayExp >= 10 || todaySeconds >= 180;
+            const updatesToDoc: Record<string, any> = {};
 
-            // 1. Khi HỌC ĐỦ mục tiêu hôm nay (10 EXP hoặc 3 phút học) -> MỚI TĂNG chuỗi
-            if (isGoalMetToday && lastStreakDate !== today) {
+            // 1. Thưởng EXP cho streak ngày hôm nay nếu học đủ mục tiêu và chưa nhận thưởng
+            if (isGoalMetToday && lastStreakAwardedDate !== today) {
               let bonusExp = 0;
-
-              if (lastStreakDate === yesterday) {
-                // Đã hoàn thành hôm qua và hôm nay học đủ -> Tăng chuỗi tiếp nối
-                currentStreak = currentStreak + 1;
-                if (currentStreak >= 30) bonusExp = 100;
-                else if (currentStreak >= 14) bonusExp = 50;
-                else if (currentStreak >= 7) bonusExp = 20;
-                else if (currentStreak >= 3) bonusExp = 10;
-              } else {
-                // Ngày đầu tiên đạt mục tiêu hoặc bắt đầu lại sau khi đứt chuỗi -> Chuỗi bắt đầu từ 1
-                currentStreak = 1;
-              }
+              if (currentStreak >= 30) bonusExp = 100;
+              else if (currentStreak >= 14) bonusExp = 50;
+              else if (currentStreak >= 7) bonusExp = 20;
+              else if (currentStreak >= 3) bonusExp = 10;
 
               const streakExp = 10 + bonusExp;
-
-              await updateDoc(userRef, {
-                currentStreak,
-                lastStreakDate: today,
-                lastLoginDate: today,
-                totalExp: increment(streakExp)
-              });
-              return;
+              updatesToDoc.lastStreakDate = today;
+              updatesToDoc.totalExp = increment(streakExp);
             }
 
-            // 2. Khi CHƯA học đủ hôm nay:
-            // Chỉ bảo toàn chuỗi nếu hôm qua đã hoàn thành (chờ người dùng học nốt trong ngày)
-            // hoặc nếu hôm nay đã nhận streak rồi.
-            // Nếu không đạt (ví dụ: chưa học hôm qua, người dùng mới, hoặc dữ liệu cũ chưa có streak) -> Chuỗi phải là 0!
-            if (!isGoalMetToday && lastStreakDate !== today && lastStreakDate !== yesterday) {
-              if (currentStreak > 0) {
-                currentStreak = 0;
-                await updateDoc(userRef, {
-                  currentStreak: 0,
-                  lastLoginDate: today
-                });
-                return;
-              }
+            // 2. Tự động đồng bộ chuỗi streak thực tế vào Firestore nếu khác với dữ liệu cũ
+            if (data?.currentStreak !== currentStreak) {
+              updatesToDoc.currentStreak = currentStreak;
             }
 
             // 3. Cập nhật lastLoginDate thông thường nếu sang ngày mới
             if (lastLoginDate !== today) {
-              await updateDoc(userRef, { lastLoginDate: today });
+              updatesToDoc.lastLoginDate = today;
+            }
+
+            if (Object.keys(updatesToDoc).length > 0) {
+              await updateDoc(userRef, updatesToDoc);
               return;
             }
 

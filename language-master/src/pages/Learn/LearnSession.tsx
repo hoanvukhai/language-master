@@ -12,6 +12,7 @@ import { Volume2, RotateCcw, Sparkles, ChevronRight, X, ChevronsUp, MousePointer
 
 import * as wanakana from 'wanakana';
 import { formatDualIpa, checkEnglishWordMatch, formatWordVariantsDisplay } from '../../lib/english/ipaHelper';
+import { speakWithVoiceEngine } from '../../lib/audio/voiceEngine';
 import {
   saveWordProgress,
   getLearnedItemIds,
@@ -488,6 +489,9 @@ export default function LearnSession() {
   const isInputBlockedRef = useRef(false);
   const inputBlockTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Ref cho ô nhập liệu gõ phím (typing questions)
+  const typingInputRef = useRef<HTMLInputElement | null>(null);
+
   useEffect(() => {
     isInputBlockedRef.current = isInputBlocked;
   }, [isInputBlocked]);
@@ -504,12 +508,9 @@ export default function LearnSession() {
   });
 
   const speak = (text: string, overrideAccent?: 'en-US' | 'en-GB') => {
-    if (!('speechSynthesis' in window)) return;
-    window.speechSynthesis.cancel();
     const cleanText = text ? text.trim() : '';
     if (!cleanText) return;
 
-    const u = new SpeechSynthesisUtterance(cleanText);
     const targetAccent = overrideAccent || englishAccent || localStorage.getItem('english_accent') || 'en-US';
     if (overrideAccent && overrideAccent !== englishAccent) {
       setEnglishAccent(overrideAccent);
@@ -520,21 +521,22 @@ export default function LearnSession() {
     const isVi = /[àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]/i.test(cleanText);
     const isKo = /[\uac00-\ud7af\u1100-\u11ff]/.test(cleanText);
 
+    let resolvedLang = 'en-US';
     if (course?.template === 'english') {
-      u.lang = targetAccent;
+      resolvedLang = targetAccent;
     } else if (isJp) {
-      u.lang = 'ja-JP';
+      resolvedLang = 'ja-JP';
     } else if (isVi) {
-      u.lang = 'vi-VN';
+      resolvedLang = 'vi-VN';
     } else if (isKo) {
-      u.lang = 'ko-KR';
+      resolvedLang = 'ko-KR';
     } else if (/^[a-zA-Z0-9\s.,!?'"()/-]+$/.test(cleanText)) {
-      u.lang = targetAccent;
+      resolvedLang = targetAccent;
     } else {
-      u.lang = 'ja-JP';
+      resolvedLang = 'ja-JP';
     }
-    u.rate = 0.9;
-    window.speechSynthesis.speak(u);
+
+    speakWithVoiceEngine(cleanText, { lang: resolvedLang, rate: 0.9 });
   };
 
   const toggleEnglishAccent = () => {
@@ -906,6 +908,17 @@ export default function LearnSession() {
       setQuizOptions((currentQ as any).quizOptions || []);
     }
   }, [currentQIdx, testQueue]);
+
+  // Tự động focus ô gõ phím khi vào câu hỏi typing hoặc chuyển câu (cả Ôn tập và Test)
+  useEffect(() => {
+    if (phase === 'test' && currentQ?.phase === 'typing' && feedback === 'none') {
+      typingInputRef.current?.focus({ preventScroll: true });
+      const timer = setTimeout(() => {
+        typingInputRef.current?.focus({ preventScroll: true });
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [phase, currentQ?.raw?.id, currentQIdx, currentQ?.phase, feedback]);
 
   // ── Auto Play Audio (Preview Only) ──────────────────────────────────
   useEffect(() => {
@@ -1451,8 +1464,11 @@ export default function LearnSession() {
 
               {/* ─── TYPING ─── */}
               {currentQ.phase === 'typing' && (
-                <div className="space-y-4 pt-4 max-w-lg">
-                  <p className="text-xs text-slate-400 dark:text-slate-500 font-medium">
+                <div
+                  className="space-y-4 pt-4 max-w-lg cursor-text"
+                  onClick={() => typingInputRef.current?.focus({ preventScroll: true })}
+                >
+                  <p className="text-xs text-slate-400 dark:text-slate-500 font-medium select-none">
                     {currentQ.raw.isSingleKanjiChar
                       ? 'Gõ Âm Hán Việt (VD: NHIỆM)'
                       : course?.template === 'english'
@@ -1461,7 +1477,11 @@ export default function LearnSession() {
                           ? 'Gõ chính xác thuật ngữ'
                           : 'Gõ Romaji (sẽ tự chuyển Hiragana)'}
                   </p>
-                  <input type="text" value={userTyping}
+                  <input
+                    ref={typingInputRef}
+                    key={`typing-input-${currentQ.raw.id}-${currentQIdx}`}
+                    type="text"
+                    value={userTyping}
                     onChange={e => {
                       if (!currentQ.raw.isSingleKanjiChar && course?.template !== 'english' && course?.template !== 'generic') {
                         const isExpectedKatakana = /^[\u30A0-\u30FF\u30FC\s]+$/.test(currentQ.raw.hiragana);
@@ -1482,7 +1502,7 @@ export default function LearnSession() {
                         : course?.template === 'generic'
                           ? 'Nhập thuật ngữ...'
                           : 'Romaji...'}
-                    disabled={feedback !== 'none' || isInputBlocked}
+                    disabled={feedback !== 'none'}
                     autoFocus
                     autoComplete="off"
                     autoCorrect="off"

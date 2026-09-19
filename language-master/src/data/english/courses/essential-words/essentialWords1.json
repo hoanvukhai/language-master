@@ -330,7 +330,7 @@
     "ipa": "/wiːk/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "thứ hai",
+      "vi": "tuần, tuần lễ",
       "en": "A week is a period of time that is seven days long."
     },
     "examples": [
@@ -852,7 +852,7 @@
     "ipa": "/ɡreɪd/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "mức độ, cấp độ",
+      "vi": "điểm số, điểm thi; lớp học",
       "en": "A grade is a score or mark given to someone’s work."
     },
     "examples": [
@@ -1050,7 +1050,7 @@
     "ipa": "/ˌʌndərˈstænd/",
     "partOfSpeech": "verb",
     "meaning": {
-      "vi": "hiếu, nhận thức",
+      "vi": "hiểu, nhận thức",
       "en": "To understand something you need to know what it means."
     },
     "examples": [
@@ -1374,7 +1374,7 @@
     "ipa": "/ʃeɪk/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "rung, lắcbắt tay",
+      "vi": "rung, lắc; bắt tay",
       "en": "To shake is to move back and forth or up and down quickly."
     },
     "examples": [
@@ -1446,7 +1446,7 @@
     "ipa": "/ˈæktɪv/",
     "partOfSpeech": "adjective",
     "meaning": {
-      "vi": "đã kích hoạt",
+      "vi": "năng động, tích cực, hoạt bát",
       "en": "When someone is active, they move a lot or have a lot of things to do."
     },
     "examples": [
@@ -1860,7 +1860,7 @@
     "ipa": "/kəmˈpliːtli/",
     "partOfSpeech": "adverb",
     "meaning": {
-      "vi": "hoàn thành, đầy đủ",
+      "vi": "hoàn toàn, trọn vẹn",
       "en": "Something completely different is very, very different from before."
     },
     "examples": [
@@ -1950,7 +1950,7 @@
     "ipa": "/ɡʌlf/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "vĩnh, vực thẳm; hố sâu ngăn cách",
+      "vi": "vịnh; vực thẳm, hố sâu ngăn cách",
       "en": "A gulf is a gap between people who do not understand each other."
     },
     "examples": [
@@ -2398,9 +2398,9 @@
     "template": "english",
     "word": "lay",
     "ipa": "/leɪ/",
-    "partOfSpeech": "noun",
+    "partOfSpeech": "verb",
     "meaning": {
-      "vi": "bày, nằm",
+      "vi": "đặt, để (ở tư thế nằm/phẳng)",
       "en": "To lay means to put or place in a horizontal or flat position."
     },
     "examples": [
@@ -2830,9 +2830,9 @@
     "template": "english",
     "word": "single",
     "ipa": "/ˈsɪŋɡl/",
-    "partOfSpeech": "noun",
+    "partOfSpeech": "adjective",
     "meaning": {
-      "vi": "s__ __g__ __",
+      "vi": "duy nhất, đơn chiếc; độc thân",
       "en": "If something is single, then there is only one."
     },
     "examples": [
@@ -3192,7 +3192,7 @@
     "ipa": "/skuːl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "đàn cá",
+      "vi": "trường học",
       "en": "A school is a place where children go to learn."
     },
     "examples": [
@@ -3390,7 +3390,7 @@
     "ipa": "/ɡræs/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cỏ, bâi cỏ",
+      "vi": "cỏ, bãi cỏ",
       "en": "Grass is the green leaves that cover the ground."
     },
     "examples": [
@@ -3678,7 +3678,7 @@
     "ipa": "/ˈsɪti/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "thành phố,quận,huyện",
+      "vi": "thành phố, đô thị",
       "en": "A city is a place where a lot of people live."
     },
     "examples": [
@@ -3714,7 +3714,7 @@
     "ipa": "/ˈkʌntri/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "Nhập quốc gia",
+      "vi": "đất nước, quốc gia; miền quê",
       "en": "A country is an area of land with the same government and laws."
     },
     "examples": [
@@ -3912,7 +3912,7 @@
     "ipa": "/ˈprɑːbləm/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "vấn để, điểu khó giải quyết",
+      "vi": "vấn đề, điều khó giải quyết",
       "en": "A problem is a situation when something goes wrong."
     },
     "examples": [
@@ -5010,7 +5010,7 @@
     "ipa": "/ˈsʌfər/",
     "partOfSpeech": "verb",
     "meaning": {
-      "vi": "chịu đựng, lướt sóng",
+      "vi": "chịu đựng, trải qua (đau đớn, khổ sở)",
       "en": "To suffer is to feel pain."
     },
     "examples": [
@@ -5496,7 +5496,7 @@
     "ipa": "/ˈdɪnər/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "bữa trưa",
+      "vi": "bữa tối, bữa cơm tối",
       "en": "Dinner is the main meal eaten in the evening."
     },
     "examples": [
@@ -5566,9 +5566,9 @@
     "template": "english",
     "word": "from",
     "ipa": "/frɒm/",
-    "partOfSpeech": "noun",
+    "partOfSpeech": "preposition",
     "meaning": {
-      "vi": "nguồn",
+      "vi": "từ (chỉ thời gian, nơi chốn, nguồn gốc)",
       "en": "From shows a starting place or position."
     },
     "examples": [
@@ -5604,7 +5604,7 @@
     "ipa": "/həʊm/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "trang chủ",
+      "vi": "nhà, tổ ấm, gia đình",
       "en": "A person’s home is the place where that person lives."
     },
     "examples": [
@@ -6396,7 +6396,7 @@
     "ipa": "/helθ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "sức khỏe, thế chất",
+      "vi": "sức khỏe, thể chất",
       "en": "Health is the state of a person’s body."
     },
     "examples": [
@@ -7476,7 +7476,7 @@
     "ipa": "/ˌɑːpəˈreɪʃn/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "sự phẩu thuật, ca mổ",
+      "vi": "sự phẫu thuật, ca mổ; sự vận hành",
       "en": "An operation is when a doctor replaces or removes something in the body."
     },
     "examples": [
@@ -8376,7 +8376,7 @@
     "ipa": "/daɪˈrekʃn/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "điểu khiến, chỉ huy",
+      "vi": "phương hướng, chiều hướng, hướng đi",
       "en": "A direction is the way to go."
     },
     "examples": [
@@ -8554,9 +8554,9 @@
     "template": "english",
     "word": "smart",
     "ipa": "/smɑːrt/",
-    "partOfSpeech": "noun",
+    "partOfSpeech": "adjective",
     "meaning": {
-      "vi": "mạnh, ác liệt",
+      "vi": "thông minh, sáng dạ, khôn ngoan",
       "en": "Smart means intelligent."
     },
     "examples": [
@@ -10210,9 +10210,9 @@
     "template": "english",
     "word": "lead",
     "ipa": "/liːd/",
-    "partOfSpeech": "noun",
+    "partOfSpeech": "verb",
     "meaning": {
-      "vi": "KH tiềm năng",
+      "vi": "dẫn đường, dẫn dắt, dẫn đầu",
       "en": "When you lead something, you go first and it follows you."
     },
     "examples": [
@@ -10230,7 +10230,7 @@
     "ipa": "/ˈmiːtɪŋ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "cuộc mít tinh, cuộc biếu tình",
+      "vi": "cuộc họp, buổi gặp mặt",
       "en": "When you have a meeting, you are with other people."
     },
     "examples": [
