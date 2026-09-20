@@ -7,7 +7,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../context/auth/useAuth';
 import { useSettings } from '../../context/global/useSettings';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Volume2, RotateCcw, Sparkles, ChevronRight, X, ChevronsUp, MousePointerClick, Keyboard, Check, Swords } from 'lucide-react';
+import { Volume2, RotateCcw, Sparkles, ChevronRight, X, ChevronsUp, MousePointerClick, Keyboard, Check, Swords, BookOpen, ArrowLeft } from 'lucide-react';
 
 
 import * as wanakana from 'wanakana';
@@ -46,17 +46,30 @@ interface RawItem {
   originalData?: any;
 }
 
+export interface MistakeDetail {
+  phase: 'quiz' | 'typing';
+  direction: 'fwd' | 'rev';
+  prompt: string;
+  promptSub?: string;
+  userAnswer: string;
+  correctAnswer: string;
+  quizOptions?: string[];
+  raw: RawItem;
+}
+
 type QueuePhase = 'preview' | 'quiz' | 'typing';
 type FeedbackState = 'none' | 'correct' | 'wrong';
 
 interface QueueItem {
   raw: RawItem;
   phase: QueuePhase;
-  direction: 'fwd' | 'rev'; // fwd: kanji� meaning/hanviet, rev: meaning� kanji/hanviet
-  attempt: number; // S� lần thử, sai �  tĒng 1 và re-insert
+  direction: 'fwd' | 'rev'; // fwd: kanji -> meaning/hanviet, rev: meaning -> kanji/hanviet
+  attempt: number; // Số lần thử, sai sẽ tăng 1 và re-insert
+  lastMistake?: MistakeDetail;
+  quizOptions?: string[];
 }
 
-// ���� Helpers ��������������������������������������������������������������������������������������������������������������������������������
+//    Helpers                                                                 
 
 /** Xây danh sách raw items từ course data */
 function buildRawList(course: Course, language: string = 'vi'): RawItem[] {
@@ -477,7 +490,8 @@ export default function LearnSession() {
   const [quizOptions, setQuizOptions] = useState<string[]>([]);
   const [savedIds, setSavedIds] = useState<Set<string>>(new Set()); //  ã lưu Firestore
   const [correctCounts, setCorrectCounts] = useState<Map<string, number>>(new Map());
-
+  const [isViewingMistakeDetail, setIsViewingMistakeDetail] = useState(false);
+  const lastMistakeRef = useRef<MistakeDetail | null>(null);
 
   const [sessionTotalExp, setSessionTotalExp] = useState(0);
   const [isPreviewTransitioning, setIsPreviewTransitioning] = useState(false);
@@ -617,8 +631,16 @@ export default function LearnSession() {
 
       // Nút Tiếp Tục (Khi đang hiện Feedback hoặc Re-learn Preview)
       if (fb !== 'none' || cQ.phase === 'preview') {
+        // Phím V: Chuyển đổi xem câu hỏi sai
+        if (cQ.phase === 'preview' && (e.key === 'v' || e.key === 'V') && cQ.lastMistake) {
+          e.preventDefault();
+          setIsViewingMistakeDetail(prev => !prev);
+          return;
+        }
+
         if (e.key === ' ' || e.key === 'Enter') {
           e.preventDefault();
+          setIsViewingMistakeDetail(false);
           if (cQ.phase === 'preview') {
             // Re-learn preview inside test queue
             const nextIdx = currentQIdxRef.current + 1;
@@ -920,6 +942,10 @@ export default function LearnSession() {
     }
   }, [phase, currentQ?.raw?.id, currentQIdx, currentQ?.phase, feedback]);
 
+  useEffect(() => {
+    setIsViewingMistakeDetail(false);
+  }, [currentQIdx, phase]);
+
   // ── Auto Play Audio (Preview Only) ──────────────────────────────────
   useEffect(() => {
     if (phase === 'preview' && currentBatch[previewItemIdx]) {
@@ -1005,15 +1031,21 @@ export default function LearnSession() {
           const pool = wrongItem.direction === 'fwd' ? allMeanings : allKanji;
           wrongItem.quizOptions = generateQuizOptions(correct, pool);
         }
-        const previewItem: QueueItem = { ...wrongItem, phase: 'preview' };
+        const previewItem: QueueItem = {
+          ...wrongItem,
+          phase: 'preview',
+          lastMistake: lastMistakeRef.current || undefined,
+        };
         const remaining = [...prev];
         remaining.splice(currentQIdx, 1, previewItem); // Chèn Preview vào ngay vị trí hiện tại
         return [...remaining, wrongItem]; // Đẩy câu hỏi sai xuống cuối
       });
+      setIsViewingMistakeDetail(false);
       // Không tăng currentQIdx vì ta muốn hiển thị ngay thẻ Preview vừa chèn
       return;
     }
 
+    setIsViewingMistakeDetail(false);
     const nextIdx = currentQIdx + 1;
     if (nextIdx >= testQueue.length) {
       handleBatchDone();
@@ -1040,8 +1072,29 @@ export default function LearnSession() {
   // ── Skip Button Logic ──────────────────────────────────────────────
   const handleSkip = useCallback(() => {
     if (!currentQ || feedback !== 'none' || isInputBlocked) return;
+    const raw = currentQ.raw;
+    const correctAns = currentQ.direction === 'fwd' ? cleanQuizMeaning(raw.meaning, raw.kanji) : raw.kanji;
+    const targetDisplay = currentQ.phase === 'quiz'
+      ? correctAns
+      : (course?.template === 'english'
+          ? formatWordVariantsDisplay(raw.kanji)
+          : (course?.template === 'generic' ? raw.kanji : (raw.isSingleKanjiChar ? raw.hiragana.toUpperCase() : raw.hiragana)));
+
+    lastMistakeRef.current = {
+      phase: currentQ.phase as 'quiz' | 'typing',
+      direction: currentQ.direction,
+      prompt: currentQ.direction === 'fwd' ? raw.kanji : cleanQuizMeaning(raw.meaning, raw.kanji),
+      promptSub: currentQ.direction === 'fwd'
+        ? (course?.template === 'english' ? 'English Word' : (course?.template === 'generic' ? 'Thuật ngữ / Khái niệm' : '日本語 · Japanese'))
+        : (course?.template === 'generic' ? 'Định nghĩa' : 'Nghĩa · Vietnamese'),
+      userAnswer: '(Bỏ qua)',
+      correctAnswer: targetDisplay,
+      quizOptions: currentQ.phase === 'quiz' ? ((currentQ as any).quizOptions || quizOptions) : undefined,
+      raw,
+    };
+
     handleAnswer(false, currentQ.raw);
-  }, [currentQ, feedback, isInputBlocked, handleAnswer]);
+  }, [currentQ, feedback, isInputBlocked, handleAnswer, course, quizOptions]);
 
 
   // ── Quiz Submit ────────────────────────────────────────────────────
@@ -1049,8 +1102,24 @@ export default function LearnSession() {
     if (!currentQ || feedback !== 'none' || isInputBlocked) return;
     setSelectedOpt(selected);
     const correct = currentQ.direction === 'fwd' ? currentQ.raw.meaning : currentQ.raw.kanji;
-    handleAnswer(selected === correct, currentQ.raw);
-  }, [currentQ, feedback, isInputBlocked, handleAnswer]);
+    const isCorrect = selected === correct;
+
+    if (!isCorrect) {
+      lastMistakeRef.current = {
+        phase: 'quiz',
+        direction: currentQ.direction,
+        prompt: currentQ.direction === 'fwd' ? currentQ.raw.kanji : cleanQuizMeaning(currentQ.raw.meaning, currentQ.raw.kanji),
+        promptSub: currentQ.direction === 'fwd'
+          ? (course?.template === 'english' ? 'English Word' : (course?.template === 'generic' ? 'Thuật ngữ / Khái niệm' : '日本語 · Japanese'))
+          : (course?.template === 'generic' ? 'Định nghĩa' : 'Nghĩa · Vietnamese'),
+        userAnswer: currentQ.direction === 'fwd' ? cleanQuizMeaning(selected, currentQ.raw.kanji) : selected,
+        correctAnswer: currentQ.direction === 'fwd' ? cleanQuizMeaning(correct, currentQ.raw.kanji) : correct,
+        quizOptions: (currentQ as any).quizOptions || quizOptions,
+        raw: currentQ.raw,
+      };
+    }
+    handleAnswer(isCorrect, currentQ.raw);
+  }, [currentQ, feedback, isInputBlocked, handleAnswer, course, quizOptions]);
   useEffect(() => { submitQuizRef.current = submitQuiz; }, [submitQuiz]);
 
   // ── Typing Submit ──────────────────────────────────────────────────
@@ -1073,6 +1142,24 @@ export default function LearnSession() {
       correct =
         wanakana.toHiragana(converted) === wanakana.toHiragana(target) ||
         userTyping.trim().toLowerCase() === target.toLowerCase();
+    }
+
+    if (!correct) {
+      const targetDisplay = course?.template === 'english'
+        ? formatWordVariantsDisplay(raw.kanji)
+        : (course?.template === 'generic' ? raw.kanji : (raw.isSingleKanjiChar ? raw.hiragana.toUpperCase() : raw.hiragana));
+
+      lastMistakeRef.current = {
+        phase: 'typing',
+        direction: currentQ.direction,
+        prompt: currentQ.direction === 'fwd' ? raw.kanji : cleanQuizMeaning(raw.meaning, raw.kanji),
+        promptSub: currentQ.direction === 'fwd'
+          ? (course?.template === 'english' ? 'English Word' : (course?.template === 'generic' ? 'Thuật ngữ / Khái niệm' : '日本語 · Japanese'))
+          : (course?.template === 'generic' ? 'Định nghĩa' : 'Nghĩa · Vietnamese'),
+        userAnswer: userTyping.trim() || '(Bỏ trống)',
+        correctAnswer: targetDisplay,
+        raw,
+      };
     }
 
     handleAnswer(correct, raw);
@@ -1394,13 +1481,149 @@ export default function LearnSession() {
             >
               {/* ─── PREVIEW (Re-learn) ─── */}
               {currentQ.phase === 'preview' ? (
-                <PreviewWordContent
-                  word={currentQ.raw}
-                  speak={speak}
-                  accent={englishAccent}
-                  onToggleAccent={toggleEnglishAccent}
-                  isEnglish={course?.template === 'english'}
-                />
+                isViewingMistakeDetail && currentQ.lastMistake ? (
+                  <motion.div
+                    key={`mistake-review-${currentQ.raw.id}`}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="space-y-4 md:space-y-6"
+                  >
+                    <div className="flex items-center justify-between gap-2 border-b border-rose-100 dark:border-rose-950/60 pb-3">
+                      <div className="flex items-center gap-2">
+                        <span className="flex items-center justify-center w-6 h-6 rounded-full bg-rose-500 text-white text-xs font-black">✕</span>
+                        <span className="font-bold text-sm text-rose-600 dark:text-rose-400">Chi tiết câu hỏi bạn vừa làm sai</span>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => setIsViewingMistakeDetail(false)}
+                        className="text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center gap-1.5 transition-colors px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 cursor-pointer"
+                      >
+                        <ArrowLeft size={14} />
+                        <span>Xem lại thẻ từ</span>
+                      </button>
+                    </div>
+
+                    <div>
+                      <p className="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-400 dark:text-indigo-500 mb-1">
+                        {currentQ.lastMistake.promptSub}
+                      </p>
+                      <h1 className="font-black text-slate-900 dark:text-white tracking-tight leading-[1.1] text-4xl sm:text-5xl md:text-6xl break-words">
+                        {currentQ.lastMistake.prompt}
+                      </h1>
+                    </div>
+
+                    {currentQ.lastMistake.phase === 'quiz' && (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 pt-2">
+                        {(currentQ.lastMistake.quizOptions || []).map((opt: string, i: number) => {
+                          const isCorrectOpt = opt === currentQ.lastMistake?.correctAnswer;
+                          const isUserWrong = opt === currentQ.lastMistake?.userAnswer && !isCorrectOpt;
+
+                          return (
+                            <div
+                              key={i}
+                              className={`py-3 md:py-4 px-4 md:px-5 rounded-2xl text-sm font-semibold border-2 text-left flex items-center justify-between gap-3 ${
+                                isCorrectOpt
+                                  ? 'bg-emerald-50 dark:bg-emerald-900/30 border-emerald-400 dark:border-emerald-500 text-emerald-800 dark:text-emerald-200 shadow-sm'
+                                  : isUserWrong
+                                  ? 'bg-rose-50 dark:bg-rose-900/30 border-rose-400 dark:border-rose-500 text-rose-800 dark:text-rose-200 shadow-sm'
+                                  : 'bg-slate-50/60 dark:bg-slate-900/40 border-slate-200 dark:border-slate-800 text-slate-400 dark:text-slate-500 opacity-60'
+                              }`}
+                            >
+                              <div className="flex items-center gap-3 min-w-0">
+                                <span
+                                  className={`shrink-0 w-7 h-7 rounded-xl text-xs font-black flex items-center justify-center ${
+                                    isCorrectOpt
+                                      ? 'bg-emerald-200 dark:bg-emerald-700/50 text-emerald-800 dark:text-emerald-200'
+                                      : isUserWrong
+                                      ? 'bg-rose-200 dark:bg-rose-700/50 text-rose-800 dark:text-rose-200'
+                                      : 'bg-slate-200/60 dark:bg-slate-800 text-slate-400'
+                                  }`}
+                                >
+                                  {i + 1}
+                                </span>
+                                <span className="leading-snug break-words">
+                                  {currentQ.lastMistake?.direction === 'fwd' ? cleanQuizMeaning(opt, currentQ.raw.kanji) : opt}
+                                </span>
+                              </div>
+
+                              {isCorrectOpt && (
+                                <span className="shrink-0 px-2 py-0.5 rounded-full bg-emerald-200/80 dark:bg-emerald-800/70 text-emerald-900 dark:text-emerald-100 text-[11px] font-black">
+                                  ✓ Đúng
+                                </span>
+                              )}
+                              {isUserWrong && (
+                                <span className="shrink-0 px-2 py-0.5 rounded-full bg-rose-200/80 dark:bg-rose-800/70 text-rose-900 dark:text-rose-100 text-[11px] font-black">
+                                  ✕ Bạn chọn
+                                </span>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
+
+                    {currentQ.lastMistake.phase === 'typing' && (
+                      <div className="space-y-3 pt-2 max-w-lg">
+                        <div className="p-4 rounded-2xl bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/40">
+                          <p className="text-[11px] font-black uppercase tracking-wider text-rose-500 mb-1">
+                            ✕ Bạn đã gõ:
+                          </p>
+                          <p className="font-mono font-bold text-xl sm:text-2xl text-rose-600 dark:text-rose-400 line-through decoration-rose-400">
+                            {currentQ.lastMistake.userAnswer}
+                          </p>
+                        </div>
+
+                        <div className="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/40">
+                          <p className="text-[11px] font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-1">
+                            ✓ Đáp án chính xác:
+                          </p>
+                          <p className="font-mono font-bold text-xl sm:text-2xl text-emerald-600 dark:text-emerald-300">
+                            {currentQ.lastMistake.correctAnswer}
+                          </p>
+                        </div>
+                      </div>
+                    )}
+                  </motion.div>
+                ) : (
+                  <div className="space-y-4">
+                    {/* Compact Mistake Bar */}
+                    {currentQ.lastMistake && (
+                      <div className="flex items-center justify-between gap-2 px-3.5 py-2 sm:py-2.5 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200/80 dark:border-rose-900/50 text-xs sm:text-sm">
+                        <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 overflow-hidden">
+                          <span className="shrink-0 flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-rose-500 text-white text-[10px] sm:text-xs font-black">✕</span>
+                          <span className="text-slate-500 dark:text-slate-400 shrink-0 font-medium">Bạn:</span>
+                          <span className="font-bold text-rose-600 dark:text-rose-400 line-through decoration-rose-400 truncate max-w-[110px] sm:max-w-[200px]">
+                            {currentQ.lastMistake.userAnswer}
+                          </span>
+                          <span className="text-slate-300 dark:text-slate-600 shrink-0">➔</span>
+                          <span className="text-slate-500 dark:text-slate-400 shrink-0 font-medium">Đúng:</span>
+                          <span className="font-bold text-emerald-600 dark:text-emerald-400 truncate max-w-[110px] sm:max-w-[200px]">
+                            {currentQ.lastMistake.correctAnswer}
+                          </span>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => setIsViewingMistakeDetail(true)}
+                          className="shrink-0 flex items-center gap-1 font-bold text-xs text-rose-600 dark:text-rose-400 hover:text-rose-700 dark:hover:text-rose-300 bg-white dark:bg-slate-900 px-2.5 py-1 rounded-lg border border-rose-200 dark:border-rose-800/60 shadow-2xs transition-all active:scale-95 cursor-pointer ml-1"
+                          title="Xem lại câu hỏi và toàn bộ đáp án (Phím tắt: V)"
+                        >
+                          <span className="hidden sm:inline">Xem lại câu hỏi</span>
+                          <span className="sm:hidden">Xem câu sai</span>
+                          <ChevronRight size={13} className="stroke-[2.5]" />
+                        </button>
+                      </div>
+                    )}
+
+                    <PreviewWordContent
+                      word={currentQ.raw}
+                      speak={speak}
+                      accent={englishAccent}
+                      onToggleAccent={toggleEnglishAccent}
+                      isEnglish={course?.template === 'english'}
+                    />
+                  </div>
+                )
               ) : (
                 /* ─── QUIZ/TYPING PROMPT ─── */
                 <div>
@@ -1523,9 +1746,36 @@ export default function LearnSession() {
             </motion.div>
 
             {/* Right Side Column (Next + Mastered) */}
-            <div className="shrink-0 mt-8 md:mt-0 w-full md:w-24 flex flex-col items-center justify-center gap-3">
+            <div className="shrink-0 mt-8 md:mt-0 w-full md:w-24 flex flex-row md:flex-col items-center justify-center gap-3">
 
-              {currentQ.phase === 'preview' || feedback !== 'none' ? (
+              {currentQ.phase === 'preview' && isViewingMistakeDetail ? (
+                <>
+                  {/* Nút quay lại thẻ từ vựng */}
+                  <button
+                    type="button"
+                    onClick={() => setIsViewingMistakeDetail(false)}
+                    className="flex-1 md:flex-none w-full md:w-24 h-14 md:h-16 rounded-2xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-xs flex flex-row md:flex-col items-center justify-center gap-1.5 transition-all border border-slate-200 dark:border-slate-700 active:scale-95 shadow-2xs cursor-pointer"
+                    title="Quay lại thẻ xem chi tiết từ vựng và ví dụ"
+                  >
+                    <BookOpen size={18} />
+                    <span>Thẻ từ</span>
+                  </button>
+
+                  {/* Nút đi tiếp */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsViewingMistakeDetail(false);
+                      advanceNext();
+                    }}
+                    className="flex-1 md:flex-none group relative w-full md:w-24 h-14 md:h-20 rounded-2xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white font-bold transition-all shadow-md shadow-indigo-200 dark:shadow-indigo-900/40 active:scale-95 flex items-center justify-center overflow-hidden cursor-pointer"
+                    title="Đi tiếp sang câu hỏi tiếp theo"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none" />
+                    <ChevronRight size={36} className="stroke-[3.5] relative z-10" />
+                  </button>
+                </>
+              ) : currentQ.phase === 'preview' || feedback !== 'none' ? (
                 <motion.button
                   key="next-btn"
                   initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
@@ -1566,7 +1816,7 @@ export default function LearnSession() {
               )}
 
               {/* Đã thuộc (Desktop) */}
-              {(progressMap.get(currentQ.raw.id)?.masteryLevel ?? 0) < 2 && (
+              {(progressMap.get(currentQ.raw.id)?.masteryLevel ?? 0) < 2 && !isViewingMistakeDetail && (
                 <button
                   onClick={() => handleMarkMastered(currentQ.raw)}
                   className="hidden md:flex group relative w-24 h-16 rounded-2xl bg-amber-50 dark:bg-amber-900/20 hover:bg-amber-100 dark:hover:bg-amber-900/40 text-amber-600 dark:text-amber-400 font-bold transition-all duration-150 active:scale-95 items-center justify-center flex-col gap-1 border-2 border-amber-200/60 dark:border-amber-700/60"
