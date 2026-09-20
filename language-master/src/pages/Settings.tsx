@@ -3,13 +3,14 @@
 import { useState, useEffect } from 'react';
 import { useSettings } from '../context/global/useSettings';
 import { useAudio } from '../context/audio/useAudio';
-import { Moon, Sun, Monitor, Volume2, VolumeX, Type, Globe, HardDrive, Trash2, Download, CheckCircle2 } from 'lucide-react';
+import { Moon, Sun, Monitor, Volume2, VolumeX, Type, Globe, HardDrive, Trash2, Download, CheckCircle2, RotateCcw } from 'lucide-react';
 import { COURSE_REGISTRY } from '../data/courses/registry';
 import {
   getAllOfflineMeta,
   removeCourseOffline,
   saveCourseOffline,
   clearAllOfflineCourses,
+  resetAllAppStorageAndCache,
   formatBytes,
   type OfflineMeta,
 } from '../lib/offline/offlineStorage';
@@ -256,6 +257,20 @@ export default function Settings() {
                 <Trash2 size={15} /> Xóa toàn bộ
               </button>
             )}
+
+            <button
+              type="button"
+              disabled={isBulkLoading}
+              onClick={async () => {
+                if (confirm('Khôi phục bộ nhớ đệm sẽ dọn sạch Service Worker, toàn bộ cơ sở dữ liệu IndexedDB và tải lại ứng dụng. Bạn có muốn thực hiện?')) {
+                  await resetAllAppStorageAndCache();
+                }
+              }}
+              className="px-4 py-2.5 rounded-xl border border-amber-200 dark:border-amber-800/60 hover:bg-amber-50 dark:hover:bg-amber-950/30 text-amber-700 dark:text-amber-300 font-bold text-xs sm:text-sm transition-all flex items-center gap-2 active:scale-95 disabled:opacity-50"
+              title="Dọn sạch cache & IndexedDB nếu gặp hiện tượng xung đột hoặc lỗi lưu trữ"
+            >
+              <RotateCcw size={15} /> Khôi phục bộ nhớ & Cache
+            </button>
           </div>
         </div>
       </div>

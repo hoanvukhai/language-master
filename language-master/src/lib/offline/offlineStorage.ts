@@ -250,3 +250,66 @@ export async function clearAllOfflineCourses(): Promise<void> {
     req.onerror = () => reject(req.error);
   });
 }
+
+/**
+ * Đặt lại toàn bộ bộ nhớ ứng dụng (Self-Healing Recovery Tool)
+ * Dọn sạch Service Worker, Cache Storage, IndexedDB và LocalStorage để giải phóng khóa xung đột.
+ */
+export async function resetAllAppStorageAndCache(): Promise<void> {
+  try {
+    // 1. Hủy đăng ký Service Workers
+    if ('serviceWorker' in navigator) {
+      const registrations = await navigator.serviceWorker.getRegistrations();
+      for (const reg of registrations) {
+        await reg.unregister();
+      }
+    }
+
+    // 2. Xóa Cache Storage của trình duyệt
+    if ('caches' in window) {
+      const keys = await caches.keys();
+      for (const key of keys) {
+        await caches.delete(key);
+      }
+    }
+
+    // 3. Xóa các cơ sở dữ liệu IndexedDB bị kẹt
+    if (typeof indexedDB !== 'undefined') {
+      try {
+        if (indexedDB.databases) {
+          const dbs = await indexedDB.databases();
+          for (const dbInfo of dbs) {
+            if (dbInfo.name) {
+              indexedDB.deleteDatabase(dbInfo.name);
+            }
+          }
+        }
+      } catch {
+        // Trình duyệt không hỗ trợ indexedDB.databases()
+      }
+      const knownDbs = [
+        'nihongo_master_offline',
+        'firebaseLocalStorageDb',
+        'firestore/[DEFAULT]/[default]',
+      ];
+      for (const name of knownDbs) {
+        try {
+          indexedDB.deleteDatabase(name);
+        } catch {}
+      }
+    }
+
+    // 4. Xóa LocalStorage và SessionStorage
+    try {
+      localStorage.clear();
+      sessionStorage.clear();
+    } catch {}
+
+    // 5. Tải lại trang sạch hoàn toàn
+    window.location.replace('/');
+  } catch (err) {
+    console.error('[OfflineStorage] Error resetting storage:', err);
+    window.location.replace('/');
+  }
+}
+

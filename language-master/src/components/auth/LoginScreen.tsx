@@ -2,7 +2,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/auth/useAuth';
-import { LogIn, Mail, Eye, EyeOff, AlertCircle, ShieldCheck } from 'lucide-react';
+import { LogIn, Mail, Eye, EyeOff, AlertCircle, ShieldCheck, RotateCcw } from 'lucide-react';
+import { resetAllAppStorageAndCache } from '../../lib/offline/offlineStorage';
 
 export default function LoginScreen() {
   const { signInWithEmail } = useAuth();
@@ -12,6 +13,7 @@ export default function LoginScreen() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isResetting, setIsResetting] = useState(false);
 
   const handleEmail = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -109,6 +111,25 @@ export default function LoginScreen() {
             >
               {loading ? 'Đang đăng nhập...' : 'Đăng nhập'}
             </button>
+
+            {/* Self-healing storage reset tool */}
+            <div className="pt-3 text-center border-t border-slate-100 dark:border-white/5">
+              <button
+                type="button"
+                disabled={isResetting}
+                onClick={async () => {
+                  if (confirm('Làm mới bộ nhớ đệm sẽ xóa sạch IndexedDB bị kẹt và giải phóng cache của trang. Bạn có muốn tiếp tục?')) {
+                    setIsResetting(true);
+                    await resetAllAppStorageAndCache();
+                  }
+                }}
+                className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer"
+                title="Bấm vào đây nếu bạn bị kẹt màn hình hoặc gặp lỗi đăng nhập do bộ nhớ đệm trình duyệt"
+              >
+                <RotateCcw className={`w-3.5 h-3.5 ${isResetting ? 'animate-spin' : ''}`} />
+                <span>{isResetting ? 'Đang làm sạch bộ nhớ...' : 'Gặp sự cố đăng nhập? Bấm để làm mới bộ nhớ đệm'}</span>
+              </button>
+            </div>
           </form>
         </div>
 

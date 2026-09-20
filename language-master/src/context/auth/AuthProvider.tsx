@@ -27,7 +27,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setUser(firebaseUser);
         const userRef = doc(db, 'users', firebaseUser.uid);
         
-        unsubscribeSnapshot = onSnapshot(userRef, async (snap) => {
+        unsubscribeSnapshot = onSnapshot(userRef, (snap) => {
           if (!snap.exists()) {
             // Khởi tạo profile mặc định
             const defaultData = {
@@ -52,12 +52,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                 showKana: true,
               },
             };
-            await setDoc(userRef, defaultData, { merge: true });
+            setDoc(userRef, defaultData, { merge: true }).catch((err) => {
+              console.warn('[AuthProvider] Failed to save default user profile:', err);
+            });
+            setUserProfile({
+              totalExp: 0,
+              currentStreak: 0,
+              level: 1,
+              nextLevelExp: 100,
+            });
+            setLoading(false);
           } else {
             const data = snap.data();
             setRole(data?.role === 'admin' ? 'admin' : 'user');
             
-            // Tự động bổ sung các trường thiếu cho tài khoản cũ
+            // Tự động bổ sung các trường thiếu cho tài khoản cũ (chạy ngầm, không block UI)
             const missingUpdates: Record<string, any> = {};
             if (data?.totalStudyScore === undefined) missingUpdates.totalStudyScore = 0;
             if (data?.totalRaceScore === undefined) missingUpdates.totalRaceScore = 0;
@@ -65,8 +74,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             if (data?.dailyStudyTime === undefined) missingUpdates.dailyStudyTime = {};
             if (data?.activityHistory === undefined) missingUpdates.activityHistory = {};
             if (Object.keys(missingUpdates).length > 0) {
-              await updateDoc(userRef, missingUpdates);
-              return;
+              updateDoc(userRef, missingUpdates).catch((err) => {
+                console.warn('[AuthProvider] Failed to auto-fill missing profile fields:', err);
+              });
             }
             
             const now = new Date();
@@ -110,8 +120,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             }
 
             if (Object.keys(updatesToDoc).length > 0) {
-              await updateDoc(userRef, updatesToDoc);
-              return;
+              updateDoc(userRef, updatesToDoc).catch((err) => {
+                console.warn('[AuthProvider] Failed to update streak/login metadata:', err);
+              });
             }
 
             // Tính Level
@@ -126,6 +137,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             });
             setLoading(false);
           }
+        }, (err) => {
+          console.warn('[AuthProvider] Error in userRef snapshot listener:', err);
+          // Fallback an toàn: vẫn tắt loading để không làm kẹt app
+          setUserProfile((prev) => prev || {
+            totalExp: 0,
+            currentStreak: 0,
+            level: 1,
+            nextLevelExp: 100,
+          });
+          setLoading(false);
         });
       } else {
         setRole('user');

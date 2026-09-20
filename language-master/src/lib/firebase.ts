@@ -4,6 +4,10 @@ import { getAuth } from 'firebase/auth';
 import {
   initializeFirestore,
   persistentLocalCache,
+  persistentMultipleTabManager,
+  memoryLocalCache,
+  getFirestore,
+  type Firestore,
 } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -22,10 +26,27 @@ const app = initializeApp(firebaseConfig);
 // Auth instance
 export const auth = getAuth(app);
 
-// Firestore instance
-export const db = initializeFirestore(app, {
-  localCache: persistentLocalCache()
-});
+// Firestore instance với Multi-Tab Persistence và fallback an toàn
+function initFirestoreInstance(): Firestore {
+  try {
+    return initializeFirestore(app, {
+      localCache: persistentLocalCache({
+        tabManager: persistentMultipleTabManager(),
+      }),
+    });
+  } catch (err) {
+    console.warn('[Firestore] Failed to init multi-tab persistent cache, falling back to memory cache:', err);
+    try {
+      return initializeFirestore(app, {
+        localCache: memoryLocalCache(),
+      });
+    } catch {
+      return getFirestore(app);
+    }
+  }
+}
+
+export const db = initFirestoreInstance();
 
 // Development emulator (uncomment khi cần test local)
 // if (import.meta.env.DEV) {
