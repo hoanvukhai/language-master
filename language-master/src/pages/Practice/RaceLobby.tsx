@@ -20,9 +20,6 @@ export default function RaceLobby() {
 
   const queryParams = new URLSearchParams(location.search);
   const gameId = queryParams.get('game') || 'quiz';
-  const subject = queryParams.get('subject') || 'vocab';
-  const level = queryParams.get('level') || 'N3';
-  const modeKey = `${level}_${subject}_${gameId}`;
 
   const [leaderboard, setLeaderboard] = useState<LeaderboardUser[]>([]);
   const [loading, setLoading] = useState(true);
@@ -38,6 +35,9 @@ export default function RaceLobby() {
   const totalQuestionsCount = locState?.totalQuestionsCount || 0;
   const unansweredCount = totalQuestionsCount > 0 ? Math.max(0, totalQuestionsCount - (correctCount + mistakesCount)) : 0;
   const raceResult = locState?.raceResult; // { expGained, isPersonalRecord, isServerRecord }
+  // gameKey = courseId_gameMode — khớp với key lưu trong pointsEngine & Firestore
+  // Lấy từ navigate state nếu có, fallback sang courseId_gameId
+  const modeKey = locState?.gameKey || `${course.id}_${gameId}`;
 
   const mountTimeRef = useRef(Date.now());
 

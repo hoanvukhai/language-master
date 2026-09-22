@@ -619,6 +619,12 @@ export default function LearnSession() {
 
       // PREVIEW Phase (Global)
       if (ph === 'preview') {
+        // S: Phát âm từ đang preview
+        if ((e.key === 's' || e.key === 'S') && batch[pidx]) {
+          e.preventDefault();
+          speakRef.current(batch[pidx].kanji);
+          return;
+        }
         if (e.key === ' ' || e.key === 'Enter') {
           e.preventDefault();
           if (pidx + 1 < batch.length) setPreviewItemIdx(i => i + 1);

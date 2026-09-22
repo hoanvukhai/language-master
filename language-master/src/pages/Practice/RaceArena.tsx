@@ -811,6 +811,8 @@ if (!newHistory.find(item => getUniqueId(item.q) === getUniqueId(card2.originalI
     
     // Recalculate exactly from history to avoid stale closures
     const finalCorrectCount = historyRef.current.filter(h => h.isCorrect).length;
+    // gameKey matches the key used in pointsEngine: courseId_gameMode
+    const gameKey = `${course.id}_${game}`;
 
     navigate(`/course/${course.id}/race/lobby?game=${game}`, {
       state: {
@@ -821,7 +823,8 @@ if (!newHistory.find(item => getUniqueId(item.q) === getUniqueId(card2.originalI
         maxStreak,
         correctCount: finalCorrectCount,
         totalQuestionsCount: game === 'matching' ? 24 : questions.length,
-        raceResult
+        raceResult,
+        gameKey, // Truyền gameKey chuẩn để RaceLobby dùng
       }
     });
   };

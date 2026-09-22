@@ -138,10 +138,27 @@ export async function recordArenaRace(
     };
 
     if (score > prevBest) {
-      const diff = score - prevBest;
-      updates['totalRaceScore'] = increment(diff);
-      updates[`courseRaceScores.${courseId}`] = increment(diff);
+      // Cập nhật kỷ lục mode này
       updates[`raceScores.${gameKey}`] = score;
+
+      // Tính lại courseRaceScores = tổng kỷ lục TẤT CẢ các mode của courseId này
+      // Bằng cách cộng tất cả raceScores có prefix = courseId_
+      const prefix = `${courseId}_`;
+      const existingScores: Record<string, number> = data.raceScores || {};
+      let newCourseTotal = 0;
+      for (const [key, val] of Object.entries(existingScores)) {
+        if (key.startsWith(prefix)) {
+          // Dùng score mới nếu là gameKey hiện tại, ngược lại dùng giá trị cũ
+          newCourseTotal += (key === gameKey ? score : (val as number));
+        }
+      }
+      // Nếu gameKey chưa có trong existingScores (lần đầu chơi mode này)
+      if (!existingScores[gameKey]) {
+        newCourseTotal += score;
+      }
+
+      updates[`courseRaceScores.${courseId}`] = newCourseTotal;
+      updates['totalRaceScore'] = increment(score - prevBest);
     }
 
     // Đua KHÔNG cộng vào totalExp (EXP học) — chỉ cập nhật điểm đua riêng
@@ -171,13 +188,28 @@ export async function recordArenaRace(
 async function _checkAndSaveHighScoreWithoutExp(userId: string, gameKey: string, score: number, userRef: any, data: any) {
   const prevBest = data.raceScores?.[gameKey] || 0;
   if (score > prevBest) {
-    const courseId = gameKey.split('_')[0];
-    const diff = score - prevBest;
-    
+    // Extract courseId: gameKey format là "courseId_gameMode", courseId không chứa "_"
+    // Tìm courseId bằng cách bỏ phần suffix sau "_" cuối cùng
+    const lastUnderscore = gameKey.lastIndexOf('_');
+    const courseId = lastUnderscore > 0 ? gameKey.substring(0, lastUnderscore) : gameKey;
+
+    // Tính lại courseRaceScores = tổng kỷ lục tất cả các mode của courseId
+    const prefix = `${courseId}_`;
+    const existingScores: Record<string, number> = data.raceScores || {};
+    let newCourseTotal = 0;
+    for (const [key, val] of Object.entries(existingScores)) {
+      if (key.startsWith(prefix)) {
+        newCourseTotal += (key === gameKey ? score : (val as number));
+      }
+    }
+    if (!existingScores[gameKey]) {
+      newCourseTotal += score;
+    }
+
     await updateDoc(userRef, {
       [`raceScores.${gameKey}`]: score,
-      [`courseRaceScores.${courseId}`]: increment(diff),
-      totalRaceScore: increment(diff)
+      [`courseRaceScores.${courseId}`]: newCourseTotal,
+      totalRaceScore: increment(score - prevBest)
     });
 
     const scoreRef = doc(db, 'users', userId, 'gameScores', gameKey);
