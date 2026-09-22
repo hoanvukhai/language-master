@@ -389,11 +389,11 @@ export default function KeigoStudy() {
                         </td>
                         <td className="py-4 px-6">
                           {vocab.isException ? (
-                            <span className="inline-flex px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 text-xs font-bold border border-amber-200">
+                            <span className="inline-flex px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-400 text-xs font-bold border border-amber-200 dark:border-amber-700/50">
                               Ngoại lệ
                             </span>
                           ) : (
-                            <span className="text-xs text-slate-400 font-medium">
+                            <span className="text-xs text-slate-400 dark:text-slate-500 font-medium">
                               {vocab.type === 'wago' ? 'Thuần Nhật (Wago)' : 'Hán Nhật (Kango)'}
                             </span>
                           )}

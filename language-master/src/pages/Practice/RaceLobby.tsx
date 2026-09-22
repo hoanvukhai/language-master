@@ -20,6 +20,9 @@ export default function RaceLobby() {
 
   const queryParams = new URLSearchParams(location.search);
   const gameId = queryParams.get('game') || 'quiz';
+  // subject và level lấy từ course context — chính xác hơn URL params
+  const subject = course.subject || 'vocab';
+  const level = course.level || 'N3';
 
   const [leaderboard, setLeaderboard] = useState<LeaderboardUser[]>([]);
   const [loading, setLoading] = useState(true);

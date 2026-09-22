@@ -125,10 +125,16 @@ function buildRawList(course: Course, language: string = 'vi'): RawItem[] {
   if (subject === 'kanji_single') {
     const items: RawItem[] = [];
     data.forEach((k: any) => {
-      items.push({ id: k.id || k.character, kanji: k.character, hiragana: k.hanViet, meaning: `Âm Hán Việt: ${k.hanViet}`, lesson: k.lesson || 'Bài 1', isSingleKanjiChar: true, originalData: k });
-      if (k.words) k.words.forEach((w: any) => {
-        const m = typeof w.meaning === 'object' ? (language === 'en' && w.meaning.en ? w.meaning.en : w.meaning.vi) : w.meaning;
-        items.push({ id: w.id || `${k.character}_${w.word}`, kanji: w.word, hiragana: w.hanVietWord || k.hanViet, meaning: `Từ Ghép: ${w.hanVietWord || k.hanViet} · ${m}`, lesson: k.lesson || 'Bài 1', isSingleKanjiChar: true, originalData: w });
+      // Chỉ học chữ đơn — KHÔNG đưa từ ghép (k.words) vào SRS pool
+      // Từ ghép sẽ được học ở khóa kanji_words riêng
+      items.push({
+        id: k.id || k.character,
+        kanji: k.character,
+        hiragana: k.hanViet,
+        meaning: `${k.hanViet}`,
+        lesson: k.lesson || 'Bài 1',
+        isSingleKanjiChar: true,
+        originalData: k
       });
     });
     return items;
@@ -171,27 +177,31 @@ function buildRawList(course: Course, language: string = 'vi'): RawItem[] {
   return [];
 }
 
-/** Xây queue test cho 1 batch: Quiz Fwd �  Quiz Rev �  Typing Rev (�an xen ngẫu nhiên) */
+/** Xây queue test cho 1 batch */
 function buildBatchQueue(items: RawItem[], mode: string): QueueItem[] {
   if (mode === 'review') {
     // Review: just 1 random test per item (quiz or typing)
     return shuffleArray(items.map(r => {
       const phase = Math.random() > 0.5 ? 'quiz' : 'typing';
+      // kanji_single: typing direction là 'fwd' (nhìn chữ Hán → gõ Hán Việt)
+      const typingDir = r.isSingleKanjiChar ? 'fwd' : 'rev';
       return {
         raw: r,
         phase,
-        direction: phase === 'typing' ? 'rev' : (Math.random() > 0.5 ? 'fwd' : 'rev'),
+        direction: phase === 'typing' ? typingDir : (Math.random() > 0.5 ? 'fwd' : 'rev'),
         attempt: 0
       };
     }));
   }
   // New: 6 tests per item
+  // kanji_single: typing luôn là 'fwd' (nhìn chữ Hán → gõ Hán Việt)
+  const getTypingDir = (r: RawItem) => r.isSingleKanjiChar ? 'fwd' : 'rev';
   const q1: QueueItem[] = items.map(r => ({ raw: r, phase: 'quiz', direction: 'fwd', attempt: 0 }));
   const q2: QueueItem[] = items.map(r => ({ raw: r, phase: 'quiz', direction: 'rev', attempt: 0 }));
   const q3: QueueItem[] = items.map(r => ({ raw: r, phase: 'quiz', direction: 'fwd', attempt: 0 }));
   const q4: QueueItem[] = items.map(r => ({ raw: r, phase: 'quiz', direction: 'rev', attempt: 0 }));
-  const q5: QueueItem[] = items.map(r => ({ raw: r, phase: 'typing', direction: 'rev', attempt: 0 }));
-  const q6: QueueItem[] = items.map(r => ({ raw: r, phase: 'typing', direction: 'rev', attempt: 0 }));
+  const q5: QueueItem[] = items.map(r => ({ raw: r, phase: 'typing', direction: getTypingDir(r), attempt: 0 }));
+  const q6: QueueItem[] = items.map(r => ({ raw: r, phase: 'typing', direction: getTypingDir(r), attempt: 0 }));
   return shuffleArray([...q1, ...q2, ...q3, ...q4, ...q5, ...q6]);
 }
 
@@ -1639,12 +1649,32 @@ export default function LearnSession() {
                       : (course?.template === 'generic' ? 'Định nghĩa' : 'Nghĩa · Vietnamese')}
                   </p>
                   <div className="flex items-start justify-between gap-3">
-                    <h1 className={`font-black text-slate-900 dark:text-white tracking-tight leading-[1.1] break-words flex-1 ${currentQ.direction === 'rev'
-                        ? 'text-4xl md:text-5xl'
-                        : 'text-6xl md:text-7xl'
-                      }`}>
-                      {currentQ.direction === 'fwd' ? currentQ.raw.kanji : cleanQuizMeaning(currentQ.raw.meaning, currentQ.raw.kanji)}
-                    </h1>
+                    <div className="flex-1 min-w-0">
+                      <h1 className={`font-black text-slate-900 dark:text-white tracking-tight leading-[1.1] break-words ${currentQ.direction === 'rev'
+                          ? 'text-4xl md:text-5xl'
+                          : 'text-6xl md:text-7xl'
+                        }`}>
+                        {currentQ.direction === 'fwd' ? currentQ.raw.kanji : cleanQuizMeaning(currentQ.raw.meaning, currentQ.raw.kanji)}
+                      </h1>
+                      {/* IPA — chỉ hiển thị cho khóa tiếng Anh khi câu hỏi là từ tiếng Anh (fwd) */}
+                      {course?.template === 'english' && currentQ.direction === 'fwd' && (() => {
+                        const d = currentQ.raw.originalData;
+                        return (d?.ipaBrE || d?.ipaAmE) ? (
+                          <div className="flex flex-wrap gap-2 mt-2">
+                            {d?.ipaBrE && (
+                              <span className="text-xs sm:text-sm font-mono px-2.5 py-1 rounded-lg border bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800/40">
+                                🇬🇧 /{d.ipaBrE}/
+                              </span>
+                            )}
+                            {d?.ipaAmE && (
+                              <span className="text-xs sm:text-sm font-mono px-2.5 py-1 rounded-lg border bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border-sky-200 dark:border-sky-800/40">
+                                🇺🇸 /{d.ipaAmE}/
+                              </span>
+                            )}
+                          </div>
+                        ) : null;
+                      })()}
+                    </div>
                     {feedback !== 'none' && (
                       <button
                         type="button"
