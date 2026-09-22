@@ -114,7 +114,7 @@ export default function RaceLobby() {
   }, [gameId]);
 
   const subjectMeta = useMemo(() => {
-    switch (subject) {
+    switch (subject as string) {
       case 'vocab': return 'Từ Vựng';
       case 'kanji': return 'Chữ Hán';
       case 'hanjt': return 'Hán Tự';

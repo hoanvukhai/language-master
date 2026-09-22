@@ -1,4 +1,4 @@
-// src/pages/Practice.tsx
+// src/pages/Practice/ConjugationGame.tsx
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { vocabulary } from '../../data';
 import type { Word } from '../../types';
@@ -30,7 +30,7 @@ export interface QueueCard {
 // ──────────────────────────────────────────────────────────────
 const makeRandomSeed = (): number => Math.floor(Math.random() * 100000);
 
-export default function Practice() {
+export default function ConjugationGame() {
   const { settings } = useFlashcardSettings();
   const { language } = useSettings();
   const isQuizMode = settings.playMode === 'quiz';
