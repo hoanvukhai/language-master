@@ -42,7 +42,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 /** Hàm tính tổng số từ/mục trong một khóa học */
 function getCourseItemCount(c: Course): number {
   if (c.subject === 'kanji_single') {
-    return c.data.reduce((acc: number, k: any) => acc + 1 + (k.words?.length || 0), 0);
+    return c.data?.length || 1;
   } else if (c.subject === 'kanji_words') {
     return c.data.reduce((acc: number, k: any) => acc + (k.words?.length || 0), 0);
   }

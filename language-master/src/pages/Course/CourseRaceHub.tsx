@@ -10,6 +10,18 @@ import { PersonalScoreWidget } from '../../components/shared/PersonalScoreWidget
 import RaceArena from '../Practice/RaceArena';
 import { usePracticeContext } from '../Practice/PracticeContext';
 
+interface RaceModeItem {
+  id: string;
+  name: string;
+  game: string;
+  icon: any;
+  desc: string;
+  color: string;
+  bgLight: string;
+  border: string;
+  hiddenFor?: string[];
+}
+
 export default function CourseRaceHub() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -73,7 +85,7 @@ export default function CourseRaceHub() {
     }
   };
 
-  const modes = [
+  const modes: RaceModeItem[] = [
     {
       id: 'quiz', name: 'Đua Trắc Nghiệm', game: 'quiz', icon: CheckSquare,
       desc: '20 câu / 10s mỗi câu. 3 mạng.', color: 'text-amber-500', bgLight: 'bg-amber-100 dark:bg-amber-900/30', border: 'hover:border-amber-500',
@@ -85,7 +97,6 @@ export default function CourseRaceHub() {
     {
       id: 'typing', name: 'Đua Gõ Phím', game: 'typing', icon: Keyboard,
       desc: '15 câu gõ nhanh. 3 mạng.', color: 'text-amber-500', bgLight: 'bg-amber-100 dark:bg-amber-900/30', border: 'hover:border-amber-500',
-      hiddenFor: ['grammar']
     },
     {
       id: 'truefalse', name: 'Đua Phản Xạ', game: 'truefalse', icon: Zap,

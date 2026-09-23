@@ -11,7 +11,7 @@ function shuffle<T>(arr: T[]): T[] {
   return [...arr].sort(() => Math.random() - 0.5);
 }
 
-// HÃ m táº¡o cÃ¢u sai cÃ³ bÃ´i Ä‘áº­m
+// Hàm tạo câu sai có bôi đậm
 function makeWrongSentence(g: typeof grammarN3[0], ex: typeof grammarN3[0]['examples'][0]) {
   const bracketMatch = ex.jp.match(/\[([^\]]+)\]/);
   if (!bracketMatch) return null;
@@ -25,13 +25,13 @@ function makeWrongSentence(g: typeof grammarN3[0], ex: typeof grammarN3[0]['exam
   if (sameGroup.length > 0) {
     const randItem = sameGroup[Math.floor(Math.random() * sameGroup.length)];
     const exMatch = randItem.examples[0]?.jp.match(/\[([^\]]+)\]/);
-    wrongStructure = exMatch ? exMatch[1] : randItem.structure.replace(/ã€œ/g, '').split('/')[0];
+    wrongStructure = exMatch ? exMatch[1] : randItem.structure.replace(/〜/g, '').split('/')[0];
   } else {
     const randItem = grammarN3[Math.floor(Math.random() * grammarN3.length)];
-    wrongStructure = randItem.structure.replace(/ã€œ/g, '').split('/')[0];
+    wrongStructure = randItem.structure.replace(/〜/g, '').split('/')[0];
   }
 
-  if (!wrongStructure) wrongStructure = 'ã“ã¨';
+  if (!wrongStructure) wrongStructure = 'こと';
   const wrongHighlighted = blanked.replace('___', `<${wrongStructure}>`);
 
   return {
@@ -43,7 +43,7 @@ function makeWrongSentence(g: typeof grammarN3[0], ex: typeof grammarN3[0]['exam
 
 interface ErrorItem {
   id: string;
-  isCorrect: boolean; // DÃ¹ng cho cháº¿ Ä‘á»™ truefalse
+  isCorrect: boolean; // Dùng cho chế độ truefalse
   correctSentence: string;
   wrongSentence: string;
   kana?: string;
@@ -88,14 +88,14 @@ export default function GrammarErrorDetect() {
           
           items.push({
             id: `${g.id}_ex${i}`,
-            isCorrect: false, // placeholder â€” will be randomized in handleStart()
+            isCorrect: Math.random() > 0.5,
             correctSentence: sentenceData.correctSentence,
             wrongSentence: sentenceData.wrongSentence,
             kana: cleanKana,
             translation: ex.vi,
             structure: g.structure,
             wrongStructure: sentenceData.wrongStructure,
-            caution: g.caution ? (typeof g.caution === 'object' ? (g.caution as any)[language as 'vi' | 'en'] || (g.caution as any).vi : g.caution) : '',
+            caution: typeof g.caution === 'string' ? g.caution : ((g.caution as any)[language] || g.caution.vi),
             lesson: g.lesson,
             group: g.group,
           });
@@ -109,11 +109,11 @@ export default function GrammarErrorDetect() {
   const [score, setScore] = useState(0);
   const [status, setStatus] = useState<'idle' | 'success' | 'fail'>('idle');
   const [, setSelectedAnswerTF] = useState<boolean | null>(null);
-  const [selectedAnswerPW, setSelectedAnswerPW] = useState<string | null>(null); // LÆ°u id cá»§a cÃ¢u Ä‘Æ°á»£c chá»n
+  const [selectedAnswerPW, setSelectedAnswerPW] = useState<string | null>(null); // Lưu id của câu được chọn
 
   const current = queue[0];
 
-  // Táº¡o cÃ¡c options cho cháº¿ Ä‘á»™ Pick Wrong
+  // Tạo các options cho chế độ Pick Wrong
   const pwOptions = useMemo(() => {
     if (!current || gameMode !== 'pickwrong') return [];
     const otherItems = shuffle(pool.filter(p => p.id !== current.id)).slice(0, 3);
@@ -133,10 +133,7 @@ export default function GrammarErrorDetect() {
   useEffect(() => { if (started) window.scrollTo(0, 0); }, [started]);
 
   const handleStart = () => {
-    // [BUG-G01 FIX] Math.random() pháº£i cháº¡y Táº I ÄÃ‚Y (event handler), khÃ´ng trong useMemo
-    // useMemo cÃ³ thá»ƒ bá»‹ tÃ¡i tÃ­nh nhiá»u láº§n (Ä‘áº·c biá»‡t React StrictMode), gÃ¢y isCorrect bá»‹ Ä‘á»•i ngáº«u nhiÃªn
-    const randomizedPool = pool.map(item => ({ ...item, isCorrect: Math.random() > 0.5 }));
-    setQueue(randomizedPool);
+    setQueue(pool);
     setScore(0);
     setStatus('idle');
     setSelectedAnswerTF(null);
@@ -192,7 +189,7 @@ export default function GrammarErrorDetect() {
     );
   };
 
-  // Render cÃ¢u gá»‘c ko cÃ³ bÃ´i Ä‘áº­m html Ä‘á»ƒ hiá»‡n thá»‹ cho cháº¿ Ä‘á»™ pick wrong náº¿u muá»‘n, nhÆ°ng prompt báº£o giá»¯ bÃ´i Ä‘áº­m
+  // Render câu gốc ko có bôi đậm html để hiện thị cho chế độ pick wrong nếu muốn, nhưng prompt bảo giữ bôi đậm
   const renderHighlightedSentencePW = (text: string, isSelected: boolean, isCorrectAnswer: boolean) => {
     const parts = text.split(/<([^>]+)>/);
     return (
@@ -217,19 +214,19 @@ export default function GrammarErrorDetect() {
     return (
       <div className="min-h-[calc(100vh-3.5rem)] bg-slate-50 dark:bg-slate-900 p-6 md:p-12 font-sans">
         <div className="max-w-3xl mx-auto">
-          <Link to="/practice/grammar" className="inline-flex items-center gap-2 text-slate-500 hover:text-red-600 mb-3 transition-colors">
-            <ArrowLeft size={18} /> Quay láº¡i
+          <Link to="/course/n3-grammar-core/practice" className="inline-flex items-center gap-2 text-slate-500 hover:text-red-600 mb-3 transition-colors">
+            <ArrowLeft size={18} /> Quay lại
           </Link>
-          <h1 className="text-3xl font-extrabold text-slate-800 dark:text-white mb-2">ðŸ” TÃ¬m lá»—i sai</h1>
+          <h1 className="text-3xl font-extrabold text-slate-800 dark:text-white mb-2">🔍 Tìm lỗi sai</h1>
           <p className="text-slate-500 dark:text-slate-400 mb-3">
-            TÃ¬m vÃ  phÃ¡t hiá»‡n cÃ¡c lá»—i sai ngá»¯ phÃ¡p tinh vi Ä‘Æ°á»£c táº¡o tá»« cÃ¡c cáº¥u trÃºc dá»… gÃ¢y nháº§m láº«n.
+            Tìm và phát hiện các lỗi sai ngữ pháp tinh vi được tạo từ các cấu trúc dễ gây nhầm lẫn.
           </p>
 
           <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 md:p-6 shadow-sm border border-slate-100 dark:border-slate-700 space-y-4">
 
-            {/* Cháº¿ Ä‘á»™ chÆ¡i */}
+            {/* Chế độ chơi */}
             <div>
-              <label className="block text-sm font-semibold text-slate-600 dark:text-slate-300 mb-2">ðŸŽ® Cháº¿ Ä‘á»™ chÆ¡i</label>
+              <label className="block text-sm font-semibold text-slate-600 dark:text-slate-300 mb-2">🎮 Chế độ chơi</label>
               <div className="grid grid-cols-1 gap-2">
                 <button
                   type="button"
@@ -240,8 +237,8 @@ export default function GrammarErrorDetect() {
                       : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:border-slate-300'
                   }`}
                 >
-                  <span className="flex items-center gap-2"><Shuffle size={16} /> ÄÃºng / Sai</span>
-                  <span className="text-xs font-normal opacity-70">PhÃ¡n Ä‘oÃ¡n 1 cÃ¢u</span>
+                  <span className="flex items-center gap-2"><Shuffle size={16} /> Đúng / Sai</span>
+                  <span className="text-xs font-normal opacity-70">Phán đoán 1 câu</span>
                 </button>
                 <button
                   type="button"
@@ -252,16 +249,16 @@ export default function GrammarErrorDetect() {
                       : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:border-slate-300'
                   }`}
                 >
-                  <span className="flex items-center gap-2"><MousePointerClick size={16} /> Chá»n cÃ¢u sai</span>
-                  <span className="text-xs font-normal opacity-70">TÃ¬m 1 cÃ¢u sai trong 4 cÃ¢u</span>
+                  <span className="flex items-center gap-2"><MousePointerClick size={16} /> Chọn câu sai</span>
+                  <span className="text-xs font-normal opacity-70">Tìm 1 câu sai trong 4 câu</span>
                 </button>
               </div>
             </div>
 
-            {/* Hiá»ƒn thá»‹ */}
+            {/* Hiển thị */}
             <div>
               <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
-                Hiá»ƒn thá»‹ bá»• sung
+                Hiển thị bổ sung
               </label>
               <div className="flex gap-3">
                 <button
@@ -282,7 +279,7 @@ export default function GrammarErrorDetect() {
                       : 'border-slate-200 dark:border-slate-700 text-slate-500 hover:border-slate-300'
                   }`}
                 >
-                  {showTranslation ? <Eye size={12} /> : <EyeOff size={12} />} Dá»‹ch
+                  {showTranslation ? <Eye size={12} /> : <EyeOff size={12} />} Dịch
                 </button>
               </div>
             </div>
@@ -313,8 +310,8 @@ export default function GrammarErrorDetect() {
               className="w-full py-4 bg-red-600 hover:bg-red-700 disabled:opacity-50 text-white font-bold rounded-xl transition-all active:scale-[0.98] shadow-lg shadow-red-500/20"
             >
               {(gameMode === 'pickwrong' && pool.length < 4)
-                ? 'Cáº§n Ã­t nháº¥t 4 cÃ¢u cho cháº¿ Ä‘á»™ Chá»n cÃ¢u sai'
-                : `Báº¯t Ä‘áº§u (${pool.length} cÃ¢u)`}
+                ? 'Cần ít nhất 4 câu cho chế độ Chọn câu sai'
+                : `Bắt đầu (${pool.length} câu)`}
             </button>
           </div>
         </div>
@@ -331,20 +328,20 @@ export default function GrammarErrorDetect() {
           animate={{ opacity: 1, scale: 1 }}
           className="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-lg max-w-xs w-full text-center"
         >
-          <div className="text-5xl mb-3">{pct >= 80 ? 'ðŸŽ¯' : pct >= 50 ? 'ðŸ‘€' : 'ðŸ˜…'}</div>
-          <h2 className="text-2xl font-extrabold text-slate-800 dark:text-white mb-2">HoÃ n thÃ nh</h2>
+          <div className="text-5xl mb-3">{pct >= 80 ? '🎯' : pct >= 50 ? '👀' : '😅'}</div>
+          <h2 className="text-2xl font-extrabold text-slate-800 dark:text-white mb-2">Hoàn thành</h2>
           <div className="text-5xl font-black text-red-600 dark:text-red-400 mb-1">{score}<span className="text-2xl text-slate-400">/{pool.length}</span></div>
-          <p className="text-slate-500 dark:text-slate-400 mb-3">{pct}% chÃ­nh xÃ¡c</p>
+          <p className="text-slate-500 dark:text-slate-400 mb-3">{pct}% chính xác</p>
 
           <div className="space-y-3">
             <button
               onClick={handleStart}
               className="w-full py-3 border-2 border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 font-bold rounded-xl hover:border-red-400 transition-all flex items-center justify-center gap-2"
             >
-              <RotateCcw size={16} /> LÃ m láº¡i
+              <RotateCcw size={16} /> Làm lại
             </button>
-            <Link to="/practice/grammar" className="block w-full py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl transition-all text-center">
-              Vá» dashboard
+            <Link to="/course/n3-grammar-core/practice" className="block w-full py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl transition-all text-center">
+              Về dashboard
             </Link>
           </div>
         </motion.div>
@@ -356,14 +353,14 @@ export default function GrammarErrorDetect() {
   const displaySentence = current.isCorrect ? current.correctSentence : current.wrongSentence;
 
   return (
-    <div className="min-h-[calc(100vh-3.5rem)] bg-slate-50 dark:bg-slate-900 p-4 md:p-8 font-sans flex flex-col justify-center">
-      <div className="max-w-3xl w-full mx-auto flex flex-col justify-between min-h-[500px]">
+    <div className="min-h-[calc(100vh-3.5rem)] bg-slate-50 dark:bg-slate-900 p-4 md:p-8 font-sans">
+      <div className="max-w-3xl w-full mx-auto space-y-4">
 
         <div className="w-full flex-shrink-0">
           {/* Top bar */}
           <div className="flex items-center justify-between mb-3">
           <button onClick={() => setStarted(false)} className="inline-flex items-center gap-2 text-slate-500 hover:text-red-600 transition-colors font-medium">
-            <ArrowLeft size={18} /> ThoÃ¡t
+            <ArrowLeft size={18} /> Thoát
           </button>
           <div className="flex items-center gap-3">
             <button
@@ -384,14 +381,14 @@ export default function GrammarErrorDetect() {
                   : 'border-slate-200 dark:border-slate-600 text-slate-400 hover:border-amber-300'
               }`}
             >
-              {showTranslation ? <Eye size={12} /> : <EyeOff size={12} />} Dá»‹ch
+              {showTranslation ? <Eye size={12} /> : <EyeOff size={12} />} Dịch
             </button>
           </div>
         </div>
 
         {/* Status bar */}
         <div className="flex items-center justify-between mb-3 px-1">
-          <div className="text-sm font-bold text-red-600 dark:text-red-400">{score} Ä‘iá»ƒm</div>
+          <div className="text-sm font-bold text-red-600 dark:text-red-400">{score} điểm</div>
           <div className="text-sm text-slate-500 dark:text-slate-400">{pool.length - queue.length + 1} / {pool.length}</div>
         </div>
         
@@ -405,7 +402,7 @@ export default function GrammarErrorDetect() {
         </div>
         </div>
 
-        <div className="flex-1 flex flex-col justify-center">
+        <div className="w-full">
           <AnimatePresence mode="wait">
             <motion.div
               key={`${current.id}_${gameMode}`}
@@ -414,7 +411,7 @@ export default function GrammarErrorDetect() {
               exit={{ opacity: 0, scale: 1.05 }}
               className="space-y-4 w-full"
             >
-            {/* Cháº¿ Ä‘á»™ True/False */}
+            {/* Chế độ True/False */}
             {gameMode === 'truefalse' && (
               <>
                 <div className="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700">
@@ -458,25 +455,25 @@ export default function GrammarErrorDetect() {
                       onClick={() => handleAnswerTF(true)}
                       className="flex-1 py-5 bg-green-50 dark:bg-green-900/20 border-2 border-green-300 dark:border-green-700 text-green-600 dark:text-green-400 font-bold rounded-2xl hover:bg-green-100 dark:hover:bg-green-900/40 transition-all flex items-center justify-center gap-2 text-lg active:scale-95 shadow-sm"
                     >
-                      <CheckCircle2 size={22} /> ÄÃšNG
+                      <CheckCircle2 size={22} /> ĐÚNG
                     </button>
                   </div>
                 ) : null}
               </>
             )}
 
-            {/* Cháº¿ Ä‘á»™ Pick Wrong */}
+            {/* Chế độ Pick Wrong */}
             {gameMode === 'pickwrong' && (
               <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-xl border border-slate-100 dark:border-slate-700">
                 <div className="text-center mb-3">
-                  <div className="text-sm font-bold text-red-600 dark:text-red-400 mb-1">HÃ£y chá»n cÃ¢u bá»‹ SAI ngá»¯ phÃ¡p</div>
-                  <div className="text-xs text-slate-500 dark:text-slate-400">Chá»‰ cÃ³ 1 cÃ¢u duy nháº¥t dÃ¹ng sai cáº¥u trÃºc</div>
+                  <div className="text-sm font-bold text-red-600 dark:text-red-400 mb-1">Hãy chọn câu bị SAI ngữ pháp</div>
+                  <div className="text-xs text-slate-500 dark:text-slate-400">Chỉ có 1 câu duy nhất dùng sai cấu trúc</div>
                 </div>
 
                 <div className="space-y-3">
                   {pwOptions.map((opt) => {
                     const isSelected = selectedAnswerPW === opt.id;
-                    const isCorrectAnswer = opt.isWrong; // Trong Pick Wrong, Ä‘Ã¡p Ã¡n Ä‘Ãºng cá»§a game lÃ  cÃ¢u sai ngá»¯ phÃ¡p
+                    const isCorrectAnswer = opt.isWrong; // Trong Pick Wrong, đáp án đúng của game là câu sai ngữ pháp
                     let btnCls = 'bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200 hover:border-red-400 hover:bg-red-50 dark:hover:bg-red-900/20';
                     
                     if (status !== 'idle') {
@@ -507,7 +504,7 @@ export default function GrammarErrorDetect() {
               </div>
             )}
 
-            {/* Feedback & Caution (DÃ¹ng chung cho cáº£ 2 mode) */}
+            {/* Feedback & Caution (Dùng chung cho cả 2 mode) */}
             <AnimatePresence>
               {status !== 'idle' && (
                 <motion.div
@@ -521,21 +518,21 @@ export default function GrammarErrorDetect() {
                 >
                   <div className="flex items-center gap-2 mb-3">
                     {status === 'success' ? (
-                      <><CheckCircle2 className="text-green-500" /><span className="font-bold text-green-700 dark:text-green-400">PhÃ¡n Ä‘oÃ¡n chuáº©n xÃ¡c!</span></>
+                      <><CheckCircle2 className="text-green-500" /><span className="font-bold text-green-700 dark:text-green-400">Phán đoán chuẩn xác!</span></>
                     ) : (
-                      <><XCircle className="text-red-500" /><span className="font-bold text-red-700 dark:text-red-400">Ráº¥t tiáº¿c, báº¡n Ä‘Ã£ nháº§m!</span></>
+                      <><XCircle className="text-red-500" /><span className="font-bold text-red-700 dark:text-red-400">Rất tiếc, bạn đã nhầm!</span></>
                     )}
                   </div>
 
-                  {/* Giáº£i thÃ­ch cÃ¢u sai cá»§a item hiá»‡n táº¡i */}
+                  {/* Giải thích câu sai của item hiện tại */}
                   <div className="bg-white/50 dark:bg-black/20 rounded-xl p-3 mb-3">
-                    <div className="text-xs font-bold text-slate-500 mb-2 uppercase tracking-wider">CÃ¢u Ä‘Ãºng pháº£i lÃ :</div>
+                    <div className="text-xs font-bold text-slate-500 mb-2 uppercase tracking-wider">Câu đúng phải là:</div>
                     <div className="text-lg mb-2">
                       {renderHighlightedSentence(current.correctSentence)}
                     </div>
                     {showTranslation && (
                       <div className="text-sm italic text-slate-600 dark:text-slate-400 border-t border-slate-200 dark:border-slate-700 pt-2">
-                        ðŸ’¬ {current.translation}
+                        💬 {current.translation}
                       </div>
                     )}
                   </div>
@@ -545,7 +542,7 @@ export default function GrammarErrorDetect() {
                     <div className="text-sm text-amber-800 dark:text-amber-300 leading-relaxed">
                       <span className="font-bold">{current.structure}:</span> {current.caution}
                       <br/>
-                      <span className="text-xs opacity-80 mt-1 block">LÆ°u Ã½: KhÃ´ng Ä‘Æ°á»£c nháº§m vá»›i cáº¥u trÃºc "{current.wrongStructure}"</span>
+                      <span className="text-xs opacity-80 mt-1 block">Lưu ý: Không được nhầm với cấu trúc "{current.wrongStructure}"</span>
                     </div>
                   </div>
 
@@ -555,7 +552,7 @@ export default function GrammarErrorDetect() {
                       status === 'success' ? 'bg-green-600 hover:bg-green-700' : 'bg-red-600 hover:bg-red-700'
                     }`}
                   >
-                    CÃ¢u tiáº¿p theo â†’
+                    Câu tiếp theo →
                   </button>
                 </motion.div>
               )}

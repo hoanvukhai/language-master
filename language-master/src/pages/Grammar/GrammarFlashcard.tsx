@@ -14,7 +14,7 @@ function shuffle<T>(arr: T[]): T[] {
   return [...arr].sort(() => Math.random() - 0.5);
 }
 
-type CardMode = 'normal' | 'reverse'; // normal: cáº¥u trÃºcâ†’nghÄ©a | reverse: nghÄ©aâ†’cáº¥u trÃºc
+type CardMode = 'normal' | 'reverse'; // normal: cấu trúc→nghĩa | reverse: nghĩa→cấu trúc
 
 export default function GrammarFlashcard() {
   const { language } = useSettings();
@@ -53,7 +53,7 @@ export default function GrammarFlashcard() {
 
   const playAudio = (text: string) => {
     const clean = text.replace(/\[([^\]]+)\]/g, '$1');
-    const u = new SpeechSynthesisUtterance(clean.replace(/ã€œ|[/ï¼ˆï¼‰()]/g, ' ').trim());
+    const u = new SpeechSynthesisUtterance(clean.replace(/〜|[/（）()]/g, ' ').trim());
     u.lang = 'ja-JP';
     window.speechSynthesis.speak(u);
   };
@@ -103,7 +103,7 @@ export default function GrammarFlashcard() {
     setIsFlipped(false);
   };
 
-  // â”€â”€ SETUP SCREEN â”€â”€
+  // ── SETUP SCREEN ──
   if (!started) {
     const options = filterType === 'lesson' ? lessons : groups;
     const totalCount = pool.length;
@@ -111,23 +111,23 @@ export default function GrammarFlashcard() {
     return (
       <div className="min-h-[calc(100vh-3.5rem)] bg-slate-50 dark:bg-slate-900 p-6 md:p-12 font-sans">
         <div className="max-w-3xl mx-auto">
-          <Link to="/practice/grammar" className="inline-flex items-center gap-2 text-slate-500 hover:text-teal-600 mb-3 transition-colors">
-            <ArrowLeft size={18} /> Quay láº¡i
+          <Link to="/course/n3-grammar-core/practice" className="inline-flex items-center gap-2 text-slate-500 hover:text-teal-600 mb-3 transition-colors">
+            <ArrowLeft size={18} /> Quay lại
           </Link>
-          <h1 className="text-3xl font-extrabold text-slate-800 dark:text-white mb-1">ðŸƒ Láº­t tháº» Ngá»¯ PhÃ¡p</h1>
-          <p className="text-slate-500 dark:text-slate-400 mb-3">Ã”n cáº¥u trÃºc vÃ  nghÄ©a qua tháº» ghi nhá»› hai máº·t.</p>
+          <h1 className="text-3xl font-extrabold text-slate-800 dark:text-white mb-1">🃏 Lật thẻ Ngữ Pháp</h1>
+          <p className="text-slate-500 dark:text-slate-400 mb-3">Ôn cấu trúc và nghĩa qua thẻ ghi nhớ hai mặt.</p>
 
           <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 md:p-6 shadow-sm border border-slate-100 dark:border-slate-700 space-y-4">
 
             {/* Mode: normal / reverse */}
             <div>
               <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
-                Cháº¿ Ä‘á»™ tháº»
+                Chế độ thẻ
               </label>
               <div className="grid grid-cols-2 gap-3">
                 {([
-                  { id: 'normal',  label: 'ðŸ“– Cáº¥u trÃºc â†’ NghÄ©a',  desc: 'Xem cáº¥u trÃºc, Ä‘oÃ¡n nghÄ©a' },
-                  { id: 'reverse', label: 'ðŸ”„ NghÄ©a â†’ Cáº¥u trÃºc', desc: 'Xem nghÄ©a, Ä‘oÃ¡n cáº¥u trÃºc' },
+                  { id: 'normal',  label: '📖 Cấu trúc → Nghĩa',  desc: 'Xem cấu trúc, đoán nghĩa' },
+                  { id: 'reverse', label: '🔄 Nghĩa → Cấu trúc', desc: 'Xem nghĩa, đoán cấu trúc' },
                 ] as const).map(m => (
                   <button
                     key={m.id}
@@ -166,7 +166,7 @@ export default function GrammarFlashcard() {
               onClick={handleStart}
               className="w-full py-4 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-all active:scale-[0.98] shadow-lg shadow-teal-500/20"
             >
-              Báº¯t Ä‘áº§u Ã´n táº­p ({totalCount} tháº»)
+              Bắt đầu ôn tập ({totalCount} thẻ)
             </button>
           </div>
         </div>
@@ -174,7 +174,7 @@ export default function GrammarFlashcard() {
     );
   }
 
-  // â”€â”€ RESULT SCREEN â”€â”€
+  // ── RESULT SCREEN ──
   if (queue.length === 0) {
     const total = known.length + learning.length;
     return (
@@ -184,18 +184,18 @@ export default function GrammarFlashcard() {
           animate={{ opacity: 1, scale: 1 }}
           className="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-lg max-w-xs w-full text-center"
         >
-          <div className="text-5xl mb-3">ðŸŽ‰</div>
-          <h2 className="text-2xl font-extrabold text-slate-800 dark:text-white mb-2">HoÃ n thÃ nh!</h2>
-          <p className="text-slate-500 dark:text-slate-400 mb-3">Báº¡n Ä‘Ã£ Ã´n xong {total} tháº».</p>
+          <div className="text-5xl mb-3">🎉</div>
+          <h2 className="text-2xl font-extrabold text-slate-800 dark:text-white mb-2">Hoàn thành!</h2>
+          <p className="text-slate-500 dark:text-slate-400 mb-3">Bạn đã ôn xong {total} thẻ.</p>
 
           <div className="flex gap-3 mb-3">
             <div className="flex-1 bg-green-50 dark:bg-green-900/30 rounded-xl p-4">
               <div className="text-2xl font-bold text-green-600 dark:text-green-400">{known.length}</div>
-              <div className="text-xs text-green-600 dark:text-green-400">ÄÃ£ nhá»›</div>
+              <div className="text-xs text-green-600 dark:text-green-400">Đã nhớ</div>
             </div>
             <div className="flex-1 bg-amber-50 dark:bg-amber-900/30 rounded-xl p-4">
               <div className="text-2xl font-bold text-amber-600 dark:text-amber-400">{learning.length}</div>
-              <div className="text-xs text-amber-600 dark:text-amber-400">Cáº§n Ã´n</div>
+              <div className="text-xs text-amber-600 dark:text-amber-400">Cần ôn</div>
             </div>
           </div>
 
@@ -205,17 +205,17 @@ export default function GrammarFlashcard() {
                 onClick={handleRestartLearning}
                 className="w-full py-3 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl transition-all"
               >
-                Ã”n láº¡i {learning.length} tháº» chÆ°a nhá»›
+                Ôn lại {learning.length} thẻ chưa nhớ
               </button>
             )}
             <button
               onClick={handleRestart}
               className="w-full py-3 border-2 border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 font-bold rounded-xl hover:border-teal-400 transition-all flex items-center justify-center gap-2"
             >
-              <RotateCcw size={16} /> Ã”n láº¡i táº¥t cáº£
+              <RotateCcw size={16} /> Ôn lại tất cả
             </button>
-            <Link to="/practice/grammar" className="block w-full py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-all text-center">
-              Vá» dashboard
+            <Link to="/course/n3-grammar-core/practice" className="block w-full py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-all text-center">
+              Về dashboard
             </Link>
           </div>
         </motion.div>
@@ -224,15 +224,15 @@ export default function GrammarFlashcard() {
   }
 
   const progress = ((known.length + learning.length) / (known.length + learning.length + queue.length)) * 100;
-  const meaning = typeof current.meaning === 'object' ? (current.meaning as any)[language as 'vi' | 'en'] || (current.meaning as any).vi : current.meaning;
-  const caution = current.caution ? (typeof current.caution === 'object' ? (current.caution as any)[language as 'vi' | 'en'] || (current.caution as any).vi : current.caution) : '';
+  const meaning = current.meaning[language as 'vi' | 'en'] || current.meaning.vi;
+  const caution = current.caution[language as 'vi' | 'en'] || current.caution.vi;
 
-  // Máº·t trÆ°á»›c thay Ä‘á»•i tuá»³ mode
+  // Mặt trước thay đổi tuỳ mode
   const frontContent = cardMode === 'normal' ? current.structure : meaning;
   const frontKana = cardMode === 'normal'
     ? (current.structureKana !== current.structure ? current.structureKana : null)
     : null;
-  const frontLabel = cardMode === 'normal' ? 'Cáº¥u trÃºc' : 'NghÄ©a';
+  const frontLabel = cardMode === 'normal' ? 'Cấu trúc' : 'Nghĩa';
 
   return (
     <div className="min-h-[calc(100vh-3.5rem)] bg-slate-50 dark:bg-slate-900 p-4 md:p-8 font-sans">
@@ -246,7 +246,7 @@ export default function GrammarFlashcard() {
 
           {/* Mode badge */}
           <span className="text-xs font-bold bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-300 px-2.5 py-1 rounded-full flex items-center gap-1">
-            <Repeat2 size={11} /> {cardMode === 'reverse' ? 'Äáº£o ngÆ°á»£c' : 'BÃ¬nh thÆ°á»ng'}
+            <Repeat2 size={11} /> {cardMode === 'reverse' ? 'Đảo ngược' : 'Bình thường'}
           </span>
 
           <div className="text-sm text-slate-500 dark:text-slate-400 flex-shrink-0">
@@ -315,22 +315,22 @@ export default function GrammarFlashcard() {
                       <div className="text-sm text-slate-400 dark:text-slate-500 font-mono mt-1">{frontKana}</div>
                     )}
                     <div className="mt-4 text-sm text-slate-400 dark:text-slate-500 flex items-center gap-1">
-                      <RotateCcw size={14} /> Cháº¡m Ä‘á»ƒ láº­t
+                      <RotateCcw size={14} /> Chạm để lật
                     </div>
                   </>
                 ) : (
                   <div className="w-full space-y-4">
-                    {/* Back â€” náº¿u mode=normal: hiá»‡n nghÄ©a; náº¿u mode=reverse: hiá»‡n cáº¥u trÃºc */}
+                    {/* Back — nếu mode=normal: hiện nghĩa; nếu mode=reverse: hiện cấu trúc */}
                     {cardMode === 'normal' ? (
                       <>
                         <div>
-                          <div className="text-teal-200 text-xs font-bold uppercase tracking-widest mb-1">NghÄ©a</div>
+                          <div className="text-teal-200 text-xs font-bold uppercase tracking-widest mb-1">Nghĩa</div>
                           <div className="text-2xl font-extrabold text-white">{meaning}</div>
                         </div>
                         <div className="border-t border-teal-500/40 pt-4 text-left">
-                          <div className="text-teal-200 text-xs font-bold uppercase tracking-widest mb-2">CÃ¡ch thÃ nh láº­p</div>
+                          <div className="text-teal-200 text-xs font-bold uppercase tracking-widest mb-2">Cách thành lập</div>
                           <div className="space-y-1">
-                            {current.formation.map((f: string, i: number) => (
+                            {current.formation.map((f, i) => (
                               <div key={i} className="text-sm text-teal-100 bg-white/10 rounded-lg px-3 py-1.5 font-mono">{f}</div>
                             ))}
                           </div>
@@ -339,16 +339,16 @@ export default function GrammarFlashcard() {
                     ) : (
                       <>
                         <div>
-                          <div className="text-teal-200 text-xs font-bold uppercase tracking-widest mb-1">Cáº¥u trÃºc</div>
+                          <div className="text-teal-200 text-xs font-bold uppercase tracking-widest mb-1">Cấu trúc</div>
                           <div className="text-2xl font-extrabold text-white">{current.structure}</div>
                           {showFurigana && current.structureKana !== current.structure && (
                             <div className="text-sm text-teal-200 font-mono mt-1">{current.structureKana}</div>
                           )}
                         </div>
                         <div className="border-t border-teal-500/40 pt-4 text-left">
-                          <div className="text-teal-200 text-xs font-bold uppercase tracking-widest mb-2">CÃ¡ch thÃ nh láº­p</div>
+                          <div className="text-teal-200 text-xs font-bold uppercase tracking-widest mb-2">Cách thành lập</div>
                           <div className="space-y-1">
-                            {current.formation.map((f: string, i: number) => (
+                            {current.formation.map((f, i) => (
                               <div key={i} className="text-sm text-teal-100 bg-white/10 rounded-lg px-3 py-1.5 font-mono">{f}</div>
                             ))}
                           </div>
@@ -369,7 +369,7 @@ export default function GrammarFlashcard() {
                           onClick={(e) => { e.stopPropagation(); playAudio(current.examples[0].kana || current.examples[0].jp); }}
                           className="flex items-center gap-1 text-xs text-teal-200 mb-2 hover:text-white transition-colors"
                         >
-                          <Volume2 size={12} /> VÃ­ dá»¥
+                          <Volume2 size={12} /> Ví dụ
                         </button>
                         <div className="text-sm text-white font-medium">{renderJpExample(current.examples[0].jp)}</div>
                         {showFurigana && current.examples[0].kana && (
@@ -400,13 +400,13 @@ export default function GrammarFlashcard() {
                 onClick={() => handleResult(false)}
                 className="flex-1 flex items-center justify-center gap-2 py-4 bg-amber-50 dark:bg-amber-900/20 border-2 border-amber-300 dark:border-amber-700 text-amber-700 dark:text-amber-400 font-bold rounded-2xl hover:bg-amber-100 dark:hover:bg-amber-900/40 transition-all active:scale-95"
               >
-                <ThumbsDown size={20} /> ChÆ°a nhá»›
+                <ThumbsDown size={20} /> Chưa nhớ
               </button>
               <button
                 onClick={() => handleResult(true)}
                 className="flex-1 flex items-center justify-center gap-2 py-4 bg-green-50 dark:bg-green-900/20 border-2 border-green-400 dark:border-green-700 text-green-700 dark:text-green-400 font-bold rounded-2xl hover:bg-green-100 dark:hover:bg-green-900/40 transition-all active:scale-95"
               >
-                <ThumbsUp size={20} /> ÄÃ£ nhá»›
+                <ThumbsUp size={20} /> Đã nhớ
               </button>
             </motion.div>
           )}
@@ -415,10 +415,10 @@ export default function GrammarFlashcard() {
         {/* Score */}
         <div className="flex justify-center gap-6 mt-4 text-sm">
           <span className="flex items-center gap-1 text-green-500">
-            <CheckCircle2 size={14} /> {known.length} nhá»›
+            <CheckCircle2 size={14} /> {known.length} nhớ
           </span>
           <span className="flex items-center gap-1 text-amber-500">
-            <RotateCcw size={14} /> {learning.length} cáº§n Ã´n
+            <RotateCcw size={14} /> {learning.length} cần ôn
           </span>
         </div>
       </div>

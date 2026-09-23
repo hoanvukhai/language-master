@@ -14,12 +14,12 @@ function shuffle<T>(arr: T[]): T[] {
 interface QuizItem {
   id: string;
   questionText: string;
-  target: string;           // CÃ¡i hiá»ƒn thá»‹ Ä‘á»ƒ há»i
-  targetKana?: string;       // PhiÃªn Ã¢m Kana cá»§a target (náº¿u cÃ³)
-  correctAnswer: string;    // ÄÃ¡p Ã¡n Ä‘Ãºng
-  correctAnswerKana?: string; // PhiÃªn Ã¢m Kana cá»§a correctAnswer (náº¿u cÃ³)
-  caution: string;          // Hiá»‡n sau khi sai
-  group: string;            // DÃ¹ng Ä‘á»ƒ láº¥y distractors
+  target: string;           // Cái hiển thị để hỏi
+  targetKana?: string;       // Phiên âm Kana của target (nếu có)
+  correctAnswer: string;    // Đáp án đúng
+  correctAnswerKana?: string; // Phiên âm Kana của correctAnswer (nếu có)
+  caution: string;          // Hiện sau khi sai
+  group: string;            // Dùng để lấy distractors
   lesson: string;
 }
 
@@ -45,12 +45,12 @@ export default function GrammarQuiz() {
     }
 
     return shuffle(base.map(g => {
-      const meaningText = typeof g.meaning === 'object' ? (g.meaning as any)[language as 'vi' | 'en'] || (g.meaning as any).vi : g.meaning;
-      const cautionText = g.caution ? (typeof g.caution === 'object' ? (g.caution as any)[language as 'vi' | 'en'] || (g.caution as any).vi : g.caution) : '';
+      const meaningText = g.meaning[language as 'vi' | 'en'] || g.meaning.vi;
+      const cautionText = typeof g.caution === 'string' ? g.caution : ((g.caution as any)[language] || g.caution.vi);
       if (direction === 'structure-meaning') {
         return {
           id: g.id,
-          questionText: language === 'en' ? 'What does this structure mean?' : 'Cáº¥u trÃºc nÃ y cÃ³ nghÄ©a lÃ  gÃ¬?',
+          questionText: language === 'en' ? 'What does this structure mean?' : 'Cấu trúc này có nghĩa là gì?',
           target: g.structure,
           targetKana: g.structureKana,
           correctAnswer: meaningText,
@@ -61,7 +61,7 @@ export default function GrammarQuiz() {
       } else {
         return {
           id: g.id,
-          questionText: language === 'en' ? 'Which structure corresponds to this meaning?' : 'NghÄ©a tiáº¿ng Viá»‡t nÃ y tÆ°Æ¡ng á»©ng vá»›i cáº¥u trÃºc ngá»¯ phÃ¡p nÃ o?',
+          questionText: language === 'en' ? 'Which structure corresponds to this meaning?' : 'Nghĩa tiếng Việt này tương ứng với cấu trúc ngữ pháp nào?',
           target: meaningText,
           correctAnswer: g.structure,
           correctAnswerKana: g.structureKana,
@@ -84,8 +84,7 @@ export default function GrammarQuiz() {
   };
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [showCaution, setShowCaution] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false); // Hiển thị banner đúng thủ công
-  const [isTransitionBlocked, setIsTransitionBlocked] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const isTransitionBlockedRef = useRef(false);
   const blockTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -97,21 +96,21 @@ export default function GrammarQuiz() {
 
   const current = queue[0];
 
-  // âš”ï¸ KILLER FEATURE: Distractors theo 3 táº§ng Æ°u tiÃªn
+  // ⚔️ KILLER FEATURE: Distractors theo 3 tầng ưu tiên
   const options = useMemo(() => {
     if (!current) return [];
 
     const getAnswer = (g: (typeof grammarN3)[0]) =>
       direction === 'structure-meaning'
-        ? (typeof g.meaning === 'object' ? (g.meaning as any)[language as 'vi' | 'en'] || (g.meaning as any).vi : g.meaning)
+        ? (g.meaning[language as 'vi' | 'en'] || g.meaning.vi)
         : g.structure;
 
-    // â”€â”€ Æ¯u tiÃªn 1: cÃ¹ng nhÃ³m group â”€â”€
+    // ── Ưu tiên 1: cùng nhóm group ──
     const sameGroup = grammarN3
       .filter(g => g.group === current.group && g.id !== current.id)
       .map(getAnswer);
 
-    // â”€â”€ Æ¯u tiÃªn 3: toÃ n bá»™ pool + global fallback â”€â”€
+    // ── Ưu tiên 3: toàn bộ pool + global fallback ──
     const allAnswers = pool
       .filter(item => item.id !== current.id)
       .map(item => item.correctAnswer);
@@ -154,13 +153,12 @@ export default function GrammarQuiz() {
     setSelectedAnswer(null);
     setShowCaution(false);
     setShowSuccess(false);
-    setIsTransitionBlocked(true);
     isTransitionBlockedRef.current = true;
     if (blockTimerRef.current) clearTimeout(blockTimerRef.current);
     blockTimerRef.current = setTimeout(() => {
-      setIsTransitionBlocked(false);
       isTransitionBlockedRef.current = false;
     }, 300);
+    setShowSuccess(false);
   };
 
   const getTargetStyle = (text: string) => {
@@ -179,19 +177,19 @@ export default function GrammarQuiz() {
     return (
       <div className="min-h-[calc(100vh-3.5rem)] bg-slate-50 dark:bg-slate-900 p-6 md:p-12 font-sans">
         <div className="max-w-3xl mx-auto">
-          <Link to="/practice/grammar" className="inline-flex items-center gap-2 text-slate-500 hover:text-sky-600 mb-3 transition-colors">
-            <ArrowLeft size={18} /> Quay láº¡i
+          <Link to="/course/n3-grammar-core/practice" className="inline-flex items-center gap-2 text-slate-500 hover:text-sky-600 mb-3 transition-colors">
+            <ArrowLeft size={18} /> Quay lại
           </Link>
-          <h1 className="text-3xl font-extrabold text-slate-800 dark:text-white mb-2">âš”ï¸ Tráº¯c nghiá»‡m Báº«y</h1>
+          <h1 className="text-3xl font-extrabold text-slate-800 dark:text-white mb-2">⚔️ Trắc nghiệm Bẫy</h1>
           <p className="text-slate-500 dark:text-slate-400 mb-3">
-            ÄÃ¡p Ã¡n nhiá»…u Ä‘Æ°á»£c bá»‘c tá»« <strong className="text-sky-600 dark:text-sky-400">cÃ¹ng nhÃ³m ngá»¯ phÃ¡p</strong> â€” cá»±c thá»±c chiáº¿n!
+            Đáp án nhiễu được bốc từ <strong className="text-sky-600 dark:text-sky-400">cùng nhóm ngữ pháp</strong> — cực thực chiến!
           </p>
 
           <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 md:p-6 shadow-sm border border-slate-100 dark:border-slate-700 space-y-4">
 
-            {/* HÆ°á»›ng cÃ¢u há»i */}
+            {/* Hướng câu hỏi */}
             <div>
-              <label className="block text-sm font-semibold text-slate-600 dark:text-slate-300 mb-2">ðŸ”„ HÆ°á»›ng cÃ¢u há»i</label>
+              <label className="block text-sm font-semibold text-slate-600 dark:text-slate-300 mb-2">🔄 Hướng câu hỏi</label>
               <div className="grid grid-cols-1 gap-2">
                 <button
                   type="button"
@@ -202,8 +200,8 @@ export default function GrammarQuiz() {
                       : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:border-slate-300'
                   }`}
                 >
-                  <span>Cáº¥u trÃºc â†’ NghÄ©a tiáº¿ng Viá»‡t</span>
-                  <span className="text-xs font-normal opacity-70">ã€œgaru â†’ Cáº£m tháº¥y...</span>
+                  <span>Cấu trúc → Nghĩa tiếng Việt</span>
+                  <span className="text-xs font-normal opacity-70">〜garu → Cảm thấy...</span>
                 </button>
                 <button
                   type="button"
@@ -214,8 +212,8 @@ export default function GrammarQuiz() {
                       : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:border-slate-300'
                   }`}
                 >
-                  <span>NghÄ©a tiáº¿ng Viá»‡t â†’ Cáº¥u trÃºc</span>
-                  <span className="text-xs font-normal opacity-70">Cáº£m tháº¥y... â†’ ã€œgaru</span>
+                  <span>Nghĩa tiếng Việt → Cấu trúc</span>
+                  <span className="text-xs font-normal opacity-70">Cảm thấy... → 〜garu</span>
                 </button>
               </div>
             </div>
@@ -246,7 +244,7 @@ export default function GrammarQuiz() {
               onClick={handleStart}
               className="w-full py-4 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-xl transition-all active:scale-[0.98] shadow-lg shadow-sky-500/20"
             >
-              Báº¯t Ä‘áº§u kiá»ƒm tra ({pool.length} cÃ¢u)
+              Bắt đầu kiểm tra ({pool.length} câu)
             </button>
           </div>
         </div>
@@ -263,20 +261,20 @@ export default function GrammarQuiz() {
           animate={{ opacity: 1, scale: 1 }}
           className="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-lg max-w-xs w-full text-center"
         >
-          <div className="text-5xl mb-3">{pct >= 80 ? 'ðŸ†' : pct >= 50 ? 'ðŸ’ª' : 'ðŸ“š'}</div>
-          <h2 className="text-2xl font-extrabold text-slate-800 dark:text-white mb-2">Káº¿t quáº£</h2>
+          <div className="text-5xl mb-3">{pct >= 80 ? '🏆' : pct >= 50 ? '💪' : '📚'}</div>
+          <h2 className="text-2xl font-extrabold text-slate-800 dark:text-white mb-2">Kết quả</h2>
           <div className="text-5xl font-black text-sky-600 dark:text-sky-400 mb-1">{score}<span className="text-2xl text-slate-400">/{pool.length}</span></div>
-          <p className="text-slate-500 dark:text-slate-400 mb-3">{pct}% chÃ­nh xÃ¡c</p>
+          <p className="text-slate-500 dark:text-slate-400 mb-3">{pct}% chính xác</p>
 
           <div className="space-y-3">
             <button
               onClick={handleStart}
               className="w-full py-3 border-2 border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 font-bold rounded-xl hover:border-sky-400 transition-all flex items-center justify-center gap-2"
             >
-              <RotateCcw size={16} /> LÃ m láº¡i
+              <RotateCcw size={16} /> Làm lại
             </button>
-            <Link to="/practice/grammar" className="block w-full py-3 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-xl transition-all text-center">
-              Vá» dashboard
+            <Link to="/course/n3-grammar-core/practice" className="block w-full py-3 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-xl transition-all text-center">
+              Về dashboard
             </Link>
           </div>
         </motion.div>
@@ -293,12 +291,12 @@ export default function GrammarQuiz() {
         {/* Top bar */}
         <div className="flex items-center justify-between mb-3">
           <button onClick={() => setStarted(false)} className="inline-flex items-center gap-2 text-slate-500 hover:text-sky-600 transition-colors font-medium">
-            <ArrowLeft size={18} /> ThoÃ¡t
+            <ArrowLeft size={18} /> Thoát
           </button>
           <div className="flex items-center gap-3">
             <button
               onClick={() => setShowFurigana(v => !v)}
-              title={showFurigana ? 'Táº¯t Furigana' : 'Báº­t Furigana'}
+              title={showFurigana ? 'Tắt Furigana' : 'Bật Furigana'}
               className={`flex items-center gap-1 px-2.5 py-1 rounded-xl border-2 text-xs font-bold transition-all ${
                 showFurigana
                   ? 'border-teal-500 bg-teal-50 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400'
@@ -308,7 +306,7 @@ export default function GrammarQuiz() {
               {showFurigana ? <Eye size={12} /> : <EyeOff size={12} />}
               <span>Kana</span>
             </button>
-            <div className="text-sm font-bold text-sky-600 dark:text-sky-400">{score} Ä‘iá»ƒm</div>
+            <div className="text-sm font-bold text-sky-600 dark:text-sky-400">{score} điểm</div>
             <div className="text-sm text-slate-500 dark:text-slate-400">{pool.length - queue.length + 1} / {pool.length}</div>
           </div>
         </div>
@@ -338,7 +336,7 @@ export default function GrammarQuiz() {
                     {current.lesson}
                   </span>
                   <span className="text-xs bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 px-3 py-1 rounded-full font-medium">
-                    NhÃ³m: {current.group}
+                    Nhóm: {current.group}
                   </span>
                 </div>
                 <div className="text-sm text-slate-500 dark:text-slate-400 mb-3 font-medium">{current.questionText}</div>
@@ -373,7 +371,7 @@ export default function GrammarQuiz() {
                     <button
                       key={i}
                       onClick={() => handleAnswer(opt)}
-                      disabled={selectedAnswer !== null || isTransitionBlocked}
+                      disabled={selectedAnswer !== null}
                       className={`p-4 rounded-2xl border-2 transition-all min-h-[3.5rem] flex flex-col items-center justify-center text-center ${btnClass} ${getOptionStyle(opt)}`}
                     >
                       <span className="flex items-center gap-2">
@@ -392,7 +390,7 @@ export default function GrammarQuiz() {
               </div>
             </div>
 
-            {/* Banner Ä‘Ãºng + caution panel */}
+            {/* Banner đúng + caution panel */}
             <AnimatePresence>
               {showSuccess && (
                 <motion.div
@@ -403,13 +401,13 @@ export default function GrammarQuiz() {
                 >
                   <div className="flex items-center gap-2 mb-3">
                     <CheckCircle2 size={18} className="text-green-500" />
-                    <span className="text-sm font-bold text-green-700 dark:text-green-400">ChÃ­nh xÃ¡c!</span>
+                    <span className="text-sm font-bold text-green-700 dark:text-green-400">Chính xác!</span>
                   </div>
                   <button
                     onClick={handleNext}
                     className="w-full py-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl transition-all"
                   >
-                    CÃ¢u tiáº¿p theo â†’
+                    Câu tiếp theo →
                   </button>
                 </motion.div>
               )}
@@ -434,7 +432,7 @@ export default function GrammarQuiz() {
                     onClick={handleNext}
                     className="w-full py-3 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-xl transition-all"
                   >
-                    CÃ¢u tiáº¿p theo â†’
+                    Câu tiếp theo →
                   </button>
                 </motion.div>
               )}

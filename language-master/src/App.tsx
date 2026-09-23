@@ -1,5 +1,5 @@
 // src/App.tsx
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { SettingsProvider } from './context/global/SettingsProvider';
 import { FlashcardSettingsProvider } from './context/features/flashcard/FlashcardSettingsProvider';
 import { AuthProvider } from './context/auth/AuthProvider';
@@ -73,6 +73,11 @@ export default function App() {
                     </OfflineGuard>
                   }
                 />
+
+                {/* === PRACTICE FALLBACK REDIRECTS === */}
+                <Route path="/practice/grammar/*" element={<Navigate to="/course/n3-grammar-core/practice" replace />} />
+                <Route path="/practice/keigo/*" element={<Navigate to="/course/keigo-master/practice" replace />} />
+                <Route path="/practice/conjugation/*" element={<Navigate to="/course/verb-conjugation/practice" replace />} />
 
                 {/* === LOGIN === */}
                 <Route path="/login" element={<LoginScreen />} />

@@ -319,7 +319,7 @@ export default function KeigoQuest() {
     <div className="min-h-[calc(100vh-3.5rem)] bg-slate-100 dark:bg-slate-900 flex flex-col">
       {/* TOP BAR */}
       <div className="flex items-center justify-between px-4 pt-4 pb-2">
-        <button onClick={()=>navigate('/course/keigo-master/practice')} className="p-2 rounded-full bg-white dark:bg-slate-800 text-slate-500 hover:text-slate-800 border border-slate-200 shadow-sm">
+        <button onClick={()=>navigate('/course/keigo-master/practice')} className="p-2 rounded-full bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-sm">
           <ArrowLeft size={18}/>
         </button>
         <div className="flex items-center gap-2">
@@ -328,9 +328,9 @@ export default function KeigoQuest() {
               <Heart key={i} size={18} className={i<lives?'text-red-400 fill-red-400':'text-slate-300 dark:text-slate-600'}/>
             ))}
           </div>
-          <div className="flex items-center gap-1 bg-yellow-50 border border-yellow-200 rounded-full px-3 py-1">
+          <div className="flex items-center gap-1 bg-yellow-50 dark:bg-yellow-950/40 border border-yellow-200 dark:border-yellow-800/60 rounded-full px-3 py-1">
             <Star size={13} className="text-yellow-500 fill-yellow-500"/>
-            <span className="text-yellow-600 font-bold text-sm">{score}</span>
+            <span className="text-yellow-600 dark:text-yellow-400 font-bold text-sm">{score}</span>
           </div>
         </div>
       </div>
@@ -375,7 +375,7 @@ export default function KeigoQuest() {
         <AnimatePresence>
           {showHint && hintVi && (
             <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
-              className="bg-yellow-100 text-yellow-800 text-sm font-semibold rounded-lg p-3 text-center border border-yellow-300">
+              className="bg-yellow-100 dark:bg-yellow-950/60 text-yellow-800 dark:text-yellow-200 text-sm font-semibold rounded-lg p-3 text-center border border-yellow-300 dark:border-yellow-700">
               💡 {lang === 'en' ? hintEn : hintVi}
             </motion.div>
           )}
@@ -388,20 +388,20 @@ export default function KeigoQuest() {
           let st: 'idle'|'correct'|'wrong'|'dim' = 'idle';
           if (selected!==null) st = i===correctIdx?'correct':i===selected?'wrong':'dim';
           const cls = {
-            idle: 'bg-white dark:bg-slate-800 border-slate-200 text-slate-800 dark:text-white',
-            correct: 'bg-emerald-50 border-emerald-400 text-emerald-800',
-            wrong: 'bg-red-50 border-red-400 text-red-800',
-            dim: 'bg-slate-50 border-slate-200 text-slate-400',
+            idle: 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white',
+            correct: 'bg-emerald-50 dark:bg-emerald-950/60 border-emerald-400 dark:border-emerald-500 text-emerald-800 dark:text-emerald-200',
+            wrong: 'bg-red-50 dark:bg-red-950/60 border-red-400 dark:border-red-500 text-red-800 dark:text-red-200',
+            dim: 'bg-slate-50 dark:bg-slate-800/40 border-slate-200 dark:border-slate-700/50 text-slate-400 dark:text-slate-500',
           }[st];
           return (
             <button key={i} disabled={selected!==null} onClick={()=>handleSelect(i)}
               className={`w-full flex items-center gap-3 p-3.5 rounded-xl border-2 text-left font-medium transition-all shadow-sm ${cls}`}>
-              <span className="w-7 h-7 shrink-0 rounded-lg flex items-center justify-center text-xs font-extrabold border-2 bg-slate-100 text-slate-500">
+              <span className="w-7 h-7 shrink-0 rounded-lg flex items-center justify-center text-xs font-extrabold border-2 bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-300 border-slate-200 dark:border-slate-600">
                 {LABELS[i]}
               </span>
               <div className="flex flex-col">
                 <span className="text-lg leading-snug">{choice.text}</span>
-                {showFurigana && choice.furigana && <span className="text-xs text-slate-400">{choice.furigana}</span>}
+                {showFurigana && choice.furigana && <span className="text-xs text-slate-400 dark:text-slate-400">{choice.furigana}</span>}
               </div>
             </button>
           );
@@ -412,22 +412,22 @@ export default function KeigoQuest() {
       <AnimatePresence>
         {selected!==null&&(
           <motion.div initial={{y:90,opacity:0}} animate={{y:0,opacity:1}} exit={{y:90,opacity:0}}
-            className={`fixed bottom-0 inset-x-0 rounded-t-3xl p-5 shadow-2xl border-t-2 z-50 ${isCorrect?'bg-emerald-50 border-emerald-400':'bg-red-50 border-red-400'}`}>
+            className={`fixed bottom-0 inset-x-0 rounded-t-3xl p-5 shadow-2xl border-t-2 z-50 ${isCorrect?'bg-emerald-50 dark:bg-slate-900 border-emerald-400 dark:border-emerald-600':'bg-red-50 dark:bg-slate-900 border-red-400 dark:border-red-600'}`}>
             <div className="flex gap-3 items-start mb-3">
               <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${isCorrect?'bg-emerald-500':'bg-red-500'}`}>
                 {isCorrect?<Check size={16} className="text-white"/>:<X size={16} className="text-white"/>}
               </div>
               <div>
-                <p className={`font-bold text-sm mb-1 ${isCorrect?'text-emerald-700':'text-red-700'}`}>
+                <p className={`font-bold text-sm mb-1 ${isCorrect?'text-emerald-700 dark:text-emerald-400':'text-red-700 dark:text-red-400'}`}>
                   {isCorrect?(lang==='vi'?'🎉 Chính xác!':'🎉 Correct!'):( lang==='vi'?'❌ Chưa đúng':'❌ Wrong')}
                 </p>
-                <p className={`text-sm leading-relaxed ${isCorrect?'text-emerald-800':'text-red-800'}`}>
+                <p className={`text-sm leading-relaxed ${isCorrect?'text-emerald-800 dark:text-emerald-200':'text-red-800 dark:text-red-200'}`}>
                   ✅ {lang==='en'?exEn:exVi}
                 </p>
               </div>
             </div>
             <button onClick={handleNext}
-              className={`w-full py-3 rounded-2xl font-bold text-white text-base ${isCorrect?'bg-emerald-500':'bg-red-500'}`}>
+              className={`w-full py-3 rounded-2xl font-bold text-white text-base shadow-md ${isCorrect?'bg-emerald-500 hover:bg-emerald-600':'bg-red-500 hover:bg-red-600'}`}>
               {lang==='vi'?'Tiếp tục →':'Continue →'}
             </button>
           </motion.div>

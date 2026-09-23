@@ -4,6 +4,8 @@ import CoursePracticeHub from './CoursePracticeHub';
 import CourseRaceHub from './CourseRaceHub';
 import CourseSettings from './CourseSettings';
 import CourseTheory from './CourseTheory';
+import KeigoStudy from '../Practice/KeigoStudy';
+import ConjugationStudy from '../Practice/ConjugationStudy';
 import LearnCourseDetail from '../Learn/LearnCourseDetail';
 import { PracticeProvider } from '../Practice/PracticeContext';
 import OfflineGuard from '../../components/shared/OfflineGuard';
@@ -52,7 +54,7 @@ export default function CourseHub() {
   }, [course?.id, course?.subject]);
   let totalItems = course?.data?.length || 1;
   if (course?.subject === 'kanji_single') {
-    totalItems = (course.data as any[]).reduce((acc, k) => acc + 1 + (k.words?.length || 0), 0);
+    totalItems = (course.data as any[]).length;
   } else if (course?.subject === 'kanji_words') {
     totalItems = (course.data as any[]).reduce((acc, k) => acc + (k.words?.length || 0), 0);
   }
@@ -85,7 +87,11 @@ export default function CourseHub() {
     return (
       <PracticeProvider courseId={course.id} course={course}>
         <Routes>
-          <Route path="theory" element={<CourseTheory />} />
+          <Route path="theory" element={
+            course.id === 'keigo-master' ? <KeigoStudy /> :
+            course.id === 'verb-conjugation' ? <ConjugationStudy /> :
+            <CourseTheory />
+          } />
           <Route path="settings" element={<CourseSettings />} />
           <Route path="practice/*" element={<CoursePracticeHub />} />
           <Route

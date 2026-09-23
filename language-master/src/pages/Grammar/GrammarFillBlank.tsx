@@ -1,5 +1,5 @@
 // src/pages/Grammar/GrammarFillBlank.tsx
-// Dáº¡ng bÃ i JLPT Part 5: Äiá»n vÃ o chá»— trá»‘ng â€” chá»n cáº¥u trÃºc ngá»¯ phÃ¡p Ä‘Ãºng hoÃ n thÃ nh cÃ¢u
+// Dạng bài JLPT Part 5: Điền vào chỗ trống — chọn cấu trúc ngữ pháp đúng hoàn thành câu
 import { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -12,41 +12,41 @@ function shuffle<T>(arr: T[]): T[] {
   return [...arr].sort(() => Math.random() - 0.5);
 }
 
-/** Táº¡o cÃ¢u cÃ³ chá»— trá»‘ng: Æ°u tiÃªn dÃ¹ng dáº¥u [...] tá»« schema má»›i, fallback sang regex cÅ© */
+/** Tạo câu có chỗ trống: ưu tiên dùng dấu [...] từ schema mới, fallback sang regex cũ */
 function makeBlankSentence(jp: string, structure: string): { blanked: string; answer: string; found: boolean } {
-  // Schema má»›i: cÃ¢u cÃ³ dáº¡ng "ã€œãŒ[ã ã‚‰ã‘]ã«ãªã£ãŸ" â†’ tÃ¡ch [...] ra lÃ m Ä‘Ã¡p Ã¡n
+  // Schema mới: câu có dạng "〜が[だらけ]になった" → tách [...] ra làm đáp án
   const bracketMatch = jp.match(/\[([^\]]+)\]/);
   if (bracketMatch) {
     const answer = bracketMatch[1];
-    const blanked = jp.replace(/\[[^\]]+\]/, 'ï¼¿ï¼¿ï¼¿');
+    const blanked = jp.replace(/\[[^\]]+\]/, '＿＿＿');
     return { blanked, answer, found: true };
   }
 
-  // Fallback schema cÅ©: tÃ¬m structure trong cÃ¢u
+  // Fallback schema cũ: tìm structure trong câu
   const variants = structure
-    .replace(/ã€œ/g, '')
-    .split(/[/ï¼]/)
+    .replace(/〜/g, '')
+    .split(/[/／]/)
     .map(v => v.trim())
     .filter(v => v.length > 0)
     .sort((a, b) => b.length - a.length);
 
   for (const v of variants) {
     if (jp.includes(v)) {
-      return { blanked: jp.replace(v, 'ï¼¿ï¼¿ï¼¿'), answer: v, found: true };
+      return { blanked: jp.replace(v, '＿＿＿'), answer: v, found: true };
     }
   }
-  // Fallback: che pháº§n cuá»‘i cÃ¢u
-  return { blanked: jp.slice(0, Math.ceil(jp.length * 0.6)) + 'ï¼¿ï¼¿ï¼¿', answer: structure, found: false };
+  // Fallback: che phần cuối câu
+  return { blanked: jp.slice(0, Math.ceil(jp.length * 0.6)) + '＿＿＿', answer: structure, found: false };
 }
 
 interface FillItem {
   id: string;
   blankedSentence: string;
-  fullSentence: string;       // cÃ¢u gá»‘c (khÃ´ng cÃ³ [...] markup)
-  kana: string;               // phiÃªn Ã¢m kana cá»§a cÃ¢u (cÅ©ng strip markup)
+  fullSentence: string;       // câu gốc (không có [...] markup)
+  kana: string;               // phiên âm kana của câu (cũng strip markup)
   translation: string;
-  correctAnswer: string;      // text bá»‹ che (láº¥y tá»« [...]) â€” Ä‘Ã¡p Ã¡n Ä‘Ãºng
-  correctStructure: string;   // structure Ä‘áº§y Ä‘á»§ (ã€œã ã‚‰ã‘)
+  correctAnswer: string;      // text bị che (lấy từ [...]) — đáp án đúng
+  correctStructure: string;   // structure đầy đủ (〜だらけ)
   caution: string;
   group: string;
   lesson: string;
@@ -57,7 +57,7 @@ export default function GrammarFillBlank() {
   const lessons = getN3GrammarLessons();
   const groups = useMemo(() => [...new Set(grammarN3.map(g => g.group))], []);
 
-  // Filter state â€” chip multi-select
+  // Filter state — chip multi-select
   const [filterType, setFilterType] = useState<'lesson' | 'group'>('lesson');
   const [selectedItems, setSelectedItems] = useState<string[]>([]); // [] = all
   const [started, setStarted] = useState(false);
@@ -75,7 +75,7 @@ export default function GrammarFillBlank() {
 
     const items: FillItem[] = [];
     base.forEach(g => {
-      g.examples.forEach((ex: any, i: number) => {
+      g.examples.forEach((ex, i) => {
         const { blanked, answer, found } = makeBlankSentence(ex.jp, g.structure);
         if (found && blanked.includes('＿＿＿')) {
           // fullSentence: loại bỏ markup [...] → câu sạch để hiển thị sau khi trả lời
@@ -88,9 +88,9 @@ export default function GrammarFillBlank() {
             fullSentence,
             kana,
             translation: ex.vi,
-            correctAnswer: answer,     // text ngáº¯n gá»n bá»‹ che (vÃ­ dá»¥: "ã ã‚‰ã‘")
+            correctAnswer: answer,     // text ngắn gọn bị che (ví dụ: "だらけ")
             correctStructure: g.structure,
-            caution: g.caution ? (typeof g.caution === 'object' ? (g.caution as any)[language as 'vi' | 'en'] || (g.caution as any).vi : g.caution) : '',
+            caution: typeof g.caution === 'string' ? g.caution : ((g.caution as any)[language] || g.caution.vi),
             group: g.group,
             lesson: g.lesson,
           });
@@ -104,23 +104,23 @@ export default function GrammarFillBlank() {
   const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [showCaution, setShowCaution] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false); // BUG-04 fix: thay tháº¿ auto-advance
+  const [showSuccess, setShowSuccess] = useState(false); // BUG-04 fix: thay thế auto-advance
   const [showFurigana, setShowFurigana] = useState(false);
 
   const current = queue[0];
 
-  // 4 Ä‘Ã¡p Ã¡n: 1 Ä‘Ãºng + 3 nhiá»…u tá»« cÃ¹ng group
-  // Distractors: láº¥y text [...] tá»« example Ä‘áº§u tiÃªn cá»§a cÃ¡c grammar item khÃ¡c cÃ¹ng group
+  // 4 đáp án: 1 đúng + 3 nhiễu từ cùng group
+  // Distractors: lấy text [...] từ example đầu tiên của các grammar item khác cùng group
   const options = useMemo(() => {
     if (!current) return [];
 
-    // HÃ m láº¥y answer text tá»« example Ä‘áº§u tiÃªn (pháº§n [...]) cá»§a má»™t GrammarItem
+    // Hàm lấy answer text từ example đầu tiên (phần [...]) của một GrammarItem
     const getAnswerText = (g: (typeof grammarN3)[0]): string => {
       for (const ex of g.examples) {
         const m = ex.jp.match(/\[([^\]]+)\]/);
         if (m) return m[1];
       }
-      return g.structure.replace(/ã€œ/g, '').split('/')[0].trim();
+      return g.structure.replace(/〜/g, '').split('/')[0].trim();
     };
 
     const sameGroup = grammarN3
@@ -151,7 +151,7 @@ export default function GrammarFillBlank() {
     setSelectedAnswer(ans);
     if (ans === current.correctAnswer) {
       setScore(s => s + 1);
-      // BUG-04 fix: KhÃ´ng auto-advance, hiá»ƒn thá»‹ banner chÃ­nh xÃ¡c vÃ  chá» ngÆ°á»i dÃ¹ng báº¥m tiáº¿p
+      // BUG-04 fix: Không auto-advance, hiển thị banner chính xác và chờ người dùng bấm tiếp
       setShowSuccess(true);
     } else {
       setShowCaution(true);
@@ -169,19 +169,19 @@ export default function GrammarFillBlank() {
     return (
       <div className="min-h-[calc(100vh-3.5rem)] bg-slate-50 dark:bg-slate-900 p-6 md:p-12 font-sans">
         <div className="max-w-3xl mx-auto">
-          <Link to="/practice/grammar" className="inline-flex items-center gap-2 text-slate-500 hover:text-teal-600 mb-3 transition-colors">
-            <ArrowLeft size={18} /> Quay láº¡i
+          <Link to="/course/n3-grammar-core/practice" className="inline-flex items-center gap-2 text-slate-500 hover:text-teal-600 mb-3 transition-colors">
+            <ArrowLeft size={18} /> Quay lại
           </Link>
-          <h1 className="text-3xl font-extrabold text-slate-800 dark:text-white mb-2">ðŸ“ Äiá»n vÃ o chá»— trá»‘ng</h1>
+          <h1 className="text-3xl font-extrabold text-slate-800 dark:text-white mb-2">📝 Điền vào chỗ trống</h1>
           <p className="text-slate-500 dark:text-slate-400 mb-3">
-            ÄÃºng dáº¡ng bÃ i <strong className="text-teal-600 dark:text-teal-400">JLPT Part 5</strong>: Ä‘á»c cÃ¢u, chá»n cáº¥u trÃºc ngá»¯ phÃ¡p phÃ¹ há»£p.
+            Đúng dạng bài <strong className="text-teal-600 dark:text-teal-400">JLPT Part 5</strong>: đọc câu, chọn cấu trúc ngữ pháp phù hợp.
           </p>
 
           <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 md:p-6 shadow-sm border border-slate-100 dark:border-slate-700 space-y-4">
 
             {/* Display options */}
             <div>
-              <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Hiá»ƒn thá»‹</label>
+              <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Hiển thị</label>
               <div className="flex gap-3">
                 <button
                   onClick={() => setShowFurigana(v => !v)}
@@ -201,7 +201,7 @@ export default function GrammarFillBlank() {
                       : 'border-slate-200 dark:border-slate-700 text-slate-500 hover:border-slate-300'
                   }`}
                 >
-                  {showTranslation ? <Eye size={12} /> : <EyeOff size={12} />} Dá»‹ch
+                  {showTranslation ? <Eye size={12} /> : <EyeOff size={12} />} Dịch
                 </button>
               </div>
             </div>
@@ -227,7 +227,7 @@ export default function GrammarFillBlank() {
 
             <div className="bg-teal-50 dark:bg-teal-900/20 border border-teal-200 dark:border-teal-800/50 rounded-xl p-4">
               <p className="text-sm text-teal-700 dark:text-teal-300">
-                ðŸ’¡ CÃ¢u vÃ­ dá»¥ sáº½ bá»‹ che pháº§n cáº¥u trÃºc ngá»¯ phÃ¡p. HÃ£y chá»n máº«u Ä‘Ãºng trong 4 Ä‘Ã¡p Ã¡n â€” Ä‘Ãºng dáº¡ng Ä‘á» thi JLPT thá»±c táº¿!
+                💡 Câu ví dụ sẽ bị che phần cấu trúc ngữ pháp. Hãy chọn mẫu đúng trong 4 đáp án — đúng dạng đề thi JLPT thực tế!
               </p>
             </div>
 
@@ -236,7 +236,7 @@ export default function GrammarFillBlank() {
               disabled={pool.length === 0}
               className="w-full py-4 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-all active:scale-[0.98] shadow-lg shadow-teal-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Báº¯t Ä‘áº§u ({pool.length} cÃ¢u)
+              Bắt đầu ({pool.length} câu)
             </button>
           </div>
         </div>
@@ -253,21 +253,21 @@ export default function GrammarFillBlank() {
           animate={{ opacity: 1, scale: 1 }}
           className="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-lg max-w-xs w-full text-center"
         >
-          <div className="text-5xl mb-3">{pct >= 80 ? 'ðŸ†' : pct >= 50 ? 'ðŸ’ª' : 'ðŸ“š'}</div>
-          <h2 className="text-2xl font-extrabold text-slate-800 dark:text-white mb-2">Káº¿t quáº£</h2>
+          <div className="text-5xl mb-3">{pct >= 80 ? '🏆' : pct >= 50 ? '💪' : '📚'}</div>
+          <h2 className="text-2xl font-extrabold text-slate-800 dark:text-white mb-2">Kết quả</h2>
           <div className="text-5xl font-black text-teal-600 dark:text-teal-400 mb-1">
             {score}<span className="text-2xl text-slate-400">/{pool.length}</span>
           </div>
-          <p className="text-slate-500 dark:text-slate-400 mb-3">{pct}% chÃ­nh xÃ¡c</p>
+          <p className="text-slate-500 dark:text-slate-400 mb-3">{pct}% chính xác</p>
           <div className="space-y-3">
             <button
               onClick={handleStart}
               className="w-full py-3 border-2 border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 font-bold rounded-xl hover:border-teal-400 transition-all flex items-center justify-center gap-2"
             >
-              <RotateCcw size={16} /> LÃ m láº¡i
+              <RotateCcw size={16} /> Làm lại
             </button>
-            <Link to="/practice/grammar" className="block w-full py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-all text-center">
-              Vá» dashboard
+            <Link to="/course/n3-grammar-core/practice" className="block w-full py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-all text-center">
+              Về dashboard
             </Link>
           </div>
         </motion.div>
@@ -284,15 +284,15 @@ export default function GrammarFillBlank() {
         {/* Top bar */}
         <div className="flex items-center justify-between mb-3">
           <button onClick={() => setStarted(false)} className="inline-flex items-center gap-2 text-slate-500 hover:text-teal-600 transition-colors">
-            <ArrowLeft size={18} /> ThoÃ¡t
+            <ArrowLeft size={18} /> Thoát
           </button>
           <div className="flex items-center gap-2">
-            <div className="text-sm font-bold text-teal-600 dark:text-teal-400">{score} Ä‘iá»ƒm</div>
+            <div className="text-sm font-bold text-teal-600 dark:text-teal-400">{score} điểm</div>
             <div className="text-sm text-slate-500 dark:text-slate-400">{pool.length - queue.length + 1}/{pool.length}</div>
             {/* Kana toggle */}
             <button
               onClick={() => setShowFurigana(v => !v)}
-              title={showFurigana ? 'Táº¯t Furigana' : 'Báº­t Furigana'}
+              title={showFurigana ? 'Tắt Furigana' : 'Bật Furigana'}
               className={`flex items-center gap-1 px-2.5 py-1.5 rounded-xl border-2 text-xs font-bold transition-all ${
                 showFurigana
                   ? 'border-teal-500 bg-teal-50 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400'
@@ -305,7 +305,7 @@ export default function GrammarFillBlank() {
             {/* Translation toggle */}
             <button
               onClick={() => setShowTranslation(v => !v)}
-              title={showTranslation ? 'áº¨n dá»‹ch' : 'Hiá»‡n dá»‹ch'}
+              title={showTranslation ? 'Ẩn dịch' : 'Hiện dịch'}
               className={`flex items-center gap-1 px-2.5 py-1.5 rounded-xl border-2 text-xs font-bold transition-all ${
                 showTranslation
                   ? 'border-amber-500 bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400'
@@ -313,7 +313,7 @@ export default function GrammarFillBlank() {
               }`}
             >
               {showTranslation ? <Eye size={13} /> : <EyeOff size={13} />}
-              <span>Dá»‹ch</span>
+              <span>Dịch</span>
             </button>
           </div>
         </div>
@@ -341,15 +341,15 @@ export default function GrammarFillBlank() {
                 <span className="text-xs bg-teal-100 dark:bg-teal-900/40 text-teal-600 dark:text-teal-400 px-3 py-1 rounded-full font-medium">
                   {current.lesson}
                 </span>
-                <span className="text-xs text-slate-400 dark:text-slate-500">Chá»n cáº¥u trÃºc phÃ¹ há»£p</span>
+                <span className="text-xs text-slate-400 dark:text-slate-500">Chọn cấu trúc phù hợp</span>
               </div>
 
-              {/* CÃ¢u cÃ³ chá»— trá»‘ng */}
+              {/* Câu có chỗ trống */}
               <div className="text-center mb-3">
                 <p className="text-xl font-bold text-slate-800 dark:text-white leading-relaxed mb-2">
                   {current.blankedSentence}
                 </p>
-                {/* Furigana â€” kana cá»§a cÃ¢u gá»‘c khi báº­t */}
+                {/* Furigana — kana của câu gốc khi bật */}
                 {showFurigana && current.kana && (
                   <p className="text-xs text-slate-400 dark:text-slate-500 font-mono mb-2">
                     {current.kana}
@@ -358,12 +358,12 @@ export default function GrammarFillBlank() {
                 {/* Translation toggle */}
                 {showTranslation && (
                   <p className="text-sm text-slate-500 dark:text-slate-400 italic">
-                    ðŸ’¬ {current.translation}
+                    💬 {current.translation}
                   </p>
                 )}
               </div>
 
-              {/* ÄÃ¡p Ã¡n */}
+              {/* Đáp án */}
               <div className="grid grid-cols-1 gap-3">
                 {options.map((opt, i) => {
                   let cls = 'bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200 hover:border-teal-400 hover:bg-teal-50 dark:hover:bg-teal-900/20';
@@ -399,7 +399,7 @@ export default function GrammarFillBlank() {
                 >
                   <div className="flex items-center gap-2 mb-3">
                     <CheckCircle2 size={18} className="text-green-500" />
-                    <span className="text-sm font-bold text-green-700 dark:text-green-400">ChÃ­nh xÃ¡c!</span>
+                    <span className="text-sm font-bold text-green-700 dark:text-green-400">Chính xác!</span>
                   </div>
                   <div className="text-xs text-green-700 dark:text-green-400 mb-3 font-mono bg-green-100 dark:bg-green-900/40 rounded-lg px-3 py-2">
                     {current.fullSentence}
@@ -408,7 +408,7 @@ export default function GrammarFillBlank() {
                     onClick={handleNext}
                     className="w-full py-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl transition-all"
                   >
-                    CÃ¢u tiáº¿p theo â†’
+                    Câu tiếp theo →
                   </button>
                 </motion.div>
               )}
@@ -427,7 +427,7 @@ export default function GrammarFillBlank() {
                     <AlertTriangle size={18} className="flex-shrink-0 text-amber-500 mt-0.5" />
                     <div>
                       <div className="text-xs font-bold text-amber-700 dark:text-amber-400 mb-1">
-                        CÃ¢u Ä‘Ãºng: <span className="font-mono">{current.fullSentence}</span>
+                        Câu đúng: <span className="font-mono">{current.fullSentence}</span>
                       </div>
                       <p className="text-sm text-amber-800 dark:text-amber-300 leading-relaxed">
                         {current.caution}
@@ -438,7 +438,7 @@ export default function GrammarFillBlank() {
                     onClick={handleNext}
                     className="w-full py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl transition-all"
                   >
-                    CÃ¢u tiáº¿p theo â†’
+                    Câu tiếp theo →
                   </button>
                 </motion.div>
               )}

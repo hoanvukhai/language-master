@@ -77,7 +77,7 @@ export default function KeigoStudy() {
               <span>{filteredVocab.length} Từ vựng</span>
             </div>
             <Link
-              to="/practice/keigo"
+              to="/course/keigo-master/practice"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold text-sm px-6 py-2.5 rounded-full shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
             >
               <Gamepad2 size={16} />

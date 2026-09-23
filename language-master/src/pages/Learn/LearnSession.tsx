@@ -654,6 +654,22 @@ export default function LearnSession() {
           return;
         }
 
+        // S: Phát âm (Chỉ cho phép ở Preview hoặc khi đã lật kết quả)
+        if ((e.key === 's' || e.key === 'S') && cQ) {
+          if (ph === 'test' && cQ.phase === 'preview') {
+            // Phát âm khi đang ở preview trong test (đang xem câu sai)
+            e.preventDefault();
+            speakRef.current(cQ.raw.kanji);
+            return;
+          }
+          if (ph === 'test' && fb === 'none') {
+            // Block audio during active test
+          } else {
+            e.preventDefault();
+            speakRef.current(cQ.raw.kanji);
+          }
+        }
+
         if (e.key === ' ' || e.key === 'Enter') {
           e.preventDefault();
           setIsViewingMistakeDetail(false);
@@ -1656,8 +1672,8 @@ export default function LearnSession() {
                         }`}>
                         {currentQ.direction === 'fwd' ? currentQ.raw.kanji : cleanQuizMeaning(currentQ.raw.meaning, currentQ.raw.kanji)}
                       </h1>
-                      {/* IPA — chỉ hiển thị cho khóa tiếng Anh khi câu hỏi là từ tiếng Anh (fwd) */}
-                      {course?.template === 'english' && currentQ.direction === 'fwd' && (() => {
+                      {/* IPA — hiển thị cho khóa tiếng Anh (cả fwd lẫn rev) */}
+                      {course?.template === 'english' && (() => {
                         const d = currentQ.raw.originalData;
                         return (d?.ipaBrE || d?.ipaAmE) ? (
                           <div className="flex flex-wrap gap-2 mt-2">

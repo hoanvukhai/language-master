@@ -37,7 +37,7 @@ import GrammarFlashcard from './components/GrammarFlashcard';
 import GrammarError from './components/GrammarError';
 import GrammarMatching from './components/GrammarMatching';
 
-const BACK_PATH = '/practice/grammar';
+const BACK_PATH = '/course/n3-grammar-core/practice';
 const RESULT_SECS = 5;
 
 export default function GrammarFullRun() {

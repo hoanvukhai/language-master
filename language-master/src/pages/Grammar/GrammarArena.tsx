@@ -1,5 +1,5 @@
 // src/pages/Grammar/GrammarArena.tsx
-// âš”ï¸ Báº«y Ä‘á»‘i khÃ¡ng â€” Cháº¿ Ä‘á»™ TIMED: 8 giÃ¢y/cÃ¢u, chá»‰ dÃ¹ng confusedWith distractors
+// ⚔️ Bẫy đối kháng — Chế độ TIMED: 8 giây/câu, chỉ dùng confusedWith distractors
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -11,14 +11,14 @@ function shuffle<T>(arr: T[]): T[] {
   return [...arr].sort(() => Math.random() - 0.5);
 }
 
-const TIME_PER_Q = 8; // giÃ¢y má»—i cÃ¢u
+const TIME_PER_Q = 8; // giây mỗi câu
 
 interface ArenaItem {
   id: string;
   structure: string;
   meaning: string;
   correctAnswer: string;
-  distractors: string[];       // tá»« confusedWith (Ä‘Ãºng nghÄ©a JLPT)
+  distractors: string[];       // từ confusedWith (đúng nghĩa JLPT)
   lesson: string;
   group: string;
 }
@@ -30,7 +30,7 @@ export default function GrammarArena() {
   const [direction, setDirection] = useState<'structure-meaning' | 'meaning-structure'>('structure-meaning');
   const [started, setStarted] = useState(false);
 
-  // Chá»‰ láº¥y cÃ¡c máº«u cÃ³ distractors tá»« cÃ¹ng nhÃ³m
+  // Chỉ lấy các mẫu có distractors từ cùng nhóm
   const pool = useMemo<ArenaItem[]>(() => {
     const base = selectedLesson === 'all'
       ? grammarN3
@@ -40,30 +40,30 @@ export default function GrammarArena() {
       base
         .map(g => {
           const correctAnswer = direction === 'structure-meaning'
-            ? (typeof g.meaning === 'object' ? (g.meaning as any)[language as 'vi' | 'en'] || (g.meaning as any).vi : g.meaning)
+            ? (g.meaning[language as 'vi' | 'en'] || g.meaning.vi)
             : g.structure;
 
           const distractors: string[] = [];
           
-          // Láº¥y tá»« cÃ¹ng nhÃ³m
+          // Lấy từ cùng nhóm
           grammarN3
             .filter(other => other.group === g.group && other.id !== g.id)
             .forEach(other => {
               const d = direction === 'structure-meaning'
-                ? (typeof other.meaning === 'object' ? (other.meaning as any)[language as 'vi' | 'en'] || (other.meaning as any).vi : other.meaning)
+                ? (other.meaning[language as 'vi' | 'en'] || other.meaning.vi)
                 : other.structure;
               if (!distractors.includes(d) && d !== correctAnswer) {
                 distractors.push(d);
               }
             });
 
-          // Náº¿u khÃ´ng Ä‘á»§ 3 nhiá»…u, láº¥y thÃªm tá»« toÃ n bá»™ data
+          // Nếu không đủ 3 nhiễu, lấy thêm từ toàn bộ data
           if (distractors.length < 3) {
             grammarN3.forEach(other => {
               if (distractors.length >= 3) return;
               if (other.id !== g.id) {
                 const d = direction === 'structure-meaning'
-                  ? (typeof other.meaning === 'object' ? (other.meaning as any)[language as 'vi' | 'en'] || (other.meaning as any).vi : other.meaning)
+                  ? (other.meaning[language as 'vi' | 'en'] || other.meaning.vi)
                   : other.structure;
                 if (!distractors.includes(d) && d !== correctAnswer) {
                   distractors.push(d);
@@ -75,7 +75,7 @@ export default function GrammarArena() {
           return {
             id: g.id,
             structure: g.structure,
-            meaning: typeof g.meaning === 'object' ? (g.meaning as any)[language as 'vi' | 'en'] || (g.meaning as any).vi : g.meaning,
+            meaning: g.meaning[language as 'vi' | 'en'] || g.meaning.vi,
             correctAnswer,
             distractors: shuffle(distractors).slice(0, 3),
             lesson: g.lesson,
@@ -162,28 +162,28 @@ export default function GrammarArena() {
     setStarted(true);
   };
 
-  // â”€â”€ Setup screen â”€â”€
+  // ── Setup screen ──
   if (!started) {
     return (
       <div className="min-h-screen bg-slate-50 dark:bg-slate-900 p-6 md:p-12 font-sans">
         <div className="max-w-3xl mx-auto">
-          <Link to="/practice/grammar" className="inline-flex items-center gap-2 text-slate-500 hover:text-red-500 mb-8 transition-colors">
-            <ArrowLeft size={18} /> Quay láº¡i
+          <Link to="/course/n3-grammar-core/practice" className="inline-flex items-center gap-2 text-slate-500 hover:text-red-500 mb-8 transition-colors">
+            <ArrowLeft size={18} /> Quay lại
           </Link>
           <div className="flex items-center gap-3 mb-2">
-            <span className="text-3xl">âš”ï¸</span>
-            <h1 className="text-3xl font-extrabold text-slate-800 dark:text-white">Báº«y Ä‘á»‘i khÃ¡ng</h1>
+            <span className="text-3xl">⚔️</span>
+            <h1 className="text-3xl font-extrabold text-slate-800 dark:text-white">Bẫy đối kháng</h1>
           </div>
           <p className="text-slate-500 dark:text-slate-400 mb-8">
-            ÄÃ¡p Ã¡n nhiá»…u lÃ  cÃ¡c máº«u thÆ°á»ng bá»‹ nháº§m láº«n nháº¥t. Tráº£ lá»i trong <strong className="text-red-500">8 giÃ¢y</strong> â€” tá»± fail náº¿u háº¿t giá»!
+            Đáp án nhiễu là các mẫu thường bị nhầm lẫn nhất. Trả lời trong <strong className="text-red-500">8 giây</strong> — tự fail nếu hết giờ!
           </p>
 
           <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-700 space-y-6">
             <div className="grid grid-cols-3 gap-3 text-center">
               {[
-                { icon: 'â±ï¸', label: '8 giÃ¢y/cÃ¢u', sub: 'Tá»± fail háº¿t giá»' },
-                { icon: 'ðŸ”¥', label: 'Streak', sub: 'ÄÃºng liÃªn tiáº¿p' },
-                { icon: 'ðŸŽ¯', label: 'CÃ¹ng nhÃ³m', sub: 'Báº«y cá»±c khÃ³' },
+                { icon: '⏱️', label: '8 giây/câu', sub: 'Tự fail hết giờ' },
+                { icon: '🔥', label: 'Streak', sub: 'Đúng liên tiếp' },
+                { icon: '🎯', label: 'Cùng nhóm', sub: 'Bẫy cực khó' },
               ].map(f => (
                 <div key={f.label} className="bg-red-50 dark:bg-red-900/20 rounded-xl p-3 border border-red-100 dark:border-red-900/40">
                   <div className="text-2xl mb-1">{f.icon}</div>
@@ -194,26 +194,26 @@ export default function GrammarArena() {
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-600 dark:text-slate-300 mb-2">ðŸ“š Pháº¡m vi Ã´n táº­p</label>
+              <label className="block text-sm font-semibold text-slate-600 dark:text-slate-300 mb-2">📚 Phạm vi ôn tập</label>
               <select
                 value={selectedLesson}
                 onChange={e => setSelectedLesson(e.target.value)}
                 className="w-full py-3 px-4 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-800 dark:text-white outline-none focus:border-red-500 transition-colors cursor-pointer"
               >
-                <option value="all">Táº¥t cáº£ ({pool.length} cÃ¢u cÃ³ báº«y)</option>
+                <option value="all">Tất cả ({pool.length} câu có bẫy)</option>
                 {lessons.map(l => {
                   const cnt = pool.filter(p => p.lesson === l).length;
-                  return cnt > 0 ? <option key={l} value={l}>{l} ({cnt} cÃ¢u)</option> : null;
+                  return cnt > 0 ? <option key={l} value={l}>{l} ({cnt} câu)</option> : null;
                 })}
               </select>
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-600 dark:text-slate-300 mb-2">ðŸŽ›ï¸ HÆ°á»›ng kiá»ƒm tra</label>
+              <label className="block text-sm font-semibold text-slate-600 dark:text-slate-300 mb-2">🎛️ Hướng kiểm tra</label>
               <div className="grid grid-cols-2 gap-3">
                 {([
-                  { val: 'structure-meaning' as const, label: 'Cáº¥u trÃºc â†’ NghÄ©a' },
-                  { val: 'meaning-structure' as const, label: 'NghÄ©a â†’ Cáº¥u trÃºc' },
+                  { val: 'structure-meaning' as const, label: 'Cấu trúc → Nghĩa' },
+                  { val: 'meaning-structure' as const, label: 'Nghĩa → Cấu trúc' },
                 ]).map(opt => (
                   <button
                     key={opt.val}
@@ -235,7 +235,7 @@ export default function GrammarArena() {
               disabled={pool.length === 0}
               className="w-full py-4 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-bold rounded-xl transition-all active:scale-[0.98] shadow-lg shadow-red-500/30 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
-              <Zap size={18} /> Báº¯t Ä‘áº§u ({pool.length} cÃ¢u)
+              <Zap size={18} /> Bắt đầu ({pool.length} câu)
             </button>
           </div>
         </div>
@@ -243,7 +243,7 @@ export default function GrammarArena() {
     );
   }
 
-  // â”€â”€ End screen â”€â”€
+  // ── End screen ──
   if (queue.length === 0) {
     const total = pool.length;
     const pct = Math.round((score / total) * 100);
@@ -254,13 +254,13 @@ export default function GrammarArena() {
           animate={{ opacity: 1, scale: 1 }}
           className="bg-white dark:bg-slate-800 rounded-3xl p-10 shadow-xl max-w-sm w-full text-center"
         >
-          <div className="text-6xl mb-4">{pct >= 80 ? 'ðŸ†' : pct >= 50 ? 'âš”ï¸' : 'ðŸ’€'}</div>
-          <h2 className="text-2xl font-extrabold text-slate-800 dark:text-white mb-1">Káº¿t thÃºc Arena!</h2>
+          <div className="text-6xl mb-4">{pct >= 80 ? '🏆' : pct >= 50 ? '⚔️' : '💀'}</div>
+          <h2 className="text-2xl font-extrabold text-slate-800 dark:text-white mb-1">Kết thúc Arena!</h2>
 
           <div className="grid grid-cols-3 gap-3 my-6">
             <div className="bg-slate-50 dark:bg-slate-700 rounded-xl p-3">
               <div className="text-2xl font-black text-red-600 dark:text-red-400">{score}</div>
-              <div className="text-xs text-slate-400">ÄÃºng / {total}</div>
+              <div className="text-xs text-slate-400">Đúng / {total}</div>
             </div>
             <div className="bg-orange-50 dark:bg-orange-900/30 rounded-xl p-3">
               <div className="text-2xl font-black text-orange-500">{bestStreak}</div>
@@ -268,7 +268,7 @@ export default function GrammarArena() {
             </div>
             <div className="bg-blue-50 dark:bg-blue-900/30 rounded-xl p-3">
               <div className="text-2xl font-black text-blue-500">{pct}%</div>
-              <div className="text-xs text-slate-400">ChÃ­nh xÃ¡c</div>
+              <div className="text-xs text-slate-400">Chính xác</div>
             </div>
           </div>
 
@@ -277,10 +277,10 @@ export default function GrammarArena() {
               onClick={handleStart}
               className="w-full py-3 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2"
             >
-              <RotateCcw size={16} /> ChÆ¡i láº¡i
+              <RotateCcw size={16} /> Chơi lại
             </button>
-            <Link to="/practice/grammar" className="block w-full py-3 border-2 border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 font-bold rounded-xl hover:border-red-400 transition-all text-center">
-              Vá» dashboard
+            <Link to="/course/n3-grammar-core/practice" className="block w-full py-3 border-2 border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 font-bold rounded-xl hover:border-red-400 transition-all text-center">
+              Về dashboard
             </Link>
           </div>
         </motion.div>
@@ -300,12 +300,12 @@ export default function GrammarArena() {
         {/* Top bar */}
         <div className="flex items-center justify-between mb-4">
           <button onClick={() => setStarted(false)} className="inline-flex items-center gap-2 text-slate-500 hover:text-red-500 transition-colors font-medium">
-            <ArrowLeft size={18} /> ThoÃ¡t
+            <ArrowLeft size={18} /> Thoát
           </button>
           <div className="flex items-center gap-3">
             <button
               onClick={() => setShowFurigana(v => !v)}
-              title={showFurigana ? 'Táº¯t Furigana' : 'Báº­t Furigana'}
+              title={showFurigana ? 'Tắt Furigana' : 'Bật Furigana'}
               className={`flex items-center gap-1 px-2.5 py-1 rounded-xl border-2 text-xs font-bold transition-all ${
                 showFurigana
                   ? 'border-teal-500 bg-teal-50 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400'
@@ -319,7 +319,7 @@ export default function GrammarArena() {
               <Flame size={16} />
               <span>{streak}</span>
             </div>
-            <div className="text-sm font-bold text-red-600 dark:text-red-400">{score} Ä‘Ãºng</div>
+            <div className="text-sm font-bold text-red-600 dark:text-red-400">{score} đúng</div>
             <div className="text-sm text-slate-400">{pool.length - queue.length + 1}/{pool.length}</div>
           </div>
         </div>
@@ -356,7 +356,7 @@ export default function GrammarArena() {
             <div className="bg-white dark:bg-slate-800 rounded-3xl p-7 shadow-xl border border-slate-100 dark:border-slate-700">
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-xs bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-400 px-3 py-1 rounded-full font-bold">
-                  âš”ï¸ {current.group}
+                  ⚔️ {current.group}
                 </span>
                 <div className="flex items-center gap-1 text-slate-400 text-xs ml-auto">
                   <Timer size={12} />
@@ -373,7 +373,7 @@ export default function GrammarArena() {
                     </div>
                   ) : null;
                 })()}
-                <div className="text-xs text-slate-400">{direction === 'structure-meaning' ? 'â†’ Chá»n nghÄ©a Ä‘Ãºng' : 'â†’ Chá»n cáº¥u trÃºc Ä‘Ãºng'}</div>
+                <div className="text-xs text-slate-400">{direction === 'structure-meaning' ? '→ Chọn nghĩa đúng' : '→ Chọn cấu trúc đúng'}</div>
               </div>
             </div>
 
@@ -435,23 +435,23 @@ export default function GrammarArena() {
                       : 'bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800'
                   }`}>
                     <div className="text-2xl mb-1">
-                      {timedOut ? 'â°' : isCorrect ? (streak > 2 ? 'ðŸ”¥' : 'âœ…') : 'âŒ'}
+                      {timedOut ? '⏰' : isCorrect ? (streak > 2 ? '🔥' : '✅') : '❌'}
                     </div>
                     <div className={`text-sm font-bold ${
                       timedOut ? 'text-slate-600 dark:text-slate-300'
                       : isCorrect ? 'text-green-700 dark:text-green-300'
                       : 'text-red-700 dark:text-red-300'
                     }`}>
-                      {timedOut ? 'Háº¿t giá»!' : isCorrect
-                        ? (streak > 1 ? `ðŸ”¥ ${streak} Ä‘Ãºng liÃªn tiáº¿p!` : 'ChÃ­nh xÃ¡c!')
-                        : `Sai rá»“i â€” Ä‘Ã¡p Ã¡n Ä‘Ãºng: ${current.correctAnswer}`}
+                      {timedOut ? 'Hết giờ!' : isCorrect
+                        ? (streak > 1 ? `🔥 ${streak} đúng liên tiếp!` : 'Chính xác!')
+                        : `Sai rồi — đáp án đúng: ${current.correctAnswer}`}
                     </div>
                   </div>
                   <button
                     onClick={handleNext}
                     className="w-full py-3 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-bold rounded-xl transition-all active:scale-[0.98]"
                   >
-                    CÃ¢u tiáº¿p theo â†’
+                    Câu tiếp theo →
                   </button>
                 </motion.div>
               )}
@@ -461,7 +461,7 @@ export default function GrammarArena() {
 
         {/* Stats footer */}
         <div className="flex justify-center gap-6 mt-6 text-sm">
-          <span className="flex items-center gap-1 text-red-500"><Trophy size={14} /> {score} Ä‘Ãºng</span>
+          <span className="flex items-center gap-1 text-red-500"><Trophy size={14} /> {score} đúng</span>
           <span className="flex items-center gap-1 text-orange-500"><Flame size={14} /> streak: {streak}</span>
         </div>
 

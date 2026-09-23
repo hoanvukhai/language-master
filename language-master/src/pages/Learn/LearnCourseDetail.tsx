@@ -94,7 +94,7 @@ function buildFlatList(subject: string, data: any[], template?: string): any[] {
   if (subject === 'kanji_single') {
     const items: any[] = [];
     data.forEach((k: any) => {
-      // 1. Chữ Hán gốc
+      // Chỉ học chữ Hán gốc — từ ghép được học ở khóa kanji_words riêng
       items.push({
         id: k.id || k.character,
         character: k.character,
@@ -105,22 +105,6 @@ function buildFlatList(subject: string, data: any[], template?: string): any[] {
         lesson: k.lesson || 'Bài 1',
         isRootKanji: true,
       });
-      // 2. Từ ghép Hán Việt
-      if (k.words && k.words.length > 0) {
-        k.words.forEach((w: any) => {
-          const meaningStr = typeof w.meaning === 'object' ? w.meaning.vi : w.meaning;
-          items.push({
-            id: w.id || `${k.character}_${w.word}`,
-            character: w.word,
-            kanji: w.word,
-            hanViet: w.hanVietWord || k.hanViet,
-            hiragana: w.hiragana,
-            meaning: `Từ Ghép Hán Việt: ${w.hanVietWord || k.hanViet} · (${meaningStr})`,
-            lesson: k.lesson || 'Bài 1',
-            isRootKanji: false,
-          });
-        });
-      }
     });
     return items;
   }
