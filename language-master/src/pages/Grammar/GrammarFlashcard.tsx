@@ -225,7 +225,7 @@ export default function GrammarFlashcard() {
 
   const progress = ((known.length + learning.length) / (known.length + learning.length + queue.length)) * 100;
   const meaning = current.meaning[language as 'vi' | 'en'] || current.meaning.vi;
-  const caution = current.caution[language as 'vi' | 'en'] || current.caution.vi;
+  const caution = current.caution ? (typeof current.caution === 'string' ? current.caution : ((current.caution as any)[language] || current.caution.vi)) : '';
 
   // Mặt trước thay đổi tuỳ mode
   const frontContent = cardMode === 'normal' ? current.structure : meaning;
