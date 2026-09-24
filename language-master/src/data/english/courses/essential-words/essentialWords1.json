@@ -1173,10 +1173,10 @@
     "id": "en-es1-066",
     "template": "english",
     "word": "content",
-    "ipa": "/kəntént/",
-    "partOfSpeech": "noun",
+    "ipa": "/kənˈtent/",
+    "partOfSpeech": "adjective",
     "meaning": {
-      "vi": "nội dung (n) , hài lòng (adj) , mãn nguyện (adj)",
+      "vi": "hài lòng, bằng lòng",
       "en": "To be content is to be happy and not want more."
     },
     "examples": [
@@ -3514,9 +3514,9 @@
     "template": "english",
     "word": "rest",
     "ipa": "/rest/",
-    "partOfSpeech": "noun",
+    "partOfSpeech": "verb",
     "meaning": {
-      "vi": "(n) : sự nghỉ ngơi; (v) : nghỉ ngơi",
+      "vi": "sự nghỉ ngơi, nghỉ ngơi",
       "en": "To rest is to stop being active while the body gets back its strength."
     },
     "examples": [
@@ -3786,7 +3786,7 @@
     "ipa": "/fækt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "sự việc, sự kiện",
+      "vi": "sự thật, thực tế",
       "en": "A fact is a piece of information that is true."
     },
     "examples": [
@@ -5982,7 +5982,7 @@
     "ipa": "/ˈlevl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "mức, mức độ (n) ; phẳng, bằng (adj) ; làm phẳng, san bằng (v)",
+      "vi": "mức độ, cấp độ",
       "en": "A level is a point on a scale that measures something."
     },
     "examples": [
@@ -8916,7 +8916,7 @@
     "ipa": "/saɪn/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "dấu hiệu, ký hiệu; ký tên, ra hiệu",
+      "vi": "dấu hiệu, biển báo",
       "en": "A sign is an indication giving information, directions, a warning, etc."
     },
     "examples": [
@@ -9420,7 +9420,7 @@
     "ipa": "/diːl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "giải quyết; đối phó; sự giao dịch",
+      "vi": "thỏa thuận, giao dịch",
       "en": "A deal is an agreement that you have with another person."
     },
     "examples": [
@@ -9528,7 +9528,7 @@
     "ipa": "/ɡɪft/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "quà tặng; tặng, biếu, cho",
+      "vi": "quà tặng, món quà",
       "en": "A gift is something you give someone."
     },
     "examples": [
@@ -9852,7 +9852,7 @@
     "ipa": "/lɪst/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "danh sách; liệt kê, lập danh sách",
+      "vi": "danh sách",
       "en": "A list is a record of information printed with an item on each line."
     },
     "examples": [
