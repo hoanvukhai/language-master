@@ -44,28 +44,27 @@ function scoreVoice(voice: SpeechSynthesisVoice, targetLang: 'en-GB' | 'en-US' |
   let score = 0;
 
   // Exact regional language match
-  if (targetLang === 'en-GB') {
-    // Strictly British English
-    const isUkLang = lang === 'en-gb' || lang.startsWith('en-gb');
-    const isUkName = /united kingdom|uk|britain|british|england/i.test(name);
-    const isUsLang = lang === 'en-us' || lang.startsWith('en-us');
-    const isUsName = /united states|us\b|american/i.test(name);
+  if (targetLang === 'en-GB' || targetLang === 'en-US' || targetLang.startsWith('en')) {
+    const isEnglish = lang.startsWith('en') || /english/i.test(name);
+    if (!isEnglish) return -9999; // Disqualify non-English voices (e.g. Vietnamese, Japanese)
 
-    if (isUsLang || isUsName) return -9999; // Disqualify US voices
-    if (!isUkLang && !isUkName) return -9999; // Disqualify other regions
-
-    score += 500;
-  } else if (targetLang === 'en-US') {
-    // Strictly American English
-    const isUsLang = lang === 'en-us' || lang.startsWith('en-us');
-    const isUsName = /united states|us\b|american/i.test(name);
-    const isUkLang = lang === 'en-gb' || lang.startsWith('en-gb');
-    const isUkName = /united kingdom|uk|britain|british|england/i.test(name);
-
-    if (isUkLang || isUkName) return -9999; // Disqualify UK voices
-    if (!isUsLang && !isUsName) return -9999; // Disqualify other regions
-
-    score += 500;
+    if (targetLang === 'en-GB') {
+      const isUk = lang === 'en-gb' || lang.startsWith('en-gb') || /united kingdom|uk\b|britain|british|england/i.test(name);
+      if (isUk) {
+        score += 800;
+      } else {
+        // Fallback to other English voices (US, AU, etc.) with lower score so we never get null
+        score += 100;
+      }
+    } else {
+      const isUs = lang === 'en-us' || lang.startsWith('en-us') || /united states|us\b|american/i.test(name);
+      if (isUs) {
+        score += 800;
+      } else {
+        // Fallback to other English voices (UK, AU, etc.) with lower score so we never get null
+        score += 100;
+      }
+    }
   } else {
     // For other languages like ja-JP, vi-VN, ko-KR
     const prefix = targetLang.split('-')[0].toLowerCase();
@@ -137,6 +136,18 @@ export function getBestVoice(targetLang: 'en-GB' | 'en-US' | 'ja-JP' | 'vi-VN' |
     }
   }
 
+  // Robust safety fallback: If target is English but bestVoice is null,
+  // pick ANY voice that speaks English to ensure Vietnamese TTS never reads English words!
+  if (!bestVoice && targetLang.startsWith('en')) {
+    bestVoice = voices.find(v => (v.lang || '').toLowerCase().startsWith('en')) ||
+                voices.find(v => /english/i.test(v.name)) || null;
+  }
+
+  if (!bestVoice && targetLang.startsWith('ja')) {
+    bestVoice = voices.find(v => (v.lang || '').toLowerCase().startsWith('ja')) ||
+                voices.find(v => /japanese/i.test(v.name)) || null;
+  }
+
   return bestVoice;
 }
 
@@ -162,6 +173,13 @@ export function speakWithVoiceEngine(text: string, options?: SpeakOptions): void
     window.speechSynthesis.cancel();
   } catch {
     // Ignore cancel errors
+  }
+
+  if (!cachedVoices || cachedVoices.length === 0) {
+    try {
+      const v = window.speechSynthesis.getVoices();
+      if (v && v.length > 0) cachedVoices = v;
+    } catch {}
   }
 
   const u = new SpeechSynthesisUtterance(cleanText);

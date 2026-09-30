@@ -852,7 +852,7 @@
     "ipa": "/ɡreɪd/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "điểm số, điểm thi; lớp học",
+      "vi": "điểm số, điểm thi",
       "en": "A grade is a score or mark given to someone’s work."
     },
     "examples": [
@@ -906,7 +906,7 @@
     "ipa": "/ˈfəʊtəɡræf/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "bức ảnh; chụp ảnh",
+      "vi": "bức ảnh, tấm ảnh",
       "en": "I like taking photographs."
     },
     "examples": [
@@ -1374,7 +1374,7 @@
     "ipa": "/ʃeɪk/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "rung, lắc; bắt tay",
+      "vi": "rung, lắc, bắt tay",
       "en": "To shake is to move back and forth or up and down quickly."
     },
     "examples": [
@@ -1626,7 +1626,7 @@
     "ipa": "/fʌn/",
     "partOfSpeech": "adjective",
     "meaning": {
-      "vi": "vui đùa, vui thích; hài hước",
+      "vi": "vui vẻ, niềm vui",
       "en": "When something is fun, it is enjoyable."
     },
     "examples": [
@@ -1950,7 +1950,7 @@
     "ipa": "/ɡʌlf/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "vịnh; vực thẳm, hố sâu ngăn cách",
+      "vi": "vịnh biển, vùng vịnh",
       "en": "A gulf is a gap between people who do not understand each other."
     },
     "examples": [
@@ -2832,7 +2832,7 @@
     "ipa": "/ˈsɪŋɡl/",
     "partOfSpeech": "adjective",
     "meaning": {
-      "vi": "duy nhất, đơn chiếc; độc thân",
+      "vi": "duy nhất, chỉ một",
       "en": "If something is single, then there is only one."
     },
     "examples": [
@@ -3138,7 +3138,7 @@
     "ipa": "/ˈəʊpən/",
     "partOfSpeech": "verb",
     "meaning": {
-      "vi": "mở, ngỏ; bắt đầu, khai mạc",
+      "vi": "mở, mở ra",
       "en": "To open is to move something so that an opening is not covered."
     },
     "examples": [
@@ -3372,7 +3372,7 @@
     "ipa": "/ˈfʌŋkʃn/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "hàm số; chức năng",
+      "vi": "chức năng, tác dụng",
       "en": "The function of something is what it does."
     },
     "examples": [
@@ -3480,7 +3480,7 @@
     "ipa": "/praʊd/",
     "partOfSpeech": "adjective",
     "meaning": {
-      "vi": "tự hào; hãnh diện",
+      "vi": "tự hào, hãnh diện",
       "en": "People who feel proud are happy about what they have done."
     },
     "examples": [
@@ -3714,7 +3714,7 @@
     "ipa": "/ˈkʌntri/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "đất nước, quốc gia; miền quê",
+      "vi": "đất nước, quốc gia",
       "en": "A country is an area of land with the same government and laws."
     },
     "examples": [
@@ -4056,7 +4056,7 @@
     "ipa": "/ˈbjuːti/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "vẻ đẹp, cái đẹp; người đẹp",
+      "vi": "vẻ đẹp, nét đẹp",
       "en": "Beauty is the state or quality of being beautiful."
     },
     "examples": [
@@ -4362,7 +4362,7 @@
     "ipa": "/əˈsuːm/",
     "partOfSpeech": "verb",
     "meaning": {
-      "vi": "cho rằng (là đúng) ; giả sử (là đúng)",
+      "vi": "cho rằng, giả định",
       "en": "To assume something is to think that it is true, even with no proof."
     },
     "examples": [
@@ -4560,7 +4560,7 @@
     "ipa": "/ˈpræktɪkl/",
     "partOfSpeech": "adjective",
     "meaning": {
-      "vi": "thực tế, thực dụng; có ích",
+      "vi": "thực tế, hữu ích",
       "en": "If something is practical, it is useful."
     },
     "examples": [
@@ -4758,7 +4758,7 @@
     "ipa": "/ɪɡˈzæm/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "sự thi cử; kỳ thi",
+      "vi": "kỳ thi, bài thi",
       "en": "An exam is a test."
     },
     "examples": [
@@ -5424,7 +5424,7 @@
     "ipa": "/bʊk/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "sách; ghi chép",
+      "vi": "cuốn sách, sách",
       "en": "A book is a set of printed sheets of paper that are held together inside a cover."
     },
     "examples": [
@@ -5514,7 +5514,7 @@
     "ipa": "/end/",
     "partOfSpeech": "verb",
     "meaning": {
-      "vi": "giới hạn; kết thúc, chấm dứt",
+      "vi": "kết thúc, chấm dứt",
       "en": "To end is to stop or finish."
     },
     "examples": [
@@ -6882,7 +6882,7 @@
     "ipa": "/ɔːlˈredi/",
     "partOfSpeech": "adverb",
     "meaning": {
-      "vi": "rồi; đã... rồi",
+      "vi": "đã... rồi",
       "en": "If something happens already, it happens before a certain time."
     },
     "examples": [
@@ -7476,7 +7476,7 @@
     "ipa": "/ˌɑːpəˈreɪʃn/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "sự phẫu thuật, ca mổ; sự vận hành",
+      "vi": "ca phẫu thuật, sự vận hành",
       "en": "An operation is when a doctor replaces or removes something in the body."
     },
     "examples": [
@@ -7548,7 +7548,7 @@
     "ipa": "/ˈveriəs/",
     "partOfSpeech": "adjective",
     "meaning": {
-      "vi": "khác nhau; nhiều thứ khác nhau",
+      "vi": "đa dạng, khác nhau",
       "en": "If something is various, there are many types of it."
     },
     "examples": [
@@ -7566,7 +7566,7 @@
     "ipa": "/ˈæktʃuəl/",
     "partOfSpeech": "adjective",
     "meaning": {
-      "vi": "thực tế, có thật, hiện thời; hiện nay",
+      "vi": "thực tế, có thật",
       "en": "Actual means real or true."
     },
     "examples": [
@@ -8304,7 +8304,7 @@
     "ipa": "/ˈberi/",
     "partOfSpeech": "verb",
     "meaning": {
-      "vi": "chôn cất; mai táng",
+      "vi": "chôn cất, mai táng",
       "en": "When you bury something, you put it under the ground or under a lot of other things."
     },
     "examples": [
@@ -9150,7 +9150,7 @@
     "ipa": "/ɪmˈplaɪ/",
     "partOfSpeech": "verb",
     "meaning": {
-      "vi": "ý nói; ngụ ý",
+      "vi": "ngụ ý, ám chỉ",
       "en": "To imply something is to suggest it without saying it."
     },
     "examples": [
@@ -9600,7 +9600,7 @@
     "ipa": "/ˈpʌzl/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "trò chơi đố; câu đố, vấn đề khó",
+      "vi": "câu đố, trò chơi đố",
       "en": "A puzzle is something that is hard to understand."
     },
     "examples": [
@@ -9744,7 +9744,7 @@
     "ipa": "/ˈberli/",
     "partOfSpeech": "adverb",
     "meaning": {
-      "vi": "vừa đủ, rỗng không, nghèo nàn",
+      "vi": "hầu như không, suýt soát",
       "en": "Barely means by the smallest amount, almost not."
     },
     "examples": [
@@ -9760,9 +9760,9 @@
     "template": "english",
     "word": "boring",
     "ipa": "/ˈbɔːrɪŋ/",
-    "partOfSpeech": "noun",
+    "partOfSpeech": "adjective",
     "meaning": {
-      "vi": "chán ngắt, buồn tẻ, sự khoan, sự đào",
+      "vi": "buồn tẻ, tẻ nhạt",
       "en": "If something is boring, it is not fun."
     },
     "examples": [
@@ -9888,7 +9888,7 @@
     "ipa": "/ˈmesɪdʒ/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "thông điệp; đưa tin",
+      "vi": "tin nhắn, thông điệp",
       "en": "A message is a set of words that you send to someone."
     },
     "examples": [
@@ -10752,7 +10752,7 @@
     "ipa": "/ˈpɑːkɪt/",
     "partOfSpeech": "noun",
     "meaning": {
-      "vi": "túi ; túi tiền",
+      "vi": "túi áo, túi quần",
       "en": "A pocket is a part of your clothing where you can keep things."
     },
     "examples": [
