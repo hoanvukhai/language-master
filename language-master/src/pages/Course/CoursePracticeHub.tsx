@@ -1,6 +1,7 @@
 import { useParams, Routes, Route, Link, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { useCourseData } from '../../hooks/useCourseData';
-import { Layers, CheckSquare, GitMerge, Keyboard, ShieldAlert, Zap, Edit3, ArrowLeft } from 'lucide-react';
+import { Layers, CheckSquare, GitMerge, Keyboard, ShieldAlert, Zap, Edit3, ArrowLeft, MessageSquareText } from 'lucide-react';
+import SentenceTyping from '../Practice/SentenceTyping';
 
 // Import Practice components
 import VocabFlashcard from '../Vocabulary/VocabFlashcard';
@@ -73,6 +74,10 @@ export default function CoursePracticeHub() {
       id: 'typing', name: 'Nhập liệu', path: 'typing', icon: Keyboard,
       desc: 'Luyện gõ đáp án', color: 'text-orange-500', bgLight: 'bg-orange-100 dark:bg-orange-900/30', border: 'hover:border-orange-500',
       hiddenFor: ['grammar']
+    },
+    {
+      id: 'sentencetyping', name: 'Luyện Gõ Câu', path: 'sentencetyping', icon: MessageSquareText,
+      desc: 'Luyện gõ cả câu hoàn chỉnh & nghe chép chính tả', color: 'text-teal-600', bgLight: 'bg-teal-100 dark:bg-teal-900/30', border: 'hover:border-teal-500',
     },
     {
       id: 'fillblank', name: 'Điền từ', path: 'fillblank', icon: Edit3,
@@ -193,6 +198,7 @@ export default function CoursePracticeHub() {
               <Route path="game" element={<ConjugationGame />} />
             </>
           )}
+          <Route path="sentencetyping" element={<SentenceTyping />} />
           <Route path="*" element={<Navigate to=".." />} />
         </Routes>
       )}

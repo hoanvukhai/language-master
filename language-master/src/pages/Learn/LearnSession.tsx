@@ -7,7 +7,9 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../context/auth/useAuth';
 import { useSettings } from '../../context/global/useSettings';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Volume2, RotateCcw, Sparkles, ChevronRight, X, ChevronsUp, MousePointerClick, Keyboard, Check, Swords, BookOpen, ArrowLeft } from 'lucide-react';
+import { Volume2, RotateCcw, Sparkles, ChevronRight, X, ChevronsUp, MousePointerClick, Keyboard, Check, Swords, BookOpen, ArrowLeft, Edit3 } from 'lucide-react';
+import CustomWordModal from '../../components/course/CustomWordModal';
+import { updateWordInCustomCourse, type CustomWord } from '../../lib/customCourses/customCourseService';
 
 
 import * as wanakana from 'wanakana';
@@ -60,6 +62,13 @@ export interface MistakeDetail {
 type QueuePhase = 'preview' | 'quiz' | 'typing';
 type FeedbackState = 'none' | 'correct' | 'wrong';
 
+export interface SentenceClozeInfo {
+  maskedSentence: string;
+  originalSentence: string;
+  targetWord: string;
+  translation?: string;
+}
+
 interface QueueItem {
   raw: RawItem;
   phase: QueuePhase;
@@ -67,6 +76,7 @@ interface QueueItem {
   attempt: number; // Số lần thử, sai sẽ tăng 1 và re-insert
   lastMistake?: MistakeDetail;
   quizOptions?: string[];
+  sentenceCloze?: SentenceClozeInfo;
 }
 
 //    Helpers                                                                 
@@ -177,8 +187,115 @@ function buildRawList(course: Course, language: string = 'vi'): RawItem[] {
   return [];
 }
 
+/** Lấy toàn bộ các câu ví dụ hợp lệ của 1 từ vựng */
+function getWordExamplesList(r: RawItem): { sentence: string; translation: string }[] {
+  const list: { sentence: string; translation: string }[] = [];
+  const rawEx = r.originalData?.examples;
+  if (Array.isArray(rawEx) && rawEx.length > 0) {
+    rawEx.forEach((ex: any) => {
+      const s = ex.en || ex.jp || ex.sentence;
+      if (s && typeof s === 'string' && s.trim()) {
+        list.push({
+          sentence: s.trim(),
+          translation: ex.vi || ex.meaning || '',
+        });
+      }
+    });
+  } else if (r.exampleKanji && r.exampleKanji.trim()) {
+    list.push({
+      sentence: r.exampleKanji.trim(),
+      translation: r.exampleMeaning || '',
+    });
+  }
+  return list;
+}
+
+/** Đục lỗ từ mục tiêu trong câu ví dụ */
+function maskTargetInSentence(sentence: string, targetWord: string): string {
+  if (!sentence || !targetWord) return sentence;
+  const escaped = targetWord.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  // Thử match từ gốc hoặc có đuôi chia từ
+  const regexWord = new RegExp(`\\b${escaped}[a-z]*\\b`, 'i');
+  if (regexWord.test(sentence)) {
+    return sentence.replace(regexWord, '[ _____ ]');
+  }
+  // Thử match substring
+  const regexSub = new RegExp(escaped, 'i');
+  if (regexSub.test(sentence)) {
+    return sentence.replace(regexSub, '[ _____ ]');
+  }
+  return `${sentence} [ _____ ]`;
+}
+
 /** Xây queue test cho 1 batch */
-function buildBatchQueue(items: RawItem[], mode: string): QueueItem[] {
+function buildBatchQueue(items: RawItem[], mode: string, strictSentenceTyping: boolean = false): QueueItem[] {
+  const getTypingDir = (r: RawItem) => r.isSingleKanjiChar ? 'fwd' : 'rev';
+
+  // NẾU BẬT CHẾ ĐỘ KIỂM TRA BẰNG GÕ CÂU VÍ DỤ:
+  if (strictSentenceTyping) {
+    if (mode === 'review') {
+      // Mỗi từ 1 câu test typing đục lỗ
+      return shuffleArray(items.map(r => {
+        const exList = getWordExamplesList(r);
+        if (exList.length > 0) {
+          const chosen = exList[Math.floor(Math.random() * exList.length)];
+          return {
+            raw: r,
+            phase: 'typing' as QueuePhase,
+            direction: 'rev' as const,
+            attempt: 0,
+            sentenceCloze: {
+              maskedSentence: maskTargetInSentence(chosen.sentence, r.kanji),
+              originalSentence: chosen.sentence,
+              targetWord: r.kanji,
+              translation: chosen.translation,
+            },
+          };
+        }
+        // Fallback: nếu không có ví dụ thì gõ từ thông thường
+        return {
+          raw: r,
+          phase: 'typing' as QueuePhase,
+          direction: getTypingDir(r),
+          attempt: 0,
+        };
+      }));
+    }
+
+    // mode === 'new':
+    // Tạo lượt test gõ cho mỗi từ, đan xen các câu ví dụ (random hết lên)
+    const testItems: QueueItem[] = [];
+    items.forEach(r => {
+      const exList = shuffleArray(getWordExamplesList(r));
+      if (exList.length > 0) {
+        // Tạo 3-4 câu hỏi typing cloze
+        const numTests = Math.max(3, Math.min(exList.length, 4));
+        for (let i = 0; i < numTests; i++) {
+          const chosen = exList[i % exList.length];
+          testItems.push({
+            raw: r,
+            phase: 'typing' as QueuePhase,
+            direction: 'rev' as const,
+            attempt: 0,
+            sentenceCloze: {
+              maskedSentence: maskTargetInSentence(chosen.sentence, r.kanji),
+              originalSentence: chosen.sentence,
+              targetWord: r.kanji,
+              translation: chosen.translation,
+            },
+          });
+        }
+      } else {
+        // Fallback: gõ từ thường nếu không có câu ví dụ
+        testItems.push({ raw: r, phase: 'typing' as QueuePhase, direction: getTypingDir(r), attempt: 0 });
+        testItems.push({ raw: r, phase: 'typing' as QueuePhase, direction: getTypingDir(r), attempt: 0 });
+        testItems.push({ raw: r, phase: 'typing' as QueuePhase, direction: getTypingDir(r), attempt: 0 });
+      }
+    });
+    return shuffleArray(testItems);
+  }
+
+  // Chế độ mặc định bình thường (không bật toggle strictSentenceTyping)
   if (mode === 'review') {
     // Review: just 1 random test per item (quiz or typing)
     return shuffleArray(items.map(r => {
@@ -195,7 +312,6 @@ function buildBatchQueue(items: RawItem[], mode: string): QueueItem[] {
   }
   // New: 6 tests per item
   // kanji_single: typing luôn là 'fwd' (nhìn chữ Hán → gõ Hán Việt)
-  const getTypingDir = (r: RawItem) => r.isSingleKanjiChar ? 'fwd' : 'rev';
   const q1: QueueItem[] = items.map(r => ({ raw: r, phase: 'quiz', direction: 'fwd', attempt: 0 }));
   const q2: QueueItem[] = items.map(r => ({ raw: r, phase: 'quiz', direction: 'rev', attempt: 0 }));
   const q3: QueueItem[] = items.map(r => ({ raw: r, phase: 'quiz', direction: 'fwd', attempt: 0 }));
@@ -467,7 +583,7 @@ const PreviewWordContent = ({
 export default function LearnSession() {
 
   const { user, loading: authLoading } = useAuth();
-  const { language } = useSettings();
+  const { language, strictSentenceTypingTest } = useSettings();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
@@ -478,6 +594,14 @@ export default function LearnSession() {
 
   const { course, loading: courseLoading } = useCourseData(courseIdParam);
   const subjectTitle = course ? course.name : courseIdParam;
+
+  // Kiểm tra quyền chỉnh sửa của chủ sở hữu khóa học tự tạo
+  const isOwner = Boolean(
+    course?.id?.startsWith('custom_') &&
+    (user?.uid === (course as any)?.authorId || (course as any)?.authorId === 'guest' || !user)
+  );
+
+  const [editingCustomWord, setEditingCustomWord] = useState<RawItem | null>(null);
 
   //    Data States                                                         
   const [loading, setLoading] = useState(true);
@@ -857,6 +981,15 @@ export default function LearnSession() {
           const items = scopeList.filter(i => newIdSet.has(i.id));
           setSessionItems(items);
           sessionItemsRef.current = items;
+
+          // Nếu bật chế độ kiểm tra câu gõ để qua bài: không cho xem trước (bỏ qua preview), vào kiểm tra luôn
+          if (strictSentenceTypingTest) {
+            currentBatchRef.current = items;
+            setPhase('test');
+            setTimeout(() => {
+              startTestRef.current(items);
+            }, 0);
+          }
         }
       } catch (err) {
         console.error('Init session error:', err);
@@ -920,7 +1053,7 @@ export default function LearnSession() {
 
   //    Preview Phase Handlers                                              
   const startTest = useCallback((batch = currentBatchRef.current) => {
-    const q = buildBatchQueue(batch, modeParam || 'new');
+    const q = buildBatchQueue(batch, modeParam || 'new', Boolean(strictSentenceTypingTest));
     // Sinh quiz options cho từng câu quiz ngay từ  ầu
     const allMeanings = allRawItems.map(i => i.meaning);
     const allKanji = allRawItems.map(i => i.kanji);
@@ -941,7 +1074,7 @@ export default function LearnSession() {
     setFeedback('none');
 
     setUserTyping('');
-  }, [currentBatch, allRawItems]);
+  }, [currentBatch, allRawItems, modeParam, strictSentenceTypingTest]);
   useEffect(() => { startTestRef.current = startTest; }, [startTest]);
 
   //    Test Phase: lấy câu hi!n tại                                       
@@ -1106,19 +1239,25 @@ export default function LearnSession() {
     if (!currentQ || feedback !== 'none' || isInputBlocked) return;
     const raw = currentQ.raw;
     const correctAns = currentQ.direction === 'fwd' ? cleanQuizMeaning(raw.meaning, raw.kanji) : raw.kanji;
-    const targetDisplay = currentQ.phase === 'quiz'
-      ? correctAns
-      : (course?.template === 'english'
-          ? formatWordVariantsDisplay(raw.kanji)
-          : (course?.template === 'generic' ? raw.kanji : (raw.isSingleKanjiChar ? raw.hiragana.toUpperCase() : raw.hiragana)));
+    const targetDisplay = currentQ.sentenceCloze
+      ? (course?.template === 'english' ? formatWordVariantsDisplay(currentQ.sentenceCloze.targetWord) : currentQ.sentenceCloze.targetWord)
+      : (currentQ.phase === 'quiz'
+          ? correctAns
+          : (course?.template === 'english'
+              ? formatWordVariantsDisplay(raw.kanji)
+              : (course?.template === 'generic' ? raw.kanji : (raw.isSingleKanjiChar ? raw.hiragana.toUpperCase() : raw.hiragana))));
 
     lastMistakeRef.current = {
       phase: currentQ.phase as 'quiz' | 'typing',
       direction: currentQ.direction,
-      prompt: currentQ.direction === 'fwd' ? raw.kanji : cleanQuizMeaning(raw.meaning, raw.kanji),
-      promptSub: currentQ.direction === 'fwd'
-        ? (course?.template === 'english' ? 'English Word' : (course?.template === 'generic' ? 'Thuật ngữ / Khái niệm' : '日本語 · Japanese'))
-        : (course?.template === 'generic' ? 'Định nghĩa' : 'Nghĩa · Vietnamese'),
+      prompt: currentQ.sentenceCloze
+        ? currentQ.sentenceCloze.maskedSentence
+        : (currentQ.direction === 'fwd' ? raw.kanji : cleanQuizMeaning(raw.meaning, raw.kanji)),
+      promptSub: currentQ.sentenceCloze
+        ? 'Điền từ vào câu ví dụ'
+        : (currentQ.direction === 'fwd'
+            ? (course?.template === 'english' ? 'English Word' : (course?.template === 'generic' ? 'Thuật ngữ / Khái niệm' : '日本語 · Japanese'))
+            : (course?.template === 'generic' ? 'Định nghĩa' : 'Nghĩa · Vietnamese')),
       userAnswer: '(Bỏ qua)',
       correctAnswer: targetDisplay,
       quizOptions: currentQ.phase === 'quiz' ? ((currentQ as any).quizOptions || quizOptions) : undefined,
@@ -1160,7 +1299,14 @@ export default function LearnSession() {
     const raw = currentQ.raw;
     let correct = false;
 
-    if (course?.template === 'english') {
+    if (currentQ.sentenceCloze) {
+      // Sentence Cloze: So sánh userTyping với targetWord
+      if (course?.template === 'english') {
+        correct = checkEnglishWordMatch(userTyping, currentQ.sentenceCloze.targetWord);
+      } else {
+        correct = userTyping.trim().toLowerCase() === currentQ.sentenceCloze.targetWord.trim().toLowerCase();
+      }
+    } else if (course?.template === 'english') {
       // English: show meaning → type the English word (stored in raw.kanji)
       correct = checkEnglishWordMatch(userTyping, raw.kanji);
     } else if (course?.template === 'generic') {
@@ -1177,17 +1323,23 @@ export default function LearnSession() {
     }
 
     if (!correct) {
-      const targetDisplay = course?.template === 'english'
-        ? formatWordVariantsDisplay(raw.kanji)
-        : (course?.template === 'generic' ? raw.kanji : (raw.isSingleKanjiChar ? raw.hiragana.toUpperCase() : raw.hiragana));
+      const targetDisplay = currentQ.sentenceCloze
+        ? (course?.template === 'english' ? formatWordVariantsDisplay(currentQ.sentenceCloze.targetWord) : currentQ.sentenceCloze.targetWord)
+        : (course?.template === 'english'
+            ? formatWordVariantsDisplay(raw.kanji)
+            : (course?.template === 'generic' ? raw.kanji : (raw.isSingleKanjiChar ? raw.hiragana.toUpperCase() : raw.hiragana)));
 
       lastMistakeRef.current = {
         phase: 'typing',
         direction: currentQ.direction,
-        prompt: currentQ.direction === 'fwd' ? raw.kanji : cleanQuizMeaning(raw.meaning, raw.kanji),
-        promptSub: currentQ.direction === 'fwd'
-          ? (course?.template === 'english' ? 'English Word' : (course?.template === 'generic' ? 'Thuật ngữ / Khái niệm' : '日本語 · Japanese'))
-          : (course?.template === 'generic' ? 'Định nghĩa' : 'Nghĩa · Vietnamese'),
+        prompt: currentQ.sentenceCloze
+          ? currentQ.sentenceCloze.maskedSentence
+          : (currentQ.direction === 'fwd' ? raw.kanji : cleanQuizMeaning(raw.meaning, raw.kanji)),
+        promptSub: currentQ.sentenceCloze
+          ? 'Điền từ vào câu ví dụ'
+          : (currentQ.direction === 'fwd'
+              ? (course?.template === 'english' ? 'English Word' : (course?.template === 'generic' ? 'Thuật ngữ / Khái niệm' : '日本語 · Japanese'))
+              : (course?.template === 'generic' ? 'Định nghĩa' : 'Nghĩa · Vietnamese')),
         userAnswer: userTyping.trim() || '(Bỏ trống)',
         correctAnswer: targetDisplay,
         raw,
@@ -1223,6 +1375,60 @@ export default function LearnSession() {
     } else {
       startTest();
     }
+  };
+
+  // ── Sửa từ vựng trực tiếp của chủ sở hữu ────────────────────────────────
+  const handleSaveWordInline = async (wordData: Partial<CustomWord>) => {
+    if (!editingCustomWord || !course) return;
+    const targetId = editingCustomWord.id;
+    const updatedWord: CustomWord = {
+      id: targetId,
+      kanji: wordData.kanji || editingCustomWord.kanji,
+      hiragana: wordData.hiragana ?? editingCustomWord.hiragana,
+      meaning: wordData.meaning || editingCustomWord.meaning,
+      exampleKanji: wordData.exampleKanji ?? (editingCustomWord.exampleKanji || ''),
+      exampleMeaning: wordData.exampleMeaning ?? (editingCustomWord.exampleMeaning || ''),
+      lesson: wordData.lesson || editingCustomWord.lesson || 'Bài 1',
+    };
+
+    await updateWordInCustomCourse(course.id, user?.uid, updatedWord);
+
+    const updateRaw = (r: RawItem): RawItem => {
+      if (r.id !== targetId) return r;
+      const exList = updatedWord.exampleKanji ? [{ jp: updatedWord.exampleKanji, en: updatedWord.exampleKanji, vi: updatedWord.exampleMeaning }] : [];
+      return {
+        ...r,
+        kanji: updatedWord.kanji,
+        hiragana: updatedWord.hiragana,
+        meaning: updatedWord.meaning,
+        exampleKanji: updatedWord.exampleKanji,
+        exampleMeaning: updatedWord.exampleMeaning,
+        originalData: {
+          ...(r.originalData || {}),
+          word: updatedWord.kanji,
+          kanji: updatedWord.kanji,
+          term: updatedWord.kanji,
+          meaning: updatedWord.meaning,
+          definition: updatedWord.meaning,
+          hiragana: updatedWord.hiragana,
+          ipa: updatedWord.hiragana,
+          examples: exList,
+        },
+      };
+    };
+
+    setSessionItems(prev => prev.map(updateRaw));
+    setAllRawItems(prev => prev.map(updateRaw));
+    setTestQueue(prev => prev.map(qi => ({
+      ...qi,
+      raw: updateRaw(qi.raw),
+      sentenceCloze: qi.sentenceCloze ? {
+        ...qi.sentenceCloze,
+        targetWord: updatedWord.kanji,
+      } : undefined,
+    })));
+
+    setEditingCustomWord(null);
   };
 
   // ── Render Loading ─────────────────────────────────────────────────────
@@ -1350,6 +1556,19 @@ export default function LearnSession() {
                 <span>Học mới</span>
               </div>
 
+              {/* Sửa từ trực tiếp nếu là chủ sở hữu */}
+              {isOwner && (
+                <button
+                  type="button"
+                  onClick={() => setEditingCustomWord(previewWord)}
+                  className="flex items-center gap-1.5 px-3.5 h-10 rounded-xl bg-amber-50 hover:bg-amber-100 dark:bg-amber-950/40 dark:hover:bg-amber-900/60 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/40 text-xs font-bold transition-all active:scale-95 cursor-pointer shadow-2xs"
+                  title="Chỉnh sửa từ vựng này trực tiếp trong phiên học"
+                >
+                  <Edit3 size={15} />
+                  <span>Sửa từ</span>
+                </button>
+              )}
+
               {/* Spacer */}
               <div className="flex-1" />
 
@@ -1473,9 +1692,22 @@ export default function LearnSession() {
               ) : currentQ.phase === 'quiz' ? (
                 <><MousePointerClick className="w-4 h-4" /> <span>Trắc nghiệm</span></>
               ) : (
-                <><Keyboard className="w-4 h-4" /> <span>Điền từ</span></>
+                <><Keyboard className="w-4 h-4" /> <span>{currentQ.sentenceCloze ? 'Điền câu' : 'Điền từ'}</span></>
               )}
             </div>
+
+            {/* Sửa từ trực tiếp nếu là chủ sở hữu */}
+            {isOwner && (
+              <button
+                type="button"
+                onClick={() => setEditingCustomWord(currentQ.raw)}
+                className="flex items-center gap-1.5 px-3.5 h-10 rounded-xl bg-amber-50 hover:bg-amber-100 dark:bg-amber-950/40 dark:hover:bg-amber-900/60 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/40 text-xs font-bold transition-all active:scale-95 cursor-pointer shadow-2xs"
+                title="Chỉnh sửa từ vựng này trực tiếp trong phiên học"
+              >
+                <Edit3 size={15} />
+                <span>Sửa từ</span>
+              </button>
+            )}
 
             {/* Spacer */}
             <div className="flex-1" />
@@ -1658,51 +1890,81 @@ export default function LearnSession() {
                 )
               ) : (
                 /* ─── QUIZ/TYPING PROMPT ─── */
-                <div>
-                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-400 dark:text-indigo-500 mb-1 md:mb-2">
-                    {currentQ.direction === 'fwd'
-                      ? (course?.template === 'english' ? 'English Word' : (course?.template === 'generic' ? 'Thuật ngữ / Khái niệm' : '日本語 · Japanese'))
-                      : (course?.template === 'generic' ? 'Định nghĩa' : 'Nghĩa · Vietnamese')}
-                  </p>
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="flex-1 min-w-0">
-                      <h1 className={`font-black text-slate-900 dark:text-white tracking-tight leading-[1.1] break-words ${currentQ.direction === 'rev'
-                          ? 'text-4xl md:text-5xl'
-                          : 'text-6xl md:text-7xl'
-                        }`}>
-                        {currentQ.direction === 'fwd' ? currentQ.raw.kanji : cleanQuizMeaning(currentQ.raw.meaning, currentQ.raw.kanji)}
-                      </h1>
-                      {/* IPA — hiển thị cho khóa tiếng Anh (cả fwd lẫn rev) */}
-                      {course?.template === 'english' && (() => {
-                        const d = currentQ.raw.originalData;
-                        return (d?.ipaBrE || d?.ipaAmE) ? (
-                          <div className="flex flex-wrap gap-2 mt-2">
-                            {d?.ipaBrE && (
-                              <span className="text-xs sm:text-sm font-mono px-2.5 py-1 rounded-lg border bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800/40">
-                                🇬🇧 /{d.ipaBrE}/
-                              </span>
-                            )}
-                            {d?.ipaAmE && (
-                              <span className="text-xs sm:text-sm font-mono px-2.5 py-1 rounded-lg border bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border-sky-200 dark:border-sky-800/40">
-                                🇺🇸 /{d.ipaAmE}/
-                              </span>
-                            )}
-                          </div>
-                        ) : null;
-                      })()}
+                currentQ.sentenceCloze ? (
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <p className="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-400 dark:text-indigo-500">
+                        {course?.template === 'english' ? 'Điền từ tiếng Anh vào câu ví dụ' : 'Điền từ vào câu ví dụ'}
+                      </p>
+                      {feedback !== 'none' && (
+                        <button
+                          type="button"
+                          onClick={() => speak(currentQ.sentenceCloze?.originalSentence || currentQ.raw.kanji)}
+                          className="p-2.5 rounded-2xl bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 border border-indigo-200/60 dark:border-indigo-800/40 transition-all cursor-pointer shrink-0 active:scale-95 shadow-xs"
+                          title="Nghe phát âm cả câu ví dụ (Phím tắt: S)"
+                        >
+                          <Volume2 className="w-5 h-5" />
+                        </button>
+                      )}
                     </div>
-                    {feedback !== 'none' && (
-                      <button
-                        type="button"
-                        onClick={() => speak(currentQ.raw.kanji)}
-                        className="p-2.5 rounded-2xl bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 border border-indigo-200/60 dark:border-indigo-800/40 transition-all cursor-pointer shrink-0 active:scale-95 shadow-xs animate-in fade-in zoom-in duration-200"
-                        title="Nghe lại phát âm thuật ngữ (Phím tắt: S)"
-                      >
-                        <Volume2 className="w-5 h-5" />
-                      </button>
+                    <div className="p-6 md:p-8 rounded-3xl bg-slate-50 dark:bg-slate-900/80 border-2 border-indigo-100 dark:border-indigo-900/40 shadow-xs">
+                      <h1 className="font-extrabold text-slate-900 dark:text-white tracking-tight leading-relaxed text-2xl sm:text-3xl md:text-4xl break-words">
+                        {currentQ.sentenceCloze.maskedSentence}
+                      </h1>
+                    </div>
+                    {currentQ.sentenceCloze.translation && (
+                      <p className="text-sm font-medium text-slate-500 dark:text-slate-400 italic">
+                        Dịch nghĩa: {currentQ.sentenceCloze.translation}
+                      </p>
                     )}
                   </div>
-                </div>
+                ) : (
+                  <div>
+                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-400 dark:text-indigo-500 mb-1 md:mb-2">
+                      {currentQ.direction === 'fwd'
+                        ? (course?.template === 'english' ? 'English Word' : (course?.template === 'generic' ? 'Thuật ngữ / Khái niệm' : '日本語 · Japanese'))
+                        : (course?.template === 'generic' ? 'Định nghĩa' : 'Nghĩa · Vietnamese')}
+                    </p>
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex-1 min-w-0">
+                        <h1 className={`font-black text-slate-900 dark:text-white tracking-tight leading-[1.1] break-words ${currentQ.direction === 'rev'
+                            ? 'text-4xl md:text-5xl'
+                            : 'text-6xl md:text-7xl'
+                          }`}>
+                          {currentQ.direction === 'fwd' ? currentQ.raw.kanji : cleanQuizMeaning(currentQ.raw.meaning, currentQ.raw.kanji)}
+                        </h1>
+                        {/* IPA — hiển thị cho khóa tiếng Anh (cả fwd lẫn rev) */}
+                        {course?.template === 'english' && (() => {
+                          const d = currentQ.raw.originalData;
+                          return (d?.ipaBrE || d?.ipaAmE) ? (
+                            <div className="flex flex-wrap gap-2 mt-2">
+                              {d?.ipaBrE && (
+                                <span className="text-xs sm:text-sm font-mono px-2.5 py-1 rounded-lg border bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800/40">
+                                  🇬🇧 /{d.ipaBrE}/
+                                </span>
+                              )}
+                              {d?.ipaAmE && (
+                                <span className="text-xs sm:text-sm font-mono px-2.5 py-1 rounded-lg border bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border-sky-200 dark:border-sky-800/40">
+                                  🇺🇸 /{d.ipaAmE}/
+                                </span>
+                              )}
+                            </div>
+                          ) : null;
+                        })()}
+                      </div>
+                      {feedback !== 'none' && (
+                        <button
+                          type="button"
+                          onClick={() => speak(currentQ.raw.kanji)}
+                          className="p-2.5 rounded-2xl bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 border border-indigo-200/60 dark:border-indigo-800/40 transition-all cursor-pointer shrink-0 active:scale-95 shadow-xs animate-in fade-in zoom-in duration-200"
+                          title="Nghe lại phát âm thuật ngữ (Phím tắt: S)"
+                        >
+                          <Volume2 className="w-5 h-5" />
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                )
               )}
 
               {/* ─── QUIZ ─── */}
@@ -1744,13 +2006,15 @@ export default function LearnSession() {
                   onClick={() => typingInputRef.current?.focus({ preventScroll: true })}
                 >
                   <p className="text-xs text-slate-400 dark:text-slate-500 font-medium select-none">
-                    {currentQ.raw.isSingleKanjiChar
-                      ? 'Gõ Âm Hán Việt (VD: NHIỆM)'
-                      : course?.template === 'english'
-                        ? 'Type the English word'
-                        : course?.template === 'generic'
-                          ? 'Gõ chính xác thuật ngữ'
-                          : 'Gõ Romaji (sẽ tự chuyển Hiragana)'}
+                    {currentQ.sentenceCloze
+                      ? (course?.template === 'english' ? 'Gõ từ tiếng Anh còn thiếu vào chỗ trống...' : 'Gõ từ còn thiếu vào chỗ trống...')
+                      : currentQ.raw.isSingleKanjiChar
+                        ? 'Gõ Âm Hán Việt (VD: NHIỆM)'
+                        : course?.template === 'english'
+                          ? 'Type the English word'
+                          : course?.template === 'generic'
+                            ? 'Gõ chính xác thuật ngữ'
+                            : 'Gõ Romaji (sẽ tự chuyển Hiragana)'}
                   </p>
                   <input
                     ref={typingInputRef}
@@ -1758,7 +2022,7 @@ export default function LearnSession() {
                     type="text"
                     value={userTyping}
                     onChange={e => {
-                      if (!currentQ.raw.isSingleKanjiChar && course?.template !== 'english' && course?.template !== 'generic') {
+                      if (!currentQ.sentenceCloze && !currentQ.raw.isSingleKanjiChar && course?.template !== 'english' && course?.template !== 'generic') {
                         const isExpectedKatakana = /^[\u30A0-\u30FF\u30FC\s]+$/.test(currentQ.raw.hiragana);
                         if (isExpectedKatakana) {
                           setUserTyping(wanakana.toKatakana(e.target.value, { IMEMode: true }));
@@ -1770,13 +2034,15 @@ export default function LearnSession() {
                       }
                     }}
                     onKeyDown={e => { if (e.key === 'Enter') submitTyping(); }}
-                    placeholder={currentQ.raw.isSingleKanjiChar
-                      ? 'Âm Hán Việt...'
-                      : course?.template === 'english'
-                        ? 'Type the word...'
-                        : course?.template === 'generic'
-                          ? 'Nhập thuật ngữ...'
-                          : 'Romaji...'}
+                    placeholder={currentQ.sentenceCloze
+                      ? 'Type the missing word...'
+                      : currentQ.raw.isSingleKanjiChar
+                        ? 'Âm Hán Việt...'
+                        : course?.template === 'english'
+                          ? 'Type the word...'
+                          : course?.template === 'generic'
+                            ? 'Nhập thuật ngữ...'
+                            : 'Romaji...'}
                     disabled={feedback !== 'none'}
                     autoFocus
                     autoComplete="off"
@@ -1787,8 +2053,17 @@ export default function LearnSession() {
                   />
 
                   {feedback === 'wrong' && (
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-sm font-bold text-red-500 dark:text-red-400 mt-2">
-                      Đáp án đúng: {course?.template === 'english' ? formatWordVariantsDisplay(currentQ.raw.kanji) : (course?.template === 'generic' ? currentQ.raw.kanji : currentQ.raw.hiragana)}
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-1.5 mt-2">
+                      <p className="text-sm font-bold text-red-500 dark:text-red-400">
+                        Đáp án đúng: {currentQ.sentenceCloze
+                          ? (course?.template === 'english' ? formatWordVariantsDisplay(currentQ.sentenceCloze.targetWord) : currentQ.sentenceCloze.targetWord)
+                          : (course?.template === 'english' ? formatWordVariantsDisplay(currentQ.raw.kanji) : (course?.template === 'generic' ? currentQ.raw.kanji : currentQ.raw.hiragana))}
+                      </p>
+                      {currentQ.sentenceCloze && (
+                        <p className="text-xs text-slate-500 dark:text-slate-400">
+                          Câu đầy đủ: <span className="font-semibold text-slate-700 dark:text-slate-200">{currentQ.sentenceCloze.originalSentence}</span>
+                        </p>
+                      )}
                     </motion.div>
                   )}
                 </div>
@@ -1937,6 +2212,24 @@ export default function LearnSession() {
           </div>
         )}
       </AnimatePresence>
+
+      {/* Modal chỉnh sửa từ vựng cho chủ sở hữu */}
+      {isOwner && (
+        <CustomWordModal
+          isOpen={!!editingCustomWord}
+          onClose={() => setEditingCustomWord(null)}
+          onSave={handleSaveWordInline}
+          editingWord={editingCustomWord ? {
+            id: editingCustomWord.id,
+            title: editingCustomWord.kanji,
+            sub: editingCustomWord.hiragana,
+            meaning: editingCustomWord.meaning,
+            example: editingCustomWord.exampleKanji || editingCustomWord.originalData?.examples?.[0]?.en || editingCustomWord.originalData?.examples?.[0]?.jp || '',
+          } : null}
+          lessonName={editingCustomWord?.lesson || 'Bài 1'}
+          template={course?.template}
+        />
+      )}
     </div>
   );
 }

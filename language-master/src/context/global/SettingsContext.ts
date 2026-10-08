@@ -9,6 +9,7 @@ export interface SettingsState {
   language: Language;
   // soundEnabled removed — audio mute managed by AudioContext (useAudio.tsx isMuted)
   fontSize: FontSize;
+  strictSentenceTypingTest?: boolean;
   updateSettings: (newSettings: Partial<SettingsState>) => void;
 }
 
@@ -17,6 +18,7 @@ export const defaultSettings: SettingsState = {
   theme: 'system',
   language: 'vi',
   fontSize: 'base',
+  strictSentenceTypingTest: false,
   updateSettings: () => {},
 };
 

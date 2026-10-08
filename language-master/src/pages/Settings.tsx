@@ -16,7 +16,7 @@ import {
 } from '../lib/offline/offlineStorage';
 
 export default function Settings() {
-  const { theme, language, fontSize, updateSettings } = useSettings();
+  const { theme, language, fontSize, strictSentenceTypingTest, updateSettings } = useSettings();
   const { isMuted, toggleMute } = useAudio();
 
   const [offlineList, setOfflineList] = useState<OfflineMeta[]>([]);
@@ -184,6 +184,36 @@ export default function Settings() {
           >
             <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${!isMuted ? 'translate-x-6' : 'translate-x-1'}`} />
           </button>
+        </div>
+
+        {/* KHỐI 4.5: KIỂM TRA QUA BÀI BẰNG GÕ CÂU VÍ DỤ */}
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-700 space-y-3 transition-colors">
+          <div className="flex justify-between items-start gap-4">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                <span className="p-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 font-black text-xs">A-Z</span>
+                <span className="font-semibold dark:text-white transition-colors">
+                  Kiểm tra qua bài bằng gõ câu ví dụ
+                </span>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+                Khi bật, phần kiểm tra sau mỗi bài sẽ lấy câu ví dụ của từ đó và đục lỗ (ví dụ: <span className="font-mono text-emerald-600 dark:text-emerald-400 font-semibold">abc [ _____ ] xyz</span>). Bạn sẽ tự đọc câu và gõ từ mục tiêu vào chỗ trống. Nếu từ không có câu ví dụ, hệ thống sẽ tự chuyển về dạng gõ từ thông thường.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => updateSettings({ strictSentenceTypingTest: !strictSentenceTypingTest })}
+              className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors ${
+                strictSentenceTypingTest ? 'bg-emerald-600' : 'bg-gray-300 dark:bg-slate-600'
+              }`}
+            >
+              <span
+                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                  strictSentenceTypingTest ? 'translate-x-6' : 'translate-x-1'
+                }`}
+              />
+            </button>
+          </div>
         </div>
 
         {/* KHỐI 5: QUẢN LÝ BỘ NHỚ NGOẠI TUYẾN */}
