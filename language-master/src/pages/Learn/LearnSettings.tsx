@@ -216,6 +216,29 @@ export default function LearnSettingsPage() {
           </button>
         </div>
 
+        {/* Kiểm tra qua bài bằng gõ câu ví dụ đục lỗ */}
+        <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-5 shadow-sm flex items-center justify-between">
+          <div>
+            <h3 className="font-semibold text-slate-800 dark:text-white mb-1">
+              Kiểm tra qua bài bằng gõ câu ví dụ
+            </h3>
+            <p className="text-sm text-slate-500 dark:text-slate-400">
+              Đục lỗ từ trong câu ví dụ ([ _____ ]), yêu cầu tự gõ từ vào chỗ trống để qua bài mới
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => setSettings(s => ({ ...s, strictSentenceTypingTest: !s.strictSentenceTypingTest }))}
+            className={`w-12 h-6 rounded-full transition-colors relative p-1 shrink-0 ${
+              settings.strictSentenceTypingTest ? 'bg-indigo-600' : 'bg-slate-300 dark:bg-slate-600'
+            }`}
+          >
+            <div className={`w-4 h-4 bg-white rounded-full transition-transform ${
+              settings.strictSentenceTypingTest ? 'translate-x-6' : 'translate-x-0'
+            }`} />
+          </button>
+        </div>
+
         {/* Buttons */}
         <div className="flex items-center gap-3">
           <button

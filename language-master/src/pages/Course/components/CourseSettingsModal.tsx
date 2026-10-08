@@ -227,6 +227,31 @@ export function CourseSettingsModal({ isOpen, onClose, courseId }: Props) {
                   </span>
                 </div>
               </div>
+
+              {/* Kiểm tra qua bài bằng gõ câu ví dụ đục lỗ */}
+              <div className="bg-slate-50 dark:bg-slate-900/50 rounded-2xl p-4 border border-slate-100 dark:border-slate-700/50 flex items-start justify-between gap-4">
+                <div className="space-y-1">
+                  <h3 className="font-semibold text-slate-800 dark:text-white text-sm">
+                    Kiểm tra qua bài bằng gõ câu ví dụ
+                  </h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                    Lấy câu ví dụ đục lỗ (<span className="font-mono text-indigo-600 dark:text-indigo-400 font-semibold">[ _____ ]</span>), buộc người học tự đọc câu và gõ từ vào chỗ trống để qua bài mới.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setSettings(s => ({ ...s, strictSentenceTypingTest: !s.strictSentenceTypingTest }))}
+                  className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors ${
+                    settings.strictSentenceTypingTest ? 'bg-indigo-600' : 'bg-slate-300 dark:bg-slate-600'
+                  }`}
+                >
+                  <span
+                    className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                      settings.strictSentenceTypingTest ? 'translate-x-6' : 'translate-x-1'
+                    }`}
+                  />
+                </button>
+              </div>
             </>
           )}
         </div>

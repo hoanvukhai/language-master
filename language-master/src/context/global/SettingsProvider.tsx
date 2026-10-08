@@ -12,7 +12,6 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
       language: 'vi',
       // soundEnabled removed — audio mute managed by AudioContext
       fontSize: 'base',
-      strictSentenceTypingTest: false,
     };
   });
 

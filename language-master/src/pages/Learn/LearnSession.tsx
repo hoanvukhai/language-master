@@ -583,7 +583,8 @@ const PreviewWordContent = ({
 export default function LearnSession() {
 
   const { user, loading: authLoading } = useAuth();
-  const { language, strictSentenceTypingTest } = useSettings();
+  const { language } = useSettings();
+  const [strictSentenceTypingTest, setStrictSentenceTypingTest] = useState(false);
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
@@ -709,7 +710,7 @@ export default function LearnSession() {
   const currentBatchRef = useRef<RawItem[]>([]);
 
   // ���� Keyboard Shortcuts ��������������������������������������������������������������������������������������������������
-  const startTestRef = useRef<(batch?: RawItem[]) => void>(() => { });
+  const startTestRef = useRef<(batch?: RawItem[], overrideStrict?: boolean) => void>(() => { });
   const submitQuizRef = useRef<(v: string) => void>(() => { });
   const submitTypingRef = useRef<() => void>(() => { });
   const speakRef = useRef<(t: string) => void>(() => { });
@@ -939,7 +940,8 @@ export default function LearnSession() {
         const userSnap = await getDoc(userRef);
         const learnSettings = userSnap.exists() ? userSnap.data()?.learnSettings : null;
         const sessionSize = modeParam === 'review' ? (learnSettings?.reviewSessionSize ?? 30) : (learnSettings?.sessionSize ?? 5);
-
+        const isStrict = Boolean(learnSettings?.strictSentenceTypingTest);
+        setStrictSentenceTypingTest(isStrict);
 
         if (modeParam === 'review') {
           const dueList = await fetchDueItems(user.uid, course.id);
@@ -971,7 +973,7 @@ export default function LearnSession() {
           setPhase('test');
           setTimeout(() => {
             // trigger startTest
-            startTestRef.current(items);
+            startTestRef.current(items, isStrict);
           }, 0);
         } else {
           const learnedSet = await getLearnedItemIds(user.uid, course.id);
@@ -983,11 +985,11 @@ export default function LearnSession() {
           sessionItemsRef.current = items;
 
           // Nếu bật chế độ kiểm tra câu gõ để qua bài: không cho xem trước (bỏ qua preview), vào kiểm tra luôn
-          if (strictSentenceTypingTest) {
+          if (isStrict) {
             currentBatchRef.current = items;
             setPhase('test');
             setTimeout(() => {
-              startTestRef.current(items);
+              startTestRef.current(items, isStrict);
             }, 0);
           }
         }
@@ -1052,8 +1054,9 @@ export default function LearnSession() {
   }, [user]);
 
   //    Preview Phase Handlers                                              
-  const startTest = useCallback((batch = currentBatchRef.current) => {
-    const q = buildBatchQueue(batch, modeParam || 'new', Boolean(strictSentenceTypingTest));
+  const startTest = useCallback((batch = currentBatchRef.current, overrideStrict?: boolean) => {
+    const isStrictVal = overrideStrict !== undefined ? overrideStrict : strictSentenceTypingTest;
+    const q = buildBatchQueue(batch, modeParam || 'new', Boolean(isStrictVal));
     // Sinh quiz options cho từng câu quiz ngay từ  ầu
     const allMeanings = allRawItems.map(i => i.meaning);
     const allKanji = allRawItems.map(i => i.kanji);
