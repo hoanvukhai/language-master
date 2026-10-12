@@ -7,7 +7,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../context/auth/useAuth';
 import { useSettings } from '../../context/global/useSettings';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Volume2, RotateCcw, Sparkles, ChevronRight, X, ChevronsUp, MousePointerClick, Keyboard, Check, Swords, BookOpen, ArrowLeft, Edit3 } from 'lucide-react';
+import { Volume2, RotateCcw, Sparkles, ChevronRight, X, ChevronsUp, MousePointerClick, Keyboard, Check, Swords, BookOpen, ArrowLeft, Edit3, Eye, EyeOff } from 'lucide-react';
 import CustomWordModal from '../../components/course/CustomWordModal';
 import { updateWordInCustomCourse, type CustomWord } from '../../lib/customCourses/customCourseService';
 
@@ -626,6 +626,7 @@ export default function LearnSession() {
   const [savedIds, setSavedIds] = useState<Set<string>>(new Set()); //  ã lưu Firestore
   const [correctCounts, setCorrectCounts] = useState<Map<string, number>>(new Map());
   const [isViewingMistakeDetail, setIsViewingMistakeDetail] = useState(false);
+  const [showClozeTranslation, setShowClozeTranslation] = useState(false);
   const lastMistakeRef = useRef<MistakeDetail | null>(null);
 
   const [sessionTotalExp, setSessionTotalExp] = useState(0);
@@ -1112,6 +1113,7 @@ export default function LearnSession() {
 
   useEffect(() => {
     setIsViewingMistakeDetail(false);
+    setShowClozeTranslation(false);
   }, [currentQIdx, phase]);
 
   // ── Auto Play Audio (Preview Only) ──────────────────────────────────
@@ -1916,9 +1918,76 @@ export default function LearnSession() {
                       </h1>
                     </div>
                     {currentQ.sentenceCloze.translation && (
-                      <p className="text-sm font-medium text-slate-500 dark:text-slate-400 italic">
-                        Dịch nghĩa: {currentQ.sentenceCloze.translation}
-                      </p>
+                      <div className="pt-1">
+                        {feedback === 'none' ? (
+                          <div className="flex flex-col items-center sm:items-start gap-2">
+                            <button
+                              type="button"
+                              onClick={() => setShowClozeTranslation(prev => !prev)}
+                              className={`group inline-flex items-center gap-2 px-4 py-2 rounded-2xl border transition-all cursor-pointer select-none text-xs font-semibold ${
+                                showClozeTranslation
+                                  ? 'bg-indigo-50 dark:bg-indigo-950/50 border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 shadow-xs'
+                                  : 'bg-slate-100/80 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 dark:hover:border-indigo-700'
+                              }`}
+                              title={showClozeTranslation ? 'Ấn để ẩn bản dịch' : 'Bản dịch bị ẩn để tránh lộ đáp án. Bấm nếu thấy quá khó!'}
+                            >
+                              {showClozeTranslation ? (
+                                <>
+                                  <EyeOff className="w-4 h-4 text-indigo-500" />
+                                  <span>Ẩn bản dịch</span>
+                                </>
+                              ) : (
+                                <>
+                                  <Eye className="w-4 h-4 text-indigo-500 group-hover:scale-110 transition-transform" />
+                                  <span>💡 Khó quá? Bấm xem bản dịch gợi ý</span>
+                                </>
+                              )}
+                            </button>
+
+                            {/* Khi bấm xem: Hiện bản dịch mượt mà */}
+                            {showClozeTranslation && (
+                              <motion.div
+                                initial={{ opacity: 0, y: -6, scale: 0.98 }}
+                                animate={{ opacity: 1, y: 0, scale: 1 }}
+                                transition={{ duration: 0.2 }}
+                                className="w-full p-4 rounded-2xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200/70 dark:border-amber-900/40 text-amber-900 dark:text-amber-200 text-sm leading-relaxed text-left"
+                              >
+                                <span className="font-bold text-amber-800 dark:text-amber-300">Dịch nghĩa: </span>
+                                <span className="italic">{currentQ.sentenceCloze.translation}</span>
+                              </motion.div>
+                            )}
+
+                            {/* Khi chưa bấm: Hiện dòng làm mờ (blur) để che tránh lộ đáp án */}
+                            {!showClozeTranslation && (
+                              <div
+                                onClick={() => setShowClozeTranslation(true)}
+                                className="w-full p-3 rounded-2xl bg-slate-100/50 dark:bg-slate-800/40 border border-slate-200/60 dark:border-slate-800 flex items-center justify-between gap-3 cursor-pointer group hover:border-indigo-300 transition-colors"
+                                title="Bấm vào đây để mở xem bản dịch"
+                              >
+                                <div className="flex items-center gap-2 overflow-hidden text-xs text-slate-400 select-none">
+                                  <span className="font-bold text-slate-500 shrink-0">Dịch nghĩa:</span>
+                                  <span className="filter blur-[6px] text-slate-400 truncate select-none">
+                                    {currentQ.sentenceCloze.translation}
+                                  </span>
+                                </div>
+                                <span className="text-[11px] font-bold text-indigo-600 dark:text-indigo-400 shrink-0 group-hover:underline">
+                                  Mở xem
+                                </span>
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          /* Khi đã nộp bài (feedback !== 'none'): Luôn hiện rõ bản dịch để đối chiếu */
+                          <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200/70 dark:border-slate-800 text-slate-700 dark:text-slate-300 text-sm leading-relaxed text-left"
+                          >
+                            <span className="font-bold text-slate-800 dark:text-slate-200">Dịch nghĩa: </span>
+                            <span className="italic">{currentQ.sentenceCloze.translation}</span>
+                          </motion.div>
+                        )}
+                      </div>
                     )}
                   </div>
                 ) : (
