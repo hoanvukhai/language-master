@@ -12,7 +12,8 @@ import {
   Loader2,
   Bookmark,
   Sparkles,
-  Info
+  Info,
+  Languages
 } from 'lucide-react';
 import { 
   lookupInSystemMultiBook, 
