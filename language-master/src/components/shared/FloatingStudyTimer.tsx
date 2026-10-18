@@ -62,6 +62,56 @@ export function FloatingStudyTimer() {
     }, 2200);
   }, []);
 
+  // Nhận diện trạng thái văn bản đang được bôi đen trên trang để phát sáng nút
+  const [hasSelectedText, setHasSelectedText] = useState(false);
+  const [selectedSnippet, setSelectedSnippet] = useState('');
+
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout> | null = null;
+    const onSelectionChange = () => {
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(() => {
+        const sel = window.getSelection();
+        const t = sel?.toString().trim() || '';
+        const isValid = t.length >= 1 && t.length <= 350 && !/^[\d\s.,\/#!$%\^&\*;:{}=\-_`~()]+$/.test(t);
+        setHasSelectedText(isValid);
+        setSelectedSnippet(isValid ? t : '');
+      }, 120);
+    };
+
+    document.addEventListener('selectionchange', onSelectionChange);
+    return () => {
+      if (timer) clearTimeout(timer);
+      document.removeEventListener('selectionchange', onSelectionChange);
+    };
+  }, []);
+
+  // NÚT TRA CỨU TRỰC TIẾP (Cho cả Điện thoại và Máy tính)
+  const handleTriggerLookupNow = useCallback((e?: React.MouseEvent | React.TouchEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    if (!isLookupEnabled) {
+      showToast('⚠️ Chế độ tra từ đang Tắt. Mở cài đặt để bật lại nhé!');
+      return;
+    }
+
+    const selection = window.getSelection();
+    const text = selection?.toString().trim();
+
+    if (text && text.length >= 1 && text.length <= 350 && !/^[\d\s.,\/#!$%\^&\*;:{}=\-_`~()]+$/.test(text)) {
+      // Có text đang được chọn -> Bắn event để Popover tra cứu mở ra ngay tức khắc!
+      window.dispatchEvent(new CustomEvent('app:trigger-selection-lookup', {
+        detail: { text }
+      }));
+    } else {
+      // Chưa chọn text -> Báo hướng dẫn người dùng
+      showToast('📖 Hãy bôi đen chữ trên trang rồi bấm vào đây để tra!');
+    }
+  }, [isLookupEnabled, showToast]);
+
   const handleToggleLookup = useCallback((e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
     setIsLookupEnabled(prev => {
@@ -72,18 +122,18 @@ export function FloatingStudyTimer() {
     });
   }, [showToast]);
 
-  // Phím tắt Bật/Tắt nhanh toàn hệ thống: F9 hoặc Alt + T
+  // Phím tắt Tra Cứu Trực Tiếp nhanh toàn hệ thống: F9 hoặc Alt + T
   useEffect(() => {
     const handleGlobalKeyDown = (e: KeyboardEvent) => {
-      // Bấm F9 hoặc Alt + T (hoặc Cmd + T)
+      // Bấm F9 hoặc Alt + T (hoặc Cmd + T) -> Tra cứu ngay lập tức từ đang bôi đen!
       if (e.key === 'F9' || ((e.altKey || e.metaKey) && (e.key === 't' || e.key === 'T'))) {
         e.preventDefault();
-        handleToggleLookup();
+        handleTriggerLookupNow();
       }
     };
     window.addEventListener('keydown', handleGlobalKeyDown);
     return () => window.removeEventListener('keydown', handleGlobalKeyDown);
-  }, [handleToggleLookup]);
+  }, [handleTriggerLookupNow]);
 
   // Draggable position state
   const [pos, setPos] = useState<{ x: number; y: number }>(() => {
@@ -320,25 +370,35 @@ export function FloatingStudyTimer() {
         {/* Vạch ngăn cách dọc mảnh */}
         <div className="w-px h-3.5 bg-slate-200 dark:bg-slate-800 mx-0.5 shrink-0" />
 
-        {/* Khối 2: Công tắc Tra từ Bôi đen (Toggle Bật/Tắt tức thì ngoài thanh nổi) */}
+        {/* Khối 2: Nút Tra Cứu Trực Tiếp (Tra ngay từ vừa bôi đen trên Điện thoại & PC) */}
         <button
           type="button"
           onPointerDown={e => e.stopPropagation()}
-          onClick={handleToggleLookup}
-          className={`p-1.5 rounded-full transition-all cursor-pointer relative flex items-center justify-center ${
-            isLookupEnabled
-              ? 'bg-indigo-50 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100'
-              : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
+          onClick={handleTriggerLookupNow}
+          className={`p-1.5 rounded-full transition-all cursor-pointer relative flex items-center justify-center active:scale-95 ${
+            hasSelectedText
+              ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md shadow-indigo-500/40 ring-2 ring-indigo-300 dark:ring-indigo-700'
+              : isLookupEnabled
+                ? 'bg-indigo-50 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900/60'
+                : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 opacity-60'
           }`}
-          title={isLookupEnabled ? 'Tra từ khi bôi đen: ĐANG BẬT (Bấm để tắt hoặc nhấn F9)' : 'Tra từ khi bôi đen: ĐÃ TẮT (Bấm để bật hoặc nhấn F9)'}
+          title={
+            hasSelectedText
+              ? `Chạm để tra ngay: "${selectedSnippet}" (F9)`
+              : isLookupEnabled
+                ? 'Tra cứu trực tiếp: Bôi đen chữ rồi chạm vào đây (F9)'
+                : 'Chế độ tra từ đang tắt (mở cài đặt để bật)'
+          }
         >
-          <Languages size={15} />
-          {/* Chấm đèn trạng thái */}
+          <Languages size={15} className={hasSelectedText ? 'animate-pulse' : ''} />
+          {/* Đèn trạng thái: nhấp nháy xanh khi có chữ bôi đen */}
           <span 
             className={`absolute top-0.5 right-0.5 w-2 h-2 rounded-full transition-colors ${
-              isLookupEnabled 
-                ? 'bg-emerald-500 ring-1.5 ring-white dark:ring-slate-900 shadow-xs shadow-emerald-400' 
-                : 'bg-slate-300 dark:bg-slate-600'
+              hasSelectedText
+                ? 'bg-emerald-400 ring-2 ring-white dark:ring-slate-900 animate-ping' 
+                : isLookupEnabled 
+                  ? 'bg-emerald-500 ring-1.5 ring-white dark:ring-slate-900' 
+                  : 'bg-slate-300 dark:bg-slate-600'
             }`} 
           />
         </button>

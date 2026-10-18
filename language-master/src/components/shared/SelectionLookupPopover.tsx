@@ -265,11 +265,37 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
       }
     };
 
+    // 5. Sự kiện Tra Cứu Trực Tiếp từ Nút Thanh Nổi hoặc Phím tắt F9
+    const handleTriggerLookupEvent = (e: Event) => {
+      const customEvent = e as CustomEvent<{ text?: string }>;
+      let text = customEvent.detail?.text;
+      if (!text) {
+        text = window.getSelection()?.toString().trim();
+      }
+
+      if (text && text.length >= 1 && text.length <= 350) {
+        const selection = window.getSelection();
+        let rect: DOMRect | undefined;
+        if (selection && selection.rangeCount > 0) {
+          const r = selection.getRangeAt(0);
+          const b = r.getBoundingClientRect();
+          if (b.width > 0 && b.height > 0) {
+            rect = b;
+          } else {
+            const rects = r.getClientRects();
+            if (rects.length > 0) rect = rects[0];
+          }
+        }
+        executeLookup(text, rect);
+      }
+    };
+
     document.addEventListener('touchstart', handleTouchStart, { passive: true });
     document.addEventListener('mouseup', handleMouseUp);
     document.addEventListener('selectionchange', handleSelectionChange);
     document.addEventListener('touchend', handleTouchEnd);
     window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('app:trigger-selection-lookup', handleTriggerLookupEvent);
 
     return () => {
       if (debounceTimer) clearTimeout(debounceTimer);
@@ -278,6 +304,7 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
       document.removeEventListener('selectionchange', handleSelectionChange);
       document.removeEventListener('touchend', handleTouchEnd);
       window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('app:trigger-selection-lookup', handleTriggerLookupEvent);
     };
   }, [enabled, isOpen, handleClose, executeLookup]);
 
