@@ -33,6 +33,7 @@ export function FloatingStudyTimer() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [mode, setMode] = useState<TimerMode>('pomodoro');
+  const [mobileTab, setMobileTab] = useState<'timer' | 'lookup'>('timer');
 
   // Pomodoro settings (seconds)
   const [pomoPreset, setPomoPreset] = useState<number>(25 * 60);
@@ -379,10 +380,40 @@ export function FloatingStudyTimer() {
               </button>
             </div>
 
-            {/* Body: LAYOUT SANG NGANG 2 CỘT CÂN ĐỐI */}
-            <div className="p-5 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch bg-slate-100/50 dark:bg-slate-900">
+            {/* Mobile Tab Switcher (Chỉ hiển thị trên điện thoại < md) */}
+            <div className="flex md:hidden p-2 bg-slate-100 dark:bg-slate-800/95 border-b border-slate-200 dark:border-slate-700/80 gap-1.5">
+              <button
+                type="button"
+                onClick={() => setMobileTab('timer')}
+                className={`flex-1 py-2 text-xs font-bold rounded-xl flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+                  mobileTab === 'timer'
+                    ? 'bg-indigo-600 text-white shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-700/60'
+                }`}
+              >
+                <Timer size={14} />
+                <span>Đồng hồ</span>
+                {isRunning && <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />}
+              </button>
+              <button
+                type="button"
+                onClick={() => setMobileTab('lookup')}
+                className={`flex-1 py-2 text-xs font-bold rounded-xl flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+                  mobileTab === 'lookup'
+                    ? 'bg-indigo-600 text-white shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-700/60'
+                }`}
+              >
+                <Languages size={14} />
+                <span>Tra từ bôi đen</span>
+                <span className={`w-2 h-2 rounded-full ${isLookupEnabled ? 'bg-emerald-500' : 'bg-slate-400'}`} />
+              </button>
+            </div>
+
+            {/* Body: LAYOUT SANG NGANG 2 CỘT CÂN ĐỐI TRÊN DESKTOP, CHUYỂN TAB TRÊN MOBILE */}
+            <div className="p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 items-stretch bg-slate-100/50 dark:bg-slate-900 max-h-[82vh] overflow-y-auto">
               {/* CỘT TRÁI: ĐỒNG HỒ TẬP TRUNG (POMODORO / BẤM GIỜ) */}
-              <div className="space-y-4 flex flex-col justify-between p-4.5 rounded-3xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shadow-sm">
+              <div className={`${mobileTab === 'timer' ? 'flex' : 'hidden md:flex'} space-y-4 flex-col justify-between p-4.5 rounded-3xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shadow-sm`}>
                 {/* Mode Switcher */}
                 <div className="flex bg-slate-100 dark:bg-slate-900/90 p-1 rounded-2xl border border-slate-200/80 dark:border-slate-700/60">
                   <button
@@ -499,7 +530,7 @@ export function FloatingStudyTimer() {
               </div>
 
               {/* CỘT PHẢI: TRỢ LÝ TRA TỪ KHI BÔI ĐEN */}
-              <div className="space-y-4 flex flex-col justify-between p-4.5 rounded-3xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shadow-sm">
+              <div className={`${mobileTab === 'lookup' ? 'flex' : 'hidden md:flex'} space-y-4 flex-col justify-between p-4.5 rounded-3xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shadow-sm`}>
                 {/* Header Tra Từ & Nút Switch chuẩn Apple (không bao giờ bị bẹp) */}
                 <div className="flex items-center justify-between gap-3 p-3 rounded-2xl bg-indigo-50/70 dark:bg-slate-900/90 border border-indigo-100 dark:border-slate-700/80">
                   <div className="flex items-center gap-3">

@@ -39,7 +39,7 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
   const { user } = useAuth();
   
   const [selectedText, setSelectedText] = useState<string>('');
-  const [coords, setCoords] = useState<{ x: number; y: number; placeAbove: boolean } | null>(null);
+  const [coords, setCoords] = useState<{ x: number; y: number; placeAbove: boolean; width?: number } | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'system' | 'external'>('system');
 
@@ -75,27 +75,27 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
     setCoords(null);
   }, []);
 
-  // Bắt sự kiện mouseup (Nhả chuột mới tra theo Hướng 1)
+  // Bắt sự kiện bôi đen (Hỗ trợ cả chuột mouseup và ngón tay cảm ứng touchend trên Mobile)
   useEffect(() => {
     if (!enabled) return;
 
-    const handleMouseUp = (e: MouseEvent) => {
+    const checkAndTriggerLookup = (targetEl: HTMLElement | null) => {
       // 1. Nếu click bên trong popover hiện tại thì không làm gì
-      if (popoverRef.current && popoverRef.current.contains(e.target as Node)) {
+      if (popoverRef.current && targetEl && popoverRef.current.contains(targetEl)) {
         return;
       }
 
-      // 2. Không kích hoạt nếu đang nhả chuột trong input / textarea / button / link / nav / header
-      const targetEl = e.target as HTMLElement | null;
-      if (!targetEl) return;
+      // 2. Không kích hoạt nếu đang nhả chuột/tay trong input / textarea / button / link / nav / header
       if (
-        targetEl.closest('button') ||
-        targetEl.closest('a') ||
-        targetEl.closest('nav') ||
-        targetEl.closest('header') ||
-        targetEl.closest('footer') ||
-        targetEl.closest('[data-no-selection-lookup]') ||
-        ['input', 'textarea', 'select'].includes(targetEl.tagName.toLowerCase())
+        targetEl && (
+          targetEl.closest('button') ||
+          targetEl.closest('a') ||
+          targetEl.closest('nav') ||
+          targetEl.closest('header') ||
+          targetEl.closest('footer') ||
+          targetEl.closest('[data-no-selection-lookup]') ||
+          ['input', 'textarea', 'select'].includes(targetEl.tagName.toLowerCase())
+        )
       ) {
         return;
       }
@@ -124,19 +124,22 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
 
       if (rect.width === 0 && rect.height === 0) return;
 
-      const popoverWidth = 380;
+      const isMobile = window.innerWidth < 640;
+      const popoverWidth = isMobile ? Math.min(360, window.innerWidth - 24) : 380;
       const popoverHeight = 340;
       
-      // Tính vị trí X căn giữa vùng chọn
-      let x = rect.left + rect.width / 2 - popoverWidth / 2;
-      x = Math.max(16, Math.min(window.innerWidth - popoverWidth - 16, x));
+      // Tính vị trí X: trên mobile căn giữa màn hình cho cân đối, trên desktop căn giữa vùng chọn
+      let x = isMobile 
+        ? (window.innerWidth - popoverWidth) / 2
+        : rect.left + rect.width / 2 - popoverWidth / 2;
+      x = Math.max(12, Math.min(window.innerWidth - popoverWidth - 12, x));
 
       // Tính vị trí Y (ưu tiên hiển thị phía trên nếu đủ chỗ, ngược lại hiển thị phía dưới)
       const placeAbove = rect.top >= popoverHeight + 20;
       const y = placeAbove ? rect.top - 10 : rect.bottom + 10;
 
       setSelectedText(text);
-      setCoords({ x, y, placeAbove });
+      setCoords({ x, y, placeAbove, width: popoverWidth });
       setIsOpen(true);
       setSavedCoursesMap({});
 
@@ -163,6 +166,22 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
         });
     };
 
+    const handleMouseUp = (e: MouseEvent) => {
+      checkAndTriggerLookup(e.target as HTMLElement | null);
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      // Delay nhẹ 80ms để iOS/Android hoàn tất selection range sau khi nhấc ngón tay
+      setTimeout(() => {
+        const touch = e.changedTouches[0];
+        let targetEl = e.target as HTMLElement | null;
+        if (touch && (!targetEl || targetEl === document.body)) {
+          targetEl = document.elementFromPoint(touch.clientX, touch.clientY) as HTMLElement | null;
+        }
+        checkAndTriggerLookup(targetEl);
+      }, 80);
+    };
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         handleClose();
@@ -170,9 +189,11 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
     };
 
     document.addEventListener('mouseup', handleMouseUp);
+    document.addEventListener('touchend', handleTouchEnd);
     window.addEventListener('keydown', handleKeyDown);
     return () => {
       document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener('touchend', handleTouchEnd);
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [enabled, isOpen, handleClose, languageTemplate]);
@@ -218,7 +239,8 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
           left: `${coords.x}px`,
           top: coords.placeAbove ? 'auto' : `${coords.y}px`,
           bottom: coords.placeAbove ? `${window.innerHeight - coords.y}px` : 'auto',
-          width: '380px',
+          width: coords.width ? `${coords.width}px` : '380px',
+          maxWidth: 'calc(100vw - 24px)',
           zIndex: 999999,
         }}
         onMouseDown={e => e.stopPropagation()}
