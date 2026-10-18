@@ -1,14 +1,30 @@
 // src/components/shared/FloatingStudyTimer.tsx
-// Tiện ích Hẹn giờ học tập nổi (Draggable Floating Study Timer)
+// Tiện ích Học tập nổi (Draggable Floating Study Dock)
 // - Hỗ trợ kéo thả (drag & drop) tự do khắp màn hình, lưu vị trí
-// - Bấm vào sẽ mở popup hẹn giờ ở CHÍNH GIỮA MÀN HÌNH
+// - Tích hợp Đồng hồ Pomodoro / Bấm giờ tập trung
+// - Tích hợp Công tắc Bật/Tắt chế độ Bôi đen tra từ vựng toàn hệ thống (Đa sách + Tra ngoài)
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Timer, Play, Pause, RotateCcw, X, Coffee, GripVertical } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
+import { 
+  Timer, 
+  Play, 
+  Pause, 
+  RotateCcw, 
+  X, 
+  Coffee, 
+  GripVertical,
+  Languages,
+  Keyboard
+} from 'lucide-react';
+import SelectionLookupPopover from './SelectionLookupPopover';
 
 type TimerMode = 'pomodoro' | 'stopwatch';
 
 export function FloatingStudyTimer() {
+  const location = useLocation();
+  const isExcludedRoute = location.pathname.startsWith('/exams') || location.pathname.startsWith('/learn');
+
   const [isOpen, setIsOpen] = useState(false);
   const [mode, setMode] = useState<TimerMode>('pomodoro');
 
@@ -20,6 +36,34 @@ export function FloatingStudyTimer() {
   // Stopwatch
   const [stopwatchSeconds, setStopwatchSeconds] = useState<number>(0);
 
+  // Chế độ Bôi đen tra từ (Mặc định: TẮT theo yêu cầu, lưu vào localStorage)
+  const [isLookupEnabled, setIsLookupEnabled] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return false;
+    return localStorage.getItem('nihongo_selection_lookup_enabled') === 'true';
+  });
+
+  // Toast thông báo nhỏ
+  const [toastMsg, setToastMsg] = useState<string | null>(null);
+  const toastTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const showToast = (msg: string) => {
+    if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
+    setToastMsg(msg);
+    toastTimeoutRef.current = setTimeout(() => {
+      setToastMsg(null);
+    }, 2200);
+  };
+
+  const handleToggleLookup = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    setIsLookupEnabled(prev => {
+      const next = !prev;
+      localStorage.setItem('nihongo_selection_lookup_enabled', String(next));
+      showToast(next ? 'Đã BẬT tra từ khi bôi đen 📖' : 'Đã TẮT tra từ khi bôi đen 💤');
+      return next;
+    });
+  };
+
   // Draggable position state
   const [pos, setPos] = useState<{ x: number; y: number }>(() => {
     if (typeof window === 'undefined') return { x: 100, y: 100 };
@@ -30,14 +74,14 @@ export function FloatingStudyTimer() {
       const y = parseFloat(savedY);
       if (!isNaN(x) && !isNaN(y)) {
         return {
-          x: Math.min(Math.max(12, x), window.innerWidth - 190),
+          x: Math.min(Math.max(12, x), window.innerWidth - 260),
           y: Math.min(Math.max(12, y), window.innerHeight - 70),
         };
       }
     }
     // Default position: bottom-right
     return {
-      x: Math.max(16, window.innerWidth - 200),
+      x: Math.max(16, window.innerWidth - 270),
       y: Math.max(16, window.innerHeight - 80),
     };
   });
@@ -52,7 +96,7 @@ export function FloatingStudyTimer() {
   useEffect(() => {
     const handleResize = () => {
       setPos(prev => ({
-        x: Math.min(Math.max(12, prev.x), window.innerWidth - 190),
+        x: Math.min(Math.max(12, prev.x), window.innerWidth - 260),
         y: Math.min(Math.max(12, prev.y), window.innerHeight - 70),
       }));
     };
@@ -87,8 +131,8 @@ export function FloatingStudyTimer() {
                 const osc = ctx.createOscillator();
                 const gain = ctx.createGain();
                 osc.type = 'sine';
-                osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
-                osc.frequency.setValueAtTime(880, ctx.currentTime + 0.15); // A5
+                osc.frequency.setValueAtTime(587.33, ctx.currentTime);
+                osc.frequency.setValueAtTime(880, ctx.currentTime + 0.15);
                 gain.gain.setValueAtTime(0.2, ctx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.6);
                 osc.connect(gain);
@@ -146,7 +190,6 @@ export function FloatingStudyTimer() {
 
   // Drag Pointer Handlers
   const handlePointerDown = (e: React.PointerEvent) => {
-    // Only respond to primary mouse button or touch
     if (e.button !== 0) return;
 
     isDraggingRef.current = true;
@@ -159,12 +202,11 @@ export function FloatingStudyTimer() {
       const dx = moveEv.clientX - dragStartPosRef.current.x;
       const dy = moveEv.clientY - dragStartPosRef.current.y;
 
-      // Threshold to detect genuine drag
       if (Math.hypot(dx, dy) > 4) {
         hasDraggedRef.current = true;
       }
 
-      const buttonWidth = buttonRef.current?.offsetWidth || 180;
+      const buttonWidth = buttonRef.current?.offsetWidth || 250;
       const buttonHeight = buttonRef.current?.offsetHeight || 50;
 
       const nextX = Math.min(Math.max(8, buttonStartPosRef.current.x + dx), window.innerWidth - buttonWidth - 8);
@@ -178,14 +220,13 @@ export function FloatingStudyTimer() {
       window.removeEventListener('pointermove', handlePointerMove);
       window.removeEventListener('pointerup', handlePointerUp);
 
-      // Persist to localStorage
       setPos(current => {
         localStorage.setItem('timer_pos_x', String(current.x));
         localStorage.setItem('timer_pos_y', String(current.y));
         return current;
       });
 
-      // If user tapped/clicked without moving, open the modal!
+      // Nếu nhấp vào vùng đồng hồ mà không kéo, mở modal
       if (!hasDraggedRef.current) {
         setIsOpen(prev => !prev);
       }
@@ -197,24 +238,73 @@ export function FloatingStudyTimer() {
 
   return (
     <>
-      {/* ================= DRAGGABLE MINI FLOATING BUTTON ================= */}
+      {/* Toast thông báo nhanh trạng thái */}
+      {toastMsg && (
+        <div className="fixed bottom-20 left-1/2 -translate-x-1/2 z-[10001] px-4 py-2 rounded-2xl bg-slate-900/90 text-white text-xs font-semibold shadow-2xl backdrop-blur-md border border-slate-700/80 animate-in fade-in slide-in-from-bottom-2 duration-150">
+          {toastMsg}
+        </div>
+      )}
+
+      {/* ================= DRAGGABLE FLOATING STUDY DOCK ================= */}
       <div
         ref={buttonRef}
-        onPointerDown={handlePointerDown}
+        data-no-selection-lookup="true"
         style={{ left: `${pos.x}px`, top: `${pos.y}px` }}
-        className={`fixed z-40 flex items-center gap-2 px-3.5 py-2.5 rounded-full shadow-2xl backdrop-blur-md border transition-shadow cursor-grab active:cursor-grabbing select-none touch-none ${
-          isRunning
-            ? 'bg-indigo-600 hover:bg-indigo-700 text-white border-indigo-400/60 ring-4 ring-indigo-500/25 shadow-indigo-500/30'
-            : 'bg-white/95 dark:bg-slate-800/95 text-slate-800 dark:text-slate-100 hover:bg-white dark:hover:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-slate-900/15'
-        }`}
-        title="Kéo để di chuyển • Nhấp để mở Hẹn giờ ở giữa màn hình"
+        className="fixed z-40 flex items-center p-1.5 rounded-full shadow-2xl backdrop-blur-md border transition-all duration-200 select-none touch-none bg-white/95 dark:bg-slate-900/95 border-slate-200/90 dark:border-slate-800 text-slate-700 dark:text-slate-200 shadow-slate-900/15 group"
       >
-        <GripVertical size={14} className="text-slate-400 dark:text-slate-500 opacity-60 shrink-0 pointer-events-none" />
-        <Timer size={16} className={isRunning ? 'text-amber-300 animate-pulse' : 'text-indigo-600 dark:text-indigo-400'} />
-        <span className="font-mono font-bold text-sm tracking-wider">{displayTime}</span>
-        {isRunning && (
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping shrink-0" />
-        )}
+        {/* Phần 1: Nút kéo và Đồng hồ (Bấm mở Modal) */}
+        <div
+          onPointerDown={handlePointerDown}
+          className={`flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-full cursor-grab active:cursor-grabbing transition-all ${
+            isRunning
+              ? 'bg-amber-500/15 text-amber-700 dark:text-amber-300 font-bold'
+              : 'hover:bg-slate-100 dark:hover:bg-slate-800/80'
+          }`}
+          title="Kéo để di chuyển • Bấm để mở Hẹn giờ tập trung"
+        >
+          <GripVertical size={13} className="text-slate-400 dark:text-slate-500 opacity-60 shrink-0 pointer-events-none" />
+          <Timer 
+            size={16} 
+            className={isRunning ? 'text-amber-500 animate-pulse' : 'text-indigo-600 dark:text-indigo-400'} 
+          />
+          <span className="font-mono font-bold text-xs tracking-wider">
+            {displayTime}
+          </span>
+          {isRunning && (
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-ping shrink-0" />
+          )}
+        </div>
+
+        {/* Vạch ngăn cách dọc */}
+        <div className="w-px h-4 bg-slate-200 dark:bg-slate-800 mx-1 shrink-0" />
+
+        {/* Phần 2: Công tắc Tra từ Bôi đen (Toggle Bật/Tắt tức thì) */}
+        <button
+          type="button"
+          onPointerDown={e => e.stopPropagation()}
+          onClick={handleToggleLookup}
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+            isLookupEnabled
+              ? 'bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/70 border border-indigo-200/70 dark:border-indigo-800/60 shadow-2xs'
+              : 'text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/70'
+          }`}
+          title={isLookupEnabled ? 'Chế độ Tra từ bôi đen: ĐANG BẬT (Bấm để tắt)' : 'Chế độ Tra từ bôi đen: ĐANG TẮT (Bấm để bật)'}
+        >
+          <Languages 
+            size={14} 
+            className={isLookupEnabled ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-400'} 
+          />
+          <span className="text-[11px] font-medium hidden sm:inline">
+            {isLookupEnabled ? 'Tra từ: Bật' : 'Tra từ: Tắt'}
+          </span>
+          <span 
+            className={`w-2 h-2 rounded-full transition-colors shrink-0 ${
+              isLookupEnabled 
+                ? 'bg-emerald-500 shadow-xs shadow-emerald-400' 
+                : 'bg-slate-300 dark:bg-slate-600'
+            }`} 
+          />
+        </button>
       </div>
 
       {/* ================= CENTERED POPUP MODAL ================= */}
@@ -231,11 +321,11 @@ export function FloatingStudyTimer() {
             <div className="flex items-center justify-between px-5 py-4 bg-slate-50/80 dark:bg-slate-800/90 border-b border-slate-100 dark:border-slate-700">
               <div className="flex items-center gap-2.5 text-indigo-600 dark:text-indigo-400 font-bold text-xs uppercase tracking-wider">
                 <Timer size={18} />
-                <span>Đồng Hồ Tập Trung</span>
+                <span>Tiện Ích Học Tập Nổi</span>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-2 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-700 transition-colors"
+                className="p-2 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-700 transition-colors cursor-pointer"
                 title="Đóng (Thu nhỏ)"
               >
                 <X size={18} />
@@ -251,7 +341,7 @@ export function FloatingStudyTimer() {
                     setMode('pomodoro');
                     setIsRunning(false);
                   }}
-                  className={`flex-1 py-2 text-xs font-bold rounded-xl transition-all ${
+                  className={`flex-1 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer ${
                     mode === 'pomodoro'
                       ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm'
                       : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
@@ -264,7 +354,7 @@ export function FloatingStudyTimer() {
                     setMode('stopwatch');
                     setIsRunning(false);
                   }}
-                  className={`flex-1 py-2 text-xs font-bold rounded-xl transition-all ${
+                  className={`flex-1 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer ${
                     mode === 'stopwatch'
                       ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm'
                       : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
@@ -285,7 +375,7 @@ export function FloatingStudyTimer() {
                     <button
                       key={p.min}
                       onClick={() => handleSelectPreset(p.min)}
-                      className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                      className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                         pomoPreset === p.min * 60
                           ? 'bg-indigo-50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-700 shadow-sm'
                           : 'bg-slate-50 dark:bg-slate-700/30 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-700 border border-transparent'
@@ -322,14 +412,14 @@ export function FloatingStudyTimer() {
               <div className="flex items-center justify-center gap-3 pt-1">
                 <button
                   onClick={handleReset}
-                  className="p-3.5 rounded-2xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-300 transition-colors"
+                  className="p-3.5 rounded-2xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-300 transition-colors cursor-pointer"
                   title="Đặt lại thời gian"
                 >
                   <RotateCcw size={18} />
                 </button>
                 <button
                   onClick={() => setIsRunning(r => !r)}
-                  className={`flex-1 py-3.5 px-6 rounded-2xl font-bold flex items-center justify-center gap-2 shadow-lg transition-all text-sm active:scale-95 ${
+                  className={`flex-1 py-3.5 px-6 rounded-2xl font-bold flex items-center justify-center gap-2 shadow-lg transition-all text-sm active:scale-95 cursor-pointer ${
                     isRunning
                       ? 'bg-amber-500 hover:bg-amber-600 text-white shadow-amber-500/25'
                       : 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-indigo-600/25'
@@ -349,14 +439,57 @@ export function FloatingStudyTimer() {
                 </button>
               </div>
 
-              {/* Hint */}
-              <p className="text-center text-[11px] text-slate-400 dark:text-slate-500">
-                💡 Nút đồng hồ thu nhỏ có thể kéo thả tự do đến bất kỳ vị trí nào trên màn hình.
-              </p>
+              {/* Cài đặt Bôi đen Tra từ vựng toàn hệ thống */}
+              <div className="p-4 rounded-2xl bg-indigo-50/50 dark:bg-slate-700/40 border border-indigo-100/80 dark:border-slate-700 space-y-2.5">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="p-1.5 rounded-xl bg-indigo-100 dark:bg-indigo-900/60 text-indigo-600 dark:text-indigo-400">
+                      <Languages size={16} />
+                    </div>
+                    <div>
+                      <span className="font-bold text-xs text-slate-800 dark:text-slate-200">
+                        Tra cứu từ vựng khi bôi đen
+                      </span>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                        Nhả chuột để tra cứu Đa Sách & Trực tuyến khắp hệ thống
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Switch Toggle */}
+                  <button
+                    type="button"
+                    onClick={() => handleToggleLookup()}
+                    className={`w-11 h-6 flex items-center rounded-full p-1 transition-colors cursor-pointer ${
+                      isLookupEnabled ? 'bg-indigo-600' : 'bg-slate-300 dark:bg-slate-600'
+                    }`}
+                  >
+                    <div
+                      className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform ${
+                        isLookupEnabled ? 'translate-x-5' : 'translate-x-0'
+                      }`}
+                    />
+                  </button>
+                </div>
+
+                <div className="pt-2 border-t border-indigo-100/60 dark:border-slate-700/60 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+                  <span className="flex items-center gap-1">
+                    <Keyboard size={12} className="text-indigo-500" />
+                    <span>Phím tắt phiên học: <b>F2</b> hoặc <b>`</b></span>
+                  </span>
+                  <span>Đóng tra từ: <b>Esc</b></span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       )}
+
+      {/* Component Popover tra cứu khi bôi đen (hoạt động toàn hệ thống khi BẬT, tự tắt trong phòng thi & trang learn) */}
+      <SelectionLookupPopover
+        enabled={isLookupEnabled && !isExcludedRoute}
+      />
     </>
   );
 }
+export default FloatingStudyTimer;

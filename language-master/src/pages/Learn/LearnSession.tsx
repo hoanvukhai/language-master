@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Volume2, RotateCcw, Sparkles, ChevronRight, X, ChevronsUp, MousePointerClick, Keyboard, Check, Swords, BookOpen, ArrowLeft, Edit3, Eye, EyeOff } from 'lucide-react';
 import CustomWordModal from '../../components/course/CustomWordModal';
 import { updateWordInCustomCourse, type CustomWord } from '../../lib/customCourses/customCourseService';
+import SelectionLookupPopover from '../../components/shared/SelectionLookupPopover';
 
 
 import * as wanakana from 'wanakana';
@@ -770,6 +771,13 @@ export default function LearnSession() {
       }
 
       if (ph !== 'test' || !cQ) return;
+
+      // Phím tắt Toggle bản dịch câu ví dụ / câu hỏi (F2 hoặc phím backtick `): 1 nút duy nhất, tiện lợi không cần dùng chuột
+      if ((e.key === 'F2' || e.key === '`' || e.code === 'Backquote') && cQ.sentenceCloze?.translation) {
+        e.preventDefault();
+        setShowClozeTranslation(prev => !prev);
+        return;
+      }
 
       // Nút Tiếp Tục (Khi đang hiện Feedback hoặc Re-learn Preview)
       if (fb !== 'none' || cQ.phase === 'preview') {
@@ -1929,17 +1937,19 @@ export default function LearnSession() {
                                   ? 'bg-indigo-50 dark:bg-indigo-950/50 border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 shadow-xs'
                                   : 'bg-slate-100/80 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 dark:hover:border-indigo-700'
                               }`}
-                              title={showClozeTranslation ? 'Ấn để ẩn bản dịch' : 'Bản dịch bị ẩn để tránh lộ đáp án. Bấm nếu thấy quá khó!'}
+                              title={showClozeTranslation ? 'Ấn để ẩn bản dịch (Phím tắt F2 hoặc `)' : 'Bản dịch bị ẩn để tránh lộ đáp án. Bấm hoặc ấn F2 / ` nếu thấy quá khó!'}
                             >
                               {showClozeTranslation ? (
                                 <>
                                   <EyeOff className="w-4 h-4 text-indigo-500" />
                                   <span>Ẩn bản dịch</span>
+                                  <kbd className="px-1.5 py-0.5 text-[10px] font-mono bg-indigo-100 dark:bg-indigo-900/60 rounded text-indigo-600 dark:text-indigo-300 ml-1 border border-indigo-200/60 dark:border-indigo-700/60">F2 hoặc `</kbd>
                                 </>
                               ) : (
                                 <>
                                   <Eye className="w-4 h-4 text-indigo-500 group-hover:scale-110 transition-transform" />
                                   <span>💡 Khó quá? Bấm xem bản dịch gợi ý</span>
+                                  <kbd className="px-1.5 py-0.5 text-[10px] font-mono bg-slate-200/80 dark:bg-slate-700 rounded text-slate-600 dark:text-slate-300 ml-1 border border-slate-300/60 dark:border-slate-600">F2 hoặc `</kbd>
                                 </>
                               )}
                             </button>
@@ -1950,10 +1960,15 @@ export default function LearnSession() {
                                 initial={{ opacity: 0, y: -6, scale: 0.98 }}
                                 animate={{ opacity: 1, y: 0, scale: 1 }}
                                 transition={{ duration: 0.2 }}
-                                className="w-full p-4 rounded-2xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200/70 dark:border-amber-900/40 text-amber-900 dark:text-amber-200 text-sm leading-relaxed text-left"
+                                className="w-full p-4 rounded-2xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200/70 dark:border-amber-900/40 text-amber-900 dark:text-amber-200 text-sm leading-relaxed text-left flex items-start justify-between gap-3"
                               >
-                                <span className="font-bold text-amber-800 dark:text-amber-300">Dịch nghĩa: </span>
-                                <span className="italic">{currentQ.sentenceCloze.translation}</span>
+                                <div>
+                                  <span className="font-bold text-amber-800 dark:text-amber-300">Dịch nghĩa: </span>
+                                  <span className="italic">{currentQ.sentenceCloze.translation}</span>
+                                </div>
+                                <span className="text-[10px] font-mono text-amber-700/70 dark:text-amber-400/70 bg-amber-100/60 dark:bg-amber-900/40 px-1.5 py-0.5 rounded shrink-0">
+                                  F2/` để ẩn
+                                </span>
                               </motion.div>
                             )}
 
@@ -1962,7 +1977,7 @@ export default function LearnSession() {
                               <div
                                 onClick={() => setShowClozeTranslation(true)}
                                 className="w-full p-3 rounded-2xl bg-slate-100/50 dark:bg-slate-800/40 border border-slate-200/60 dark:border-slate-800 flex items-center justify-between gap-3 cursor-pointer group hover:border-indigo-300 transition-colors"
-                                title="Bấm vào đây để mở xem bản dịch"
+                                title="Bấm vào đây hoặc ấn F2 / ` để mở xem bản dịch"
                               >
                                 <div className="flex items-center gap-2 overflow-hidden text-xs text-slate-400 select-none">
                                   <span className="font-bold text-slate-500 shrink-0">Dịch nghĩa:</span>
@@ -1970,8 +1985,9 @@ export default function LearnSession() {
                                     {currentQ.sentenceCloze.translation}
                                   </span>
                                 </div>
-                                <span className="text-[11px] font-bold text-indigo-600 dark:text-indigo-400 shrink-0 group-hover:underline">
+                                <span className="text-[11px] font-bold text-indigo-600 dark:text-indigo-400 shrink-0 group-hover:underline flex items-center gap-1.5">
                                   Mở xem
+                                  <kbd className="px-1.5 py-0.5 text-[10px] font-mono bg-indigo-50 dark:bg-indigo-900/40 rounded text-indigo-600 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800">F2 / `</kbd>
                                 </span>
                               </div>
                             )}
@@ -2302,6 +2318,14 @@ export default function LearnSession() {
           template={course?.template}
         />
       )}
+
+      {/* Tra cứu từ vựng thông minh: Bôi đen chuột (nhả chuột tra) -> Gom theo sách & 1-chạm Thêm vào Sổ tay */}
+      <SelectionLookupPopover
+        enabled={phase !== 'done'}
+        currentSentence={currentQ?.sentenceCloze?.originalSentence || currentQ?.raw?.exampleKanji || ''}
+        currentSentenceTranslation={currentQ?.sentenceCloze?.translation || currentQ?.raw?.exampleMeaning || ''}
+        languageTemplate={course?.template || 'japanese'}
+      />
     </div>
   );
 }
