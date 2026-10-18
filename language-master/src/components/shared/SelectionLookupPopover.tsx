@@ -532,12 +532,12 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
 
           {/* Footer Popover */}
           <div className="px-3.5 py-2 bg-slate-50/80 dark:bg-slate-800/80 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] text-slate-400">
-            <span className="flex items-center gap-1">
-              <Info className="w-3 h-3 text-slate-400" />
-              <span>Bôi đen bất kỳ từ nào để tra & thêm vào kho</span>
+            <span className="flex items-center gap-1.5">
+              <Info className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
+              <span>Phím tắt Bật / Tắt: <kbd className="px-1.5 py-0.5 rounded bg-indigo-100 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 font-mono font-bold text-[10px]">F9</kbd> hoặc <kbd className="px-1.5 py-0.5 rounded bg-indigo-100 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 font-mono font-bold text-[10px]">Alt+T</kbd></span>
             </span>
-            <span className="text-slate-400 font-mono text-[10px]">
-              Tự động lưu vào Sổ tay
+            <span className="text-slate-400 font-medium text-[10px]">
+              Tự động lưu Sổ tay
             </span>
           </div>
         </motion.div>

@@ -1,10 +1,11 @@
 // src/components/shared/FloatingStudyTimer.tsx
 // Tiện ích Học tập nổi (Compact Floating Study Dock)
 // - Thanh nổi mini siêu gọn (Đồng hồ + Công tắc tra từ 1-chạm) kéo thả cực nhẹ 120 FPS
-// - Modal Popup layout ngang (2 cột side-by-side) hiện đại, cân đối
+// - Modal Popup layout ngang (2 cột side-by-side) phong cách Glassmorphism & Pastel cao cấp
+// - Hỗ trợ phím tắt Bật/Tắt nhanh toàn hệ thống: F9 hoặc Alt + T
 // - Đứng trên mọi lớp (zIndex: 99999)
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { 
   Timer, 
@@ -19,7 +20,8 @@ import {
   BookOpen,
   Globe,
   PlusCircle,
-  ShieldCheck
+  ShieldCheck,
+  Zap
 } from 'lucide-react';
 import SelectionLookupPopover from './SelectionLookupPopover';
 
@@ -50,23 +52,36 @@ export function FloatingStudyTimer() {
   const [toastMsg, setToastMsg] = useState<string | null>(null);
   const toastTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const showToast = (msg: string) => {
+  const showToast = useCallback((msg: string) => {
     if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
     setToastMsg(msg);
     toastTimeoutRef.current = setTimeout(() => {
       setToastMsg(null);
-    }, 2000);
-  };
+    }, 2200);
+  }, []);
 
-  const handleToggleLookup = (e?: React.MouseEvent) => {
+  const handleToggleLookup = useCallback((e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
     setIsLookupEnabled(prev => {
       const next = !prev;
       localStorage.setItem('nihongo_selection_lookup_enabled', String(next));
-      showToast(next ? 'Đã BẬT tra từ khi bôi đen 📖' : 'Đã TẮT tra từ khi bôi đen 💤');
+      showToast(next ? 'Đã BẬT tra từ khi bôi đen (F9) 📖' : 'Đã TẮT tra từ khi bôi đen (F9) 💤');
       return next;
     });
-  };
+  }, [showToast]);
+
+  // Phím tắt Bật/Tắt nhanh toàn hệ thống: F9 hoặc Alt + T
+  useEffect(() => {
+    const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      // Bấm F9 hoặc Alt + T (hoặc Cmd + T)
+      if (e.key === 'F9' || ((e.altKey || e.metaKey) && (e.key === 't' || e.key === 'T'))) {
+        e.preventDefault();
+        handleToggleLookup();
+      }
+    };
+    window.addEventListener('keydown', handleGlobalKeyDown);
+    return () => window.removeEventListener('keydown', handleGlobalKeyDown);
+  }, [handleToggleLookup]);
 
   // Draggable position state
   const [pos, setPos] = useState<{ x: number; y: number }>(() => {
@@ -257,10 +272,11 @@ export function FloatingStudyTimer() {
       {/* Toast thông báo nhanh trạng thái */}
       {toastMsg && (
         <div 
-          className="fixed bottom-20 left-1/2 -translate-x-1/2 px-4 py-2 rounded-2xl bg-slate-900/95 text-white text-xs font-semibold shadow-2xl backdrop-blur-md border border-slate-700/80 animate-in fade-in slide-in-from-bottom-2 duration-150 pointer-events-none"
+          className="fixed bottom-20 left-1/2 -translate-x-1/2 px-4 py-2.5 rounded-2xl bg-slate-900/95 text-white text-xs font-semibold shadow-2xl backdrop-blur-md border border-slate-700/80 animate-in fade-in slide-in-from-bottom-2 duration-150 pointer-events-none flex items-center gap-2"
           style={{ zIndex: 999999 }}
         >
-          {toastMsg}
+          <Sparkles size={14} className="text-amber-400" />
+          <span>{toastMsg}</span>
         </div>
       )}
 
@@ -274,12 +290,12 @@ export function FloatingStudyTimer() {
           top: `${pos.y}px`,
           zIndex: 99999,
         }}
-        className="fixed flex items-center p-1 rounded-full shadow-xl backdrop-blur-md border border-slate-200/90 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 text-slate-700 dark:text-slate-200 select-none touch-none transition-shadow hover:shadow-2xl hover:border-indigo-300 dark:hover:border-indigo-700"
+        className="fixed flex items-center p-1 rounded-full shadow-2xl backdrop-blur-md border border-slate-200/90 dark:border-slate-700/80 bg-white/95 dark:bg-slate-900/95 text-slate-700 dark:text-slate-200 select-none touch-none transition-shadow hover:shadow-indigo-500/20 hover:border-indigo-300 dark:hover:border-indigo-600"
       >
         {/* Khối 1: Nút kéo và Đồng hồ (Bấm mở Modal) */}
         <div
           onPointerDown={handlePointerDown}
-          className={`flex items-center gap-1.5 pl-2 pr-2 py-1 rounded-full cursor-grab active:cursor-grabbing transition-all ${
+          className={`flex items-center gap-1.5 pl-2.5 pr-2 py-1 rounded-full cursor-grab active:cursor-grabbing transition-all ${
             isRunning
               ? 'bg-amber-500/15 text-amber-700 dark:text-amber-300 font-bold'
               : 'hover:bg-slate-100 dark:hover:bg-slate-800'
@@ -312,7 +328,7 @@ export function FloatingStudyTimer() {
               ? 'bg-indigo-50 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100'
               : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
           }`}
-          title={isLookupEnabled ? 'Tra từ khi bôi đen: ĐANG BẬT (Bấm để tắt)' : 'Tra từ khi bôi đen: ĐÃ TẮT (Bấm để bật)'}
+          title={isLookupEnabled ? 'Tra từ khi bôi đen: ĐANG BẬT (Bấm để tắt hoặc nhấn F9)' : 'Tra từ khi bôi đen: ĐÃ TẮT (Bấm để bật hoặc nhấn F9)'}
         >
           <Languages size={15} />
           {/* Chấm đèn trạng thái */}
@@ -330,36 +346,45 @@ export function FloatingStudyTimer() {
       {/* Luôn đứng trên mọi lớp: zIndex: 999999 */}
       {isOpen && (
         <div
-          className="fixed inset-0 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-150"
+          className="fixed inset-0 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-md animate-in fade-in duration-200"
           style={{ zIndex: 999999 }}
           onClick={() => setIsOpen(false)}
         >
           <div
-            className="relative w-full max-w-2xl bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200/80 dark:border-slate-800 overflow-hidden text-slate-800 dark:text-slate-100 animate-in zoom-in-95 duration-150"
+            className="relative w-full max-w-2xl bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200/80 dark:border-slate-800/80 overflow-hidden text-slate-800 dark:text-slate-100 animate-in zoom-in-95 duration-150"
             onClick={e => e.stopPropagation()}
           >
             {/* Header Modal */}
-            <div className="flex items-center justify-between px-6 py-4 bg-slate-50/80 dark:bg-slate-800/80 border-b border-slate-100 dark:border-slate-800">
-              <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-bold text-xs uppercase tracking-wider">
-                <Sparkles size={16} />
-                <span>Tiện Ích Học Tập Nổi</span>
+            <div className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-slate-50 via-indigo-50/30 to-purple-50/20 dark:from-slate-800/90 dark:via-slate-800/70 dark:to-slate-900 border-b border-slate-100 dark:border-slate-800">
+              <div className="flex items-center gap-2.5">
+                <div className="p-2 rounded-xl bg-indigo-500/15 text-indigo-600 dark:text-indigo-400">
+                  <Sparkles size={17} />
+                </div>
+                <div>
+                  <h2 className="font-bold text-sm text-slate-900 dark:text-slate-100 tracking-wide uppercase">
+                    Tiện Ích Học Tập & Tra Từ
+                  </h2>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                    Đồng hồ tập trung Pomodoro & Trợ lý tra cứu vựng đa sách
+                  </p>
+                </div>
               </div>
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
-                className="p-1.5 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                className="p-2 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
                 title="Đóng (Esc)"
               >
                 <X size={18} />
               </button>
             </div>
 
-            {/* Body: LAYOUT SANG NGANG (2 CỘT CÂN ĐỐI) */}
-            <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+            {/* Body: LAYOUT SANG NGANG 2 CỘT CÂN ĐỐI */}
+            <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch bg-slate-50/40 dark:bg-slate-950/20">
               {/* CỘT TRÁI: ĐỒNG HỒ TẬP TRUNG (POMODORO / BẤM GIỜ) */}
-              <div className="space-y-4 flex flex-col justify-between p-4.5 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-800">
+              <div className="space-y-4 flex flex-col justify-between p-4.5 rounded-3xl bg-white dark:bg-slate-850 border border-slate-200/80 dark:border-slate-800 shadow-sm">
                 {/* Mode Switcher */}
-                <div className="flex bg-slate-200/70 dark:bg-slate-700/60 p-1 rounded-2xl">
+                <div className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-2xl border border-slate-200/50 dark:border-slate-700/50">
                   <button
                     type="button"
                     onClick={() => {
@@ -368,7 +393,7 @@ export function FloatingStudyTimer() {
                     }}
                     className={`flex-1 py-1.5 text-xs font-bold rounded-xl transition-all cursor-pointer ${
                       mode === 'pomodoro'
-                        ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-xs'
+                        ? 'bg-indigo-600 text-white shadow-sm'
                         : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
                     }`}
                   >
@@ -382,7 +407,7 @@ export function FloatingStudyTimer() {
                     }}
                     className={`flex-1 py-1.5 text-xs font-bold rounded-xl transition-all cursor-pointer ${
                       mode === 'stopwatch'
-                        ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-xs'
+                        ? 'bg-indigo-600 text-white shadow-sm'
                         : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
                     }`}
                   >
@@ -404,8 +429,8 @@ export function FloatingStudyTimer() {
                         onClick={() => handleSelectPreset(p.min)}
                         className={`flex-1 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer text-center ${
                           pomoPreset === p.min * 60
-                            ? 'bg-indigo-100 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 shadow-2xs'
-                            : 'bg-white dark:bg-slate-800 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200/60 dark:border-slate-700/60'
+                            ? 'bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 shadow-2xs'
+                            : 'bg-slate-50 dark:bg-slate-800 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200/60 dark:border-slate-700/60'
                         }`}
                       >
                         {p.isBreak && <Coffee size={12} className="inline mr-1 -mt-0.5 text-amber-500" />}
@@ -420,7 +445,7 @@ export function FloatingStudyTimer() {
                 )}
 
                 {/* Big Timer Display */}
-                <div className="text-center py-4 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200/70 dark:border-slate-700/70 shadow-2xs">
+                <div className="text-center py-5 bg-gradient-to-b from-slate-50 to-indigo-50/20 dark:from-slate-800/70 dark:to-slate-800/40 rounded-2xl border border-slate-200/70 dark:border-slate-700/70 shadow-2xs">
                   <div
                     className={`text-5xl font-black font-mono tracking-tight transition-colors ${
                       isRunning
@@ -430,7 +455,7 @@ export function FloatingStudyTimer() {
                   >
                     {displayTime}
                   </div>
-                  <p className="text-[11px] text-slate-400 dark:text-slate-500 mt-1.5 font-medium">
+                  <p className="text-[11px] text-slate-400 dark:text-slate-500 mt-2 font-medium">
                     {isRunning
                       ? mode === 'pomodoro'
                         ? '🔥 Đang trong phiên tập trung...'
@@ -444,7 +469,7 @@ export function FloatingStudyTimer() {
                   <button
                     type="button"
                     onClick={handleReset}
-                    className="p-3 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200/80 dark:border-slate-700 text-slate-600 dark:text-slate-300 transition-colors cursor-pointer"
+                    className="p-3.5 rounded-2xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200/80 dark:border-slate-700 text-slate-600 dark:text-slate-300 transition-colors cursor-pointer"
                     title="Đặt lại thời gian"
                   >
                     <RotateCcw size={16} />
@@ -452,10 +477,10 @@ export function FloatingStudyTimer() {
                   <button
                     type="button"
                     onClick={() => setIsRunning(r => !r)}
-                    className={`flex-1 py-3 px-4 rounded-2xl font-bold flex items-center justify-center gap-2 shadow-md transition-all text-sm active:scale-95 cursor-pointer ${
+                    className={`flex-1 py-3 px-4 rounded-2xl font-bold flex items-center justify-center gap-2 shadow-lg transition-all text-sm active:scale-95 cursor-pointer ${
                       isRunning
                         ? 'bg-amber-500 hover:bg-amber-600 text-white shadow-amber-500/25'
-                        : 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-indigo-600/25'
+                        : 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white shadow-indigo-600/30'
                     }`}
                   >
                     {isRunning ? (
@@ -473,13 +498,13 @@ export function FloatingStudyTimer() {
                 </div>
               </div>
 
-              {/* CỘT PHẢI: TRỢ LÝ TRA TỪ KHI BÔI ĐEN (NẰM NGANG) */}
-              <div className="space-y-4 flex flex-col justify-between p-4.5 rounded-2xl bg-indigo-50/60 dark:bg-slate-800/50 border border-indigo-100/90 dark:border-slate-700/80">
-                {/* Header Tra Từ */}
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex items-center gap-2.5">
-                    <div className="p-2.5 rounded-2xl bg-indigo-100 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-400 shrink-0">
-                      <Languages size={20} />
+              {/* CỘT PHẢI: TRỢ LÝ TRA TỪ KHI BÔI ĐEN */}
+              <div className="space-y-4 flex flex-col justify-between p-4.5 rounded-3xl bg-white dark:bg-slate-850 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                {/* Header Tra Từ & Nút Switch chuẩn phong cách iOS */}
+                <div className="flex items-center justify-between gap-3 p-3 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/40 border border-indigo-100/90 dark:border-indigo-900/50">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2.5 rounded-2xl bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 shrink-0">
+                      <Languages size={22} />
                     </div>
                     <div>
                       <h3 className="font-bold text-sm text-slate-900 dark:text-slate-100">
@@ -497,29 +522,48 @@ export function FloatingStudyTimer() {
                     </div>
                   </div>
 
-                  {/* Switch Toggle */}
+                  {/* Nút Switch chuẩn kích thước 56x32px (chuẩn Apple Switch, không bao giờ bị bẹp) */}
                   <button
                     type="button"
                     onClick={() => handleToggleLookup()}
-                    className={`w-12 h-6.5 flex items-center rounded-full p-1 transition-colors cursor-pointer shrink-0 ${
-                      isLookupEnabled ? 'bg-indigo-600' : 'bg-slate-300 dark:bg-slate-600'
+                    className={`w-14 h-8 rounded-full p-1 transition-colors cursor-pointer shrink-0 relative flex items-center ${
+                      isLookupEnabled 
+                        ? 'bg-indigo-600' 
+                        : 'bg-slate-300 dark:bg-slate-600'
                     }`}
-                    title={isLookupEnabled ? 'Nhấp để Tắt' : 'Nhấp để Bật'}
+                    title={isLookupEnabled ? 'Bấm để Tắt tra từ (F9)' : 'Bấm để Bật tra từ (F9)'}
                   >
                     <div
-                      className={`bg-white w-4.5 h-4.5 rounded-full shadow-md transform transition-transform ${
-                        isLookupEnabled ? 'translate-x-5.5' : 'translate-x-0'
+                      className={`w-6 h-6 rounded-full bg-white shadow-md transform transition-transform duration-200 ease-in-out ${
+                        isLookupEnabled ? 'translate-x-6' : 'translate-x-0'
                       }`}
                     />
                   </button>
                 </div>
 
+                {/* Banner phím tắt Bật/Tắt nhanh F9 hoặc Alt + T */}
+                <div className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/70 dark:border-slate-700 flex items-center justify-between text-xs">
+                  <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
+                    <Zap size={15} className="text-amber-500" />
+                    <span>Phím tắt Bật / Tắt nhanh:</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <kbd className="px-2 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 font-mono font-bold text-xs shadow-2xs">
+                      F9
+                    </kbd>
+                    <span className="text-slate-400 text-[11px]">hoặc</span>
+                    <kbd className="px-2 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 font-mono font-bold text-xs shadow-2xs">
+                      Alt + T
+                    </kbd>
+                  </div>
+                </div>
+
                 {/* Danh sách tính năng nổi bật */}
-                <div className="space-y-2.5 bg-white/70 dark:bg-slate-900/50 p-3.5 rounded-2xl border border-indigo-100/60 dark:border-slate-700/50 text-xs">
+                <div className="space-y-2 bg-slate-50/50 dark:bg-slate-900/50 p-3.5 rounded-2xl border border-slate-200/60 dark:border-slate-800 text-xs">
                   <div className="flex items-start gap-2.5 text-slate-700 dark:text-slate-300">
                     <BookOpen size={15} className="text-indigo-500 shrink-0 mt-0.5" />
                     <div>
-                      <span className="font-bold text-slate-800 dark:text-slate-200">Tra Đa Sách trong hệ thống:</span>
+                      <span className="font-bold text-slate-800 dark:text-slate-200">Gom Đa Sách trong hệ thống:</span>
                       <p className="text-[11px] text-slate-500 dark:text-slate-400">
                         Quét toàn bộ giáo trình chứa từ bôi đen kèm ví dụ và cấp độ.
                       </p>
@@ -529,9 +573,9 @@ export function FloatingStudyTimer() {
                   <div className="flex items-start gap-2.5 text-slate-700 dark:text-slate-300">
                     <Globe size={15} className="text-emerald-500 shrink-0 mt-0.5" />
                     <div>
-                      <span className="font-bold text-slate-800 dark:text-slate-200">Dịch trực tuyến mở rộng:</span>
+                      <span className="font-bold text-slate-800 dark:text-slate-200">Dịch từ vựng & câu ví dụ dài:</span>
                       <p className="text-[11px] text-slate-500 dark:text-slate-400">
-                        Tự động dịch cả từ vựng và câu ví dụ dài sang tiếng Việt.
+                        Tự động dịch cả từ đơn và cả câu ví dụ dài sang tiếng Việt.
                       </p>
                     </div>
                   </div>
@@ -541,16 +585,16 @@ export function FloatingStudyTimer() {
                     <div>
                       <span className="font-bold text-slate-800 dark:text-slate-200">1-Chạm lưu vào Sổ tay:</span>
                       <p className="text-[11px] text-slate-500 dark:text-slate-400">
-                        Lưu từ kèm ngữ cảnh gốc vào Sổ tay cá nhân ngay lập tức.
+                        Lưu từ kèm ngữ cảnh gốc vào Sổ tay từ vựng của bạn.
                       </p>
                     </div>
                   </div>
                 </div>
 
                 {/* Chế độ an toàn phòng thi */}
-                <div className="flex items-center gap-1.5 text-[11px] text-slate-500 dark:text-slate-400 pt-1">
+                <div className="flex items-center gap-1.5 text-[11px] text-slate-500 dark:text-slate-400 px-1">
                   <ShieldCheck size={14} className="text-emerald-500 shrink-0" />
-                  <span>Tự động bảo mật: Tắt trong các bài thi thử để tránh gian lận.</span>
+                  <span>Tự động bảo mật: Tắt trong bài thi thử để chống gian lận.</span>
                 </div>
               </div>
             </div>
