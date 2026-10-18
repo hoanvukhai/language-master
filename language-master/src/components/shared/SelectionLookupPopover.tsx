@@ -48,11 +48,22 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
   const [externalResult, setExternalResult] = useState<ExternalLookupResult | null>(null);
   const [isLoadingExternal, setIsLoadingExternal] = useState(false);
 
+  // Trạng thái nút chạm thông minh trên Điện thoại (Smart Touch Action Button)
+  const [touchTrigger, setTouchTrigger] = useState<{
+    x: number;
+    y: number;
+    placeAbove: boolean;
+    text: string;
+    rect: DOMRect;
+  } | null>(null);
+
   // Trạng thái lưu từ
   const [savingKey, setSavingKey] = useState<string | null>(null);
   const [savedCoursesMap, setSavedCoursesMap] = useState<Record<string, string>>({});
 
   const popoverRef = useRef<HTMLDivElement | null>(null);
+  const touchTriggerRef = useRef<HTMLDivElement | null>(null);
+  const lastTouchPosRef = useRef<{ x: number; y: number } | null>(null);
 
   // Phát âm TTS
   const speakText = useCallback((text: string) => {
@@ -73,26 +84,78 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
     setIsOpen(false);
     setSelectedText('');
     setCoords(null);
+    setTouchTrigger(null);
   }, []);
 
-  // Bắt sự kiện bôi đen (Hỗ trợ cả chuột mouseup và ngón tay cảm ứng touchend trên Mobile)
-  useEffect(() => {
-    if (!enabled) return;
+  // Thực thi mở Popover tra cứu với văn bản được chỉ định
+  const executeLookup = useCallback((text: string, sourceRect?: DOMRect) => {
+    const isMobile = window.innerWidth < 640;
+    const popoverWidth = isMobile ? Math.min(360, window.innerWidth - 24) : 380;
+    const popoverHeight = 340;
 
-    const checkAndTriggerLookup = (targetEl: HTMLElement | null) => {
-      // 1. Nếu click bên trong popover hiện tại thì không làm gì
+    let x = isMobile
+      ? (window.innerWidth - popoverWidth) / 2
+      : sourceRect 
+        ? sourceRect.left + sourceRect.width / 2 - popoverWidth / 2
+        : (window.innerWidth - popoverWidth) / 2;
+    x = Math.max(12, Math.min(window.innerWidth - popoverWidth - 12, x));
+
+    const placeAbove = sourceRect ? sourceRect.top >= popoverHeight + 20 : true;
+    const y = sourceRect 
+      ? (placeAbove ? sourceRect.top - 10 : sourceRect.bottom + 10)
+      : 80;
+
+    setSelectedText(text);
+    setCoords({ x, y, placeAbove, width: popoverWidth });
+    setIsOpen(true);
+    setSavedCoursesMap({});
+    setTouchTrigger(null);
+
+    // 1. Tra cứu Trong Hệ Thống (Đa Sách)
+    const sysLookup = lookupInSystemMultiBook(text);
+    setSystemGroups(sysLookup.groups);
+
+    if (sysLookup.groups.length === 0) {
+      setActiveTab('external');
+    } else {
+      setActiveTab('system');
+    }
+
+    // 2. Tra cứu Ngoài Hệ Thống (Online)
+    setIsLoadingExternal(true);
+    setExternalResult(null);
+    lookupExternal(text, languageTemplate)
+      .then(res => {
+        setExternalResult(res);
+      })
+      .finally(() => {
+        setIsLoadingExternal(false);
+      });
+  }, [languageTemplate]);
+
+  // Bắt sự kiện bôi đen:
+  // - PC (Chuột): Nhả chuột (mouseup) -> Tự động mở Popover ngay lập tức
+  // - Điện thoại (Cảm ứng): Khi bôi đen -> Nổi nút Chạm Thông Minh [🔍 Tra từ: "text"] ngay trên chữ (Touch Action Bubble)
+  useEffect(() => {
+    if (!enabled) {
+      setTouchTrigger(null);
+      return;
+    }
+
+    let debounceTimer: ReturnType<typeof setTimeout> | null = null;
+
+    const evaluateSelection = (targetEl: HTMLElement | null, isTouchDevice: boolean) => {
+      // 1. Không can thiệp nếu thao tác trong chính Popover hoặc nút Chạm
       if (popoverRef.current && targetEl && popoverRef.current.contains(targetEl)) {
         return;
       }
+      if (touchTriggerRef.current && targetEl && touchTriggerRef.current.contains(targetEl)) {
+        return;
+      }
 
-      // 2. Không kích hoạt nếu đang nhả chuột/tay trong input / textarea / button / link / nav / header
+      // 2. Không kích hoạt nếu đang nhả chuột/tay trong input / textarea
       if (
         targetEl && (
-          targetEl.closest('button') ||
-          targetEl.closest('a') ||
-          targetEl.closest('nav') ||
-          targetEl.closest('header') ||
-          targetEl.closest('footer') ||
           targetEl.closest('[data-no-selection-lookup]') ||
           ['input', 'textarea', 'select'].includes(targetEl.tagName.toLowerCase())
         )
@@ -103,83 +166,97 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
       const selection = window.getSelection();
       const text = selection?.toString().trim();
 
-      // Chỉ kích hoạt khi text có độ dài 1 - 350 ký tự hợp lệ (hỗ trợ cả từ vựng và câu ví dụ dài)
+      // Kiểm tra độ dài hợp lệ (1 - 350 ký tự)
       if (!text || text.length < 1 || text.length > 350) {
-        // Nếu click ra ngoài vùng chọn và popover đang mở thì đóng
-        if (isOpen) {
+        setTouchTrigger(null);
+        if (isOpen && targetEl && !popoverRef.current?.contains(targetEl)) {
           handleClose();
         }
         return;
       }
 
-      // Bỏ qua nếu chỉ là số hoặc các ký tự đặc biệt vô nghĩa (VD: "123", "...", "---")
+      // Bỏ qua nếu toàn số và ký tự vô nghĩa
       if (/^[\d\s.,\/#!$%\^&\*;:{}=\-_`~()]+$/.test(text)) {
+        setTouchTrigger(null);
         return;
       }
 
-      // Lấy bounding rect của vùng text được bôi đen
       if (!selection || selection.rangeCount === 0) return;
       const range = selection.getRangeAt(0);
-      const rect = range.getBoundingClientRect();
-
+      let rect = range.getBoundingClientRect();
+      if (rect.width === 0 && rect.height === 0) {
+        const rects = range.getClientRects();
+        if (rects.length > 0) {
+          rect = rects[0];
+        } else if (lastTouchPosRef.current) {
+          rect = {
+            left: lastTouchPosRef.current.x - 20,
+            right: lastTouchPosRef.current.x + 20,
+            top: lastTouchPosRef.current.y - 20,
+            bottom: lastTouchPosRef.current.y + 20,
+            width: 40,
+            height: 40,
+          } as DOMRect;
+        }
+      }
       if (rect.width === 0 && rect.height === 0) return;
 
-      const isMobile = window.innerWidth < 640;
-      const popoverWidth = isMobile ? Math.min(360, window.innerWidth - 24) : 380;
-      const popoverHeight = 340;
-      
-      // Tính vị trí X: trên mobile căn giữa màn hình cho cân đối, trên desktop căn giữa vùng chọn
-      let x = isMobile 
-        ? (window.innerWidth - popoverWidth) / 2
-        : rect.left + rect.width / 2 - popoverWidth / 2;
-      x = Math.max(12, Math.min(window.innerWidth - popoverWidth - 12, x));
+      const isMobile = window.innerWidth < 768 || isTouchDevice;
 
-      // Tính vị trí Y (ưu tiên hiển thị phía trên nếu đủ chỗ, ngược lại hiển thị phía dưới)
-      const placeAbove = rect.top >= popoverHeight + 20;
-      const y = placeAbove ? rect.top - 10 : rect.bottom + 10;
+      if (isMobile) {
+        // TRÊN ĐIỆN THOẠI: Hiển thị Nút Chạm Thông Minh (Touch Action Pill)
+        const placeAbove = rect.top >= 48;
+        let x = rect.left + rect.width / 2;
+        x = Math.max(65, Math.min(window.innerWidth - 65, x));
+        const y = placeAbove ? rect.top - 8 : rect.bottom + 8;
 
-      setSelectedText(text);
-      setCoords({ x, y, placeAbove, width: popoverWidth });
-      setIsOpen(true);
-      setSavedCoursesMap({});
-
-      // 1. Tra cứu Trong Hệ Thống (Đa Sách)
-      const sysLookup = lookupInSystemMultiBook(text);
-      setSystemGroups(sysLookup.groups);
-
-      // Nếu trong hệ thống không có sách nào, tự động chuyển sang tab ngoài để người dùng xem luôn
-      if (sysLookup.groups.length === 0) {
-        setActiveTab('external');
-      } else {
-        setActiveTab('system');
-      }
-
-      // 2. Tra cứu Ngoài Hệ Thống (Online)
-      setIsLoadingExternal(true);
-      setExternalResult(null);
-      lookupExternal(text, languageTemplate)
-        .then(res => {
-          setExternalResult(res);
-        })
-        .finally(() => {
-          setIsLoadingExternal(false);
+        setTouchTrigger({
+          x,
+          y,
+          placeAbove,
+          text,
+          rect,
         });
+      } else {
+        // TRÊN MÁY TÍNH: Mở ngay Popover
+        executeLookup(text, rect);
+      }
     };
 
+    // 1. Sự kiện TouchStart (Ghi nhận tọa độ chạm ngón tay)
+    const handleTouchStart = (e: TouchEvent) => {
+      const touch = e.touches[0];
+      if (touch) {
+        lastTouchPosRef.current = { x: touch.clientX, y: touch.clientY };
+      }
+    };
+
+    // 2. Sự kiện MouseUp (Desktop PC chuột)
     const handleMouseUp = (e: MouseEvent) => {
-      checkAndTriggerLookup(e.target as HTMLElement | null);
+      evaluateSelection(e.target as HTMLElement | null, false);
     };
 
+    // 3. Sự kiện SelectionChange (Chuẩn W3C trên Mobile cho cả iOS Safari và Android Chrome)
+    const handleSelectionChange = () => {
+      if (debounceTimer) clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        const isTouch = window.innerWidth < 768 || ('ontouchstart' in window);
+        if (isTouch) {
+          evaluateSelection(null, true);
+        }
+      }, 200);
+    };
+
+    // 4. Sự kiện TouchEnd (Mobile)
     const handleTouchEnd = (e: TouchEvent) => {
-      // Delay nhẹ 80ms để iOS/Android hoàn tất selection range sau khi nhấc ngón tay
       setTimeout(() => {
         const touch = e.changedTouches[0];
         let targetEl = e.target as HTMLElement | null;
         if (touch && (!targetEl || targetEl === document.body)) {
           targetEl = document.elementFromPoint(touch.clientX, touch.clientY) as HTMLElement | null;
         }
-        checkAndTriggerLookup(targetEl);
-      }, 80);
+        evaluateSelection(targetEl, true);
+      }, 100);
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -188,15 +265,21 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
       }
     };
 
+    document.addEventListener('touchstart', handleTouchStart, { passive: true });
     document.addEventListener('mouseup', handleMouseUp);
+    document.addEventListener('selectionchange', handleSelectionChange);
     document.addEventListener('touchend', handleTouchEnd);
     window.addEventListener('keydown', handleKeyDown);
+
     return () => {
+      if (debounceTimer) clearTimeout(debounceTimer);
+      document.removeEventListener('touchstart', handleTouchStart);
       document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener('selectionchange', handleSelectionChange);
       document.removeEventListener('touchend', handleTouchEnd);
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [enabled, isOpen, handleClose, languageTemplate]);
+  }, [enabled, isOpen, handleClose, executeLookup]);
 
   // Lưu từ vào sổ tay (1 chạm)
   const handleSaveWord = async (params: {
@@ -228,23 +311,56 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
     }
   };
 
-  if (!isOpen || !coords) return null;
+  if ((!isOpen || !coords) && !touchTrigger) return null;
 
   return createPortal(
-    <AnimatePresence>
-      <div 
-        ref={popoverRef}
-        className="fixed text-slate-800 dark:text-slate-100 font-sans pointer-events-auto"
-        style={{
-          left: `${coords.x}px`,
-          top: coords.placeAbove ? 'auto' : `${coords.y}px`,
-          bottom: coords.placeAbove ? `${window.innerHeight - coords.y}px` : 'auto',
-          width: coords.width ? `${coords.width}px` : '380px',
-          maxWidth: 'calc(100vw - 24px)',
-          zIndex: 999999,
-        }}
-        onMouseDown={e => e.stopPropagation()}
-      >
+    <>
+      {/* NÚT CHẠM THÔNG MINH TRÊN ĐIỆN THOẠI (Smart Touch Action Button) */}
+      {touchTrigger && !isOpen && (
+        <div
+          ref={touchTriggerRef}
+          className="fixed pointer-events-auto animate-in zoom-in-95 duration-150"
+          style={{
+            left: `${touchTrigger.x}px`,
+            top: `${touchTrigger.y}px`,
+            transform: touchTrigger.placeAbove ? 'translate(-50%, -100%)' : 'translate(-50%, 0)',
+            zIndex: 999998,
+          }}
+          onMouseDown={e => e.stopPropagation()}
+          onTouchStart={e => e.stopPropagation()}
+        >
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              executeLookup(touchTrigger.text, touchTrigger.rect);
+            }}
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-gradient-to-r from-indigo-600 via-indigo-700 to-purple-600 text-white shadow-xl shadow-indigo-500/40 text-xs font-bold active:scale-95 transition-all cursor-pointer border border-white/25 select-none whitespace-nowrap"
+          >
+            <Languages size={15} className="text-indigo-200 animate-pulse" />
+            <span>Tra từ</span>
+            <span className="max-w-[100px] truncate opacity-90 font-normal">"{touchTrigger.text}"</span>
+          </button>
+        </div>
+      )}
+
+      {/* POPOVER TRA CỨU CHI TIẾT */}
+      {isOpen && coords && (
+        <AnimatePresence>
+          <div 
+            ref={popoverRef}
+            className="fixed text-slate-800 dark:text-slate-100 font-sans pointer-events-auto"
+            style={{
+              left: `${coords.x}px`,
+              top: coords.placeAbove ? 'auto' : `${coords.y}px`,
+              bottom: coords.placeAbove ? `${window.innerHeight - coords.y}px` : 'auto',
+              width: coords.width ? `${coords.width}px` : '380px',
+              maxWidth: 'calc(100vw - 24px)',
+              zIndex: 999999,
+            }}
+            onMouseDown={e => e.stopPropagation()}
+          >
         <motion.div
           initial={{ opacity: 0, scale: 0.92, y: coords.placeAbove ? 8 : -8 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -564,9 +680,11 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
           </div>
         </motion.div>
       </div>
-    </AnimatePresence>,
-    document.body
-  );
+    </AnimatePresence>
+  )}
+</>,
+document.body
+);
 };
 
 export default SelectionLookupPopover;

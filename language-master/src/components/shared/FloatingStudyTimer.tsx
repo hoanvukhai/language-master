@@ -43,10 +43,11 @@ export function FloatingStudyTimer() {
   // Stopwatch
   const [stopwatchSeconds, setStopwatchSeconds] = useState<number>(0);
 
-  // Chế độ Bôi đen tra từ (Mặc định: TẮT theo yêu cầu, lưu vào localStorage)
+  // Chế độ Bôi đen tra từ (Mặc định: BẬT SẴN để dùng được ngay, lưu vào localStorage)
   const [isLookupEnabled, setIsLookupEnabled] = useState<boolean>(() => {
-    if (typeof window === 'undefined') return false;
-    return localStorage.getItem('nihongo_selection_lookup_enabled') === 'true';
+    if (typeof window === 'undefined') return true;
+    const saved = localStorage.getItem('nihongo_selection_lookup_enabled');
+    return saved !== 'false';
   });
 
   // Toast thông báo nhỏ
