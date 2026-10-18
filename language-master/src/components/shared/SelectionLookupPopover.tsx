@@ -213,12 +213,13 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
     <AnimatePresence>
       <div 
         ref={popoverRef}
-        className="fixed z-99999 text-slate-800 dark:text-slate-100 font-sans"
+        className="fixed text-slate-800 dark:text-slate-100 font-sans pointer-events-auto"
         style={{
           left: `${coords.x}px`,
           top: coords.placeAbove ? 'auto' : `${coords.y}px`,
           bottom: coords.placeAbove ? `${window.innerHeight - coords.y}px` : 'auto',
           width: '380px',
+          zIndex: 999999,
         }}
         onMouseDown={e => e.stopPropagation()}
       >
