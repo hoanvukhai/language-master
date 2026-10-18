@@ -103,8 +103,8 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
       const selection = window.getSelection();
       const text = selection?.toString().trim();
 
-      // Chỉ kích hoạt khi text có độ dài 1 - 50 ký tự hợp lệ
-      if (!text || text.length < 1 || text.length > 50) {
+      // Chỉ kích hoạt khi text có độ dài 1 - 350 ký tự hợp lệ (hỗ trợ cả từ vựng và câu ví dụ dài)
+      if (!text || text.length < 1 || text.length > 350) {
         // Nếu click ra ngoài vùng chọn và popover đang mở thì đóng
         if (isOpen) {
           handleClose();
