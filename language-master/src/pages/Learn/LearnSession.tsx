@@ -745,12 +745,26 @@ export default function LearnSession() {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if ((e.target as HTMLElement)?.tagName === 'INPUT') return;
+      const isInput = (e.target as HTMLElement)?.tagName === 'INPUT' || (e.target as HTMLElement)?.tagName === 'TEXTAREA';
+      const cQ = currentQRef2.current;
+
+      // Phím tắt Toggle bản dịch câu ví dụ / câu hỏi:
+      // - F2: Hoạt động MỌI LÚC (kể cả khi đang focus gõ trong input) giúp xem gợi ý tức thì mà không mất dấu nháy gõ!
+      // - Phím backtick ` : Chỉ nhận khi KHÔNG ở trong input (để tránh vô tình gõ ký tự vào ô text)
+      const isF2 = e.key === 'F2';
+      const isBacktick = !isInput && (e.key === '`' || e.code === 'Backquote');
+
+      if ((isF2 || isBacktick) && cQ?.sentenceCloze?.translation) {
+        e.preventDefault();
+        setShowClozeTranslation(prev => !prev);
+        return;
+      }
+
+      if (isInput) return;
 
       const ph = phaseRef2.current;
       const pidx = previewIdxRef2.current;
       const fb = feedbackRef2.current;
-      const cQ = currentQRef2.current;
       const opts = quizOptionsRef2.current;
       const batch = currentBatchRef.current;
 
@@ -771,13 +785,6 @@ export default function LearnSession() {
       }
 
       if (ph !== 'test' || !cQ) return;
-
-      // Phím tắt Toggle bản dịch câu ví dụ / câu hỏi (F2 hoặc phím backtick `): 1 nút duy nhất, tiện lợi không cần dùng chuột
-      if ((e.key === 'F2' || e.key === '`' || e.code === 'Backquote') && cQ.sentenceCloze?.translation) {
-        e.preventDefault();
-        setShowClozeTranslation(prev => !prev);
-        return;
-      }
 
       // Nút Tiếp Tục (Khi đang hiện Feedback hoặc Re-learn Preview)
       if (fb !== 'none' || cQ.phase === 'preview') {
