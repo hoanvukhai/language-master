@@ -14,6 +14,7 @@ import SelectionLookupPopover from '../../components/shared/SelectionLookupPopov
 
 
 import * as wanakana from 'wanakana';
+import { maskTargetInSentence } from '../../lib/cloze/sentenceClozeEngine';
 import { formatDualIpa, checkEnglishWordMatch, formatWordVariantsDisplay } from '../../lib/english/ipaHelper';
 import { speakWithVoiceEngine } from '../../lib/audio/voiceEngine';
 import {
@@ -67,6 +68,7 @@ export interface SentenceClozeInfo {
   maskedSentence: string;
   originalSentence: string;
   targetWord: string;
+  maskedWord?: string;
   translation?: string;
 }
 
@@ -211,23 +213,6 @@ function getWordExamplesList(r: RawItem): { sentence: string; translation: strin
   return list;
 }
 
-/** Đục lỗ từ mục tiêu trong câu ví dụ */
-function maskTargetInSentence(sentence: string, targetWord: string): string {
-  if (!sentence || !targetWord) return sentence;
-  const escaped = targetWord.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  // Thử match từ gốc hoặc có đuôi chia từ
-  const regexWord = new RegExp(`\\b${escaped}[a-z]*\\b`, 'i');
-  if (regexWord.test(sentence)) {
-    return sentence.replace(regexWord, '[ _____ ]');
-  }
-  // Thử match substring
-  const regexSub = new RegExp(escaped, 'i');
-  if (regexSub.test(sentence)) {
-    return sentence.replace(regexSub, '[ _____ ]');
-  }
-  return `${sentence} [ _____ ]`;
-}
-
 /** Xây queue test cho 1 batch */
 function buildBatchQueue(items: RawItem[], mode: string, strictSentenceTyping: boolean = false): QueueItem[] {
   const getTypingDir = (r: RawItem) => r.isSingleKanjiChar ? 'fwd' : 'rev';
@@ -237,23 +222,26 @@ function buildBatchQueue(items: RawItem[], mode: string, strictSentenceTyping: b
     if (mode === 'review') {
       // Mỗi từ 1 câu test typing đục lỗ
       return shuffleArray(items.map(r => {
-        const exList = getWordExamplesList(r);
-        if (exList.length > 0) {
-          const chosen = exList[Math.floor(Math.random() * exList.length)];
-          return {
-            raw: r,
-            phase: 'typing' as QueuePhase,
-            direction: 'rev' as const,
-            attempt: 0,
-            sentenceCloze: {
-              maskedSentence: maskTargetInSentence(chosen.sentence, r.kanji),
-              originalSentence: chosen.sentence,
-              targetWord: r.kanji,
-              translation: chosen.translation,
-            },
-          };
+        const exList = shuffleArray(getWordExamplesList(r));
+        for (const ex of exList) {
+          const res = maskTargetInSentence(ex.sentence, r.kanji);
+          if (res) {
+            return {
+              raw: r,
+              phase: 'typing' as QueuePhase,
+              direction: 'rev' as const,
+              attempt: 0,
+              sentenceCloze: {
+                maskedSentence: res.maskedSentence,
+                originalSentence: ex.sentence,
+                targetWord: r.kanji,
+                maskedWord: res.maskedWord,
+                translation: ex.translation,
+              },
+            };
+          }
         }
-        // Fallback: nếu không có ví dụ thì gõ từ thông thường
+        // Fallback: nếu không có ví dụ (hoặc không đục lỗ được) thì gõ từ thông thường
         return {
           raw: r,
           phase: 'typing' as QueuePhase,
@@ -268,26 +256,34 @@ function buildBatchQueue(items: RawItem[], mode: string, strictSentenceTyping: b
     const testItems: QueueItem[] = [];
     items.forEach(r => {
       const exList = shuffleArray(getWordExamplesList(r));
-      if (exList.length > 0) {
+      const validClozeList: SentenceClozeInfo[] = [];
+      for (const ex of exList) {
+        const res = maskTargetInSentence(ex.sentence, r.kanji);
+        if (res) {
+          validClozeList.push({
+            maskedSentence: res.maskedSentence,
+            originalSentence: ex.sentence,
+            targetWord: r.kanji,
+            maskedWord: res.maskedWord,
+            translation: ex.translation,
+          });
+        }
+      }
+
+      if (validClozeList.length > 0) {
         // Tạo 3-4 câu hỏi typing cloze
-        const numTests = Math.max(3, Math.min(exList.length, 4));
+        const numTests = Math.max(3, Math.min(validClozeList.length, 4));
         for (let i = 0; i < numTests; i++) {
-          const chosen = exList[i % exList.length];
           testItems.push({
             raw: r,
             phase: 'typing' as QueuePhase,
             direction: 'rev' as const,
             attempt: 0,
-            sentenceCloze: {
-              maskedSentence: maskTargetInSentence(chosen.sentence, r.kanji),
-              originalSentence: chosen.sentence,
-              targetWord: r.kanji,
-              translation: chosen.translation,
-            },
+            sentenceCloze: validClozeList[i % validClozeList.length],
           });
         }
       } else {
-        // Fallback: gõ từ thường nếu không có câu ví dụ
+        // Fallback: gõ từ thường nếu không có câu ví dụ đục lỗ được
         testItems.push({ raw: r, phase: 'typing' as QueuePhase, direction: getTypingDir(r), attempt: 0 });
         testItems.push({ raw: r, phase: 'typing' as QueuePhase, direction: getTypingDir(r), attempt: 0 });
         testItems.push({ raw: r, phase: 'typing' as QueuePhase, direction: getTypingDir(r), attempt: 0 });
