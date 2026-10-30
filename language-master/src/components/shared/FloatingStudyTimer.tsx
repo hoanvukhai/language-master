@@ -6,7 +6,6 @@
 // - Đứng trên mọi lớp (zIndex: 99999)
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { useLocation } from 'react-router-dom';
 import { 
   Timer, 
   Play, 
@@ -28,10 +27,6 @@ import SelectionLookupPopover from './SelectionLookupPopover';
 type TimerMode = 'pomodoro' | 'stopwatch';
 
 export function FloatingStudyTimer() {
-  const location = useLocation();
-  // Chỉ loại trừ /learn/session vì màn hình này tự quản lý SelectionLookupPopover kèm ngữ cảnh câu ví dụ của thẻ
-  const isLearnSession = location.pathname.startsWith('/learn/session');
-
   const [isOpen, setIsOpen] = useState(false);
   const [mode, setMode] = useState<TimerMode>('pomodoro');
   const [mobileTab, setMobileTab] = useState<'timer' | 'lookup'>('timer');
@@ -100,7 +95,10 @@ export function FloatingStudyTimer() {
     }
 
     const selection = window.getSelection();
-    const text = selection?.toString().trim();
+    let text = selection?.toString().trim();
+    if (!text && selectedSnippet) {
+      text = selectedSnippet;
+    }
 
     if (text && text.length >= 1 && text.length <= 350 && !/^[\d\s.,\/#!$%\^&\*;:{}=\-_`~()]+$/.test(text)) {
       // Có text đang được chọn -> Bắn event để Popover tra cứu mở ra ngay tức khắc!
@@ -697,9 +695,9 @@ export function FloatingStudyTimer() {
         </div>
       )}
 
-      {/* Popover tra cứu khi bôi đen (hoạt động khi BẬT trên toàn hệ thống và trong tất cả bài thi/kiểm tra) */}
+      {/* Popover tra cứu khi bôi đen (hoạt động khi BẬT trên toàn hệ thống không loại trừ bất kỳ trang nào) */}
       <SelectionLookupPopover
-        enabled={isLookupEnabled && !isLearnSession}
+        enabled={isLookupEnabled}
       />
     </>
   );

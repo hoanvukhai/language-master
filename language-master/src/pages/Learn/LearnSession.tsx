@@ -10,7 +10,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Volume2, RotateCcw, Sparkles, ChevronRight, X, ChevronsUp, MousePointerClick, Keyboard, Check, Swords, BookOpen, ArrowLeft, Edit3, Eye, EyeOff } from 'lucide-react';
 import CustomWordModal from '../../components/course/CustomWordModal';
 import { updateWordInCustomCourse, type CustomWord } from '../../lib/customCourses/customCourseService';
-import SelectionLookupPopover from '../../components/shared/SelectionLookupPopover';
+
 
 
 import * as wanakana from 'wanakana';
@@ -2321,14 +2321,6 @@ export default function LearnSession() {
           template={course?.template}
         />
       )}
-
-      {/* Tra cứu từ vựng thông minh: Bôi đen chuột (nhả chuột tra) -> Gom theo sách & 1-chạm Thêm vào Sổ tay */}
-      <SelectionLookupPopover
-        enabled={true}
-        currentSentence={currentQ?.sentenceCloze?.originalSentence || currentQ?.raw?.exampleKanji || ''}
-        currentSentenceTranslation={currentQ?.sentenceCloze?.translation || currentQ?.raw?.exampleMeaning || ''}
-        languageTemplate={course?.template || 'japanese'}
-      />
     </div>
   );
 }
