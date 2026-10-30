@@ -2324,7 +2324,7 @@ export default function LearnSession() {
 
       {/* Tra cứu từ vựng thông minh: Bôi đen chuột (nhả chuột tra) -> Gom theo sách & 1-chạm Thêm vào Sổ tay */}
       <SelectionLookupPopover
-        enabled={phase !== 'done'}
+        enabled={true}
         currentSentence={currentQ?.sentenceCloze?.originalSentence || currentQ?.raw?.exampleKanji || ''}
         currentSentenceTranslation={currentQ?.sentenceCloze?.translation || currentQ?.raw?.exampleMeaning || ''}
         languageTemplate={course?.template || 'japanese'}

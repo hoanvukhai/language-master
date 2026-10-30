@@ -295,7 +295,7 @@ export default function GrammarFlashcard() {
             transition={{ duration: 0.2 }}
           >
             <div
-              className="relative cursor-pointer select-none"
+              className="relative cursor-pointer"
               onClick={() => setIsFlipped(f => !f)}
             >
               <div className={`min-h-[22rem] rounded-3xl p-8 flex flex-col items-center justify-center text-center shadow-xl border-2 transition-colors duration-300 ${

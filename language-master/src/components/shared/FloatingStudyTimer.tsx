@@ -29,7 +29,8 @@ type TimerMode = 'pomodoro' | 'stopwatch';
 
 export function FloatingStudyTimer() {
   const location = useLocation();
-  const isExcludedRoute = location.pathname.startsWith('/exams') || location.pathname.startsWith('/learn');
+  // Chỉ loại trừ /learn/session vì màn hình này tự quản lý SelectionLookupPopover kèm ngữ cảnh câu ví dụ của thẻ
+  const isLearnSession = location.pathname.startsWith('/learn/session');
 
   const [isOpen, setIsOpen] = useState(false);
   const [mode, setMode] = useState<TimerMode>('pomodoro');
@@ -685,10 +686,10 @@ export function FloatingStudyTimer() {
                   </div>
                 </div>
 
-                {/* Chế độ an toàn phòng thi */}
+                {/* Hỗ trợ toàn hệ thống */}
                 <div className="flex items-center gap-1.5 text-[11px] text-slate-600 dark:text-slate-400 px-1">
                   <ShieldCheck size={15} className="text-emerald-500 shrink-0" />
-                  <span>Tự động bảo mật: Tắt trong bài thi thử để chống gian lận.</span>
+                  <span>Tra từ tự do toàn hệ thống (kể cả trong bài thi & kiểm tra).</span>
                 </div>
               </div>
             </div>
@@ -696,9 +697,9 @@ export function FloatingStudyTimer() {
         </div>
       )}
 
-      {/* Popover tra cứu khi bôi đen (hoạt động khi BẬT, tự tắt trong phòng thi & bài học learn) */}
+      {/* Popover tra cứu khi bôi đen (hoạt động khi BẬT trên toàn hệ thống và trong tất cả bài thi/kiểm tra) */}
       <SelectionLookupPopover
-        enabled={isLookupEnabled && !isExcludedRoute}
+        enabled={isLookupEnabled && !isLearnSession}
       />
     </>
   );

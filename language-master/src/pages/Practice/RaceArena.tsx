@@ -883,7 +883,7 @@ if (!newHistory.find(item => getUniqueId(item.q) === getUniqueId(card2.originalI
   const isLivesCritical = lives === 1;
 
   return (
-    <div className={`min-h-[calc(100vh-64px)] bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-white flex flex-col items-center p-4 py-6 font-sans select-none transition-colors relative overflow-x-hidden ${isLivesCritical ? 'ring-[4px] ring-red-500/50 ring-inset transition-all duration-300' : ''}`}>
+    <div className={`min-h-[calc(100vh-64px)] bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-white flex flex-col items-center p-4 py-6 font-sans transition-colors relative overflow-x-hidden ${isLivesCritical ? 'ring-[4px] ring-red-500/50 ring-inset transition-all duration-300' : ''}`}>
       
       {/* 💥 COUNTDOWN OVERLAY 💥 */}
       {countdown !== null && !loading && !isUnsupportedLevel && (

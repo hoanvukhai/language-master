@@ -31,7 +31,7 @@ export default function KanjiFlashcard({
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.18 }}
             onClick={() => setFlashFlipped(true)}
-            className={`cursor-pointer bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl p-8 text-white text-center shadow-lg select-none transition-all ${
+            className={`cursor-pointer bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl p-8 text-white text-center shadow-lg transition-all ${
               urgent ? 'ring-4 ring-red-500 ring-offset-2 animate-pulse' : ''
             }`}
           >
@@ -49,7 +49,7 @@ export default function KanjiFlashcard({
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.18 }}
             onClick={() => setFlashFlipped(false)}
-            className="cursor-pointer bg-white dark:bg-slate-800 rounded-2xl p-8 text-center shadow-lg border-2 border-amber-200 dark:border-amber-800 select-none"
+            className="cursor-pointer bg-white dark:bg-slate-800 rounded-2xl p-8 text-center shadow-lg border-2 border-amber-200 dark:border-amber-800"
           >
             <div className="text-xs text-amber-500 font-bold uppercase tracking-wide mb-3">Đáp án</div>
             <div className="text-3xl font-black text-slate-800 dark:text-white">{q.back}</div>
