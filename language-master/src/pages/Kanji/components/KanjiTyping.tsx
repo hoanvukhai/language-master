@@ -1,8 +1,9 @@
-import type { RefObject } from 'react';
+import { useState, useEffect, type RefObject } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, XCircle } from 'lucide-react';
-import * as wanakana from 'wanakana';
 import type { TypingQ } from './KanjiCommon';
+import { KanaInputToggle } from '../../../components/shared/KanaInputToggle';
+import { convertRomajiWithMode, type KanaInputMode } from '../../../lib/romajiConverter';
 
 interface KanjiTypingProps {
   q: TypingQ;
@@ -32,46 +33,84 @@ export default function KanjiTyping({
   resultSecs,
 }: KanjiTypingProps) {
   const hasHint = !!q.hintText && q.hintText.trim() !== '';
+  const isExpectedKatakana = q.inputMode === 'jp' && /^[\u30A0-\u30FF\u30FC\s]+$/.test(q.answer);
+  const [kanaMode, setKanaMode] = useState<KanaInputMode>(isExpectedKatakana ? 'katakana' : 'hiragana');
+
+  useEffect(() => {
+    setKanaMode(isExpectedKatakana ? 'katakana' : 'hiragana');
+  }, [q.prompt, isExpectedKatakana]);
 
   return (
     <div className="space-y-3">
       <div className="bg-white dark:bg-slate-800 rounded-2xl p-5 text-center shadow-sm border border-slate-100 dark:border-slate-700">
-        <div className="text-2xl font-black text-slate-800 dark:text-white">{q.prompt}</div>
+        <div className="text-2xl font-black text-slate-800 dark:text-white flex items-center justify-center gap-2">
+          <span>{q.prompt}</span>
+          {q.readingType && (
+            <span className={`px-2 py-0.5 rounded-lg text-xs font-bold border ${
+              q.readingType === '訓'
+                ? 'bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800'
+                : q.readingType === '音'
+                  ? 'bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800'
+                  : 'bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
+            }`}>
+              {q.readingType === '訓' ? '訓 · Âm Kun' : q.readingType === '音' ? '音 · Âm On' : '特殊 · Đọc đặc biệt'}
+            </span>
+          )}
+        </div>
         {q.promptSub && <div className="text-amber-500 text-sm mt-1">{q.promptSub}</div>}
         {typingHintShown && hasHint && <div className="text-indigo-500 text-sm mt-2">💡 {q.hintText}</div>}
       </div>
       
       <form onSubmit={onSubmit}>
-        <input
-          ref={inputRef}
-          type="text"
-          value={typingInput}
-          disabled={typingSubmitted}
-          onChange={e => {
-            if (!typingSubmitted) {
-              if (q.inputMode === 'jp') {
-                setTypingInput(wanakana.toHiragana(e.target.value, { IMEMode: true }));
-              } else {
-                setTypingInput(e.target.value);
+        <div className="relative mb-2">
+          <input
+            ref={inputRef}
+            type="text"
+            value={typingInput}
+            disabled={typingSubmitted}
+            onChange={e => {
+              if (!typingSubmitted) {
+                if (q.inputMode === 'jp') {
+                  setTypingInput(convertRomajiWithMode(e.target.value, kanaMode));
+                } else {
+                  setTypingInput(e.target.value);
+                }
               }
-            }
-          }}
-          onFocus={e => {
-            setTimeout(() => e.target.scrollIntoView({ behavior: 'smooth', block: 'center' }), 300);
-          }}
-          placeholder={q.inputMode === 'jp' ? "Gõ Romaji → Hiragana..." : "Gõ Tiếng Việt (Hán Việt)..."}
-          autoComplete="off"
-          autoCorrect="off"
-          autoCapitalize="none"
-          spellCheck={false}
-          className={`w-full text-center text-2xl font-bold p-4 rounded-2xl border-2 outline-none transition-all dark:bg-slate-700 dark:text-white mb-2 ${
-            typingSubmitted
-              ? typingCorrect
-                ? 'border-emerald-400 bg-emerald-50 dark:bg-emerald-950/20'
-                : 'border-red-400 bg-red-50 dark:bg-red-950/20'
-              : 'border-slate-200 focus:border-indigo-500'
-          }`}
-        />
+            }}
+            onKeyDown={e => {
+              if (e.key === 'Tab' && q.inputMode === 'jp') {
+                e.preventDefault();
+                setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana');
+              }
+            }}
+            onFocus={e => {
+              setTimeout(() => e.target.scrollIntoView({ behavior: 'smooth', block: 'center' }), 300);
+            }}
+            placeholder={q.inputMode === 'jp' ? `Gõ Romaji (${kanaMode === 'hiragana' ? 'Hiragana' : 'Katakana'})...` : "Gõ Tiếng Việt (Hán Việt)..."}
+            autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="none"
+            spellCheck={false}
+            className={`w-full text-center text-2xl font-bold p-4 rounded-2xl border-2 outline-none transition-all dark:bg-slate-700 dark:text-white ${
+              q.inputMode === 'jp' ? 'pr-28 sm:pr-32' : ''
+            } ${
+              typingSubmitted
+                ? typingCorrect
+                  ? 'border-emerald-400 bg-emerald-50 dark:bg-emerald-950/20'
+                  : 'border-red-400 bg-red-50 dark:bg-red-950/20'
+                : 'border-slate-200 focus:border-indigo-500'
+            }`}
+          />
+          {q.inputMode === 'jp' && !typingSubmitted && (
+            <div className="absolute right-2.5 top-1/2 -translate-y-1/2">
+              <KanaInputToggle
+                mode={kanaMode}
+                onToggle={() => setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana')}
+                size="sm"
+              />
+            </div>
+          )}
+        </div>
         {!typingSubmitted ? (
           <div className="flex gap-2">
             <button type="submit" className="w-full py-3 bg-amber-500 text-white font-bold rounded-2xl text-sm">

@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, RotateCcw, Eye, EyeOff } from 'lucide-react';
 import { usePracticeContext } from '../Practice/PracticeContext';
 import KanjiLessonChips from '../../components/kanji/KanjiLessonChips';
-import { romajiToHiragana } from '../../lib/romajiConverter';
-import * as wanakana from 'wanakana';
+import { convertRomajiWithMode, type KanaInputMode } from '../../lib/romajiConverter';
+import { KanaInputToggle } from '../../components/shared/KanaInputToggle';
 import type { Kanji } from '../../types';
 
 interface TypingQuestionItem {
@@ -16,6 +16,7 @@ interface TypingQuestionItem {
   answer: string;
   hint?: string;
   isSingleChar: boolean;
+  readingType?: string;
 }
 
 export default function KanjiTyping() {
@@ -70,13 +71,15 @@ export default function KanjiTyping() {
         if (k.words && k.words.length > 0) {
           k.words.forEach((w, idx) => {
             const meaningText = typeof w.meaning === 'object' ? w.meaning.vi : w.meaning;
+            const readingType = (w as any).readingType || (['訓', '音', '特殊'].includes((w as any).type) ? (w as any).type : undefined);
             list.push({
               id: `kt_word_${k.id}_${idx}`,
-              questionText: 'Gõ cách đọc Hiragana của từ ghép Kanji này',
+              questionText: 'Gõ cách đọc Kana của từ ghép Kanji này',
               target: w.word,
               answer: w.hiragana,
               hint: w.hanVietWord ? `Hán Việt: ${w.hanVietWord} · Nghĩa: ${meaningText}` : `Nghĩa: ${meaningText}`,
               isSingleChar: false,
+              readingType,
             });
           });
         }
@@ -94,6 +97,12 @@ export default function KanjiTyping() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const current = queue[0];
+  const isExpectedKatakana = !!(current && !current.isSingleChar && /^[\u30A0-\u30FF\u30FC\s]+$/.test(current.answer));
+  const [kanaMode, setKanaMode] = useState<KanaInputMode>(isExpectedKatakana ? 'katakana' : 'hiragana');
+
+  useEffect(() => {
+    setKanaMode(isExpectedKatakana ? 'katakana' : 'hiragana');
+  }, [current?.id, isExpectedKatakana]);
 
   useEffect(() => {
     if (started && inputRef.current) {
@@ -121,9 +130,11 @@ export default function KanjiTyping() {
       // Hán Việt text matching (e.g. 'TẠO')
       isCorrect = input.trim().toUpperCase() === current.answer.trim().toUpperCase();
     } else {
-      // Kana matching via Romaji converter
-      const convertedInput = romajiToHiragana(input).trim();
-      isCorrect = wanakana.toHiragana(convertedInput) === wanakana.toHiragana(current.answer.trim()) || input.trim() === current.answer.trim();
+      // Kana matching with strict check
+      const convertedInput = convertRomajiWithMode(input, kanaMode).trim();
+      const rawInput = input.trim();
+      const expected = current.answer.trim();
+      isCorrect = convertedInput === expected || rawInput === expected;
     }
 
     if (isCorrect) {
@@ -330,8 +341,21 @@ export default function KanjiTyping() {
             } mb-3`}
           >
             <div className="text-center mb-3">
-              <div className="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-widest mb-2">
-                {current.isSingleChar ? '🔷 Gõ Âm Hán Việt (Chữ Gốc)' : '🔶 Gõ Hiragana Từ Ghép'}
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <div className="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-widest">
+                  {current.isSingleChar ? '🔷 Gõ Âm Hán Việt (Chữ Gốc)' : '🔶 Gõ Kana Từ Ghép'}
+                </div>
+                {current.readingType && (
+                  <span className={`px-2 py-0.5 rounded-lg text-xs font-bold border ${
+                    current.readingType === '訓'
+                      ? 'bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800'
+                      : current.readingType === '音'
+                        ? 'bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800'
+                        : 'bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
+                  }`}>
+                    {current.readingType === '訓' ? '訓 · Âm Kun' : current.readingType === '音' ? '音 · Âm On' : '特殊 · Đọc đặc biệt'}
+                  </span>
+                )}
               </div>
               <div className={`text-slate-800 dark:text-white mb-3 ${getTargetSize(current.target)}`}>
                 {current.target}
@@ -342,21 +366,41 @@ export default function KanjiTyping() {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-3">
-              <input
-                ref={inputRef}
-                type="text"
-                value={input}
-                onChange={e => setInput(e.target.value)}
-                placeholder={current.isSingleChar ? 'Gõ Âm Hán Việt...' : 'Gõ Romaji ở đây...'}
-                className={`w-full px-4 py-3.5 rounded-xl border-2 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-white text-lg font-bold outline-none transition-colors text-center ${
-                  showError ? 'border-red-400 focus:border-red-500' : 'border-slate-200 dark:border-slate-600 focus:border-amber-400'
-                }`}
-                autoFocus
-                disabled={isCorrectAnimation}
-              />
+              <div className="relative">
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={input}
+                  onChange={e => setInput(e.target.value)}
+                  onKeyDown={e => {
+                    if (e.key === 'Tab' && !current.isSingleChar) {
+                      e.preventDefault();
+                      setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana');
+                    }
+                  }}
+                  placeholder={current.isSingleChar ? 'Gõ Âm Hán Việt...' : `Gõ Romaji (${kanaMode === 'hiragana' ? 'Hiragana' : 'Katakana'})...`}
+                  className={`w-full px-4 py-3.5 rounded-xl border-2 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-white text-lg font-bold outline-none transition-colors text-center ${
+                    !current.isSingleChar ? 'pr-28 sm:pr-32' : ''
+                  } ${
+                    showError ? 'border-red-400 focus:border-red-500' : 'border-slate-200 dark:border-slate-600 focus:border-amber-400'
+                  }`}
+                  autoFocus
+                  disabled={isCorrectAnimation}
+                />
+                {!current.isSingleChar && !isCorrectAnimation && (
+                  <div className="absolute right-3.5 top-1/2 -translate-y-1/2">
+                    <KanaInputToggle
+                      mode={kanaMode}
+                      onToggle={() => setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana')}
+                      size="sm"
+                    />
+                  </div>
+                )}
+              </div>
               {!current.isSingleChar && (
                 <div className="text-xs text-indigo-600 dark:text-indigo-300 font-mono text-center">
-                  Tự động chuyển Kana: <span className="font-bold text-slate-800 dark:text-white">{romajiToHiragana(input)}</span>
+                  Tự động chuyển Kana ({kanaMode === 'hiragana' ? 'Hiragana' : 'Katakana'}):{' '}
+                  <span className="font-bold text-slate-800 dark:text-white">{convertRomajiWithMode(input, kanaMode)}</span>
                 </div>
               )}
 

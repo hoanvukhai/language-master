@@ -9,7 +9,6 @@ import {
   calculateMaxPossibleExp,
 } from '../../lib/rankSystem';
 import shortcuts from '../../data/jlpt/core/shortcuts.json';
-import * as wanakana from 'wanakana';
 
 // Import local components and types
 import {
@@ -525,10 +524,9 @@ export default function KanjiFullRun() {
                 onSubmit={e => {
                   e.preventDefault();
                   if (typingSubmitted || isTransitionBlockedRef.current) return;
-                  const ans = (currentQ as TypingQ).answer.trim().toLowerCase();
-                  const ok = typingInput.trim() !== '' && 
-                    (typingInput.trim().toLowerCase() === ans || 
-                     wanakana.toHiragana(typingInput.trim()) === wanakana.toHiragana(ans));
+                  const trimmed = typingInput.trim();
+                  const expected = (currentQ as TypingQ).answer.trim();
+                  const ok = trimmed !== '' && (trimmed === expected || trimmed.toLowerCase() === expected.toLowerCase());
                   setTypingCorrect(ok);
                   setTypingSubmitted(true);
                   triggerResult(ok);

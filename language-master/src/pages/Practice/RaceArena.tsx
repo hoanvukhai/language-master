@@ -10,7 +10,6 @@ import { useSettings } from '../../context/global/useSettings';
 import { useAudio } from '../../context/audio/useAudio';
 
 import { recordArenaRace } from '../../lib/srs/pointsEngine';
-import { romajiToHiragana } from '../../lib/romajiConverter';
 import { buildVocabQuestions, buildKanjiWordQuestions, buildHanjtQuestions, buildGrammarQuestions, buildEnglishVocabQuestions, shuffleArray as qbShuffle, getMeaning } from '../../lib/race/questionBuilder';
 import type { RaceQuestionItem } from '../../lib/race/questionBuilder';
 import { checkEnglishWordMatch } from '../../lib/english/ipaHelper';
@@ -1039,22 +1038,17 @@ if (!newHistory.find(item => getUniqueId(item.q) === getUniqueId(card2.originalI
                 const isOk = (ans || '').trim().toUpperCase() === currentQ.correctAnswer.trim().toUpperCase();
                 handleAnswerSubmit(isOk);
               } else {
-                const convertedKana = romajiToHiragana(userTyping).trim();
-
-                // normalize: strip punctuation, kanji, and convert Katakana to Hiragana
+                // normalize: strip punctuation, extra spaces, keep Katakana / Hiragana strict
                 const normalize = (s: string | undefined) => (s || '').trim()
                   .replace(/[〜~。、「」]/g, '')
-                  .replace(/[\u4E00-\u9FFF]/g, '') // strip kanji chars
-                  .replace(/[\u30A1-\u30F6]/g, match => String.fromCharCode(match.charCodeAt(0) - 0x60)) // Kata to Hira
-                  .replace(/\s+/g, '').toLowerCase();
+                  .replace(/\s+/g, '');
 
                 const correctAnswers = currentQ.correctAnswer.split(/[/、,]+/).map(s => normalize(s));
                 
                 const ansNorm = normalize(ans);
-                const kanaNorm = normalize(convertedKana);
                 const userNorm = normalize(userTyping);
 
-                const isOk = correctAnswers.some(c => c === ansNorm || c === kanaNorm || c === userNorm);
+                const isOk = correctAnswers.some(c => c === ansNorm || c === userNorm || c.toLowerCase() === ansNorm.toLowerCase());
                 handleAnswerSubmit(isOk);
               }
             }}

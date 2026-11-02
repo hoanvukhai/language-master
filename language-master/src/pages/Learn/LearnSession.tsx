@@ -10,6 +10,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Volume2, RotateCcw, Sparkles, ChevronRight, X, ChevronsUp, MousePointerClick, Keyboard, Check, Swords, BookOpen, ArrowLeft, Edit3, Eye, EyeOff } from 'lucide-react';
 import CustomWordModal from '../../components/course/CustomWordModal';
 import { updateWordInCustomCourse, type CustomWord } from '../../lib/customCourses/customCourseService';
+import { KanaInputToggle } from '../../components/shared/KanaInputToggle';
+import { convertRomajiWithMode, type KanaInputMode } from '../../lib/romajiConverter';
 
 
 
@@ -48,6 +50,7 @@ interface RawItem {
   exampleMeaning?: string;
   isSingleKanjiChar?: boolean;
   originalData?: any;
+  readingType?: '訓' | '音' | '特殊' | string;
 }
 
 export interface MistakeDetail {
@@ -100,7 +103,8 @@ function buildRawList(course: Course, language: string = 'vi'): RawItem[] {
         exampleKanji: w.examples?.[0]?.en || w.examples?.[0]?.jp,
         exampleMeaning: language === 'en' && w.examples?.[0]?.en ? w.examples[0].en : (w.examples?.[0]?.vi || w.examples?.[0]?.en),
         isSingleKanjiChar: false,
-        originalData: w,
+      originalData: w,
+      readingType: w.readingType || (['訓', '音', '特殊'].includes(w.type) ? w.type : undefined),
       }));
     }
     // ── Generic template (Thuật ngữ & Định nghĩa) ───────────────────
@@ -114,7 +118,8 @@ function buildRawList(course: Course, language: string = 'vi'): RawItem[] {
         exampleKanji: w.exampleKanji || w.example?.kanji || w.examples?.[0]?.jp || w.examples?.[0]?.en || '',
         exampleMeaning: w.exampleMeaning || (typeof w.example?.meaning === 'object' ? (language === 'en' && w.example.meaning.en ? w.example.meaning.en : w.example.meaning.vi) : (w.example?.meaning || w.examples?.[0]?.vi || '')),
         isSingleKanjiChar: false,
-        originalData: w,
+      originalData: w,
+      readingType: w.readingType || (['訓', '音', '特殊'].includes(w.type) ? w.type : undefined),
       }));
     }
     // ── Japanese template ────────────────────────────────────────────
@@ -132,6 +137,7 @@ function buildRawList(course: Course, language: string = 'vi'): RawItem[] {
             : (w.example?.meaning || w.exampleMeaning)),
       isSingleKanjiChar: false,
       originalData: w,
+      readingType: w.readingType || (['訓', '音', '特殊'].includes(w.type) ? w.type : undefined),
     }));
   }
 
@@ -147,7 +153,8 @@ function buildRawList(course: Course, language: string = 'vi'): RawItem[] {
         meaning: `${k.hanViet}`,
         lesson: k.lesson || 'Bài 1',
         isSingleKanjiChar: true,
-        originalData: k
+        originalData: k,
+        readingType: k.readingType
       });
     });
     return items;
@@ -168,7 +175,8 @@ function buildRawList(course: Course, language: string = 'vi'): RawItem[] {
             ? (language === 'en' && w.examples[0].en ? w.examples[0].en : (w.examples[0].vi || w.examples[0].en))
             : '',
           isSingleKanjiChar: false,
-          originalData: w
+          originalData: w,
+          readingType: w.readingType || (['訓', '音', '特殊'].includes(w.type) ? w.type : undefined),
         });
       });
     });
@@ -396,7 +404,20 @@ const PreviewWordContent = ({
       {/* ─── TỪ VỰNG CHỮ HÁN (Kanji Words) ─── */}
       {isKanjiWord && (
         <div className="space-y-5">
-          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-400 dark:text-indigo-500">Từ Vựng</p>
+          <div className="flex items-center gap-2">
+            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-400 dark:text-indigo-500">Từ Vựng</p>
+            {data.readingType && (
+              <span className={`px-2.5 py-0.5 rounded-lg text-xs font-bold border ${
+                data.readingType === '訓'
+                  ? 'bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800'
+                  : data.readingType === '音'
+                    ? 'bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800'
+                    : 'bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
+              }`}>
+                {data.readingType === '訓' ? '訓 · Âm Kun' : data.readingType === '音' ? '音 · Âm On' : '特殊 · Đặc biệt'}
+              </span>
+            )}
+          </div>
           <div className="flex items-end gap-4 flex-wrap">
             <h1 className="text-5xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-none break-words">
               {data.word}
@@ -619,6 +640,7 @@ export default function LearnSession() {
 
   const [selectedOpt, setSelectedOpt] = useState<string | null>(null);
   const [userTyping, setUserTyping] = useState('');
+  const [kanaMode, setKanaMode] = useState<KanaInputMode>('hiragana');
   const [quizOptions, setQuizOptions] = useState<string[]>([]);
   const [savedIds, setSavedIds] = useState<Set<string>>(new Set()); //  ã lưu Firestore
   const [correctCounts, setCorrectCounts] = useState<Map<string, number>>(new Map());
@@ -1092,8 +1114,15 @@ export default function LearnSession() {
   }, [currentBatch, allRawItems, modeParam, strictSentenceTypingTest]);
   useEffect(() => { startTestRef.current = startTest; }, [startTest]);
 
-  //    Test Phase: lấy câu hi!n tại                                       
+  //    Test Phase: lấy câu hiện tại                                       
   const currentQ: (QueueItem & { quizOptions?: string[] }) | null = testQueue[currentQIdx] ?? testQueue[testQueue.length - 1] ?? null;
+
+  useEffect(() => {
+    if (currentQ?.raw?.hiragana) {
+      const isExpectedKatakana = /^[\u30A0-\u30FF\u30FC\s]+$/.test(currentQ.raw.hiragana);
+      setKanaMode(isExpectedKatakana ? 'katakana' : 'hiragana');
+    }
+  }, [currentQIdx, currentQ?.raw?.id]);
 
   // Sinh quiz options khi mount câu m:i (fallback nếu chưa có)
   useEffect(() => {
@@ -1332,10 +1361,12 @@ export default function LearnSession() {
       correct = userTyping.trim().toUpperCase() === raw.hiragana.trim().toUpperCase();
     } else {
       const target = raw.hiragana.trim();
-      const converted = wanakana.toKana(userTyping.trim());
+      const trimmedInput = userTyping.trim();
+      const converted = wanakana.toKana(trimmedInput);
       correct =
-        wanakana.toHiragana(converted) === wanakana.toHiragana(target) ||
-        userTyping.trim().toLowerCase() === target.toLowerCase();
+        trimmedInput === target ||
+        converted === target ||
+        trimmedInput.toLowerCase() === target.toLowerCase();
     }
 
     if (!correct) {
@@ -2022,8 +2053,35 @@ export default function LearnSession() {
                             ? 'text-4xl md:text-5xl'
                             : 'text-6xl md:text-7xl'
                           }`}>
-                          {currentQ.direction === 'fwd' ? currentQ.raw.kanji : cleanQuizMeaning(currentQ.raw.meaning, currentQ.raw.kanji)}
+                          {currentQ.direction === 'fwd'
+                            ? currentQ.raw.kanji
+                            : `${cleanQuizMeaning(currentQ.raw.meaning, currentQ.raw.kanji)}${
+                                currentQ.raw.readingType === '訓'
+                                  ? ' (Âm Kun)'
+                                  : currentQ.raw.readingType === '音'
+                                    ? ' (Âm On)'
+                                    : currentQ.raw.readingType === '特殊'
+                                      ? ' (Đặc biệt)'
+                                      : ''
+                              }`}
                         </h1>
+                        {currentQ.direction === 'fwd' && currentQ.raw.readingType && (
+                          <div className="mt-2.5">
+                            <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-xl text-xs font-black border shadow-2xs ${
+                              currentQ.raw.readingType === '訓'
+                                ? 'bg-indigo-50 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800'
+                                : currentQ.raw.readingType === '音'
+                                  ? 'bg-amber-50 dark:bg-amber-950/70 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800'
+                                  : 'bg-emerald-50 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
+                            }`}>
+                              {currentQ.raw.readingType === '訓'
+                                ? '訓 · Âm Kun'
+                                : currentQ.raw.readingType === '音'
+                                  ? '音 · Âm On'
+                                  : '特殊 · Đọc đặc biệt'}
+                            </span>
+                          </div>
+                        )}
                         {/* IPA — hiển thị cho khóa tiếng Anh (cả fwd lẫn rev) */}
                         {course?.template === 'english' && (() => {
                           const d = currentQ.raw.originalData;
@@ -2107,41 +2165,62 @@ export default function LearnSession() {
                             ? 'Gõ chính xác thuật ngữ'
                             : 'Gõ Romaji (sẽ tự chuyển Hiragana)'}
                   </p>
-                  <input
-                    ref={typingInputRef}
-                    key={`typing-input-${currentQ.raw.id}-${currentQIdx}`}
-                    type="text"
-                    value={userTyping}
-                    onChange={e => {
-                      if (!currentQ.sentenceCloze && !currentQ.raw.isSingleKanjiChar && course?.template !== 'english' && course?.template !== 'generic') {
-                        const isExpectedKatakana = /^[\u30A0-\u30FF\u30FC\s]+$/.test(currentQ.raw.hiragana);
-                        if (isExpectedKatakana) {
-                          setUserTyping(wanakana.toKatakana(e.target.value, { IMEMode: true }));
+                  <div className="relative flex items-center">
+                    <input
+                      ref={typingInputRef}
+                      key={`typing-input-${currentQ.raw.id}-${currentQIdx}`}
+                      type="text"
+                      value={userTyping}
+                      onChange={e => {
+                        if (!currentQ.sentenceCloze && !currentQ.raw.isSingleKanjiChar && course?.template !== 'english' && course?.template !== 'generic') {
+                          setUserTyping(convertRomajiWithMode(e.target.value, kanaMode));
                         } else {
-                          setUserTyping(wanakana.toHiragana(e.target.value, { IMEMode: true }));
+                          setUserTyping(e.target.value);
                         }
-                      } else {
-                        setUserTyping(e.target.value);
-                      }
-                    }}
-                    onKeyDown={e => { if (e.key === 'Enter') submitTyping(); }}
-                    placeholder={currentQ.sentenceCloze
-                      ? 'Type the missing word...'
-                      : currentQ.raw.isSingleKanjiChar
-                        ? 'Âm Hán Việt...'
-                        : course?.template === 'english'
-                          ? 'Type the word...'
-                          : course?.template === 'generic'
-                            ? 'Nhập thuật ngữ...'
-                            : 'Romaji...'}
-                    disabled={feedback !== 'none'}
-                    autoFocus
-                    autoComplete="off"
-                    autoCorrect="off"
-                    autoCapitalize="none"
-                    spellCheck={false}
-                    className="w-full py-4 px-5 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 rounded-2xl text-left font-black text-2xl text-indigo-600 dark:text-indigo-400 placeholder:text-slate-300 dark:placeholder:text-slate-600 focus:outline-none focus:border-indigo-400 dark:focus:border-indigo-500 transition-all disabled:opacity-60 shadow-sm"
-                  />
+                      }}
+                      onKeyDown={e => {
+                        if (e.key === 'Tab' && !currentQ.sentenceCloze && !currentQ.raw.isSingleKanjiChar && course?.template !== 'english' && course?.template !== 'generic') {
+                          e.preventDefault();
+                          setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana');
+                          return;
+                        }
+                        if (e.key === 'Enter') submitTyping();
+                      }}
+                      placeholder={currentQ.sentenceCloze
+                        ? 'Type the missing word...'
+                        : currentQ.raw.isSingleKanjiChar
+                          ? 'Âm Hán Việt...'
+                          : course?.template === 'english'
+                            ? 'Type the word...'
+                            : course?.template === 'generic'
+                              ? 'Nhập thuật ngữ...'
+                              : `Gõ Romaji (${kanaMode === 'hiragana' ? 'sẽ chuyển Hiragana' : 'sẽ chuyển Katakana'})...`}
+                      disabled={feedback !== 'none'}
+                      autoFocus
+                      autoComplete="off"
+                      autoCorrect="off"
+                      autoCapitalize="none"
+                      spellCheck={false}
+                      className={`w-full text-center text-3xl font-black p-5 rounded-3xl border-2 outline-none transition-all dark:bg-slate-900 dark:text-white ${
+                        course?.template !== 'english' && course?.template !== 'generic' && !currentQ.raw.isSingleKanjiChar ? 'pr-32 sm:pr-36' : ''
+                      } ${
+                        feedback === 'correct'
+                          ? 'border-emerald-500 bg-emerald-50/50 dark:bg-emerald-950/20 text-emerald-700 dark:text-emerald-300'
+                          : feedback === 'wrong'
+                            ? 'border-red-400 bg-red-50/50 dark:bg-red-950/20 text-red-700 dark:text-red-300'
+                            : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:border-indigo-500'
+                      }`}
+                    />
+                    {!currentQ.sentenceCloze && !currentQ.raw.isSingleKanjiChar && course?.template !== 'english' && course?.template !== 'generic' && (
+                      <div className="absolute right-3.5 top-1/2 -translate-y-1/2">
+                        <KanaInputToggle
+                          mode={kanaMode}
+                          onToggle={() => setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana')}
+                          size="sm"
+                        />
+                      </div>
+                    )}
+                  </div>
 
                   {feedback === 'wrong' && (
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-1.5 mt-2">

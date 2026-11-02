@@ -33,6 +33,7 @@ export interface TypingQ extends BaseQ {
   prompt: string; promptSub?: string;
   answer: string; answerDisplay: string;
   hintText?: string;
+  readingType?: string;
 }
 export interface FlashQ extends BaseQ {
   type: 'flashcard';
@@ -226,10 +227,12 @@ export function buildQuestions(pool: any[], opts: { totalQ: number; language?: s
           const exp = `${w.kanji ? `${w.kanji} (${w.hiragana})` : w.hiragana} — Nghĩa: ${meaning}`;
           const isKatakanaWord = w.kanji && /^[\u30A0-\u30FF\u30FC]+$/.test(w.kanji);
           const expectedAnswer = isKatakanaWord ? w.kanji : w.hiragana;
+          const readingType = w.readingType || (['訓', '音', '特殊'].includes(w.type) ? w.type : undefined);
           if (dir === 'm2h') {
-            qs.push({ id, type: 'typing', prompt: meaning, answer: expectedAnswer, answerDisplay: `${label} (${expectedAnswer})`, hintText: label, explanation: exp });
+            const promptText = readingType ? `${meaning} (${readingType === '訓' ? 'Âm Kun' : readingType === '音' ? 'Âm On' : 'Đặc biệt'})` : meaning;
+            qs.push({ id, type: 'typing', prompt: promptText, answer: expectedAnswer, answerDisplay: `${label} (${expectedAnswer})`, hintText: label, readingType, explanation: exp });
           } else {
-            qs.push({ id, type: 'typing', prompt: label, answer: expectedAnswer, answerDisplay: expectedAnswer, hintText: meaning, explanation: exp });
+            qs.push({ id, type: 'typing', prompt: label, answer: expectedAnswer, answerDisplay: expectedAnswer, hintText: meaning, readingType, explanation: exp });
           }
         } else if (type === 'flashcard') {
           const dir = Math.random() > 0.5 ? 'w2m' : 'm2w';

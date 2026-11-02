@@ -241,18 +241,23 @@ export function buildVocabQuestions(dataset: Word[], game: GameType, count: numb
         getMeaning(item) === meaningStr && (isKatakana ? (item.kanji || item.hiragana) !== wordStr : item.hiragana !== hiraganaStr)
       );
 
+      const readingType = (v as any).readingType || (['訓', '音', '特殊'].includes((v as any).type) ? (v as any).type : undefined);
+      const rLabel = readingType ? `[ ${readingType === '訓' ? '訓 · Âm Kun' : readingType === '音' ? '音 · Âm On' : '特殊 · Đặc biệt'} ]` : '';
+
       if (dir === 'w2h') {
+        const sub = [rLabel, hasKanjiCollision ? `Gõ cách đọc (Nghĩa: ${meaningStr})` : ''].filter(Boolean).join(' ') || undefined;
         pool.push({
           id: `rvt_w2h_${v.id}`,
           prompt: wordStr,
-          subPrompt: hasKanjiCollision ? `Gõ cách đọc (Nghĩa: ${meaningStr})` : undefined,
+          subPrompt: sub,
           correctAnswer: ans,
           direction: 'w2h'
         });
       } else {
+        const promptText = readingType ? `${meaningStr} (${readingType === '訓' ? 'Âm Kun' : readingType === '音' ? 'Âm On' : 'Đặc biệt'})` : meaningStr;
         pool.push({
           id: `rvt_m2h_${v.id}`,
-          prompt: meaningStr,
+          prompt: promptText,
           subPrompt: hasMeaningCollision ? (hasKanji ? `Gõ cách đọc (Từ: ${wordStr})` : `Gõ Hiragana/Katakana`) : undefined,
           correctAnswer: ans,
           direction: 'm2h'
@@ -366,6 +371,9 @@ export function buildKanjiWordQuestions(dataset: Kanji[], game: GameType, count:
         meaning: getMeaning(item, lang)
       }));
       
+      const readingType = (w as any).readingType || (['訓', '音', '特殊'].includes((w as any).type) ? (w as any).type : undefined);
+      const rLabel = readingType ? `[ ${readingType === '訓' ? '訓 · Âm Kun' : readingType === '音' ? '音 · Âm On' : '特殊 · Đặc biệt'} ]` : '';
+
       if (dir === 'w2m') {
         pool.push({
           id: `rkw_w2m_${w.id || w.word}`,
@@ -377,9 +385,10 @@ export function buildKanjiWordQuestions(dataset: Kanji[], game: GameType, count:
           direction: 'w2m'
         });
       } else if (dir === 'm2w') {
+        const promptText = readingType ? `${meaningStr} (${readingType === '訓' ? 'Âm Kun' : readingType === '音' ? 'Âm On' : 'Đặc biệt'})` : meaningStr;
         pool.push({
           id: `rkw_m2w_${w.id || w.word}`,
-          prompt: meaningStr,
+          prompt: promptText,
           subPrompt: 'Từ ghép tương ứng',
           correctAnswer: wordStr,
           options: optionsData.map(o => o.kanji || o.hiragana),
@@ -390,7 +399,7 @@ export function buildKanjiWordQuestions(dataset: Kanji[], game: GameType, count:
         pool.push({
           id: `rkw_w2h_${w.id || w.word}`,
           prompt: wordStr,
-          subPrompt: 'Cách đọc (Hiragana)',
+          subPrompt: `Cách đọc ${rLabel} (Hiragana)`.trim(),
           correctAnswer: hiraganaStr,
           options: optionsData.map(o => o.hiragana),
           optionsData,
@@ -418,18 +427,23 @@ export function buildKanjiWordQuestions(dataset: Kanji[], game: GameType, count:
         getMeaning(item) === meaningStr && item.hiragana !== hiraganaStr
       );
 
+      const readingType = (w as any).readingType || (['訓', '音', '特殊'].includes((w as any).type) ? (w as any).type : undefined);
+      const rLabel = readingType ? `[ ${readingType === '訓' ? '訓 · Âm Kun' : readingType === '音' ? '音 · Âm On' : '特殊 · Đặc biệt'} ]` : '';
+
       if (dir === 'w2h') {
+        const sub = [rLabel, hasKanjiCollision ? `Gõ cách đọc (Nghĩa: ${meaningStr})` : ''].filter(Boolean).join(' ') || undefined;
         pool.push({
           id: `rkwt_w2h_${w.id || w.word}`,
           prompt: wordStr,
-          subPrompt: hasKanjiCollision ? `Gõ cách đọc (Nghĩa: ${meaningStr})` : undefined,
+          subPrompt: sub,
           correctAnswer: hiraganaStr,
           direction: 'w2h'
         });
       } else {
+        const promptText = readingType ? `${meaningStr} (${readingType === '訓' ? 'Âm Kun' : readingType === '音' ? 'Âm On' : 'Đặc biệt'})` : meaningStr;
         pool.push({
           id: `rkwt_m2h_${w.id || w.word}`,
-          prompt: meaningStr,
+          prompt: promptText,
           subPrompt: hasMeaningCollision ? `Gõ cách đọc (Từ: ${wordStr})` : undefined,
           correctAnswer: hiraganaStr,
           direction: 'm2h'

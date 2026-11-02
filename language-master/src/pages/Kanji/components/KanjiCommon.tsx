@@ -40,6 +40,7 @@ export interface TypingQ extends BaseQ {
   prompt: string; promptSub?: string;
   answer: string; answerDisplay: string; hintText?: string;
   inputMode: 'jp' | 'vi';
+  readingType?: string;
 }
 export interface FlashQ extends BaseQ {
   type: 'flashcard';
@@ -175,10 +176,12 @@ export function buildQuestions(flat: FlatWord[], allKanji: Kanji[], opts: { tota
       const meaning = getMeaning(word);
       const dir = Math.random() > 0.5 ? 'm2h' : 'w2h';
       const exp = `${word.word} (${word.hiragana}) — Nghĩa: ${meaning}`;
+      const readingType = word.readingType || (['訓', '音', '特殊'].includes(word.type) ? word.type : undefined);
       if (dir === 'm2h') {
-        qs.push({ id: `typing-v-${i}`, type: 'typing', prompt: meaning, promptSub: kanji.character + ' — ' + kanji.hanViet, answer: word.hiragana, answerDisplay: `${word.word} (${word.hiragana})`, hintText: word.word, inputMode: 'jp', explanation: exp });
+        const rLabel = readingType ? ` (${readingType === '訓' ? 'Âm Kun' : readingType === '音' ? 'Âm On' : 'Đặc biệt'})` : '';
+        qs.push({ id: `typing-v-${i}`, type: 'typing', prompt: `${meaning}${rLabel}`, promptSub: kanji.character + ' — ' + kanji.hanViet, answer: word.hiragana, answerDisplay: `${word.word} (${word.hiragana})`, hintText: word.word, inputMode: 'jp', readingType, explanation: exp });
       } else {
-        qs.push({ id: `typing-v-${i}`, type: 'typing', prompt: word.word, promptSub: meaning, answer: word.hiragana, answerDisplay: word.hiragana, hintText: word.hiragana, inputMode: 'jp', explanation: exp });
+        qs.push({ id: `typing-v-${i}`, type: 'typing', prompt: word.word, promptSub: meaning, answer: word.hiragana, answerDisplay: word.hiragana, hintText: word.hiragana, inputMode: 'jp', readingType, explanation: exp });
       }
     }
 

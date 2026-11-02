@@ -4,11 +4,12 @@ import { useState, useMemo, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, CheckCircle2, XCircle, Eye, EyeOff, Trophy, ArrowRight } from 'lucide-react';
-import * as wanakana from 'wanakana';
 import { usePracticeContext } from '../Practice/PracticeContext';
 import { useSettings } from '../../context/global/useSettings';
 import VocabLessonChips from '../../components/vocabulary/VocabLessonChips';
 import { formatDualIpa, checkEnglishWordMatch, formatWordVariantsDisplay } from '../../lib/english/ipaHelper';
+import { KanaInputToggle } from '../../components/shared/KanaInputToggle';
+import { convertRomajiWithMode, type KanaInputMode } from '../../lib/romajiConverter';
 
 function shuffle<T>(arr: T[]): T[] {
   return [...arr].sort(() => Math.random() - 0.5);
@@ -50,6 +51,15 @@ export default function VocabTyping() {
 
   const inputRef = useRef<HTMLInputElement>(null);
   const current = pool[index];
+
+  const isExpectedKatakana = !isEnglish && direction === 'backward' && /^[\u30A0-\u30FF\u30FC\s]+$/.test((current as any)?.hiragana || '');
+  const [kanaMode, setKanaMode] = useState<KanaInputMode>(isExpectedKatakana ? 'katakana' : 'hiragana');
+
+  useEffect(() => {
+    setKanaMode(isExpectedKatakana ? 'katakana' : 'hiragana');
+  }, [index, isExpectedKatakana]);
+
+  const readingType = current ? ((current as any).readingType || (['訓', '音', '特殊'].includes((current as any).type) ? (current as any).type : undefined)) : undefined;
 
   const getMeaning = (w: any) =>
     typeof w.meaning === 'object' 
@@ -300,10 +310,28 @@ export default function VocabTyping() {
                   {current.lesson}
                 </span>
               )}
-              <div className="text-4xl font-bold text-slate-800 dark:text-white mt-3 mb-2">
-                {isEnglish
-                  ? (direction === 'forward' ? getMeaning(current) : getWordDisplay(current))
-                  : getMeaning(current)}
+              <div className="text-4xl font-bold text-slate-800 dark:text-white mt-3 mb-2 flex items-center justify-center gap-2 flex-wrap">
+                <span>
+                  {isEnglish
+                    ? (direction === 'forward' ? getMeaning(current) : getWordDisplay(current))
+                    : getMeaning(current)}
+                  {!isEnglish && direction === 'backward' && readingType && (
+                    <span className="text-2xl text-slate-500 font-normal">
+                      {` (${readingType === '訓' ? 'Âm Kun' : readingType === '音' ? 'Âm On' : 'Đặc biệt'})`}
+                    </span>
+                  )}
+                </span>
+                {!isEnglish && direction === 'forward' && readingType && (
+                  <span className={`px-2.5 py-1 rounded-xl text-xs font-bold border ${
+                    readingType === '訓'
+                      ? 'bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800'
+                      : readingType === '音'
+                        ? 'bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800'
+                        : 'bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
+                  }`}>
+                    {readingType === '訓' ? '訓 · Âm Kun' : readingType === '音' ? '音 · Âm On' : '特殊 · Đọc đặc biệt'}
+                  </span>
+                )}
               </div>
               {showFurigana && (
                 <div className="text-lg text-slate-500 dark:text-slate-400 mb-2 font-medium">
@@ -313,42 +341,60 @@ export default function VocabTyping() {
               <div className="text-sm text-slate-400 dark:text-slate-500">
                 {isEnglish
                   ? (direction === 'forward' ? 'Type the English word' : 'Type the Vietnamese meaning')
-                  : (direction === 'backward' ? 'Gõ Romaji → Hiragana' : 'Gõ Kanji trực tiếp')}
+                  : (direction === 'backward' ? `Gõ Romaji → ${kanaMode === 'hiragana' ? 'Hiragana' : 'Katakana'}` : 'Gõ Kanji trực tiếp')}
               </div>
             </div>
 
             {/* Input form */}
             <form onSubmit={handleSubmit} className="space-y-4">
-              <input
-                ref={inputRef}
-                type="text"
-                value={input}
-                onChange={e => {
-                  if (submitted) return;
-                  const raw = e.target.value;
-                  if (isEnglish) {
-                    // No conversion for English — plain text input
-                    setInput(raw);
-                  } else {
-                    const converted = direction === 'backward'
-                      ? wanakana.toHiragana(raw, { IMEMode: true })
-                      : raw;
-                    setInput(converted);
+              <div className="relative">
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={input}
+                  onChange={e => {
+                    if (submitted) return;
+                    const raw = e.target.value;
+                    if (isEnglish) {
+                      // No conversion for English — plain text input
+                      setInput(raw);
+                    } else if (direction === 'backward') {
+                      setInput(convertRomajiWithMode(raw, kanaMode));
+                    } else {
+                      setInput(raw);
+                    }
+                  }}
+                  onKeyDown={e => {
+                    if (e.key === 'Tab' && !isEnglish && direction === 'backward') {
+                      e.preventDefault();
+                      setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana');
+                    }
+                  }}
+                  disabled={submitted}
+                  placeholder={
+                    isEnglish
+                      ? direction === 'forward' ? 'Type the English word...' : 'Type Vietnamese meaning...'
+                      : direction === 'backward' ? `Gõ Romaji (${kanaMode === 'hiragana' ? 'Hiragana' : 'Katakana'})...` : 'VD: 食べる'
                   }
-                }}
-                disabled={submitted}
-                placeholder={
-                  isEnglish
-                    ? direction === 'forward' ? 'Type the English word...' : 'Type Vietnamese meaning...'
-                    : direction === 'backward' ? 'VD: taberu → たべる' : 'VD: 食べる'
-                }
-                className={`w-full text-center text-3xl font-bold p-5 rounded-2xl border-2 outline-none transition-all dark:bg-slate-700 dark:text-white ${submitted
-                    ? isCorrect
-                      ? 'border-green-400 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400'
-                      : 'border-red-400 bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-400'
-                    : 'border-slate-200 dark:border-slate-600 focus:border-orange-500'
-                  }`}
-              />
+                  className={`w-full text-center text-3xl font-bold p-5 rounded-2xl border-2 outline-none transition-all dark:bg-slate-700 dark:text-white ${
+                    !isEnglish && direction === 'backward' ? 'pr-28 sm:pr-32' : ''
+                  } ${submitted
+                      ? isCorrect
+                        ? 'border-green-400 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400'
+                        : 'border-red-400 bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-400'
+                      : 'border-slate-200 dark:border-slate-600 focus:border-orange-500'
+                    }`}
+                />
+                {!isEnglish && direction === 'backward' && !submitted && (
+                  <div className="absolute right-3.5 top-1/2 -translate-y-1/2">
+                    <KanaInputToggle
+                      mode={kanaMode}
+                      onToggle={() => setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana')}
+                      size="sm"
+                    />
+                  </div>
+                )}
+              </div>
 
               {!submitted ? (
                 <button

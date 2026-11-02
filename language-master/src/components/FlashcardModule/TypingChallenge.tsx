@@ -5,8 +5,8 @@ import type { FormType } from '../../context/features/flashcard/FlashcardSetting
 import { FORM_REGISTRY, getFormLabel } from '../../lib/formRegistry';
 import { useSettings } from '../../context/global/useSettings';
 import { useFlashcardSettings } from '../../context/features/flashcard/useFlashcardSettings';
-import { romajiToHiragana } from '../../lib/romajiConverter';
-import * as wanakana from 'wanakana';
+import { convertRomajiWithMode, type KanaInputMode } from '../../lib/romajiConverter';
+import { KanaInputToggle } from '../shared/KanaInputToggle';
 import { resolveForm } from './FlipCard';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle, XCircle, Volume2 } from 'lucide-react';
@@ -53,6 +53,13 @@ export default function TypingChallenge({
     };
   }, [targetForm, word, language]);
 
+  const isExpectedKatakana = /^[\u30A0-\u30FF\u30FC\s]+$/.test(targetData.correctAns || '');
+  const [kanaMode, setKanaMode] = useState<KanaInputMode>(isExpectedKatakana ? 'katakana' : 'hiragana');
+
+  useEffect(() => {
+    setKanaMode(isExpectedKatakana ? 'katakana' : 'hiragana');
+  }, [word.id, targetForm, isExpectedKatakana]);
+
   // Focus input khi đổi thẻ
   useEffect(() => {
     setUserTyping('');
@@ -74,8 +81,9 @@ export default function TypingChallenge({
   const handleSubmit = () => {
     if (feedback !== 'none' || !userTyping.trim()) return;
 
-    const inputHiragana = romajiToHiragana(userTyping.trim());
-    const isCorrect = inputHiragana === wanakana.toHiragana(targetData.correctAns);
+    const inputKana = convertRomajiWithMode(userTyping.trim(), kanaMode);
+    const expected = targetData.correctAns.trim();
+    const isCorrect = inputKana === expected || userTyping.trim() === expected;
 
     setFeedback(isCorrect ? 'correct' : 'wrong');
 
@@ -153,21 +161,37 @@ export default function TypingChallenge({
         </p>
 
         <div className="mt-8 space-y-3">
-          <input
-            ref={inputRef}
-            type="text"
-            value={userTyping}
-            onChange={(e) => setUserTyping(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') handleSubmit();
-            }}
-            disabled={feedback !== 'none'}
-            placeholder={language === 'en' ? 'Type romaji...' : 'Gõ romaji...'}
-            className="w-full py-4 px-5 bg-slate-50 dark:bg-slate-700/50 border-2 border-slate-200 dark:border-slate-600/50 rounded-2xl text-center font-bold text-xl text-blue-600 dark:text-blue-400 placeholder:text-slate-300 focus:outline-none focus:border-blue-400 transition-colors disabled:opacity-60"
-          />
+          <div className="relative">
+            <input
+              ref={inputRef}
+              type="text"
+              value={userTyping}
+              onChange={(e) => setUserTyping(convertRomajiWithMode(e.target.value, kanaMode))}
+              onKeyDown={(e) => {
+                if (e.key === 'Tab') {
+                  e.preventDefault();
+                  setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana');
+                  return;
+                }
+                if (e.key === 'Enter') handleSubmit();
+              }}
+              disabled={feedback !== 'none'}
+              placeholder={language === 'en' ? `Type Romaji (${kanaMode === 'hiragana' ? 'Hiragana' : 'Katakana'})...` : `Gõ Romaji (${kanaMode === 'hiragana' ? 'sẽ chuyển Hiragana' : 'sẽ chuyển Katakana'})...`}
+              className="w-full py-4 pl-5 pr-28 sm:pr-32 bg-slate-50 dark:bg-slate-700/50 border-2 border-slate-200 dark:border-slate-600/50 rounded-2xl text-center font-bold text-xl text-blue-600 dark:text-blue-400 placeholder:text-slate-300 focus:outline-none focus:border-blue-400 transition-colors disabled:opacity-60"
+            />
+            {feedback === 'none' && (
+              <div className="absolute right-3.5 top-1/2 -translate-y-1/2">
+                <KanaInputToggle
+                  mode={kanaMode}
+                  onToggle={() => setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana')}
+                  size="sm"
+                />
+              </div>
+            )}
+          </div>
           {userTyping && (
             <div className="text-sm text-slate-500 dark:text-slate-400 font-mono">
-              → <strong>{romajiToHiragana(userTyping)}</strong>
+              → <strong>{convertRomajiWithMode(userTyping, kanaMode)}</strong>
             </div>
           )}
           

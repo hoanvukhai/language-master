@@ -2,8 +2,10 @@
 // Sub-component cho Game 3: Gõ Phím Kana (Từ vựng/Kanji) hoặc Điền Ô Trống 1/4 (Ngữ pháp)
 // Hỗ trợ 100% Light/Dark mode & Tiếng Việt/English
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { romajiToHiragana, romajiToKatakana } from '../../../lib/romajiConverter';
+import { convertRomajiWithMode, type KanaInputMode } from '../../../lib/romajiConverter';
+import { KanaInputToggle } from '../../../components/shared/KanaInputToggle';
 
 interface RaceTypingViewProps {
   subject: string; // 'vocab' | 'kanji' | 'grammar'
@@ -34,7 +36,12 @@ export default function RaceTypingView({
   skipRomaji = false,
 }: RaceTypingViewProps) {
   const isGrammar = subject === 'grammar';
-  const isExpectedKatakana = !skipRomaji && /^[\u30A0-\u30FF\u30FC\s]+$/.test(question.correctAnswer);
+  const isExpectedKatakana = !skipRomaji && subject !== 'hanjt' && /^[\u30A0-\u30FF\u30FC\s]+$/.test(question.correctAnswer);
+  const [kanaMode, setKanaMode] = useState<KanaInputMode>(isExpectedKatakana ? 'katakana' : 'hiragana');
+
+  useEffect(() => {
+    setKanaMode(isExpectedKatakana ? 'katakana' : 'hiragana');
+  }, [question.id, isExpectedKatakana]);
 
   return (
     <motion.div
@@ -57,46 +64,64 @@ export default function RaceTypingView({
 
       <div className="space-y-4 pt-2">
         <div className="space-y-2">
-          <input
-            type="text"
-            value={typingInput}
-            onChange={e => {
-              const val = e.target.value;
-              if (skipRomaji || subject === 'hanjt') {
-                // Plain text – no romaji conversion
-                onChangeInput(val);
-              } else {
-                onChangeInput(isExpectedKatakana ? romajiToKatakana(val) : romajiToHiragana(val));
+          <div className="relative">
+            <input
+              type="text"
+              value={typingInput}
+              onChange={e => {
+                const val = e.target.value;
+                if (skipRomaji || subject === 'hanjt') {
+                  // Plain text – no romaji conversion
+                  onChangeInput(val);
+                } else {
+                  onChangeInput(convertRomajiWithMode(val, kanaMode));
+                }
+              }}
+              onKeyDown={e => {
+                if (e.key === 'Tab' && !skipRomaji && subject !== 'hanjt') {
+                  e.preventDefault();
+                  setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana');
+                  return;
+                }
+                if (e.key === 'Enter') {
+                  e.preventDefault(); // Ngăn trình duyệt tự click nút bậy bạ
+                  e.stopPropagation(); // Ngăn sự kiện nổi bọt lên window listener
+                  onSubmitAnswer(typingInput);
+                }
+              }}
+              placeholder={
+                subject === 'hanjt' 
+                  ? (language === 'en' ? 'Type Vietnamese meaning (no tones needed)...' : 'Gõ Âm Hán Việt (có dấu hoặc không dấu)...')
+                  : isGrammar
+                  ? (language === 'en' ? 'Type grammar structure (e.g., tameni)...' : 'Gõ cấu trúc ngữ pháp (VD: tameni)...')
+                  : (language === 'en' ? `Type Romaji (${kanaMode === 'hiragana' ? 'Hiragana' : 'Katakana'})...` : `Gõ Romaji (${kanaMode === 'hiragana' ? 'sẽ chuyển Hiragana' : 'sẽ chuyển Katakana'})...`)
               }
-            }}
-            onKeyDown={e => {
-              if (e.key === 'Enter') {
-                e.preventDefault(); // Ngăn trình duyệt tự click nút bậy bạ
-                e.stopPropagation(); // Ngăn sự kiện nổi bọt lên window listener
-                onSubmitAnswer(typingInput);
-              }
-            }}
-            placeholder={
-              subject === 'hanjt' 
-                ? (language === 'en' ? 'Type Vietnamese meaning (no tones needed)...' : 'Gõ Âm Hán Việt (có dấu hoặc không dấu)...')
-                : isGrammar
-                ? (language === 'en' ? 'Type grammar structure (e.g., tameni)...' : 'Gõ cấu trúc ngữ pháp (VD: tameni)...')
-                : (language === 'en' ? 'Type Romaji to get Kana...' : 'Gõ Romaji (sẽ tự động chuyển thành Hiragana)...')
-            }
-            className={`w-full py-4 px-4 rounded-2xl text-center font-bold text-3xl focus:outline-none transition-all border-2 ${
-              isAnswerCorrect === true
-                ? 'border-emerald-400 bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300 dark:border-emerald-500'
-                : isAnswerCorrect === false
-                ? 'border-red-400 bg-red-50 text-red-700 dark:bg-red-900/30 dark:text-red-300 dark:border-red-500'
-                : 'border-slate-300 dark:border-slate-600 bg-slate-100 dark:bg-slate-700 text-indigo-600 dark:text-amber-300 focus:border-indigo-500'
-            }`}
-            autoFocus
-            autoComplete="off"
-            autoCorrect="off"
-            autoCapitalize="none"
-            spellCheck={false}
-            disabled={isAnswerCorrect !== null}
-          />
+              className={`w-full py-4 px-4 rounded-2xl text-center font-bold text-3xl focus:outline-none transition-all border-2 ${
+                !skipRomaji && subject !== 'hanjt' ? 'pr-28 sm:pr-32' : ''
+              } ${
+                isAnswerCorrect === true
+                  ? 'border-emerald-400 bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300 dark:border-emerald-500'
+                  : isAnswerCorrect === false
+                  ? 'border-red-400 bg-red-50 text-red-700 dark:bg-red-900/30 dark:text-red-300 dark:border-red-500'
+                  : 'border-slate-300 dark:border-slate-600 bg-slate-100 dark:bg-slate-700 text-indigo-600 dark:text-amber-300 focus:border-indigo-500'
+              }`}
+              autoFocus
+              autoComplete="off"
+              autoCorrect="off"
+              autoCapitalize="none"
+              spellCheck={false}
+              disabled={isAnswerCorrect !== null}
+            />
+            {!skipRomaji && subject !== 'hanjt' && isAnswerCorrect === null && (
+              <div className="absolute right-3.5 top-1/2 -translate-y-1/2">
+                <KanaInputToggle
+                  mode={kanaMode}
+                  onToggle={() => setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana')}
+                  size="sm"
+                />
+              </div>
+            )}
+          </div>
         </div>
 
         <button

@@ -38,10 +38,11 @@ import {
   Shuffle,
   Sparkles,
 } from 'lucide-react';
-import * as wanakana from 'wanakana';
 import { usePracticeContext } from './PracticeContext';
 import { speakWithVoiceEngine } from '../../lib/audio/voiceEngine';
 import VocabLessonChips from '../../components/vocabulary/VocabLessonChips';
+import { KanaInputToggle } from '../../components/shared/KanaInputToggle';
+import { convertRomajiWithMode, type KanaInputMode } from '../../lib/romajiConverter';
 
 export interface SentenceItem {
   id: string;
@@ -338,6 +339,7 @@ export default function SentenceTyping() {
   const [queue, setQueue] = useState<SentenceItem[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [input, setInput] = useState('');
+  const [kanaMode, setKanaMode] = useState<KanaInputMode>('hiragana');
   const [submitted, setSubmitted] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [score, setScore] = useState(0);
@@ -1128,7 +1130,24 @@ export default function SentenceTyping() {
               )}
 
               {/* Ô gõ câu & form submit */}
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-3">
+                <div className="flex justify-between items-center px-1">
+                  <span className="text-xs font-semibold text-slate-400 dark:text-slate-500">
+                    {currentConfig?.isTypingVietnamese
+                      ? 'Tiếng Việt'
+                      : isJapanese
+                        ? `Tiếng Nhật (Romaji → ${kanaMode === 'hiragana' ? 'Hiragana' : 'Katakana'})`
+                        : 'English'}
+                  </span>
+                  {isJapanese && currentConfig && !currentConfig.isTypingVietnamese && !submitted && (
+                    <KanaInputToggle
+                      mode={kanaMode}
+                      onToggle={() => setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana')}
+                      size="sm"
+                    />
+                  )}
+                </div>
+
                 <textarea
                   ref={inputRef}
                   rows={2}
@@ -1136,14 +1155,19 @@ export default function SentenceTyping() {
                   onChange={e => {
                     if (submitted) return;
                     if (isJapanese && currentConfig && !currentConfig.isTypingVietnamese) {
-                      // Gõ tiếng Nhật -> tự động chuyển Hiragana
-                      setInput(wanakana.toHiragana(e.target.value, { IMEMode: true }));
+                      // Gõ tiếng Nhật -> tự động chuyển Kana theo chế độ mềm và hỗ trợ Shift
+                      setInput(convertRomajiWithMode(e.target.value, kanaMode));
                     } else {
                       // Gõ tiếng Anh hoặc tiếng Việt -> gõ chữ thường
                       setInput(e.target.value);
                     }
                   }}
                   onKeyDown={e => {
+                    if (e.key === 'Tab' && isJapanese && currentConfig && !currentConfig.isTypingVietnamese) {
+                      e.preventDefault();
+                      setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana');
+                      return;
+                    }
                     if (e.key === 'Enter' && !e.shiftKey) {
                       e.preventDefault();
                       if (submitted) {
@@ -1158,7 +1182,7 @@ export default function SentenceTyping() {
                     currentConfig?.isTypingVietnamese
                       ? 'Nhập câu tiếng Việt...'
                       : isJapanese
-                        ? 'Nhập câu tiếng Nhật...'
+                        ? `Nhập câu tiếng Nhật (Romaji → ${kanaMode === 'hiragana' ? 'Hiragana' : 'Katakana'})...`
                         : 'Nhập câu tiếng Anh...'
                   }
                   className={`w-full text-center text-lg md:text-xl font-medium p-4 rounded-2xl border-2 outline-none transition-all dark:bg-slate-700 dark:text-white ${
