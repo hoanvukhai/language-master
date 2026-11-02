@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, RotateCcw, Eye, EyeOff } from 'lucide-react';
 import { usePracticeContext } from '../Practice/PracticeContext';
 import KanjiLessonChips from '../../components/kanji/KanjiLessonChips';
-import { convertRomajiWithMode, type KanaInputMode } from '../../lib/romajiConverter';
+import { convertRomajiWithMode, finalizeKana, type KanaInputMode } from '../../lib/romajiConverter';
 import { KanaInputToggle } from '../../components/shared/KanaInputToggle';
 import type { Kanji } from '../../types';
 
@@ -134,7 +134,7 @@ export default function KanjiTyping() {
       const convertedInput = convertRomajiWithMode(input, kanaMode).trim();
       const rawInput = input.trim();
       const expected = current.answer.trim();
-      isCorrect = convertedInput === expected || rawInput === expected;
+      isCorrect = convertedInput === expected || rawInput === expected || finalizeKana(convertedInput) === expected;
     }
 
     if (isCorrect) {

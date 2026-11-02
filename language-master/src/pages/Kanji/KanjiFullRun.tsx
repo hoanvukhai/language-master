@@ -9,6 +9,7 @@ import {
   calculateMaxPossibleExp,
 } from '../../lib/rankSystem';
 import shortcuts from '../../data/jlpt/core/shortcuts.json';
+import { finalizeKana } from '../../lib/romajiConverter';
 
 // Import local components and types
 import {
@@ -526,7 +527,7 @@ export default function KanjiFullRun() {
                   if (typingSubmitted || isTransitionBlockedRef.current) return;
                   const trimmed = typingInput.trim();
                   const expected = (currentQ as TypingQ).answer.trim();
-                  const ok = trimmed !== '' && (trimmed === expected || trimmed.toLowerCase() === expected.toLowerCase());
+                  const ok = trimmed !== '' && (trimmed === expected || finalizeKana(trimmed) === expected || trimmed.toLowerCase() === expected.toLowerCase());
                   setTypingCorrect(ok);
                   setTypingSubmitted(true);
                   triggerResult(ok);

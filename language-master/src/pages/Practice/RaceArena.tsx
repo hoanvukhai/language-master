@@ -13,6 +13,7 @@ import { recordArenaRace } from '../../lib/srs/pointsEngine';
 import { buildVocabQuestions, buildKanjiWordQuestions, buildHanjtQuestions, buildGrammarQuestions, buildEnglishVocabQuestions, shuffleArray as qbShuffle, getMeaning } from '../../lib/race/questionBuilder';
 import type { RaceQuestionItem } from '../../lib/race/questionBuilder';
 import { checkEnglishWordMatch } from '../../lib/english/ipaHelper';
+import { finalizeKana } from '../../lib/romajiConverter';
 
 
 
@@ -1047,8 +1048,9 @@ if (!newHistory.find(item => getUniqueId(item.q) === getUniqueId(card2.originalI
                 
                 const ansNorm = normalize(ans);
                 const userNorm = normalize(userTyping);
+                const finalizedNorm = normalize(finalizeKana(userTyping));
 
-                const isOk = correctAnswers.some(c => c === ansNorm || c === userNorm || c.toLowerCase() === ansNorm.toLowerCase());
+                const isOk = correctAnswers.some(c => c === ansNorm || c === userNorm || c === finalizedNorm || c.toLowerCase() === ansNorm.toLowerCase());
                 handleAnswerSubmit(isOk);
               }
             }}

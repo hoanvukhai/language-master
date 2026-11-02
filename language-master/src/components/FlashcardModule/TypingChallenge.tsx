@@ -5,7 +5,7 @@ import type { FormType } from '../../context/features/flashcard/FlashcardSetting
 import { FORM_REGISTRY, getFormLabel } from '../../lib/formRegistry';
 import { useSettings } from '../../context/global/useSettings';
 import { useFlashcardSettings } from '../../context/features/flashcard/useFlashcardSettings';
-import { convertRomajiWithMode, type KanaInputMode } from '../../lib/romajiConverter';
+import { convertRomajiWithMode, finalizeKana, type KanaInputMode } from '../../lib/romajiConverter';
 import { KanaInputToggle } from '../shared/KanaInputToggle';
 import { resolveForm } from './FlipCard';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -83,7 +83,7 @@ export default function TypingChallenge({
 
     const inputKana = convertRomajiWithMode(userTyping.trim(), kanaMode);
     const expected = targetData.correctAns.trim();
-    const isCorrect = inputKana === expected || userTyping.trim() === expected;
+    const isCorrect = inputKana === expected || userTyping.trim() === expected || finalizeKana(inputKana) === expected;
 
     setFeedback(isCorrect ? 'correct' : 'wrong');
 

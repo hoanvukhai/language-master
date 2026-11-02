@@ -12,6 +12,7 @@ import { useSettings } from '../../context/global/useSettings';
 import { syncPersonalHighScore } from '../../lib/srs/firestoreSync';
 import shortcuts from '../../data/jlpt/core/shortcuts.json';
 import { checkEnglishWordMatch } from '../../lib/english/ipaHelper';
+import { finalizeKana } from '../../lib/romajiConverter';
 
 // Import local components and types
 import {
@@ -525,7 +526,7 @@ export default function VocabFullRun() {
                   const expectedAnswer = (currentQ as TypingQ).answer;
                   const ok = isEnglish
                     ? checkEnglishWordMatch(trimmedInput, expectedAnswer)
-                    : trimmedInput !== '' && trimmedInput === expectedAnswer;
+                    : trimmedInput !== '' && (trimmedInput === expectedAnswer || finalizeKana(trimmedInput) === expectedAnswer);
                   setTypingCorrect(ok);
                   setTypingSubmitted(true);
                   triggerResult(ok);

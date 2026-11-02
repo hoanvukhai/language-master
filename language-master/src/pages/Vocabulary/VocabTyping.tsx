@@ -9,7 +9,7 @@ import { useSettings } from '../../context/global/useSettings';
 import VocabLessonChips from '../../components/vocabulary/VocabLessonChips';
 import { formatDualIpa, checkEnglishWordMatch, formatWordVariantsDisplay } from '../../lib/english/ipaHelper';
 import { KanaInputToggle } from '../../components/shared/KanaInputToggle';
-import { convertRomajiWithMode, type KanaInputMode } from '../../lib/romajiConverter';
+import { convertRomajiWithMode, finalizeKana, type KanaInputMode } from '../../lib/romajiConverter';
 
 function shuffle<T>(arr: T[]): T[] {
   return [...arr].sort(() => Math.random() - 0.5);
@@ -113,7 +113,9 @@ export default function VocabTyping() {
       const expectedKanji = (current as any).kanji || (current as any).hiragana;
       check = input.trim() === expectedKanji || ((current as any).alt_kanji ? input.trim() === (current as any).alt_kanji : false);
     } else {
-      check = input.trim() === (current as any).hiragana;
+      const trimmed = input.trim();
+      const expected = (current as any).hiragana;
+      check = trimmed === expected || finalizeKana(trimmed) === expected;
     }
 
     setIsCorrect(check);

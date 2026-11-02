@@ -42,7 +42,7 @@ import { usePracticeContext } from './PracticeContext';
 import { speakWithVoiceEngine } from '../../lib/audio/voiceEngine';
 import VocabLessonChips from '../../components/vocabulary/VocabLessonChips';
 import { KanaInputToggle } from '../../components/shared/KanaInputToggle';
-import { convertRomajiWithMode, type KanaInputMode } from '../../lib/romajiConverter';
+import { convertRomajiWithMode, finalizeKana, type KanaInputMode } from '../../lib/romajiConverter';
 
 export interface SentenceItem {
   id: string;
@@ -460,9 +460,10 @@ export default function SentenceTyping() {
     if (!input.trim() || submitted || !currentConfig) return;
 
     const userClean = cleanTextForCompare(input);
+    const finalizedClean = cleanTextForCompare(finalizeKana(input));
     const acceptableAnswers = getAcceptableAnswers(currentConfig.expectedText);
 
-    const check = acceptableAnswers.includes(userClean);
+    const check = acceptableAnswers.includes(userClean) || acceptableAnswers.includes(finalizedClean);
     setIsCorrect(check);
     setSubmitted(true);
 
