@@ -1143,7 +1143,10 @@ export default function SentenceTyping() {
                   {isJapanese && currentConfig && !currentConfig.isTypingVietnamese && !submitted && (
                     <KanaInputToggle
                       mode={kanaMode}
-                      onToggle={() => setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana')}
+                      onToggle={() => {
+                        setInput(prev => finalizeKana(prev, kanaMode));
+                        setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana');
+                      }}
                       size="sm"
                     />
                   )}
@@ -1166,6 +1169,7 @@ export default function SentenceTyping() {
                   onKeyDown={e => {
                     if (e.key === 'Tab' && isJapanese && currentConfig && !currentConfig.isTypingVietnamese) {
                       e.preventDefault();
+                      setInput(prev => finalizeKana(prev, kanaMode));
                       setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana');
                       return;
                     }

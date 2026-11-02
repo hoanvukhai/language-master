@@ -4,7 +4,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { convertRomajiWithMode, type KanaInputMode } from '../../../lib/romajiConverter';
+import { convertRomajiWithMode, finalizeKana, type KanaInputMode } from '../../../lib/romajiConverter';
 import { KanaInputToggle } from '../../../components/shared/KanaInputToggle';
 
 interface RaceTypingViewProps {
@@ -43,6 +43,11 @@ export default function RaceTypingView({
     setKanaMode(isExpectedKatakana ? 'katakana' : 'hiragana');
   }, [question.id, isExpectedKatakana]);
 
+  const toggleKanaMode = () => {
+    onChangeInput(finalizeKana(typingInput, kanaMode));
+    setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana');
+  };
+
   return (
     <motion.div
       key={question.id}
@@ -80,7 +85,7 @@ export default function RaceTypingView({
               onKeyDown={e => {
                 if (e.key === 'Tab' && !skipRomaji && subject !== 'hanjt') {
                   e.preventDefault();
-                  setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana');
+                  toggleKanaMode();
                   return;
                 }
                 if (e.key === 'Enter') {
@@ -116,7 +121,7 @@ export default function RaceTypingView({
               <div className="absolute right-3.5 top-1/2 -translate-y-1/2">
                 <KanaInputToggle
                   mode={kanaMode}
-                  onToggle={() => setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana')}
+                  onToggle={toggleKanaMode}
                   size="sm"
                 />
               </div>

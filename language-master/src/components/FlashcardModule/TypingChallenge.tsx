@@ -60,6 +60,11 @@ export default function TypingChallenge({
     setKanaMode(isExpectedKatakana ? 'katakana' : 'hiragana');
   }, [word.id, targetForm, isExpectedKatakana]);
 
+  const toggleKanaMode = () => {
+    setUserTyping(prev => finalizeKana(prev, kanaMode));
+    setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana');
+  };
+
   // Focus input khi đổi thẻ
   useEffect(() => {
     setUserTyping('');
@@ -83,7 +88,7 @@ export default function TypingChallenge({
 
     const inputKana = convertRomajiWithMode(userTyping.trim(), kanaMode);
     const expected = targetData.correctAns.trim();
-    const isCorrect = inputKana === expected || userTyping.trim() === expected || finalizeKana(inputKana) === expected;
+    const isCorrect = inputKana === expected || userTyping.trim() === expected || finalizeKana(inputKana, kanaMode) === expected;
 
     setFeedback(isCorrect ? 'correct' : 'wrong');
 
@@ -170,7 +175,7 @@ export default function TypingChallenge({
               onKeyDown={(e) => {
                 if (e.key === 'Tab') {
                   e.preventDefault();
-                  setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana');
+                  toggleKanaMode();
                   return;
                 }
                 if (e.key === 'Enter') handleSubmit();
@@ -183,7 +188,7 @@ export default function TypingChallenge({
               <div className="absolute right-3.5 top-1/2 -translate-y-1/2">
                 <KanaInputToggle
                   mode={kanaMode}
-                  onToggle={() => setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana')}
+                  onToggle={toggleKanaMode}
                   size="sm"
                 />
               </div>

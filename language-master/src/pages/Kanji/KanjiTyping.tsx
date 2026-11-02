@@ -371,11 +371,21 @@ export default function KanjiTyping() {
                   ref={inputRef}
                   type="text"
                   value={input}
-                  onChange={e => setInput(e.target.value)}
+                  onChange={e => {
+                    if (!current.isSingleChar) {
+                      setInput(convertRomajiWithMode(e.target.value, kanaMode));
+                    } else {
+                      setInput(e.target.value);
+                    }
+                  }}
                   onKeyDown={e => {
                     if (e.key === 'Tab' && !current.isSingleChar) {
                       e.preventDefault();
-                      setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana');
+                      setKanaMode(m => {
+                        const next = m === 'hiragana' ? 'katakana' : 'hiragana';
+                        setInput(prev => finalizeKana(prev, m));
+                        return next;
+                      });
                     }
                   }}
                   placeholder={current.isSingleChar ? 'Gõ Âm Hán Việt...' : `Gõ Romaji (${kanaMode === 'hiragana' ? 'Hiragana' : 'Katakana'})...`}
@@ -391,7 +401,13 @@ export default function KanjiTyping() {
                   <div className="absolute right-3.5 top-1/2 -translate-y-1/2">
                     <KanaInputToggle
                       mode={kanaMode}
-                      onToggle={() => setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana')}
+                      onToggle={() => {
+                        setKanaMode(m => {
+                          const next = m === 'hiragana' ? 'katakana' : 'hiragana';
+                          setInput(prev => finalizeKana(prev, m));
+                          return next;
+                        });
+                      }}
                       size="sm"
                     />
                   </div>

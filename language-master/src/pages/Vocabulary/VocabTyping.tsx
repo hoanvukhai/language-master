@@ -369,7 +369,11 @@ export default function VocabTyping() {
                   onKeyDown={e => {
                     if (e.key === 'Tab' && !isEnglish && direction === 'backward') {
                       e.preventDefault();
-                      setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana');
+                      setKanaMode(m => {
+                        const next = m === 'hiragana' ? 'katakana' : 'hiragana';
+                        setInput(prev => finalizeKana(prev, m));
+                        return next;
+                      });
                     }
                   }}
                   disabled={submitted}
@@ -391,7 +395,13 @@ export default function VocabTyping() {
                   <div className="absolute right-3.5 top-1/2 -translate-y-1/2">
                     <KanaInputToggle
                       mode={kanaMode}
-                      onToggle={() => setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana')}
+                      onToggle={() => {
+                        setKanaMode(m => {
+                          const next = m === 'hiragana' ? 'katakana' : 'hiragana';
+                          setInput(prev => finalizeKana(prev, m));
+                          return next;
+                        });
+                      }}
                       size="sm"
                     />
                   </div>

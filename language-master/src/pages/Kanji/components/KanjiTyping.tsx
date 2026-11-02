@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { CheckCircle2, XCircle } from 'lucide-react';
 import type { TypingQ } from './KanjiCommon';
 import { KanaInputToggle } from '../../../components/shared/KanaInputToggle';
-import { convertRomajiWithMode, type KanaInputMode } from '../../../lib/romajiConverter';
+import { convertRomajiWithMode, finalizeKana, type KanaInputMode } from '../../../lib/romajiConverter';
 
 interface KanjiTypingProps {
   q: TypingQ;
@@ -80,7 +80,11 @@ export default function KanjiTyping({
             onKeyDown={e => {
               if (e.key === 'Tab' && q.inputMode === 'jp') {
                 e.preventDefault();
-                setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana');
+                setKanaMode(m => {
+                  const next = m === 'hiragana' ? 'katakana' : 'hiragana';
+                  setTypingInput(finalizeKana(typingInput, m));
+                  return next;
+                });
               }
             }}
             onFocus={e => {
@@ -105,7 +109,13 @@ export default function KanjiTyping({
             <div className="absolute right-2.5 top-1/2 -translate-y-1/2">
               <KanaInputToggle
                 mode={kanaMode}
-                onToggle={() => setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana')}
+                onToggle={() => {
+                  setKanaMode(m => {
+                    const next = m === 'hiragana' ? 'katakana' : 'hiragana';
+                    setTypingInput(finalizeKana(typingInput, m));
+                    return next;
+                  });
+                }}
                 size="sm"
               />
             </div>

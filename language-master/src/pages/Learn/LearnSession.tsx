@@ -11,11 +11,10 @@ import { Volume2, RotateCcw, Sparkles, ChevronRight, X, ChevronsUp, MousePointer
 import CustomWordModal from '../../components/course/CustomWordModal';
 import { updateWordInCustomCourse, type CustomWord } from '../../lib/customCourses/customCourseService';
 import { KanaInputToggle } from '../../components/shared/KanaInputToggle';
-import { convertRomajiWithMode, type KanaInputMode } from '../../lib/romajiConverter';
+import { convertRomajiWithMode, finalizeKana, type KanaInputMode } from '../../lib/romajiConverter';
 
 
 
-import * as wanakana from 'wanakana';
 import { maskTargetInSentence } from '../../lib/cloze/sentenceClozeEngine';
 import { formatDualIpa, checkEnglishWordMatch, formatWordVariantsDisplay } from '../../lib/english/ipaHelper';
 import { speakWithVoiceEngine } from '../../lib/audio/voiceEngine';
@@ -1362,11 +1361,12 @@ export default function LearnSession() {
     } else {
       const target = raw.hiragana.trim();
       const trimmedInput = userTyping.trim();
-      const converted = wanakana.toKana(trimmedInput);
+      const finalized = finalizeKana(trimmedInput, kanaMode);
       correct =
         trimmedInput === target ||
-        converted === target ||
-        trimmedInput.toLowerCase() === target.toLowerCase();
+        finalized === target ||
+        trimmedInput.toLowerCase() === target.toLowerCase() ||
+        finalized.toLowerCase() === target.toLowerCase();
     }
 
     if (!correct) {
@@ -2163,7 +2163,7 @@ export default function LearnSession() {
                           ? 'Type the English word'
                           : course?.template === 'generic'
                             ? 'Gõ chính xác thuật ngữ'
-                            : 'Gõ Romaji (sẽ tự chuyển Hiragana)'}
+                            : `Gõ Romaji (sẽ tự chuyển ${kanaMode === 'hiragana' ? 'Hiragana' : 'Katakana'})`}
                   </p>
                   <div className="relative flex items-center">
                     <input
@@ -2181,7 +2181,11 @@ export default function LearnSession() {
                       onKeyDown={e => {
                         if (e.key === 'Tab' && !currentQ.sentenceCloze && !currentQ.raw.isSingleKanjiChar && course?.template !== 'english' && course?.template !== 'generic') {
                           e.preventDefault();
-                          setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana');
+                          setKanaMode(m => {
+                            const next = m === 'hiragana' ? 'katakana' : 'hiragana';
+                            setUserTyping(prev => finalizeKana(prev, m));
+                            return next;
+                          });
                           return;
                         }
                         if (e.key === 'Enter') submitTyping();
@@ -2215,7 +2219,13 @@ export default function LearnSession() {
                       <div className="absolute right-3.5 top-1/2 -translate-y-1/2">
                         <KanaInputToggle
                           mode={kanaMode}
-                          onToggle={() => setKanaMode(m => m === 'hiragana' ? 'katakana' : 'hiragana')}
+                          onToggle={() => {
+                            setKanaMode(m => {
+                              const next = m === 'hiragana' ? 'katakana' : 'hiragana';
+                              setUserTyping(prev => finalizeKana(prev, m));
+                              return next;
+                            });
+                          }}
                           size="sm"
                         />
                       </div>
