@@ -1,0 +1,54 @@
+1|捜す đọc さがす: tìm vật/người mất. 促す là うながす, 逃す là のがす, 流す là ながす.
+2|手術 đọc しゅじゅつ: phẫu thuật. 手 là しゅ, 術 là じゅつ, cần phân biệt hai âm gần nhau.
+3|常に đọc つねに: luôn luôn. じょう thường là âm on trong từ ghép, không đọc 常に thành じょうに.
+4|凍える đọc こごえる: cóng vì lạnh. Âm đầu こ không đục, âm thứ hai ご đục.
+5|吸収 đọc きゅうしゅう: hấp thu. Giữ cả hai trường âm và phân biệt きゅう với きょう.
+6|つごう viết 都合: điều kiện/lịch tiện của ai. 都合を聞く là hỏi người ấy có tiện không.
+7|おんだん viết 温暖: ôn hòa, ấm áp về khí hậu. 温 mang bộ 水; 穏 là yên ổn, không dùng 穏暖.
+8|げんさん viết 原産: xuất xứ gốc. 原 chỉ nguồn gốc; 元・現・源 không tạo đúng thuật ngữ này.
+9|たのもしい viết 頼もしい: đáng tin, có triển vọng. 頼 thể hiện có thể trông cậy, không dùng 信もしい.
+10|みちる viết 満ちる: đầy. 自信に満ちた表情 là nét mặt đầy tự tin.
+11|話し合う: cùng trao đổi, thảo luận. 話しかける là bắt chuyện, 話し込む là mải nói, khác bàn bạc với nhau.
+12|思い出される: tự nhiên được gợi nhớ khi nhìn ảnh. 思い切る là quyết tâm/dứt bỏ, 思い込む là đinh ninh.
+13|非常識: thiếu ý thức, trái lẽ thường. 非 phủ định tính hợp chuẩn của 常識.
+14|特殊性: tính đặc thù. 性 tạo danh từ chỉ đặc tính; 風 chỉ phong cách, 型 chỉ kiểu.
+15|血液型: nhóm máu. 型 là loại/mẫu, khác 形 chỉ hình dạng.
+16|生存する: còn sống sau ba ngày mắc nạn trong tuyết. 所在 là nơi ở, 存在 là tồn tại nói chung.
+17|一役買う: góp phần giúp vào việc gì. Đây là thành ngữ cố định, không thay 買う bằng 取る・売る・持つ.
+18|学会で発表する: công bố tại hội nghị/hội học thuật. 教授 là giáo sư, 見学 là tham quan, không phải diễn đàn.
+19|正面から撮る: chụp từ chính diện (trước mặt tòa nhà Quốc hội). 角度 là góc độ, 直線 là đường thẳng, 等分 là chia đều, không hợp ngữ cảnh vị trí chụp ảnh này.
+20|研修が済む: đào tạo kết thúc rồi ra hiện trường. やむ dùng khi mưa/hoạt động dừng, khác hoàn thành khóa học.
+21|破産する: phá sản do mở rộng chuỗi quá mức. 省略 là lược bỏ, 解放 là giải phóng, không chỉ mất khả năng tài chính.
+22|高層になる: các tòa nhà ngày càng nhiều tầng/cao tầng. 本部 là trụ sở chính, 膨大 là khổng lồ về lượng.
+23|すばやく gần さっさと: nhanh chóng thay đồng phục. じっくり là kỹ/thong thả, のんびり là thư thả.
+24|不思議だ gần 奇妙だ: lạ, khó hiểu khi trời lạnh mà anh đào nở. 新鮮 là tươi mới, 秘密 là bí mật.
+25|不平を言う gần ぶつぶつ言う: lẩm bẩm than phiền. あれこれ chỉ đủ thứ, không tự mang sắc thái bất mãn bằng.
+26|まずいこと gần 不都合なこと: tình thế bất lợi/rắc rối sau khi bị phát hiện nói dối. 不安定 là không ổn định.
+27|どちらかといえば gần むしろ: nếu phải chọn thì nghiêng về làm đạo diễn hơn. あるいは là hoặc, 確かに là quả thật.
+28|症状が改善されない: triệu chứng chưa được cải thiện. Sửa sách là 改訂, sửa máy/nhà là 修理/修繕.
+29|強気な発言: phát ngôn cứng rắn, tự tin. Sức mạnh quân sự, keo dính và mưa cần 強い/強力, không phải tâm thế 強気.
+30|なるべく出席したい: muốn tham gia trong khả năng có thể. なるべく không dùng để suy đoán xác suất phẫu thuật hay bão đổ bộ.
+31|利口な犬: con chó thông minh, làm được nhiều trò. 利口 thường chỉ năng lực người/động vật, không thay 便利 hay 利益.
+32|書留で出す: gửi bảo đảm để chuyển hồ sơ quan trọng. 書留 là dịch vụ bưu chính, không phải kỹ năng viết hay viết chữ đầu năm.
+33|悲しげな表情: vẻ mặt trông buồn. Aい bỏ い + げな bổ nghĩa danh từ; không dùng 悲しっぽい.
+34|というより: nói là thiết kế hiện đại thì đúng hơn là tương lai. Mẫu đính chính/chọn cách diễn đạt sát hơn.
+35|日本はもとより外国でも: ở Nhật thì đương nhiên, nước ngoài cũng được đọc rộng rãi. はともかく là tạm gác sang bên.
+36|にしろ: dù không phải bệnh nặng vẫn nên khám kỹ. に限らず là không chỉ, にかわり là thay cho.
+37|ということだ: nghe nói/được biết đã ba năm mới lại có gấu trúc. Dẫn lại thông tin, không nêu ý định つもり.
+38|よく考えた上での決心: quyết định sau khi suy nghĩ kỹ. 上での nối quá trình trước với danh từ sau.
+39|お休みになったらいかがですか: kính mời nghỉ sớm, dùng tôn kính cho hành động của đối phương. お休みしたら là khiêm nhường sai hướng.
+40|痛くてたまらない: đau không chịu nổi. てたまらない nêu cảm giác quá mức; các phủ định khác sai ý bị giẫm chân.
+41|落とさないようにと気をつける: cẩn thận với mong muốn không đánh rơi. ようにと diễn tả mục đích được nghĩ trong đầu.
+42|かけ声のもとに: dưới khẩu hiệu cùng cố gắng. のもとに nêu sự định hướng/ảnh hưởng chung.
+43|比べてみても: dù thử so với ca sĩ chuyên nghiệp cũng không khác nhiều. ことなく là không so, trái cách đánh giá.
+44|代表するイメージというと: nói đến hình ảnh tiêu biểu của Pháp thì tháp Eiffel. というと mở liên tưởng về chủ đề.
+45|Ghép 1→3→2→4: 横綱のことだから連敗はしないだろう. のことだから dựa vào hiểu biết về đối tượng (nhà vô địch sumo Yokozuna) để đoán. Ô sao là 2.
+46|Ghép 2→1→4→3: 犯人どころか最初に被害者の救助活動をした人です. どころか nêu sự thật ngược hoàn toàn. Ô sao là 4.
+47|Ghép 4→3→1→2: 仕事の話はぬきで楽しく飲むつもりだ. Nぬきで là bỏ qua N. Ô sao là 1.
+48|Ghép 2→4→3→1: 宇宙飛行士として訓練を受けることになった. として chỉ vai trò, 訓練を受ける là được huấn luyện. Ô sao là 3.
+49|Ghép 3→1→2→4: レベルが上がるにしたがって大学受験の競争もきびしくなっている. にしたがって nêu biến đổi song song. Ô sao là 2.
+50|なかなか刺激的だ: khá kích thích/gây ấn tượng, bình luận về định nghĩa tình bạn táo bạo. とうとう là cuối cùng, まして là huống chi.
+51|1週間もしないうちに／きたそうだ: chưa đầy một tuần sinh viên đã tới xin tư vấn. うちに nêu trước mốc kết thúc; 来る hợp hành động đến gặp.
+52|Chọn 大学／友達／学生: rời đại học vừa vào vì không có bạn, người bỏ học là sinh viên. Trật tự danh từ quyết định quan hệ câu.
+53|耐えられないのだという: nghe nói họ không chịu nổi cảm giác xấu hổ vì không có bạn. Khả năng phủ định hợp việc sợ ánh mắt xung quanh.
+54|植物のようなもの: tình bạn giống cây mọc chậm, cần thời gian. っぽいこと・らしいこと không tạo cách ví von danh từ tự nhiên ở đây.

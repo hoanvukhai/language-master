@@ -1,0 +1,54 @@
+1|刻む đọc きざむ: khắc, ghi dấu. 歴史に名を刻む là ghi tên vào lịch sử; 拝む là おがむ.
+2|収入 đọc しゅうにゅう: thu nhập. 入 dùng âm にゅう trong từ này, không phải いり.
+3|調節 đọc ちょうせつ: điều chỉnh mức độ. 調 là ちょう, 節 là せつ, cần giữ nguyên trường âm.
+4|誤り đọc あやまり: sai sót. あつまり là 集まり, あまり là dư/quá, khác từ yêu cầu.
+5|灯油 đọc とうゆ: dầu hỏa. Hai chữ đều đọc âm on trong từ ghép, không dùng ひあぶら.
+6|しんだい viết 寝台: giường nằm, trong 寝台特急 là tàu tốc hành giường nằm. 台 không thay bằng 代・大・第.
+7|かんき viết 換気: thông gió. 喚起 là khơi dậy, 歓喜 là vui mừng, 乾季 là mùa khô.
+8|がいこう viết 外交: ngoại giao giữa hai nước. 外向 là hướng ngoại, 外港 là cảng ngoài, 外航 là hàng hải quốc tế.
+9|すてる viết 捨てる: vứt bỏ. 拾う là nhặt, đối nghĩa; không viết 拾てる.
+10|ふせぐ viết 防ぐ: ngăn chặn, chắn gió. 妨げる đọc さまたげる; không dùng 妨ぐ cho từ này.
+11|ひっかける: móc/vướng vào vật; quần áo mắc vào đinh vít rồi rách. Tiền tố đúng là ひっ.
+12|追いつく: đuổi kịp. Kẻ trộm chạy nhanh nên cảnh sát không đuổi kịp; 食いつく là cắn bám.
+13|重労働: lao động nặng nhọc. 重 nêu mức nặng, không dùng 強労働・激労働・多労働.
+14|北海道産: được sản xuất/trồng tại Hokkaido. 産 gắn sau địa danh để chỉ xuất xứ.
+15|経営者: người điều hành/quản lý doanh nghiệp. 者 chỉ người, khác cấp bậc 級 hay học sinh 生.
+16|区議会の議員: nghị viên hội đồng quận. 首相 là thủ tướng, 大臣 là bộ trưởng, 記者 là nhà báo.
+17|土地を相続する: thừa kế đất sau khi ông mất. 連続 là liên tiếp, 接続 là kết nối.
+18|避難する事態となる: tình thế buộc phải sơ tán. 事柄 là sự việc/chủ đề; 場面 là cảnh/tình huống trong diễn tiến.
+19|臨時のニュース: bản tin thời sự đột xuất/phát sóng bất thường về việc máy bay ngừng bay do tuyết lớn. 特定 là xác định cụ thể, 至急 là gấp rút, 選択 là lựa chọn.
+20|会社をおこす: lập công ty. おこす tương ứng 起こす/興す trong ý khởi nghiệp; かける・すすむ・のせる không thay được.
+21|憲法: hiến pháp quy định nguyên tắc của quốc gia. 警察・軍隊・国会 là cơ quan/lực lượng, không phải văn bản quy định.
+22|角度を変えて見る: đổi góc nhìn. 程度・水準 là mức độ; 逆さま là đảo ngược, không phải danh từ góc.
+23|偶然 gần たまたま: tình cờ. たまに chỉ tần suất thỉnh thoảng; きっと là chắc hẳn.
+24|適用される gần あてはまる: có hiệu lực/phù hợp áp dụng. 引き受ける là nhận việc, 属する là thuộc về.
+25|突然 gần にわかに: đột ngột. かなり là khá, やっと là cuối cùng mới, không diễn tả sự bất chợt.
+26|にぶい về cảm nhận là 鈍感だ: chậm nhạy, không nhận ra mỉa mai. 消極的 là thụ động, わがまま là ích kỷ.
+27|思いがけず会う gần ばったり会う: tình cờ gặp. いきなり・急に chỉ sự đột ngột, không nhấn mạnh gặp người không hẹn bằng.
+28|ばく大な量: số lượng khổng lồ, thường đi với 量・費用・損害. Không bổ nghĩa chiều dài/cao đơn thuần theo cách trong các phương án khác.
+29|不平を言う: than phiền. 不公平 mới là bất công ở câu 1; 不平 không phải động từ chỉ việc giảm hay tâm trạng bất an.
+30|だいいち: trước hết/ngay từ đầu đã…, đưa lý do nền tảng mình ở nước ngoài hôm đó. Thứ hạng đầu dùng 一位, tỷ lệ gần đúng dùng だいたい.
+31|初歩から学ぶ: học từ căn bản. 初歩 chỉ kiến thức ban đầu, không chỉ bước chân đầu tiên theo nghĩa vật lý.
+32|役人 là công chức/cán bộ cơ quan nhà nước, như Bộ Ngoại giao. Nhân viên doanh nghiệp là 社員; vai diễn dùng 役.
+33|Vた以上は: một khi đã đến hạn thì phải trả. 以上は nêu trách nhiệm kéo theo; にしては so với điều kiện dự kiến.
+34|Nをぬきにしては…ない: không thể nói về văn hóa Nhật mà bỏ qua võ sĩ đạo. をめぐって là xoay quanh, không mang nghĩa loại bỏ.
+35|Nはともかく: tạm gác N sang một bên. Đại học đô thị thì chưa bàn, đại học tỉnh đang thiếu sinh viên nghiêm trọng.
+36|Vたにしては: so với thực tế do học sinh trung học vẽ thì đẹp vượt kỳ vọng. にとって chỉ lập trường, に際して là nhân dịp.
+37|Nに限らずNも: không chỉ cựu học sinh mà học sinh hiện tại cũng được dự. 次第で là tùy, と同時に là đồng thời.
+38|Vた際に: nhân dịp/khi đã đi Kyoto thì chụp ảnh với maiko. に応じて là tùy theo, không nêu dịp sự việc.
+39|休ませていただきます: xin phép được nghỉ, dùng sai khiến + nhận sự cho phép. 休んでいただきます là nhờ người khác nghỉ, sai chủ thể.
+40|かわりになるかどうか: không biết có thay thế được không nhưng vẫn cho dự bị ra sân. ついで là tiện thể, không phải thay người.
+41|代わりをする者にとっては: đối với người bất ngờ đóng thay vai chính. 代わりをする là đảm nhiệm thay; にとって nêu người chịu đánh giá.
+42|NだのNだの: liệt kê phàn nàn bị con đòi giày rồi quần áo đủ thứ. なり…なり thường gợi các lựa chọn, khác sắc thái than phiền.
+43|行うことに対して: phản đối việc nước A phát triển vũ khí. こと danh từ hóa hành động, に対して chỉ đối tượng phản đối.
+44|Vます bỏ ます + つつある: đang dần tiếp nhận người nước ngoài. ながらある・つつする không tạo mẫu xu hướng đang tiến triển.
+45|Ghép 4→2→3→1: 念入りに準備したにしてはいい発表ができなかった. にしては nêu kết quả kém so với chuẩn bị kỹ. Ô sao là 3.
+46|Ghép 3→1→2→4: 自然の恵みのもとで育ったこの野菜はおいしい. のもとで nêu điều kiện nuôi dưỡng. Ô sao là 2.
+47|Ghép 1→2→4→3: S町は劇場が多いことから文化の町として有名だ. ことから đưa căn cứ, として là với tư cách. Ô sao là 4.
+48|Ghép 4→3→2→1: インターネットで人を傷つけるような書き込みはやめるべきだ. ような bổ nghĩa 書き込み; べきだ khuyên nên. Ô sao là 2.
+49|Ghép 3→1→2→4: 君の要求を聞かないわけではないがそのためにはやるべきことをやりなさい. わけではない phủ định việc hoàn toàn không nghe. Ô sao là 2.
+50|専門家によれば: theo chuyên gia, dùng によれば đánh dấu nguồn tin. Những trợ từ khác không tạo mẫu trích dẫn này.
+51|柔らかい／軽くなる: lời thơ dịu dàng làm lòng nhẹ nhõm. かたい và 重くなる trái với cảm giác tươi mát, được an ủi trong đoạn.
+52|Chọn 詩／ユーモア／息子さん: thơ phóng khoáng, có hài hước; cuối tuần con trai tới thăm. Đây là ba vai trò khác nhau trong mạch văn.
+53|なっているという: theo báo cáo, tình trạng nhiều người cao tuổi thường không có cuộc trò chuyện đã tồn tại. という dẫn nguồn, ている chỉ trạng thái hiện tại.
+54|教えてくれている: câu chuyện đang dạy cho chúng ta giá trị của hỗ trợ nhau. くれる hướng lợi ích về phía người viết/người đọc; あげる hướng sang người khác.

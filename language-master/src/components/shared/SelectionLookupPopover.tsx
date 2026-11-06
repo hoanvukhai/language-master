@@ -145,7 +145,7 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
 
     let debounceTimer: ReturnType<typeof setTimeout> | null = null;
 
-    const evaluateSelection = (targetEl: HTMLElement | null, isTouchDevice: boolean) => {
+    const evaluateSelection = (targetEl: HTMLElement | null) => {
       // 1. Không can thiệp nếu thao tác trong chính Popover hoặc nút Chạm
       if (popoverRef.current && targetEl && popoverRef.current.contains(targetEl)) {
         return;
@@ -154,13 +154,16 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
         return;
       }
 
-      // 2. Không kích hoạt nếu đang nhả chuột/tay trong input / textarea
+      // 2. Không kích hoạt nếu đang nhả chuột/tay trong input / textarea hoặc trong .exam-shell (đã có SelectionLookup + WordLookupModal chuyên biệt)
       if (
-        targetEl && (
+        document.querySelector('.exam-shell') ||
+        (targetEl && (
+          targetEl.closest('.exam-shell') ||
           targetEl.closest('[data-no-selection-lookup]') ||
           ['input', 'textarea', 'select'].includes(targetEl.tagName.toLowerCase())
-        )
+        ))
       ) {
+        setTouchTrigger(null);
         return;
       }
 
@@ -177,7 +180,7 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
       }
 
       // Bỏ qua nếu toàn số và ký tự vô nghĩa
-      if (/^[\d\s.,\/#!$%\^&\*;:{}=\-_`~()]+$/.test(text)) {
+      if (/^[\d\s.,/#!$%^&*;:{}=\-_`~()]+$/.test(text)) {
         setTouchTrigger(null);
         return;
       }
@@ -202,26 +205,19 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
       }
       if (rect.width === 0 && rect.height === 0) return;
 
-      const isMobile = window.innerWidth < 768 || isTouchDevice;
+      // Hiển thị Nút Bấm Nhỏ (Action Pill) trước trên cả Mobile & Desktop để không tự bung popup to che khuất bài đọc khi vô tình quét chuột
+      const placeAbove = rect.top >= 48;
+      let x = rect.left + rect.width / 2;
+      x = Math.max(65, Math.min(window.innerWidth - 65, x));
+      const y = placeAbove ? rect.top - 8 : rect.bottom + 8;
 
-      if (isMobile) {
-        // TRÊN ĐIỆN THOẠI: Hiển thị Nút Chạm Thông Minh (Touch Action Pill)
-        const placeAbove = rect.top >= 48;
-        let x = rect.left + rect.width / 2;
-        x = Math.max(65, Math.min(window.innerWidth - 65, x));
-        const y = placeAbove ? rect.top - 8 : rect.bottom + 8;
-
-        setTouchTrigger({
-          x,
-          y,
-          placeAbove,
-          text,
-          rect,
-        });
-      } else {
-        // TRÊN MÁY TÍNH: Mở ngay Popover
-        executeLookup(text, rect);
-      }
+      setTouchTrigger({
+        x,
+        y,
+        placeAbove,
+        text,
+        rect,
+      });
     };
 
     // 1. Sự kiện TouchStart (Ghi nhận tọa độ chạm ngón tay)
@@ -234,7 +230,7 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
 
     // 2. Sự kiện MouseUp (Desktop PC chuột)
     const handleMouseUp = (e: MouseEvent) => {
-      evaluateSelection(e.target as HTMLElement | null, false);
+      evaluateSelection(e.target as HTMLElement | null);
     };
 
     // 3. Sự kiện SelectionChange (Chuẩn W3C trên Mobile cho cả iOS Safari và Android Chrome)
@@ -243,7 +239,7 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
       debounceTimer = setTimeout(() => {
         const isTouch = window.innerWidth < 768 || ('ontouchstart' in window);
         if (isTouch) {
-          evaluateSelection(null, true);
+          evaluateSelection(null);
         }
       }, 200);
     };
@@ -256,7 +252,7 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
         if (touch && (!targetEl || targetEl === document.body)) {
           targetEl = document.elementFromPoint(touch.clientX, touch.clientY) as HTMLElement | null;
         }
-        evaluateSelection(targetEl, true);
+        evaluateSelection(targetEl);
       }, 100);
     };
 
@@ -268,6 +264,7 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
 
     // 5. Sự kiện Tra Cứu Trực Tiếp từ Nút Thanh Nổi hoặc Phím tắt F9
     const handleTriggerLookupEvent = (e: Event) => {
+      if (document.querySelector('.exam-shell')) return;
       const customEvent = e as CustomEvent<{ text?: string }>;
       let text = customEvent.detail?.text;
       if (!text) {

@@ -146,7 +146,10 @@ export async function lookupExternal(
       const data = await res.json();
       // data[0] chứa các mảng câu dịch
       if (Array.isArray(data[0])) {
-        translation = data[0].map((chunk: any) => chunk[0]).filter(Boolean).join(' ');
+        translation = data[0]
+          .map((chunk: unknown[]) => (typeof chunk?.[0] === 'string' ? chunk[0] : ''))
+          .filter(Boolean)
+          .join(' ');
         // Thử lấy phonetic romaji từ chunk cuối
         const lastChunk = data[0][data[0].length - 1];
         if (Array.isArray(lastChunk) && typeof lastChunk[3] === 'string' && lastChunk[3]) {
@@ -173,7 +176,9 @@ export async function lookupExternal(
           }
           // Tìm file audio trong phonetics
           if (Array.isArray(first.phonetics)) {
-            const foundAudio = first.phonetics.find((p: any) => p.audio && p.audio.length > 0);
+            const foundAudio = first.phonetics.find(
+              (p: { audio?: string }) => p.audio && p.audio.length > 0,
+            );
             if (foundAudio) {
               audioUrl = foundAudio.audio;
             }
@@ -221,25 +226,25 @@ export async function quickSaveWordToNotebook(params: {
   exampleKanji?: string;
   exampleMeaning?: string;
   userId?: string | null;
-  userProfile?: any;
+  userProfile?: unknown;
   targetCourseId?: string;
 }): Promise<{ success: boolean; courseTitle: string; courseId: string }> {
   const { term, reading = '', meaning, exampleKanji = '', exampleMeaning = '', userId, userProfile, targetCourseId } = params;
 
-  let localCourses = getStorageCourses();
+  const localCourses = getStorageCourses();
   let targetCourse: CustomCourseDoc | null = null;
 
   if (targetCourseId) {
     targetCourse = localCourses.find(c => c.id === targetCourseId) || null;
   }
 
-  // Nếu chưa chọn targetCourse, tìm course đầu tiên hoặc course mang tên "Sổ tay"
+  // Nếu chưa chọn targetCourse, chỉ tìm đúng course mang tên "Sổ tay" / "Notebook"
+  // Không fallback sang localCourses[0] để tránh ghi đè nhầm vào khóa học tự tạo khác
   if (!targetCourse) {
     targetCourse = localCourses.find(c => 
       c.title.toLowerCase().includes('sổ tay') || 
-      c.title.toLowerCase().includes('notebook') ||
-      c.title.toLowerCase().includes('cá nhân')
-    ) || localCourses[0] || null;
+      c.title.toLowerCase().includes('notebook')
+    ) || null;
   }
 
   // Nếu người dùng chưa từng tạo bộ từ nào, tự động khởi tạo 1 Sổ tay mặc định

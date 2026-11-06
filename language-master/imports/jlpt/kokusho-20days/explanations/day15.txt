@@ -1,0 +1,54 @@
+1|祈る đọc いのる: cầu nguyện. 募る là つのる, 実る là みのる, 名乗る là なのる.
+2|困難 đọc こんなん: khó khăn. 困 là こん, 難 là なん; không đọc かんなん.
+3|西暦 đọc せいれき: dương lịch. 西 là せい trong từ này, không phải さい.
+4|敬う đọc うやまう: kính trọng. かくまう là che giấu, ふるまう là ứng xử, みまう là thăm bệnh.
+5|管 đọc くだ: ống. 枝 là えだ, 無駄 là むだ, khác vật dùng kiểm tra dạ dày.
+6|しじゅう viết 始終: luôn luôn/suốt. 始 và 終 chỉ đầu cuối, mở rộng nghĩa liên tục.
+7|じさん viết 持参: mang theo khi đến. 持 là cầm mang; không dùng 自参・持産.
+8|きそく viết 規則: quy tắc. 規 có bộ 見, 則 có 刂, khác 基・側.
+9|すぐれる viết 優れる: xuất sắc. 優れた業績 là thành tích nổi bật, cách viết chuẩn trong câu.
+10|ぬる viết 塗る: sơn/phết. ニスを塗る là quét véc-ni; 煮る là nấu, 混ぜる là trộn.
+11|待ち合わせる: hẹn gặp ở một nơi. 待ち合う không phải từ cần dùng cho cuộc hẹn chủ động này.
+12|取り入れる: tiếp thu ý kiến vào kế hoạch. 持ち入れる・有り入れる không tạo từ ghép đúng.
+13|低姿勢: thái độ khiêm tốn, nhún nhường dù là giám đốc. 低 nêu hạ mình, không dùng 柔姿勢.
+14|反社会的: chống lại lợi ích/trật tự xã hội. 反 chỉ đối nghịch, phù hợp tổ chức bạo lực.
+15|交通費: chi phí đi lại. 交通賃・交通料 không phải từ tổng quát thông dụng trong chế độ trợ cấp này.
+16|駅で下車する: xuống tàu tại ga. 停車 là xe dừng, không phải hành động người đàn ông ra khỏi xe.
+17|薬の効果: hiệu quả thuốc giảm cân. 機能 là chức năng, 調子 là tình trạng, không phải tác dụng đạt được.
+18|地方の名物: món đặc trưng nổi tiếng địa phương. 特売 là bán giảm giá, 天然 là tự nhiên.
+19|企業で研修を受ける: được đào tạo tại doanh nghiệp. 家屋 là nhà, 競技 là thi đấu, 集会 là buổi họp.
+20|クラシック音楽: nhạc cổ điển. テンポ là nhịp độ, サイレン là còi, スピーチ là diễn văn.
+21|厳重に保管する: bảo quản nghiêm ngặt hóa chất độc. 超過 là vượt mức, 熱心 là nhiệt tình, không hợp mức kiểm soát.
+22|入学に必要な書類: giấy tờ cần thiết để nhập học. 正確 là chính xác, 当然 là đương nhiên, khác yêu cầu phải có.
+23|ほぼ gần ざっと: đại thể là như vậy. わずかに là chút ít, まず là trước hết, khác tóm lược lý do.
+24|役に立たなかった gần 無駄だった: không có tác dụng. 失格 là bị loại, 強引 là cưỡng ép, không đúng ý nỗ lực vô ích.
+25|きわ立って gần めっきり: nổi rõ, thay đổi rõ rệt ở màu ảnh. ぼんやり là mờ nhạt, trái sắc thái nổi bật.
+26|恥知らず gần ずうずうしい: trơ tráo, không biết ngượng. そそっかしい là hấp tấp, không chỉ sự vô sỉ.
+27|つまり gần すなわち: tức là, giới thiệu cụ thể hai ngày nghỉ. 結局 là rốt cuộc, だいいち là trước hết.
+28|日帰りのバスツアー: chuyến đi về trong ngày. 日帰り chỉ lịch trình không qua đêm, không phải một loại tàu/taxi.
+29|都心: trung tâm Tokyo/đô thị lớn, như Ginza. 首都 mới là thủ đô, không dùng 都心 để gọi cố đô Kyoto.
+30|やや遅れ気味: hơi chạy chậm. やや bổ nghĩa mức độ của tính chất, không thay しばらく hay 少し trong mọi cấu trúc.
+31|低気圧が発達する: áp thấp mạnh dần thành bão. Chiều cao dùng 伸びる, bụng to dùng 出る, ẩu đả dùng 発展する.
+32|余計なお世話: sự can thiệp/lời khuyên không cần thiết. Đây là cụm cố định; số tiền dư là 余裕/余り, thời gian rỗi là 暇.
+33|Vます bỏ ます + つつ: tuy nghĩ phải xin lỗi nhưng vẫn cãi nhau. つつ nối ý định với thực tế ngược lại.
+34|遺産をもとにして: lấy thừa kế làm vốn/nền tảng lập công ty. をめぐって là xoay quanh, を通して là thông qua.
+35|理論上: trên lý thuyết. 上 đọc じょう gắn sau danh từ nêu phương diện; だけ không tạo ý ấy.
+36|Vるとすれば: giả sử sẽ sống ở nước ngoài. としては nêu tư cách/đánh giá, không phải điều kiện giả định này.
+37|Vます bỏ ます + がち: dễ bị nghĩ là người yếu đuối. がち chỉ khuynh hướng thường xảy ra, hay đi với điều không mong muốn.
+38|Nくらい…ない: không ai đến mức thiếu tin cậy như chính trị gia đó. くらい nêu mức chuẩn của so sánh cực đoan.
+39|助けて下さり: cảm ơn vì người kia đã cứu mình. くださる tôn kính hành động người giúp; お助けして sai hướng khiêm nhường.
+40|泥だらけになる: trở nên lấm lem đầy bùn. だらけ dùng cho nhiều thứ bẩn/xấu bám; ずくめ không dùng tự nhiên cho bùn.
+41|指示にしたがって: theo chỉ dẫn của thầy. にかかわって là liên quan, không diễn đạt làm theo hướng dẫn.
+42|嫌いなわけでもない: không hẳn ghét natto, nhưng không tự nguyện ăn. Phủ định một kết luận quá mạnh, hợp dè dặt phía sau.
+43|Vた末に: sau khi phân vân cuối cùng quyết định cầu hôn. きり nêu từ đó không tiếp diễn, không phải kết quả cân nhắc.
+44|Vるにきまっている: nhất định sông sẽ bẩn nếu xây nhà máy quá gần. ようがない là không có cách, trái dự đoán mạnh.
+45|Ghép 3→2→1→4: 悩んだあげく政治の世界から身を引くことにした. あげく nêu kết quả sau trăn trở. Ô sao là 1.
+46|Ghép 3→1→4→2: 新しい薬のおかげで回復にいたった次第だ. おかげで chỉ nguyên nhân tốt, 次第だ giải trình diễn biến. Ô sao là 4.
+47|Ghép 2→4→1→3: 同じ話を何度も聞かされてその場から逃げたくなるほどだ. される là bị bắt nghe, ほど chỉ mức. Ô sao là 1.
+48|Ghép 2→4→3→1: 平気な顔で聞くに耐えがたい話をした. 聞くに耐えがたい là khó chịu đến không nghe nổi. Ô sao là 3.
+49|Ghép 1→3→2→4: 昔の職場の仲間に会いたくてたまらない. たくてたまらない là vô cùng muốn. Ô sao là 2.
+50|Vます bỏ ます + がちだ: dễ thành khuôn mẫu. Quen tiếng mẹ đẻ khiến ta hay nghe tiếng chó mèo theo một kiểu cố định.
+51|同じ声はないし／それぞれだろう: không con nào giống hệt giọng con nào, cách nghe mỗi người cũng khác. Phủ định khác sẽ trái luận điểm đa dạng.
+52|Chọn 表現／意味／語感: cần tìm cách biểu đạt thích hợp; nghĩa đã có từ điển dẫn đường, còn sắc thái cảm nhận chưa có chỉ dẫn.
+53|磨かないと…増えません: nếu không trau dồi cách nhìn sự vật thì cách biểu đạt không tăng. Điều kiện phủ định nêu điều cần thiết.
+54|言いようがあった: có nhiều cách nói khác, phê bình chính trị gia chọn lời thiếu tinh tế. よう chỉ phương thức; わけ chỉ lý do, không hợp.

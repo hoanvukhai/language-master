@@ -1,0 +1,54 @@
+1|険しい đọc けわしい: dốc hiểm trở. 激しい là dữ dội, 厳しい là nghiêm khắc, 怪しい là khả nghi.
+2|畑 đọc はたけ: ruộng cạn/vườn trồng. 田 đọc た là ruộng lúa, 峠 đọc とうげ là đèo.
+3|造船 đọc ぞうせん: đóng tàu. 造 là ぞう, 船 là せん, không đục thành ぜん.
+4|傾く đọc かたむく: nghiêng. 傾いて là かたむいて, không phải うつむいて là cúi đầu.
+5|汚染 đọc おせん: ô nhiễm. 汚 dùng お trong từ này, không đọc あ hay đục ぜん.
+6|ばくはつ viết 爆発: phát nổ. 爆 có bộ 火 liên quan nổ; 暴発 chỉ phát ra mất kiểm soát, không đúng chữ cần viết ở đây.
+7|ほうふ viết 豊富: phong phú, dồi dào. 富 chỉ giàu có, không thay bằng 生・浮・夫.
+8|いふく viết 衣服: quần áo. 衣 chỉ y phục; 居・囲・位 khác chữ.
+9|やぶる viết 破る: phá lời hứa. 約束を破る là thất hứa; 切る là cắt, 折る là gập/gãy.
+10|そそぐ viết 注ぐ: dồn/rót. 情熱を注ぐ là dồn nhiệt huyết; 継ぐ đọc つぐ là nối tiếp.
+11|打ち消す: phủ nhận/xóa bỏ nghi ngờ. 疑いを打ち消す hợp nỗ lực bác bỏ việc gian lận; 断ち切る là cắt đứt.
+12|出迎える: ra đón tại sân bay. 出 chỉ đi ra để tiếp người về, không dùng 入迎える.
+13|同年代: cùng thế hệ/nhóm tuổi. 同 chỉ cùng; 等・gần không tạo từ chuẩn này.
+14|入場料: phí vào cửa. 料 chỉ phí dịch vụ; 量 là số lượng, 両 là hai bên.
+15|時代物: tác phẩm lấy bối cảnh lịch sử. 物 chỉ loại tác phẩm; 巻 là tập, không hợp thể loại.
+16|強風下の火災: hỏa hoạn trong gió mạnh. Không có người chết là điều đáng mừng ở tình huống này, khác chậm giờ hay mất điện.
+17|診察を受ける: đi khám bác sĩ vì dạ dày không ổn. 薬品・医学・保健 không nhận 受ける theo ý khám trực tiếp này.
+18|鉄やアルミは金属: sắt và nhôm là kim loại, dẫn điện tốt. 金 là vàng, 銅 là đồng, chỉ riêng một chất.
+19|賃金体系: hệ thống tiền lương. 会計 là kế toán, 測定 là đo lường, không phải cấu trúc các mức lương.
+20|ルール違反: vi phạm quy tắc. 反対 là phản đối, 禁止 là cấm, không phải kết hợp chuẩn với ルール.
+21|営業の仕事: công việc kinh doanh/bán hàng trong công ty. 自営 là tự kinh doanh, không hợp 入社以来 bằng.
+22|海外で暮らす: sống ở nước ngoài nơi giá rẻ. 海洋 là đại dương, 空中 là trên không.
+23|プリントされる gần 印刷される: được in lên áo. 編集 là biên tập, 宣伝 là quảng cáo.
+24|もともと gần はじめから: vốn dĩ từ đầu. もっとも là nhất/tuy nhiên, không phải từ đồng nghĩa ở đây.
+25|比較的 gần わりと: tương đối, khá. まったく là hoàn toàn, たしか là hình như/chắc là.
+26|足が震える gần 揺れる: chân run/rung do hồi hộp. 固まる là cứng đờ, 向く là hướng về.
+27|じっと見つめる: nhìn chăm chú, gần しみじみ ở tình huống ngắm con đầy xúc động. Không phải nhìn thỉnh thoảng hay cười tươi.
+28|迷信: niềm tin mê tín vô căn cứ, như quạ bay qua báo xui. Tin đồn về con cái hay phát ngôn chính trị không tự là mê tín.
+29|成分: thành phần của thực phẩm, như chất tạo màu. Không thay cho 性格, 分別 hay 内容 trong các câu khác.
+30|ふと思い出す: chợt nhớ bạn đang ở London. ふと hay dùng cho ý nghĩ bất chợt, không phải mưa chợt hoặc công trình hoàn tất.
+31|ようやく完成する: cuối cùng sau chờ đợi khó khăn mới hoàn thành. Không dùng ようやく như tính từ chỉ cân nặng hay yêu cầu khẩn cấp.
+32|安易に信用する: dễ dãi tin lời mà không suy xét. 安易 mang ý chê thiếu thận trọng; 安心 mới là yên tâm.
+33|複数にほかならない: khẳng định thủ phạm phải nhiều người, căn cứ vào việc mang két nặng. にすぎない là chỉ/bất quá, không nêu kết luận phù hợp.
+34|東京をはじめとする大都会: các đô thị lớn tiêu biểu như Tokyo. をはじめとする bổ nghĩa danh từ tập hợp.
+35|和食に関する本: sách liên quan ẩm thực Nhật. に関する bổ nghĩa danh từ, khác に応じる là đáp ứng.
+36|要求にこたえて: đáp ứng yêu cầu nhân viên nên kéo dài nghỉ trưa. に際して là nhân dịp, không diễn đạt đáp lại mong muốn.
+37|思いつつも: tuy nghĩ bỏ rượu nhưng lại mở bia. つつも nối hai vế trái nhau cùng chủ thể.
+38|Vたうえ: ngoài việc được ở biệt thự còn được quà. うえ bổ sung điều cùng chiều, khác さえ là ngay cả.
+39|お願い申しあげた: đã kính nhờ cựu tuyển thủ làm huấn luyện viên. 申しあげる tăng mức khiêm nhường trong lời đề nghị.
+40|VばVるほど: càng nóng thì doanh số điều hòa càng tăng. Lặp đúng cùng động từ/tính từ với hai dạng điều kiện và từ điển.
+41|焼肉店にしたらたいへんな問題: xét từ lập trường quán thịt nướng, dịch bệnh bò là vấn đề lớn. にしたら nêu góc nhìn; にしたがい là theo diễn biến.
+42|客が来ないことには: nếu khách không tới thì kinh doanh không thể tồn tại. ないことには nêu điều kiện tối thiểu chưa thỏa.
+43|買わずにはいられない: không thể kiềm việc mua sách ảnh thần tượng. ずにはいられない nêu thôi thúc mạnh, khác suy đoán 不買.
+44|疲れなかったわけではない: không phải hoàn toàn không mệt, tức vẫn có mệt dù tự tin thể lực. Hai phủ định tránh kết luận tuyệt đối.
+45|Ghép 3→4→1→2: 長年の実験データをもとに新薬の開発に取り組んでいる. をもとに là dựa vào. Ô sao là 1.
+46|Ghép 4→2→1→3: 予習してこなかった日に限って先生によく質問される. に限って là đúng ngày không mong ấy. Ô sao là 1.
+47|Ghép 2→1→3→4: 人気度からいうとA社の製品が一番です. からいうと là xét phương diện độ phổ biến. Ô sao là 3.
+48|Ghép 1→3→2→4: 声を出してしまうほどの大きい地震だった. ほどの bổ nghĩa mức độ cho danh từ. Ô sao là 2.
+49|Ghép 3→2→4→1: だいたいにおいて彼の計画はうまくいくと思う. だいたいにおいて là nhìn chung. Ô sao là 4.
+50|太平洋を単独横断する: băng qua Thái Bình Dương một mình. を đánh dấu không gian đi xuyên qua, không phải đích đến に・へ.
+51|になると／強い: đến ngày thứ 72 thì trạng thái thay đổi; 孤独に強い là chịu đựng cô độc tốt. 重い・固い không hợp ý khả năng chịu đựng.
+52|Chọn たびに／すでに／完全に: mỗi lần tới gần hành tinh từng được chú ý, nay gió mặt trời đã gần ngừng và sẽ thoát hoàn toàn vùng ảnh hưởng.
+53|なかなか地球に来ない: người ngoài hành tinh mãi không tới Trái Đất, vì giả thuyết các nền văn minh tự diệt. 来てほしくない là không mong họ đến, khác nhận định thực tế.
+54|終わりの予定はない: hành trình không có kế hoạch kết thúc. Các lựa chọn bắt buộc phải có hay không phải không có đều trái lời chúc người lữ hành đi tiếp.

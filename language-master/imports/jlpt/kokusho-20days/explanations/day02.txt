@@ -1,0 +1,54 @@
+1|耕す đọc たがやす: cày, xới đất; dạng て là 耕して. 起こす là dựng/gây ra, 崩す là phá vỡ, 均す là san bằng.
+2|指示 đọc しじ, nghĩa là chỉ thị. Hai âm là し và じ, không phải しし hay じし.
+3|夕立 đọc ゆうだち: mưa rào bất chợt chiều hè. 立ち chuyển thành だち trong từ ghép này.
+4|占める đọc しめる: chiếm một tỷ lệ. 攻める đọc せめる, 冷める đọc さめる, không đúng chữ trong đề.
+5|断定 đọc だんてい: kết luận dứt khoát. 断 là だん, 定 là てい.
+6|てっきょう viết 鉄橋: cầu sắt, phù hợp cảnh tàu chạy qua. 鉄 là sắt, 橋 là cầu.
+7|うえき viết 植木: cây trồng làm cảnh. 材木 là gỗ nguyên liệu; 枝 là cành cây.
+8|いんたい viết 引退: giải nghệ, rút khỏi hoạt động nghề nghiệp; phù hợp vận động viên chấn thương.
+9|かつぐ viết 担ぐ: khiêng trên vai, như khiêng kiệu みこし. Không nhầm với 扱う là xử lý.
+10|もちいる viết 用いる: sử dụng. Dạng bị động 用いられている nghĩa là đang được sử dụng.
+11|引き出す là rút tiền từ ATM. 取り出す cũng là lấy ra nhưng kết hợp ngân hàng trong câu dùng お金を引き出す.
+12|売り切れる nghĩa là bán hết hàng. Các tổ hợp 売り飛ぶ・売り落ちる・売り消える không biểu đạt hết hàng.
+13|総人口 là tổng dân số. 総 gộp toàn thể; 完・集・大 không tạo đúng thuật ngữ này.
+14|収穫期 là thời kỳ thu hoạch. Hậu tố 期 chỉ giai đoạn; 所 chỉ nơi, không hợp ý thời vụ.
+15|指導員 là người hướng dẫn. 員 chỉ nhân viên/người đảm nhiệm vai trò; không dùng 指導人・指導師 ở đây.
+16|ビザを延長する: gia hạn visa. 注文 là đặt hàng, 追加 là thêm, 増大 là tăng quy mô.
+17|教育実習 là thực tập sư phạm tại trường. 演習 là luyện tập/chuyên đề; 学業 là việc học, 修正 là sửa chữa.
+18|登場する là xuất hiện trên sân khấu. 歩道 là vỉa hè; 発見 là phát hiện; 流行 là thịnh hành.
+19|苦情が出る: có phàn nàn từ cư dân. 苦心・苦労 chỉ sự vất vả, 苦痛 là đau đớn.
+20|いい印象を持っていない: không có ấn tượng tốt về món ăn. 印象 phù hợp đánh giá lưu lại, khác cảm giác 感覚 hay tâm trạng 気持ち.
+21|火山の噴火: núi lửa phun trào. 火災・火事 là hỏa hoạn, không phải chủ thể của 噴火.
+22|タクシーに乗車する: lên taxi. 乗客 là hành khách; 行動 là hành động; 競争 là cạnh tranh.
+23|あくまで diễn tả kiên trì đến cùng, nên gần 最後まで trong câu quyết chạy hết. Không chỉ điểm bắt đầu hay giữa chừng.
+24|重んじる là coi trọng, tương đương 大切にする. Không phải làm mạnh hơn, thẳng hơn hay nghiêm túc hơn.
+25|ぶら下げる là treo thõng xuống, gần つるす. 置く là đặt, 張る là căng/dán, 曲げる là bẻ cong.
+26|いいかげんに着る ở đây là mặc cẩu thả, gần だらしなく. Không mang nghĩa tích cực như しっかり・大事に.
+27|どうせ diễn tả kết cục dù cố cũng không thay đổi, hợp với dù vội cũng không kịp. あるいは là hoặc; きっと là chắc hẳn.
+28|皮肉 là sự trớ trêu: sinh nhật lại đúng ngày thi trượt. 皮肉を言う có thể là nói mỉa, nhưng câu 2 dùng 一人で không hợp bằng ngữ cảnh rõ ràng ở câu 1; câu 3 có áo mưa rồi gặp mưa không phải nghịch cảnh trớ trêu.
+29|割引きする là giảm giá; cửa hàng quen được chủ giảm giá là cách dùng đúng. Tỷ lệ dùng 割合, nước nóng cần pha loãng, không phải 割引き.
+30|ごく普通: hết sức bình thường; ごく bổ nghĩa mức độ như ごく少数. Không đặt trước động từ 買う hay phủ định 信用できない theo cách trong phương án khác.
+31|和服 là trang phục truyền thống Nhật; 和服が似合う nghĩa là hợp mặc kimono. Không phải tính cách ôn hòa hay vật liệu bền.
+32|農薬 là thuốc bảo vệ thực vật dùng cho rau/cây trồng. Không phải thuốc uống cho người, gia súc hay gia vị nấu ăn.
+33|Vない限りは: chừng nào chưa… thì không…; chưa được nhà tài trợ đồng ý thì không thể triển khai. 一方 là một mặt, 割には là so với.
+34|Vます bỏ ます + きれない: không làm hết nổi. 数えきれない là nhiều đến không đếm xuể.
+35|Aくてしょうがない: cảm xúc quá mạnh không chịu được. さびしくてしょうがない là vô cùng cô đơn; つまらない là chán, không tạo mẫu này.
+36|注目すべきものがある: có điều đáng chú ý. ものがある chỉ đặc điểm đáng ghi nhận; ものになる là trở nên có ích/thành tài.
+37|Vたばかりに: chỉ vì… mà chịu kết quả xấu. Cố mặc phong phanh nên bị cảm; ついでに là nhân tiện, とおりに là đúng như.
+38|Vたうえは: một khi đã quyết thì phải làm đến cùng. Quyết thi quốc gia thì chỉ còn cố đến lúc đỗ.
+39|お目にかかる là khiêm nhường ngữ của 会う, dùng cho việc mình muốn gặp thầy. Các tổ hợp お目にいたす・お目にまいる không thay thế được mẫu này.
+40|弟なんかに負けない: nhất định không thua người như em. なんか hạ thấp đối tượng, に đánh dấu người mà mình không muốn thua.
+41|Vるにつれ: càng… càng…; mùa thu càng sâu thì áo len càng bán chạy. Không nối bằng 深まるになり.
+42|Vます bỏ ます + かねる: khó/không thể làm. わかりかねる là khó hiểu; かねない lại chỉ khả năng xảy ra việc xấu, không đúng ý.
+43|Vたにせよ: cho dù đã… thì vẫn…; dù có việc cũng nên gọi ít nhất một cuộc. にして không tự tạo nghĩa nhượng bộ này.
+44|おとなしい反面: một mặt trầm tính nhưng mặt khác đôi lúc phát ngôn gây ngạc nhiên. 反面 nêu hai mặt tương phản của cùng người.
+45|Ghép 4→1→3→2: 川の流れにさからって産卵のためサケが川を上り始めた。にさからって là ngược dòng; 産卵のため chỉ mục đích. Ô sao thứ ba là 3 (のため).
+46|Ghép 1→3→2→4: 前をよく見ていなかったせいで車にぶつかってしまった. Vたせいで nêu nguyên nhân xấu; 車にぶつかる là đâm vào xe. Ô sao là 2.
+47|Ghép 2→1→4→3: 晴天が続いたうえに暑い夏だったので水着がよく売れた. うえに bổ sung nguyên nhân, ので dẫn kết quả. Ô sao là 4.
+48|Ghép 4→1→2→3: 歌のうまさにかけては会社の中で彼の右に出る者がない. Nにかけては là về mặt…, 右に出る者がない là không ai vượt hơn. Ô sao là 2.
+49|Ghép 4→3→1→2: まったくのしろうと向けだとしてもこの説明書はていねいすぎる. 向け là dành cho; だとしても là cho dù. Ô sao là 1.
+50|イタリアあたりだと: nếu là một nơi như Ý. あたり chỉ ví dụ tiêu biểu, hợp đoạn so sánh thị hiếu bóng đá giữa các nước.
+51|ストレスがたまりかねない: có nguy cơ tích tụ căng thẳng vì không có bàn thắng. かねない chỉ khả năng không tốt; たまりかねる lại là không chịu nổi.
+52|力があってのこと: có được điều ấy là nhờ thực lực. NあってのN nhấn mạnh nền tảng không thể thiếu, hợp việc Honda chứng minh lời nói bằng bàn thắng.
+53|なんと重いことか: biết bao nặng nề, cảm thán kim giây chậm như đứng lại trong giờ bù. はずだ nêu suy đoán, つもり nêu ý định, không hợp cảm thán này.
+54|ことになった: tình thế dẫn đến việc khán giả được hồi hộp đến cuối. ことにした là tự quyết định; ことになっている thường chỉ quy định/sắp xếp có sẵn.

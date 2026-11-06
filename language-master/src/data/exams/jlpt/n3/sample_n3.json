@@ -1,0 +1,109 @@
+{
+  "id": "jlpt-n3-sample-01",
+  "bookId": "jlpt-n3-mock-collection",
+  "bookTitle": "Bộ Đề Thi Thử Chuẩn JLPT N3",
+  "level": "N3",
+  "title": "Đề Thi Thử N3 - Số 01",
+  "subtitle": "Mô phỏng đề thi chính thức N3",
+  "timeLimitMinutes": 105,
+  "totalQuestions": 3,
+  "mondais": [
+    {
+      "number": 1,
+      "type": "kanji_reading",
+      "title": "漢字読み",
+      "titleVi": "Cách đọc Kanji",
+      "instruction": "_____の言葉の読み方として最もよいものを、1・2・3・4から一つ選びなさい。",
+      "numberRange": [
+        1,
+        2
+      ],
+      "questions": [
+        {
+          "id": "n3-q1",
+          "number": 1,
+          "stem": "この部屋はとても[狭い]です。",
+          "questionKana": "このへやはとてもせまいです。",
+          "underlined": "狭い",
+          "options": [
+            "せまい",
+            "ひろい",
+            "あかるい",
+            "くらい"
+          ],
+          "answer": 1,
+          "translationVi": "Căn phòng này rất hẹp.",
+          "targetWord": {
+            "kanji": "狭い",
+            "hanViet": "HIỆP",
+            "meaningVi": "Hẹp, chật hẹp"
+          },
+          "explanation": {
+            "summary": "Đáp án 1 đúng: 狭い đọc là「せまい」nghĩa là hẹp. Trái nghĩa là 広い (ひろい)."
+          }
+        },
+        {
+          "id": "n3-q2",
+          "number": 2,
+          "stem": "新しい事業を[始める]ことにしました。",
+          "questionKana": "あたらしいじぎょうをはじめることにしました。",
+          "underlined": "始める",
+          "options": [
+            "おさめる",
+            "はじめる",
+            "つとめる",
+            "あつめる"
+          ],
+          "answer": 2,
+          "translationVi": "Tôi đã quyết định bắt đầu một công việc kinh doanh mới.",
+          "targetWord": {
+            "kanji": "始める",
+            "hanViet": "THỦY",
+            "meaningVi": "Bắt đầu, khởi đầu"
+          },
+          "explanation": {
+            "summary": "Đáp án 2 đúng: 始める đọc là「はじめる」."
+          }
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "type": "kanji_writing",
+      "title": "表記",
+      "titleVi": "Tìm chữ Kanji đúng",
+      "instruction": "_____の言葉を漢字で書くとき、最もよいものを、1・2・3・4から一つ選びなさい。",
+      "numberRange": [
+        3,
+        3
+      ],
+      "questions": [
+        {
+          "id": "n3-q3",
+          "number": 3,
+          "stem": "駅の前で友達と[まちあわせ]をしました。",
+          "questionKana": "えきのまえでともだちとまちあわせをしました。",
+          "underlined": "まちあわせ",
+          "options": [
+            "待合",
+            "待合せ",
+            "待ち合わせ",
+            "持合せ"
+          ],
+          "answer": 3,
+          "translationVi": "Tôi đã hẹn gặp bạn ở trước nhà ga.",
+          "targetWord": {
+            "kanji": "待ち合わせ",
+            "hanViet": "ĐÃI HỢP",
+            "meaningVi": "Hẹn gặp, đợi gặp nhau"
+          },
+          "explanation": {
+            "summary": "Đáp án 3 đúng: 待ち合わせ（まちあわせ）là cách viết Kanji chuẩn."
+          }
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "isSample": true
+}

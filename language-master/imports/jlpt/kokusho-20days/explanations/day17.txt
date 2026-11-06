@@ -1,0 +1,54 @@
+1|解く đọc とく: giải phương trình/bài toán. 書く là かく, 抜く là ぬく, 引く là ひく.
+2|絵画 đọc かいが: hội họa/tranh vẽ. 絵 dùng âm かい, 画 là が trong từ ghép này.
+3|順序 đọc じゅんじょ: thứ tự. Cả 順 và 序 đều có phụ âm đục; không đọc しゅんしょ.
+4|詰める đọc つめる: xếp, nhét đầy vào hộp. 込める là こめる, 貯める là ためる, 閉める là しめる.
+5|泥 đọc どろ: bùn. 泥だらけ là đầy bùn; でい thường là âm on trong từ ghép.
+6|しゅよう viết 主要: chủ yếu, quan trọng nhất. 要 chỉ tính thiết yếu, khác 容・用・洋.
+7|せんぞ viết 先祖: tổ tiên. 祖 có bộ 示, khác 組 có bộ 糸 và 阻 có bộ 阝.
+8|はんばい viết 販売: bán hàng. 販 liên quan buôn bán, 売 là bán; 買 là mua.
+9|なやむ viết 悩む: phiền não, trăn trở. 迷う là まよう, 困る là こまる, không đọc theo các chữ đó.
+10|くばる viết 配る: phát tài liệu cho mọi người. 送る đọc おくる, 伝える đọc つたえる, khác từ cần viết.
+11|追いかける: đuổi theo. Chỉ 追い tạo động từ ghép đúng về rượt theo xe đang chạy.
+12|見慣れる: nhìn quen dần, từ đó thấy chó đáng yêu. 見とれる là mê mải ngắm, 見渡す là nhìn bao quát.
+13|短距離: cự ly ngắn như 100 mét. 短 là ngắn, khác 単 là đơn, 端 là đầu/mép.
+14|無許可: không có giấy phép. 無 nêu sự thiếu vắng; 非・否・反 không tạo đúng thuật ngữ này.
+15|地下室: phòng tầng hầm. 室 chỉ căn phòng; 所・点・処 không tạo đúng từ ghép.
+16|安定性に欠ける: thiếu tính ổn định. 欠ける nhận yếu tố còn thiếu với に, không phải 掛ける・置ける・受ける.
+17|ランニング: chạy bộ, phù hợp thói quen chạy mỗi sáng. ピクニック là dã ngoại, ステージ là sân khấu.
+18|人種差別: phân biệt đối xử theo chủng tộc. 区別 là phân biệt nói chung, không nhất thiết có bất công.
+19|領事として働く: làm lãnh sự tại Thượng Hải. 日課 là việc hằng ngày, 独立 là độc lập, không phải nghề/chức vụ.
+20|一流のシェフ: đầu bếp hàng đầu. 高級 thường chỉ hàng/dịch vụ cao cấp, không trực tiếp đánh giá người chuyên môn bằng 一流.
+21|鉱物が埋まっている: khoáng vật nằm dưới đất. 鉄分 là hàm lượng sắt, 砂漠 là sa mạc.
+22|旅行の記念に買う: mua làm kỷ niệm chuyến đi. 参考 là tham khảo, 行事 là sự kiện.
+23|すべての方面 gần あらゆる方面: mọi phía/lĩnh vực. ほとんど là hầu hết, 少し là một ít.
+24|強引な gần 無理な: cưỡng ép, cố tiến hành bất chấp ý người khác. Không phải cẩu thả いいかげん hay phiền phức めんどう.
+25|少なくとも gần せめて: ít nhất, mức tối thiểu mong có. ざっと là đại khái, きっと là chắc hẳn.
+26|にくらしく思う gần 気に入らなく思う: thấy đáng ghét/khó ưa. 気にならない là không bận tâm, trái ý.
+27|一度に押し寄せる gần どっと押し寄せる: ào đến cùng lúc. そっと là nhẹ nhàng, じっと là bất động.
+28|上がる傾向にある: có xu hướng tăng giá. 傾向 chỉ chiều hướng biến đổi, không phải hướng đi vật lý hay động từ thịnh hành.
+29|山のふもと: chân núi có hàng quà lưu niệm. Không dùng cho chân tòa nhà, nhà riêng hay đỉnh núi.
+30|決して…ない: tuyệt đối không phản bội sau khi hứa. 決して thường cần phủ định, không dùng để khẳng định trời sẽ nắng.
+31|有能な選手: vận động viên có năng lực. Thuốc hiệu quả là 有効, giỏi thể thao là 運動が得意; 有能 không chỉ vẻ đẹp.
+32|掃除当番: người/lượt được phân công trực dọn vệ sinh. Không phải thứ hạng đầu, lần lượt hay ca đêm.
+33|だけに: chính vì mọi người kỳ vọng nên thất bại càng đáng tiếc. Mẫu nhấn mạnh mức độ cảm xúc phù hợp nguyên nhân.
+34|Vないうちに: trước khi tuyết trở nên quá dày thì lắp xích bánh xe. Không phải sau quá trình 末に.
+35|うれしいことに: thật vui là…, mở cảm xúc của người nói về tin em gái cưới. ことに kết hợp tính từ cảm xúc.
+36|Vるとか: nghe đâu sắp xuất hiện trong phim truyền hình. とか ở cuối câu dẫn tin nghe được, không khẳng định mục đích.
+37|工事に先立って: trước khi thi công có họp giải thích cho dân. に加えて là thêm vào, khác hành động chuẩn bị trước.
+38|言うわけがない: cô ấy hiền nên không thể nói điều làm tổn thương người khác. 言いようがない là không có cách diễn đạt, khác đánh giá tính cách.
+39|読ませていただきました: tôi đã được đọc, cách khiêm nhường thể hiện nhận sự cho phép/cơ hội. Sai khiến của 読む là 読ませる, không phải 読まさせる.
+40|Vるほかない: bệnh nặng đến vậy chỉ còn cách phẫu thuật. にすぎない là chẳng qua chỉ, không diễn đạt buộc phải chọn.
+41|前置きはぬきにして: bỏ phần dẫn nhập, vào chủ đề chính. は nêu phần muốn loại, ぬきにして là không kể đến.
+42|始めるにあたり: khi bắt đầu cuộc thi giới thiệu ban giám khảo. にあたり nối Vる, không nối Vて.
+43|Vてからじゃないと…ない: nếu chưa nghe ý kiến tiền bối thì chưa thể triển khai. じゃないと là khẩu ngữ của でないと.
+44|出かけるついでに: nhân tiện đi ngân hàng thì mua đồ. ついでに nối Vる cho kế hoạch sắp làm, hoặc Vた cho dịp đã làm.
+45|Ghép 4→2→3→1: 小川氏の話は理解できたもののどうしても信用できない. ものの là tuy… nhưng…. Ô sao là 3.
+46|Ghép 3→1→4→2: 解き方を知っているくせに私たちに教えてくれない. くせに phê bình trái kỳ vọng. Ô sao là 4.
+47|Ghép 3→1→2→4: 出席率のよさに加えて日本語のレベルも高い. に加えて thêm ưu điểm thứ hai. Ô sao là 2.
+48|Ghép 1→3→2→4: 親友が止めるのもかまわず彼は1人でジャングルの中へ入っていった. のもかまわず bất chấp lời cản. Ô sao là 2.
+49|Ghép 3→2→1→4: まだ12歳の彼女が海外のバレエ教室に参加するとはすごいものだ. とは bộc lộ ngạc nhiên. Ô sao là 1.
+50|歩いているような後ろ姿: dáng như chính chiếc cặp đang đi vì trẻ còn bé so với cặp. ような nêu ví von bổ nghĩa danh từ.
+51|見守ってくれる: chiếc cặp được nhân hóa như bạn thân dõi theo, bảo vệ trẻ. くれる hướng lợi ích về đứa trẻ, phù hợp giọng trìu mến.
+52|Chọn 置かれた／わき出す／名乗る: cặp được đặt tại trung tâm trẻ em, lòng tốt tuôn trào, người tặng xưng tên nhân vật Tiger Mask.
+53|分け隔てされてはならない: trẻ em không được bị phân biệt vì giàu nghèo/hạnh phúc bất hạnh. Chủ thể trẻ là người chịu nên dùng bị động.
+54|高める力になればいい: mong việc tặng cặp giúp nâng ý tưởng xã hội cùng nuôi trẻ thành ý thức vững chắc. ばいい nêu mong ước, không phải phủ định.

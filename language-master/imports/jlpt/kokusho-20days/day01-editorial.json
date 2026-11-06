@@ -1,0 +1,1408 @@
+{
+  "id": "kokusho-n2-20days-d01",
+  "bookId": "kokusho-n2-20days",
+  "bookTitle": "日本語能力試験 20日で合格 N2 文字・語彙・文法",
+  "level": "N2",
+  "day": 1,
+  "title": "第1日 (Day 1)",
+  "subtitle": "文字・語彙・文法 (Trang 6-13)",
+  "timeLimitMinutes": 50,
+  "totalQuestions": 54,
+  "mondais": [
+    {
+      "number": 1,
+      "type": "kanji_reading",
+      "title": "漢字読み",
+      "titleVi": "Cách đọc Kanji",
+      "instruction": "_____の言葉の読み方として最もよいものを、1・2・3・4から一つ選びなさい。",
+      "numberRange": [
+        1,
+        5
+      ],
+      "questions": [
+        {
+          "questionKana": "みちにまよっても、ちゃんともどってくるとは[かしこい]いぬだ。",
+          "translationVi": "Dù bị lạc đường mà vẫn quay về được đúng chỗ, quả là chú chó khôn ngoan.",
+          "targetWord": {
+            "kanji": "賢い",
+            "hanViet": "HIỀN",
+            "meaningVi": "Thông minh, khôn ngoan"
+          },
+          "options": [
+            "えらい",
+            "かしこい",
+            "すごい",
+            "するどい"
+          ],
+          "explanation": {
+            "summary": "賢い có cách đọc là かしこい.",
+            "rule": "Âm Kun-yomi của chữ 賢 (HIỀN) khi là tính từ đuôi -i là かしこ・い.",
+            "vi": "賢い có cách đọc là かしこい. Âm Kun-yomi của chữ 賢 (HIỀN) khi là tính từ đuôi -i là かしこ・い."
+          },
+          "number": 1,
+          "id": "kokusho_n2_d01_m1_01",
+          "stem": "道に迷っても、ちゃんと戻って来るとは[賢い]犬だ。",
+          "sentenceBreakdown": [
+            {
+              "text": "道に迷う",
+              "reading": "みちにまよう",
+              "hanViet": "ĐẠO MÊ",
+              "meaning": "Lạc đường",
+              "type": "vocab"
+            },
+            {
+              "text": "〜ても",
+              "type": "grammar",
+              "meaning": "Dù... nhưng..."
+            },
+            {
+              "text": "ちゃんと",
+              "reading": "ちゃんと",
+              "meaning": "Cẩn thận, đàng hoàng, đúng chỗ",
+              "type": "adverb"
+            },
+            {
+              "text": "戻って来る",
+              "reading": "もどってくる",
+              "hanViet": "LỆ LAI",
+              "meaning": "Quay trở lại",
+              "type": "vocab"
+            },
+            {
+              "text": "〜とは",
+              "type": "grammar",
+              "meaning": "Quả thật là... (nhấn mạnh ngạc nhiên/cảm thán)"
+            },
+            {
+              "text": "賢い",
+              "reading": "かしこい",
+              "hanViet": "HIỀN",
+              "meaning": "Thông minh, khôn ngoan",
+              "type": "vocab"
+            },
+            {
+              "text": "犬",
+              "reading": "いぬ",
+              "hanViet": "KHUYỂN",
+              "meaning": "Con chó",
+              "type": "vocab"
+            }
+          ],
+          "answer": 2
+        },
+        {
+          "questionKana": "きんじょにひろばがなくなり、[おくがい]であそぶこどもたちがへってきた。",
+          "translationVi": "Khu vực xung quanh không còn quảng trường nên số trẻ em vui chơi ngoài trời đang giảm đi.",
+          "targetWord": {
+            "kanji": "屋外",
+            "hanViet": "ỐC NGOẠI",
+            "meaningVi": "Ngoài trời"
+          },
+          "options": [
+            "やそと",
+            "おくそと",
+            "やがい",
+            "おくがい"
+          ],
+          "explanation": {
+            "summary": "屋外 đọc là おくがい.",
+            "rule": "屋 (ỐC) đọc âm On là おく, 外 (NGOẠI) đọc là がい. Tránh nhầm với 野外 (やがい).",
+            "vi": "屋外 đọc là おくがい. 屋 (ỐC) đọc âm On là おく, 外 (NGOẠI) đọc là がい. Tránh nhầm với 野外 (やがい)."
+          },
+          "number": 2,
+          "id": "kokusho_n2_d01_m1_02",
+          "stem": "近所に広場がなくなり、[屋外]で遊ぶ子どもたちが減ってきた。",
+          "answer": 4
+        },
+        {
+          "questionKana": "さくや、タイヤこうじょうのとなりの[そうこ]がかじになった。",
+          "translationVi": "Đêm qua, nhà kho bên cạnh nhà máy lốp xe đã xảy ra hỏa hoạn.",
+          "targetWord": {
+            "kanji": "倉庫",
+            "hanViet": "THƯƠNG KHỐ",
+            "meaningVi": "Nhà kho, kho bãi"
+          },
+          "options": [
+            "くらこ",
+            "くらご",
+            "そうこ",
+            "そうご"
+          ],
+          "explanation": {
+            "summary": "倉庫 đọc là そうこ.",
+            "rule": "倉 (THƯƠNG) âm On là そう, 庫 (KHỐ) âm On là こ.",
+            "vi": "倉庫 đọc là そうこ. 倉 (THƯƠNG) âm On là そう, 庫 (KHỐ) âm On là こ."
+          },
+          "number": 3,
+          "id": "kokusho_n2_d01_m1_03",
+          "stem": "昨夜、タイヤ工場のとなりの[倉庫]が火事になった。",
+          "answer": 3
+        },
+        {
+          "questionKana": "ともだちとつくったししゅうを、おかねをだしあってひゃくぶ[する]ことにした。",
+          "translationVi": "Tập thơ cùng làm với bạn bè, chúng tôi quyết định cùng góp tiền in 100 bản.",
+          "targetWord": {
+            "kanji": "刷る",
+            "hanViet": "XOÁT",
+            "meaningVi": "In ấn"
+          },
+          "options": [
+            "うる",
+            "やる",
+            "する",
+            "おる"
+          ],
+          "explanation": {
+            "summary": "刷る đọc là する (in ấn).",
+            "rule": "Động từ 刷る (する) dùng với nghĩa in (sách, báo, tranh khắc).",
+            "vi": "刷る đọc là する (in ấn). Động từ 刷る (する) dùng với nghĩa in (sách, báo, tranh khắc)."
+          },
+          "number": 4,
+          "id": "kokusho_n2_d01_m1_04",
+          "stem": "友だちと作った詩集を、お金を出し合って100部[刷る]ことにした。",
+          "answer": 3
+        },
+        {
+          "questionKana": "このしあいで[しょうはい]をわけたのは、とうしゅりょくのさだった。",
+          "translationVi": "Điều phân định thắng bại trong trận đấu này chính là sự chênh lệch về năng lực người ném bóng.",
+          "targetWord": {
+            "kanji": "勝敗",
+            "hanViet": "THẮNG BẠI",
+            "meaningVi": "Thắng bại, kết quả trận đấu"
+          },
+          "options": [
+            "しょうはい",
+            "しょうばい",
+            "じょうはい",
+            "じょうばい"
+          ],
+          "explanation": {
+            "summary": "勝敗 đọc là しょうはい.",
+            "rule": "勝 (THẮNG) đọc là しょう, 敗 (BẠI) đọc là はい.",
+            "vi": "勝敗 đọc là しょうはい. 勝 (THẮNG) đọc là しょう, 敗 (BẠI) đọc là はい."
+          },
+          "number": 5,
+          "id": "kokusho_n2_d01_m1_05",
+          "stem": "この試合で[勝敗]を分けたのは、投手力の差だった。",
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "type": "kanji_writing",
+      "title": "表記",
+      "titleVi": "Viết Kanji",
+      "instruction": "_____の言葉を漢字で書くとき、最もよいものを、1・2・3・4から一つ選びなさい。",
+      "numberRange": [
+        6,
+        10
+      ],
+      "questions": [
+        {
+          "questionKana": "ベッドというのは、[てきど]なかたさがあったほうがよくねむれる。",
+          "translationVi": "Giường ngủ thì nên có độ cứng vừa phải thì sẽ dễ ngủ hơn.",
+          "targetWord": {
+            "hiragana": "てきど",
+            "meaningVi": "Mức độ vừa phải, thích hợp"
+          },
+          "options": [
+            "摘度",
+            "敵度",
+            "適度",
+            "滴度"
+          ],
+          "explanation": {
+            "summary": "てきど viết là 適度 (THÍCH ĐỘ).",
+            "rule": "Chữ 適 (THÍCH - phù hợp, vừa vặn) kết hợp với 度 (ĐỘ).",
+            "vi": "てきど viết là 適度 (THÍCH ĐỘ). Chữ 適 (THÍCH - phù hợp, vừa vặn) kết hợp với 度 (ĐỘ)."
+          },
+          "number": 6,
+          "id": "kokusho_n2_d01_m2_06",
+          "stem": "ベッドというのは、[てきど]な固さがあったほうがよく眠れる。",
+          "answer": 3
+        },
+        {
+          "questionKana": "にんげんの[ずのう]とコンピューターでは、どちらがすぐれているのだろうか。",
+          "translationVi": "Giữa bộ não con người và máy vi tính, bên nào ưu việt hơn?",
+          "targetWord": {
+            "hiragana": "ずのう",
+            "meaningVi": "Đầu não, trí tuệ"
+          },
+          "options": [
+            "頭脳",
+            "頭能",
+            "頭悩",
+            "頭納"
+          ],
+          "explanation": {
+            "summary": "ずのう viết đúng là 頭脳.",
+            "rule": "Chữ 脳 (NÃO - bộ óc) có bộ Nhục (⺼), tránh nhầm với 悩 (não - phiền muộn có bộ Tâm 忄).",
+            "vi": "ずのう viết đúng là 頭脳. Chữ 脳 (NÃO - bộ óc) có bộ Nhục (⺼), tránh nhầm với 悩 (não - phiền muộn có bộ Tâm 忄)."
+          },
+          "number": 7,
+          "id": "kokusho_n2_d01_m2_07",
+          "stem": "人間の[ずのう]とコンピューターでは、どちらが優れているのだろうか。",
+          "answer": 1
+        },
+        {
+          "questionKana": "なお[いっそう]のどりょくをしないと、しぼうこうにははいれないだろう。",
+          "translationVi": "Nếu không nỗ lực hơn nữa thì có lẽ sẽ không thể đỗ vào trường nguyện vọng.",
+          "targetWord": {
+            "hiragana": "いっそう",
+            "meaningVi": "Hơn nữa, càng thêm (một bậc)"
+          },
+          "options": [
+            "一争",
+            "一層",
+            "一倉",
+            "一早"
+          ],
+          "explanation": {
+            "summary": "いっそう viết là 一層.",
+            "rule": "なお一層 mang ý nghĩa tăng thêm một tầng/một bậc nữa.",
+            "vi": "いっそう viết là 一層. なお一層 mang ý nghĩa tăng thêm một tầng/một bậc nữa."
+          },
+          "number": 8,
+          "id": "kokusho_n2_d01_m2_08",
+          "stem": "なお[いっそう]の努力をしないと、志望校には入れないだろう。",
+          "answer": 2
+        },
+        {
+          "questionKana": "あんなたかいやまにひとりでのおるとは、なんと[いさましい]わかものなんだ。",
+          "translationVi": "Một mình leo lên ngọn núi cao như thế, quả là chàng trai dũng cảm biết bao.",
+          "targetWord": {
+            "hiragana": "いさましい",
+            "meaningVi": "Dũng cảm, hào hùng"
+          },
+          "options": [
+            "雄ましい",
+            "有ましい",
+            "優ましい",
+            "勇ましい"
+          ],
+          "explanation": {
+            "summary": "いさましい viết là 勇ましい (DŨNG).",
+            "rule": "Chữ 勇 (DŨNG) mang nghĩa gan dạ, dũng cảm.",
+            "vi": "いさましい viết là 勇ましい (DŨNG). Chữ 勇 (DŨNG) mang nghĩa gan dạ, dũng cảm."
+          },
+          "number": 9,
+          "id": "kokusho_n2_d01_m2_09",
+          "stem": "あんな高い山に1人で登るとは、何と[いさましい]若者なんだ。",
+          "answer": 4
+        },
+        {
+          "questionKana": "ぶたいを[てらす]ライトがつよすぎて、はいゆうがあせびっしょりだった。",
+          "translationVi": "Đèn rọi sân khấu quá mạnh khiến diễn viên mồ hôi đầm đìa.",
+          "targetWord": {
+            "hiragana": "てらす",
+            "meaningVi": "Chiếu sáng, rọi sáng"
+          },
+          "options": [
+            "光らす",
+            "灯らす",
+            "明らす",
+            "照らす"
+          ],
+          "explanation": {
+            "summary": "てらす viết là 照らす (CHIẾU).",
+            "rule": "Động từ 照らす (CHIẾU - chiếu sáng, soi rọi).",
+            "vi": "てらす viết là 照らす (CHIẾU). Động từ 照らす (CHIẾU - chiếu sáng, soi rọi)."
+          },
+          "number": 10,
+          "id": "kokusho_n2_d01_m2_10",
+          "stem": "舞台を[てらす]ライトが強すぎて、俳優が汗びっしょりだった。",
+          "answer": 4
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "type": "word_formation",
+      "title": "語形成",
+      "titleVi": "Cấu tạo từ (tiền tố, hậu tố)",
+      "instruction": "（ ）に入れるのに最もよいものを、1・2・3・4から一つ選びなさい。",
+      "numberRange": [
+        11,
+        15
+      ],
+      "questions": [
+        {
+          "questionKana": "なまえをよばれて（ ）むいたら、ちゅうがくじだいのどうきゅうせいだった。",
+          "translationVi": "Khi nghe gọi tên rồi quay ngoắt lại nhìn thì hóa ra là bạn cùng lớp thời cấp hai.",
+          "targetWord": {
+            "affix": "振り〜",
+            "hanViet": "CHẤN",
+            "meaningVi": "Quay lại, ngoảnh lại"
+          },
+          "options": [
+            "振り",
+            "差し",
+            "取り",
+            "上"
+          ],
+          "explanation": {
+            "summary": "Động từ ghép đúng là 振り向く (ふりむく - ngoảnh mặt lại, quay đầu nhìn).",
+            "rule": "Tiền tố động từ 振り- kết hợp với 向く tạo thành 振り向く.",
+            "vi": "Động từ ghép đúng là 振り向く (ふりむく - ngoảnh mặt lại, quay đầu nhìn). Tiền tố động từ 振り- kết hợp với 向く tạo thành 振り向く."
+          },
+          "number": 11,
+          "id": "kokusho_n2_d01_m3_11",
+          "stem": "名前を呼ばれて（ ）向いたら、中学時代の同級生だった。",
+          "answer": 1
+        },
+        {
+          "questionKana": "いじめのもんだいだけをとり（ ）ても、きょういくもんだいぜんたいのかいけつにはならない。",
+          "translationVi": "Dù chỉ nhặt riêng vấn đề bắt nạt ra để mổ xẻ thì cũng không giải quyết được toàn bộ vấn đề giáo dục.",
+          "targetWord": {
+            "affix": "〜上げる",
+            "hanViet": "THƯỢNG",
+            "meaningVi": "Đưa ra, nêu ra, bàn tới"
+          },
+          "options": [
+            "分け",
+            "向け",
+            "下げ",
+            "上げ"
+          ],
+          "explanation": {
+            "summary": "Từ ghép thích hợp là 取り上げる (とりあげる - chọn/nhặt ra một đề tài để bàn luận).",
+            "rule": "Động từ ghép 取り上げる mang nghĩa đề cập, bàn đến một vấn đề cụ thể.",
+            "vi": "Từ ghép thích hợp là 取り上げる (とりあげる - chọn/nhặt ra một đề tài để bàn luận). Động từ ghép 取り上げる mang nghĩa đề cập, bàn đến một vấn đề cụ thể."
+          },
+          "number": 12,
+          "id": "kokusho_n2_d01_m3_12",
+          "stem": "いじめの問題だけを取り（ ）ても、教育問題全体の解決にはならない。",
+          "answer": 4
+        },
+        {
+          "questionKana": "こどものころむちゅうになったアニメの（ ）ほうそうをみたが、つまらなかった。",
+          "translationVi": "Tôi đã xem chương trình phát lại bộ hoạt hình từng mê mẩn hồi bé, nhưng thấy chán ngắt.",
+          "targetWord": {
+            "affix": "再〜",
+            "hanViet": "TÁI",
+            "meaningVi": "Lại, tái..."
+          },
+          "options": [
+            "復",
+            "再",
+            "重",
+            "回"
+          ],
+          "explanation": {
+            "summary": "Tiền tố thích hợp đi với 放送 là 再 để tạo thành từ ghép 再放送 (さいほうそう - phát sóng lại).",
+            "rule": "Tiếp đầu ngữ 再〜 mang nghĩa làm lại lần nữa (再放送, 再開発, 再確認).",
+            "vi": "Tiền tố thích hợp đi với 放送 là 再 để tạo thành từ ghép 再放送 (さいほうそう - phát sóng lại). Tiếp đầu ngữ 再〜 mang nghĩa làm lại lần nữa (再放送, 再開発, 再確認)."
+          },
+          "number": 13,
+          "id": "kokusho_n2_d01_m3_13",
+          "stem": "子どものころ夢中になったアニメの（ ）放送を見たが、つまらなかった。",
+          "answer": 2
+        },
+        {
+          "questionKana": "むかし、うたばんぐみの（ ）しかいでゆうめいだったアナウンサーがたいしょくした。",
+          "translationVi": "Người phát thanh viên từng nổi tiếng nhờ tài dẫn dắt xuất sắc ở các chương trình ca nhạc xưa đã nghỉ việc.",
+          "targetWord": {
+            "affix": "名〜",
+            "hanViet": "DANH",
+            "meaningVi": "Giỏi, trứ danh, tài ba"
+          },
+          "options": [
+            "才",
+            "達",
+            "高",
+            "名"
+          ],
+          "explanation": {
+            "summary": "Tiếp đầu ngữ 名 (めい - DANH) kết hợp với danh từ chỉ người/vai trò để chỉ sự tài giỏi, danh tiếng (名司会, 名演奏, 名医).",
+            "rule": "名〜 (danh tiếng, kiệt xuất): 名司会者/名司会.",
+            "vi": "Tiếp đầu ngữ 名 (めい - DANH) kết hợp với danh từ chỉ người/vai trò để chỉ sự tài giỏi, danh tiếng (名司会, 名演奏, 名医). 名〜 (danh tiếng, kiệt xuất): 名司会者/名司会."
+          },
+          "number": 14,
+          "id": "kokusho_n2_d01_m3_14",
+          "stem": "昔、歌番組の（ ）司会で有名だったアナウンサーが退職した。",
+          "answer": 4
+        },
+        {
+          "questionKana": "こうべのまちをさんぽすると、せいよう（ ）のたてものがたくさんある。",
+          "translationVi": "Đi dạo ở thành phố Kobe thì thấy có rất nhiều công trình kiến trúc mang phong cách phương Tây.",
+          "targetWord": {
+            "affix": "〜風",
+            "hanViet": "PHONG",
+            "meaningVi": "Phong cách, kiểu dáng"
+          },
+          "options": [
+            "化",
+            "様",
+            "風",
+            "状"
+          ],
+          "explanation": {
+            "summary": "Hậu tố phù hợp là 風 (ふう) để chỉ phong cách/kiểu cách: 西洋風 (kiểu Tây).",
+            "rule": "〜風 (ふう): gắn vào sau danh từ để biểu đạt phong cách, dáng vẻ (和風, 洋風, 中華風).",
+            "vi": "Hậu tố phù hợp là 風 (ふう) để chỉ phong cách/kiểu cách: 西洋風 (kiểu Tây). 〜風 (ふう): gắn vào sau danh từ để biểu đạt phong cách, dáng vẻ (和風, 洋風, 中華風)."
+          },
+          "number": 15,
+          "id": "kokusho_n2_d01_m3_15",
+          "stem": "神戸の町を散歩すると、西洋（ ）の建物がたくさんある。",
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "type": "context",
+      "title": "文脈規定",
+      "titleVi": "Điền từ theo ngữ cảnh",
+      "instruction": "（ ）に入れるのに最もよいものを、1・2・3・4から一つ選びなさい。",
+      "numberRange": [
+        16,
+        22
+      ],
+      "questions": [
+        {
+          "questionKana": "あのちほうのしゅっしんしゃは（ ）してじゅみょうがながい。",
+          "translationVi": "Những người xuất thân từ địa phương đó nhìn chung/bình quân có tuổi thọ cao.",
+          "targetWord": {
+            "kanji": "平均",
+            "hanViet": "BÌNH QUÂN",
+            "meaningVi": "Bình quân, trung bình"
+          },
+          "options": [
+            "平凡",
+            "平均",
+            "平行",
+            "平等"
+          ],
+          "explanation": {
+            "summary": "Cụm từ thường dùng là 平均して (tính bình quân/nhìn chung).",
+            "usageHint": "〜を平均して / 平均して...: tính theo mức trung bình.",
+            "vi": "Cụm từ thường dùng là 平均して (tính bình quân/nhìn chung). 〜を平均して / 平均して...: tính theo mức trung bình."
+          },
+          "number": 16,
+          "id": "kokusho_n2_d01_m4_16",
+          "stem": "あの地方の出身者は（ ）して寿命が長い。",
+          "answer": 2
+        },
+        {
+          "questionKana": "マラソンでからだのちょうしがわるくなり（ ）のきゅうにゅうをうけた。",
+          "translationVi": "Do thể trạng chuyển biến xấu khi chạy marathon nên tôi đã được hỗ trợ thở khí oxy.",
+          "targetWord": {
+            "kanji": "酸素",
+            "hanViet": "TOAN TỐ",
+            "meaningVi": "Khí oxy"
+          },
+          "options": [
+            "水",
+            "栄養",
+            "酸素",
+            "注射"
+          ],
+          "explanation": {
+            "summary": "Đi với 吸入 (hít thở chất khí) thì chỉ có thể là 酸素 (khí oxy).",
+            "usageHint": "酸素吸入 (さんそきゅうにゅう): phương pháp cấp dưỡng khí oxy y tế.",
+            "vi": "Đi với 吸入 (hít thở chất khí) thì chỉ có thể là 酸素 (khí oxy). 酸素吸入 (さんそきゅうにゅう): phương pháp cấp dưỡng khí oxy y tế."
+          },
+          "number": 17,
+          "id": "kokusho_n2_d01_m4_17",
+          "stem": "マラソンで体の調子が悪くなり（ ）の吸入を受けた。",
+          "answer": 3
+        },
+        {
+          "questionKana": "わきみ（ ）をしていたトラックが、でんちゅうにぶつかった。",
+          "translationVi": "Chiếc xe tải vừa lái vừa lơ đãng nhìn ngang nhìn ngửa đã đâm sầm vào cột điện.",
+          "targetWord": {
+            "kanji": "運転",
+            "hanViet": "VẬN CHUYỂN",
+            "meaningVi": "Lái xe"
+          },
+          "options": [
+            "操作",
+            "運転",
+            "操縦",
+            "運搬"
+          ],
+          "explanation": {
+            "summary": "わき見運転 là cụm từ cố định chỉ việc vừa lái xe vừa nhìn hướng khác gây mất tập trung.",
+            "usageHint": "わき見運転 (lái xe lơ đãng).",
+            "vi": "わき見運転 là cụm từ cố định chỉ việc vừa lái xe vừa nhìn hướng khác gây mất tập trung. わき見運転 (lái xe lơ đãng)."
+          },
+          "number": 18,
+          "id": "kokusho_n2_d01_m4_18",
+          "stem": "わき見（ ）をしていたトラックが、電柱にぶつかった。",
+          "answer": 2
+        },
+        {
+          "questionKana": "このやさいは、なまより（ ）してたべたほうがおいしい。",
+          "translationVi": "Loại rau này nên nấu chín bằng nhiệt rồi ăn thì ngon hơn là ăn sống.",
+          "targetWord": {
+            "kanji": "加熱",
+            "hanViet": "GIA NHIỆT",
+            "meaningVi": "Làm nóng, đun nấu gia nhiệt"
+          },
+          "options": [
+            "加熱",
+            "温度",
+            "火事",
+            "高温"
+          ],
+          "explanation": {
+            "summary": "Đối lập với ăn sống (生) trong nấu ăn là 加熱する (nấu chín/gia nhiệt).",
+            "usageHint": "加熱調理 (chế biến có dùng nhiệt).",
+            "vi": "Đối lập với ăn sống (生) trong nấu ăn là 加熱する (nấu chín/gia nhiệt). 加熱調理 (chế biến có dùng nhiệt)."
+          },
+          "number": 19,
+          "id": "kokusho_n2_d01_m4_19",
+          "stem": "この野菜は、生より（ ）して食べたほうがおいしい。",
+          "answer": 1
+        },
+        {
+          "questionKana": "しょうせつをかく（ ）をまなんでも、すぐにかけるものではない。",
+          "translationVi": "Dù có học kỹ thuật viết tiểu thuyết đi chăng nữa thì cũng không phải là viết được ngay.",
+          "targetWord": {
+            "katakana": "テクニック",
+            "meaningVi": "Kỹ thuật, mẹo xảo (Technique)"
+          },
+          "options": [
+            "マナー",
+            "エチケット",
+            "テクニック",
+            "タイトル"
+          ],
+          "explanation": {
+            "summary": "Kỹ năng/phương pháp viết tiểu thuyết dùng từ テクニック (kỹ thuật sáng tác).",
+            "usageHint": "文章を書くテクニック (kỹ thuật hành văn).",
+            "vi": "Kỹ năng/phương pháp viết tiểu thuyết dùng từ テクニック (kỹ thuật sáng tác). 文章を書くテクニック (kỹ thuật hành văn)."
+          },
+          "number": 20,
+          "id": "kokusho_n2_d01_m4_20",
+          "stem": "小説を書く（ ）を学んでも、すぐに書けるものではない。",
+          "answer": 3
+        },
+        {
+          "questionKana": "ねんまつは（ ）バスにのって、こきょうにかえるつもりだ。",
+          "translationVi": "Dịp cuối năm, tôi dự định bắt xe buýt đêm để về quê.",
+          "targetWord": {
+            "kanji": "夜行",
+            "hanViet": "DẠ HÀNH",
+            "meaningVi": "Chạy xuyên đêm"
+          },
+          "options": [
+            "平日",
+            "出発",
+            "進歩",
+            "夜行"
+          ],
+          "explanation": {
+            "summary": "Loại xe buýt đường dài chạy xuyên đêm về quê gọi là 夜行バス (やこうバス).",
+            "usageHint": "夜行列車 / 夜行バス: tàu xe chạy đêm.",
+            "vi": "Loại xe buýt đường dài chạy xuyên đêm về quê gọi là 夜行バス (やこうバス). 夜行列車 / 夜行バス: tàu xe chạy đêm."
+          },
+          "number": 21,
+          "id": "kokusho_n2_d01_m4_21",
+          "stem": "年末は（ ）バスに乗って、故郷に帰るつもりだ。",
+          "answer": 4
+        },
+        {
+          "questionKana": "このへやはそうおんを（ ）するため、かべがあつくなっている。",
+          "translationVi": "Căn phòng này tường được làm dày lên nhằm ngăn ngừa tiếng ồn.",
+          "targetWord": {
+            "kanji": "防止",
+            "hanViet": "PHÒNG CHỈ",
+            "meaningVi": "Ngăn ngừa, phòng chống"
+          },
+          "options": [
+            "防止",
+            "中止",
+            "禁止",
+            "停止"
+          ],
+          "explanation": {
+            "summary": "Ngăn chặn các tác nhân tiêu cực xảy ra trước ta dùng 防止 (ngăn chặn/phòng ngừa).",
+            "usageHint": "事故を防止する / 騒音を防止する.",
+            "vi": "Ngăn chặn các tác nhân tiêu cực xảy ra trước ta dùng 防止 (ngăn chặn/phòng ngừa). 事故を防止する / 騒音を防止する."
+          },
+          "number": 22,
+          "id": "kokusho_n2_d01_m4_22",
+          "stem": "この部屋は騒音を（ ）するため、壁が厚くなっている。",
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "type": "synonym",
+      "title": "言い換え類義",
+      "titleVi": "Từ đồng nghĩa",
+      "instruction": "_____の言葉に意味が最も近いものを、1・2・3・4から一つ選びなさい。",
+      "numberRange": [
+        23,
+        27
+      ],
+      "questions": [
+        {
+          "questionKana": "えきからじたくまであるくと、[だいたい]じゅうごふんくらいかかる。",
+          "translationVi": "Đi bộ từ nhà ga về nhà thì mất đại khái khoảng 15 phút.",
+          "targetWord": {
+            "hiragana": "だいたい",
+            "meaningVi": "Đại khái, khoảng chừng"
+          },
+          "options": [
+            "まったく",
+            "おおよそ",
+            "とにかく",
+            "たしか"
+          ],
+          "explanation": {
+            "summary": "だいたい đồng nghĩa với おおよそ (khoảng chừng, đại khái).",
+            "rule": "Cặp từ gần nghĩa ước lượng: だいたい ≈ おおよそ ≈ 約 (やく).",
+            "vi": "だいたい đồng nghĩa với おおよそ (khoảng chừng, đại khái). Cặp từ gần nghĩa ước lượng: だいたい ≈ おおよそ ≈ 約 (やく)."
+          },
+          "number": 23,
+          "id": "kokusho_n2_d01_m5_23",
+          "stem": "駅から自宅まで歩くと、[だいたい]15分くらいかかる。",
+          "answer": 2
+        },
+        {
+          "questionKana": "これはえどじだいのはなびんだが、すこしかけているので[ねうち]がさがる。",
+          "translationVi": "Đây là chiếc bình hoa thời Edo, nhưng do bị mẻ một chút nên giá trị bị giảm xuống.",
+          "targetWord": {
+            "kanji": "値うち",
+            "hiragana": "ねうち",
+            "hanViet": "TRỊ",
+            "meaningVi": "Giá trị"
+          },
+          "options": [
+            "計算",
+            "費用",
+            "金額",
+            "価値"
+          ],
+          "explanation": {
+            "summary": "値うち (ねうち) đồng nghĩa với 価値 (かち - giá trị).",
+            "rule": "Cặp từ tương đương: 値うちがある/下がる ≈ 価値がある/下がる.",
+            "vi": "値うち (ねうち) đồng nghĩa với 価値 (かち - giá trị). Cặp từ tương đương: 値うちがある/下がる ≈ 価値がある/下がる."
+          },
+          "number": 24,
+          "id": "kokusho_n2_d01_m5_24",
+          "stem": "これは江戸時代の花びんだが、少し欠けているので[値うち]が下がる。",
+          "answer": 4
+        },
+        {
+          "questionKana": "むすこはちちおやのしごとを[いっしょうけんめい]てつだっていた。",
+          "translationVi": "Cậu con trai đã cần cù, dốc hết sức giúp đỡ công việc của bố.",
+          "targetWord": {
+            "kanji": "一生懸命",
+            "hiragana": "いっしょうけんめい",
+            "hanViet": "NHẤT SINH HUYỀN MỆNH",
+            "meaningVi": "Chăm chỉ, hết sức, cần cù"
+          },
+          "options": [
+            "せっせと",
+            "すっかり",
+            "とても",
+            "はっきり"
+          ],
+          "explanation": {
+            "summary": "一生懸命 làm việc tương đương với phó từ せっせと (chăm chỉ, miệt mài).",
+            "rule": "せっせと働く/手伝う: cặm cụi, siêng năng làm lụng.",
+            "vi": "一生懸命 làm việc tương đương với phó từ せっせと (chăm chỉ, miệt mài). せっせと働く/手伝う: cặm cụi, siêng năng làm lụng."
+          },
+          "number": 25,
+          "id": "kokusho_n2_d01_m5_25",
+          "stem": "息子は父親の仕事を[一生懸命]手伝っていた。",
+          "answer": 1
+        },
+        {
+          "questionKana": "サッカーのしあいでごてんもとられ、ほんとうに[くやしかった]。",
+          "translationVi": "Bị thủng lưới tới 5 bàn trong trận bóng đá, tôi thực sự cảm thấy vô cùng tiếc nuối và cay cú.",
+          "targetWord": {
+            "hiragana": "くやしかった",
+            "meaningVi": "Tiếc nuối, cay đắng, uất ức"
+          },
+          "options": [
+            "非情だった",
+            "残念だった",
+            "不足だった",
+            "むだだった"
+          ],
+          "explanation": {
+            "summary": "くやしい thể hiện sự tiếc nuối pha lẫn bực bội, gần nghĩa nhất với 残念だ.",
+            "rule": "悔しい (くやしい) ≈ 残念 (ざんねん).",
+            "vi": "くやしい thể hiện sự tiếc nuối pha lẫn bực bội, gần nghĩa nhất với 残念だ. 悔しい (くやしい) ≈ 残念 (ざんねん)."
+          },
+          "number": 26,
+          "id": "kokusho_n2_d01_m5_26",
+          "stem": "サッカーの試合で5点も取られ、本当に[くやしかった]。",
+          "answer": 2
+        },
+        {
+          "questionKana": "すいちゅうでもつかえるこのしんせいひんは、[たしかに]べんりだ。",
+          "translationVi": "Sản phẩm mới có thể dùng được cả dưới nước này quả thật đúng là tiện lợi.",
+          "targetWord": {
+            "kanji": "確かに",
+            "hiragana": "たしかに",
+            "hanViet": "XÁC",
+            "meaningVi": "Quả thật, đúng là"
+          },
+          "options": [
+            "あまりに",
+            "いくらか",
+            "なるほど",
+            "じつは"
+          ],
+          "explanation": {
+            "summary": "確かに ở đây mang sắc thái công nhận sự thật hiển nhiên, tương đương với なるほど.",
+            "rule": "なるほど便利だ ≈ 確かに便利だ.",
+            "vi": "確かに ở đây mang sắc thái công nhận sự thật hiển nhiên, tương đương với なるほど. なるほど便利だ ≈ 確かに便利だ."
+          },
+          "number": 27,
+          "id": "kokusho_n2_d01_m5_27",
+          "stem": "水中でも使えるこの新製品は、[確かに]便利だ。",
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "type": "usage",
+      "title": "用法",
+      "titleVi": "Cách dùng từ",
+      "instruction": "次の言葉の使い方として最もよいものを、1・2・3・4から一つ選びなさい。",
+      "numberRange": [
+        28,
+        32
+      ],
+      "questions": [
+        {
+          "targetWord": {
+            "kanji": "器用",
+            "hiragana": "きよう",
+            "hanViet": "KHÍ DỤNG",
+            "meaningVi": "Khéo léo, khéo tay"
+          },
+          "options": [
+            "おばあさんがバスに乗ってきたので、[器用]に席をゆずった。",
+            "この字は読みにくいので、もっと[器用]に書いてください。",
+            "この仕事は細かいので、手先が[器用]な人に向いている。",
+            "彼は世界中を旅しているので、[器用]な話がおもしろい。"
+          ],
+          "explanation": {
+            "summary": "器用 thường kết hợp với 手先 (手先が器用: khéo tay) hoặc chỉ người lanh lợi, làm gì cũng khéo.",
+            "usagePattern": "手先が器用だ / 器用にこなす",
+            "vi": "器用 thường kết hợp với 手先 (手先が器用: khéo tay) hoặc chỉ người lanh lợi, làm gì cũng khéo."
+          },
+          "number": 28,
+          "id": "kokusho_n2_d01_m6_28",
+          "stem": "器用",
+          "answer": 3
+        },
+        {
+          "targetWord": {
+            "kanji": "名所",
+            "hiragana": "めいしょ",
+            "hanViet": "DANH SỞ",
+            "meaningVi": "Địa danh nổi tiếng, thắng cảnh"
+          },
+          "options": [
+            "あの小説家が書いた作品の主人公は、今でも[名所]になっている。",
+            "上野公園は、桜の[名所]として有名だ。",
+            "彼はチェスの[名所]なので、誰も勝てない。",
+            "あのトイレは[名所]で、とてもきれいだ。"
+          ],
+          "explanation": {
+            "summary": "名所 (DANH SỞ) chỉ địa danh, danh lam thắng cảnh nổi tiếng tham quan du lịch.",
+            "usagePattern": "観光名所 / 桜の名所",
+            "vi": "名所 (DANH SỞ) chỉ địa danh, danh lam thắng cảnh nổi tiếng tham quan du lịch."
+          },
+          "number": 29,
+          "id": "kokusho_n2_d01_m6_29",
+          "stem": "名所",
+          "answer": 2
+        },
+        {
+          "targetWord": {
+            "hiragana": "めったに",
+            "meaningVi": "Hiếm khi (luôn đi với phủ định)"
+          },
+          "options": [
+            "病院へは[めったに]行くので、病気の心配はしていない。",
+            "父は[めったに]怒ってばかりで、子どものときはこわかった。",
+            "日本では[めったに]地震が多いので、注意したほうがいい。",
+            "試合に出られることは[めったに]ないので、とてもうれしい。"
+          ],
+          "explanation": {
+            "summary": "めったに là phó từ mang tính phủ định, luôn kết hợp với dạng phủ định: めったに〜ない (hiếm khi làm gì).",
+            "usagePattern": "めったに〜ない",
+            "vi": "めったに là phó từ mang tính phủ định, luôn kết hợp với dạng phủ định: めったに〜ない (hiếm khi làm gì)."
+          },
+          "number": 30,
+          "id": "kokusho_n2_d01_m6_30",
+          "stem": "めったに",
+          "answer": 4
+        },
+        {
+          "targetWord": {
+            "kanji": "ぼん地",
+            "hiragana": "ぼんち",
+            "hanViet": "BỒN ĐỊA",
+            "meaningVi": "Lòng chảo, thung lũng được bao bọc bởi núi"
+          },
+          "options": [
+            "毎年、北海道で[ぼん地]に登るのが、なかなか大変だ。",
+            "彼女は大阪の有名な[ぼん地]で育ったのでおとなしい。",
+            "冬休みは長野の[ぼん地]でスキー大会をするつもりだ。",
+            "京都の町は周囲に山が多く、[ぼん地]なので夏は暑い。"
+          ],
+          "explanation": {
+            "summary": "ぼん地 (盆地) là danh từ địa lý chỉ thung lũng bồn địa có núi bao quanh.",
+            "usagePattern": "京都盆地 (bồn địa Kyoto)",
+            "vi": "ぼん地 (盆地) là danh từ địa lý chỉ thung lũng bồn địa có núi bao quanh."
+          },
+          "number": 31,
+          "id": "kokusho_n2_d01_m6_31",
+          "stem": "ぼん地",
+          "answer": 4
+        },
+        {
+          "targetWord": {
+            "kanji": "身分",
+            "hiragana": "みぶん",
+            "hanViet": "THÂN PHÂN",
+            "meaningVi": "Thân phận, vị thế xã hội, danh tính"
+          },
+          "options": [
+            "外国では[身分]を証明するものを持たなければならない。",
+            "子どものころから[身分]が弱く、学校をよく休んだ。",
+            "彼は[身分]が正しすぎるので、友だちになりにくい。",
+            "3年生の皆さんは[身分]検査をするので、並んでください。"
+          ],
+          "explanation": {
+            "summary": "身分 (みぶん) thường đi với cụm từ chứng minh thân phận/tùy thân (身分証明).",
+            "usagePattern": "身分を証明する / 身分証明書",
+            "vi": "身分 (みぶん) thường đi với cụm từ chứng minh thân phận/tùy thân (身分証明)."
+          },
+          "number": 32,
+          "id": "kokusho_n2_d01_m6_32",
+          "stem": "身分",
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "type": "grammar_form",
+      "title": "文の文法1",
+      "titleVi": "Chọn mẫu ngữ pháp",
+      "instruction": "次の文の（ ）に入れるのに最もよいものを、1・2・3・4から一つ選びなさい。",
+      "numberRange": [
+        33,
+        44
+      ],
+      "questions": [
+        {
+          "questionKana": "みんなのよそうに（ ）、ブラジルチームがまけてしまった。",
+          "translationVi": "Trái ngược với dự đoán của mọi người, đội tuyển Brazil đã để thua.",
+          "options": [
+            "ついて",
+            "反して",
+            "とって",
+            "関して"
+          ],
+          "explanation": {
+            "summary": "Cấu trúc N + に反して mang nghĩa 'Trái ngược với N (dự đoán, mong đợi, quy tắc)'.",
+            "grammarPoint": "〜に反して / 〜に反する N",
+            "vi": "Cấu trúc N + に反して mang nghĩa 'Trái ngược với N (dự đoán, mong đợi, quy tắc)'. 〜に反して / 〜に反する N"
+          },
+          "number": 33,
+          "id": "kokusho_n2_d01_m7_33",
+          "stem": "みんなの予想に（ ）、ブラジルチームが負けてしまった。",
+          "answer": 2
+        },
+        {
+          "questionKana": "じゅうねんいじょうかっていたいぬがしに、かなしくて（ ）。",
+          "translationVi": "Chú chó đã nuôi hơn 10 năm qua đời, tôi cảm thấy buồn không sao tả xiết / buồn vô cùng.",
+          "options": [
+            "のらない",
+            "いらない",
+            "ならない",
+            "しらない"
+          ],
+          "explanation": {
+            "summary": "Cấu trúc A-くて + ならない diễn tả cảm xúc bột phát tự nhiên dâng trào không kìm nén được (vô cùng buồn).",
+            "grammarPoint": "A-くて / V-たくて + ならない",
+            "vi": "Cấu trúc A-くて + ならない diễn tả cảm xúc bột phát tự nhiên dâng trào không kìm nén được (vô cùng buồn). A-くて / V-たくて + ならない"
+          },
+          "number": 34,
+          "id": "kokusho_n2_d01_m7_34",
+          "stem": "10年以上飼っていた犬が死に、悲しくて（ ）。",
+          "answer": 3
+        },
+        {
+          "questionKana": "しゅうしょくがきまった（ ）、がんばってはたらくつもりだ。",
+          "translationVi": "Một khi đã quyết định được công việc thì tôi dự định sẽ cố gắng làm việc hết mình.",
+          "options": [
+            "からは",
+            "からが",
+            "からに",
+            "からと"
+          ],
+          "explanation": {
+            "summary": "〜からは ở đây là biến thể mang nghĩa giống 〜からには (Một khi đã... thì quyết tâm thực hiện vế sau).",
+            "grammarPoint": "V thể ngắn + からは / からには",
+            "vi": "〜からは ở đây là biến thể mang nghĩa giống 〜からには (Một khi đã... thì quyết tâm thực hiện vế sau). V thể ngắn + からは / からには"
+          },
+          "number": 35,
+          "id": "kokusho_n2_d01_m7_35",
+          "stem": "就職が決まった（ ）、がんばって働くつもりだ。",
+          "answer": 1
+        },
+        {
+          "questionKana": "えきまえのマンションけんせつを（ ）もんだいがおおきくなっている。",
+          "translationVi": "Vấn đề xoay quanh việc xây dựng tòa chung cư trước ga đang ngày càng trở nên nghiêm trọng.",
+          "options": [
+            "こめる",
+            "めぐる",
+            "通す",
+            "伴う"
+          ],
+          "explanation": {
+            "summary": "Cấu trúc N1 + をめぐる + N2 mang nghĩa 'N2 (tranh cãi, vấn đề, bàn luận) xoay quanh chủ đề N1'.",
+            "grammarPoint": "N + をめぐる / をめぐって",
+            "vi": "Cấu trúc N1 + をめぐる + N2 mang nghĩa 'N2 (tranh cãi, vấn đề, bàn luận) xoay quanh chủ đề N1'. N + をめぐる / をめぐって"
+          },
+          "number": 36,
+          "id": "kokusho_n2_d01_m7_36",
+          "stem": "駅前のマンション建設を（ ）問題が大きくなっている。",
+          "answer": 2
+        },
+        {
+          "questionKana": "かのじょはうたも（ ）、ファッションモデルもしている。",
+          "translationVi": "Cô ấy vừa hát giỏi, lại vừa làm cả người mẫu thời trang nữa.",
+          "options": [
+            "歌うと",
+            "歌ったら",
+            "歌っても",
+            "歌えば"
+          ],
+          "explanation": {
+            "summary": "Mẫu câu liệt kê đồng thời các đặc điểm: N1 も + Thể điều kiện (ば) + N2 も.",
+            "grammarPoint": "N1 も V-ば N2 も",
+            "vi": "Mẫu câu liệt kê đồng thời các đặc điểm: N1 も + Thể điều kiện (ば) + N2 も. N1 も V-ば N2 も"
+          },
+          "number": 37,
+          "id": "kokusho_n2_d01_m7_37",
+          "stem": "彼女は歌も（ ）、ファッションモデルもしている。",
+          "answer": 4
+        },
+        {
+          "questionKana": "やまもときょうじゅのしどうの（ ）、がくせいたちはけんきゅうをつづけた。",
+          "translationVi": "Dưới sự hướng dẫn của giáo sư Yamamoto, các sinh viên đã tiếp tục công việc nghiên cứu.",
+          "options": [
+            "もとを",
+            "もとで",
+            "もとが",
+            "もとと"
+          ],
+          "explanation": {
+            "summary": "Cấu trúc N + のもとで (の下で) diễn đạt ý nghĩa: chịu sự quản lý, chỉ đạo, rèn luyện hoặc chịu sự ảnh hưởng của ai đó.",
+            "grammarPoint": "N + のもとで",
+            "vi": "Cấu trúc N + のもとで (の下で) diễn đạt ý nghĩa: chịu sự quản lý, chỉ đạo, rèn luyện hoặc chịu sự ảnh hưởng của ai đó. N + のもとで"
+          },
+          "number": 38,
+          "id": "kokusho_n2_d01_m7_38",
+          "stem": "山本教授の指導の（ ）、学生たちは研究を続けた。",
+          "answer": 2
+        },
+        {
+          "questionKana": "すみません、ペンケースをわすれたので、ボールペンを（ ）。",
+          "translationVi": "Xin lỗi, vì tôi quên hộp bút nên bạn có thể vui lòng cho tôi mượn cây bút bi được không?",
+          "options": [
+            "貸してくださいませんか",
+            "貸していただきませんか",
+            "借りてもらいませんか",
+            "借りてあげませんか"
+          ],
+          "explanation": {
+            "summary": "Cấu trúc yêu cầu đối phương làm việc gì cho mình: V-てくださいませんか (Anh/chị có thể vui lòng cho tôi mượn bút không).",
+            "grammarPoint": "V-てくださいませんか",
+            "vi": "Cấu trúc yêu cầu đối phương làm việc gì cho mình: V-てくださいませんか (Anh/chị có thể vui lòng cho tôi mượn bút không). V-てくださいませんか"
+          },
+          "number": 39,
+          "id": "kokusho_n2_d01_m7_39",
+          "stem": "すみません、ペンケースを忘れたので、ボールペンを（ ）。",
+          "answer": 1
+        },
+        {
+          "questionKana": "ビザのもんだいに（ ）じむしょできいてください。",
+          "translationVi": "Những vấn đề liên quan đến visa, xin hãy hỏi ở văn phòng.",
+          "options": [
+            "ついてのことは",
+            "とってのものは",
+            "したがってのことは",
+            "かかわってのものは"
+          ],
+          "explanation": {
+            "summary": "N + についての + danh từ (ở đây là ことは) diễn tả chủ đề đang được đề cập tới.",
+            "grammarPoint": "N + についての N",
+            "vi": "N + についての + danh từ (ở đây là ことは) diễn tả chủ đề đang được đề cập tới. N + についての N"
+          },
+          "number": 40,
+          "id": "kokusho_n2_d01_m7_40",
+          "stem": "ビザの問題に（ ）事務所で聞いてください。",
+          "answer": 1
+        },
+        {
+          "questionKana": "しゅくだいはやればいい（ ）、しっかりおぼえることがたいせつだ。",
+          "translationVi": "Bài tập về nhà không phải chỉ cứ làm là xong, mà điều quan trọng là phải ghi nhớ một cách chắc chắn.",
+          "options": [
+            "というものはなく",
+            "というものになく",
+            "というものではなく",
+            "というものとなく"
+          ],
+          "explanation": {
+            "summary": "Cấu trúc 〜というものではない biểu thị ý phủ định: 'không thể nói một cách tuyệt đối rằng...'. Dạng nối câu đổi thành というものではなく.",
+            "grammarPoint": "Thể thông thường + というものではない",
+            "vi": "Cấu trúc 〜というものではない biểu thị ý phủ định: 'không thể nói một cách tuyệt đối rằng...'. Dạng nối câu đổi thành というものではなく. Thể thông thường + というものではない"
+          },
+          "number": 41,
+          "id": "kokusho_n2_d01_m7_41",
+          "stem": "宿題はやればいい（ ）、しっかり覚えることが大切だ。",
+          "answer": 3
+        },
+        {
+          "questionKana": "ともだちのたんじょうびに、わたしはこころをこめてえを（ ）。",
+          "translationVi": "Vào ngày sinh nhật của bạn, tôi đã dồn hết tâm huyết vẽ tặng bạn một bức tranh.",
+          "options": [
+            "描いてもらった",
+            "描いてくれた",
+            "描いてあげた",
+            "描いていただいた"
+          ],
+          "explanation": {
+            "summary": "Chủ ngữ là 私は và đối tượng tiếp nhận hành động là bạn bè (友だち), do đó cấu trúc đúng là V-てあげた (làm gì cho ai).",
+            "grammarPoint": "V-てあげる",
+            "vi": "Chủ ngữ là 私は và đối tượng tiếp nhận hành động là bạn bè (友だち), do đó cấu trúc đúng là V-てあげた (làm gì cho ai). V-てあげる"
+          },
+          "number": 42,
+          "id": "kokusho_n2_d01_m7_42",
+          "stem": "友だちの誕生日に、私は心を込めて絵を（ ）。",
+          "answer": 3
+        },
+        {
+          "questionKana": "うんどうずきのくろかわくんは、スポーツたいかいに（ ）がとてもつよい。",
+          "translationVi": "Cậu Kurokawa vốn mê thể thao nên có tâm huyết/kỳ vọng và tình cảm gửi gắm rất lớn vào đại hội thể thao.",
+          "options": [
+            "わたる思い込み",
+            "対する思い入れ",
+            "よる思い上がり",
+            "つく思いやり"
+          ],
+          "explanation": {
+            "summary": "Cụm danh từ 思い入れ (tình cảm gắn bó, tâm huyết) đi với 〜に対する.",
+            "grammarPoint": "N + に対する + N",
+            "vi": "Cụm danh từ 思い入れ (tình cảm gắn bó, tâm huyết) đi với 〜に対する. N + に対する + N"
+          },
+          "number": 43,
+          "id": "kokusho_n2_d01_m7_43",
+          "stem": "運動好きの黒川君は、スポーツ大会に（ ）がとても強い。",
+          "answer": 2
+        },
+        {
+          "questionKana": "ちゅうがくじだい、おやにはんぱつしていえで（ ）ことがあった。",
+          "translationVi": "Thời cấp hai, vì nổi loạn chống đối cha mẹ mà tôi đã từng nghĩ đến cả chuyện bỏ nhà ra đi.",
+          "options": [
+            "しか考えていた",
+            "だけ考えられた",
+            "にも考えさせた",
+            "さえ考えた"
+          ],
+          "explanation": {
+            "summary": "Trợ từ さえ biểu thị mức độ cực đoan: 'ngay cả, thậm chí đến mức' (thậm chí từng nghĩ đến cả chuyện bỏ nhà đi).",
+            "grammarPoint": "N + さえ",
+            "vi": "Trợ từ さえ biểu thị mức độ cực đoan: 'ngay cả, thậm chí đến mức' (thậm chí từng nghĩ đến cả chuyện bỏ nhà đi). N + さえ"
+          },
+          "number": 44,
+          "id": "kokusho_n2_d01_m7_44",
+          "stem": "中学時代、親に反発して家出（ ）ことがあった。",
+          "answer": 4
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "type": "sentence_order",
+      "title": "文の文法2",
+      "titleVi": "Sắp xếp câu (★)",
+      "instruction": "次の文の ★ に入る最もよいものを、1・2・3・4から一つ選びなさい。",
+      "numberRange": [
+        45,
+        49
+      ],
+      "questions": [
+        {
+          "id": "kokusho_n2_d01_m8_45",
+          "number": 45,
+          "stem": "アメリカ政府の ____ ____ ★ ____ が進められた。",
+          "options": [
+            "に沿い",
+            "議事",
+            "一方的に",
+            "方針"
+          ],
+          "order": [
+            4,
+            1,
+            3,
+            2
+          ],
+          "answer": 3,
+          "explanation": {
+            "vi": "Ghép cụm: 方針 (4) に沿い (1) 一方的に (3) 議事 (2) が進められた。Vị trí ★ là 3 (一方的に)."
+          }
+        },
+        {
+          "id": "kokusho_n2_d01_m8_46",
+          "number": 46,
+          "stem": "この ____ ____ ★ ____ がまったく違う。",
+          "options": [
+            "雰囲気",
+            "夜は",
+            "町の",
+            "昼に比べて"
+          ],
+          "order": [
+            3,
+            2,
+            4,
+            1
+          ],
+          "answer": 4,
+          "explanation": {
+            "vi": "Ghép cụm: 町の (3) 夜は (2) 昼に比べて (4) 雰囲気 (1) がまったく違う。Vị trí ★ là 4 (昼に比べて)."
+          }
+        },
+        {
+          "id": "kokusho_n2_d01_m8_47",
+          "number": 47,
+          "stem": "この問題について ____ ____ ★ ____ そうだ。",
+          "options": [
+            "わからない",
+            "先生も",
+            "聞いたところ",
+            "先生に"
+          ],
+          "order": [
+            4,
+            3,
+            2,
+            1
+          ],
+          "answer": 2,
+          "explanation": {
+            "vi": "Ghép cụm: 先生に (4) 聞いたところ (3) 先生も (2) わからない (1) そうだ。Vị trí ★ là 2 (先生も)."
+          }
+        },
+        {
+          "id": "kokusho_n2_d01_m8_48",
+          "number": 48,
+          "stem": "ほんの小さな ____ ____ ★ ____ なってしまった。",
+          "options": [
+            "きっかけにして",
+            "大騒ぎに",
+            "クラス中が",
+            "うそを"
+          ],
+          "order": [
+            4,
+            1,
+            3,
+            2
+          ],
+          "answer": 3,
+          "explanation": {
+            "vi": "Ghép cụm: うそを (4) きっかけにして (1) クラス中が (3) 大騒ぎに (2) なってしまった。Vị trí ★ là 3 (クラス中が)."
+          }
+        },
+        {
+          "id": "kokusho_n2_d01_m8_49",
+          "number": 49,
+          "stem": "日本は ____ ____ ★ ____ 高い。",
+          "options": [
+            "交通費や",
+            "商品価格",
+            "家賃も",
+            "のみならず"
+          ],
+          "order": [
+            2,
+            4,
+            1,
+            3
+          ],
+          "answer": 1,
+          "explanation": {
+            "vi": "Ghép cụm: 商品価格 (2) のみならず (4) 交通費や (1) 家賃も (3) 高い。Vị trí ★ là 1 (交通費や)."
+          }
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "type": "text_grammar",
+      "title": "文章の文法",
+      "titleVi": "Điền ngữ pháp vào đoạn văn",
+      "instruction": "次の文章を読んで、[[50]]から[[54]]の中に入る最もよいものを、1・2・3・4から一つ選びなさい。",
+      "numberRange": [
+        50,
+        54
+      ],
+      "passages": [
+        {
+          "text": "「トム・ソーヤーの冒険」(注1)は19世紀半ばの米ミズーリ州が舞台だ。いたずら小僧のトムと、相棒の浮浪児ハック。少年たちの粗野で気ままな日々は、西部への出口だった州の空気と無縁ではない。作者マーク・トウェイン(注2)の故郷である。\nお仕置き(注3)の塀塗りをまんまと(注4)人[[50]]押しつけ、トムがつぶやく。「結局この世は、それほど[[51]]。」読者へのエール(注5)に違いない。その作家の、つまらないはずのない自伝が初めて本になる。\n死後100年、すなわち今春まで[[52-a]]に出すなとの遺志に従い、出版元は5千ページの手書き[[52-b]]を保管してきた。1世紀の時差を託したのは、宗教や政治、知人の[[52-c]]を正直に書いたためともいわれる。\n本をめぐる「長い約束」をもう一つ。221年前、ニューヨークの図書館で貸し出された法律書が戻ってきたそうだ。借り主は初代米大統領ジョージ・ワシントン。未返却が分かり、旧ワシントン邸の管理団体が同じ版の古書を約100万円で調達したという。\n作家と大統領は、代理人を介して「約束」を守り、21世紀に新たな話題をまいた。移ろう時は真相をうやむや(注6)にもするが、その逆で、歳月と書物への畏れがのぞく痛快な話である。[[53]]本の力を思う。\n図書館で背表紙をたどれば、知らないこと、していないことの多さが身にしみる。未知と未体験の海に見え隠れする若い日の夢や憧れ、果たすあてなき約束の数々。〈20年後、あなたは、やったことよりやらなかったことに[[54]]〉。トウェインの言はまぶしく、ほろ苦い。\n(「朝日新聞」〈天声人語〉2010年6月6日付)",
+          "textKana": "「トム・ソーヤーのぼうけん」(ちゅう1)は19せいきなかばのべいミズーリしゅうがぶたいだ。いたずらこぞうのトムと、あいぼうのふろうじハック。しょうねんたちのそやできままなひびは、せいぶへのでぐちだったしゅうのくうきとむえんではない。さくしゃマーク・トウェイン(ちゅう2)のこきょうである。\nおしおき(ちゅう3)のへいぬりをまんまと(ちゅう4)ひと[[50]]おしつけ、トムがつぶやく。「けっきょくこのよは、それほど[[51]]。」どくしゃへのエール(ちゅう5)にちがいない。そのさっかの、つまらないはずのないじでんがはじめてほんになる。\nしご100ねん、すなわちこんしゅんまで[[52-a]]にだすなとのいしにしたがい、しゅっぱんもとはごせんページにてがき[[52-b]]をほかんしてきた。いっせいきのじさをたくしたのは、しゅうきょうやせいじ、ちじんの[[52-c]]をしょうじきにかいたためともいわれる。\nほんをめぐる「ながいやくそく」をもうひとつ。221ねんまえ、ニューヨークのとしょかんでかしだされたほうりつしょがもどってきたそうだ。かりぬしはしょだいべいだいとうりょうジョージ・ワシントン。みへんきゃくがわかり、きゅうワシントンていのかんりだんたいがおなじはんのこしょをやくひゃくまんえんでちょうたつしたという。\nさっかとだいとうりょうは、だいりにんをかいして「やくそく」をまもり、21せいきにあらたなわだいをまいた。うつろうときはしんそうをうやむや(ちゅう6)にもするが、そのぎゃくで、さいげつとしょもつへのおそれがのぞくつうかいなはなしである。[[53]]ほんのちからをおもう。\nとしょかんでせびょうしをたどれば、しらないこと、していないことのおおさがみにしみる。みちとみたいけんのうみにみえかくれするわかいひのゆめやあこがれ、はたすあてなきやくそくのかずかず。〈20ねんご、あなたは、やったことよりやらなかったことに[[54]]〉。トウェインのげんはまぶしく、ほろにがい。\n(「あさひしんぶん」〈てんせいじんご〉2010ねん6がつ6にちづけ)",
+          "translationVi": "Tác phẩm 'Những cuộc phiêu lưu của Tom Sawyer' lấy bối cảnh tại bang Missouri (Mỹ) vào giữa thế kỷ 19. Cậu nhóc tinh nghịch Tom và cậu bạn lang thang Huck. Những chuỗi ngày hoang dã, tự do tự tại của những cậu bé ấy không hề tách rời bầu không khí của một bang vốn là cửa ngõ hướng về miền Tây xa xôi. Đó cũng chính là quê hương của tác giả Mark Twain.\nSau khi khéo léo đùn đẩy công việc phạt quét vôi hàng rào cho người khác, Tom lẩm bẩm: 'Rốt cuộc thế gian này cũng không đến mức tẻ nhạt đến thế đâu.' Chắc hẳn đó là lời khích lệ gửi đến độc giả. Cuốn tự truyện của nhà văn ấy — cuốn sách không thể nào tẻ nhạt — lần đầu tiên được xuất bản thành sách.\nTuân theo di nguyện 'không được công bố ra đời trước khi tròn 100 năm sau ngày mất (tức mùa xuân năm nay)', nhà xuất bản đã lưu giữ 5.000 trang bản thảo viết tay. Người ta nói rằng lý do ông để lại độ trễ thời gian cả một thế kỷ là vì ông đã viết rất chân thực về tôn giáo, chính trị và cả những lời nói xấu người quen.\nLại thêm một 'lời hẹn dài lâu' nữa xoay quanh cuốn sách. Nghe nói rằng một cuốn sách luật được mượn tại thư viện New York 221 năm trước đã được hoàn trả. Người mượn chính là Tổng thống đầu tiên của nước Mỹ, George Washington. Khi phát hiện chưa trả, ban quản lý dinh thự cũ của Washington đã chi khoảng 1 triệu yên để lùng mua ấn bản sách cũ tương tự.\nNhà văn và Tổng thống, thông qua người đại diện, đã giữ trọn 'lời hứa' và tạo nên câu chuyện thời sự mới mẻ của thế kỷ 21. Thời gian trôi đi có thể làm chân tướng sự việc rơi vào mơ hồ, nhưng câu chuyện này ngược lại, cho thấy sự kính sợ trước tháng năm và sách vở, thật sảng khoái biết bao. Ta lại càng suy ngẫm về sức mạnh của sách vượt qua thời không.\nDõi theo những gáy sách trong thư viện, ta thấm thía biết bao điều chưa biết, bao việc chưa làm. Những giấc mơ, hoài bão thời trai trẻ lúc ẩn lúc hiện nơi biển cả bao la của những điều chưa biết và chưa trải nghiệm, cùng vô số những lời hẹn ước không ngày thực hiện. '20 năm sau, bạn sẽ thất vọng vì những điều mình chưa làm hơn là những điều đã làm'. Lời dạy của Mark Twain vừa rạng rỡ, lại vừa đắng cay ngậm ngùi.\n(Theo 'Asahi Shimbun' mục [Thiên thanh nhân ngữ], ngày 6/6/2010)",
+          "notes": [
+            "(注1) 「トム・ソーヤーの冒険」: マーク・トウェインの長編小説。1876年刊。(Tiểu thuyết dài của Mark Twain, xuất bản năm 1876)",
+            "(注2) マーク・トウェイン: アメリカの小説家(1835-1910)。(Nhà văn Mỹ)",
+            "(注3) お仕置き: 子どもに罰を加えてしかること。(Hình phạt mắng phạt trẻ con)",
+            "(注4) まんまと: うまく。(Khéo léo, trót lọt)",
+            "(注5) エール: 声援。(Lời khích lệ, cổ vũ)",
+            "(注6) うやむや: はっきりしないさま。(Mập mờ, không rõ ràng)"
+          ],
+          "id": "kokusho_n2_d01_p01"
+        }
+      ],
+      "questions": [
+        {
+          "questionKana": "おしおきのへいぬりをまんまとひと[[50]]おしつけ、トムがつぶやく。",
+          "translationVi": "Khéo léo đùn đẩy việc quét vôi hàng rào cho người khác...",
+          "options": [
+            "が",
+            "に",
+            "で",
+            "と"
+          ],
+          "explanation": {
+            "summary": "Mẫu kết hợp với động từ 押しつける là A を B に押しつける (đùn đẩy/ép A cho đối tượng B).",
+            "grammarPoint": "N(người) + に + 押しつける",
+            "vi": "Mẫu kết hợp với động từ 押しつける là A を B に押しつける (đùn đẩy/ép A cho đối tượng B). N(người) + に + 押しつける"
+          },
+          "number": 50,
+          "id": "kokusho_n2_d01_m9_50",
+          "stem": "お仕置きの塀塗りをまんまと人[[50]]押しつけ、トムがつぶやく。",
+          "answer": 2,
+          "passageId": "kokusho_n2_d01_p01",
+          "blankIds": [
+            "50"
+          ]
+        },
+        {
+          "questionKana": "「けっきょくこのよは、それほど[[51]]。」",
+          "translationVi": "'Rốt cuộc cõi đời này cũng không đến mức tẻ nhạt đến vậy đâu.'",
+          "options": [
+            "つまらないわけだ",
+            "つまらないに違いない",
+            "つまらないものでしかない",
+            "つまらないものでもない"
+          ],
+          "explanation": {
+            "summary": "Kết hợp với 'それほど' và ngữ cảnh câu sau nói đây là lời khích lệ độc giả (読者へのエール), Tom cảm thấy cuộc đời thú vị hơn sau trò nghịch ngợm: 'không đến mức tẻ nhạt như thế' (それほど〜ものでもない).",
+            "grammarPoint": "それほど〜ものでもない (Không hẳn/không đến mức... đến vậy)",
+            "vi": "Kết hợp với 'それほど' và ngữ cảnh câu sau nói đây là lời khích lệ độc giả (読者へのエール), Tom cảm thấy cuộc đời thú vị hơn sau trò nghịch ngợm: 'không đến mức tẻ nhạt như thế' (それほど〜ものでもない). それほど〜ものでもない (Không hẳn/không đến mức... đến vậy)"
+          },
+          "number": 51,
+          "id": "kokusho_n2_d01_m9_51",
+          "stem": "「結局この世は、それほど[[51]]。」",
+          "answer": 4,
+          "passageId": "kokusho_n2_d01_p01",
+          "blankIds": [
+            "51"
+          ]
+        },
+        {
+          "questionKana": "こんしゅんまで[[52-a]]にだすなとのいしにしたがい、しゅっぱんもとはごせんページにてがき[[52-b]]をほかんしてきた。いっせいきのじさをたくしたのは、しゅうきょうやせいじ、ちじんの[[52-c]]をしょうじきにかいたためともいわれる。",
+          "translationVi": "Chọn tổ hợp từ thích hợp cho a, b, c.",
+          "options": [
+            "a 原稿 / b 世 / c 悪口",
+            "a 原稿 / b 悪口 / c 世",
+            "a 世 / b 原稿 / c 悪口",
+            "a 世 / b 悪口 / c 原稿"
+          ],
+          "explanation": {
+            "summary": "Tổ hợp đúng là 3: a = 世 (世に出す: xuất bản ra đời), b = 原稿 (手書き原稿: bản thảo viết tay), c = 悪口 (知人の悪口: nói xấu người quen nên phải chờ 100 năm sau mới công bố).",
+            "rule": "Cụm quán dụng ngữ: 世に出す (ra mắt công chúng).",
+            "vi": "Tổ hợp đúng là 3: a = 世 (世に出す: xuất bản ra đời), b = 原稿 (手書き原稿: bản thảo viết tay), c = 悪口 (知人の悪口: nói xấu người quen nên phải chờ 100 năm sau mới công bố). Cụm quán dụng ngữ: 世に出す (ra mắt công chúng)."
+          },
+          "number": 52,
+          "id": "kokusho_n2_d01_m9_52",
+          "stem": "今春まで[[52-a]]に出すなとの遺志に従い、出版元は5千ページの手書き[[52-b]]を保管してきた。1世紀の時差を託したのは、宗教や政治、知人の[[52-c]]を正直に書いたためともいわれる。",
+          "answer": 3,
+          "passageId": "kokusho_n2_d01_p01",
+          "blankIds": [
+            "52-a",
+            "52-b",
+            "52-c"
+          ]
+        },
+        {
+          "questionKana": "さいげつとしょもつへのおそれがのぞくつうかいなはなしである。[[53]]ほんのちからをおもう。",
+          "translationVi": "Câu chuyện cho thấy sự kính sợ trước tháng năm và sách vở... Nghĩ về sức mạnh của sách vượt qua cả thời gian và không gian.",
+          "options": [
+            "時空を超えない",
+            "時空を超えても",
+            "時空を超えよう",
+            "時空を超える"
+          ],
+          "explanation": {
+            "summary": "Dùng thể nguyên dạng '時空を超える' để bổ nghĩa cho danh từ đứng sau '本の力' (sức mạnh vượt qua cả thời gian và không gian của cuốn sách).",
+            "grammarPoint": "V thể từ điển + N (Định ngữ bổ nghĩa cho danh từ)",
+            "vi": "Dùng thể nguyên dạng '時空を超える' để bổ nghĩa cho danh từ đứng sau '本の力' (sức mạnh vượt qua cả thời gian và không gian của cuốn sách). V thể từ điển + N (Định ngữ bổ nghĩa cho danh từ)"
+          },
+          "number": 53,
+          "id": "kokusho_n2_d01_m9_53",
+          "stem": "歳月と書物への畏れがのぞく痛快な話である。[[53]]本の力を思う。",
+          "answer": 4,
+          "passageId": "kokusho_n2_d01_p01",
+          "blankIds": [
+            "53"
+          ]
+        },
+        {
+          "questionKana": "〈20ねんご、あなたは、やったことよりやらなかったことに[[54]]〉。トウェインのげんはまぶしく、ほろにがい。",
+          "translationVi": "'20 năm sau, bạn sẽ thất vọng vì những điều mình đã không làm hơn là những điều đã làm.'",
+          "options": [
+            "失望する",
+            "失望させる",
+            "失望しない",
+            "失望される"
+          ],
+          "explanation": {
+            "summary": "Chủ ngữ là あなた (bạn), đi với cấu trúc 〜に失望する (bản thân cảm thấy thất vọng vì điều gì). Vì vậy dạng đúng là động từ thể chủ động 失望する.",
+            "rule": "N + に失望する (Thất vọng về điều gì).",
+            "vi": "Chủ ngữ là あなた (bạn), đi với cấu trúc 〜に失望する (bản thân cảm thấy thất vọng vì điều gì). Vì vậy dạng đúng là động từ thể chủ động 失望する. N + に失望する (Thất vọng về điều gì)."
+          },
+          "number": 54,
+          "id": "kokusho_n2_d01_m9_54",
+          "stem": "〈20年後、あなたは、やったことよりやらなかったことに[[54]]〉。トウェインの言はまぶしく、ほろ苦い。",
+          "answer": 1,
+          "passageId": "kokusho_n2_d01_p01",
+          "blankIds": [
+            "54"
+          ]
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 1,
+  "contentRevision": 1,
+  "status": "published",
+  "isSample": false,
+  "kind": "practice_set",
+  "skills": [
+    "vocabulary",
+    "grammar"
+  ],
+  "enrichmentStatus": "draft"
+}

@@ -1,0 +1,1949 @@
+{
+  "bookId": "kokusho-n2-20days",
+  "bookTitle": "日本語能力試験 20日で合格 N2 文字・語彙・文法",
+  "level": "N2",
+  "subtitle": "文字・語彙・文法 · Trang 30–37",
+  "timeLimitMinutes": 50,
+  "totalQuestions": 54,
+  "schemaVersion": 1,
+  "contentRevision": 4,
+  "status": "published",
+  "isSample": false,
+  "kind": "practice_set",
+  "skills": [
+    "vocabulary",
+    "grammar"
+  ],
+  "enrichmentStatus": "draft",
+  "delivery": "text",
+  "transcriptionStatus": "verified",
+  "sourceRef": {
+    "documentId": "kokusho-n2-20days",
+    "fileName": "N2 - 20 Nichi de Goukaku.pdf"
+  },
+  "sourcePages": [
+    {
+      "pdfPage": 29,
+      "printedPage": "30"
+    },
+    {
+      "pdfPage": 30,
+      "printedPage": "31"
+    },
+    {
+      "pdfPage": 31,
+      "printedPage": "32"
+    },
+    {
+      "pdfPage": 32,
+      "printedPage": "33"
+    },
+    {
+      "pdfPage": 33,
+      "printedPage": "34"
+    },
+    {
+      "pdfPage": 34,
+      "printedPage": "35"
+    },
+    {
+      "pdfPage": 35,
+      "printedPage": "36"
+    },
+    {
+      "pdfPage": 36,
+      "printedPage": "37"
+    }
+  ],
+  "answerPages": [
+    {
+      "pdfPage": 168
+    }
+  ],
+  "id": "kokusho-n2-20days-d04",
+  "day": 4,
+  "title": "第4日 (Day 4)",
+  "mondais": [
+    {
+      "number": 1,
+      "type": "kanji_reading",
+      "title": "漢字読み",
+      "titleVi": "Cách đọc Kanji",
+      "instruction": "_____の言葉の読み方として最もよいものを、1・2・3・4から一つ選びなさい。",
+      "numberRange": [
+        1,
+        5
+      ],
+      "questions": [
+        {
+          "id": "kokusho_n2_d04_m1_01",
+          "number": 1,
+          "stem": "雪の重みを[支え]きれず、小屋が壊れてしまった。",
+          "options": [
+            "ささえ",
+            "おさえ",
+            "こさえ",
+            "しさえ"
+          ],
+          "answer": 1,
+          "sourceImage": "/exams/kokusho-20days/day04/q01.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 29,
+              "printedPage": "30"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "[1]雪の重みを支えきれず小屋が壊れてしまった\n1ささえ2おさえ3こさえ4しさえ",
+          "explanation": {
+            "vi": "支える đọc ささえる: chống đỡ. 支えきれず nghĩa là không đỡ nổi hoàn toàn sức nặng của tuyết; 押さえる là おさえる, khác chữ.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m1_02",
+          "number": 2,
+          "stem": "一流のホテルだけあって、[床]まで大理石だ。",
+          "options": [
+            "かべ",
+            "ゆか",
+            "はしら",
+            "とびら"
+          ],
+          "answer": 2,
+          "sourceImage": "/exams/kokusho-20days/day04/q02.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 29,
+              "printedPage": "30"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "一流のホテルだけあて床まで大理石だ\n1か2ゆか3はしら4とびら",
+          "explanation": {
+            "vi": "床 đọc ゆか: sàn nhà. 壁 là かべ, 柱 là はしら, 扉 là とびら, đều chỉ bộ phận khác.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m1_03",
+          "number": 3,
+          "stem": "町にごみ処理場を作る計画に対して、[大半]の住民が反対した。",
+          "options": [
+            "たいはん",
+            "だいはん",
+            "おおはん",
+            "おおばん"
+          ],
+          "answer": 1,
+          "sourceImage": "/exams/kokusho-20days/day04/q03.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 29,
+              "printedPage": "30"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "3」町にみ処理場を作る計画に対し、大の住民反対した\n1たいはん2だいはん3おおはん4おおばん",
+          "explanation": {
+            "vi": "大半 đọc たいはん: phần lớn. Đại đa số cư dân phản đối; không đọc だいはん trong từ này.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m1_04",
+          "number": 4,
+          "stem": "この春から転職したが、人間関係になかなか[慣れない]。",
+          "options": [
+            "のれない",
+            "ぬれない",
+            "なれない",
+            "ねれない"
+          ],
+          "answer": 3,
+          "sourceImage": "/exams/kokusho-20days/day04/q04.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 29,
+              "printedPage": "30"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "4この春ら転職したが、人間関係にななか慣れない。\n1のれない2ぬれない3なれない4ねれない",
+          "explanation": {
+            "vi": "慣れる đọc なれる: quen với. 人間関係に慣れない là chưa quen quan hệ ở nơi mới.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m1_05",
+          "number": 5,
+          "stem": "息子もようやく社会人になって、初めて[名刺]を持つことになった。",
+          "options": [
+            "みょうじ",
+            "みょうし",
+            "めいじ",
+            "めいし"
+          ],
+          "answer": 4,
+          "sourceImage": "/exams/kokusho-20days/day04/q05.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 29,
+              "printedPage": "30"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "ゆり息子もようやく社会人になて、初めて名刺を持つことになった。\n1みょうじ2みょうし3めいじ4めいし",
+          "explanation": {
+            "vi": "名刺 đọc めいし: danh thiếp. Tránh nhầm 名字 đọc みょうじ là họ.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "type": "kanji_writing",
+      "title": "表記",
+      "titleVi": "Viết Kanji",
+      "instruction": "_____の言葉を漢字で書くとき、最もよいものを、1・2・3・4から一つ選びなさい。",
+      "numberRange": [
+        6,
+        10
+      ],
+      "questions": [
+        {
+          "id": "kokusho_n2_d04_m2_06",
+          "number": 6,
+          "stem": "このネットスーパーは、5000円以上買えば[そうりょう]はただだ。",
+          "options": [
+            "送両",
+            "送了",
+            "送料",
+            "送量"
+          ],
+          "answer": 3,
+          "sourceImage": "/exams/kokusho-20days/day04/q06.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 29,
+              "printedPage": "30"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "6]|このネットスーパーは、5000円以上買えばそうりょうはただだ。\n1送両2送了3送料4送量",
+          "explanation": {
+            "vi": "そうりょう viết 送料: phí gửi hàng. 料 chỉ phí, khác 両・了・量.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m2_07",
+          "number": 7,
+          "stem": "銀行のとなりにある福祉[かいかん]で、お年寄りのカラオケ大会が開かれた。",
+          "options": [
+            "会館",
+            "回館",
+            "階館",
+            "開館"
+          ],
+          "answer": 1,
+          "sourceImage": "/exams/kokusho-20days/day04/q07.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 29,
+              "printedPage": "30"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "に銀行のとなりにある福祉いかんでお年寄りのカラオケ大会が開かれた\n1会館2回館3階館4開館\n30",
+          "explanation": {
+            "vi": "かいかん viết 会館: tòa nhà hội họp. 開館 cũng đọc かいかん nhưng nghĩa là mở cửa một cơ sở; không phải địa điểm trong 福祉会館.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m2_08",
+          "number": 8,
+          "stem": "子どものころ、[くうそう]科学に関する本ばかり読んでいた。",
+          "options": [
+            "空層",
+            "空相",
+            "空創",
+            "空想"
+          ],
+          "answer": 4,
+          "sourceImage": "/exams/kokusho-20days/day04/q08.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 30,
+              "printedPage": "31"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "8」子どものころ、くうそう科学に関する本ばり読んでいた\n1空層2空相3空食4空想",
+          "explanation": {
+            "vi": "くうそう viết 空想: tưởng tượng. 空 tưởng và 想 nghĩ tạo đúng từ; không viết 層・相・食.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m2_09",
+          "number": 9,
+          "stem": "まだ幼稚園児なのに道路のそうじをして、本当に[えらい]と思う。",
+          "options": [
+            "優い",
+            "秀い",
+            "才い",
+            "偉い"
+          ],
+          "answer": 4,
+          "sourceImage": "/exams/kokusho-20days/day04/q09.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 30,
+              "printedPage": "31"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "9まだ幼稚園児なのに道路のそうじをして本当にえらいと思う。\n1優い2秀い3才い4偉い",
+          "explanation": {
+            "vi": "えらい viết 偉い: đáng khen, giỏi. Câu khen trẻ tự quét đường; không dùng 優い・秀い・才い.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m2_10",
+          "number": 10,
+          "stem": "高価な美術品ですから、絶対に素手で[さわらないで]ください。",
+          "options": [
+            "障らないで",
+            "握らないで",
+            "触らないで",
+            "捕らないで"
+          ],
+          "answer": 3,
+          "sourceImage": "/exams/kokusho-20days/day04/q10.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 30,
+              "printedPage": "31"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "10|高価な美術品ですから、絶対に素手でさわらないでください\n。\n1障らないで2握らないで3触らちないで4捕らないで",
+          "explanation": {
+            "vi": "さわる viết 触る: chạm vào. 触らないで yêu cầu không chạm; 障る chỉ gây hại/trở ngại, khác nghĩa.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "type": "word_formation",
+      "title": "語形成",
+      "titleVi": "Cấu tạo từ (tiền tố, hậu tố)",
+      "instruction": "（ ）に入れるのに最もよいものを、1・2・3・4から一つ選びなさい。",
+      "numberRange": [
+        11,
+        15
+      ],
+      "questions": [
+        {
+          "id": "kokusho_n2_d04_m3_11",
+          "number": 11,
+          "stem": "停電で試合が中止になり、チケット代は（　）戻される。",
+          "options": [
+            "渡し",
+            "売り",
+            "取り",
+            "払い"
+          ],
+          "answer": 4,
+          "sourceImage": "/exams/kokusho-20days/day04/q11.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 30,
+              "printedPage": "31"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "停電で試合中止にな、チケット代は()戻される\n1渡し2売り3取り4払い",
+          "explanation": {
+            "vi": "払い戻す là hoàn tiền; vé bị hủy được 払い戻される. 取り戻す là lấy lại thứ đã mất, không phải thuật ngữ hoàn tiền vé.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m3_12",
+          "number": 12,
+          "stem": "野菜嫌いの娘に食べさせるために、いい考えを思い（　）。",
+          "options": [
+            "できた",
+            "ついた",
+            "きった",
+            "とんだ"
+          ],
+          "answer": 2,
+          "sourceImage": "/exams/kokusho-20days/day04/q12.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 30,
+              "printedPage": "31"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "12野菜嫌いの娘に食べさせるためにいいを思い()。\n考え\n1できた2ついた3きった4とんだ",
+          "explanation": {
+            "vi": "思いつく: nảy ra ý tưởng. いい考えを思いついた là nghĩ ra cách hay; 思いきる là quyết tâm/dứt bỏ.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m3_13",
+          "number": 13,
+          "stem": "この映画はベネチア映画祭の（　）優秀作品だ。",
+          "options": [
+            "最",
+            "上",
+            "高",
+            "極"
+          ],
+          "answer": 1,
+          "sourceImage": "/exams/kokusho-20days/day04/q13.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 30,
+              "printedPage": "31"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "13]この映画はベネチア映画祭の(_)優秀作品だ\n1最2上3高4極",
+          "explanation": {
+            "vi": "最優秀作品: tác phẩm xuất sắc nhất. 最 biểu thị mức cao nhất, không dùng 上優秀・高優秀・極優秀.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m3_14",
+          "number": 14,
+          "stem": "あのビルは出入（　）が狭く、火事になったら危ない。",
+          "options": [
+            "目",
+            "鼻",
+            "口",
+            "頭"
+          ],
+          "answer": 3,
+          "sourceImage": "/exams/kokusho-20days/day04/q14.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 30,
+              "printedPage": "31"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "14|あのビルは出入(_)が狭く、火事になったら危ない。\n12鼻34頭",
+          "explanation": {
+            "vi": "出入口 là lối ra vào; 口 chỉ cửa/lối mở. 目・鼻・頭 không tạo đúng từ ghép.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m3_15",
+          "number": 15,
+          "stem": "ボートの全日本選手（　）で、エイトの種目はW大学が優勝した。",
+          "options": [
+            "会",
+            "級",
+            "権",
+            "段"
+          ],
+          "answer": 3,
+          "sourceImage": "/exams/kokusho-20days/day04/q15.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 30,
+              "printedPage": "31"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "15」|ボートの全日本選手《)で、エイトの種目はW大学が優勝した。\n1会2級3権4段",
+          "explanation": {
+            "vi": "選手権 là giải vô địch. Không phải cấp bậc 級・段 hay hội 会.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "type": "context",
+      "title": "文脈規定",
+      "titleVi": "Điền từ theo ngữ cảnh",
+      "instruction": "（ ）に入れるのに最もよいものを、1・2・3・4から一つ選びなさい。",
+      "numberRange": [
+        16,
+        22
+      ],
+      "questions": [
+        {
+          "id": "kokusho_n2_d04_m4_16",
+          "number": 16,
+          "stem": "あまり勉強しないで合格したので、彼は自信（　）になっている。",
+          "options": [
+            "過大",
+            "過剰",
+            "増大",
+            "中心"
+          ],
+          "answer": 2,
+          "sourceImage": "/exams/kokusho-20days/day04/q16.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 30,
+              "printedPage": "31"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "16」あまり勉強しないで合格したので彼は自信()になている。\n1過大2過剰3増大4中心",
+          "explanation": {
+            "vi": "自信過剰: tự tin quá mức. 過大 là quá lớn/đánh giá quá cao, nhưng kết hợp cố định ở đây là 自信過剰.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m4_17",
+          "number": 17,
+          "stem": "改築後のスーパーの（　）面積は、これまでの2倍になった。",
+          "options": [
+            "売り場",
+            "入店",
+            "食品",
+            "売買"
+          ],
+          "answer": 1,
+          "sourceImage": "/exams/kokusho-20days/day04/q17.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 30,
+              "printedPage": "31"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "17|改築後のスーパーの()面積は、これまでの2倍になた\n1売り場2和信店3食品4売買\n31",
+          "explanation": {
+            "vi": "売り場面積: diện tích khu bán hàng. 食品 là thực phẩm, 売買 là việc mua bán; không chỉ phần diện tích trưng bày bán.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m4_18",
+          "number": 18,
+          "stem": "この書類はポストに入れず、郵便局の（　）に出してください。",
+          "options": [
+            "案内",
+            "窓口",
+            "入口",
+            "発行"
+          ],
+          "answer": 2,
+          "sourceImage": "/exams/kokusho-20days/day04/q18.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 31,
+              "printedPage": "32"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "18|この書類はポストに入れず、郵便局の《)に出してください。\n1案内2窓3和信4発行",
+          "explanation": {
+            "vi": "郵便局の窓口: quầy giao dịch bưu điện. 案内 là chỉ dẫn; 発行 là phát hành, không phải nơi nộp hồ sơ.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m4_19",
+          "number": 19,
+          "stem": "来春大学を卒業する息子は、なかなか（　）の口が見つからない。",
+          "options": [
+            "労働",
+            "生活",
+            "職種",
+            "就職"
+          ],
+          "answer": 4,
+          "sourceImage": "/exams/kokusho-20days/day04/q19.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 31,
+              "printedPage": "32"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "19|来春大学を卒業する息子は、ななか()の口が見つからない。\n1労働2生活3職種4",
+          "explanation": {
+            "vi": "就職の口: cơ hội/chỗ làm. Câu nói sinh viên sắp tốt nghiệp chưa tìm được việc; 職種 là loại nghề, không thay được 就職 trong cụm này.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m4_20",
+          "number": 20,
+          "stem": "歩道が狭いので小学校の前の道路を（　）そうだ。",
+          "options": [
+            "開ける",
+            "並べる",
+            "広げる",
+            "付ける"
+          ],
+          "answer": 3,
+          "sourceImage": "/exams/kokusho-20days/day04/q20.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 31,
+              "printedPage": "32"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "20|歩道が狭いので小学校の前の道路を()そうだ。\n1開ける2並べる3広げる4付ける",
+          "explanation": {
+            "vi": "道路を広げる: mở rộng đường vì vỉa hè hẹp. 開ける là mở, 並べる là xếp, 付ける là gắn, không diễn đạt nới chiều rộng.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m4_21",
+          "number": 21,
+          "stem": "柴田さんは手術をしたが、健康の（　）が遅れている。",
+          "options": [
+            "養分",
+            "利益",
+            "回復",
+            "幸福"
+          ],
+          "answer": 3,
+          "sourceImage": "/exams/kokusho-20days/day04/q21.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 31,
+              "printedPage": "32"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "21|さんは手術をしたが、健康の()が遅れている。\nよう\n1養分2利和3回復4幸福",
+          "explanation": {
+            "vi": "健康の回復: hồi phục sức khỏe sau phẫu thuật. 養分 là chất dinh dưỡng, 利益 là lợi ích, 幸福 là hạnh phúc.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m4_22",
+          "number": 22,
+          "stem": "日本は（　）の少ない国だから、いろいろなものを輸入している。",
+          "options": [
+            "原理",
+            "産地",
+            "資源",
+            "土地"
+          ],
+          "answer": 3,
+          "sourceImage": "/exams/kokusho-20days/day04/q22.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 31,
+              "printedPage": "32"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "22|日本は(《)の少ない国だか、いろいろなものを輸入している\n1原理2産地3資源4土地",
+          "explanation": {
+            "vi": "資源の少ない国: nước ít tài nguyên nên cần nhập khẩu. 原理 là nguyên lý, 産地 là nơi sản xuất, 土地 là đất đai.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "type": "synonym",
+      "title": "言い換え類義",
+      "titleVi": "Từ đồng nghĩa",
+      "instruction": "_____の言葉に意味が最も近いものを、1・2・3・4から一つ選びなさい。",
+      "numberRange": [
+        23,
+        27
+      ],
+      "questions": [
+        {
+          "id": "kokusho_n2_d04_m5_23",
+          "number": 23,
+          "stem": "20年ぶりに韓国のプサンに行ったら、町並みが[完全に]変わっていた。",
+          "options": [
+            "すっかり",
+            "大きく",
+            "かなり",
+            "まさに"
+          ],
+          "answer": 1,
+          "sourceImage": "/exams/kokusho-20days/day04/q23.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 31,
+              "printedPage": "32"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "2320年ぶりに韓国のプサンに行ったら町並みが完全に変わっていた\n1すっかり2大きく3かなり4まさに",
+          "explanation": {
+            "vi": "完全に変わる gần すっかり変わる: thay đổi hoàn toàn. かなり・大きく không nhất thiết bao hàm toàn bộ.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m5_24",
+          "number": 24,
+          "stem": "彼はヨットで大海に出るそうだが、[無事]を祈るしかない。",
+          "options": [
+            "安心",
+            "日常",
+            "平穏",
+            "自由"
+          ],
+          "answer": 3,
+          "sourceImage": "/exams/kokusho-20days/day04/q24.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 31,
+              "printedPage": "32"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "24|彼ヨットで大海に出るそうだが、無事を祈るしかない。\nは\nおん\n1安心2日常3平入4自由",
+          "explanation": {
+            "vi": "無事 chỉ bình an, không gặp sự cố, gần 平穏 trong các lựa chọn. 安心 là trạng thái yên tâm, 日常 là thường ngày, 自由 là tự do.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m5_25",
+          "number": 25,
+          "stem": "彼女がイギリスへ留学したことを[少しも]知らなかった。",
+          "options": [
+            "本当に",
+            "やはり",
+            "相当",
+            "ちっとも"
+          ],
+          "answer": 4,
+          "sourceImage": "/exams/kokusho-20days/day04/q25.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 31,
+              "printedPage": "32"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "25|彼女がイギリスへ留学したことを少しも知らなた\n1本当に2やはび3相当4ちっとも",
+          "explanation": {
+            "vi": "少しも…ない tương đương ちっとも…ない: hoàn toàn không biết. 相当 là khá nhiều; やはり là quả nhiên.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m5_26",
+          "number": 26,
+          "stem": "1950年代のクラシック・カーが[ずらりと]並んでいた。",
+          "options": [
+            "一台ずつ",
+            "横に",
+            "たくさん",
+            "まっすぐ"
+          ],
+          "answer": 3,
+          "sourceImage": "/exams/kokusho-20days/day04/q26.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 31,
+              "printedPage": "32"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "26|1950年代のクラシックカがずらりと並んでいた\n1一台ずつ2横に3たくさん4まっすぐ",
+          "explanation": {
+            "vi": "ずらりと並ぶ: nhiều vật xếp thành dãy dài; lựa chọn たくさん giữ ý số lượng đông. 一台ずつ chỉ từng chiếc, まっすぐ chỉ thẳng.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m5_27",
+          "number": 27,
+          "stem": "生徒がみんな下校し、小学校は[しいんとしていた]。",
+          "options": [
+            "平常だった",
+            "静かだった",
+            "普通だった",
+            "平和だった"
+          ],
+          "answer": 2,
+          "sourceImage": "/exams/kokusho-20days/day04/q27.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 31,
+              "printedPage": "32"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "27生徒がみんな下校し小学校はしいんとしていた。\n1平常だった2静かだった3普通だった4平和だった\n32",
+          "explanation": {
+            "vi": "しいんとする là im phăng phắc, gần 静かだ. Không phải trạng thái bình thường hay hòa bình.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "type": "usage",
+      "title": "用法",
+      "titleVi": "Cách dùng từ",
+      "instruction": "次の言葉の使い方として最もよいものを、1・2・3・4から一つ選びなさい。",
+      "numberRange": [
+        28,
+        32
+      ],
+      "questions": [
+        {
+          "id": "kokusho_n2_d04_m6_28",
+          "number": 28,
+          "stem": "才能",
+          "options": [
+            "投手が速いボールを投げるのも一つの[才能]だろう。",
+            "小さいころから練習をして、ピアノの[才能]を積んだ。",
+            "仕事が早い課長は、お酒の[才能]もすごい。",
+            "[才能]豊かな商品だけに、飛ぶように売れている。"
+          ],
+          "answer": 1,
+          "sourceImage": "/exams/kokusho-20days/day04/q28.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 32,
+              "printedPage": "33"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "28才能\n1投手が速いボールを投げるのも一つの才能だろう\n2小さいころから練習をし、ピアノの才能を積んだ\n3仕事が早い課長、お酒の才能もすごい。\n4才能豊かな商品だけに、飛ぶように売れている",
+          "explanation": {
+            "vi": "才能 là tài năng, như năng lực ném bóng nhanh của cầu thủ. Kinh nghiệm dùng 経験を積む; sản phẩm không phải người có tài năng.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m6_29",
+          "number": 29,
+          "stem": "注目",
+          "options": [
+            "夕方から雪が降り始めて、[注目]に寒くなってきた。",
+            "この道は車が多いので[注目]して歩きなさい。",
+            "新しく日本代表に入った選手は、いろいろと[注目]されている。",
+            "[注目]してプールで泳いだが、おぼれそうになってしまった。"
+          ],
+          "answer": 3,
+          "sourceImage": "/exams/kokusho-20days/day04/q29.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 32,
+              "printedPage": "33"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "29注目\n1夕方から雪が降り始めて注目に寒くってきた。\n2この道は車が多いので注目して歩きなさい。\n3新しく日本代表にた選手は、ろいろと注目されている。\n4注目してプールで泳いだが、おぼれそうになてしまった。",
+          "explanation": {
+            "vi": "注目される: được chú ý, hợp cầu thủ mới vào tuyển. Các câu cần 注意 hoặc biểu đạt càng lúc càng lạnh, không dùng 注目.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m6_30",
+          "number": 30,
+          "stem": "いよいよ",
+          "options": [
+            "私の祖父は元気で、[いよいよ]の日々を送っている。",
+            "そんなに1人で[いよいよ]先に行かないでください。",
+            "待ち望まれていた図書館が[いよいよ]来週完成する。",
+            "かわいがっていた小鳥が昨日[いよいよ]死んでしまった。"
+          ],
+          "answer": 3,
+          "sourceImage": "/exams/kokusho-20days/day04/q30.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 32,
+              "printedPage": "33"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "30いよいよ\n1_私の祖父は元気で、いよいよの日々を送っている。\n2そんなに1人でいよいよ先に行かないでください。\n3待ち望まれていた図書館がいよいよ来週完成する\n4かわいがていた小鳥が昨日いよいよ死んでしまった。",
+          "explanation": {
+            "vi": "いよいよ chỉ thời điểm mong chờ cuối cùng đã đến: tuần sau thư viện hoàn thành. Không dùng như tính từ chỉ đời sống hay thay cho đột nhiên.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m6_31",
+          "number": 31,
+          "stem": "ひきょう",
+          "options": [
+            "仲間全員で辞表を出す約束だったが、彼は[ひきょう]にも裏切った。",
+            "彼は[ひきょう]な男だから、どんなことでも信用したほうがいい。",
+            "そんな[ひきょう]な手を使えば、誰だって応援せずにはいられない。",
+            "彼女はいつも[ひきょう]な表情なので、友だちが心配している。"
+          ],
+          "answer": 1,
+          "sourceImage": "/exams/kokusho-20days/day04/q31.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 32,
+              "printedPage": "33"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "31ひきょう\n1仲間全員で辞表を出す約束ったが、彼はひきょうにをも裏切った。\n2彼はひきょうな男だから、どんなことでも信用したほうがいい。\n3そんなひきょうな手を使えば、誰だて応援せはずにはいられない\n。\n4彼女はいつもひきょうな表情なの、友だちが心配している。",
+          "explanation": {
+            "vi": "ひきょう là hèn hạ, thiếu ngay thẳng; phản bội lời hứa với đồng đội là ví dụ đúng. Không mang nghĩa đáng tin, đáng cổ vũ hay vẻ buồn bã.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m6_32",
+          "number": 32,
+          "stem": "あて名",
+          "options": [
+            "この建物の[あて名]は何と言うか教えてください。",
+            "[あて名]がとなりの家になっている郵便物がまざっていた。",
+            "少年野球の新チームの[あて名]が決まったようだ。",
+            "小学生のときの[あて名]は、顔が丸いので「だんご」だった。"
+          ],
+          "answer": 2,
+          "sourceImage": "/exams/kokusho-20days/day04/q32.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 32,
+              "printedPage": "33"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "32あて名\n1この建物のあて名は何と言うか教えてください。\n2あて名がとなりの家になている郵便物がまざっていた\n。\n3少年野球の新ームのあて名が決まっようだ。\n4小学生のときのあて名は、顔が丸いので「だんご」だった。\n33",
+          "explanation": {
+            "vi": "あて名 là tên/người nhận trên thư. Không phải tên tòa nhà, tên đội hay biệt danh.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "type": "grammar_form",
+      "title": "文の文法1",
+      "titleVi": "Chọn mẫu ngữ pháp",
+      "instruction": "次の文の（ ）に入れるのに最もよいものを、1・2・3・4から一つ選びなさい。",
+      "numberRange": [
+        33,
+        44
+      ],
+      "questions": [
+        {
+          "id": "kokusho_n2_d04_m7_33",
+          "number": 33,
+          "stem": "低気圧の位置（　）、明日東京は雨になりそうだ。",
+          "options": [
+            "からと",
+            "からには",
+            "からいって",
+            "からといって"
+          ],
+          "answer": 3,
+          "sourceImage": "/exams/kokusho-20days/day04/q33.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 33,
+              "printedPage": "34"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "33|低気圧の位置)、明東京は雨になりそうだ。\n1からと2からには3からいって4からといって",
+          "explanation": {
+            "vi": "Nからいって: xét từ căn cứ N. Nhìn vị trí áp thấp để nhận định trời mưa; からといって nêu nhượng bộ rồi phủ định suy luận.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m7_34",
+          "number": 34,
+          "stem": "新発売のケーキは、女性（　）男性にも人気がある。",
+          "options": [
+            "ばかり",
+            "ばかりか",
+            "ばかりに",
+            "ばかりで"
+          ],
+          "answer": 2,
+          "sourceImage": "/exams/kokusho-20days/day04/q34.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 33,
+              "printedPage": "34"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "34|新発売のケーキは、女性《)男性にも人気がある。\n1ばかり2ばかりか3ばかりに4ばかりで",
+          "explanation": {
+            "vi": "NばかりかNも: không chỉ… mà còn…; bánh được cả nữ lẫn nam thích. ばかりに nêu nguyên nhân dẫn tới điều xấu.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m7_35",
+          "number": 35,
+          "stem": "和田夫人はご主人の顔を見る（　）小言を言うそうだ。",
+          "options": [
+            "につき",
+            "について",
+            "については",
+            "につけ"
+          ],
+          "answer": 4,
+          "sourceImage": "/exams/kokusho-20days/day04/q35.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 33,
+              "printedPage": "34"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "35和田夫人はご主人の顔る()小言を言うそうだ\n1につき2について3については4につけ",
+          "explanation": {
+            "vi": "Vるにつけ: mỗi khi… thì…; cứ nhìn mặt chồng là cằn nhằn. について là về chủ đề, khác nghĩa lặp theo dịp.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m7_36",
+          "number": 36,
+          "stem": "キムさんがアルバイトを辞めたという話は、友だちを（　）知った。",
+          "options": [
+            "もとに",
+            "はじめ",
+            "通じて",
+            "めぐって"
+          ],
+          "answer": 3,
+          "sourceImage": "/exams/kokusho-20days/day04/q36.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 33,
+              "printedPage": "34"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "36」|キムさんがアルバイトを辞めたという話、友だちを(《)知った。\n1もとに2はじめ3通じて4めぐって",
+          "explanation": {
+            "vi": "Nを通じて: thông qua bạn bè mà biết tin. をめぐって là xoay quanh, をもとに là dựa trên.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m7_37",
+          "number": 37,
+          "stem": "さしみは食べない（　）が、あまり好きではない。",
+          "options": [
+            "ことがない",
+            "ことはない",
+            "ことではない",
+            "ことにない"
+          ],
+          "answer": 2,
+          "sourceImage": "/exams/kokusho-20days/day04/q37.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 33,
+              "printedPage": "34"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "37さしみは食べない()が、あまり好きではない。\n1ことがない2ことはない3ことではない4ことにない",
+          "explanation": {
+            "vi": "Vないことはない: không phải không…, vẫn làm nhưng có dè dặt. Vẫn ăn sashimi nhưng không thích lắm; hai phủ định làm ý nhẹ đi.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m7_38",
+          "number": 38,
+          "stem": "神奈川県の代表的な観光地と（　）、箱根だろう。",
+          "options": [
+            "いえば",
+            "いうより",
+            "いっても",
+            "いわば"
+          ],
+          "answer": 1,
+          "sourceImage": "/exams/kokusho-20days/day04/q38.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 33,
+              "printedPage": "34"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "ん\n38|神奈川県の代表的な観光地と(《)、箱根だろう。\n1いえば2いうより3いっても4いわば",
+          "explanation": {
+            "vi": "Nといえば: nhắc tới N thì liên tưởng đến…; nói đến điểm du lịch tiêu biểu Kanagawa thì Hakone. といっても là tuy nói là.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m7_39",
+          "number": 39,
+          "stem": "飲み会の出欠を先生に（　）、参加されるとのことだ。",
+          "options": [
+            "お聞きしたところ",
+            "お聞きになったところ",
+            "お聞きされたところ",
+            "お聞きになられたところ"
+          ],
+          "answer": 1,
+          "sourceImage": "/exams/kokusho-20days/day04/q39.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 33,
+              "printedPage": "34"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "39飲み会の出欠を先生に(《)、参加されるとのことだ。\n1お聞きしたところ2お聞きになたところ\n3お聞きされたところ4お聞きになられたところ",
+          "explanation": {
+            "vi": "お聞きしたところ: sau khi tôi hỏi thì biết, dùng khiêm nhường cho hành động của mình đối với thầy. お聞きになる là tôn kính hành động của người trên.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m7_40",
+          "number": 40,
+          "stem": "病院でいろいろ（　）、入院と言われてしまった。",
+          "options": [
+            "検査させたところ",
+            "検査させたとたん",
+            "検査されたあげく",
+            "検査された場合"
+          ],
+          "answer": 3,
+          "sourceImage": "/exams/kokusho-20days/day04/q40.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 33,
+              "printedPage": "34"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "40病院でいろいろ()、人院と言われてしまった。\n1検査させたところ2検査させたとたん\n3検査されたあげく4検査された坦合",
+          "explanation": {
+            "vi": "Vたあげく: sau một quá trình vất vả thì nhận kết quả không mong muốn. Bị khám đủ thứ rồi được bảo phải nhập viện; とたん chỉ ngay khoảnh khắc.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m7_41",
+          "number": 41,
+          "stem": "谷川さんの（　）今日もどこかで釣りをしているだろう。",
+          "options": [
+            "ことではもちろん",
+            "ことにきまって",
+            "ことからまず",
+            "ことだからきっと"
+          ],
+          "answer": 4,
+          "sourceImage": "/exams/kokusho-20days/day04/q41.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 33,
+              "printedPage": "34"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "4答川さんの(。)今日もどことで釣りをしているだろう\n1てとではもちろん2ことにきまって\n3ことからまず4ことだからきっと\n34",
+          "explanation": {
+            "vi": "Nのことだからきっと: vì biết tính người ấy nên chắc rằng…; suy ra anh ấy lại đi câu. ことから nêu căn cứ, không tạo đúng mẫu quen thuộc ở đây.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m7_42",
+          "number": 42,
+          "stem": "円高が進むことは、（　）大きい問題だ。",
+          "options": [
+            "留学生につれて",
+            "留学生にとって",
+            "留学生に反して",
+            "留学生について"
+          ],
+          "answer": 2,
+          "sourceImage": "/exams/kokusho-20days/day04/q42.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 34,
+              "printedPage": "35"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "42円高が進むことは、()大きい問題だ\n1留学生につれて2留学生にとって\n3留学生に反して4留学生について",
+          "explanation": {
+            "vi": "Nにとって: đối với N về mặt đánh giá. Đồng yên tăng là vấn đề lớn đối với du học sinh; につれて là theo diễn biến.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m7_43",
+          "number": 43,
+          "stem": "（　）地震が起きて、本当にあわててしまった。",
+          "options": [
+            "入浴しているところに",
+            "入浴したところは",
+            "入浴するところが",
+            "入浴しようところも"
+          ],
+          "answer": 1,
+          "sourceImage": "/exams/kokusho-20days/day04/q43.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 34,
+              "printedPage": "35"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "43()地震が起きて、本当にあわててしまった。\n1入浴しているところに2入浴したところは\n3入浴するところが4人浴しようところも",
+          "explanation": {
+            "vi": "Vているところに: đúng lúc đang… thì sự việc khác xảy ra. Đang tắm thì động đất, に dẫn sự xen vào.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        },
+        {
+          "id": "kokusho_n2_d04_m7_44",
+          "number": 44,
+          "stem": "彼女との婚約が（　）、マンションを購入するつもりだ。",
+          "options": [
+            "まとまり次第",
+            "まとまりながら",
+            "まとまるうちに",
+            "まとまりつつ"
+          ],
+          "answer": 1,
+          "sourceImage": "/exams/kokusho-20days/day04/q44.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 34,
+              "printedPage": "35"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "44彼女との婚約が()、マンションを購入するつもりだ。\n1まとまり次第2まとまりながら\n3まとまるうちに4まとまりつつ",
+          "explanation": {
+            "vi": "Vます bỏ ます + 次第: ngay khi xong việc trước sẽ làm việc sau. Vừa chốt hôn ước sẽ mua căn hộ; ながら・つつ chỉ đồng thời.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored"
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "type": "sentence_order",
+      "title": "文の文法2",
+      "titleVi": "Sắp xếp câu (★)",
+      "instruction": "次の文の ★ に入る最もよいものを、1・2・3・4から一つ選びなさい。",
+      "numberRange": [
+        45,
+        49
+      ],
+      "questions": [
+        {
+          "id": "kokusho_n2_d04_m8_45",
+          "number": 45,
+          "stem": "入学試験前に ____ ____ ★ ____ をしてください。",
+          "options": [
+            "ように",
+            "食事",
+            "栄養のある",
+            "体調を崩さない"
+          ],
+          "answer": 3,
+          "sourceImage": "/exams/kokusho-20days/day04/q45.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 34,
+              "printedPage": "35"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "45」入学試験前に大をしてください、。\n1ように2食事3栄養のある4体調を崩さない",
+          "explanation": {
+            "vi": "Ghép 4→1→3→2: 体調を崩さないように栄養のある食事をしてください. ように chỉ mục đích phòng ốm; 栄養のある bổ nghĩa 食事. Ô sao là 3.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored",
+          "order": [
+            4,
+            1,
+            3,
+            2
+          ]
+        },
+        {
+          "id": "kokusho_n2_d04_m8_46",
+          "number": 46,
+          "stem": "このスープに ____ ____ ★ ____ 食感に近い。",
+          "options": [
+            "肉の",
+            "魚というより",
+            "入っている",
+            "魚は"
+          ],
+          "answer": 2,
+          "sourceImage": "/exams/kokusho-20days/day04/q46.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 34,
+              "printedPage": "35"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "にこのスープに太食感に近い。\n1肉の2_魚というより3入っている4魚は",
+          "explanation": {
+            "vi": "Ghép 3→4→2→1: このスープに入っている魚は魚というより肉の食感に近い. というより đính chính ấn tượng: giống thịt hơn cá. Ô sao là 2.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored",
+          "order": [
+            3,
+            4,
+            2,
+            1
+          ]
+        },
+        {
+          "id": "kokusho_n2_d04_m8_47",
+          "number": 47,
+          "stem": "東京で ____ ____ ★ ____ ならない。",
+          "options": [
+            "まず部屋を",
+            "探さなければ",
+            "にあたり",
+            "学生生活を始める"
+          ],
+          "answer": 1,
+          "sourceImage": "/exams/kokusho-20days/day04/q47.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 34,
+              "printedPage": "35"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "47|東京でしならない。\n1まず部屋を2探さなければ3にあたり4学生生活を始める",
+          "explanation": {
+            "vi": "Ghép 4→3→1→2: 東京で学生生活を始めるにあたり、まず部屋を探さなければならない. にあたり là khi bắt đầu; なければならない là phải. Ô sao là 1.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored",
+          "order": [
+            4,
+            3,
+            1,
+            2
+          ]
+        },
+        {
+          "id": "kokusho_n2_d04_m8_48",
+          "number": 48,
+          "stem": "アンケートで ____ ____ ★ ____ を分析した。",
+          "options": [
+            "若者たちが考える",
+            "集めたデータ",
+            "理想の社会",
+            "に基づき"
+          ],
+          "answer": 1,
+          "sourceImage": "/exams/kokusho-20days/day04/q48.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 34,
+              "printedPage": "35"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "48」|アンケトでしを分析した。\n1若者たちが考える2集めたデータ\n3理想の社会4に基づき",
+          "explanation": {
+            "vi": "Ghép 2→4→1→3: アンケートで集めたデータに基づき若者たちが考える理想の社会を分析した. に基づき là dựa vào. Ô sao là 1.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored",
+          "order": [
+            2,
+            4,
+            1,
+            3
+          ]
+        },
+        {
+          "id": "kokusho_n2_d04_m8_49",
+          "number": 49,
+          "stem": "エネルギー ____ ____ ★ ____ は語れない。",
+          "options": [
+            "ぬきにして",
+            "生活",
+            "未来における",
+            "問題を"
+          ],
+          "answer": 3,
+          "sourceImage": "/exams/kokusho-20days/day04/q49.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 34,
+              "printedPage": "35"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "49」エネルギー4は語れない。\n1ぬきにして2生活3未来における4問題を\n35",
+          "explanation": {
+            "vi": "Ghép 4→1→3→2: エネルギー問題をぬきにして未来における生活は語れない. をぬきにして là bỏ qua; における bổ nghĩa danh từ. Ô sao là 3.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored",
+          "order": [
+            4,
+            1,
+            3,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "type": "text_grammar",
+      "title": "文章の文法",
+      "titleVi": "Điền ngữ pháp vào đoạn văn",
+      "instruction": "次の文章を読んで、[[50]]から[[54]]の中に入る最もよいものを、1・2・3・4から一つ選びなさい。",
+      "numberRange": [
+        50,
+        54
+      ],
+      "questions": [
+        {
+          "id": "kokusho_n2_d04_m9_50",
+          "number": 50,
+          "stem": "[[50]]",
+          "options": [
+            "なるほど",
+            "ところで",
+            "そして",
+            "もっとも"
+          ],
+          "answer": 3,
+          "sourceImage": "/exams/kokusho-20days/day04/q50.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 36,
+              "printedPage": "37"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "50\nなるほど2ところで3そして4もっとも",
+          "passageId": "d04-passage",
+          "explanation": {
+            "vi": "そして nối tiếp hai suy nghĩ về つくる: hành khách tạo nên chuyến xe dễ chịu, và có người phá hỏng điều ấy. ところで chuyển đề tài, もっとも bổ sung ngoại lệ, không hợp bằng.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored",
+          "blankIds": [
+            "50"
+          ],
+          "blankLabel": "50"
+        },
+        {
+          "id": "kokusho_n2_d04_m9_51",
+          "number": 51,
+          "stem": "[[51]]",
+          "options": [
+            "a けとばし／b 足を乗せる",
+            "a けとばし／b 足を乗せられる",
+            "a さわり／b 足を乗せる",
+            "a さわり／b 足を乗せられる"
+          ],
+          "answer": 1,
+          "sourceImage": "/exams/kokusho-20days/day04/q51.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 36,
+              "printedPage": "37"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "51\nけとばしププb足を乗せる\nけとばしププb足を乗せられる\nさわりプン_b足を乗せる\nさわりプン_b足を乗せられる",
+          "passageId": "d04-passage",
+          "explanation": {
+            "vi": "Chọn けとばし／足を乗せる: khách đá vào thân xe và gác chân lên tay vịn. Cùng một chủ thể chủ động nên không dùng bị động 乗せられる.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored",
+          "blankIds": [
+            "51-a",
+            "51-b"
+          ],
+          "blankLabel": "51"
+        },
+        {
+          "id": "kokusho_n2_d04_m9_52",
+          "number": 52,
+          "stem": "[[52]]",
+          "options": [
+            "a 勇気／b 女性／c 悲しいこと",
+            "a 勇気／b 悲しいこと／c 女性",
+            "a 女性／b 勇気／c 悲しいこと",
+            "a 女性／b 悲しいこと／c 勇気"
+          ],
+          "answer": 4,
+          "sourceImage": "/exams/kokusho-20days/day04/q52.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 36,
+              "printedPage": "37"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "勇気ノ/b女性プン悲しいこと\n勇気/b悲しいことノノ女性\n女性/b男気ン悲しいこと\n女性/.b悲しいことノノ勇気",
+          "passageId": "d04-passage",
+          "explanation": {
+            "vi": "Chọn 女性／悲しいこと／勇気: nếu bị trút giận chỉ vì là phụ nữ thì thật đáng buồn; lá thư cậu bé lại cho người lái xe dũng khí. Hoán đổi ba từ làm sai nghĩa và cấu trúc.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored",
+          "blankIds": [
+            "52-a",
+            "52-b",
+            "52-c"
+          ],
+          "blankLabel": "52"
+        },
+        {
+          "id": "kokusho_n2_d04_m9_53",
+          "number": 53,
+          "stem": "[[53]]",
+          "options": [
+            "知恵を備えられない",
+            "知恵を備えている",
+            "知恵を備えるつもりか",
+            "知恵を備えることか"
+          ],
+          "answer": 2,
+          "sourceImage": "/exams/kokusho-20days/day04/q53.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 36,
+              "printedPage": "37"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "53\n知恵を備えられない2知恵を備えている\n知恵を備えるつもりか4知恵を備えることか",
+          "passageId": "d04-passage",
+          "explanation": {
+            "vi": "知恵を備えている: người lớn đã có cách làm giảm độ nhạy với không khí căng thẳng. Mạch văn mô tả thực tế, không hỏi ý định hay cảm thán.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored",
+          "blankIds": [
+            "53"
+          ],
+          "blankLabel": "53"
+        },
+        {
+          "id": "kokusho_n2_d04_m9_54",
+          "number": 54,
+          "stem": "[[54]]",
+          "options": [
+            "心が震えさせている",
+            "心が震えられている",
+            "心が震わせている",
+            "心が震えている"
+          ],
+          "answer": 4,
+          "sourceImage": "/exams/kokusho-20days/day04/q54.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 36,
+              "printedPage": "37"
+            }
+          ],
+          "answerPages": [
+            {
+              "pdfPage": 168
+            }
+          ],
+          "transcriptionStatus": "verified",
+          "ocrText": "54\n心が圭えさせている2心が圭えられている\n心が震わせている4心が圭えている\n37",
+          "passageId": "d04-passage",
+          "explanation": {
+            "vi": "心が震えている: trái tim bé nhỏ đang run sợ giữa tiếng quát. 震える là tự động từ với が; 震わせる cần chủ thể làm ai đó rung động.",
+            "optionNotes": []
+          },
+          "explanationStatus": "authored",
+          "blankIds": [
+            "54"
+          ],
+          "blankLabel": "54"
+        }
+      ],
+      "passages": [
+        {
+          "id": "d04-passage",
+          "text": "日本の交通機関は、アナウンスも掲示も「お願い」が多い。ある地下鉄の優先席に〈ゆずりあう心が、明るい車内をつくります〉とあった。「つくる」という動詞に二つを思う。乗り心地は客にもよること、[[50]]「こわす」者の影である。\n東京の声欄に、少年（12）の投書「バスに乗ったらトンデモ乗客」があった。都下町田市。バスが5分遅れで停留所に着く。少年が母親と乗り込むと、男の客が女性運転士を怒鳴り上げたそうだ。\n遅れに立腹したか、座っても車体を[[51-a]]、手すりに[[51-b]]。信号では「黄色なんだから突き進め！」。当然、車内は「とても怖い感じ」になった。降り際には、運転士の名を確かめるそぶりも見せたという。\n4日後、当の運転士（46）の感想が載った。[[52-a]]ゆえに当たりやすいのなら、これほど[[52-b]]はないと。「怖い思いをさせて申し訳ありません。でもありがとう。お陰で、これからも気持ちよく乗ってもらえるよう頑張る[[52-c]]が出ました」\n乗務員は客を選べず、客も隣人を選べない。とりわけストレスの発火点が低い都会では、車内のトラブルは茶飯事（注1）だ。大抵の大人は、険悪への感度を鈍らせる[[53]]。音楽や携帯電話で耳と目を「開店休業」にするのも一つだろう。\n攻撃と防御がせめぎ合う（注2）都市のくらし。とんでもない客に当たった運転士や駅員も気の毒だが、居合わせた子どもはたまらない。耳目が無防備だから、とんがる（注3）空気に丸裸でさらされてしまう。怒声と鈍感が並走する車内で、ちいさな[[54]]。\n（「朝日新聞」〈天声人語〉2010年6月29日付）",
+          "sourceImage": "/exams/kokusho-20days/day04/passage.webp",
+          "sourcePages": [
+            {
+              "pdfPage": 35
+            }
+          ],
+          "notes": [
+            "（注1）茶飯事…日常ふつうのこと。",
+            "（注2）せめぎ合う…互いに対立して争う。",
+            "（注3）とんがる…いらいらして人に当たる。"
+          ]
+        }
+      ]
+    }
+  ],
+  "explanationSource": "AI-authored Vietnamese reference notes; answer key checked against source book",
+  "transcriptionReview": {
+    "method": "Visual comparison of all 8 rendered source pages; corrected OCR; original distractors retained",
+    "pdfPages": [
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36
+    ],
+    "date": "2026-11-06"
+  }
+}

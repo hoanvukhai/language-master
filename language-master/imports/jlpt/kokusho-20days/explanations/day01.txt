@@ -1,0 +1,54 @@
+1|賢い có cách đọc là かしこい. Âm Kun-yomi của chữ 賢 (HIỀN) khi là tính từ đuôi -i là かしこ・い.
+2|屋外 đọc là おくがい. 屋 (ỐC) đọc âm On là おく, 外 (NGOẠI) đọc là がい. Tránh nhầm với 野外 (やがい).
+3|倉庫 đọc là そうこ. 倉 (THƯƠNG) âm On là そう, 庫 (KHỐ) âm On là こ.
+4|刷る đọc là する (in ấn). Động từ 刷る (する) dùng với nghĩa in (sách, báo, tranh khắc).
+5|勝敗 đọc là しょうはい. 勝 (THẮNG) đọc là しょう, 敗 (BẠI) đọc là はい.
+6|てきど viết là 適度 (THÍCH ĐỘ). Chữ 適 (THÍCH - phù hợp, vừa vặn) kết hợp với 度 (ĐỘ).
+7|ずのう viết đúng là 頭脳. Chữ 脳 (NÃO - bộ óc) có bộ Nhục (⺼), tránh nhầm với 悩 (não - phiền muộn có bộ Tâm 忄).
+8|いっそう viết là 一層. なお一層 mang ý nghĩa tăng thêm một tầng/một bậc nữa.
+9|いさましい viết là 勇ましい (DŨNG). Chữ 勇 (DŨNG) mang nghĩa gan dạ, dũng cảm.
+10|てらす viết là 照らす (CHIẾU). Động từ 照らす (CHIẾU - chiếu sáng, soi rọi).
+11|Động từ ghép đúng là 振り向く (ふりむく - ngoảnh mặt lại, quay đầu nhìn). Tiền tố động từ 振り- kết hợp với 向く tạo thành 振り向く.
+12|Từ ghép thích hợp là 取り上げる (とりあげる - chọn/nhặt ra một đề tài để bàn luận). Động từ ghép 取り上げる mang nghĩa đề cập, bàn đến một vấn đề cụ thể.
+13|Tiền tố thích hợp đi với 放送 là 再 để tạo thành từ ghép 再放送 (さいほうそう - phát sóng lại). Tiếp đầu ngữ 再〜 mang nghĩa làm lại lần nữa (再放送, 再開発, 再確認).
+14|Tiếp đầu ngữ 名 (めい - DANH) kết hợp với danh từ chỉ người/vai trò để chỉ sự tài giỏi, danh tiếng (名司会, 名演奏, 名医). 名〜 (danh tiếng, kiệt xuất): 名司会者/名司会.
+15|Hậu tố phù hợp là 風 (ふう) để chỉ phong cách/kiểu cách: 西洋風 (kiểu Tây). 〜風 (ふう): gắn vào sau danh từ để biểu đạt phong cách, dáng vẻ (和風, 洋風, 中華風).
+16|Cụm từ thường dùng là 平均して (tính bình quân/nhìn chung). 〜を平均して / 平均して...: tính theo mức trung bình.
+17|Đi với 吸入 (hít thở chất khí) thì chỉ có thể là 酸素 (khí oxy). 酸素吸入 (さんそきゅうにゅう): phương pháp cấp dưỡng khí oxy y tế.
+18|わき見運転 là cụm từ cố định chỉ việc vừa lái xe vừa nhìn hướng khác gây mất tập trung. わき見運転 (lái xe lơ đãng).
+19|Đối lập với ăn sống (生) trong nấu ăn là 加熱する (nấu chín/gia nhiệt). 加熱調理 (chế biến có dùng nhiệt).
+20|Kỹ năng/phương pháp viết tiểu thuyết dùng từ テクニック (kỹ thuật sáng tác). 文章を書くテクニック (kỹ thuật hành văn).
+21|Loại xe buýt đường dài chạy xuyên đêm về quê gọi là 夜行バス (やこうバス). 夜行列車 / 夜行バス: tàu xe chạy đêm.
+22|Ngăn chặn các tác nhân tiêu cực xảy ra trước ta dùng 防止 (ngăn chặn/phòng ngừa). 事故を防止する / 騒音を防止する.
+23|だいたい đồng nghĩa với おおよそ (khoảng chừng, đại khái). Cặp từ gần nghĩa ước lượng: だいたい ≈ おおよそ ≈ 約 (やく).
+24|値うち (ねうち) đồng nghĩa với 価値 (かち - giá trị). Cặp từ tương đương: 値うちがある/下がる ≈ 価値がある/下がる.
+25|一生懸命 làm việc tương đương với phó từ せっせと (chăm chỉ, miệt mài). せっせと働く/手伝う: cặm cụi, siêng năng làm lụng.
+26|くやしい thể hiện sự tiếc nuối pha lẫn bực bội, gần nghĩa nhất với 残念だ. 悔しい (くやしい) ≈ 残念 (ざんねん).
+27|確かに ở đây mang sắc thái công nhận sự thật hiển nhiên, tương đương với なるほど. なるほど便利だ ≈ 確かに便利だ.
+28|器用 thường kết hợp với 手先 (手先が器用: khéo tay) hoặc chỉ người lanh lợi, làm gì cũng khéo.
+29|名所 (DANH SỞ) chỉ địa danh, danh lam thắng cảnh nổi tiếng tham quan du lịch.
+30|めったに là phó từ mang tính phủ định, luôn kết hợp với dạng phủ định: めったに〜ない (hiếm khi làm gì).
+31|ぼん地 (盆地) là danh từ địa lý chỉ thung lũng bồn địa có núi bao quanh.
+32|身分 (みぶん) thường đi với cụm từ chứng minh thân phận/tùy thân (身分証明).
+33|Cấu trúc N + に反して mang nghĩa 'Trái ngược với N (dự đoán, mong đợi, quy tắc)'. 〜に反して / 〜に反する N
+34|Cấu trúc A-くて + ならない diễn tả cảm xúc bột phát tự nhiên dâng trào không kìm nén được (vô cùng buồn). A-くて / V-たくて + ならない
+35|〜からは ở đây là biến thể mang nghĩa giống 〜からには (Một khi đã... thì quyết tâm thực hiện vế sau). V thể ngắn + からは / からには
+36|Cấu trúc N1 + をめぐる + N2 mang nghĩa 'N2 (tranh cãi, vấn đề, bàn luận) xoay quanh chủ đề N1'. N + をめぐる / をめぐって
+37|Mẫu câu liệt kê đồng thời các đặc điểm: N1 も + Thể điều kiện (ば) + N2 も. N1 も V-ば N2 も
+38|Cấu trúc N + のもとで (の下で) diễn đạt ý nghĩa: chịu sự quản lý, chỉ đạo, rèn luyện hoặc chịu sự ảnh hưởng của ai đó. N + のもとで
+39|Cấu trúc yêu cầu đối phương làm việc gì cho mình: V-てくださいませんか (Anh/chị có thể vui lòng cho tôi mượn bút không). V-てくださいませんか
+40|N + についての + danh từ (ở đây là ことは) diễn tả chủ đề đang được đề cập tới. N + についての N
+41|Cấu trúc 〜というものではない biểu thị ý phủ định: 'không thể nói một cách tuyệt đối rằng...'. Dạng nối câu đổi thành というものではなく. Thể thông thường + というものではない
+42|Chủ ngữ là 私は và đối tượng tiếp nhận hành động là bạn bè (友だち), do đó cấu trúc đúng là V-てあげた (làm gì cho ai). V-てあげる
+43|Cụm danh từ 思い入れ (tình cảm gắn bó, tâm huyết) đi với 〜に対する. N + に対する + N
+44|Trợ từ さえ biểu thị mức độ cực đoan: 'ngay cả, thậm chí đến mức' (thậm chí từng nghĩ đến cả chuyện bỏ nhà đi). N + さえ
+45|Ghép cụm: 方針 (4) に沿い (1) 一方的に (3) 議事 (2) が進められた。Vị trí ★ là 3 (一方的に).
+46|Ghép cụm: 町の (3) 夜は (2) 昼に比べて (4) 雰囲気 (1) がまったく違う。Vị trí ★ là 4 (昼に比べて).
+47|Ghép cụm: 先生に (4) 聞いたところ (3) 先生も (2) わからない (1) そうだ。Vị trí ★ là 2 (先生も).
+48|Ghép cụm: うそを (4) きっかけにして (1) クラス中が (3) 大騒ぎに (2) なってしまった。Vị trí ★ là 3 (クラス中が).
+49|Ghép cụm: 商品価格 (2) のみならず (4) 交通費や (1) 家賃も (3) 高い。Vị trí ★ là 1 (交通費や).
+50|Mẫu kết hợp với động từ 押しつける là A を B に押しつける (đùn đẩy/ép A cho đối tượng B). N(người) + に + 押しつける
+51|Kết hợp với 'それほど' và ngữ cảnh câu sau nói đây là lời khích lệ độc giả (読者へのエール), Tom cảm thấy cuộc đời thú vị hơn sau trò nghịch ngợm: 'không đến mức tẻ nhạt như thế' (それほど〜ものでもない). それほど〜ものでもない (Không hẳn/không đến mức... đến vậy)
+52|Tổ hợp đúng là 3: a = 世 (世に出す: xuất bản ra đời), b = 原稿 (手書き原稿: bản thảo viết tay), c = 悪口 (知人の悪口: nói xấu người quen nên phải chờ 100 năm sau mới công bố). Cụm quán dụng ngữ: 世に出す (ra mắt công chúng).
+53|Dùng thể nguyên dạng '時空を超える' để bổ nghĩa cho danh từ đứng sau '本の力' (sức mạnh vượt qua cả thời gian và không gian của cuốn sách). V thể từ điển + N (Định ngữ bổ nghĩa cho danh từ)
+54|Chủ ngữ là あなた (bạn), đi với cấu trúc 〜に失望する (bản thân cảm thấy thất vọng vì điều gì). Vì vậy dạng đúng là động từ thể chủ động 失望する. N + に失望する (Thất vọng về điều gì).

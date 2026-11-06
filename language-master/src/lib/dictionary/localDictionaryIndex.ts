@@ -40,11 +40,13 @@ export interface DictionarySearchFilter {
 
 let cachedStaticIndex: DictionaryEntry[] | null = null;
 
-function extractMeaning(m: any): string {
+function extractMeaning(m: unknown): string {
   if (!m) return '';
   if (typeof m === 'string') return m;
   if (typeof m === 'object') {
-    return m.vi || m.en || Object.values(m)[0] || '';
+    const rec = m as Record<string, unknown>;
+    const val = rec.vi || rec.en || Object.values(rec)[0];
+    return typeof val === 'string' ? val : val ? String(val) : '';
   }
   return String(m);
 }
@@ -385,17 +387,18 @@ export function searchGlobalDictionary(
 
     // Khớp đầu từ (Prefix)
     if (t.startsWith(q) || r.startsWith(q)) {
-      prefixMatches.push(item);
+      if (prefixMatches.length < maxScanLimit) {
+        prefixMatches.push(item);
+      }
       continue;
     }
 
     // Khớp chứa bên trong (Contains)
-    if (t.includes(q) || r.includes(q) || m.includes(q)) {
+    if (
+      containsMatches.length < maxScanLimit &&
+      (t.includes(q) || r.includes(q) || m.includes(q))
+    ) {
       containsMatches.push(item);
-      // Dừng sớm nếu đã gom đủ quá nhiều kết quả
-      if (exactMatches.length + prefixMatches.length + containsMatches.length >= maxScanLimit) {
-        break;
-      }
     }
   }
 

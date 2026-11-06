@@ -1,0 +1,54 @@
+1|半ば đọc なかば: giữa, nửa chừng. 10月半ば là giữa tháng 10, không đọc はんば.
+2|中身 đọc なかみ: đồ ở bên trong. 中心 đọc ちゅうしん là trung tâm, khác từ gạch chân.
+3|罪 đọc つみ: tội lỗi. Khi đứng riêng dùng つみ; ざい thường xuất hiện trong từ ghép.
+4|伺う đọc うかがう: đến thăm/hỏi, dạng khiêm nhường. Chỉ âm thứ ba が đục, không phải か.
+5|周辺 đọc しゅうへん: vùng xung quanh. Cần trường âm しゅう và âm へん không đục.
+6|しょうかい viết 紹介: giới thiệu. 介 không thay bằng 会; 招 là mời, không tạo đúng từ.
+7|おおぜい viết 大勢: nhiều người. 大 không thay bằng 多 trong cách viết từ này.
+8|さんせい viết 賛成: tán thành. 成 là thành, không phải 世・生・正.
+9|おす viết 押す: ấn vào huyệt cổ tay. 推す cũng đọc おす nhưng chỉ tiến cử/ủng hộ, không phải dùng lực nhấn.
+10|さめる viết 覚める: tỉnh giấc. 冷める là nguội; 覚める dùng cho giấc ngủ hoặc nhận thức.
+11|受け取る: nhận lấy tờ đơn. 渡す là đưa, 持つ là cầm; chỉ 受け tạo đúng từ ghép nhận vật.
+12|払い込む: nộp/chuyển khoản tiền vào, như tiền mua hàng qua bưu điện. 打ち込む là đánh/nhập, không hợp thanh toán.
+13|今世紀: thế kỷ này. 今 chỉ thời hiện tại; 現世紀 ít tự nhiên hơn và không phải đáp án trong câu.
+14|新製品: sản phẩm mới. 新 dùng làm tiền tố chỉ mới; 真 chỉ thật, khác nghĩa.
+15|苦労人: người từng trải nhiều gian khó. 人 chỉ người mang trải nghiệm ấy, không dùng 家・員・方.
+16|ビニールハウス: nhà kính/nhà phủ nhựa để trồng cây. ストーブ là lò sưởi, không tạo từ chỉ cơ sở canh tác này.
+17|新聞の記事: bài báo có ảnh hưởng quốc tế. 文法 là ngữ pháp, 書類 là hồ sơ, 書物 là sách.
+18|都庁に勤める: làm tại chính quyền Tokyo. 首都 là thủ đô, không phải cơ quan sử dụng lao động.
+19|早めの対策: biện pháp sớm chống dịch cúm. 調子 là tình trạng, 修理 là sửa đồ, 方法 quá chung.
+20|銀行 là ngân hàng, một loại doanh nghiệp để sinh viên xin việc. 資本 là vốn, 事務 là công việc văn phòng.
+21|漁業の被害: thiệt hại nghề cá do dầu tràn biển. 林業・農家・建築 không gắn trực tiếp bằng ngư nghiệp.
+22|船で輸送される: được vận chuyển bằng tàu. 運転 là điều khiển xe, 連絡 là liên lạc.
+23|直接 gần じかに: trực tiếp hỏi họa sĩ. そっと là nhẹ/kín, はっきり là rõ ràng, khác cách tiếp xúc.
+24|骨を折る gần 苦心する: bỏ công vất vả. Đây là thành ngữ, không hiểu theo gãy xương hay ngồi yên.
+25|いくら何でも…とは思わなかった gần まさか…とは思わなかった: không ngờ đến mức đó. やはり lại là đúng như dự đoán.
+26|懐かしい gần 恋しい: nhớ thương món quê nhà. 欲しい chỉ muốn có, 望ましい là đáng mong muốn.
+27|既に gần とっくに: đã từ trước. まず là trước hết, しっかり là chắc chắn/chăm chú.
+28|都市の機能が止まる: các chức năng đô thị tê liệt vì động đất. 機能 không thay cho độ tươi rau, tốc độ đồng hồ hay nước sông.
+29|部長の代理で出席: dự thay trưởng phòng với vai trò đại diện. Năng lượng thay thế là 代替, cầu thủ đánh thay là 代打.
+30|彼がぴったりだ: người ấy rất hợp. ぴったり chỉ vừa khít/phù hợp, không phải tình cờ gặp hay nằm bẹp vì nóng.
+31|チケットを用意する: chuẩn bị sẵn vé. Chuẩn bị thể dục là 準備体操; ban chuẩn bị là 準備委員.
+32|鋭い観察力: khả năng quan sát tinh tường để chụp côn trùng. Nghe nhạc dùng 鑑賞, xem thể thao dùng 観戦, nha sĩ dùng 診察.
+33|円高に伴って: cùng với đồng yên tăng, lợi nhuận xuất khẩu giảm. に伴って chỉ thay đổi kéo theo, không phải chủ đề に関して.
+34|黒っぽい: hơi/ngả màu đen. っぽい gắn trực tiếp sau danh từ màu, không dùng 黒げ.
+35|入る際: khi vào hội trường phải kiểm tra hành lý. Vる際 nêu thời điểm trang trọng; 最中 là giữa lúc đang.
+36|影響を受けているに違いない: chắc hẳn chịu ảnh hưởng Rousseau. に違いない là suy đoán mạnh, べきだ là nên.
+37|始めて以来: kể từ khi bắt đầu hẹn hò, cảm thấy ngày trôi nhanh. 以来 giữ mốc kéo dài tới hiện tại.
+38|結果に基づいて: dựa trên kết quả thí nghiệm để thiết kế cấu trúc chống động đất. にとって chỉ đối tượng đánh giá.
+39|存じあげません: tôi không biết tên vị ấy, dùng khiêm nhường nói biết người. 存じていらっしゃる trộn khiêm nhường và tôn kính.
+40|見るにつけ: mỗi khi thấy mặt Park lại nói giống con gái mình. につけ lặp lại theo dịp; にもかかわらず là mặc dù.
+41|取得するに際して: khi làm thủ tục xin visa dài hạn phải xét nghiệm. に際して nối trực tiếp Vる, không thêm から.
+42|Vるものではない: không nên làm, lời nhắc chuẩn mực. Không nên há miệng ngáp trong giờ học.
+43|広げることをめぐって: xoay quanh chuyện mở rộng đường, cư dân bất đồng. をめぐって hợp vấn đề gây tranh luận.
+44|出るべきだろう: có lẽ nên chủ động ra nước ngoài hơn. べき nêu khuyến nghị, khác わけ chỉ suy luận.
+45|Ghép 2→1→4→3: 若いときにはありがちなことだがそんなに飲んだら体をこわすよ. ありがちな là thường gặp. Ô sao là 4.
+46|Ghép 2→4→1→3: 仕事が終わりそうもないので部下に応援を頼むしかない. そうもない là có vẻ không thể; 応援 là hỗ trợ. Ô sao là 1.
+47|Ghép 4→2→3→1: 入試がある2月は天気予報によると寒くなるということだ. によると dẫn nguồn dự báo. Ô sao là 3.
+48|Ghép 1→3→2→4: 地下鉄が開通することによって混雑が緩和されるはずだ. によって chỉ tác động dẫn kết quả. Ô sao là 2.
+49|Ghép 4→2→3→1: 新システムの実施に関して工場で働く技術者たちが会議を開いている. に関して nêu chủ đề. Ô sao là 3.
+50|それで: nghe tiếp シャチョー nên bấy giờ mới hiểu tiếng gọi ban đầu là 係長. Nêu hệ quả nhận ra, không phải chuyển đề tài.
+51|知っていて／得意そうに笑った: chủ tiệm biết cả cấp bậc khác, xếp đúng thứ tự rồi cười đắc ý. 知らずに trái việc sắp xếp đúng.
+52|Chọn 最高／最終／最小: nguyện vọng làm quản lý cao nhất mười năm, chức muốn đạt cuối cùng, tỷ lệ muốn làm tổ trưởng thấp nhất 1,4%.
+53|調査が示すのは: điều khảo sát cho thấy là…; khảo sát là chủ ngữ thực hiện việc chỉ ra kết quả. Bị động/sai khiến làm sai hướng.
+54|どこかへ通じている: con đường nào cũng dẫn tới đâu đó, lời động viên giảm gánh nặng chọn nghề. どこへ là hỏi đi đâu, không hợp khẳng định này.

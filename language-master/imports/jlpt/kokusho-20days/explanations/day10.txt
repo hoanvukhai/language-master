@@ -1,0 +1,54 @@
+1|寄る đọc よる: ghé qua. 事務室に寄る là ghé văn phòng, không đọc くる là 来る.
+2|巨大 đọc きょだい: khổng lồ. 巨 không có trường âm う; 大 là だい.
+3|枝 đọc えだ: cành cây. 幹 là みき, 茎 là くき, 葉 là は.
+4|再び đọc ふたたび: một lần nữa. たびたび là nhiều lần; このたび là dịp này.
+5|下降 đọc かこう: đi xuống. 下 là か, 降 là こう trong từ ghép này.
+6|たんこう viết 炭鉱: mỏ than. 鉱 có bộ 金 liên quan khoáng sản; 抗・溝・工 không thay được.
+7|さいてん viết 採点: chấm điểm. 採 là chấm/chọn trong từ này; 彩 là màu sắc, 菜 là rau.
+8|とうしょ viết 投書: gửi thư góp ý cho báo/cơ quan. 投 chỉ gửi/ném vào, khác 問・当・答.
+9|うめる viết 埋める: chôn dưới đất/cát. 沈める đọc しずめる là làm chìm; 潜める đọc ひそめる.
+10|たっする viết 達する: đạt đến. 達した là đạt tốc độ gió; 発・立・辰 không tạo đúng động từ.
+11|引き止める: giữ người lại, ngăn nghỉ việc. 受け止める là đón/tiếp nhận, 差し止める thường là đình chỉ theo lệnh.
+12|見おろす: nhìn từ trên xuống. 見くだす là khinh thường, khác hướng nhìn vật lý trong câu.
+13|大作家: nhà văn lớn. 大 dùng trước vai trò để chỉ tầm vóc; 高・強・長 không tạo đúng từ ở đây.
+14|問題外: ngoài khả năng đáng bàn, không có cửa vào vòng chung kết. 外 nêu bị loại khỏi phạm vi xem xét.
+15|自由化: tự do hóa, như bỏ hạn chế nhập gạo. 化 biến danh từ/tính chất thành quá trình thay đổi.
+16|楽器: nhạc cụ như guitar, piano. 音楽 là âm nhạc nói chung, 作曲 là sáng tác.
+17|文化交流: giao lưu văn hóa. 交換 là trao đổi vật/thông tin, 交代 là thay phiên, 交際 là quan hệ cá nhân.
+18|役割が重要: vai trò quan trọng trong việc đạt hiệp ước. 会合 là cuộc gặp, 活用 là tận dụng.
+19|保存状態: tình trạng bảo quản của hóa thạch. 健康 dùng cho sức khỏe sinh vật, không hợp di vật.
+20|個人的な意見: ý kiến cá nhân. 批評 là bình luận/phê bình, 見物 là xem thưởng ngoạn.
+21|科学の力: nhờ khoa học mà đi được vào vũ trụ. 自然・宗教 không khớp cơ sở công nghệ trong câu.
+22|人工的: do con người tạo ra, như bãi biển nhân tạo. 人造 thường bổ nghĩa trực tiếp một sản phẩm, không tạo 人造的 ở đây.
+23|たびたび gần 再三: nhiều lần. 再度 chỉ một lần nữa; 常に là luôn luôn.
+24|使いみち gần 用途: công dụng/cách dùng vào việc gì. 法則 là quy luật, 見当 là phỏng đoán.
+25|ただ gần たんに: chỉ đơn thuần, trong mẫu không chỉ vì tính cách. まったく là hoàn toàn, やはり là quả nhiên.
+26|濃厚な味 gần こい味: vị đậm. Không nhất thiết cay/mặn からい hay dở まずい.
+27|ぼんやりした写真 gần かすんだ写真: ảnh mờ không rõ nét. 消える là biến mất, 流れる là trôi.
+28|適切な処置: xử trí phù hợp vết thương. 適齢 chỉ tuổi kết hôn thích hợp, 適度な運動 là vận động vừa phải.
+29|迷子になる: trẻ lạc người đi cùng, như bé ba tuổi ở bể bơi. Không dùng cho hướng nghiệp phân vân hoặc tín hiệu bị hỏng.
+30|めいめい提出する: mỗi người nộp riêng đề tài. めいめい là từng người, không phải danh sách tên hay người nổi danh.
+31|さすがプロだけあって: quả đúng vận động viên chuyên nghiệp, thể lực khác hẳn. さすが đánh giá xứng danh, không thay cho chắc chắn hay cố lên.
+32|上京する: từ địa phương lên Tokyo. 上京 là hành động, không phải khu vực hay tên nơi tham quan trong các câu khác.
+33|Nぬきには…ない: không thể nghĩ về món Nhật mà thiếu canh miso. のもとで là dưới điều kiện/chỉ đạo.
+34|Vます bỏ ます + ようがない: không có cách nào làm. Mong muốn khác quá nhiều nên không thể tổng hợp.
+35|Nについてレポートを書く: viết báo cáo về chủ đề văn học Minh Trị. にとって là đối với, にわたって là trải khắp.
+36|N次第で: tùy tình hình thời tiết mà chuyến leo núi có thể hủy. せいで chỉ nguyên nhân xấu đã xác định hơn.
+37|Nとして働く: làm việc với tư cách phiên dịch tiếng Ý. に際し chỉ dịp, 向き chỉ phù hợp.
+38|Vた以上: một khi đã đính hôn thì phải có trách nhiệm tương ứng. 末に là sau quá trình, にせよ là dù cho.
+39|面接をさせていただくことになっている: được sắp xếp cho phép dự phỏng vấn, cách nói khiêm nhường. させられる là bị ép, sai ý tự giới thiệu.
+40|2週間にわたって旅行する: du lịch kéo dài hai tuần. にわたって đi sau khoảng thời gian/phạm vi.
+41|あなたさえ都合がよければ: chỉ cần bạn tiện thì…; さえ…ば nêu điều kiện tối thiểu. ほど là mức độ.
+42|無理というものだ: điều ấy quả là vô lý, lời đánh giá mạnh của người nói. というほどだ không hoàn thành được ý này.
+43|Vます bỏ ます + がたい: khó mà chấp nhận/tin được. 信じがたい là khó tin; 信じやすい là dễ tin, trái nghĩa.
+44|Vることなく: không làm hành động đó mà…; nghỉ việc không từ biệt ai. 告げることなく là hình thức đúng.
+45|Ghép 4→2→3→1: 池袋でいくつかの人気グループによるダンスの大会が行われた. による nêu nhóm thực hiện. Ô sao là 3.
+46|Ghép 3→1→4→2: かぜで病院へ行ったついでに血液検査もしてもらった. ついでに là nhân tiện. Ô sao là 4.
+47|Ghép 2→1→4→3: 教室に担任の先生が入ってきてもまだ弁当を食べていた. ても nhượng bộ. Ô sao là 4.
+48|Ghép 3→4→2→1: こちらへお出かけの際はぜひお立ち寄りください. 際は là khi, お立ち寄りください là kính mời ghé. Ô sao là 2.
+49|Ghép 3→2→4→1: 過去のことはともかく未来に向かって努力するしかない. はともかく là gác sang bên; しかない là chỉ còn cách. Ô sao là 4.
+50|なるほど: quả đúng là…, công nhận từ những món salad/đồ kèm rằng cà chua thường đóng vai món khai vị. しかし báo tương phản, ところで chuyển đề tài.
+51|思い描きながら／育ててきた: vừa hình dung món ăn vừa trồng hai chậu cà chua tới nay. トマトを cần ngoại động từ 育てる, không phải tự động từ 育つ.
+52|Chọn 花／実／梅雨: hoa vàng héo để lại quả xanh, quả lớn dần và đổi màu giữa mùa mưa. Trình tự sinh trưởng quyết định ba từ.
+53|となったものの: tuy thành ra những quả khá đắt nếu tính cả chậu đất, nhưng học được nhiều điều. ものの nhượng bộ, khác もので nêu nguyên nhân.
+54|深いつめ跡も残した: mưa còn để lại vết thương/thiệt hại sâu. Ngữ cảnh lo thiên tai rồi cầu mùa hè ổn định nên không chọn phủ định không có thiệt hại.

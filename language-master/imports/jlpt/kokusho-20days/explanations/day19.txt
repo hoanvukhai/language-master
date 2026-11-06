@@ -1,0 +1,54 @@
+1|堅い đọc かたい: chắc chắn, vững. 優勝は堅い là chức vô địch khá chắc trong tay; không đọc がたい.
+2|栄養 đọc えいよう: dinh dưỡng. 栄 là えい, 養 là よう, cần phân biệt với ゆう.
+3|針 đọc はり: kim/ghim. ホチキスの針 là ghim bấm; くぎ là đinh, 刃 đọc は là lưỡi dao.
+4|昇る đọc のぼる: mọc/lên cao, như mặt trời. 上がる đọc あがる là động từ khác.
+5|児童 đọc じどう: trẻ em/học sinh tiểu học. Cả 児 và 童 đều có âm đục trong từ này.
+6|せいしつ viết 性質: tính chất. 性 chỉ đặc tính, không thay bằng 正・生・成.
+7|えいきゅう viết 永久: vĩnh viễn. 永 là dài lâu, 久 là bền lâu, không dùng 球・求・及.
+8|かけつ viết 可決: thông qua bằng biểu quyết, như ngân sách khẩn cấp. 可 chỉ chấp thuận; không viết 加決・過決.
+9|ぬく viết 抜く: rút nút bồn tắm. 抜 có bộ 手; 板 là tấm gỗ, 机 là bàn.
+10|ちらかす viết 散らかす: làm bừa bộn. 乱す đọc みだす, khác cách đọc yêu cầu.
+11|溶け込む: hòa tan vào nước. Chủ ngữ chất có hại tự hòa vào nên dùng 溶け, không dùng ngoại động từ 混ぜ.
+12|打ち合わせる: bàn bạc thống nhất lịch. 話し合う cũng là thảo luận nhưng không ghép thành 話し合わせる trong nghĩa này.
+13|大失敗: thất bại lớn/thảm hại. 大 nhấn mạnh quy mô, không dùng 強失敗・真失敗.
+14|長電話: cuộc gọi kéo dài. 長 chỉ lâu; 高電話・多電話 không phải từ ghép đúng.
+15|実行力: năng lực thực hiện, đối lập chỉ lời nói. 力 tạo danh từ khả năng, khác 権 là quyền.
+16|注意事項を確認する: kiểm tra lại các lưu ý trước thí nghiệm. 発見 là phát hiện điều mới, 注文 là đặt hàng.
+17|建築様式: phong cách kiến trúc thời trung cổ. 材木 là gỗ vật liệu, 修理 là sửa chữa.
+18|系統の色: tông/họ màu thường mặc. 感覚 là cảm giác, 状態 là tình trạng, 方面 là phương diện, không chỉ nhóm màu.
+19|単純な問題ではない: không phải vấn đề đơn giản. 一方 là một phía, 短縮 là rút ngắn, không hợp tính chất vụ việc.
+20|相互に尊敬し合う: tôn trọng lẫn nhau. 相互 nhấn hai phía, 平行 là song song, 同僚 là đồng nghiệp.
+21|どんな家庭で育とうと: dù lớn lên trong gia đình thế nào. 親族 là họ hàng, không phải môi trường gia đình trực tiếp.
+22|病気の研究を続ける: tiếp tục nghiên cứu bệnh sốt vàng. 学士 là bằng/người tốt nghiệp đại học, không chỉ hoạt động nghiên cứu.
+23|非常に gần たいそう: rất, hết sức. 少々・いくらか chỉ một ít, ほとんど là hầu hết.
+24|定員オーバー gần 定員超過: vượt quá sức chứa được phép. 満員 là đầy người, chưa nhất thiết vượt mức.
+25|むやみに gần 度を越して: quá mức, thiếu chừng mực trong ăn uống. 度を守って lại là giữ mức vừa phải, trái nghĩa.
+26|ふける gần 年をとる: già đi. Không dùng 年をこえる・わたる để thay động từ chỉ con người lão hóa.
+27|そろって手をあげる gần いっせいに手をあげる: cùng giơ tay đồng loạt. すぐに là ngay, không nhất thiết cùng lúc.
+28|温帯地方: vùng khí hậu ôn đới, mùa phân biệt rõ. Trái Đất nóng lên là 温暖化, cơ thể ấm lên không gọi 温帯.
+29|物音がする: có tiếng động vật gì phát ra nhưng chưa rõ nguồn. Tiếng sấm, đàn và tivi đã xác định nên thường dùng 音 đơn thuần.
+30|ひとまずおさまった: trước mắt tạm lắng sau khi tàu chạy lại. ひとまず không biểu thị mỗi sáu năm hay giả định một khi.
+31|明け方: gần sáng, lúc trời sắp sáng. Không phải hoàng hôn, tính cách cởi mở hay nguồn sáng thu hút côn trùng.
+32|見解の相違: khác biệt quan điểm hai nước. 相違 là danh từ về khác biệt, không phải sai đáp án hay tính từ khác hẳn.
+33|Vたかと思うと: vừa tưởng cửa bắt đầu đóng thì người đàn ông nhảy lên. Nêu hai việc nối sát nhau bất ngờ.
+34|Nを中心とする: lấy sinh viên làm nòng cốt, bổ nghĩa đội tình nguyện. Cần とする nối danh từ phía sau.
+35|設立に先立ち: trước khi thành lập công ty đã được họ hàng hỗ trợ vốn. に先立ち chỉ công việc chuẩn bị trước.
+36|もらってからでなければ…ない: nếu chưa được cấp trên đồng ý thì không dễ nghỉ phép. Mẫu nêu điều kiện tiên quyết.
+37|誰だっけ: trước đây biết nhưng đang cố nhớ ai là tổng thống cũ. っけ dùng hồi tưởng, không phải phỏng đoán ものか.
+38|走りきる: chạy hết quãng marathon trong thời gian mục tiêu. きる chỉ hoàn thành toàn bộ, khác すぎる là quá mức.
+39|コピーしてくれたまえ: lời yêu cầu của người trên với người dưới. くれる hướng việc làm có lợi về người nói; あげる sai hướng.
+40|わからないこともない: không phải không hiểu, tức có thể phần nào hiểu nỗi đau nạn nhân dù phản đối tử hình. Mẫu thừa nhận có giới hạn.
+41|考え方からすれば: từ cách nghĩ của cô ấy thì sẽ thấy vô lý. からすれば chỉ điểm xuất phát để đánh giá.
+42|VるかVないかのうちに: vừa mở bán hay còn chưa kịp mở đã hết vé. Mẫu nêu khoảng cực ngắn giữa hai sự việc.
+43|一言をきっかけとして: lấy phát ngôn sơ suất làm sự kiện khơi bất an. をきっかけとして là nhân cơ hội/bắt nguồn từ.
+44|必ず勝てるというものでもない: không thể nói cứ vô địch thế giới thì chắc thắng. Phủ định quy luật tuyệt đối.
+45|Ghép 4→1→2→3: 小説を読んだおかげで将来に自信が持てるようになった. おかげで chỉ ảnh hưởng tốt. Ô sao là 2.
+46|Ghép 2→4→3→1: 事故の原因についてくわしく調査委員会が調べている. について nêu đối tượng điều tra. Ô sao là 3.
+47|Ghép 3→4→1→2: 値段が高い包丁セットはプロの料理人向きだ. 向き chỉ phù hợp đối tượng. Ô sao là 1.
+48|Ghép 1→3→4→2: 誰かにつけられているような気がしてならない. 気がしてならない là cảm giác cứ thôi thúc mạnh. Ô sao là 4.
+49|Ghép 2→4→3→1: 苦しくても彼女はあきらめることなく研究を続けた. ことなく là không làm, giữ ý không bỏ cuộc. Ô sao là 3.
+50|こともある: đôi khi cứ mang tự ghét mình vì đã không lên tiếng. もある nêu khả năng xảy ra, không phải tự quyết ことにする.
+51|同乗者は／止めることができた: hai người đi cùng đều là đàn anh nên có thể dễ dàng ngăn lái xe say. Câu phán xét họ không thực hiện điều có thể làm.
+52|Chọn 自分／家族／人: tính mạng người lái và người đi cùng, gia đình họ, và nhất là người xa lạ đều bị đặt vào nguy hiểm. Trình tự mở rộng đối tượng.
+53|妻に身代わりを頼んだ: người cảnh sát nhờ vợ nhận thay trách nhiệm. Người nhờ là chồng nên dùng chủ động 頼んだ, không phải được vợ nhờ.
+54|飲ませるな: đừng để người khác uống, bổ sung trách nhiệm người xung quanh. Sai khiến phủ định cấm hợp chuỗi uống thì không lái, không cho lên xe.

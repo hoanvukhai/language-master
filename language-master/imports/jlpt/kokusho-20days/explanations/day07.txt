@@ -1,0 +1,54 @@
+1|細かい đọc こまかい: tinh, nhỏ, chi tiết. 柔らかい là mềm, 深い là sâu, 短い là ngắn.
+2|食物 đọc しょくもつ: đồ ăn. Không nhầm 植物 đọc しょくぶつ là thực vật.
+3|署名 đọc しょめい: ký tên. 証明 đọc しょうめい là chứng minh, khác chữ và nghĩa.
+4|拝む đọc おがむ: chắp tay cầu/bái lạy. Dạng て là おがんで; 励む là はげむ, 望む là のぞむ.
+5|現象 đọc げんしょう: hiện tượng. 象 trong từ này là しょう, không phải ぞう.
+6|さっそく viết 早速: ngay lập tức. 速 chỉ nhanh, không thay bằng 即・則・促 trong từ này.
+7|けいこく viết 警告: cảnh cáo. 警 chỉ cảnh báo, phù hợp trọng tài nhắc lỗi chơi thô.
+8|いてん viết 移転: di dời địa điểm, như chuyển nhà máy. 異・居・囲 không tạo đúng từ ghép.
+9|さからう viết 逆らう: chống đối. 逆 chỉ ngược; không viết 反らう・対らう・抗らう.
+10|のぞく viết 除く: loại trừ. 海外支店を除く là ngoại trừ chi nhánh nước ngoài; 覗く cũng đọc のぞく nhưng là nhìn lén.
+11|受け持つ: phụ trách, đảm nhiệm một lớp. 引き持つ・取り持つ・分け持つ không diễn đạt đúng trách nhiệm giảng dạy trong câu.
+12|引き返す: quay trở lại chỗ cũ. 船が港に引き返した là tàu trở về cảng khi biển động.
+13|現段階: giai đoạn hiện tại. 現 chỉ hiện nay; không dùng 今段階・当段階・先段階.
+14|不自然: không tự nhiên, bất hợp lý. Đường xe không vào được lại có bãi đỗ nên 不自然; không dùng 非自然 ở đây.
+15|責任感: tinh thần trách nhiệm. 感 chỉ ý thức/cảm nhận; các hậu tố khác không tạo từ thông dụng này.
+16|生演奏: biểu diễn nhạc sống. 調整 là điều chỉnh, 出場 là dự thi, không phải hoạt động chơi piano tại quán.
+17|採用する条件: điều kiện tuyển người, ở đây là ý chí làm việc. 免許 là giấy phép; 原因 là nguyên nhân.
+18|迷惑している: thấy phiền vì xe đạp cản vỉa hè. 世話 là chăm sóc, không chỉ sự bất tiện người đi đường chịu.
+19|安全な場所に逃げる: chạy đến nơi an toàn để tránh sóng thần. 奪う là cướp, 追う là đuổi, 返る không hợp yêu cầu sơ tán.
+20|料理に応用できる: có thể ứng dụng chảo vào nhiều món. 応対 là tiếp khách, 特色 là đặc trưng, 学習 là học.
+21|ゲートボール là môn thi đấu phổ biến với người cao tuổi. キャンプ・コーラス・ドライブ không phải môn thể thao có 競技人口 ở đây.
+22|大統領がインドを訪問する: tổng thống thăm Ấn Độ. 出席 dùng cho sự kiện, 面接 là phỏng vấn; 侵入 là xâm nhập.
+23|失望する gần がっかりする: thất vọng. いらいら là bực bội, じっと là yên/bất động, すっと là nhẹ nhàng/nhanh.
+24|同格: cùng cấp, không có chênh lệch về vị thế, gần 差がない. 足りない là thiếu, 限りがない là không giới hạn.
+25|活発に発言する gần はきはきと発言する: phát biểu tích cực, rõ ràng. さまざまに là đa dạng, にこにこ là cười tươi.
+26|うちとけた雰囲気: không khí thân mật, cởi mở; gần 親しんだ. 澄んだ là trong, 乱れた là hỗn loạn.
+27|時間が十分にある gần たっぷりある: có dư dả thời gian. きちんと là chỉnh tề/đúng đắn, không chỉ lượng thời gian.
+28|でたらめな話: chuyện bịa, vô căn cứ. Không dùng でたらめ để chỉ toán khó, vị dở hay thời tiết mưa.
+29|電車に夢中だった: từng mê tàu hỏa. Mẫu là Nに夢中だ/夢中になる, không phải 夢中する hay 夢中に努力する.
+30|とにかく一度病院へ行く: dù sao trước hết cứ đi khám. とにかく mở hướng hành động ưu tiên, không thay tình cờ hay rốt cuộc.
+31|のんきな性格: tính vô tư, không lo chuyện nhỏ. Không dùng cho xe chậm, sách thiếu tin cậy hoặc dòng sông.
+32|街角で演説する: diễn thuyết ở góc phố. 街角 không phải đường chân trời, điểm hay xảy ra tai nạn hoặc mạng lưới đường trên bản đồ.
+33|子ども向き: phù hợp trẻ em. 向き nêu tính phù hợp, khác 行き chỉ hướng đi/đích đến.
+34|NのみならずNまで: không chỉ bia mà đến vodka cũng uống. に限らず cần có に, còn ばかりに nêu nguyên nhân xấu.
+35|Nにおいては: ở địa điểm/phạm vi N. Loại quả không trồng được ở vùng lạnh; に応じて là tùy theo.
+36|といっても: tuy nói là… nhưng…; không thể dự báo chính xác dù cho rằng kinh tế sẽ tốt lên. といえば là nhắc đến.
+37|Nのせいか: có lẽ do nguyên nhân không tốt. Bụng to lên có lẽ vì thiếu vận động; 上は chỉ một khi đã.
+38|まるで…かのようだ: cứ như thể làm bằng sắt, không khẳng định chất liệu thật. おそれがある nêu nguy cơ, sai ý so sánh.
+39|お持ちいたします: tôi xin mang giúp, dùng お + thân động từ + いたす. いただく thể hiện mình nhận hành động từ người khác, sai hướng ở đây.
+40|Nにすぎない: chỉ có/bất quá là. Nồng độ chỉ 3% nên có thể uống vài lon; のだから đưa ra lý do.
+41|Nほど…ない: ít có núi nào đẹp bằng Phú Sĩ. ほど nêu chuẩn so sánh, そんなにない phủ định số lượng lớn.
+42|走りぬく: chạy đến cùng, hoàn thành quãng marathon. のは…おかげだ là hoàn thành được là nhờ…; 走りわたる không diễn tả ý kiên trì này.
+43|年齢、性別にかかわらないとはいえ: tuy không phân biệt tuổi, giới tính nhưng không hợp tôi. とはいえ nhượng bộ thông tin trước.
+44|さすが…だけあって: quả xứng là…, kết quả phù hợp kỳ vọng về đô thị lớn. Không thêm は sau だけあって.
+45|Ghép 3→1→2→4: 学校の年間予算からするとこれ以上の図書は増やせない. からすると là xét ngân sách. Ô sao là 2.
+46|Ghép 4→2→1→3: 何か言いかけて途中でやめると気になるじゃないか. 言いかける là nói dở, 気になる là khiến bận tâm. Ô sao là 1.
+47|Ghép 1→3→4→2: 時代の変化とともに若者たちの結婚観も変わる. とともに nêu thay đổi song song. Ô sao là 4.
+48|Ghép 2→4→3→1: 8時間の大手術のすえに彼は病気に打ち勝つことができた. のすえに là sau quá trình; に打ち勝つ là chiến thắng. Ô sao là 3.
+49|Ghép 4→1→3→2: 彼はまじめでやさしい人だからそんなことはするまい. Vるまい suy đoán phủ định: chắc không làm. Ô sao là 3.
+50|本名を名乗るべきだ: nên dùng tên thật, lời khuyên/yêu cầu trong thư. はずだ nêu kỳ vọng, つもりだ nêu ý định cá nhân.
+51|償いを…しなくてはならない: phải chuộc lỗi suốt đời. する nhận danh từ 償いを; いる・来る không tạo hành động đền bù.
+52|Chọn 願い／名／ヒット: gửi ước nguyện vào tên bút danh, tên ấy tỏa sáng trong thời sinh viên, rồi liên tiếp tạo tác phẩm ăn khách.
+53|人に迫るようでもあった: qua tác phẩm dường như còn dồn người xem suy nghĩ nên tin phía nào. ようだ diễn giải ấn tượng; かもしれない chỉ khả năng, không khớp lời nhìn lại bằng.
+54|早すぎた: ra đi quá sớm. Đoạn kết nói người hâm mộ khó chấp nhận cái chết ở tuổi 62; phủ định sớm sẽ trái cảm xúc tiếc thương.

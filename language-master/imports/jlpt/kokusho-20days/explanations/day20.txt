@@ -1,0 +1,54 @@
+1|吹く đọc ふく: thổi. 吹いて đọc ふいて, hợp thổi súp cho nguội.
+2|境 đọc さかい: ranh giới. 生死の境をさまよう là ở giữa sống và chết; không đọc きょう khi đứng trong cụm này.
+3|効果 đọc こうか: hiệu quả. 効 là こう, không đục thành ごう hay kéo thành きょう.
+4|認める đọc みとめる: công nhận. かためる là làm cứng, つとめる là làm việc/cố, まとめる là tổng hợp.
+5|幾分 đọc いくぶん: phần nào, hơi. 気分 đọc きぶん là tâm trạng, khác chữ và nghĩa.
+6|くふう viết 工夫: suy nghĩ tìm cách cải tiến. 工夫をこらす là bỏ công sáng tạo, không viết 久夫・口夫.
+7|はんえい viết 反映: phản ánh. プランに意見を反映させる là đưa ý kiến vào kế hoạch; 伴・半 không tạo đúng từ.
+8|へんこう viết 変更: thay đổi. 更 chỉ đổi mới, không thay bằng 交・工・功.
+9|たずねる viết 訪ねる: thăm đền chùa/địa điểm. 尋ねる là hỏi/tìm, không dùng 診ね・討ね.
+10|いだく viết 抱く: ôm ấp ước mơ. 招く đọc まねく, 抜く là ぬく, khác từ cần viết.
+11|申し込む: đăng ký dự thi. 申し là yếu tố của từ ghép; 話し込む là mải nói chuyện.
+12|見上げる: nhìn lên trời. 見合う là nhìn nhau/phù hợp, 見慣れる là nhìn quen.
+13|前世紀: thế kỷ trước, theo bối cảnh bài. 前 chỉ khoảng liền trước; 先世紀・元世紀 không phải cách gọi chuẩn ở đây.
+14|運転手: người lái xe. 手 chỉ người làm nghề/hoạt động, không dùng 運転人・運転家.
+15|一般論: lý luận/nhận xét tổng quát. 論 tạo danh từ về lập luận, khác 性・化 chỉ tính chất/quá trình.
+16|すしをにぎる技術: kỹ thuật làm sushi. 上達 là sự tiến bộ, 難度 là độ khó, không phải năng lực thao tác.
+17|動物の図鑑: sách tra cứu minh họa các loài vật. 設計 là thiết kế, 数字 là con số, 公式 là công thức.
+18|走行に制限がある: việc chạy xe máy trên cao tốc có hạn chế. 速度 là tốc độ, 車体 là thân xe, không nêu quy định giới hạn.
+19|インフルエンザの予防: phòng cúm bằng rửa tay, súc miệng. 警告 là cảnh báo, 禁止 là cấm, không phải biện pháp ngừa bệnh.
+20|スケジュールがつまっている: lịch giáo sư kín. パターン là mẫu, セット là bộ, スクール là trường.
+21|休暇を取る: nghỉ phép. 引退 là giải nghệ, 余分 là phần thừa, 長期 chỉ thời gian dài chưa có danh từ nghỉ.
+22|経済大国: cường quốc kinh tế. 経営 là quản trị, 営業 là bán hàng, 予算 là ngân sách.
+23|一気に上級へ gần いきなり上級へ: chuyển thẳng lên cao, bỏ bước giữa. ついに là cuối cùng, không nhấn nhảy bậc.
+24|落ち着いていた gần 冷静だった: vẫn bình tĩnh khi động đất. 安心 là yên tâm, 無事 là bình an, khác trạng thái xử trí.
+25|故意に gần わざと: cố tình. たまたま là tình cờ, おそらく là có lẽ, trái tính chủ ý.
+26|はなはだしい被害 gần 相当な被害: thiệt hại rất lớn. 多少・まあまあ nêu mức nhẹ/vừa, không hợp mức nghiêm trọng.
+27|残念ながら gần あいにく: tiếc là/không may, dự báo mưa đúng ngày dã ngoại. やはり là quả nhiên, どうやら là có vẻ.
+28|よそでは手に入らない: khó kiếm ở nơi khác. よそ là chỗ khác/nhà khác, không phải tính từ lạ hay xa cách dùng như các câu nhiễu.
+29|各派が連合する: các phái liên kết thành đảng mới. Cảm giác gắn bó là 一体感; bảo lãnh liên đới là 連帯保証.
+30|催促する: giục vì mì gọi lâu chưa đến. Không phải dự báo hoa nở, giới thiệu người yêu hay hiệu suất làm việc.
+31|有無を言わせず: không cho cãi/không cho lựa chọn, thành ngữ ép cưới. 有無 là có hay không, không phải đúng sai/chất lượng tốt xấu.
+32|頭をひねる: vắt óc suy nghĩ. ひねる nghĩa gốc là vặn/xoắn, mở rộng thành nghĩ cách, không phải xỏ giày.
+33|できるかぎり: hết khả năng có thể vì người bệnh. かぎり nêu giới hạn tối đa; のみ chỉ giới hạn một thứ.
+34|逃げ出したいくらいだ: căng thẳng đến mức muốn bỏ chạy. くらい nêu mức độ cảm xúc, không khẳng định ý định つもり.
+35|Vます bỏ ます + かねない: có thể làm chuyện xấu như nói dối ấy. かねる là khó/không thể làm, trái nghĩa nguy cơ.
+36|入学をきっかけとして: nhân việc nhập học bắt đầu sống một mình. をもとにして là dựa vào nền tảng, không nêu bước ngoặt.
+37|上陸するおそれがある: có nguy cơ bão đổ bộ. おそれ nêu khả năng không mong muốn; ことになっている nêu quy định/sắp đặt.
+38|データからして: xét ngay từ dữ liệu có trước, phấn hoa có vẻ nhiều. につれて nêu diễn biến đồng thời, không phải căn cứ dự đoán.
+39|お引き受けしかねます: tôi khó có thể nhận việc, lời từ chối lịch sự. かねる nối thân động từ; không thêm sai khiến hay bị động.
+40|Vたとたん: ngay khi tàu phanh gấp thì hành khách ngã. Nêu sự việc kế tiếp tức thì, không phải mới định phanh.
+41|書きかけのまま: để tiểu thuyết dở dang mà mất. かけ chỉ đang làm chưa xong; がち chỉ khuynh hướng, không hợp dang dở.
+42|今週から来週にかけて: từ tuần này sang tuần sau, khoảng thời gian ước lượng. Đáp án 3 thêm らしいが để dè dặt nguồn tin; các dạng にかけた sai nối phạm vi ở đây.
+43|信じようものなら: nếu lỡ tin chuyện ấy sẽ gặp hậu quả xấu. Vようものなら nêu giả định có tính cảnh báo.
+44|女性かと思ったら男性だった: tưởng phụ nữ nhưng hóa ra đàn ông. かと思ったら đính chính ấn tượng ban đầu.
+45|Ghép 4→1→3→2: 人を裏切ることくらいひどいことはない. くらい…ない nhấn mức tệ nhất. Ô sao là 3.
+46|Ghép 4→2→1→3: 乗ってみないことには運転のおもしろさはわからない. ないことには là nếu chưa làm thì không biết. Ô sao là 1.
+47|Ghép 2→4→3→1: ドイツにいる友だちから田園風景の絵はがきが届いた. にいる bổ nghĩa bạn, の bổ nghĩa bưu thiếp. Ô sao là 3.
+48|Ghép 1→3→2→4: 意見を出し合ったすえに野球大会をすることにした. すえに nêu kết quả sau trao đổi. Ô sao là 2.
+49|Ghép 2→4→1→3: どこか寂しげな表情をしていた. どこか là có vẻ gì đó, 寂しげな bổ nghĩa nét mặt. Ô sao là 1.
+50|慰めてもらいたくなる: muốn được tác giả an ủi. Người viết nhận hành động nên dùng もらう; あげる・やる là làm cho người khác.
+51|それぐらい: chỉ đến thế thôi, chỉ điều vừa kể về máy thắng đố. そうしたぐらい không phải cấu trúc đại từ mức độ phù hợp.
+52|Chọn 記憶／正答／機械: từ biển dữ liệu ghi nhớ lấy ra đáp án đúng, tức máy tiến gần hơn trí tuệ người. Không thể đảo trí nhớ với máy.
+53|一体何が起きるのだろう: rốt cuộc điều gì sẽ xảy ra, câu tự hỏi tương lai khi máy có tâm trí. はずだ lại khẳng định chắc theo căn cứ.
+54|怖さがついてくる: sau hứng thú là cảm giác lo sợ theo tới, hợp trích dẫn về khoa học không cho con người dừng lại. Phủ định sợ sẽ trái kết luận.

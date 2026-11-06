@@ -1,0 +1,54 @@
+1|巻く đọc まく: quấn; 巻いた đọc まいた. 包帯を巻く là quấn băng; ふく là lau, しく là trải.
+2|実用的 đọc じつようてき: thiết thực, có tính ứng dụng. Không có âm ngắt っ giữa 実 và 用 trong từ này.
+3|職人 đọc しょくにん: thợ lành nghề. 人 đọc にん trong từ này, không phải じん.
+4|震える đọc ふるえる: run. 冷える là ひえる, 凍える là こごえる, không phải chữ 震.
+5|率直 đọc そっちょく: thẳng thắn. 率 biến âm thành そっ; 直 là ちょく.
+6|せっきん viết 接近: tiến gần. 接 là tiếp xúc, gần là gần; 切・折・世 không tạo đúng từ.
+7|ちょぞう viết 貯蔵: cất trữ, như rượu vang trong kho. 蔵 là kho/cất giữ; 増・造・贈 khác nghĩa.
+8|こうどう viết 講堂: hội trường lớn của trường học. 講 có bộ 言, khác 構・購.
+9|すずしい viết 涼しい: mát mẻ. 冷たい là lạnh, không viết 冷しい cho từ này.
+10|しずむ viết 沈む: chìm, hợp tàu bị bão. 潜む thường đọc ひそむ, 静 là yên tĩnh, không đúng chữ.
+11|見直す: xem lại, kiểm tra lại đáp án. 見限る là từ bỏ, 見渡す là nhìn bao quát, 見届ける là chứng kiến đến cuối.
+12|取り消す: hủy bỏ quyết định tuyển dụng. 打ち消す là phủ nhận/xóa tác dụng, không tự nhiên bằng 採用を取り消す.
+13|本調子: phong độ/trạng thái sức khỏe bình thường. 退院しても本調子に戻らない là xuất viện nhưng chưa khỏe hẳn.
+14|影響下: dưới ảnh hưởng. 下 là ở dưới/sự chi phối; không dùng 影響上・影響中 ở đây.
+15|世界史: lịch sử thế giới. 史 chỉ lịch sử; cần học niên đại nên không phải 世界学.
+16|共同で開発する: cùng hợp tác khai thác. 共通 là điểm chung, 共有 là cùng sở hữu, khác cùng thực hiện một việc.
+17|失業保険: bảo hiểm thất nghiệp sau khi công ty phá sản. 失敗 là thất bại, 失意 là thất vọng.
+18|貨物を載せた列車: tàu chở hàng. 物質 là vật chất, 実物 là vật thật, không phải thuật ngữ hàng hóa vận tải.
+19|道路が交差する: các đường giao nhau. 水平 là ngang, 垂直 là thẳng đứng, không diễn đạt giao lộ.
+20|漫画を描く: vẽ truyện tranh. 映画・計画・企画 không đi với 描く theo nghĩa kỹ năng vẽ từ nhỏ này.
+21|全席指定: toàn bộ ghế có chỗ được chỉ định. 支配 là chi phối, 指示 là chỉ thị, không phải loại vé/chỗ ngồi.
+22|航空ショー: triển lãm/biểu diễn hàng không. 空港 là sân bay, 上空 là khoảng trời phía trên, không phải tên sự kiện.
+23|たぶん gần おそらく: có lẽ. 絶対 là tuyệt đối, 確か thiên về nhớ rằng/chắc là, やはり là quả nhiên.
+24|気配がする: có cảm giác/dấu hiệu ai đang theo. 感じ gần nghĩa nhất; 気配 không chỉ riêng âm thanh, mùi hay động tác.
+25|あっという間に: trong chốc lát, rất nhanh; 早速 gần nhất trong lựa chọn của sách. Tuy vậy 早速 nhấn mạnh làm ngay, không hoàn toàn đồng nghĩa với thời gian bán hết cực ngắn.
+26|きびしいおしかり gần 厳重なおしかり: lời khiển trách nghiêm khắc. 強力 là mạnh về lực, 確実 là chắc chắn, 勝手 là tùy tiện.
+27|略す gần 省く: lược bỏ vì không đủ thời gian. 加える là thêm, ngược ý.
+28|清書する: chép lại sạch đẹp bản cuối, phù hợp thư trình bày lý do dự tuyển. Không phải đóng dấu visa, chất lượng in hay sách cổ.
+29|戦争の悲しい光景: cảnh tượng đau buồn của chiến tranh. Thời điểm đồng hồ là 時刻; tầm nhìn là 見晴らし; tranh phong cảnh là 風景画.
+30|きっと…だろう diễn tả tin chắc dựa trên việc luyện nhiều. Với mệnh lệnh bắt buộc thường dùng 必ず, không thay bằng きっと như câu 1.
+31|みじめな負け方: cách thua thảm hại. みじめ chỉ tình cảnh đáng thương/tủi nhục, không phải gió yếu, sự nghiêm túc hay kiểu dáng giày.
+32|方言 là phương ngữ; cuộc trò chuyện nhiều phương ngữ nên không hiểu. Không phải 発言, 証言 hay 便り.
+33|様子からすると: xét vẻ ngoài để suy đoán. Thấy anh ấy vui nên đoán thi tốt; からには chỉ một khi đã… thì…
+34|情報によれば…そうだ: theo nguồn thông tin thì nghe nói…; によれば đánh dấu nguồn tin. にすれば là từ lập trường.
+35|Nに加え: ngoài N còn thêm…; ngoài mùa hè, ngay mùa đông cũng có khách. に増え・に足し không tạo mẫu này.
+36|Nをはじめ: tiêu biểu trước hết là N, rồi còn các ví dụ khác. Okinawa là ví dụ nổi bật về căn cứ Mỹ.
+37|Vることはない: không cần phải làm. Ai cũng có sai sót nên không cần quá bận tâm; ことがない nêu chưa từng/không xảy ra.
+38|Nのあまり: vì quá xúc động nên khóc. あまり nêu cảm xúc vượt mức dẫn kết quả; おかげ nói nhờ tác động có lợi, không phải mẫu mức độ này.
+39|お申し付けくださいませ: kính mời quý khách cứ cho biết/yêu cầu. 申し付ける dùng trong mẫu dịch vụ; 申し付き là sai dạng ngoại động từ ở đây.
+40|Vるしかない: muốn giỏi chỉ còn cách luyện hằng ngày. ところしかない・ことではない không mang nghĩa không còn lựa chọn.
+41|Vます bỏ ます + ながら: vừa xem tivi vừa ăn. ようにない yêu cầu tránh hai hoạt động đồng thời; つもりながら sai cách nối.
+42|ということに伴い: cùng với việc trụ sở chuyển tới Osaka, phải chuyển nhà. こと danh từ hóa sự việc; とおり là đúng như, không thay được.
+43|格闘になった末に: sau một hồi vật lộn mới khống chế được. 末に nêu kết quả sau quá trình; しようとした chỉ mới định làm, không khớp quá trình đã xảy ra.
+44|高かったものだから: vì nhiệt độ quá cao nên nhiều người sốc nhiệt. ものだから giải thích nguyên nhân; ものの là tuy… nhưng…, sai quan hệ.
+45|Ghép 4→1→2→3: この工場では作業開始に先立って準備運動をしている. に先立って là trước khi bắt đầu. Ô sao là 2.
+46|Ghép 3→4→2→1: 高価な辞書を買ったからには新たな気持ちで勉強するつもりだ. からには nhấn quyết tâm sau việc đã làm. Ô sao là 2.
+47|Ghép 3→2→1→4: レポートのいい悪いにかかわらず書き上げた努力はすばらしい. にかかわらず là bất kể tốt xấu; khen nỗ lực hoàn thành. Ô sao là 1.
+48|Ghép 2→4→3→1: 年齢を問わず社員を募集したところ予想外の申し込みがあった. たところ dẫn kết quả phát hiện. Ô sao là 3.
+49|Ghép 3→2→4→1: 荷物が重くて助けを呼ぼうと思っていたところに友人が来た. ところに là đúng lúc ấy thì. Ô sao là 4.
+50|美術館で展覧会が始まった: sự kiện bắt đầu tại bảo tàng, dùng で đánh dấu nơi diễn ra. に không thay được địa điểm hoạt động này.
+51|色鮮やか／思わせる: những tác phẩm gợi nhớ các mảnh giấc mơ rực rỡ màu sắc. 色鮮やか là cách kết hợp tự nhiên; tác phẩm khiến người xem liên tưởng nên dùng 思わせる.
+52|Chọn 画家／悲しみ／美しい: New York gắn với người họa sĩ; nước mắt và nỗi buồn trong tranh; bầu trời Paris đẹp ở tranh khác. Phải theo đối tượng từng câu.
+53|ベラと共に消え去ってしまったもの: những gì đã tan biến cùng Bella sau khi bà mất. 共に là cùng với; 持ち去る là mang đi, cần chủ thể mang một vật khác.
+54|浮かんでいる: những nỗi buồn vui trong đời họa sĩ giờ hiện lên trước người xem. 浮かばれる nghĩa linh hồn được an ủi/công lao được đền đáp, khác hình ảnh nổi lên trên tranh.

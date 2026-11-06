@@ -1,0 +1,54 @@
+1|叫ぶ đọc さけぶ: hét; dạng て là 叫んで. 呼ぶ là よぶ, 噛む là かむ, 飛ぶ là とぶ, khác chữ gạch chân.
+2|動作 đọc どうさ: động tác, hoạt động. 作 trong từ này là さ, không phải さく.
+3|失望 đọc しつぼう: thất vọng. 望 là ぼう, không đổi thành もう hay âm ngắt っ.
+4|湿る đọc しめる: bị ẩm, dạng て là しめって. 湿気る có cách đọc しける nhưng không phải cách đọc chữ/dạng trong đề.
+5|信仰 đọc しんこう: tín ngưỡng. 仰 trong từ này là こう, không phải ぎょう.
+6|じゅんじょう viết 純情: trong sáng, thật thà. 純 là thuần khiết; không dùng 順・潤・準 thay thế.
+7|しょうち viết 承知: biết, hiểu rõ. 周知 đọc しゅうち, nghĩa là được nhiều người biết, khác từ yêu cầu.
+8|しょり viết 処理: xử lý. 処 và 理 là tổ hợp đúng; 拠・利 tạo các cách viết sai.
+9|かまわない viết 構わない: không bận tâm. Chữ 構 có bộ 木; 溝 là mương, 講 là giảng, 購 là mua.
+10|つつむ viết 包む: gói; お祝いを包む là chuẩn bị tiền mừng. Không viết bằng 装・筒・隠.
+11|差し引く: trừ khoản chi phí khỏi doanh thu. 足す là cộng, 割る là chia, 掛ける là nhân; chỉ 差し tạo đúng từ ghép ở đây.
+12|呼び出す: gọi ai đến một nơi. いたずらして職員室に呼び出された là bị gọi lên phòng giáo viên vì nghịch.
+13|初参加 là lần đầu tham dự. 初 chỉ lần đầu; 新 nói tính mới, không tạo từ thường dùng trong ngữ cảnh này.
+14|全生徒 là toàn thể học sinh. 全 đứng trước danh từ chỉ tập hợp; 完・丸・本 không dùng để chỉ tất cả học sinh.
+15|運動場 là sân vận động/sân thể dục. Hậu tố 場 chỉ địa điểm dành cho hoạt động.
+16|新しい体制: cơ cấu/hệ thống lãnh đạo mới sau khi tổng thống từ chức. 法則 là quy luật, 方法 là phương pháp, 傾向 là khuynh hướng.
+17|高速道路の渋滞: tắc đường cao tốc. 人込み là đám đông người, 停滞 là đình trệ nói chung; ở đây dùng thuật ngữ giao thông 渋滞.
+18|夜空を観測する: quan sát bầu trời bằng kính thiên văn. 測定 là đo chỉ số, 測量 là đo đạc đất, không diễn đạt đúng hoạt động này.
+19|家族の構成: thành phần gia đình gồm những ai. 組織 là tổ chức, 内容 là nội dung, 成立 là sự thành lập.
+20|防犯カメラ: camera phòng chống tội phạm. 防衛 là phòng vệ, 防止 cần đối tượng khác, không thay được từ ghép này.
+21|行方がわからない: không biết tung tích. 方向・方面 là phương hướng, 進行 là tiến triển, khác chỗ người đó đang ở.
+22|農業 sản xuất trà, gạo, cao su. 工業 là công nghiệp; 産業 rộng hơn nhưng ngữ cảnh nông sản đòi từ cụ thể 農業.
+23|Chọn 持ちこたえて theo nghĩa chống đỡ, duy trì được tình trạng: anh làm tới khuya để gánh vác và giữ gia đình đứng vững. 持ちこたえる thường nhấn mạnh chịu đựng khó khăn, còn 支える ở câu gốc nhấn nuôi sống/hỗ trợ. 持ち直す là hồi phục, 持ち上げる là nâng lên/tâng bốc, 持ち帰る là mang về, đều lệch ý. Không coi hai từ đúng là thay thế nhau trong mọi ngữ cảnh.
+24|大急ぎで là hết sức khẩn trương, gần すぐに trong tình huống phải về nước ngay. 間もなく là chẳng bao lâu; そろそろ là sắp đến lúc; 一瞬で là trong nháy mắt.
+25|まごまごする là lúng túng không biết làm sao, gần 迷う khi không biết đổi tàu. Không phải chậm lụt hay co lại.
+26|ぶかぶか là rộng thùng thình, gần ゆるい; gầy đi làm quần rộng. きつい là chật, trái nghĩa.
+27|すき間なく並ぶ tương đương ぎっしり並ぶ: xếp kín, dày đặc. 何冊か・数冊 chỉ vài cuốn, không thể hiện kín chỗ.
+28|無理に入れる: cố nhét khi không vừa, dẫn đến hỏng khóa kéo. 無理 vận dụng ở đây chỉ sự cưỡng ép; không tạo 無理運転 hay 無理が大きい như các phương án khác.
+29|例外として: coi là ngoại lệ, cho thi lại riêng lần này. Không dùng 例外 thay cho 例, 別 hoặc 意外.
+30|社長みずから: đích thân giám đốc làm. 自ら nhấn mạnh chính chủ thể có ý chí, khác việc máy tự động hay rau tự mọc.
+31|落とさないように用心する: cẩn thận để không đánh rơi. 用心 không phải 用意, 余裕 hay 覚悟 trong các câu nhiễu.
+32|客の応対: tiếp khách, ứng xử trực tiếp với khách. Phòng tiếp khách là 応接間, chi phí tiếp khách là 交際費, dự thi là 応募/出場.
+33|Nに限って: đúng lúc… thì lại…, thường nêu việc trái mong đợi. Đang vội thì lại không bắt được taxi.
+34|Nからして: ngay từ N đã…; vận động viên phải kiểm soát ngay cả ăn uống. からすると/からいって nêu góc nhìn hoặc căn cứ đánh giá.
+35|ものの: tuy… nhưng…; tàu điện ngầm tiện nhưng đôi khi vẫn lạc khi chuyển tuyến. ものなら là nếu có thể, ものか là phủ định mạnh.
+36|Nに代わって: thay mặt/thay cho. Chủ tịch phát biểu thay giám đốc đang ốm; に応じて là tùy theo.
+37|Vるしかない: không còn cách nào ngoài làm. Phải cùng cố gắng mới vượt khủng hoảng; しかたない・しょうがない không nối trực tiếp như phương án đó.
+38|理論の上では: xét trên lý thuyết. 上で chỉ phương diện/căn cứ; の上には・の上とは không tạo nghĩa ấy.
+39|お届けにあがります: chúng tôi sẽ đến giao, dùng あがる khiêm nhường cho đến chỗ khách. Nếu dùng いたす thì là お届けいたします, không có に.
+40|見ないわけはない: không có chuyện không xem, tức chắc chắn sẽ xem vì là fan cuồng. 見るわけがない lại nghĩa là không thể nào xem.
+41|Vるべきではない: không nên làm vì chuẩn mực ứng xử. Dù ngon cũng không nên ăn như vậy trước mặt mọi người.
+42|Vるにあたって: khi bắt đầu một việc quan trọng. Trước kỳ thi có giải thích lưu ý; につれて nói thay đổi song song, không hợp hành động chuẩn bị này.
+43|Vるうちに: trong khi điều kiện còn tồn tại. Muốn leo Phú Sĩ lúc còn khỏe và có thể lực, không phải sau khi hết thể lực.
+44|どれほど心配したことか: đã lo biết chừng nào, mẫu cảm thán hồi tưởng. ことを hay ことに không kết thúc mẫu cảm thán này.
+45|Ghép 2→4→1→3: 日本の大学教育に関して何かいい資料はありませんか. に関して bổ nghĩa chủ đề; 何かいい資料 là tài liệu nào hay. Ô sao là 1.
+46|Ghép 3→1→2→4: 仕事の能率化が叫ばれる一方、職を失う人も増えている. 一方 nêu hai thực tế trái chiều. Ô sao là 2.
+47|Ghép 2→4→3→1: お金と時間をかけたからといって誰もが一流になれるわけではない. Không phải cứ đầu tư là ai cũng thành hạng nhất. Ô sao là 3.
+48|Ghép 1→3→4→2: 住民たちの強い要望に応じて公園に桜の木を植えた. に応じて là đáp ứng yêu cầu. Ô sao là 4.
+49|Ghép 4→2→3→1: 飲酒運転の事故が増えるにつれてドライバーのマナーが問われている. につれて chỉ diễn biến song song. Ô sao là 3.
+50|Vたところ: sau khi làm thì phát hiện…; kiểm tra bằng tia X rồi biết không có hạt lớn hơn 1 mm. ばかり chỉ vừa mới, không dẫn kết quả phát hiện như ở đây.
+51|出ずとも…ことはない: dù không có cát rơi ra cũng không vì thế mà công lao giảm đi. ずとも là dù không; câu sau khẳng định những thành tựu độc lập của tàu.
+52|Chọn a=影, b=光, c=絵: bóng tàu trên bề mặt tiểu hành tinh, đuôi ánh sáng của khoang trở về, và những hình ảnh đọng trong lòng. Phải theo đúng vật được miêu tả, không đổi bóng với ánh sáng.
+53|国民を大いに元気づけた: đã khích lệ người dân rất nhiều. を cần ngoại động từ 元気づける; 元気づく là tự cảm thấy phấn chấn và không nhận を như vậy.
+54|それは問うまい: thôi không đặt nặng chuyện ấy. Người viết nói trở về an toàn đã là món quà quý nhất; 問うべきだ lại yêu cầu phải chất vấn, trái mạch kết.

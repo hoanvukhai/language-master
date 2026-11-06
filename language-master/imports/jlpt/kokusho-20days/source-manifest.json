@@ -1,0 +1,16 @@
+{
+  "documentId": "kokusho-n2-20days",
+  "fileName": "N2 - 20 Nichi de Goukaku.pdf",
+  "sha256": "09b7a61abea92a4c3f9d5d58d6a856944ee4361d112d9c594e8e965003c29d9d",
+  "pageCount": 176,
+  "questionPages": [
+    5,
+    164
+  ],
+  "answerPages": [
+    167,
+    176
+  ],
+  "renderScale": 3,
+  "cropBox": true
+}

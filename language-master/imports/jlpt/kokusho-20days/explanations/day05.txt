@@ -1,0 +1,54 @@
+1|掘る đọc ほる: đào đất; 掘って là ほって. 削る là gọt, 割る là chia/bẻ, 取る là lấy, khác nghĩa.
+2|骨折 đọc こっせつ: gãy xương. 骨 có âm こつ biến thành こっ trước せつ; không đọc theo âm kun ほね.
+3|一昨日 đọc いっさくじつ, nghĩa là hôm kia; cũng có cách đọc おととい nhưng không nằm trong lựa chọn.
+4|蒸す đọc むす: hấp bằng hơi nước. 干す là phơi, 漉す là lọc, không phải 蒸す.
+5|柱 đọc はしら: cột. Khi đứng riêng dùng はしら; ばしら có thể xuất hiện sau từ khác trong từ ghép.
+6|けいゆ viết 経由: đi qua một điểm trung chuyển. 経 chỉ đi qua, 由 chỉ đường/nguyên do; không dùng 径・系・係.
+7|しゅくはく viết 宿泊: lưu trú qua đêm. 宿 là chỗ ở, 泊 là nghỉ đêm; 縮 là co lại, 拍 là nhịp.
+8|せいとう viết 政党: chính đảng. 政 liên quan chính trị; 正・征・世 không tạo đúng từ này.
+9|おぎなう viết 補う: bù đắp phần thiếu. Làm thêm để bù sinh hoạt phí; 捕 là bắt, 舗 là cửa hiệu.
+10|にぶい viết 鈍い: chậm nhạy, kém tinh. 鋭い đọc するどい và trái nghĩa; 遅い chỉ muộn/chậm.
+11|落ち着く: ổn định, bình tâm. Sau dọn nhà mới sống yên ổn; các tiền tố khác không tạo từ thích hợp.
+12|透き通る: trong suốt, nhìn xuyên được, hợp miêu tả nước biển. 突き通る không mang nghĩa nước trong veo.
+13|助動詞 là trợ động từ. 助 chỉ hỗ trợ; 語動詞・補動詞 không phải thuật ngữ đang được hỏi.
+14|未完成 là chưa hoàn thành nên chưa qua cầu được. 未 biểu thị chưa, khác 不 dùng phủ định tính chất.
+15|日記帳: sổ nhật ký. 帳 chỉ sổ ghi chép; 巻 chỉ cuốn/quyển trong bộ sách.
+16|一家そろって: cả gia đình đông đủ. 一軒 đếm nhà, 主人 là chồng/chủ, 集団 là tập thể, không hợp cụm cố định này.
+17|宇宙を旅する: du hành vũ trụ bằng tên lửa. 大気 là khí quyển, 平野 là đồng bằng, 水平 là nằm ngang.
+18|感情表現: biểu đạt cảm xúc của diễn viên. 精神 là tinh thần, 意識 là ý thức, không phải từ ghép phù hợp nhất.
+19|専門用語: thuật ngữ chuyên môn. 言語 là ngôn ngữ, 古典 là cổ điển, 文字 là chữ viết.
+20|合理的: hợp lý, có hiệu quả về cách thức. 整理 là sắp xếp, 管理 là quản lý, không tạo đúng tính từ cần điền.
+21|空中で爆発する: nổ trên không. 空気 là không khí, 地点 là địa điểm, 快晴 là trời quang.
+22|深夜営業: mở cửa kinh doanh khuya. 夜型 chỉ lối sống hoạt động về đêm; 真夜中 là giữa đêm, không phải kết hợp tiêu chuẩn này.
+23|わざわざ nhấn mạnh cất công làm riêng; せっかく gần ý đã bỏ công nhưng bị phụ lòng. やっと là cuối cùng mới, ついに là rốt cuộc.
+24|チームメート là đồng đội, gần 仲間. Không nhất thiết là 親友, 家族 hay 助手.
+25|おのおの: mỗi người, tương đương 各自. 独自 chỉ sự riêng biệt/độc đáo, không phải yêu cầu từng người mang tài liệu.
+26|身近な存在: người gần gũi, thân thiết, gần 親しい. 優しい là dịu dàng, 楽しい là vui vẻ, không thể hiện khoảng cách quan hệ.
+27|しばしば là thường xuyên/lặp lại nhiều lần; しきりに gần nhất trong tình huống liên tục gật đầu. たまに là thỉnh thoảng hiếm, ずっと là suốt không ngừng.
+28|ため息をつく: thở dài, hợp phản ứng trước bảng kết quả thi. Không dùng ため息する; phối hợp là 息を合わせる, hít sâu là 深呼吸.
+29|道の両側: hai bên đường. Hai bên tranh luận là 双方/両者; hai loại bút là 両方, không phải 両側.
+30|あれこれ悩む: lo nghĩ đủ chuyện. あれこれ chỉ nhiều điều khác nhau, không phải tính chất gió hay số lượng mèo.
+31|満足なできではない: thành quả chưa đạt mức hài lòng. 満足 không thay được 満員, 満月 hoặc tính từ mô tả cuộc nhậu.
+32|時代を区分する: phân chia các thời kỳ để học tên người. Khu vực dùng 区域; không dùng 区分 để chỉ vị hay quần áo rời.
+33|一方で nối hai xu hướng đối lập: du học sinh tăng nhưng đại học lại thiếu chỉ tiêu. に伴い nhấn mạnh sự kéo theo, không diễn đạt đối lập rõ bằng.
+34|場所によっては: tùy nơi, có chỗ tuyết dày hơn một mét. にとって là đối với; にわたって là trải khắp.
+35|要求に応じて: đáp ứng yêu cầu nên tăng lương. について chỉ chủ đề, にとって chỉ góc đánh giá.
+36|Vるよりほかない: không còn cách nào ngoài…; bệnh tim nặng lên nên buộc phải mổ. わけがない nghĩa là không thể có chuyện ấy.
+37|NをNとして: lấy N làm/với tư cách là N. Chọn kính ngữ làm đề tài nghiên cứu; としたら・とすれば nêu giả định.
+38|Nぬきでは…ない: thiếu N thì không…; thiếu wasabi không có cảm giác đã ăn sushi. では phù hợp mệnh đề điều kiện phủ định.
+39|参りたいと存じます: tôi muốn đến, dùng khiêm nhường cho 行く và 思う. Các tổ hợp お思いします・参りたくございます không đúng mẫu.
+40|Nどころではない: không còn tâm trí/điều kiện để…; cửa hàng gia đình sắp phá sản nên không nghĩ chuyện học tiếp được.
+41|Vない bỏ ない + ざるをえない: đành phải làm. Vì người nhờ là tiền bối từng giúp mình nên không thể từ chối bảo lãnh.
+42|外国人からみて: xét từ góc nhìn người nước ngoài. からみて nêu lập trường đánh giá, không phải nhượng bộ 外国人ではあって.
+43|Vたとおり: đúng như đã nghe. Tuyết rơi buổi chiều đúng dự báo; ところで thường chỉ dù có làm cũng vô ích.
+44|今年こそ: chính năm nay nhất định…, nhấn mạnh quyết tâm sau kỳ vọng trước. しか cần phủ định, さえ nghĩa là ngay cả.
+45|Ghép 3→1→4→2: 反対する人がそんなにいるなら別のプランを考えたほうがいい. なら nêu điều kiện, Vたほうがいい khuyên nên. Ô sao là 4.
+46|Ghép 4→2→3→1: 大田選手の反則行為に対して3ヶ月の出場停止が決定された. に対して nêu hành vi nhận hình phạt. Ô sao là 3.
+47|Ghép 2→3→4→1: この絵本は表紙の絵からして読者の心をつかんでいる. からして là ngay từ, 心をつかむ là cuốn hút. Ô sao là 4.
+48|Ghép 4→1→3→2: あきらめずに続けていればいつか道は開けるというものだ. Tiếp tục không bỏ cuộc thì rồi sẽ có lối. Ô sao là 3.
+49|Ghép 2→4→1→3: 大人には安全な道具でも子どもにとって危険なものはたくさんある. でも nhượng bộ, にとって nêu đối tượng đánh giá. Ô sao là 1.
+50|泣きながら手を振った: vừa khóc vừa vẫy tay. ながら nối hai hành động đồng thời cùng chủ thể; たら・ば・なら là điều kiện.
+51|日本代表も／ぬらしていた: các tuyển thủ Nhật cũng làm ướt má vì khóc, giống vận động viên ở đoạn trước. も nối sự tương đồng; 頬を cần ngoại động từ chủ động.
+52|Chọn 人数／体格／チーム: dốc số đông người để phòng ngự, dù thua thể hình, vẫn muốn đi tiếp cùng đội này. Phải khớp từng ngữ cảnh, không đổi thành đặt cược cả đội hay kém số người ở chỗ thể hình.
+53|人種差別につぶされた: giải đấu có người da đen bị nạn phân biệt chủng tộc bóp nghẹt. Chủ thể là giải đấu nên dùng bị động với tác nhân に.
+54|世界を驚かせ: làm cả thế giới ngạc nhiên. Đại diện Nhật là chủ thể gây bất ngờ; 世界に驚かず nghĩa không ngạc nhiên trước thế giới, sai hướng tác động.

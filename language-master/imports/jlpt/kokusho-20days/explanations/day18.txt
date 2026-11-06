@@ -1,0 +1,54 @@
+1|干す đọc ほす: phơi khô. 干した魚 là cá khô, không đọc かした.
+2|額 đọc ひたい: trán. あご là cằm, ほほ là má, かお là mặt.
+3|悲劇 đọc ひげき: bi kịch. 喜劇 đọc きげき là hài kịch, khác chữ 悲.
+4|枯れる đọc かれる: khô héo/chết cây. しおれる là héo rũ nhưng không phải cách đọc chữ này.
+5|奥 đọc おく: phía sâu bên trong. 引出しの奥 là tận sâu ngăn kéo.
+6|きゅうじょ viết 救助: cứu hộ. 救 chỉ cứu người, không dùng 急・求・級 thay thế.
+7|がくじゅつ viết 学術: học thuật. 術 chỉ phương pháp/hệ tri thức, khác 述・出・実.
+8|あしもと viết 足元: chỗ đặt chân/dưới chân. 脚本 đọc きゃくほん là kịch bản, hoàn toàn khác.
+9|おいかける viết 追いかける: rượt theo. 追 là đuổi, khác 置・終.
+10|とかす viết 溶かす: làm tan chảy kim loại. 説く đọc とく là giảng giải, 塗る là sơn.
+11|引き受ける: nhận đảm nhiệm làm MC. Không dùng 取り受ける・持ち受ける trong nghĩa nhận lời làm việc.
+12|呼びかける: kêu gọi người dân sơ tán. 呼び tạo từ ghép phát lời kêu gọi; 話し・述べ không thay được.
+13|第1位: thứ hạng nhất. 第 là tiền tố thứ tự; 大・全・代 không dùng cho xếp hạng.
+14|対抗戦: trận thi đấu đối kháng giữa hai bên/trường. 戦 là cuộc đấu, không phải 選 là chọn.
+15|運送業: ngành vận tải. 業 chỉ ngành nghề, không dùng 職・事・働 để tạo tên ngành này.
+16|エネルギーの開発: phát triển nguồn năng lượng mới. メーター là đồng hồ đo, コード là dây/mã, không hợp thay nguồn điện.
+17|知識が豊富: có nhiều kiến thức về điện ảnh. 知恵 là sự khôn khéo, 理性 là lý trí, không phải thông tin đã học.
+18|冒険のつもりで: với tâm thế thử mạo hiểm/thử thách bản thân khi tham gia ba môn phối hợp (triathlon). 遠足 là dã ngoại, 旅行 là du lịch, 出張 là đi công tác, đều không hợp cuộc thi khắc nghiệt này.
+19|温泉がわく: nước nóng phun/trào lên. 降る là rơi từ trời, 燃える là cháy, 入る là vào.
+20|財産が多い: có nhiều tài sản nên lo chuyện thừa kế. 金額 là số tiền, 合計 là tổng, 両替 là đổi tiền.
+21|歌舞伎の舞台: sân khấu kabuki, lộng lẫy và trang trọng. 階段 là cầu thang, 地面 là mặt đất.
+22|部長に反抗する: chống đối trưởng phòng nên phải liệu việc bị chuyển công tác. 不平 là lời than, không dùng 不平する trong cấu trúc này.
+23|どうぞ gần ぜひ trong lời nhắn kính mong giữ sức khỏe. あいにく là không may, やはり là quả nhiên.
+24|まっさきに gần 一番に: đến trước tiên khi nghe thầy ốm. 急に là đột ngột, không nhất thiết sớm nhất.
+25|自然にできる gần ひとりでにできる: tự hình thành, không do người tạo. 何となく là chẳng rõ vì sao, それぞれ là từng cái.
+26|たまらない gần つらい: khó chịu/khổ sở không chịu được vì phải thi quá nhiều môn. Không nhất thiết là buồn hay cô đơn.
+27|とうてい…ない gần どうしても…ない: dù thế nào cũng không thể chi nổi. あるいは là hoặc, どんなに cần cấu trúc khác.
+28|武士の住居: nơi ở của võ sĩ. Khu dân cư là 住宅街, tiền vay mua nhà là 住宅ローン, không ghép 住居 cho các từ ấy.
+29|見解が異なる: quan điểm nam nữ khác nhau. 見当がつかない là không ước lượng được; 見学 là tham quan.
+30|大いに飲もう: hãy uống thật thoải mái sau công việc vất vả. 大いに hợp mức độ hành động/đánh giá, không thay 大雨 cho lượng mưa.
+31|美しさは見事だ: vẻ đẹp tuyệt vời, đáng thán phục. 見事 không phải bề ngoài 見かけ hay từ chỉ nâng năng lực.
+32|論文を引用する: trích dẫn bài nghiên cứu. Không được tự ý sửa nội dung rồi trích; 引率 là dẫn trẻ, 引退 là giải nghệ.
+33|Vようではないか: lời rủ cùng đi ngắm hoa. Nêu ý chí tập thể; というものだ là đánh giá, không phải rủ rê.
+34|目の位置から見ると: nhìn từ tầm mắt trẻ, thuốc lá người lớn cầm rất nguy hiểm. から見ると đánh dấu góc nhìn.
+35|インターネットを通して: tin truyền qua internet. を通して chỉ kênh/phương tiện truyền thông.
+36|入院を契機に: lấy việc mẹ nhập viện làm bước ngoặt nghỉ việc. を契機に nêu sự kiện khơi thay đổi.
+37|NばかりでなくNにも: không chỉ trẻ em mà người lớn cũng thích. しか cần phủ định, に応じ là tùy theo.
+38|その国の人にすれば: đối với người bản xứ thì dễ, nhưng người nước ngoài có thể không hiểu. にすれば nêu lập trường.
+39|お見えになった: thầy đã đến, tôn kính cho 来る. お見えに来られる là lặp kính ngữ không cần thiết.
+40|なったばかりのわりには: so với việc mới đi làm thì sống khá xa hoa. わりには nêu sự chênh với mức dự kiến.
+41|当たるかはともかくとして: tạm gác chuyện có trúng giải nhất không, vẫn cứ đăng ký. か danh từ hóa câu hỏi, ともかく gác sang bên.
+42|あるのかに応じた誌面作り: thiết kế nội dung tùy nhu cầu độc giả là gì. に応じた bổ nghĩa danh từ phía sau.
+43|働く者としては: với tư cách người đang làm ở công trường, thấy khó hoàn thành trong tháng. として nêu vai trò phát biểu.
+44|決めたからには: một khi đã quyết học tiếp thì phải học chăm. からには gắn với quyết định đã thành, không phải mới muốn.
+45|Ghép 3→2→4→1: 政治家である以上まず国民のことを考えるべきだ. 以上 nêu trách nhiệm theo vai trò. Ô sao là 4.
+46|Ghép 4→1→3→2: いくら不都合が生じたにせよあなたにも責任はある. にせよ nhượng bộ. Ô sao là 3.
+47|Ghép 2→4→1→3: 力を込めてドアノブを引っ張ったら取れてしまった. たら dẫn kết quả bất ngờ. Ô sao là 1.
+48|Ghép 1→3→2→4: 国交を結んでからというもの順調に関係を深めている. からというもの nêu thay đổi bền từ mốc đó. Ô sao là 2.
+49|Ghép 4→1→3→2: 雨になるどころか気温が一気に下がることもある. どころか bổ sung mức khác mạnh hơn dự kiến. Ô sao là 3.
+50|だが: nhưng đối thủ độc tài dùng lời nói kích động nên Chaplin phải cất tiếng, tương phản việc trước đó giữ phim câm. そして chỉ nối tiếp.
+51|名高く／少なくない: bài diễn văn nổi tiếng, có không ít người coi là lời thoại cảm động nhất lịch sử phim. 少ない sẽ trái đánh giá danh tiếng.
+52|Chọn インターネット／コミュニケーション／トーキー: internet góp phần phá độc tài, là công cụ giao tiếp hiện đại, gợi liên tưởng phim có tiếng Chaplin từng dùng.
+53|気の休まらぬ: người nắm quyền không yên tâm trước hương cách mạng lan. 休まる là trạng thái tâm trí lắng lại; phủ định phù hợp sự lo sợ.
+54|世界が瞬時につながる時代: thời đại thế giới được kết nối tức thì. が đi với tự động từ つながる, không phải ngoại động từ つなげる.

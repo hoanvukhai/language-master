@@ -1,0 +1,54 @@
+1|加える đọc くわえる: thêm vào. 添える là そえる, 与える là あたえる, 蓄える là たくわえる.
+2|流域 đọc りゅういき: lưu vực sông. 流 là りゅう, 域 là いき; cần đủ trường âm.
+3|圧縮 đọc あっしゅく: nén, như nén tệp. 圧 biến thành あっ trước 縮 là しゅく.
+4|鋭い đọc するどい: sắc bén. あぶない là nguy hiểm, きわどい là sát ranh giới, khác cách đọc.
+5|体積 đọc たいせき: thể tích. 積 dùng âm せき trong từ này, không phải しゃく.
+6|きょうか viết 強化: tăng cường. 化 chỉ làm cho trở nên mạnh hơn, không dùng 科・加・可.
+7|あみもの viết 編物: đồ đan. 編 là đan; 偏 là lệch, 遍 là khắp, 騙 là lừa.
+8|そうち viết 装置: thiết bị. 置 là bố trí/đặt; 地・値・致 không tạo đúng từ.
+9|たおれる viết 倒れる: đổ xuống. 潰れる là bị bẹp, 折れる là gãy, 壊れる là hỏng.
+10|むかえる viết 迎える: đón năm mới. 向 là hướng về, không viết 向える thay 迎える.
+11|繰り返す: lặp lại. Muốn nhớ ngôn ngữ cần dùng đi dùng lại; các tiền tố khác không tạo đúng từ.
+12|持ち上げる: nhấc lên. Vật quá nặng nên trẻ không nhấc nổi; 打ち上げる là phóng lên.
+13|毎試合: mỗi trận đều xem. 毎 biểu thị từng lần; 本・常・何 không mang nghĩa đó ở vị trí này.
+14|来年度: niên khóa/năm tài chính tới. 来 chỉ sắp tới; 後年度 không phải cách gọi thông thường.
+15|専門店: cửa hàng chuyên một món/hàng. うなぎの専門店 là quán chuyên lươn; 店 tạo đúng từ ghép.
+16|学級委員: cán bộ/đại diện lớp được bầu. 役人 là công chức, không phải chức trong lớp học.
+17|ボーナスが出る: được thưởng. レジャー là giải trí, マーケット là thị trường, パーティー là tiệc.
+18|演劇の評論: bài phê bình sân khấu. 絵本 là truyện tranh cho trẻ, 文字 là chữ viết, 詩 là thơ.
+19|診断結果: kết quả chẩn đoán. 相談 là tư vấn, 解釈 là giải thích, 実例 là ví dụ thực tế.
+20|基地に戻る: trở về căn cứ. 戻る nhận nơi trở lại với に; 飛ぶ chỉ bay, không thể hiện quay về.
+21|水産加工: chế biến thủy sản, phù hợp nhà máy trên đảo. 資本・金融 thuộc vốn/tài chính, không phải nguyên liệu chế biến.
+22|とは限らない: không nhất thiết. Điểm ở trường tốt không bảo đảm năng lực làm việc cao.
+23|そっと đặt quà thật khẽ/kín đáo khi trẻ ngủ, gần ひそかに. ざっと là sơ sài, ふと là chợt.
+24|出すぎたこと: lời vượt phận, gần 生意気なこと là xấc xược. Không chỉ lời to hay nội dung bất mãn.
+25|はたして…だろうか: liệu thật sự có làm được không; gần 本当に. かならず khẳng định chắc chắn, trái sắc thái nghi vấn.
+26|すごい音: tiếng dữ dội đến mức giật mình, gần びっくりする音. Không phải tiếng rõ ràng hay lúng túng.
+27|やがて gần いずれ: rồi sẽ đến lúc. まもなく thường chỉ sắp sửa trong thời gian ngắn hơn.
+28|そうぞうしい: ồn ào, hợp nhà hát náo động khi ngôi sao xuất hiện. Không mang nghĩa giàu tưởng tượng hay sặc sỡ.
+29|文句 còn nghĩa câu nói/cách diễn đạt, như lời nhắc quen thuộc trên tàu. Không chỉ có nghĩa phàn nàn.
+30|うろうろする: đi loanh quanh không mục đích, hợp thanh niên quanh cửa hàng đêm. Không dùng với ngồi yên hay như tính từ đếm người.
+31|得意になる: đắc ý, tự mãn. Lời cảnh báo không nên tự mãn vì một lần thi; 得意 không phải lợi tiền 得 hay đặc điểm 特徴.
+32|植物が分布する: thực vật phân bố theo vùng. Phát tài liệu là 配布, phun thuốc là 散布, ban hành là 公布.
+33|からといって…とは限らない: không thể suy ra con hát hay chỉ vì bố mẹ là nhạc sĩ. からには nói nghĩa vụ/kết quả kéo theo.
+34|海外向けに: hướng tới người nghe ở nước ngoài. 向け chỉ đối tượng được nhắm tới, không phải mức độ ほど.
+35|NはもちろんNでも: người Nhật thì đương nhiên, người nước ngoài cũng thi được. さておき là tạm gác sang bên.
+36|実験において: trong thí nghiệm. において nêu bối cảnh/phạm vi xảy ra sự việc.
+37|壊れたせいで: do lò vi sóng hỏng nên không hâm được. せいか chỉ nguyên nhân chưa chắc; ở đây nêu lý do xác định.
+38|歴史に関して: về lịch sử. に際して là nhân dịp, に加えて là thêm vào, khác chủ đề nghiên cứu.
+39|相違ないと存じます: tôi cho rằng chắc là ông Watanabe, dùng 存じる khiêm nhường cho 思う. 存じ上げる dùng khi biết một người.
+40|降らないわけではない: không phải là sẽ không có tuyết. Phủ nhận suy luận cực đoan từ ấm lên toàn cầu.
+41|3週間にわたって: kéo dài ba tuần. に đánh dấu phạm vi thời gian của わたって.
+42|ことになっている: đã có quy định sẽ hủy nếu mưa. こと dùng danh từ hóa, không dùng ことがなっている.
+43|こうなったうえは: một khi đã đến nước này thì…; dẫn quyết định chia tay. うえで là sau khi thực hiện một bước.
+44|VばVるほど: càng gửi tiết kiệm càng muốn tích lũy thêm. Các cách ghép điều kiện khác không tạo quan hệ tăng tiến ấy.
+45|Ghép 2→4→1→3: 失敗のことを考えすぎて夜ぐっすり寝られなくなった. 考えすぎる là nghĩ quá nhiều. Ô sao là 1.
+46|Ghép 4→1→3→2: 70年代の古い歌を聴くたびに青春時代を思い出す. たびに là mỗi khi. Ô sao là 3.
+47|Ghép 4→3→1→2: A社との取り引きに際してきちんと対応をしなければならない. に際して nêu dịp giao dịch. Ô sao là 1.
+48|Ghép 3→1→2→4: めまいを起こしたものだからアルバイトの面接をキャンセルした. ものだから nêu nguyên nhân. Ô sao là 2.
+49|Ghép 1→4→2→3: 銀行からおろしたばかりの給料を落としてしまった. たばかりの bổ nghĩa tiền lương vừa rút. Ô sao là 2.
+50|そこで: trước yêu cầu của sinh viên, giáo sư bèn trả lời như sau. Nối hành động phản ứng với tình huống trước, không chuyển đề tài.
+51|同情する／落とす: người không dự lớp còn được thông cảm, người dự mà làm kém sẽ bị đánh trượt. Câu đùa đảo kỳ vọng của người xin điểm danh.
+52|Chọn ユニーク／フリーター／自由: phát ngôn độc đáo, tự gọi là người làm tự do cao tuổi, và sống theo tự do/phóng nhiệm.
+53|案じてもいた: ông cũng từng lo rằng thông điệp phải cố lên xuất hiện quá nhiều. も bổ sung một mặt bên cạnh các lời động viên nhẹ nhàng.
+54|多かったに違いない: chắc hẳn có nhiều điều muốn nói với đại học hiện nay. Người đã mất nên là suy đoán về điều đã có thể nghĩ, không phủ định.

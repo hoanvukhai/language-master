@@ -1,0 +1,54 @@
+1|最も đọc もっとも: nhất. ちっとも là chút nào, まとも là đàng hoàng, khác chữ trong đề.
+2|状況 đọc じょうきょう: tình hình. 状 là じょう, 況 là きょう; không đọc thành âm đục ぎょう.
+3|港 đọc みなと: cảng. みさき là mũi đất, せと là eo biển, không phải cách đọc 港.
+4|群れ đọc むれ: đàn/bầy. 群 trong 群れ dùng âm kun む, không đọc ぐんれ.
+5|筆者 đọc ひっしゃ: người viết. 筆 biến thành ひっ trước 者 là しゃ.
+6|そんがい viết 損害: thiệt hại. 損 là tổn thất, 害 là hại, phù hợp hậu quả tai nạn.
+7|えんぎ viết 演技: diễn xuất, kỹ thuật trình diễn. 技 là kỹ năng, không viết 義・奴・疑.
+8|きぼう viết 希望: hy vọng. 希望の星 là ngôi sao đầy triển vọng; 祈・企・喜 không tạo đúng từ.
+9|こうむる viết 被る: nhận/chịu tác động. 恩恵を被る là hưởng ân huệ; 被 có bộ 衣.
+10|さぐる viết 探る: dò tìm bằng tay trong túi. 捜す đọc さがす, 触る đọc さわる, khác động từ cần viết.
+11|追い越す: vượt qua phương tiện phía trước. 乗り越す là đi quá trạm, 飛び越す là nhảy vượt.
+12|見送る: tiễn người lên đường. Không phải 見渡す là nhìn bao quát hay 見定める là xác định kỹ.
+13|両政府: chính phủ của cả hai nước. 両 chỉ cả hai, khác 共 chỉ cùng/chung.
+14|地方色: nét đặc trưng địa phương. 色 dùng nghĩa sắc thái; 地方的 không tạo danh từ đứng trước 豊かな như ở đây.
+15|ガソリン代: tiền xăng. 代 dùng cho tiền phải trả cho một thứ cụ thể, không phải 額 chỉ số tiền.
+16|農村の生まれ: sinh ra ở làng quê nông nghiệp, tương phản 都会. 地区 là khu vực nói chung, không nêu nông thôn.
+17|目的ではなく手段: không phải mục đích mà là phương tiện. 手段 là cách để đạt mục tiêu, khác 処理 là xử lý.
+18|モーターが回る: mô-tơ quay. Mất điện thì ngừng quay; loa, áp phích, cửa chớp không khớp động từ này.
+19|文明が発達する: văn minh phát triển. 医者 là người bác sĩ, 農薬 là thuốc bảo vệ cây, 身体 là cơ thể.
+20|車を改造する: tự ý cải tạo xe. 工業 là công nghiệp, 人造 là nhân tạo, không diễn đạt sửa cấu tạo xe.
+21|狭くてうさぎ小屋と言われた: nhà chật nên bị ví như chuồng thỏ. 広い là rộng, trái ý chê kích thước.
+22|消化がよくない: khó tiêu, nên đừng ăn nhiều ngô. 分解 là phân rã nói chung, 解散 là giải tán, 始末 là xử lý hậu quả.
+23|だんだん gần しだいに: dần dần. にわかに là đột ngột, すぐに là ngay, trái diễn tiến từng bước.
+24|この上ない: không gì hơn, tuyệt vời nhất; gần 格別だ trong các lựa chọn. 高級 là cao cấp, không nhất thiết biểu đạt mức tuyệt nhất.
+25|まさにその通り gần 間違いなくその通り: chính xác như dự đoán. 仕方なく là miễn cưỡng, 限りなく là vô hạn.
+26|さわがしい gần やかましい: ồn ào. おそろしい là đáng sợ, そそっかしい là hấp tấp.
+27|ちゃくちゃくと gần 確実に: tiến từng bước vững chắc theo kế hoạch. Không có nghĩa lặng lẽ hay cố sức bằng mọi giá.
+28|車庫入れ: đưa xe vào gara. Bãi đỗ là 駐車場, đỗ sai luật là 駐車違反, chỗ để xe đạp là 駐輪場.
+29|Nを対象とした: lấy học sinh cấp ba làm đối tượng. 対象 không trực tiếp thành động từ 対象する trong cách nói chuẩn này.
+30|すでに伝えてある: đã thông báo trước rồi. すでに chỉ việc hoàn tất, không thay cho ngay lập tức hay trước khi định bắt đầu.
+31|普段はおとなしい: thường ngày hiền. 普段 chỉ lúc bình thường, không phải 一般論, 普及品 hay giá phải chăng.
+32|正味8時間: thực làm tám giờ, loại phần nghỉ/phụ. 正味 không chỉ vị món ăn hoặc đồ chứa trong hộp.
+33|変わった人がいるものだ: cảm thán trên đời thật có người lạ. ものだ dùng cho nhận xét/cảm xúc, khác わけだ là suy ra lý do.
+34|意向に沿った形: hình thức phù hợp nguyện vọng cư dân. に沿う là theo sát, に当たる là gặp/ứng với.
+35|Vるわけにはいかない: không thể làm vì trách nhiệm/đạo lý dù được nhờ. Không phải bất khả năng kỹ thuật đơn thuần.
+36|成績次第では: tùy kết quả kỳ thi, đại học quốc lập cũng có thể đạt. 次第 nêu yếu tố quyết định.
+37|Vる一方だ: cứ ngày càng tăng, như già hóa dân số. しかない là chỉ còn cách, không mô tả xu hướng.
+38|できるものか: làm sao học sinh trung học giải được, phủ định mạnh bằng nghi vấn tu từ. ようだ là có vẻ.
+39|していただけませんでしょうか: lời nhờ lịch sự xin khách đừng hút thuốc. いただけません dùng khả năng phủ định để hỏi sự sẵn lòng.
+40|Vたにもかかわらず: mặc dù đã nhắc nhiều nhưng lại uống rượu. Nêu trái kết quả mong đợi, không phải nguyên nhân ものだから.
+41|人の道に反するどころではない: việc cảnh sát gây tai nạn bỏ chạy còn vượt mức một sự trái đạo lý thông thường. Đáp án sách là 3; どころではない ở đây nhấn mạnh mức nghiêm trọng.
+42|決めた以上は: một khi đã quyết đi du học thì nhất định đi. 以上は kéo theo trách nhiệm/quyết tâm.
+43|1人で行ったきり: đi Osaka một mình rồi từ đó không liên lạc. きり nhấn mạnh việc sau không xảy ra kể từ mốc đó.
+44|Vないではいられない: không thể không đặt vé vì quá muốn xem ca sĩ. わけでもない lại phủ định, sai ý háo hức.
+45|Ghép 3→1→2→4: 言おうものなら大変な騒ぎになるよ. Vようものなら giả định kéo theo hậu quả xấu. Ô sao là 2.
+46|Ghép 2→4→3→1: 稲の発育調査が全国各地にわたって行われる予定だ. にわたって chỉ phạm vi. Ô sao là 3.
+47|Ghép 1→3→4→2: こちらに責任があると認めざるをえない. ざるをえない là đành phải thừa nhận. Ô sao là 4.
+48|Ghép 3→2→4→1: 若者向けの店が多いわりに意外に静かだ. わりに là so với kỳ vọng thì ngược lại. Ô sao là 4.
+49|Ghép 4→3→2→1: 足跡があることから見て犯人はここから入ったようだ. ことから見て nêu chứng cứ suy đoán. Ô sao là 2.
+50|グリム童話で知られる: được biết đến qua truyện Grimm. で đánh dấu phương tiện/kênh khiến chuyện nổi tiếng.
+51|寄せられる／そのまま: trẻ bị hút theo tiếng sáo và cứ thế biến mất. 吸い寄せられる là bị hút tới; それほど chỉ mức độ, không nối trình tự này.
+52|Chọn 野山／姿／室内: hình ảnh trẻ từng chạy chơi ngoài đồng núi biến mất, vì bị sóng điện nhốt vào phòng. Mỗi từ gắn đúng nơi/chủ thể.
+53|体を動かさなくなっている: ngày càng không vận động nữa. を cần ngoại động từ 動かす; 動けない chỉ mất khả năng, khác thay đổi thói quen.
+54|あってもいい: có một kỳ nghỉ hè như thế cũng hay, lời đề xuất thử tắt tiếng sáo điện tử. あってはよくない là cấm, trái mục đích khuyên.

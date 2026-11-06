@@ -1,0 +1,54 @@
+1|含む đọc ふくむ: chứa, bao gồm. 含まれている là được chứa trong quặng; 包む đọc つつむ là gói.
+2|漁師 đọc りょうし: ngư dân. 漁 trong từ này dùng りょう, không phải ぎょ.
+3|写生 đọc しゃせい: vẽ ký họa từ cảnh thật. 写 là しゃ, 生 là せい.
+4|争う đọc あらそう: tranh giành. 競う đọc きそう, 狙う đọc ねらう, khác chữ đề bài.
+5|反省 đọc はんせい: tự kiểm điểm. 省 ở đây là せい, không phải しょう.
+6|かいさつ viết 改札: soát vé/cổng soát vé. Không dùng 開札 là mở hồ sơ dự thầu.
+7|きじ viết 生地: vải, chất liệu. 布地 đọc ぬのじ; không đúng cách đọc yêu cầu dù nghĩa có liên quan.
+8|すいてき viết 水滴: giọt nước. 滴 có bộ 水, khác 適・摘・敵.
+9|あずかる viết 預かる: nhận giữ hộ. 預かった là đã cầm giữ giúp; không dùng 渡す là trao.
+10|ならす viết 鳴らす: làm kêu, bấm còi. 鳴 có bộ 鳥; 音らす・声らす là sai cách viết.
+11|取り替える: thay cái cũ bằng cái mới, hợp tấm thảm bẩn. 乗り換える dùng chuyển tàu/xe, 作り替える là làm lại.
+12|思い込む: tin chắc, đinh ninh. 思い込んでいる là cứ cho rằng lỗi do mình; 思いつく là nảy ý.
+13|高性能: hiệu năng cao. 高 nêu mức chất lượng; không dùng 優性能・最性能.
+14|長期間: thời gian dài. 多・大・増 không tạo đúng từ chỉ khoảng thời gian dài.
+15|消防団: đội cứu hỏa địa phương. 団 chỉ tổ chức tập hợp người, khác cấp bậc 級.
+16|育児に追われる: tất bật nuôi dạy trẻ. 育児 chỉ chăm con; 費用 là chi phí, 養分 là dinh dưỡng.
+17|年中行事: sự kiện/lễ nghi thường niên. 行動 là hành vi, 訓練 là huấn luyện, không phải lịch hội lễ.
+18|利害が一致する: lợi ích của hai phía trùng nhau. 収益 là khoản thu, 算数 là toán, 損害 là thiệt hại.
+19|無色透明: không màu trong suốt. Đây là kết hợp mô tả chất lỏng; 秘密・水道 không hợp.
+20|巨大な市場: thị trường khổng lồ tác động kinh tế thế giới. 価格 là giá, 経営 là quản trị, khác quy mô thị trường.
+21|演劇が盛ん: sân khấu phát triển nên diễn viên giỏi. 講演 là diễn thuyết, 音楽 là âm nhạc, không khớp 役者 bằng.
+22|クラブ活動: hoạt động câu lạc bộ. 出動 là xuất quân/xuất phát làm nhiệm vụ, 行動 là hành vi nói chung.
+23|いちいち: từng việc một, tương đương それぞれ về phạm vi trong câu. Không phải chỉ thỉnh thoảng hay càng ngày càng.
+24|けいこ là luyện tập, gần 練習. 講習 là khóa huấn luyện, 自習 là tự học, không đồng nghĩa sát bằng.
+25|しょっちゅう là thường xuyên, lặp đi lặp lại, gần 何度も. 一度も cần phủ định; 今度も chỉ lần này cũng.
+26|しつこく話す gần くどく話す: nói dai, lặp mãi. うるさい・やかましい chủ yếu nói ồn, không nhất thiết dai dẳng.
+27|余裕で間に合う gần ゆうゆう間に合う: kịp giờ thoải mái. ぴったり là vừa đúng, không có khoảng dư.
+28|自分自身: chính bản thân, tự quyết chuyện học tiếp. 自信 mới là tự tin; 自画像 là chân dung tự họa.
+29|中古のテレビ: tivi đã qua sử dụng. 中古 dùng cho hàng dùng rồi, không diễn đạt ánh sao cũ hay thực phẩm/thuốc đã dùng.
+30|とうとう: cuối cùng sau quá trình dài, hợp leo được núi sau nhiều gian khổ. Không thay cho sắp phải về hay đã làm từ trước.
+31|船が針路を変更する: tàu đổi hướng đi. 針路 là phương hướng di chuyển, khác 進路 học tập hay tiến trình hội nghị.
+32|家主 là chủ nhà cho thuê, người có trách nhiệm sửa tiện ích căn hộ. Tiền thuê là 家賃, kết cấu/cột nhà không phải 家主.
+33|Vたおかげで: nhờ được đầu bếp chuyên nghiệp dạy nên ngon hơn. くせに trách trái kỳ vọng, không diễn đạt biết ơn.
+34|立場からいうと: xét từ vị trí cha mẹ. からには là một khi đã, からといって là cho dù vì thế.
+35|Vるなんて: việc cầu thủ bóng rổ luyện bóng chày khiến người nói ngạc nhiên/nghi ngờ. なんて nêu sự việc để bình luận.
+36|Nにかけては: về mặt tiếng Pháp thì không ai trong lớp vượt anh ấy. にあたっては là khi bắt đầu một dịp.
+37|Nだとしたら: giả sử con tem là thật. だとしても là dù cho là thật, khác giả định dẫn kết luận giá trị cao.
+38|Nのたびに: mỗi lần kiểm tra đều đạt tối đa. 最中に là đang giữa lúc, không chỉ tần suất lần nào cũng.
+39|お出しになってください: xin hãy nộp, dùng mẫu tôn kính お + thân động từ + になる. お出ししてください trộn mẫu sai.
+40|中でもかまわず: không ngại ngay cả trong tàu vẫn trang điểm. かまわず là không bận tâm, でも nêu nơi vốn dễ khiến ngần ngại.
+41|最中にもかかわらず: mặc dù anh đang giữa lúc ôn thi, em vẫn hát to. にもかかわらず nêu trái kỳ vọng.
+42|旅行どころではなくなった: không còn điều kiện/tâm trí đi du lịch vì mẹ đột ngột ngã bệnh. にすぎない là chỉ là, sai nghĩa.
+43|食べかけのパン: bánh mì đang ăn dở. Vます bỏ ます + かけ nêu hành động chưa hoàn tất.
+44|NもさることながらNも: hương vị đã tốt, nhân viên cũng thân thiện. Mẫu bổ sung mặt sau đáng khen bên cạnh mặt trước.
+45|Ghép 2→4→1→3: 品切れにつき次の入荷があるまでお待ちください. につき nêu lý do thông báo, まで chỉ hạn đợi. Ô sao là 1.
+46|Ghép 3→4→2→1: 遠足を中止するかわりにボーリングをすることにした. かわりに là thay cho. Ô sao là 2.
+47|Ghép 3→2→1→4: 窓を開けたとたん大粒の雨が吹き込んできた. たとたん là ngay khi vừa. Ô sao là 1.
+48|Ghép 1→3→4→2: もし空を飛べるとしたら上から何が見たいですか. としたら tạo giả định. Ô sao là 4.
+49|Ghép 4→2→1→3: どの大学でも奨学金をもらっている留学生は大勢いる. をもらっている bổ nghĩa 留学生. Ô sao là 1.
+50|腹を立てる: nổi giận, thành ngữ hợp hành khách cáu vì tàu trễ. Không dùng 頭・顔・胸 thay 腹 ở đây.
+51|おしまいだが／心配になる: trước đây cười xong là hết, nay cười xong lại lo nhân viên bị đánh. 始まり・安心 trái diễn biến sau đó.
+52|Chọn 最悪／笑話／暴力: số vụ đạt mức tệ nhất, không giống câu chuyện cười, mà là bạo lực hèn hạ. Các từ phải khớp đối tượng đang bàn.
+53|暮らすうえで: trong việc sống cùng xã hội, đạo đức có phạm vi rộng hơn luật. うえで chỉ phương diện/điều kiện thực hiện.
+54|映るようでは、日本は悲しい: nếu dòng hành khách trông như bãi mìn thì thật đáng buồn. ようでは đánh giá tình trạng xấu làm tiền đề.

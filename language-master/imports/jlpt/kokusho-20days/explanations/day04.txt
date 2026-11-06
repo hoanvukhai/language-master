@@ -1,0 +1,54 @@
+1|支える đọc ささえる: chống đỡ. 支えきれず nghĩa là không đỡ nổi hoàn toàn sức nặng của tuyết; 押さえる là おさえる, khác chữ.
+2|床 đọc ゆか: sàn nhà. 壁 là かべ, 柱 là はしら, 扉 là とびら, đều chỉ bộ phận khác.
+3|大半 đọc たいはん: phần lớn. Đại đa số cư dân phản đối; không đọc だいはん trong từ này.
+4|慣れる đọc なれる: quen với. 人間関係に慣れない là chưa quen quan hệ ở nơi mới.
+5|名刺 đọc めいし: danh thiếp. Tránh nhầm 名字 đọc みょうじ là họ.
+6|そうりょう viết 送料: phí gửi hàng. 料 chỉ phí, khác 両・了・量.
+7|かいかん viết 会館: tòa nhà hội họp. 開館 cũng đọc かいかん nhưng nghĩa là mở cửa một cơ sở; không phải địa điểm trong 福祉会館.
+8|くうそう viết 空想: tưởng tượng. 空 tưởng và 想 nghĩ tạo đúng từ; không viết 層・相・食.
+9|えらい viết 偉い: đáng khen, giỏi. Câu khen trẻ tự quét đường; không dùng 優い・秀い・才い.
+10|さわる viết 触る: chạm vào. 触らないで yêu cầu không chạm; 障る chỉ gây hại/trở ngại, khác nghĩa.
+11|払い戻す là hoàn tiền; vé bị hủy được 払い戻される. 取り戻す là lấy lại thứ đã mất, không phải thuật ngữ hoàn tiền vé.
+12|思いつく: nảy ra ý tưởng. いい考えを思いついた là nghĩ ra cách hay; 思いきる là quyết tâm/dứt bỏ.
+13|最優秀作品: tác phẩm xuất sắc nhất. 最 biểu thị mức cao nhất, không dùng 上優秀・高優秀・極優秀.
+14|出入口 là lối ra vào; 口 chỉ cửa/lối mở. 目・鼻・頭 không tạo đúng từ ghép.
+15|選手権 là giải vô địch. Không phải cấp bậc 級・段 hay hội 会.
+16|自信過剰: tự tin quá mức. 過大 là quá lớn/đánh giá quá cao, nhưng kết hợp cố định ở đây là 自信過剰.
+17|売り場面積: diện tích khu bán hàng. 食品 là thực phẩm, 売買 là việc mua bán; không chỉ phần diện tích trưng bày bán.
+18|郵便局の窓口: quầy giao dịch bưu điện. 案内 là chỉ dẫn; 発行 là phát hành, không phải nơi nộp hồ sơ.
+19|就職の口: cơ hội/chỗ làm. Câu nói sinh viên sắp tốt nghiệp chưa tìm được việc; 職種 là loại nghề, không thay được 就職 trong cụm này.
+20|道路を広げる: mở rộng đường vì vỉa hè hẹp. 開ける là mở, 並べる là xếp, 付ける là gắn, không diễn đạt nới chiều rộng.
+21|健康の回復: hồi phục sức khỏe sau phẫu thuật. 養分 là chất dinh dưỡng, 利益 là lợi ích, 幸福 là hạnh phúc.
+22|資源の少ない国: nước ít tài nguyên nên cần nhập khẩu. 原理 là nguyên lý, 産地 là nơi sản xuất, 土地 là đất đai.
+23|完全に変わる gần すっかり変わる: thay đổi hoàn toàn. かなり・大きく không nhất thiết bao hàm toàn bộ.
+24|無事 chỉ bình an, không gặp sự cố, gần 平穏 trong các lựa chọn. 安心 là trạng thái yên tâm, 日常 là thường ngày, 自由 là tự do.
+25|少しも…ない tương đương ちっとも…ない: hoàn toàn không biết. 相当 là khá nhiều; やはり là quả nhiên.
+26|ずらりと並ぶ: nhiều vật xếp thành dãy dài; lựa chọn たくさん giữ ý số lượng đông. 一台ずつ chỉ từng chiếc, まっすぐ chỉ thẳng.
+27|しいんとする là im phăng phắc, gần 静かだ. Không phải trạng thái bình thường hay hòa bình.
+28|才能 là tài năng, như năng lực ném bóng nhanh của cầu thủ. Kinh nghiệm dùng 経験を積む; sản phẩm không phải người có tài năng.
+29|注目される: được chú ý, hợp cầu thủ mới vào tuyển. Các câu cần 注意 hoặc biểu đạt càng lúc càng lạnh, không dùng 注目.
+30|いよいよ chỉ thời điểm mong chờ cuối cùng đã đến: tuần sau thư viện hoàn thành. Không dùng như tính từ chỉ đời sống hay thay cho đột nhiên.
+31|ひきょう là hèn hạ, thiếu ngay thẳng; phản bội lời hứa với đồng đội là ví dụ đúng. Không mang nghĩa đáng tin, đáng cổ vũ hay vẻ buồn bã.
+32|あて名 là tên/người nhận trên thư. Không phải tên tòa nhà, tên đội hay biệt danh.
+33|Nからいって: xét từ căn cứ N. Nhìn vị trí áp thấp để nhận định trời mưa; からといって nêu nhượng bộ rồi phủ định suy luận.
+34|NばかりかNも: không chỉ… mà còn…; bánh được cả nữ lẫn nam thích. ばかりに nêu nguyên nhân dẫn tới điều xấu.
+35|Vるにつけ: mỗi khi… thì…; cứ nhìn mặt chồng là cằn nhằn. について là về chủ đề, khác nghĩa lặp theo dịp.
+36|Nを通じて: thông qua bạn bè mà biết tin. をめぐって là xoay quanh, をもとに là dựa trên.
+37|Vないことはない: không phải không…, vẫn làm nhưng có dè dặt. Vẫn ăn sashimi nhưng không thích lắm; hai phủ định làm ý nhẹ đi.
+38|Nといえば: nhắc tới N thì liên tưởng đến…; nói đến điểm du lịch tiêu biểu Kanagawa thì Hakone. といっても là tuy nói là.
+39|お聞きしたところ: sau khi tôi hỏi thì biết, dùng khiêm nhường cho hành động của mình đối với thầy. お聞きになる là tôn kính hành động của người trên.
+40|Vたあげく: sau một quá trình vất vả thì nhận kết quả không mong muốn. Bị khám đủ thứ rồi được bảo phải nhập viện; とたん chỉ ngay khoảnh khắc.
+41|Nのことだからきっと: vì biết tính người ấy nên chắc rằng…; suy ra anh ấy lại đi câu. ことから nêu căn cứ, không tạo đúng mẫu quen thuộc ở đây.
+42|Nにとって: đối với N về mặt đánh giá. Đồng yên tăng là vấn đề lớn đối với du học sinh; につれて là theo diễn biến.
+43|Vているところに: đúng lúc đang… thì sự việc khác xảy ra. Đang tắm thì động đất, に dẫn sự xen vào.
+44|Vます bỏ ます + 次第: ngay khi xong việc trước sẽ làm việc sau. Vừa chốt hôn ước sẽ mua căn hộ; ながら・つつ chỉ đồng thời.
+45|Ghép 4→1→3→2: 体調を崩さないように栄養のある食事をしてください. ように chỉ mục đích phòng ốm; 栄養のある bổ nghĩa 食事. Ô sao là 3.
+46|Ghép 3→4→2→1: このスープに入っている魚は魚というより肉の食感に近い. というより đính chính ấn tượng: giống thịt hơn cá. Ô sao là 2.
+47|Ghép 4→3→1→2: 東京で学生生活を始めるにあたり、まず部屋を探さなければならない. にあたり là khi bắt đầu; なければならない là phải. Ô sao là 1.
+48|Ghép 2→4→1→3: アンケートで集めたデータに基づき若者たちが考える理想の社会を分析した. に基づき là dựa vào. Ô sao là 1.
+49|Ghép 4→1→3→2: エネルギー問題をぬきにして未来における生活は語れない. をぬきにして là bỏ qua; における bổ nghĩa danh từ. Ô sao là 3.
+50|そして nối tiếp hai suy nghĩ về つくる: hành khách tạo nên chuyến xe dễ chịu, và có người phá hỏng điều ấy. ところで chuyển đề tài, もっとも bổ sung ngoại lệ, không hợp bằng.
+51|Chọn けとばし／足を乗せる: khách đá vào thân xe và gác chân lên tay vịn. Cùng một chủ thể chủ động nên không dùng bị động 乗せられる.
+52|Chọn 女性／悲しいこと／勇気: nếu bị trút giận chỉ vì là phụ nữ thì thật đáng buồn; lá thư cậu bé lại cho người lái xe dũng khí. Hoán đổi ba từ làm sai nghĩa và cấu trúc.
+53|知恵を備えている: người lớn đã có cách làm giảm độ nhạy với không khí căng thẳng. Mạch văn mô tả thực tế, không hỏi ý định hay cảm thán.
+54|心が震えている: trái tim bé nhỏ đang run sợ giữa tiếng quát. 震える là tự động từ với が; 震わせる cần chủ thể làm ai đó rung động.

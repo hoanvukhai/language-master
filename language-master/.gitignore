@@ -13,6 +13,12 @@ dist-ssr
 *.local
 .env
 
+# Reproducible local PDF/OCR intermediates; never bundle models in the app.
+imports/jlpt/models/
+imports/jlpt/*/raw/*.png
+src/data/*.pdf
+__pycache__/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
