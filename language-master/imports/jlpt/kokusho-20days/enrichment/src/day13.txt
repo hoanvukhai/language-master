@@ -1,0 +1,446 @@
+@m1_01
+T: Đã giữa tháng 10 rồi mà nhiệt độ cả nước vẫn còn cao.
+W: 半ば | なかば | BÁN | giữa, nửa chừng
+1: なかば: cách đọc của 半ば, giữa.
+2: はんば: 半端 (はんぱ) là dở dang; khác từ.
+3: ちゅうば không phải cách đọc.
+4: はしば không phải cách đọc.
+
+@m1_02
+T: Ở sân bay Narita, đồ bên trong vali bị kiểm tra kỹ.
+W: 中身 | なかみ | TRUNG THÂN | đồ bên trong
+1: ちゅうみ: đọc On; sai.
+2: ちゅうしん là 中心 (trung tâm); khác chữ.
+3: なかみ: 中 なか + 身 み.
+4: なかしん: trộn Kun với On; sai.
+
+@m1_03
+T: Công ty phá sản là trách nhiệm của ban lãnh đạo, nhân viên không có tội.
+W: 罪 | つみ | TỘI | tội lỗi
+1: さい không phải cách đọc của 罪.
+2: つみ: cách đọc khi 罪 đứng một mình.
+3: ざい là âm On, dùng trong từ ghép (犯罪).
+4: づみ là biến âm trong từ ghép; không dùng đứng một mình.
+
+@m1_04
+T: Chủ nhật tuần sau tôi định đến thăm nhà thầy.
+W: 伺う | うかがう | TỨ | đến thăm, hỏi (khiêm nhường)
+1: うかかう: âm thứ ba phải đục が.
+2: うがかう: đục sai vị trí.
+3: うかがう: cách đọc đúng.
+4: うががう: đục sai vị trí.
+
+@m1_05
+T: Từng có thời sinh viên và công nhân biểu tình quanh khu vực Quốc hội.
+W: 周辺 | しゅうへん | CHU BIÊN | xung quanh
+1: しゅうへん: 周 しゅう + 辺 へん.
+2: しゅうべん: 辺 không biến đục ở đây.
+3: じゅうへん: 周 không đục.
+4: じゅうべん: sai cả hai âm.
+
+@m2_06
+T: Tôi sẽ không quyết định chỗ làm nhờ bố mẹ giới thiệu.
+W: 紹介 | しょうかい | THIỆU GIỚI | giới thiệu
+1: 招 (CHIÊU) là mời; 招介 không phải từ có thật.
+2: 紹介: giới thiệu.
+3: 招会 không phải từ có thật.
+4: 紹会: 介 không thay bằng 会.
+
+@m2_07
+T: Ở hiện trường tai nạn có rất đông nhân viên cứu hộ.
+W: 大勢 | おおぜい | ĐẠI THẾ | đông người
+1: 多勢 đọc たぜい: đông thế (多勢に無勢); không đọc おおぜい.
+2: 多盛 không phải từ có thật.
+3: 大勢: nhiều người.
+4: 大盛 đọc おおもり: suất lớn.
+
+@m2_08
+T: Nhiều người tán thành việc miễn phí đường cao tốc.
+W: 賛成 | さんせい | TÁN THÀNH | tán thành
+1: 賛成: 賛 (TÁN) + 成 (THÀNH).
+2: 世 (THẾ); 賛世 không phải từ có thật.
+3: 生 (SINH); 賛生 không phải từ có thật.
+4: 正 (CHÍNH); 賛正 không phải từ có thật.
+
+@m2_09
+T: Nghe nói nấc cụt thì ấn mạnh vào huyệt cổ tay là hết ngay.
+W: 押す | おす | ÁP | ấn, đẩy
+1: 推す: tiến cử, ủng hộ; không phải dùng lực ấn.
+2: 雄 (HÙNG); không có động từ 雄す.
+3: 探す đọc さがす: tìm.
+4: 押す: ấn, đẩy.
+
+@m2_10
+T: Tỉnh dậy sau giấc ngủ sâu thì thế giới đã thay đổi rất nhiều.
+W: 覚める | さめる | GIÁC | tỉnh giấc
+1: 諦める đọc あきらめる: từ bỏ.
+2: 潜める đọc ひそめる: giấu.
+3: 覚める: tỉnh dậy.
+4: 治める đọc おさめる: cai trị.
+
+@m3_11
+T: Tôi đã nhận tờ đơn đăng ký du lịch ở quầy.
+S: Tôi đã … tờ đơn đăng ký du lịch ở quầy.
+W: 受け取る | うけとる | THỤ THỦ | nhận | 受け〜
+1: 渡し取る không phải động từ có thật.
+2: 受け取る: nhận lấy.
+3: 上げ取る không phải động từ có thật.
+4: 持ち取る không phải động từ có thật.
+
+@m3_12
+T: Tiền hàng tôi dự định chuyển khoản ở bưu điện.
+S: Tiền hàng tôi dự định … ở bưu điện.
+W: 払い込む | はらいこむ | PHẤT NHẬP | nộp tiền, chuyển khoản | 払い〜
+1: 当て込む: trông chờ vào; không hợp.
+2: 売り込む: chào bán; không hợp.
+3: 払い込む: nộp tiền vào.
+4: 打ち込む: đánh vào, nhập liệu; không hợp.
+
+@m3_13
+T: Nghe nói tối mai có thể xem màn trình diễn thiên văn lớn nhất thế kỷ này.
+S: Nghe nói tối mai có thể xem màn trình diễn thiên văn lớn nhất … .
+W: 今世紀 | こんせいき | KIM THẾ KỶ | thế kỷ này | 今〜
+1: 今〜: này, hiện tại (今世紀, 今年度).
+2: 現世紀 không phải cách nói thông dụng.
+3: 急世紀 không có nghĩa.
+4: 近世紀 không phải cách nói (近世 thì có).
+
+@m3_14
+T: Sản phẩm mới của trò chơi do công ty S phát triển liên tục cháy hàng.
+S: … của trò chơi do công ty S phát triển liên tục cháy hàng.
+W: 新製品 | しんせいひん | TÂN CHẾ PHẨM | sản phẩm mới | 新〜
+1: 新〜: mới (新製品).
+2: 本製品: sản phẩm này (văn bản hướng dẫn); không mang nghĩa mới.
+3: 完製品 không phải từ có thật (完成品 thì có).
+4: 真製品 không phải từ có thật.
+
+@m3_15
+T: Giám đốc là người từng trải gian khổ nên bản chất tốt bụng với người khác.
+S: Giám đốc là … nên bản chất tốt bụng với người khác.
+W: 苦労人 | くろうにん | KHỔ LAO NHÂN | người từng trải gian khổ | 〜人
+1: 〜人: người (苦労人).
+2: 苦労家 không phải từ thông dụng.
+3: 苦労員 không phải từ có thật.
+4: 苦労方 không phải từ có thật.
+
+@m4_16
+T: Loại trái cây này được trồng trong nhà kính phủ nhựa.
+S: Loại trái cây này được trồng trong … .
+W: ビニールハウス | ビニールハウス | | nhà kính phủ nhựa
+1: ストーブ: lò sưởi; không tạo từ chỉ nhà trồng cây.
+2: ビニールハウス: nhà kính phủ nhựa.
+3: シャワー: vòi sen; không hợp.
+4: ビタミン: vitamin; không hợp.
+
+@m4_17
+T: Các bài báo của tờ báo này có sức ảnh hưởng quốc tế.
+S: Các … của tờ báo này có sức ảnh hưởng quốc tế.
+W: 記事 | きじ | KÝ SỰ | bài báo
+1: 文法: ngữ pháp; không hợp.
+2: 書物: sách; không thuộc về tờ báo.
+3: 書類: giấy tờ; không hợp.
+4: 新聞の記事: bài báo.
+
+@m4_18
+T: Nghe nói người bạn làm việc ở trụ sở chính quyền Tokyo đã nghỉ việc tháng trước.
+S: Nghe nói người bạn làm việc ở … đã nghỉ việc tháng trước.
+W: 都庁 | とちょう | ĐÔ SẢNH | trụ sở chính quyền Tokyo
+1: 職業: nghề nghiệp; không phải nơi làm.
+2: 住宅: nhà ở; không phải nơi làm.
+3: 都庁に勤める: làm ở trụ sở chính quyền Tokyo.
+4: 首都: thủ đô; không phải cơ quan.
+
+@m4_19
+T: Dịch cúm có vẻ sắp bùng phát lớn nên cần có biện pháp sớm.
+S: Dịch cúm có vẻ sắp bùng phát lớn nên cần có … sớm.
+W: 対策 | たいさく | ĐỐI SÁCH | biện pháp đối phó
+1: 早めの対策: biện pháp sớm.
+2: 調子: tình trạng; không hợp.
+3: 方法: phương pháp; quá chung, không đi tự nhiên với 必要 ở đây.
+4: 修理: sửa chữa; không hợp.
+
+@m4_20
+T: Ngân hàng đó là một trong những doanh nghiệp được sinh viên muốn vào làm nhất.
+S: … đó là một trong những doanh nghiệp được sinh viên muốn vào làm nhất.
+W: 銀行 | ぎんこう | NGÂN HÀNG | ngân hàng
+1: 資本: vốn; không phải doanh nghiệp.
+2: 窓口: quầy giao dịch; không phải doanh nghiệp.
+3: 銀行: ngân hàng.
+4: 事務: công việc văn phòng; không phải doanh nghiệp.
+
+@m4_21
+T: Dầu thô tràn ra từ tàu chở dầu, thiệt hại cho ngành đánh bắt cá ngày càng lớn.
+S: Dầu thô tràn ra từ tàu chở dầu, thiệt hại cho … ngày càng lớn.
+W: 漁業 | ぎょぎょう | NGƯ NGHIỆP | nghề cá
+1: 森林: rừng; dầu tràn ra biển không ảnh hưởng trực tiếp.
+2: 農家: nhà nông; không hợp.
+3: 漁業の被害: thiệt hại nghề cá.
+4: 建築: xây dựng; không hợp.
+
+@m4_22
+T: Số gỗ này được vận chuyển bằng tàu từ Nga.
+S: Số gỗ này được … bằng tàu từ Nga.
+W: 輸送 | ゆそう | THÂU TỐNG | vận chuyển
+1: 運転: điều khiển xe; không dùng cho hàng hóa.
+2: 方向: phương hướng; không hợp.
+3: 連絡: liên lạc; không hợp.
+4: 船で輸送される: được vận chuyển bằng tàu.
+
+@m5_23
+T: Tôi đã hỏi trực tiếp họa sĩ về đề tài của bức tranh này.
+W: 直接 | ちょくせつ | TRỰC TIẾP | trực tiếp
+1: しっかり: chắc chắn; khác nghĩa.
+2: じかに: trực tiếp.
+3: そっと: khẽ khàng; khác nghĩa.
+4: はっきり: rõ ràng; khác nghĩa.
+
+@m5_24
+T: Tôi đã dày công viết liên tục đến hạn chót, cuối cùng cũng hoàn thành bản thảo.
+W: 骨を折る | ほねをおる | CỐT CHIẾT | dày công, vất vả
+1: 我慢して: chịu đựng; không nhấn ý dày công.
+2: 楽して: nhàn nhã; ngược nghĩa.
+3: 苦心して: dày công, khổ công.
+4: じっとして: ngồi yên; khác nghĩa.
+
+@m5_25
+T: Dù thế nào tôi cũng không ngờ anh ấy lại vào giới giải trí.
+W: いくら何でも | いくらなんでも | | dù thế nào đi nữa
+1: やはり: quả nhiên; ngược ý không ngờ.
+2: まさか: không thể ngờ.
+3: まったく: hoàn toàn; không mang sắc thái này.
+4: ぜんぜん: hoàn toàn (không); khác nghĩa.
+
+@m5_26
+T: Trời trở lạnh là tôi lại nhớ món lẩu quê nhà.
+W: 懐かしい | なつかしい | HOÀI | nhớ nhung, hoài niệm
+1: 恋しい: nhớ thương.
+2: ほしい: muốn có; không mang nghĩa nhớ.
+3: 望ましい: đáng mong muốn; khác nghĩa.
+4: 憎らしい: đáng ghét; ngược nghĩa.
+
+@m5_27
+T: Định tung ra mẫu máy mới thì công ty khác đã thương mại hóa từ lâu rồi.
+W: 既に | すでに | KÝ | đã (rồi)
+1: まず: trước hết; khác nghĩa.
+2: しっかり: chắc chắn; khác nghĩa.
+3: なんとも: thật là; khác nghĩa.
+4: とっくに: đã từ lâu.
+
+@m6_28
+T: Trận động đất lớn khiến hầu hết các chức năng đô thị bị tê liệt.
+W: 機能 | きのう | CƠ NĂNG | chức năng
+1: Rau mất độ tươi dùng 鮮度が落ちる.
+2: Đồng hồ chạy nhanh dùng 時計が進む.
+3: Làm bẩn nước sông dùng 川の水を汚す.
+4: 都市の機能: chức năng đô thị.
+
+@m6_29
+T: Tôi đã dự họp thay trưởng phòng nhưng không có cơ hội phát biểu.
+W: 代理 | だいり | ĐẠI LÝ | thay mặt, đại diện
+1: Năng lượng thay thế là 代替エネルギー.
+2: Ly cà phê khác dùng 別の・代わりの.
+3: 部長の代理で: thay mặt trưởng phòng.
+4: Đánh thay trong bóng chày là 代打.
+
+@m6_30
+T: Với người tính cách thẳng thắn như cô ấy, anh chàng hiền lành kia thật hợp.
+W: ぴったり | ぴったり | | vừa khít, rất hợp
+1: Tâm thế chắc chắn dùng しっかり.
+2: Tình cờ gặp là ばったり.
+3: 彼がぴったりだ: anh ấy rất hợp.
+4: Nằm bẹp vì nóng là ぐったり.
+
+@m6_31
+T: Tôi đã chuẩn bị sẵn 2 vé hòa nhạc nhưng cô ấy không đến.
+W: 用意 | ようい | DỤNG Ý | chuẩn bị sẵn
+1: チケットを用意する: chuẩn bị sẵn vé.
+2: Bài thể dục khởi động là 準備体操.
+3: Chuẩn bị bài thi không đủ là 準備不足.
+4: Ban tổ chức là 準備委員.
+
+@m6_32
+T: Anh nhiếp ảnh gia ấy tiếp tục chụp côn trùng bằng khả năng quan sát tinh tường.
+W: 観察 | かんさつ | QUAN SÁT | quan sát
+1: Thưởng thức nhạc là 鑑賞.
+2: 観察力: khả năng quan sát.
+3: Xem thi đấu là 観戦.
+4: Khám răng là 診察.
+
+@m7_33
+T: Cùng với đồng yên tăng giá, các ngành xuất khẩu có vẻ sẽ giảm lợi nhuận mạnh.
+S: … , các ngành xuất khẩu có vẻ sẽ giảm lợi nhuận mạnh.
+1: に対して: đối với; không chỉ sự kéo theo.
+2: Nに伴って: cùng với, kéo theo.
+3: について: về; không hợp.
+4: に関して: về; không hợp.
+
+@m7_34
+T: Nhiều chiếc ô tô cỡ lớn màu đen sẫm đỗ trước nhà ga.
+S: Nhiều chiếc ô tô cỡ lớn … đỗ trước nhà ga.
+1: 黒気味 không tự nhiên; 気味 dùng cho trạng thái (風邪気味).
+2: 黒様 không phải cách nói.
+3: Nっぽい: hơi, ngả về (黒っぽい).
+4: 黒げ không phải cách nói.
+
+@m7_35
+T: Khi vào hội trường phải chịu kiểm tra hành lý.
+S: … hội trường phải chịu kiểm tra hành lý.
+1: 最中: đang giữa lúc; không hợp.
+2: 次第: ngay sau khi; không hợp.
+3: 上: về mặt; không hợp.
+4: Vる際: khi.
+
+@m7_36
+T: Tác giả bức tranh này chắc hẳn chịu ảnh hưởng của Rousseau.
+S: Tác giả bức tranh này … ảnh hưởng của Rousseau.
+1: べきだ: nên; không hợp suy đoán.
+2: ほかない: chỉ còn cách; không hợp.
+3: 〜に違いない: chắc hẳn.
+4: ようもない: không có cách; không hợp.
+
+@m7_37
+T: Kể từ khi bắt đầu hẹn hò với cô ấy, một ngày trôi qua thật nhanh.
+S: … hẹn hò với cô ấy, một ngày trôi qua thật nhanh.
+1: を契機に: nhân cơ hội; cần danh từ trước.
+2: Vて以来: kể từ khi.
+3: に比べて: so với; không hợp.
+4: ものだから: vì; không hợp.
+
+@m7_38
+T: Dựa trên kết quả thí nghiệm, người ta đang nghĩ ra cấu trúc chịu động đất tốt.
+S: … kết quả thí nghiệm, người ta đang nghĩ ra cấu trúc chịu động đất tốt.
+1: Nに基づいて: dựa trên.
+2: にとって: đối với; không hợp.
+3: に際して: nhân dịp; không hợp.
+4: につれて: càng… càng; không hợp.
+
+@m7_39
+T: Tôi không biết tên của vị đang ở hàng đầu kia.
+S: Tên của vị đang ở hàng đầu kia, tôi … .
+1: 存じていらっしゃる: trộn khiêm nhường với tôn kính; sai.
+2: 存じまいりません sai dạng.
+3: 存じてまいります sai dạng.
+4: 存じあげません: tôi không biết (người).
+
+@m7_40
+T: Thầy ấy cứ mỗi lần nhìn mặt bạn Park là bảo giống con gái mình.
+S: Thầy ấy … mặt bạn Park là bảo giống con gái mình.
+1: にもかかわらず: mặc dù; không hợp.
+2: につけても thường đi với hai vế; ở đây không tự nhiên.
+3: にかかわらず: bất kể; không hợp.
+4: Vるにつけ: mỗi khi.
+
+@m7_41
+T: Khi xin visa dài hạn của Nga, tôi phải làm xét nghiệm máu.
+S: … visa dài hạn của Nga, tôi phải làm xét nghiệm máu.
+1: Vるに際して: khi (làm việc gì).
+2: しようと限って không phải mẫu đúng.
+3: に際してから: thừa から; sai.
+4: しようと限っては không phải mẫu đúng.
+
+@m7_42
+T: Không nên há to miệng ngáp trong giờ học.
+S: … há to miệng ngáp trong giờ học.
+1: しないことではない không phải mẫu đúng.
+2: Vるものではない: không nên (chuẩn mực).
+3: しないことしかない không phải mẫu đúng.
+4: するものにしかない không phải mẫu đúng.
+
+@m7_43
+T: Xoay quanh việc mở rộng đường xe chạy, ý kiến cư dân đối lập nhau.
+S: … việc mở rộng đường xe chạy, ý kiến cư dân đối lập nhau.
+1: にわたって: trải dài; không hợp.
+2: にかけて: về mặt; không hợp.
+3: 〜ことをめぐって: xoay quanh việc.
+4: ついでに: nhân tiện; không hợp.
+
+@m7_44
+T: Giới trẻ Nhật có lẽ nên chủ động ra nước ngoài hơn nữa.
+S: Giới trẻ Nhật … chủ động ra nước ngoài hơn nữa.
+1: わけだろう: thảo nào; không hợp.
+2: Vるべきだろう: có lẽ nên.
+3: ぐらいだろう: đến mức; không hợp.
+4: わけないだろう: làm gì có; ngược ý.
+
+@m8_45
+T: Hồi trẻ thì là chuyện thường gặp, nhưng uống nhiều thế thì hỏng người đấy.
+1: ことだが đi sau ありがちな.
+2: ありがちな nối ngay sau 若いときには.
+3: 飲んだら đứng cuối, trước 体をこわすよ.
+4: そんなに đứng ở ô ★.
+
+@m8_46
+T: Công việc có vẻ không xong được nên chỉ còn cách nhờ cấp dưới hỗ trợ.
+1: 部下に đứng ở ô ★.
+2: 終わりそうも nối ngay sau 仕事が.
+3: 応援 đứng cuối, trước を頼む.
+4: ないので đi sau 終わりそうも.
+
+@m8_47
+T: Theo dự báo thời tiết, tháng 2 có kỳ thi tuyển sinh trời sẽ lạnh.
+1: 寒くなる đứng cuối, trước ということだ.
+2: 天気予報 đi sau 2月は.
+3: によると đứng ở ô ★.
+4: 2月は nối ngay sau 入試がある.
+
+@m8_48
+T: Nhờ tàu điện ngầm thông tuyến, tình trạng đông đúc hẳn sẽ được giảm bớt.
+1: 開通する nối ngay sau 地下鉄が.
+2: 混雑が đứng ở ô ★.
+3: ことによって đi sau 開通する.
+4: 緩和される đứng cuối, trước はずだ.
+
+@m8_49
+T: Về việc triển khai hệ thống mới, các kỹ sư làm ở nhà máy đang họp.
+1: 会議 đứng cuối, trước を開いている.
+2: 工場で働く đi sau に関して.
+3: 技術者たちが đứng ở ô ★.
+4: に関して nối ngay sau 新システムの実施.
+
+@m9_50
+T: Thế là tôi hiểu ra. Ban đầu ông ấy đã gọi tôi là "tổ trưởng".
+S: … tôi hiểu ra. Ban đầu ông ấy đã gọi tôi là "tổ trưởng".
+1: それで: thế là, vì vậy (nhận ra).
+2: やはり: quả nhiên; không hợp.
+3: つまり: tức là; không hợp.
+4: それが: vậy mà; không hợp.
+
+@m9_51
+T: Ông ấy biết cả "trưởng phòng" lẫn "giám đốc điều hành", xếp đúng theo thứ tự chức vụ rồi cười đắc ý.
+S: Ông ấy … cả "trưởng phòng" lẫn "giám đốc điều hành", xếp đúng theo thứ tự chức vụ rồi … .
+1: 知らずに trái với việc xếp đúng thứ tự.
+2: 知らずに và 悲しそう đều trái mạch.
+3: a 知っていて, b 得意そうに笑った.
+4: 悲しそうに không hợp với chuyện vui.
+
+@m9_52
+T: Nghe nói nguyện vọng làm quản lý đã cao nhất trong 10 năm qua. Chức vụ muốn đạt được cuối cùng nhiều nhất là trưởng phòng. Tổ trưởng thấp nhất, chỉ 1,4%.
+S: Nghe nói nguyện vọng làm quản lý đã … trong 10 năm qua. Chức vụ … muốn đạt được nhiều nhất là trưởng phòng. Tổ trưởng … , chỉ 1,4%.
+1: b 最小 và c 最終 bị đảo.
+2: a 最高, b 最終, c 最小.
+3: a 最小 sai: xu hướng đang tăng.
+4: a 最小 và c 最高 đều sai.
+
+@m9_53
+T: Điều khảo sát cho thấy có lẽ là sự trở về về mặt cảm xúc của các tân nhân viên với cảnh tượng kiểu Nhật vừa cay đắng vừa đáng yêu.
+S: … có lẽ là sự trở về về mặt cảm xúc của các tân nhân viên với cảnh tượng kiểu Nhật.
+1: 示させる: sai khiến; sai chủ thể.
+2: 示される: bị động; sai chủ thể.
+3: 示させられる sai dạng.
+4: 調査が示すのは: điều khảo sát cho thấy.
+
+@m9_54
+T: Con đường nào cũng dẫn đến một nơi nào đó.
+S: Con đường nào cũng … .
+1: どこへ通じている: thành câu hỏi "dẫn đi đâu"; không hợp.
+2: どこか通じない: không dẫn tới đâu; ngược ý.
+3: どこへ通じる: câu hỏi; không hợp.
+4: どこかへ通じている: dẫn tới một nơi nào đó.
+
+@P d13-passage
+Đã lâu lắm rồi, ở một điểm du lịch Mexico gần biên giới Mỹ, tôi được một ông chủ tiệm lưu niệm gọi là "Kakaricho". Không hiểu là gì nên tôi đi qua, thì lần này ông gọi "Shacho". Thế là tôi hiểu ra. Ban đầu ông đã gọi tôi là "tổ trưởng".
+Nghe nói ông học những từ này từ các đoàn khách Nhật. Từ đó, cứ thấy người Nhật là ông gọi "Kakaricho". Nghe nói được hưởng ứng hơn cả "Shacho". Ông biết cả "Bucho" lẫn "Senmu", xếp đúng theo thứ tự chức vụ rồi cười đắc ý.
+Đọc "Khảo sát nhân viên mới" năm nay của Đại học Năng suất Công nghiệp, tôi nhớ lại khoảnh khắc ấy trong chuyến đi xa. Nghe nói nguyện vọng làm quản lý đã cao nhất trong 10 năm qua. Chức vụ muốn đạt được cuối cùng nhiều nhất là trưởng phòng, tiếp theo là thành viên ban điều hành, giám đốc, trưởng nhóm.
+Tổ trưởng thấp nhất, chỉ 1,4%. Có lẽ ghế trưởng phòng là điểm gặp nhau giữa tham vọng thăng tiến và cảm giác thực tế. Trưởng nhóm thì nhẹ, giám đốc thì xa. Đọc đến đây, tôi chợt nhớ một đoạn trong bài thơ "Nhân sự công ty" của nhà thơ Nakagiri Masao.
+"Chắc chắn anh sẽ là phó chi nhánh tới đấy" — vừa dò sắc mặt vừa nịnh nọt. Người được khen thì mặt mày rạng rỡ: "Nào, làm một chén đi" mà rót rượu mời. "Ông trưởng nhóm đó chẳng biết dùng người", "Nghe nói khó mà lên trưởng phòng"…
+Điều khảo sát cho thấy, có lẽ là sự trở về về mặt cảm xúc của các tân nhân viên với cảnh tượng kiểu Nhật vừa cay đắng vừa đáng yêu ấy. Có lẽ vì đã vượt qua kỳ xin việc khắc nghiệt, tỷ lệ coi chuyển việc là thất bại cũng tăng lên. Câu "làm trọn đời một nơi" thật đẹp. Nhưng ý chí hướng tới vùng đất mới cũng đáng tin cậy. Con đường nào cũng dẫn đến một nơi nào đó. Nghĩ được như vậy thì gánh trên vai sẽ nhẹ đi.

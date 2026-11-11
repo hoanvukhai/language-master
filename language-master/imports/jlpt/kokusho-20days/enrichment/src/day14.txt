@@ -1,0 +1,446 @@
+@m1_01
+T: Từ sáng tôi đã tìm chìa khóa phòng nhưng không thấy.
+W: 捜す | さがす | SƯU | tìm (vật bị mất)
+1: うながして là 促して: thúc giục.
+2: のがして là 逃して: bỏ lỡ.
+3: さがして: thể て của 捜す, tìm.
+4: ながして là 流して: làm trôi.
+
+@m1_02
+T: Tuần sau bố tôi phải phẫu thuật tim.
+W: 手術 | しゅじゅつ | THỦ THUẬT | phẫu thuật
+1: じゅじゅつ: 手 đọc しゅ.
+2: じゅしゅつ: sai cả hai âm.
+3: しゅしゅつ: 術 đọc じゅつ.
+4: しゅじゅつ: 手 しゅ + 術 じゅつ.
+
+@m1_03
+T: Xe buýt tuyến ở đây luôn hay bị trễ nên rất phiền.
+W: 常に | つねに | THƯỜNG | luôn luôn
+1: つね: cách đọc của 常 trong 常に.
+2: じょう là âm On dùng trong từ ghép (日常).
+3: づね là biến âm; không dùng ở đây.
+4: しょう không phải cách đọc của 常.
+
+@m1_04
+T: Trượt tuyết ngã mấy lần, người tôi lạnh cóng.
+W: 凍える | こごえる | ĐỐNG | cóng vì lạnh
+1: ごごえて: âm đầu không đục.
+2: こごえて: thể て của 凍える.
+3: ごこえて: đục sai vị trí.
+4: ここえて: âm thứ hai phải đục ご.
+
+@m1_05
+T: Khi còn trẻ, việc hấp thu nhiều kiến thức là rất quan trọng.
+W: 吸収 | きゅうしゅう | HẤP THU | hấp thu
+1: きゅうしゅう: 吸 きゅう + 収 しゅう.
+2: きょうしゅう là 郷愁 (nỗi nhớ quê); khác chữ.
+3: きゅうしょう: 収 đọc しゅう.
+4: きょうしょう: sai cả hai âm.
+
+@m2_06
+T: Chẳng hỏi xem tôi có tiện không, người ta đã tự ý quyết định buổi xem mắt.
+W: 都合 | つごう | ĐÔ HỢP | sự thuận tiện
+1: 就 (TỰU); 就合 không phải từ có thật.
+2: 図 (ĐỒ); 図合 không phải từ có thật.
+3: 通 (THÔNG); 通合 không phải từ có thật.
+4: 都合: sự thuận tiện, điều kiện.
+
+@m2_07
+T: Nghỉ hưu rồi, tôi muốn sống thong thả ở vùng khí hậu ôn hòa.
+W: 温暖 | おんだん | ÔN NOÃN | ấm áp, ôn hòa
+1: 遠 (VIỄN); 遠暖 không phải từ có thật.
+2: 音 (ÂM); 音暖 không phải từ có thật.
+3: 温暖: ấm áp.
+4: 穏 (ỔN) là yên ổn; 穏暖 không phải từ có thật.
+
+@m2_08
+T: Loại trái cây này có nguồn gốc từ bán đảo Mã Lai, vừa ngọt vừa chua.
+W: 原産 | げんさん | NGUYÊN SẢN | nguồn gốc xuất xứ
+1: 元 (NGUYÊN); 元産 không phải từ có thật.
+2: 現 (HIỆN); 現産 không phải từ có thật.
+3: 源 (NGUYÊN, nguồn nước); 源産 không phải từ có thật.
+4: 原産: xuất xứ gốc.
+
+@m2_09
+T: Học sinh tiểu học mà đi du lịch một mình, quả là đứa trẻ đáng tin cậy.
+W: 頼もしい | たのもしい | LẠI | đáng tin cậy
+1: 頼もしい: đáng tin cậy.
+2: 信 (TÍN); 信もしい không phải từ có thật.
+3: 親 (THÂN); 親もしい không phải từ có thật.
+4: 育 (DỤC); 育もしい không phải từ có thật.
+
+@m2_10
+T: Đúng là người giữ kỷ lục thế giới, vẻ mặt tràn đầy tự tin.
+W: 満ちる | みちる | MÃN | tràn đầy
+1: 満ちた: tràn đầy.
+2: 巨 (CỰ); không có dạng 巨ちる.
+3: 実 đọc みのる; 実ちる không phải từ có thật.
+4: 究 (CỨU); không có dạng 究ちる.
+
+@m3_11
+T: Dù sao cũng chia tay, nhưng lẽ ra nên nói chuyện với nhau kỹ hơn.
+S: Dù sao cũng chia tay, nhưng lẽ ra nên … kỹ hơn.
+W: 話し合う | はなしあう | THOẠI HỢP | nói chuyện với nhau, bàn bạc | 〜合う
+1: 話しかける: bắt chuyện; một chiều.
+2: 話し合う: trao đổi với nhau.
+3: 話し込む: mải nói chuyện; không hợp.
+4: 話し付ける: thương lượng xong; không hợp.
+
+@m3_12
+T: Nhìn bức ảnh này, chuyến đi trên tuyến đường sắt Siberia lại hiện về.
+S: Nhìn bức ảnh này, chuyến đi trên tuyến đường sắt Siberia lại … .
+W: 思い出す | おもいだす | TƯ XUẤT | nhớ ra, gợi nhớ | 思い〜
+1: 思い出される: được gợi nhớ (tự phát).
+2: 思い切る: quyết tâm; không hợp.
+3: 思い込む: đinh ninh; không hợp.
+4: 思い立つ: nảy ý định; không hợp.
+
+@m3_13
+T: Hút thuốc giữa đám đông như thế này thật thiếu ý thức.
+S: Hút thuốc giữa đám đông như thế này thật … .
+W: 非常識 | ひじょうしき | PHI THƯỜNG THỨC | thiếu ý thức, trái lẽ thường | 非〜
+1: 否〜 không ghép với 常識.
+2: 不〜: 不常識 không phải từ thông dụng.
+3: 非常識: trái lẽ thường.
+4: 無常識 không phải từ thông dụng.
+
+@m3_14
+T: Sản phẩm này có tính đặc thù là chỉ phản ứng với một âm thanh nhất định.
+S: Sản phẩm này có … là chỉ phản ứng với một âm thanh nhất định.
+W: 特殊性 | とくしゅせい | ĐẶC THÙ TÍNH | tính đặc thù | 〜性
+1: 〜風: kiểu cách; 特殊風 không dùng.
+2: 〜体 có trong 特殊体 nhưng không phải nghĩa này.
+3: 〜性: tính chất (特殊性).
+4: 〜質: chất; 特殊質 không thông dụng.
+
+@m3_15
+T: Ở Nhật có nhiều người tin vào việc đoán tính cách theo nhóm máu.
+S: Ở Nhật có nhiều người tin vào việc đoán tính cách theo … .
+W: 血液型 | けつえきがた | HUYẾT DỊCH HÌNH | nhóm máu | 〜型
+1: 固 không làm hậu tố.
+2: 〜方: cách; 血液方 không dùng.
+3: 〜形: hình dạng; 血液形 không dùng.
+4: 〜型: loại, kiểu (血液型).
+
+@m4_16
+T: Người leo núi gặp tuyết lở đã sống sót trong tuyết suốt 3 ngày.
+S: Người leo núi gặp tuyết lở đã … trong tuyết suốt 3 ngày.
+W: 生存 | せいぞん | SINH TỒN | sống sót
+1: 存在: tồn tại (nói chung); không nhấn ý sống sót.
+2: 所在: nơi ở, vị trí; không hợp.
+3: 生存する: còn sống, sống sót.
+4: 生命: sinh mệnh; là danh từ, không thêm する.
+
+@m4_17
+T: Gấu trúc đã góp một phần vào việc thắt chặt tình hữu nghị Nhật - Trung.
+S: Gấu trúc đã … vào việc thắt chặt tình hữu nghị Nhật - Trung.
+W: 一役買う | ひとやくかう | NHẤT DỊCH MÃI | góp một phần
+1: 一役取る không phải thành ngữ.
+2: 一役買う: góp một tay.
+3: 一役売る không phải thành ngữ.
+4: 一役持つ không phải thành ngữ.
+
+@m4_18
+T: Bài nghiên cứu thầy công bố tại hội nghị học thuật đang được chú ý.
+S: Bài nghiên cứu thầy công bố tại … đang được chú ý.
+W: 学会 | がっかい | HỌC HỘI | hội nghị, hội học thuật
+1: 功績: công lao; không phải nơi công bố.
+2: 教授: giáo sư; không phải nơi.
+3: 見学: tham quan; không hợp.
+4: 学会で発表: công bố tại hội nghị học thuật.
+
+@m4_19
+T: Bức ảnh này chụp tòa nhà Quốc hội từ chính diện.
+S: Bức ảnh này chụp tòa nhà Quốc hội từ … .
+W: 正面 | しょうめん | CHÍNH DIỆN | mặt trước, chính diện
+1: 角度: góc độ; cần bổ ngữ (別の角度から).
+2: 直線: đường thẳng; không hợp.
+3: 等分: chia đều; không hợp.
+4: 正面から撮る: chụp từ phía chính diện.
+
+@m4_20
+T: Khóa đào tạo 3 tháng kết thúc thì nhân viên mới sẽ ra hiện trường.
+S: Khóa đào tạo 3 tháng … thì nhân viên mới sẽ ra hiện trường.
+W: 済む | すむ | TẾ | xong, kết thúc
+1: 研修が済む: khóa đào tạo xong.
+2: 行ったら: chủ ngữ 研修 không "đi".
+3: やむ: tạnh, dừng (mưa); không dùng cho khóa học.
+4: ふさがる: bị lấp kín; không hợp.
+
+@m4_21
+T: Chuỗi cửa hàng đó mở rộng quá mức, cuối cùng đã phá sản.
+S: Chuỗi cửa hàng đó mở rộng quá mức, cuối cùng đã … .
+W: 破産 | はさん | PHÁ SẢN | phá sản
+1: 省略: lược bỏ; không hợp.
+2: 破産する: phá sản.
+3: 解放: giải phóng; không hợp.
+4: 限界: giới hạn; là danh từ, không thêm する.
+
+@m4_22
+T: Kỹ thuật xây dựng tiến bộ, các tòa nhà ở Nhật ngày càng trở nên cao tầng.
+S: Kỹ thuật xây dựng tiến bộ, các tòa nhà ở Nhật ngày càng trở nên … .
+W: 高層 | こうそう | CAO TẦNG | cao tầng
+1: 膨大: khổng lồ (lượng); không tả tòa nhà.
+2: 本部: trụ sở chính; không hợp.
+3: 高層になる: trở nên cao tầng.
+4: 連続: liên tục; không hợp.
+
+@m5_23
+T: Sắp vào ca nên tôi nhanh chóng thay đồng phục.
+W: 素早い | すばやい | TỐ TẢO | nhanh nhẹn
+1: じっくり: kỹ càng, thong thả; ngược nghĩa.
+2: さっさと: nhanh chóng.
+3: のんびり: thư thả; ngược nghĩa.
+4: とつぜん: đột ngột; khác nghĩa.
+
+@m5_24
+T: Lạnh thế này mà hoa anh đào đã nở, thật kỳ lạ.
+W: 不思議 | ふしぎ | BẤT TƯ NGHỊ | kỳ lạ
+1: 奇妙: kỳ lạ.
+2: 新鮮: tươi mới; khác nghĩa.
+3: 秘密: bí mật; khác nghĩa.
+4: 例外: ngoại lệ; khác nghĩa.
+
+@m5_25
+T: Dù có lén than phiền như thế thì cũng chẳng giải tỏa được căng thẳng.
+W: 不平を言う | ふへいをいう | BẤT BÌNH | than phiền
+1: あれこれ言った: nói đủ thứ; thiếu sắc thái bất mãn.
+2: すきずき言った không phải cách nói.
+3: どんなに言った không có nghĩa trọn vẹn.
+4: ぶつぶつ言った: lầm bầm than phiền.
+
+@m5_26
+T: Bố mẹ phát hiện tôi nói dối, thành ra rắc rối rồi.
+W: まずい | まずい | | dở, rắc rối, không ổn
+1: 不適当な: không thích hợp; không nhấn tình thế bất lợi.
+2: 不安定な: không ổn định; khác nghĩa.
+3: 不都合な: bất lợi, rắc rối.
+4: 不愉快な: khó chịu; khác nghĩa.
+
+@m5_27
+T: So với làm diễn viên, cô ấy nếu phải chọn thì hợp làm đạo diễn hơn.
+W: どちらかといえば | どちらかといえば | | nếu phải chọn thì
+1: やはり: quả nhiên; khác nghĩa.
+2: あるいは: hoặc là; khác nghĩa.
+3: 確かに: quả thật; khác nghĩa.
+4: むしろ: đúng hơn, thà rằng.
+
+@m6_28
+T: Bị mệt nên đang uống thuốc, nhưng triệu chứng không cải thiện.
+W: 改善 | かいぜん | CẢI THIỆN | cải thiện
+1: Sửa đổi máy tính dùng 改造 hoặc いじる.
+2: Ấn bản sửa đổi là 改訂版.
+3: 症状が改善される: triệu chứng được cải thiện.
+4: Sửa bồn tắm là 修理・修繕.
+
+@m6_29
+T: Tổng thống từng phát ngôn cứng rắn, nhưng rốt cuộc đã từ chức.
+W: 強気 | つよき | CƯỜNG KHÍ | cứng rắn, tự tin
+1: 強気な発言: phát ngôn cứng rắn.
+2: Lực lượng quân đội mạnh dùng 強大な.
+3: Keo dính chặt dùng 強力な.
+4: Mưa lớn dùng 強い雨.
+
+@m6_30
+T: Tiệc tuần sau tham gia tự do, nhưng tôi muốn dự nếu có thể.
+W: なるべく | なるべく | | trong khả năng có thể
+1: Đoán chắc thành công dùng きっと.
+2: なるべく出席したい: muốn tham gia nếu có thể.
+3: Nhất thiết phải có dùng 必ず.
+4: Bão có thể đổ bộ dùng もしかすると.
+
+@m6_31
+T: Con chó nhà chú tôi thật thông minh, biết làm nhiều trò.
+W: 利口 | りこう | LỢI KHẨU | thông minh, khôn
+1: Giáo trình hữu ích dùng よくできている・便利.
+2: Phần mềm dùng không tốt dùng うまく使えない.
+3: Không có lợi dùng 得にならない.
+4: 利口な犬: con chó khôn.
+
+@m6_32
+T: Bên trong có giấy tờ quan trọng nên xin hãy gửi bảo đảm.
+W: 書留 | かきとめ | THƯ LƯU | thư bảo đảm
+1: Giỏi văn là 文章がうまい.
+2: 書留で出す: gửi bảo đảm.
+3: Luyện viết là 書き取り.
+4: Viết thư pháp đầu năm là 書き初め.
+
+@m7_33
+T: Không biết có chuyện gì, chị tôi mang vẻ mặt buồn bã.
+S: Không biết có chuyện gì, chị tôi mang vẻ mặt … .
+1: 気味: hơi có vẻ (風邪気味); 悲し気味 không tự nhiên.
+2: 風: kiểu cách; 悲し風 không dùng.
+3: Aげ: trông có vẻ (悲しげ).
+4: っぽい gắn sau danh từ hoặc thân tính từ; 悲しっぽい không dùng.
+
+@m7_34
+T: Thiết kế đó nói là kiểu hiện đại thì đúng hơn là gợi cảm giác tương lai.
+S: Thiết kế đó … kiểu hiện đại, gợi cảm giác tương lai.
+1: というと: nói đến; không hợp.
+2: というより: đúng hơn là.
+3: というもので không phải mẫu đúng.
+4: といったら: nói đến thì; không hợp.
+
+@m7_35
+T: Cuốn tiểu thuyết đó ở Nhật thì đương nhiên, ở nước ngoài cũng được đọc rộng rãi.
+S: Cuốn tiểu thuyết đó … , ở nước ngoài cũng được đọc rộng rãi.
+1: はともかく: tạm gác; không hợp.
+2: は別として: ngoại trừ; không hợp.
+3: はさておき: tạm gác; không hợp.
+4: Nはもとより: N thì đương nhiên.
+
+@m7_36
+T: Dù không phải bệnh nặng đến thế, cũng nên đi khám kỹ một lần.
+S: … không phải bệnh nặng đến thế, cũng nên đi khám kỹ một lần.
+1: にしろ: dù là.
+2: に限らず: không chỉ; không hợp.
+3: にかわり: thay cho; không hợp.
+4: にこたえ: đáp ứng; không hợp.
+
+@m7_37
+T: Nghe nói đã 3 năm mới lại được xem gấu trúc ở vườn thú Ueno.
+S: Xem được gấu trúc ở vườn thú Ueno … 3 năm.
+1: というほどだ: đến mức; không hợp.
+2: というべきだ: nên nói là; không hợp.
+3: 〜ということだ: nghe nói là.
+4: というつもりだ không phải mẫu đúng.
+
+@m7_38
+T: Nếu là quyết định sau khi đã suy nghĩ kỹ thì tôi không phản đối.
+S: Nếu là quyết định … suy nghĩ kỹ thì tôi không phản đối.
+1: 限りの: hết mức; không hợp.
+2: ぬきの: bỏ qua; ngược nghĩa.
+3: Vた上での: sau khi đã.
+4: どころの không phải mẫu đúng.
+
+@m7_39
+T: Trông anh có vẻ mệt, hôm nay nghỉ sớm thì sao ạ?
+S: Trông anh có vẻ mệt, hôm nay … thì sao ạ?
+1: お休みしたら: khiêm nhường; sai hướng.
+2: お休みになったら: tôn kính.
+3: いただけたら: mình nhận; sai hướng.
+4: いただいたら: sai hướng.
+
+@m7_40
+T: Bị gót giày cao gót giẫm lên ngón chân, đau không chịu nổi.
+S: Bị gót giày cao gót giẫm lên ngón chân, … .
+1: 痛くないことでもない: không phải không đau; quá nhẹ.
+2: 痛くないどころだ không phải mẫu đúng.
+3: 痛い限りでもない không phải mẫu đúng.
+4: Aくてたまらない: … không chịu nổi.
+
+@m7_41
+T: Đã cẩn thận để không làm rơi ví, vậy mà vẫn bị mất.
+S: Đã cẩn thận … ví, vậy mà vẫn bị mất.
+1: つもりにと không phải mẫu đúng.
+2: Vないようにと: để không.
+3: はずにと không phải mẫu đúng.
+4: べきだと không phải mẫu đúng ở đây.
+
+@m7_42
+T: Dưới khẩu hiệu "cùng cố gắng", doanh số đã tăng dần.
+S: … "cùng cố gắng", doanh số đã tăng dần.
+1: とはいえ: tuy nói là; không hợp.
+2: Nのもとに: dưới (khẩu hiệu, lãnh đạo).
+3: として: với tư cách; không hợp.
+4: であって: là… và; không hợp.
+
+@m7_43
+T: Bài hát của anh ấy dù thử so với ca sĩ chuyên nghiệp cũng không khác nhiều.
+S: Bài hát của anh ấy … ca sĩ chuyên nghiệp cũng không khác nhiều.
+1: Vてみても: dù thử làm.
+2: ことなく: mà không; không hợp.
+3: てみたくも không phải mẫu đúng.
+4: わけなく: dễ dàng; không hợp.
+
+@m7_44
+T: Nói đến hình ảnh tiêu biểu cho nước Pháp thì có lẽ là tháp Eiffel.
+S: … nước Pháp thì có lẽ là tháp Eiffel.
+1: 〜というと: nói đến… thì.
+2: として: với tư cách; không hợp.
+3: とはいえ: tuy nói là; không hợp.
+4: といって: nói rằng; không hợp.
+
+@m8_45
+T: Đã là yokozuna thì chắc không thua liên tiếp đâu.
+1: 横綱の nối ngay sau あの.
+2: 連敗は đứng ở ô ★.
+3: ことだから đi sau 横綱の.
+4: しない đứng cuối, trước だろう.
+
+@m8_46
+T: Anh ấy chẳng những không phải thủ phạm, mà còn là người đầu tiên cứu hộ nạn nhân.
+1: 最初に đi sau どころか.
+2: どころか nối ngay sau 犯人.
+3: 救助活動 đứng cuối, trước をした人.
+4: 被害者の đứng ở ô ★.
+
+@m8_47
+T: Hôm nay tôi định gác chuyện công việc lại để uống vui vẻ.
+1: ぬきで đứng ở ô ★.
+2: 楽しく飲む đứng cuối, trước つもりだ.
+3: 話は đi sau 仕事の.
+4: 仕事の nối ngay sau 今日は.
+
+@m8_48
+T: Anh Nakayama là nhân viên đài truyền hình nhưng sẽ được huấn luyện với tư cách phi hành gia.
+1: 受ける đứng cuối, trước ことになった.
+2: 宇宙飛行士 nối ngay sau だが.
+3: 訓練を đứng ở ô ★.
+4: として đi sau 宇宙飛行士.
+
+@m8_49
+T: Trình độ tiếng Nhật của du học sinh càng tăng thì cạnh tranh thi đại học cũng càng khốc liệt.
+1: にしたがって đi sau 上がる.
+2: 大学受験の đứng ở ô ★.
+3: 上がる nối ngay sau レベルが.
+4: 競争も đứng cuối, trước きびしくなっている.
+
+@m9_50
+T: Khá là kích thích.
+S: … kích thích.
+1: そんなに: đến thế; cần vế phủ định ở đây.
+2: なかなか: khá là.
+3: とうとう: cuối cùng; không hợp.
+4: まして: huống chi; không hợp.
+
+@m9_51
+T: Ở một trường đại học, chưa được một tuần sau nhập học mà đã có sinh viên đến xin tư vấn: "Em không kết bạn được."
+S: Ở một trường đại học, … một tuần sau nhập học mà đã có sinh viên … xin tư vấn: "Em không kết bạn được."
+1: a しないうちに (chưa đầy), b きたそうだ (đã đến).
+2: できたそうだ: 相談にできた không có nghĩa.
+3: するうちに: trong lúc; không nhấn "chưa đầy".
+4: なったそうだ: 相談になった sai.
+
+@m9_52
+T: Nghe nói số sinh viên bỏ dở trường đại học vất vả mới vào được chỉ vì không kết bạn được đang tăng lên.
+S: Nghe nói số … bỏ dở … vất vả mới vào được chỉ vì không có … đang tăng lên.
+1: a 学生 sai: "bỏ sinh viên đã vào" không có nghĩa.
+2: a 学生 và c 大学 sai.
+3: a 大学, b 友達, c 学生.
+4: b 学生 và c 友達 sai.
+
+@m9_53
+T: Nghe nói sinh viên không chịu nổi sự xấu hổ vì không có bạn hơn là nỗi cô đơn.
+S: Nghe nói sinh viên … sự xấu hổ vì không có bạn hơn là nỗi cô đơn.
+1: 耐えるものだ: vốn phải chịu đựng; ngược ý.
+2: 耐えるしかない: chỉ còn cách chịu; không hợp.
+3: 耐えられないのだという: nghe nói không chịu nổi.
+4: 耐えていない: không chịu đựng; sắc thái khác.
+
+@m9_54
+T: Nhưng tình bạn giống như một loài cây chậm lớn.
+S: Nhưng tình bạn là … chậm lớn.
+1: だというもの không tự nhiên.
+2: Nのようなもの: giống như.
+3: っぽいこと: không dùng để ví von như vậy.
+4: らしいこと: không hợp.
+
+@P d14-passage
+Bạn bè là gì? Câu trả lời hẳn muôn hình vạn trạng, nhưng trong tác phẩm của cố nhà tâm lý học lâm sàng Kawai Hayao có câu thế này: "Người mà khi ta mang xác chết trong cốp xe đến lúc 12 giờ đêm và hỏi phải làm sao, sẽ im lặng cùng ta tính chuyện." (trích "Tình bạn của người lớn"). Khá là kích thích.
+Ở một trường đại học, chưa được một tuần sau nhập học mà đã có sinh viên đến xin tư vấn: "Em không kết bạn được." Cậu nói: "Em đã cố gắng mà không được." Ông Kawai ngạc nhiên trước câu chuyện ấy. Ngạc nhiên vì cậu nghĩ rằng chỉ cần cố gắng một tuần là có bạn.
+Nếu ông Kawai còn sống, không biết ông sẽ nghĩ gì. Nghe nói số sinh viên bỏ dở trường đại học vất vả mới vào được chỉ vì không kết bạn được đang tăng lên. Vì thế, một số trường đại học đã bắt đầu hỗ trợ việc "kết bạn".
+Nghe nói sinh viên không chịu nổi sự xấu hổ vì không có bạn hơn là nỗi cô đơn. Không muốn bị coi là "đứa u ám". Vì để ý ánh mắt xung quanh mà không dám ăn một mình ở căng tin. Rốt cuộc nghe nói có người còn ăn trong nhà vệ sinh, thật đáng kinh ngạc.
+Nhà văn Tsumura Kikuko đã viết trên báo Nikkei rằng gần đây "trông như không có bạn" có lẽ là lời mắng nhiếc cay nghiệt nhất với một người. Vì nó ám chỉ mọi sự phủ định, đâm vào tận gốc nhân cách. Trong thời buổi trông dịu dàng mà tàn nhẫn này, có vẻ không riêng gì sinh viên, ai cũng khó chịu đựng nổi sự cô độc.
+Nghe nói có sinh viên đăng ký hàng trăm "bạn" trong điện thoại để làm thuốc an thần. Nhưng tình bạn giống như một loài cây chậm lớn. Dù biết là lo xa, tôi vẫn bận lòng về tâm trạng tìm sự yên ổn bằng cách trưng hoa giả.
