@@ -3,11 +3,26 @@
 // Kết hợp: Intl.Segmenter native + Khử chia thể (De-inflection) + Kho từ điển hệ thống + Trích xuất từ lời giải
 
 import { examPlainText } from "./examText";
-import type { JLPTQuestion, JLPTSentencePart } from "../../data/exams/jlpt/types";
-import {
-  searchGlobalDictionary,
-  type DictionaryEntry,
-} from "../dictionary/localDictionaryIndex";
+import type { JLPTSentencePart } from "../../data/exams/jlpt/types";
+import type { DictionaryEntry } from "../dictionary/localDictionaryIndex";
+
+/**
+ * Nguồn tra từ được cắm vào lúc chạy (JL-04): module này không import từ điển
+ * để trang làm bài không phải tải gói registry 22,5 MB. Xem dictionaryLoader.ts.
+ */
+export type DictionarySearch = (filter: {
+  query: string;
+  language: "japanese";
+  subject?: "kanji" | "vocab" | "grammar";
+  limit?: number;
+}) => { results: DictionaryEntry[] };
+
+let searchGlobalDictionary: DictionarySearch = () => ({ results: [] });
+
+/** Đặt nguồn tra từ cho các hàm phân tích (lexicon thu gọn hoặc từ điển đầy đủ). */
+export function setDictionarySearch(fn: DictionarySearch) {
+  searchGlobalDictionary = fn;
+}
 
 /** Tập hợp các hư từ, trợ từ, trợ động từ đơn lẻ không nên hiển thị thành thẻ từ vựng độc lập */
 const STOP_WORDS = new Set([
@@ -23,7 +38,7 @@ const STOP_WORDS = new Set([
   "だけ", "しか", "ばかり", "こそ", "さえ", "すら", "でも", "だって",
   "のに", "ので", "から", "けれど", "けれども", "けど", "し", "たり", "だり", "ながら", "つつ",
   "これ", "それ", "あれ", "どれ", "この", "その", "あの", "どの", "ここ", "そこ", "あそこ", "どこ",
-  "私", "僕", "俺", "彼", "彼女", "自分", "人", "方", "일",
+  "私", "僕", "俺", "彼", "彼女", "自分", "人", "方",
 ]);
 
 /** Làm sạch từ, bỏ các ký hiệu đặc biệt của đề thi như [ ], ★, _, [[50]] */
@@ -441,37 +456,3 @@ export function analyzeSentenceComponents(
   return parts;
 }
 
-/**
- * Tạo câu tiếng Nhật hoàn chỉnh sau khi điền đáp án đúng (Dùng cho phần Chữa bài)
- */
-export function buildCompletedSentence(question: JLPTQuestion): string | null {
-  const correctOpt = question.options[question.answer - 1];
-  if (!correctOpt) return null;
-
-  // Mondai 8: Sắp xếp 4 mảnh vào câu có dấu ★
-  if (question.order && question.order.length === 4 && question.stem.includes("★")) {
-    let slotIdx = 0;
-    const orderedTexts = question.order.map((optNum) => question.options[optNum - 1] || "");
-    const replaced = question.stem.replace(/____|★/g, (match) => {
-      const piece = orderedTexts[slotIdx] || "";
-      slotIdx++;
-      return match === "★" ? `[★ ${piece}]` : piece;
-    });
-    return examPlainText(replaced).replace(/\s+/g, " ").trim();
-  }
-
-  // Mondai 3, 4, 7: Điền vào chỗ trống ( )
-  const fullWidthBlank = "（\u3000）";
-  if (question.stem.includes(fullWidthBlank)) {
-    return examPlainText(
-      question.stem.replace(fullWidthBlank, `[${correctOpt}]`),
-    ).trim();
-  }
-
-  // Mondai 6: Đề bài là 1 từ, đáp án đúng là cả 1 câu hoàn chỉnh
-  if (question.number >= 28 && question.number <= 32) {
-    return examPlainText(correctOpt).trim();
-  }
-
-  return examPlainText(question.stem).trim();
-}

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { startTransition, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   Link,
   useLocation,
@@ -48,8 +48,8 @@ import ExamQuestionCard from "./components/ExamQuestionCard";
 import SourceImage from "./components/SourceImage";
 import ExamText from "./components/ExamText";
 import WordLookupModal from "./components/WordLookupModal";
+import { prefetchLexicon } from "../../lib/dictionary/dictionaryLoader";
 import SelectionLookup from "./components/SelectionLookup";
-import { lookupWordInDictionary } from "../../lib/jlpt/sentenceAnalyzer";
 import { useAttemptKeyboard } from "./workspace/useAttemptKeyboard";
 import { describeAttempt } from "../../lib/jlpt/attemptLabels";
 import QuestionPalette from "./workspace/QuestionPalette";
@@ -208,6 +208,14 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
 
   const submitted = active?.status === "submitted";
   const result = active && submitted ? score(active) : null;
+
+  // JL-04: nạp trước lexicon lúc rảnh cho luyện, xem đề, kết quả.
+  // Bài có giờ đang chạy chỉ nạp khi dùng trợ giúp; thi nghiêm túc không nạp gì.
+  const shouldPrefetchLexicon =
+    !!exam && (mode === "drill" || mode === "review" || submitted);
+  useEffect(() => {
+    if (shouldPrefetchLexicon) prefetchLexicon();
+  }, [shouldPrefetchLexicon]);
 
   const groups = useMemo(
     () => (exam ? units(exam, active?.questionIds) : []),
@@ -1762,13 +1770,10 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
             <button
               className="exam-primary"
               onClick={() => {
+                // JL-15: chỉ mở danh sách, không tự mở lời giải nào
                 const next = !reviewing;
+                if (next) setFilter("all");
                 setReviewing(next);
-                if (next && expanded.length === 0) {
-                  setExpanded(
-                    exam.mondais.flatMap((m) => m.questions.map((q) => q.id)),
-                  );
-                }
               }}
             >
               <Eye size={15} />
@@ -1777,13 +1782,20 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
             <button
               className="exam-secondary"
               onClick={() => {
+                // JL-15: chỉ mở lời giải của đúng các câu sai
                 setFilter("wrong");
                 setReviewing(true);
-                if (expanded.length === 0) {
-                  setExpanded(
-                    exam.mondais.flatMap((m) => m.questions.map((q) => q.id)),
-                  );
-                }
+                setExpanded(
+                  exam.mondais.flatMap((m) =>
+                    m.questions
+                      .filter(
+                        (q) =>
+                          !!active?.answers[q.id] &&
+                          active.answers[q.id] !== q.answer,
+                      )
+                      .map((q) => q.id),
+                  ),
+                );
               }}
             >
               Xem câu sai
@@ -2023,8 +2035,11 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                 type="button"
                 className="exam-secondary !py-1.5 !px-3 !min-h-9 text-xs"
                 onClick={() =>
-                  setExpanded(
-                    exam.mondais.flatMap((m) => m.questions.map((q) => q.id)),
+                  // JL-15: render ngắt quãng được, không khóa trang khi mở 54 lời giải
+                  startTransition(() =>
+                    setExpanded(
+                      exam.mondais.flatMap((m) => m.questions.map((q) => q.id)),
+                    ),
                   )
                 }
               >
@@ -2194,7 +2209,6 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
       <WordLookupModal
         isOpen={!!lookup}
         word={lookup || ""}
-        entry={lookup ? lookupWordInDictionary(lookup) : null}
         onAssistProvided={() => {
           const ctx = lookupContextRef.current;
           if (ctx && ctx.attemptId) {

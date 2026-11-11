@@ -2,9 +2,13 @@ import { useSyncExternalStore } from "react";
 import {
   decodeSession,
   reconcile,
+  SESSION_CONTENT_KEY,
   SESSION_KEY,
+  SESSION_STATE_KEY,
   type Attempt,
 } from "./examCore.ts";
+/** ID lượt đã ghi bản chụp đề; khác ID hiện tại thì mới ghi lại content (JL-20) */
+let writtenContentId: string | null = null;
 let current: Attempt | null = null;
 let notice = "";
 let noticeKind: "info" | "warning" = "info";
@@ -31,18 +35,32 @@ function emit() {
   listeners.forEach((fn) => fn());
 }
 function removeStored() {
+  writtenContentId = null;
   try {
     sessionStorage.removeItem(SESSION_KEY);
+    sessionStorage.removeItem(SESSION_CONTENT_KEY);
+    sessionStorage.removeItem(SESSION_STATE_KEY);
     return true;
   } catch {
     return false;
   }
 }
+/** Ghi phiên v2: bản chụp đề chỉ ghi khi đổi lượt, trạng thái ghi mỗi lần (JL-20). */
 function persist() {
+  if (!current) return;
   try {
+    if (writtenContentId !== current.id) {
+      sessionStorage.setItem(
+        SESSION_CONTENT_KEY,
+        JSON.stringify({ v: 2, attemptId: current.id, exam: current.exam }),
+      );
+      writtenContentId = current.id;
+    }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { exam: _exam, ...state } = current;
     sessionStorage.setItem(
-      SESSION_KEY,
-      JSON.stringify({ version: 1, attempt: current }),
+      SESSION_STATE_KEY,
+      JSON.stringify({ v: 2, attempt: state }),
     );
     if (noticeKind === "warning" && notice.startsWith("Đang giữ bài"))
       setNotice("", "info");
@@ -55,14 +73,42 @@ function persist() {
     );
   }
 }
+/** Đọc phiên đã lưu: ưu tiên v2 (hai khóa), sau đó v1 (một khóa). Trả về chuỗi JSON dạng v1/v2 cho decodeSession. */
+function readStored(): { raw: string; legacy: boolean } | null {
+  const content = sessionStorage.getItem(SESSION_CONTENT_KEY);
+  const state = sessionStorage.getItem(SESSION_STATE_KEY);
+  if (content && state) {
+    const c = JSON.parse(content) as { v: number; attemptId: string; exam: Attempt["exam"] };
+    const st = JSON.parse(state) as { v: number; attempt: Omit<Attempt, "exam"> };
+    if (c.v !== 2 || st.v !== 2 || c.attemptId !== st.attempt?.id)
+      throw new Error("Phiên v2 không khớp");
+    return {
+      raw: JSON.stringify({ version: 2, attempt: { ...st.attempt, exam: c.exam } }),
+      legacy: false,
+    };
+  }
+  const legacy = sessionStorage.getItem(SESSION_KEY);
+  return legacy ? { raw: legacy, legacy: true } : null;
+}
 export function loadSession() {
   if (initialized) return;
   initialized = true;
   try {
-    const raw = sessionStorage.getItem(SESSION_KEY);
-    if (raw) {
-      current = decodeSession(raw);
-      if (current) persist();
+    const stored = readStored();
+    if (stored) {
+      current = decodeSession(stored.raw);
+      if (current) {
+        if (!stored.legacy) writtenContentId = current.id;
+        persist();
+        // Đã chuyển sang v2 thì bỏ khóa v1 (không xóa phiên hợp lệ)
+        if (stored.legacy && writtenContentId === current.id) {
+          try {
+            sessionStorage.removeItem(SESSION_KEY);
+          } catch {
+            /* giữ nguyên nếu không xóa được */
+          }
+        }
+      }
       else {
         removeStored();
         setNotice("Phiên tạm đã hết hạn.", "warning");

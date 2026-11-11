@@ -20,17 +20,28 @@ import type {
   QuickSaveStatus,
 } from "../../../lib/dictionary/multiBookLookup";
 import { speakWithVoiceEngine } from "../../../lib/audio/voiceEngine";
+import { loadFullDictionary } from "../../../lib/dictionary/dictionaryLoader";
+import { lookupWordInDictionary } from "../../../lib/jlpt/sentenceAnalyzer";
 
 type MultiBookModule = typeof import("../../../lib/dictionary/multiBookLookup");
 let cachedMultiBookMod: MultiBookModule | null = null;
-const preloadMultiBookPromise = import(
-  "../../../lib/dictionary/multiBookLookup"
-)
-  .then((m) => {
-    cachedMultiBookMod = m;
-    return m;
-  })
-  .catch(() => null);
+let multiBookPromise: Promise<MultiBookModule> | null = null;
+// Chỉ tải khi mở hộp tra từ lần đầu (JL-04) — gói này kéo theo từ điển đầy đủ.
+function loadMultiBook(): Promise<MultiBookModule> {
+  if (cachedMultiBookMod) return Promise.resolve(cachedMultiBookMod);
+  if (!multiBookPromise) {
+    multiBookPromise = import("../../../lib/dictionary/multiBookLookup").then(
+      (m) => {
+        cachedMultiBookMod = m;
+        return m;
+      },
+    );
+    multiBookPromise.catch(() => {
+      multiBookPromise = null;
+    });
+  }
+  return multiBookPromise;
+}
 
 type ItemSaveState = {
   status: "unsaved" | "saving" | QuickSaveStatus;
@@ -49,7 +60,8 @@ type SaveBannerState = {
 type Props = {
   isOpen?: boolean;
   word: string;
-  entry: DictionaryEntry | null;
+  /** Nếu không truyền, hộp tự tra trong từ điển (tải khi mở lần đầu). */
+  entry?: DictionaryEntry | null;
   onClose: () => void;
   onAssistProvided?: () => void;
 };
@@ -57,7 +69,7 @@ type Props = {
 export default function WordLookupModal({
   isOpen = true,
   word,
-  entry,
+  entry: entryProp,
   onClose,
   onAssistProvided,
 }: Props) {
@@ -79,6 +91,12 @@ export default function WordLookupModal({
     {},
   );
   const [saveBanner, setSaveBanner] = useState<SaveBannerState>(null);
+  const [resolvedEntry, setResolvedEntry] = useState<DictionaryEntry | null>(
+    null,
+  );
+  const [dictError, setDictError] = useState(false);
+  const [retryTick, setRetryTick] = useState(0);
+  const entry = entryProp ?? resolvedEntry;
 
   useEffect(() => {
     const dialog = ref.current;
@@ -102,6 +120,7 @@ export default function WordLookupModal({
     setItemSaveMap({});
 
     const cleanWord = word.trim();
+    setResolvedEntry(null);
     if (!isOpen || !cleanWord) {
       setGroups([]);
       setTotalBooks(0);
@@ -109,11 +128,11 @@ export default function WordLookupModal({
       return;
     }
 
-    if (entry) {
-      onAssistRef.current?.();
-    }
-
-    const applyLocalLookup = (mod: MultiBookModule) => {
+    const applyLocalLookup = (
+      mod: MultiBookModule,
+      entry: DictionaryEntry | null,
+    ) => {
+      setResolvedEntry(entry);
       const res = mod.lookupInSystemMultiBook(cleanWord);
       setGroups(res.groups);
       setTotalBooks(res.totalBooks);
@@ -157,25 +176,30 @@ export default function WordLookupModal({
       setItemSaveMap(nextMap);
     };
 
-    if (cachedMultiBookMod) {
-      applyLocalLookup(cachedMultiBookMod);
+    let cancelled = false;
+    setDictError(false);
+    if (cachedMultiBookMod && (entryProp !== undefined)) {
+      applyLocalLookup(cachedMultiBookMod, entryProp);
       return;
     }
-
-    let cancelled = false;
     setIsPreparingDict(true);
-    preloadMultiBookPromise.then((mod) => {
-      if (cancelled || !mod) {
+    Promise.all([loadMultiBook(), entryProp === undefined ? loadFullDictionary() : null])
+      .then(([mod]) => {
+        if (cancelled) return;
+        const found =
+          entryProp !== undefined ? entryProp : lookupWordInDictionary(cleanWord);
+        applyLocalLookup(mod, found);
+      })
+      .catch(() => {
+        if (cancelled) return;
         setIsPreparingDict(false);
-        return;
-      }
-      applyLocalLookup(mod);
-    });
+        setDictError(true);
+      });
 
     return () => {
       cancelled = true;
     };
-  }, [isOpen, word, entry]);
+  }, [isOpen, word, entryProp, retryTick]);
 
   const handleLookupOnline = async () => {
     const targetWord = word.trim();
@@ -410,7 +434,26 @@ export default function WordLookupModal({
         {isPreparingDict && !entry && groups.length === 0 && (
           <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200/70 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-300 flex items-center gap-2">
             <Loader2 size={14} className="animate-spin text-indigo-500" />
-            <span>Đang chuẩn bị chỉ mục từ điển…</span>
+            <span>Đang tải từ điển…</span>
+          </div>
+        )}
+
+        {dictError && !entry && groups.length === 0 && (
+          <div
+            role="alert"
+            className="p-3.5 rounded-2xl bg-rose-50 dark:bg-rose-950/30 border border-rose-200/70 dark:border-rose-900/50 text-xs text-rose-800 dark:text-rose-200 flex items-center justify-between gap-2"
+          >
+            <span className="flex items-center gap-2">
+              <AlertCircle size={14} className="shrink-0" />
+              Không tải được từ điển
+            </span>
+            <button
+              type="button"
+              onClick={() => setRetryTick((n) => n + 1)}
+              className="inline-flex items-center gap-1 rounded-lg px-2.5 py-1 font-bold bg-white dark:bg-slate-900 border border-rose-200 dark:border-rose-800 hover:bg-rose-100 dark:hover:bg-rose-900/40"
+            >
+              <RefreshCw size={12} /> Thử lại
+            </button>
           </div>
         )}
 

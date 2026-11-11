@@ -12,6 +12,8 @@ import {
   validateExam,
   TTL,
   SESSION_KEY,
+  SESSION_CONTENT_KEY,
+  SESSION_STATE_KEY,
 } from "../src/lib/jlpt/examCore.ts";
 import { parseExamText, examPlainText } from "../src/lib/jlpt/examText.ts";
 const exam = JSON.parse(
@@ -92,7 +94,7 @@ test("corrupt, incompatible and malformed sessions fail safely", () => {
   assert.throws(() => decodeSession("{"));
   const a = createAttempt(exam, "mock", undefined, now);
   assert.throws(() =>
-    decodeSession(JSON.stringify({ version: 2, attempt: a }), now),
+    decodeSession(JSON.stringify({ version: 3, attempt: a }), now),
   );
   a.deadlineAt++;
   assert.throws(() =>
@@ -123,12 +125,25 @@ test("tab store replaces a single slot, preserves other keys, and falls back to 
   const a = createAttempt(exam, "mock");
   store.setSession(a);
   assert.equal(store.getSession().id, a.id);
-  assert.ok(data.has(SESSION_KEY));
+  assert.ok(data.has(SESSION_CONTENT_KEY) && data.has(SESSION_STATE_KEY));
+  assert.equal(data.has(SESSION_KEY), false);
+  // JL-20: đổi đáp án chỉ ghi khóa trạng thái, không ghi lại bản chụp đề
+  const writes = [];
+  const realSet = globalThis.sessionStorage.setItem;
+  globalThis.sessionStorage.setItem = (k, v) => {
+    writes.push(k);
+    realSet(k, v);
+  };
+  store.setSession(answer(a, a.questionIds[0], 2));
+  assert.deepEqual(writes, [SESSION_STATE_KEY]);
+  assert.ok(data.get(SESSION_STATE_KEY).length < 20000);
+  globalThis.sessionStorage.setItem = realSet;
   const b = createAttempt(exam, "drill");
   blocked = true;
   store.setSession(b);
   assert.equal(store.getSession().id, b.id);
-  assert.equal(data.has(SESSION_KEY), false);
+  assert.equal(data.has(SESSION_CONTENT_KEY), false);
+  assert.equal(data.has(SESSION_STATE_KEY), false);
   store.setSession(null);
   assert.equal(store.getSession(), null);
   assert.equal(data.get("currentRaceId"), "keep");
@@ -432,4 +447,52 @@ test("8.5 & 8.4: duration format and attempt labels", () => {
   const d = describeAttempt(a, now + 60_000);
   assert.equal(d.title, "第1日 (Day 1) · Bài có giờ");
   assert.equal(d.status, "Còn 49:00 · 0/54 câu");
+});
+
+test("13.2: a v1 session migrates to v2 keys and keeps answers", async () => {
+  const data = new Map();
+  globalThis.sessionStorage = {
+    getItem: (k) => data.get(k) ?? null,
+    setItem: (k, v) => data.set(k, v),
+    removeItem: (k) => data.delete(k),
+  };
+  const a = answer(createAttempt(exam, "drill"), exam.mondais[0].questions[0].id, 3);
+  data.set(SESSION_KEY, JSON.stringify({ version: 1, attempt: a }));
+  const store = await import("../src/lib/jlpt/tabSession.ts?migrate");
+  const restored = store.getSession();
+  assert.equal(restored.id, a.id);
+  assert.equal(restored.answers[exam.mondais[0].questions[0].id], 3);
+  assert.ok(data.has(SESSION_CONTENT_KEY) && data.has(SESSION_STATE_KEY));
+  assert.equal(data.has(SESSION_KEY), false);
+});
+
+test("13.3: grouping 1,080 questions stays fast", async () => {
+  const { buildPracticePool } = await import("../src/lib/jlpt/practicePool.ts");
+  const dir = new URL("../src/data/exams/jlpt/n2/kokusho-20days/", import.meta.url);
+  const all = fs.readdirSync(dir).filter((f) => f.endsWith(".json")).sort()
+    .map((f) => JSON.parse(fs.readFileSync(new URL(f, dir), "utf8")));
+  const pool = buildPracticePool(all);
+  const a = createAttempt(pool, "drill");
+  const t0 = performance.now();
+  units(pool, a.questionIds);
+  score(a);
+  assert.ok(performance.now() - t0 < 50, `took ${performance.now() - t0} ms`);
+});
+
+test("13.1: lexicon search keeps recorded order and falls back to exact term/reading", async () => {
+  const { createLexiconSearch } = await import("../src/lib/dictionary/lexiconSearch.ts");
+  const e = (id, term, reading, subject = "vocab") => ({ id, term, reading, meaning: id, subject, template: "japanese", courseId: "c", courseName: "C" });
+  const entries = [e("a", "仲", "なか", "kanji"), e("b", "仲", "なか"), e("c", "頃", "ころ")];
+  const search = createLexiconSearch(entries, { "仲|": ["b", "a"] });
+  assert.deepEqual(search({ query: "仲", language: "japanese" }).results.map((r) => r.id), ["b", "a"]);
+  assert.deepEqual(search({ query: "ころ", language: "japanese" }).results.map((r) => r.id), ["c"]);
+  assert.deepEqual(search({ query: "なか", language: "japanese", subject: "kanji" }).results.map((r) => r.id), ["a"]);
+  assert.equal(search({ query: "無", language: "japanese" }).results.length, 0);
+});
+
+test("13.1: committed lexicon covers the analyzer queries of every question", () => {
+  const lex = JSON.parse(fs.readFileSync(new URL("../src/data/dictionary/jlpt-n2-kokusho-lexicon.json", import.meta.url), "utf8"));
+  assert.ok(lex.entries.length > 1000);
+  const ids = new Set(lex.entries.map((x) => x.id));
+  for (const list of Object.values(lex.queries)) for (const id of list) assert.ok(ids.has(id), id);
 });

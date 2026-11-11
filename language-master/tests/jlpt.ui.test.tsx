@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { act, cleanup, render, screen } from "@testing-library/react";
+import { act, cleanup, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import type { JLPTExam } from "../src/data/exams/jlpt/types";
@@ -79,6 +79,14 @@ vi.mock("../src/data/exams/jlpt", async () => {
 });
 vi.mock("../src/lib/jlpt/sentenceAnalyzer", () => ({
   lookupWordInDictionary: () => null,
+  setDictionarySearch: () => undefined,
+}));
+vi.mock("../src/lib/dictionary/dictionaryLoader", () => ({
+  loadLexicon: () => Promise.resolve(),
+  loadFullDictionary: () => Promise.resolve(),
+  prefetchLexicon: () => undefined,
+  useDictionaryLevel: () => "lexicon",
+  getDictionaryLevel: () => "lexicon",
 }));
 vi.mock("../src/lib/audio/voiceEngine", () => ({
   speakWithVoiceEngine: vi.fn(),
@@ -281,6 +289,23 @@ describe.each(exams.map((e) => [e.day, e] as const))("Day %s", (_day, exam) => {
     for (const option of screen.getAllByRole("radio"))
       expect((option as HTMLInputElement).disabled).toBe(true);
     expect(JSON.stringify(getSession()?.answers)).toBe(saved);
+  });
+  it("JL-15: Xem lại bài opens no explanation; Xem câu sai opens only wrong ones", async () => {
+    const user = userEvent.setup();
+    const qs = exams[0].mondais[0].questions.slice(0, 3);
+    const a = createAttempt(exams[0], "mock", qs.map((q) => q.id));
+    a.answers[qs[0].id] = qs[0].answer;
+    a.answers[qs[1].id] = (qs[1].answer % 4) + 1;
+    act(() => setSession(finish(a)));
+    open(exams[0], "result");
+    await user.click(screen.getByRole("button", { name: "Xem lại bài" }));
+    expect(screen.queryAllByText(/^Đáp án:/).length).toBe(0);
+    expect(
+      screen.getAllByRole("button", { name: "Xem đáp án & lời giải" }).length,
+    ).toBe(3);
+    await user.click(screen.getByRole("button", { name: "Thu gọn bài" }));
+    await user.click(screen.getByRole("button", { name: "Xem câu sai" }));
+    expect(screen.getAllByText(/^Đáp án:/).length).toBe(1);
   });
   it("keeps passage and five final questions in one drill unit", async () => {
     const user = userEvent.setup();
@@ -526,8 +551,11 @@ describe("audit regression fixes", () => {
         }),
       );
     });
-    expect(getSession()?.assisted).toContain(
-      exams[0].mondais[0].questions[0].id,
+    // Từ điển tải theo nhu cầu (JL-04) nên dấu "đã tra" đến sau khi có kết quả
+    await waitFor(() =>
+      expect(getSession()?.assisted).toContain(
+        exams[0].mondais[0].questions[0].id,
+      ),
     );
 
     // Pressing "1" while lookup modal is open should NOT select option 1

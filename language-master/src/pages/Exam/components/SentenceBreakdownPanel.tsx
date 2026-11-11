@@ -1,5 +1,5 @@
 // src/pages/Exam/components/SentenceBreakdownPanel.tsx
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Sparkles, Volume2, Search } from "lucide-react";
 import type { JLPTSentencePart } from "../../../data/exams/jlpt/types";
 import {
@@ -7,6 +7,35 @@ import {
   cleanJapaneseWord,
 } from "../../../lib/jlpt/sentenceAnalyzer";
 import { speakWithVoiceEngine } from "../../../lib/audio/voiceEngine";
+import {
+  loadLexicon,
+  useDictionaryLevel,
+} from "../../../lib/dictionary/dictionaryLoader";
+
+/** true khi phần tử đã ở gần khung nhìn (cách 600px) — chỉ phân tích câu khi cần. */
+function useNearViewport<T extends Element>() {
+  const ref = useRef<T | null>(null);
+  const [near, setNear] = useState(
+    () => typeof IntersectionObserver === "undefined",
+  );
+  useEffect(() => {
+    if (near) return;
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setNear(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "600px 0px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [near]);
+  return [ref, near] as const;
+}
 
 interface Props {
   stem: string;
@@ -21,11 +50,38 @@ export default function SentenceBreakdownPanel({
   explanationVi,
   onWordClick,
 }: Props) {
-  // Phân tích tự động kết hợp từ lời giải + kho từ điển (loại bỏ 100% ô rỗng)
-  const parts = useMemo(() => {
-    return analyzeSentenceComponents(stem, sentenceBreakdown, explanationVi);
-  }, [stem, sentenceBreakdown, explanationVi]);
+  const [anchorRef, near] = useNearViewport<HTMLDivElement>();
+  const level = useDictionaryLevel();
+  const [loadFailed, setLoadFailed] = useState(false);
 
+  useEffect(() => {
+    if (!near || level !== "none") return;
+    let cancelled = false;
+    loadLexicon().catch(() => {
+      if (!cancelled) setLoadFailed(true);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [near, level]);
+
+  // Phân tích tự động kết hợp từ lời giải + kho từ điển (loại bỏ 100% ô rỗng).
+  // Chỉ chạy khi panel gần khung nhìn và từ điển (lexicon) đã sẵn sàng.
+  const ready = near && (level !== "none" || loadFailed);
+  const parts = useMemo(() => {
+    if (!ready) return [];
+    return analyzeSentenceComponents(stem, sentenceBreakdown, explanationVi);
+    // level: phân tích lại khi từ điển nâng cấp lên bản đầy đủ
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ready, level, stem, sentenceBreakdown, explanationVi]);
+
+  if (!near) return <div ref={anchorRef} aria-hidden="true" className="h-px" />;
+  if (!ready)
+    return (
+      <p className="mt-3 text-xs text-slate-500 dark:text-slate-400">
+        Đang phân tích từ vựng…
+      </p>
+    );
   if (parts.length === 0) return null;
 
   const handleSpeak = (text: string) => {

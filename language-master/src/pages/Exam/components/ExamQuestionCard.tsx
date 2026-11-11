@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Suspense, lazy, useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowRight,
   BookOpen,
@@ -17,7 +17,6 @@ import type {
 } from "../../../data/exams/jlpt/types";
 import SourceImage from "./SourceImage";
 import ExamText from "./ExamText";
-import SentenceBreakdownPanel from "./SentenceBreakdownPanel";
 import { speakWithVoiceEngine } from "../../../lib/audio/voiceEngine";
 import {
   buildCompletedSentence,
@@ -25,6 +24,9 @@ import {
   examPlainText,
   sentenceTranslationCache,
 } from "../../../lib/jlpt/examText";
+
+// Phần phân tích từ vựng nặng: tách gói, chỉ tải khi lời giải được mở (JL-04, 9.4)
+const SentenceBreakdownPanel = lazy(() => import("./SentenceBreakdownPanel"));
 
 type Props = {
   question: JLPTQuestion;
@@ -569,12 +571,20 @@ export default function ExamQuestionCard({
 
           {/* Tier 3: Smart Vocabulary & Grammar Breakdown (Zero Empty Cards) */}
           {textReady && (
-            <SentenceBreakdownPanel
-              stem={q.stem}
-              sentenceBreakdown={q.sentenceBreakdown}
-              explanationVi={q.explanation?.vi}
-              onWordClick={onWordLookup}
-            />
+            <Suspense
+              fallback={
+                <p className="mt-3 text-xs text-slate-500 dark:text-slate-400">
+                  Đang phân tích từ vựng…
+                </p>
+              }
+            >
+              <SentenceBreakdownPanel
+                stem={q.stem}
+                sentenceBreakdown={q.sentenceBreakdown}
+                explanationVi={q.explanation?.vi}
+                onWordClick={onWordLookup}
+              />
+            </Suspense>
           )}
 
           {/* Subtle Source & AI Reference Footer */}

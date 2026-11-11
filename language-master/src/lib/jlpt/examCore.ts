@@ -4,6 +4,9 @@ import type {
   JLPTQuestion,
 } from "../../data/exams/jlpt/types";
 export const SESSION_KEY = "language-master:jlpt:v1:session";
+/** Phiên v2 (JL-20): bản chụp đề ghi một lần, trạng thái ghi mỗi lần thay đổi */
+export const SESSION_CONTENT_KEY = "language-master:jlpt:v2:content";
+export const SESSION_STATE_KEY = "language-master:jlpt:v2:state";
 export const TTL = 86400000;
 export type Unit = {
   id: string;
@@ -29,31 +32,47 @@ export type Attempt = {
   reason?: "manual" | "timeout";
   /** Bài có giờ ở chế độ thi nghiêm túc: tắt mọi trợ giúp khi đang làm */
   strict?: boolean;
+  /** Cấu hình lượt luyện từ ngân hàng, để "Trộn lượt mới" giữ cấu hình (JL-09) */
+  config?: AttemptRoundConfig;
+};
+export type AttemptRoundConfig = {
+  mondais: number[];
+  allocationMode: "standard" | "total" | "per_mondai";
+  totalCount: number | "all";
+  perMondaiCount: number;
+  dayFilter: number | "all";
 };
 export function units(exam: JLPTExam, ids?: string[]): Unit[] {
   const result: Unit[] = [];
+  const byId = new Map<string, Unit>();
   for (const mondai of exam.mondais)
     for (const q of mondai.questions) {
       const id = q.passageId ? `${mondai.number}:${q.passageId}` : q.id;
-      let unit = result.find((u) => u.id === id);
+      let unit = byId.get(id);
       if (!unit) {
         unit = { id, mondai, questions: [] };
+        byId.set(id, unit);
         result.push(unit);
       }
       unit.questions.push(q);
     }
   if (!ids) return result;
   const rank = new Map(ids.map((id, i) => [id, i]));
-  const firstRank = (u: Unit) =>
-    Math.min(...u.questions.map((q) => rank.get(q.id) ?? Infinity));
+  const firstRank = new Map(
+    result.map((u) => [
+      u,
+      Math.min(...u.questions.map((q) => rank.get(q.id) ?? Infinity)),
+    ]),
+  );
   return result
-    .filter((u) => u.questions.some((q) => rank.has(q.id)))
-    .sort((a, b) => firstRank(a) - firstRank(b));
+    .filter((u) => firstRank.get(u)! !== Infinity)
+    .sort((a, b) => firstRank.get(a)! - firstRank.get(b)!);
 }
 export function questions(a: Attempt) {
+  const ids = new Set(a.questionIds);
   return a.exam.mondais
     .flatMap((m) => m.questions)
-    .filter((q) => a.questionIds.includes(q.id));
+    .filter((q) => ids.has(q.id));
 }
 export function createAttempt(
   exam: JLPTExam,
@@ -242,7 +261,7 @@ export function decodeSession(raw: string, now = Date.now()): Attempt | null {
   const e = JSON.parse(raw) as { version: number; attempt: Attempt },
     a = e.attempt;
   if (
-    e.version !== 1 ||
+    (e.version !== 1 && e.version !== 2) ||
     !a ||
     validateExam(a.exam).length ||
     !["drill", "mock"].includes(a.mode) ||
@@ -285,6 +304,21 @@ export function decodeSession(raw: string, now = Date.now()): Attempt | null {
     throw new Error("Hạn sai");
   if (a.mode === "drill" && a.deadlineAt !== undefined)
     throw new Error("Hạn luyện sai");
+  if (a.strict !== undefined && (typeof a.strict !== "boolean" || a.mode !== "mock"))
+    throw new Error("Cờ thi nghiêm túc sai");
+  if (a.config !== undefined) {
+    const c = a.config;
+    if (
+      !c ||
+      !Array.isArray(c.mondais) ||
+      c.mondais.some((n) => !Number.isInteger(n) || n < 1 || n > 9) ||
+      !["standard", "total", "per_mondai"].includes(c.allocationMode) ||
+      !(c.totalCount === "all" || (Number.isInteger(c.totalCount) && c.totalCount > 0)) ||
+      !(Number.isInteger(c.perMondaiCount) && c.perMondaiCount > 0) ||
+      !(c.dayFilter === "all" || (Number.isInteger(c.dayFilter) && c.dayFilter > 0))
+    )
+      throw new Error("Cấu hình lượt sai");
+  }
   if (
     a.status === "submitted" &&
     (!Number.isFinite(a.endedAt) ||
