@@ -10,7 +10,6 @@ import {
   Sparkles,
   Trophy,
 } from "lucide-react";
-import "./exam.css";
 
 const upcomingLanguages = [
   {

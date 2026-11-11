@@ -27,7 +27,6 @@ import {
   setSession,
   useTabSession,
 } from "../../lib/jlpt/tabSession";
-import "./exam.css";
 import { useConfirmation } from "./components/useConfirmation";
 import {
   canCreateStandardMock,

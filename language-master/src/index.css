@@ -1,5 +1,49 @@
 @tailwind base;
 @tailwind components;
+
+/* Lớp component của phần Luyện đề (chuyển từ src/pages/Exam/exam.css) */
+@layer components {
+  .exam-shell {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-28 text-slate-900 dark:text-slate-100;
+  }
+  .exam-card {
+    @apply p-5 sm:p-6 rounded-3xl border border-slate-200/80 dark:border-slate-700/70 bg-white dark:bg-slate-800 shadow-sm transition-all;
+  }
+  .exam-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2.5 min-h-11 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold text-sm shadow-sm shadow-indigo-500/20 transition-all active:scale-[0.99] disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .exam-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-3.5 py-2 min-h-11 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold text-sm hover:border-indigo-400 dark:hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-300 transition-all disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .exam-input {
+    @apply px-3.5 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/70 text-slate-900 dark:text-slate-100 text-sm font-medium focus:bg-white dark:focus:bg-slate-800 focus:border-indigo-500 transition-all;
+  }
+  .exam-option {
+    @apply w-full rounded-2xl border-2 border-slate-200/90 dark:border-slate-700/80 p-4 text-left text-lg leading-7 bg-white dark:bg-slate-800/90 hover:border-indigo-300 dark:hover:border-indigo-700 transition-all;
+  }
+  .exam-selected {
+    @apply border-indigo-600 dark:border-indigo-500 bg-indigo-50/80 dark:bg-indigo-950/60 shadow-sm;
+  }
+  .exam-correct {
+    @apply border-emerald-600 dark:border-emerald-500 bg-emerald-50/90 dark:bg-emerald-950/60;
+  }
+  .exam-wrong {
+    @apply border-rose-600 dark:border-rose-500 bg-rose-50/90 dark:bg-rose-950/60;
+  }
+  .exam-eyebrow {
+    @apply inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800/50;
+  }
+  .exam-toolbar {
+    @apply sticky top-16 z-20 flex flex-wrap items-center gap-3 p-3.5 mb-5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md shadow-sm;
+  }
+  .exam-shell button:focus-visible,
+  .exam-shell a:focus-visible,
+  .exam-shell input:focus-visible,
+  .exam-shell select:focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-indigo-500;
+  }
+}
+
 @tailwind utilities;
 
 /* Custom Scrollbar Siêu Mỏng, Hiện Đại */

@@ -51,7 +51,6 @@ import ExamText from "./components/ExamText";
 import WordLookupModal from "./components/WordLookupModal";
 import SelectionLookup from "./components/SelectionLookup";
 import { lookupWordInDictionary } from "../../lib/jlpt/sentenceAnalyzer";
-import "./exam.css";
 
 type Mode = "drill" | "mock" | "review" | "detail" | "result";
 
