@@ -1,0 +1,446 @@
+@m1_01
+T: Loại cá này nổi tiếng là ngon khi phơi khô.
+W: 干す | ほす | CAN | phơi khô
+1: かした là 貸した: cho mượn.
+2: ほした: thể た của 干す, phơi khô.
+3: かんした: đọc On; sai.
+4: ほんした không phải cách đọc.
+
+@m1_02
+T: Cậu bé ngã trên đường, bị trầy trán.
+W: 額 | ひたい | NGẠCH | trán
+1: ひたい: cách đọc Kun của 額, trán.
+2: あご là 顎: cằm.
+3: ほほ là 頬: má.
+4: かお là 顔: mặt.
+
+@m1_03
+T: Không hiểu sao bi kịch của Shakespeare lại có sức vượt thời đại.
+W: 悲劇 | ひげき | BI KỊCH | bi kịch
+1: ぎげき: 悲 không đọc ぎ.
+2: きげき là 喜劇 (hài kịch); khác chữ.
+3: びげき: 悲 không đục.
+4: ひげき: 悲 ひ + 劇 げき.
+
+@m1_04
+T: Cây xương rồng này dù không tưới nhiều nước cũng không chết khô.
+W: 枯れる | かれる | KHÔ | khô héo, chết (cây)
+1: きれる là 切れる: đứt.
+2: しおれる: héo rũ; nghĩa gần nhưng không phải cách đọc 枯.
+3: かれる: cách đọc của 枯れる.
+4: かすれる là 掠れる: khàn, mờ.
+
+@m1_05
+T: Từ sâu trong ngăn kéo bàn, không ngờ lại lòi ra bức thư tình nhận ngày xưa.
+W: 奥 | おく | ÁO | phía sâu bên trong
+1: あく không phải cách đọc của 奥.
+2: そく không phải cách đọc của 奥.
+3: おく: cách đọc của 奥.
+4: のく không phải cách đọc.
+
+@m2_06
+T: Đứa trẻ bị đuối nước ở biển nhưng được cứu ngay nên đã thoát nạn.
+W: 救助 | きゅうじょ | CỨU TRỢ | cứu hộ
+1: 急 (CẤP); 急助 không phải từ có thật.
+2: 救助: cứu hộ.
+3: 求 (CẦU); 求助 không phải từ có thật.
+4: 級 (CẤP); 級助 không phải từ có thật.
+
+@m2_07
+T: Nghe nói vị giáo sư đoạt giải Nobel đó từ thời cấp ba đã đọc sách học thuật.
+W: 学術 | がくじゅつ | HỌC THUẬT | học thuật
+1: 学術: học thuật.
+2: 述 (THUẬT, trần thuật); 学述 không phải từ có thật.
+3: 出 (XUẤT); 学出 không phải từ có thật.
+4: 実 (THỰC); 学実 không phải từ có thật.
+
+@m2_08
+T: Đường núi có vẻ sắp sạt, xin hãy chú ý kỹ dưới chân.
+W: 足元 | あしもと | TÚC NGUYÊN | dưới chân
+1: 足本 không phải cách viết.
+2: 脚本 đọc きゃくほん: kịch bản.
+3: 足元: dưới chân.
+4: 脚元 không phải cách viết chuẩn.
+
+@m2_09
+T: Hồi nhỏ tôi từng đuổi theo chuồn chuồn rồi bị lạc đường.
+W: 追いかける | おいかける | TRUY | đuổi theo
+1: 置 (TRÍ) là đặt; không đọc おい ở đây.
+2: 負 (PHỤ) là gánh; 負いかける không có nghĩa này.
+3: 終 (CHUNG); không đọc おい.
+4: 追いかけて: đuổi theo.
+
+@m2_10
+T: Nấu chảy kim loại này sẽ sinh ra khí độc nên rất nguy hiểm.
+W: 溶かす | とかす | DUNG | làm tan chảy
+1: 塗 đọc ぬる; không đọc とかす.
+2: 説 đọc とく (giảng giải); 説かす không phải từ có thật.
+3: 溶かす: làm tan chảy.
+4: 途 (ĐỒ) không phải động từ.
+
+@m3_11
+T: Tôi được nhờ nhận lời làm MC cho lễ cưới.
+S: Tôi được nhờ … làm MC cho lễ cưới.
+W: 引き受ける | ひきうける | DẪN THỤ | nhận lời, đảm nhận | 引き〜
+1: 待ち受ける: chờ đón sẵn; không hợp.
+2: 持ち受ける không phải động từ có thật.
+3: 取り受ける không phải động từ có thật.
+4: 引き受ける: nhận lời đảm nhận.
+
+@m3_12
+T: Dự báo có sóng thần, loa phát thanh phòng chống thiên tai đã kêu gọi sơ tán.
+S: Dự báo có sóng thần, loa phát thanh phòng chống thiên tai đã … sơ tán.
+W: 呼びかける | よびかける | HÔ | kêu gọi | 呼び〜
+1: 呼びかける: kêu gọi.
+2: 述べかける không phải động từ có thật.
+3: 言いかける: nói dở chừng; không hợp.
+4: 話しかける: bắt chuyện; không hợp.
+
+@m3_13
+T: Người đứng thứ nhất về doanh số tháng này của phòng kinh doanh là anh Goto.
+S: Người đứng … về doanh số tháng này của phòng kinh doanh là anh Goto.
+W: 第一位 | だいいちい | ĐỆ NHẤT VỊ | hạng nhất | 第〜
+1: 第〜: thứ (chỉ thứ tự).
+2: 大1位 không có nghĩa.
+3: 台 không chỉ thứ tự.
+4: 代 không chỉ thứ tự.
+
+@m3_14
+T: Trên sông Sumida đã diễn ra trận đua thuyền đối kháng giữa ĐH Waseda và ĐH Keio.
+S: Trên sông Sumida đã diễn ra … đua thuyền giữa ĐH Waseda và ĐH Keio.
+W: 対抗戦 | たいこうせん | ĐỐI KHÁNG CHIẾN | trận đấu đối kháng | 〜戦
+1: 対抗選 không phải từ có thật.
+2: 〜戦: trận đấu (対抗戦).
+3: 対抗船 không phải từ có thật.
+4: 対抗薦 không phải từ có thật.
+
+@m3_15
+T: Tương lai tôi muốn làm công việc liên quan đến ngành vận tải.
+S: Tương lai tôi muốn làm công việc liên quan đến … .
+W: 運送業 | うんそうぎょう | VẬN TỐNG NGHIỆP | ngành vận tải | 〜業
+1: 〜職 có trong 事務職; 運送職 không thông dụng.
+2: 〜業: ngành (運送業).
+3: 運送事 không phải từ có thật.
+4: 運送働 không phải từ có thật.
+
+@m4_16
+T: Nên gấp rút phát triển năng lượng mới hơn là điện hạt nhân.
+S: Nên gấp rút phát triển … mới hơn là điện hạt nhân.
+W: エネルギー | エネルギー | | năng lượng
+1: トレーニング: luyện tập; không hợp.
+2: メーター: đồng hồ đo; không thay điện hạt nhân.
+3: エネルギーの開発: phát triển năng lượng.
+4: コード: dây, mã; không hợp.
+
+@m4_17
+T: Người đó có kiến thức phong phú về điện ảnh Ba Lan.
+S: Người đó có … phong phú về điện ảnh Ba Lan.
+W: 知識 | ちしき | TRI THỨC | kiến thức
+1: 知識が豊富: kiến thức phong phú.
+2: 知恵: trí khôn; không đi với 映画に関する.
+3: 理性: lý trí; không hợp.
+4: 才知: tài trí; không hợp.
+
+@m4_18
+T: Tôi tham gia ba môn phối hợp với tâm thế mạo hiểm nhưng đã bỏ cuộc giữa chừng.
+S: Tôi tham gia ba môn phối hợp với tâm thế … nhưng đã bỏ cuộc giữa chừng.
+W: 冒険 | ぼうけん | MẠO HIỂM | mạo hiểm, phiêu lưu
+1: 遠足: dã ngoại; quá nhẹ.
+2: 旅行: du lịch; không hợp.
+3: 出張: công tác; không hợp.
+4: 冒険のつもりで: với tâm thế thử thách mạo hiểm.
+
+@m4_19
+T: Nhật Bản có nhiều núi lửa nên suối nước nóng phun lên khắp nơi.
+S: Nhật Bản có nhiều núi lửa nên suối nước nóng … khắp nơi.
+W: 湧く | わく | DŨNG | phun lên, trào ra
+1: ふっている: rơi xuống (mưa); không hợp.
+2: 温泉がわく: nước nóng phun lên.
+3: もえている: đang cháy; không hợp.
+4: はいっている: đang vào; không hợp.
+
+@m4_20
+T: Người đó tài sản quá nhiều nên từ giờ đã lo chuyện thừa kế.
+S: Người đó … quá nhiều nên từ giờ đã lo chuyện thừa kế.
+W: 財産 | ざいさん | TÀI SẢN | tài sản
+1: 金額: số tiền; không hợp với 相続.
+2: 財産が多い: nhiều tài sản.
+3: 合計: tổng cộng; không hợp.
+4: 両替: đổi tiền; không hợp.
+
+@m4_21
+T: Sân khấu kabuki rất lộng lẫy và trang trọng.
+S: … kabuki rất lộng lẫy và trang trọng.
+W: 舞台 | ぶたい | VŨ ĐÀI | sân khấu
+1: 入口: lối vào; không phải trọng tâm.
+2: 歌舞伎の舞台: sân khấu kabuki.
+3: 階段: cầu thang; không hợp.
+4: 地面: mặt đất; không hợp.
+
+@m4_22
+T: Một khi đã chống đối trưởng phòng thì phải chuẩn bị tinh thần bị chuyển công tác.
+S: Một khi đã … trưởng phòng thì phải chuẩn bị tinh thần bị chuyển công tác.
+W: 反抗 | はんこう | PHẢN KHÁNG | chống đối
+1: 逆転: lội ngược dòng; không hợp.
+2: 不平: than phiền; không dùng 不平する.
+3: 部長に反抗する: chống đối trưởng phòng.
+4: 口論: cãi vã; cần と, không dùng に.
+
+@m5_23
+T: Xin hãy nhắn với bà là mong bà giữ gìn sức khỏe.
+W: どうぞ | どうぞ | | xin hãy, kính mong
+1: ぜひ: nhất định, kính mong.
+2: やはり: quả nhiên; khác nghĩa.
+3: なにかと: nhiều mặt; khác nghĩa.
+4: あいにく: không may; khác nghĩa.
+
+@m5_24
+T: Nghe tin thầy giáo cũ thời cấp ba ngã bệnh, tôi chạy đến bệnh viện đầu tiên.
+W: 真っ先に | まっさきに | CHÂN TIÊN | đầu tiên, trước nhất
+1: 一番に: đầu tiên.
+2: とにかく: dù sao; khác nghĩa.
+3: 急に: đột ngột; khác nghĩa.
+4: いきなり: bất ngờ; khác nghĩa.
+
+@m5_25
+T: Cảnh quan bờ biển này tự hình thành nhờ sức mạnh của sóng.
+W: 自然に | しぜんに | TỰ NHIÊN | tự nhiên
+1: それぞれ: mỗi cái; khác nghĩa.
+2: どうやら: có vẻ như; khác nghĩa.
+3: ひとりでに: tự nó, tự nhiên.
+4: 何となく: không hiểu sao; khác nghĩa.
+
+@m5_26
+T: Môn thi tuyển sinh nhiều thì học sinh chắc khổ sở lắm.
+W: たまらない | たまらない | | không chịu nổi
+1: かなしい: buồn; khác nghĩa.
+2: さびしい: cô đơn; khác nghĩa.
+3: いたい: đau (thể xác); khác nghĩa.
+4: つらい: khổ sở, vất vả.
+
+@m5_27
+T: Tiền sửa đắt đến thế thì không cách nào chi nổi.
+W: 到底 | とうてい | ĐÁO ĐỂ | (không) cách nào
+1: それほど: đến mức đó; khác nghĩa.
+2: どうしても〜ない: thế nào cũng không.
+3: どんなに: dù thế nào; cần cấu trúc ても.
+4: あるいは: hoặc; khác nghĩa.
+
+@m6_28
+T: Nghe nói gần công viên này từng có nơi ở của một võ sĩ quyền thế.
+W: 住居 | じゅうきょ | TRÚ CƯ | nơi ở
+1: 武士の住居: nơi ở của võ sĩ.
+2: Khu dân cư là 住宅街.
+3: Đất ở dùng 住宅用地.
+4: Vay mua nhà là 住宅ローン.
+
+@m6_29
+T: Về chuyện nuôi con và việc nhà, quan điểm của nam và nữ thường khác nhau.
+W: 見解 | けんかい | KIẾN GIẢI | quan điểm
+1: Khoảng 10 người dùng 10人がかり.
+2: Không ước lượng được là 見当がつかない.
+3: 見解が異なる: quan điểm khác nhau.
+4: Tham quan là 見学.
+
+@m6_30
+T: Xong việc vất vả rồi, tối nay ta uống thả ga nào.
+W: 大いに | おおいに | ĐẠI | thoải mái, nhiều
+1: Mưa lớn dùng 大雨・激しく.
+2: 大いに飲もう: uống thả ga.
+3: Rất vui dùng とても.
+4: Không hỏng nặng dùng 大して壊れなかった.
+
+@m6_31
+T: Vẻ đẹp của ngôi chùa đó thật tuyệt mỹ, nhưng nghe nói thực ra được xây lại sau hỏa hoạn.
+W: 見事 | みごと | KIẾN SỰ | tuyệt đẹp, xuất sắc
+1: 美しさは見事だ: vẻ đẹp tuyệt mỹ.
+2: Trang hay ít dùng 見どころ.
+3: Nâng cao năng lực dùng 高める.
+4: Đánh giá qua vẻ ngoài là 見かけ.
+
+@m6_32
+T: Không được tự ý sửa luận văn người khác đã công bố rồi trích dẫn.
+W: 引用 | いんよう | DẪN DỤNG | trích dẫn
+1: Tài liệu dùng cho họp là 会議用.
+2: 論文を引用する: trích dẫn luận văn.
+3: Dẫn trẻ đi là 引率.
+4: Giải nghệ là 引退.
+
+@m7_33
+T: Mai là ngày lễ, cả nhà mình cùng đi ngắm hoa đi.
+S: Mai là ngày lễ, … cùng đi ngắm hoa.
+1: にすぎない: chỉ là; không hợp.
+2: というものだ: đúng là; không hợp.
+3: Vようではないか: cùng… đi (rủ rê).
+4: にきまっている: nhất định; không hợp.
+
+@m7_34
+T: Nhìn từ tầm mắt của trẻ em thì điếu thuốc người lớn cầm rất nguy hiểm.
+S: … tầm mắt của trẻ em thì điếu thuốc người lớn cầm rất nguy hiểm.
+1: に見てみると sai trợ từ.
+2: Nから見ると: nhìn từ.
+3: で見たので sai dạng.
+4: を見ても: dù nhìn; không hợp.
+
+@m7_35
+T: Tin đó lan khắp thế giới qua internet.
+S: Tin đó lan khắp thế giới … internet.
+1: に通じて: thông với; không hợp.
+2: が通って: đi qua; sai.
+3: Nを通して: thông qua.
+4: で通って sai.
+
+@m7_36
+T: Nhân dịp mẹ nhập viện, tôi quyết định nghỉ việc.
+S: … mẹ nhập viện, tôi quyết định nghỉ việc.
+1: でさえ: ngay cả; không hợp.
+2: からして: ngay từ; không hợp.
+3: に沿い: theo; không hợp.
+4: Nを契機に: nhân dịp N (bước ngoặt).
+
+@m7_37
+T: Món bánh mới bán không chỉ trẻ em mà người lớn cũng rất thích.
+S: Món bánh mới bán … trẻ em, người lớn cũng rất thích.
+1: しかなく cần phủ định; không hợp.
+2: といっても: dù nói là; không hợp.
+3: に応じ: tùy theo; không hợp.
+4: NばかりでなくNにも: không chỉ… mà cả.
+
+@m7_38
+T: Đối với người nước đó là câu đơn giản, nhưng người nước ngoài có khi không hiểu.
+S: … là câu đơn giản, nhưng người nước ngoài có khi không hiểu.
+1: にしたがい: theo; không hợp.
+2: につれて: càng… càng; không hợp.
+3: Nにすれば: đối với N.
+4: によって: tùy; không hợp.
+
+@m7_39
+T: Tối qua thầy dạy nhạc đã đến nhà tôi.
+S: Tối qua thầy dạy nhạc đã … nhà tôi.
+1: お見えに来られた: kính ngữ chồng chéo; sai.
+2: お見えになった: đã đến (tôn kính).
+3: お見えされた sai dạng.
+4: お見えいたした: khiêm nhường; sai hướng.
+
+@m7_40
+T: So với việc mới đi làm, anh ấy sống khá xa hoa.
+S: … đi làm, anh ấy sống khá xa hoa.
+1: ほどには không hợp.
+2: Vたばかりのわりには: so với việc mới… thì.
+3: だけには không hợp.
+4: すえには không hợp.
+
+@m7_41
+T: Chuyện có trúng giải nhất hay không thì tạm gác, tôi cứ thử gửi bài dự thi đố vui có thưởng.
+S: … , tôi cứ thử gửi bài dự thi đố vui có thưởng.
+1: 〜かはともかくとして: chuyện… thì tạm gác.
+2: ともすれば: thường hay; không hợp.
+3: とはともかく không phải dạng đúng.
+4: とはともすれば sai.
+
+@m7_42
+T: Cần làm nội dung tạp chí phù hợp với nhu cầu của độc giả là gì.
+S: Cần làm nội dung tạp chí … độc giả có nhu cầu gì.
+1: の応じた sai trợ từ.
+2: で応じた sai trợ từ.
+3: 〜に応じた: phù hợp với.
+4: が応じた sai trợ từ.
+
+@m7_43
+T: Với tư cách người làm ở công trường, tôi nghĩ hoàn thành công trình trong tháng này là khó.
+S: … ở công trường, tôi nghĩ hoàn thành công trình trong tháng này là khó.
+1: であっては: nếu là; không hợp.
+2: Nとしては: với tư cách N.
+3: 働かない sai nghĩa.
+4: 働かない sai nghĩa.
+
+@m7_44
+T: Một khi đã quyết học tiếp vào năm sau, tôi định sẽ học hành chăm chỉ.
+S: … học tiếp vào năm sau, tôi định sẽ học hành chăm chỉ.
+1: Vたからには: một khi đã.
+2: 決めたいとは: mới muốn; không hợp.
+3: しようとしたからは sai dạng.
+4: からでは không hợp.
+
+@m8_45
+T: Một khi là chính trị gia thì trước hết phải nghĩ đến người dân.
+1: 考える đứng cuối, trước べきだ.
+2: まず国民の đi sau 以上.
+3: 以上 nối ngay sau 政治家である.
+4: ことを đứng ở ô ★.
+
+@m8_46
+T: Dù có phát sinh bất tiện đến đâu, bạn cũng có trách nhiệm.
+1: 生じた đi sau 不都合が.
+2: あなたに đứng cuối, trước も.
+3: にせよ đứng ở ô ★.
+4: 不都合が nối ngay sau いくら.
+
+@m8_47
+T: Dồn sức kéo tay nắm cửa thì nó bung ra mất.
+1: 引っ張ったら đứng ở ô ★.
+2: 込めて nối ngay sau 力を.
+3: 取れて đứng cuối, trước しまった.
+4: ドアノブを đi sau 込めて.
+
+@m8_48
+T: Kể từ khi thiết lập quan hệ ngoại giao với nước A, Nhật Bản đã thắt chặt quan hệ một cách thuận lợi.
+1: 国交を nối ngay sau A国と.
+2: からというもの đứng ở ô ★.
+3: 結んで đi sau 国交を.
+4: 順調に関係を đứng cuối, trước 深めている.
+
+@m8_49
+T: Trên núi, chẳng những trời bất chợt mưa mà có khi nhiệt độ còn giảm đột ngột.
+1: どころか đi sau になる.
+2: 下がる đứng cuối, trước こともある.
+3: 気温が一気に đứng ở ô ★.
+4: になる nối ngay sau 雨.
+
+@m9_50
+T: Nhưng kẻ độc tài mà ông đối đầu là kẻ kích động, dùng lời nói để khuấy động lòng người.
+S: … kẻ độc tài mà ông đối đầu là kẻ kích động, dùng lời nói để khuấy động lòng người.
+1: そして: và; không có ý tương phản.
+2: また: lại; không hợp.
+3: それで: vì thế; không hợp.
+4: だが: nhưng (tương phản với việc giữ phim câm).
+
+@m9_51
+T: Bài diễn văn kết phim tràn đầy chủ nghĩa nhân đạo rất nổi tiếng, không ít người cho đó là lời thoại cảm động nhất lịch sử điện ảnh.
+S: Bài diễn văn kết phim tràn đầy chủ nghĩa nhân đạo rất … , … người cho đó là lời thoại cảm động nhất lịch sử điện ảnh.
+1: うれしく: vui; không tả bài diễn văn.
+2: うれしく và 少ない đều sai.
+3: a 名高く (nổi tiếng), b 少なくない (không ít).
+4: 少ない trái với đánh giá danh tiếng.
+
+@m9_52
+T: Nghe nói thứ đánh đổ chế độ là internet. Trên công cụ giao tiếp chống lại cường quyền ấy, ta thấy chồng lên hình ảnh phim có tiếng mà Chaplin từng dựa vào.
+S: Nghe nói thứ đánh đổ chế độ là … . Trên công cụ … chống lại cường quyền ấy, ta thấy chồng lên hình ảnh … mà Chaplin từng dựa vào.
+1: a トーキー sai: phim có tiếng không lật đổ chế độ ở Tunisia.
+2: a トーキー và c インターネット sai.
+3: b トーキー và c コミュニケーション sai.
+4: a インターネット, b コミュニケーション, c トーキー.
+
+@m9_53
+T: Nghe nói có những kẻ cầm quyền lo hiệu ứng domino dân chủ hóa, không yên lòng trước hương thơm đang lan tỏa.
+S: Nghe nói có những kẻ cầm quyền lo hiệu ứng domino dân chủ hóa, … trước hương thơm đang lan tỏa.
+1: 気の休んでいる không phải cách nói tự nhiên.
+2: 気の休まらぬ: không yên lòng.
+3: 気を休もうとする: định nghỉ ngơi; không hợp.
+4: 気を休ませている: đang để tâm nghỉ; ngược nghĩa.
+
+@m9_54
+T: Giờ là thời đại thế giới kết nối tức thì qua internet.
+S: Giờ là thời đại thế giới … tức thì qua internet.
+1: つなげる là ngoại động từ; không đi với 世界が.
+2: つながる時代である: thời đại được kết nối.
+3: つなげている: ngoại động từ; sai.
+4: つながらぬ: không kết nối; ngược ý.
+
+@P d18-passage
+Bộ phim có tiếng đầu tiên Chaplin làm là "Nhà độc tài" năm 1940. Tác phẩm dũng cảm thách thức Hitler đang ở đỉnh quyền lực, được coi là kiệt tác trong các kiệt tác, đầy những nhận thức sâu sắc về thời đại.
+Nghe nói trước đó ông vẫn kiên trì với phim câm. Nhưng kẻ độc tài mà ông đối đầu là kẻ kích động, dùng lời nói để khuấy động lòng người. Có lẽ không thể thách thức hắn nếu không có giọng nói của chính mình. Bài diễn văn kết phim tràn đầy chủ nghĩa nhân đạo rất nổi tiếng, không ít người cho đó là lời thoại cảm động nhất lịch sử điện ảnh.
+Ở Tunisia, Bắc Phi, chế độ độc tài nhiều năm đã sụp đổ. Đó là một đất nước mà ngôn luận bị hạn chế nghiêm ngặt bởi bộ máy cảnh sát hùng mạnh. Nghe nói thứ đánh đổ chế độ là internet. Trên công cụ giao tiếp chống lại cường quyền ấy, ta thấy chồng lên hình ảnh phim có tiếng mà Chaplin từng dựa vào.
+Thời đại và bối cảnh khác nhau, nhưng cả hai đều là công cụ giúp "cá nhân" đối mặt với kẻ cầm quyền. Ở Tunisia, những đoạn phim biểu tình quay bằng điện thoại và lời kêu gọi cho cuộc biểu tình tiếp theo lan rộng, huy động người dân. Không biết vua hài trên thiên đường có ghen tị với sức mạnh ấy không.
+Nghe nói cuộc chính biến lần này được đặt tên là "Cách mạng Hoa Nhài", theo loài hoa tô điểm cho Tunisia. Xung quanh có nhiều quốc gia cường quyền tương tự. Nghe nói có những kẻ cầm quyền lo hiệu ứng domino dân chủ hóa, không yên lòng trước hương thơm đang lan tỏa.
+Trong phim, Chaplin kêu gọi qua bài diễn văn: "Máy bay và radio đã kéo chúng ta lại gần nhau. Hãy nắm tay nhau dưới ngọn cờ dân chủ." Giờ là thời đại thế giới kết nối tức thì qua internet. Dù biết đó là "con dao hai lưỡi", tôi vẫn thấy hy vọng về một thế giới tốt đẹp hơn.

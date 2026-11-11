@@ -1,0 +1,446 @@
+@m1_01
+T: Chìa khóa để giải công thức này là dùng định lý nào.
+W: 解く | とく | GIẢI | giải (bài toán)
+1: かく là 書く: viết.
+2: ぬく là 抜く: rút ra.
+3: ひく là 引く: kéo, trừ.
+4: とく: cách đọc của 解く, giải.
+
+@m1_02
+T: Tranh của Van Gogh mê hoặc mọi người trên khắp thế giới.
+W: 絵画 | かいが | HỘI HỌA | hội họa, tranh vẽ
+1: かいが: 絵 かい + 画 が.
+2: えが: 絵 trong từ ghép này đọc かい.
+3: かいかく là 改革 (cải cách).
+4: えかく: sai cả hai âm.
+
+@m1_03
+T: Nếu không tuân thủ trình tự thí nghiệm thì có thể gây nổ.
+W: 順序 | じゅんじょ | THUẬN TỰ | thứ tự, trình tự
+1: じゅんしょ: 序 đọc じょ.
+2: しゅんじょ: 順 đọc じゅん.
+3: じゅんじょ: 順 じゅん + 序 じょ.
+4: しゅんしょ: sai cả hai âm.
+
+@m1_04
+T: Mẹ xếp táo vào thùng rồi gửi cho tôi.
+W: 詰める | つめる | CẬT | nhồi, xếp vào
+1: こめて là 込めて: gửi gắm, nạp vào.
+2: つめて: thể て của 詰める.
+3: ためて là 貯めて: tích lũy.
+4: しめて là 閉めて: đóng.
+
+@m1_05
+T: Con trai tôi lúc nào cũng về nhà người lấm lem bùn.
+W: 泥 | どろ | NÊ | bùn
+1: てい không phải cách đọc.
+2: とろ không phải cách đọc của 泥.
+3: でい là âm On dùng trong từ ghép (泥酔).
+4: どろ: bùn.
+
+@m2_06
+T: Thành viên chủ chốt của đội bị thương nên không tham gia giải đấu.
+W: 主要 | しゅよう | CHỦ YẾU | chủ chốt
+1: 容 (DUNG); 主容 không phải từ có thật.
+2: 主要: chủ yếu.
+3: 主用 không phải từ thông dụng.
+4: 洋 (DƯƠNG); 主洋 không phải từ có thật.
+
+@m2_07
+T: Tổ tiên loài người là vượn người, còn ngựa thì là gì nhỉ?
+W: 先祖 | せんぞ | TIÊN TỔ | tổ tiên
+1: 先祖: 祖 (TỔ) bộ Thị.
+2: 組 (TỔ) bộ Mịch, là nhóm; sai chữ.
+3: 阻 (TRỞ) là ngăn; sai chữ.
+4: 粗 (THÔ) là thô; sai chữ.
+
+@m2_08
+T: Gần đây bưu điện còn bán cả bộ giấy viết thư.
+W: 販売 | はんばい | PHIẾN MẠI | bán hàng
+1: 頒 (BAN) là phân phát; 頒売 không phải từ có thật.
+2: 販売: bán hàng.
+3: 頒買 không phải từ có thật.
+4: 販買: 買 là mua; sai.
+
+@m2_09
+T: Anh ấy đang trăn trở nên học lên hay về nước.
+W: 悩む | なやむ | NÃO | trăn trở, phiền não
+1: 迷 đọc まよう; không đọc なやむ.
+2: 困 đọc こまる; không đọc なやむ.
+3: 悩んで: trăn trở.
+4: 惑 đọc まどう; không đọc なやむ.
+
+@m2_10
+T: Tôi quên phát bài tập chữ Hán cho học sinh.
+W: 配る | くばる | PHỐI | phát, phân phát
+1: 拝 đọc おがむ; không đọc くばる.
+2: 送る đọc おくる: gửi.
+3: 伝 đọc つたえる; không đọc くばる.
+4: 配る: phát.
+
+@m3_11
+T: Xe cảnh sát đang đuổi theo chiếc xe khả nghi với tốc độ kinh hoàng.
+S: Xe cảnh sát đang … chiếc xe khả nghi với tốc độ kinh hoàng.
+W: 追いかける | おいかける | TRUY | đuổi theo | 追い〜
+1: 追いかける: đuổi theo.
+2: 走りかける: bắt đầu chạy; không hợp.
+3: 駆けかける không phải động từ thông dụng.
+4: 越しかける không phải động từ có thật.
+
+@m3_12
+T: Con chó nhà tôi mặt trông kỳ cục, nhưng nhìn quen rồi thì thấy dễ thương.
+S: Con chó nhà tôi mặt trông kỳ cục, nhưng … rồi thì thấy dễ thương.
+W: 見慣れる | みなれる | KIẾN QUÁN | nhìn quen | 〜慣れる
+1: 見習う: noi gương; không hợp.
+2: 見渡す: nhìn bao quát; không hợp.
+3: 見とれる: say mê ngắm; không hợp với "mặt kỳ cục".
+4: 見慣れる: nhìn quen.
+
+@m3_13
+T: Cô ấy là vận động viên chạy cự ly ngắn 100 mét.
+S: Cô ấy là vận động viên chạy … 100 mét.
+W: 短距離 | たんきょり | ĐOẢN CỰ LY | cự ly ngắn | 短〜
+1: 端 (ĐOAN) là mép; 端距離 không có nghĩa.
+2: 単 (ĐƠN); 単距離 không có nghĩa.
+3: 短距離: cự ly ngắn.
+4: 旦 (ĐÁN); 旦距離 không có nghĩa.
+
+@m3_14
+T: Nghĩ thế nào tôi cũng cho rằng cửa hàng đó kinh doanh không có giấy phép.
+S: Nghĩ thế nào tôi cũng cho rằng cửa hàng đó kinh doanh … .
+W: 無許可 | むきょか | VÔ HỨA KHẢ | không có giấy phép | 無〜
+1: 無許可: không có giấy phép.
+2: 非許可 không phải từ thông dụng.
+3: 否許可 không phải từ có thật.
+4: 反許可 không phải từ có thật.
+
+@m3_15
+T: Trong tầng hầm của nhà máy có cất giữ hóa chất nguy hiểm.
+S: Trong … của nhà máy có cất giữ hóa chất nguy hiểm.
+W: 地下室 | ちかしつ | ĐỊA HẠ THẤT | phòng tầng hầm | 〜室
+1: 〜所: nơi; 地下所 không dùng.
+2: 〜室: phòng (地下室).
+3: 〜点: điểm; 地下点 không dùng.
+4: 〜処: chỗ; 地下処 không dùng.
+
+@m4_16
+T: Chiếc ghế này thiếu tính ổn định nên không tốt.
+S: Chiếc ghế này … tính ổn định nên không tốt.
+W: 欠ける | かける | KHIẾM | thiếu
+1: 負ける: thua; không hợp.
+2: Nに欠ける: thiếu N.
+3: 置ける: có thể đặt; không hợp.
+4: 受ける: nhận; không hợp.
+
+@m4_17
+T: Từ nhỏ tôi đã thích chạy bộ, đến giờ sáng nào cũng chạy.
+S: Từ nhỏ tôi đã thích … , đến giờ sáng nào cũng chạy.
+W: ランニング | ランニング | | chạy bộ
+1: ピクニック: dã ngoại; không hợp với 走る.
+2: ランニング: chạy bộ.
+3: ステージ: sân khấu; không hợp.
+4: ゴール: đích, khung thành; không hợp.
+
+@m4_18
+T: Ở bất kỳ nước nào cũng không được phân biệt chủng tộc.
+S: Ở bất kỳ nước nào cũng không được … chủng tộc.
+W: 差別 | さべつ | SAI BIỆT | phân biệt đối xử
+1: 区別: phân biệt (khác biệt); không mang nghĩa bất công.
+2: 人種差別: phân biệt chủng tộc.
+3: 分配: phân phối; không hợp.
+4: 配分: phân bổ; không hợp.
+
+@m4_19
+T: Vị đó đang làm lãnh sự ở Thượng Hải.
+S: Vị đó đang làm … ở Thượng Hải.
+W: 領事 | りょうじ | LÃNH SỰ | lãnh sự
+1: 滞在: lưu trú; không phải chức vụ.
+2: 日課: việc hằng ngày; không hợp.
+3: 独立: độc lập; không hợp.
+4: 領事として働く: làm lãnh sự.
+
+@m4_20
+T: Đúng là món do đầu bếp hàng đầu nấu, vẻ đẹp cũng khác hẳn.
+S: Đúng là món do đầu bếp … nấu, vẻ đẹp cũng khác hẳn.
+W: 一流 | いちりゅう | NHẤT LƯU | hàng đầu
+1: 高級: cao cấp (hàng hóa); ít dùng cho người.
+2: 特色: đặc sắc; không bổ nghĩa người.
+3: 一流のシェフ: đầu bếp hàng đầu.
+4: 限度: giới hạn; không hợp.
+
+@m4_21
+T: Nghe nói ở Mông Cổ có rất nhiều khoáng vật quý chôn dưới đất.
+S: Nghe nói ở Mông Cổ có rất nhiều … quý chôn dưới đất.
+W: 鉱物 | こうぶつ | KHOÁNG VẬT | khoáng vật
+1: 鉄分: hàm lượng sắt; không chôn được.
+2: 鉱物が埋まっている: khoáng vật nằm dưới đất.
+3: 砂漠: sa mạc; không chôn dưới đất.
+4: 植物: thực vật; không hợp.
+
+@m4_22
+T: Tôi mua một chiếc bình hoa đắt tiền làm kỷ niệm chuyến đi, nhưng là hàng giả.
+S: Tôi mua một chiếc bình hoa đắt tiền làm … chuyến đi, nhưng là hàng giả.
+W: 記念 | きねん | KỶ NIỆM | kỷ niệm
+1: 旅行の記念に: làm kỷ niệm chuyến đi.
+2: 参考: tham khảo; không hợp.
+3: 行事: sự kiện; không hợp.
+4: 祝賀: chúc mừng; không hợp.
+
+@m5_23
+T: Đối với thảm họa động đất lần này, đã có viện trợ từ mọi phía.
+W: 全て | すべて | TOÀN | tất cả
+1: いろいろな: nhiều; không bao quát toàn bộ.
+2: ほとんどの: hầu hết; không phải tất cả.
+3: 少しの: một ít; ngược nghĩa.
+4: あらゆる: mọi, tất cả.
+
+@m5_24
+T: Cách điều hành cuộc họp gượng ép của chủ tọa đó đã trở thành vấn đề.
+W: 強引 | ごういん | CƯỜNG DẪN | gượng ép, cưỡng ép
+1: みじめ: thảm hại; khác nghĩa.
+2: むり: gượng ép, quá sức.
+3: いいかげん: qua loa; khác nghĩa.
+4: めんどう: phiền phức; khác nghĩa.
+
+@m5_25
+T: Lễ khai mạc có vẻ sẽ mưa, nhưng tôi mong ít nhất cũng có 10 nghìn người đến.
+W: 少なくとも | すくなくとも | THIỂU | ít nhất
+1: きっと: chắc chắn; khác nghĩa.
+2: やはり: quả nhiên; khác nghĩa.
+3: ざっと: đại khái; khác nghĩa.
+4: せめて: ít nhất thì (mức tối thiểu mong muốn).
+
+@m5_26
+T: Làm việc giỏi đến vậy thì có thể bị người xung quanh thấy khó ưa.
+W: 憎らしい | にくらしい | TĂNG | đáng ghét
+1: 気にならなく: không bận tâm; khác nghĩa.
+2: 気に入らなく: không ưa.
+3: 気にしなく: không để ý; khác nghĩa.
+4: 気にかからなく: không lo; khác nghĩa.
+
+@m5_27
+T: Vào ngày phát hành trò chơi mới, khách hàng ùa đến cùng một lúc.
+W: 一度に | いちどに | NHẤT ĐỘ | cùng một lúc
+1: そっと: nhẹ nhàng; ngược nghĩa.
+2: じっと: bất động; khác nghĩa.
+3: どっと: ùa đến ồ ạt.
+4: さっと: nhanh gọn; không mang nghĩa đông đúc.
+
+@m6_28
+T: Kinh tế nước đó tốt, nhưng giá cả có vẻ đang có xu hướng tăng.
+W: 傾向 | けいこう | KHUYNH HƯỚNG | xu hướng
+1: Hướng nhà ga dùng 方向.
+2: Thịnh hành dùng 横行・はびこる.
+3: 〜傾向にある: có xu hướng.
+4: Diễn biến cuộc biểu tình dùng 動向.
+
+@m6_29
+T: Ở chân núi Takao, các hàng quà lưu niệm xếp thành dãy.
+W: 麓 | ふもと | LỘC | chân núi
+1: Đỉnh núi là 山頂; "chân đỉnh núi" mâu thuẫn.
+2: Nhà không có ふもと; dùng 後ろ・近く.
+3: 山のふもと: chân núi.
+4: Chân tòa nhà dùng 足元・下.
+
+@m6_30
+T: Một khi đã hứa thì anh ấy tuyệt đối không phản bội.
+W: 決して | けっして | QUYẾT | tuyệt đối (không)
+1: 決して cần phủ định; câu khẳng định dùng きっと.
+2: 決して〜しない: tuyệt đối không.
+3: Câu khẳng định dùng きっと・必ず.
+4: Yêu cầu bắt buộc dùng 必ず.
+
+@m6_31
+T: Một vận động viên tài năng mới học cấp ba đang hoạt động ở nước ngoài.
+W: 有能 | ゆうのう | HỮU NĂNG | có năng lực
+1: 有能な選手: vận động viên có năng lực.
+2: Thuốc hiệu quả dùng 有効.
+3: Giỏi thể thao dùng スポーツ万能.
+4: Vẻ đẹp không dùng 有能.
+
+@m6_32
+T: Hôm nay tôi trực nhật dọn vệ sinh nên không đi chơi với bạn được.
+W: 当番 | とうばん | ĐƯƠNG PHIÊN | trực nhật, phiên trực
+1: Lần lượt nhận dùng 順番に.
+2: Đứng đầu là 一番.
+3: Ca đêm dùng 夜勤.
+4: 掃除当番: trực nhật dọn vệ sinh.
+
+@m7_33
+T: Chính vì mọi người đã kỳ vọng nên thất bại của cô ấy càng đáng tiếc.
+S: … mọi người đã kỳ vọng nên thất bại của cô ấy càng đáng tiếc.
+1: からには: một khi đã; không hợp.
+2: にして: ở mức; không hợp.
+3: 上は: một khi đã; không hợp.
+4: だけに: chính vì.
+
+@m7_34
+T: Trước khi tuyết rơi dày, tôi đã quấn xích vào bánh xe.
+S: … tuyết rơi dày, tôi đã quấn xích vào bánh xe.
+1: ことから: từ việc; không hợp.
+2: にあたり: khi; không hợp.
+3: Vないうちに: trước khi (còn chưa).
+4: 末に: sau rốt; không hợp.
+
+@m7_35
+T: Thật vui là tin em gái cưới đã từ quê gửi đến.
+S: … , tin em gái cưới đã từ quê gửi đến.
+1: によって: tùy; không hợp.
+2: たびに: mỗi lần; không hợp.
+3: にせよ: dù; không hợp.
+4: Aことに: thật là… (cảm xúc).
+
+@m7_36
+T: Nghe đâu cô ấy, vốn nổi tiếng là ca sĩ, sắp xuất hiện trong phim truyền hình.
+S: Cô ấy, vốn nổi tiếng là ca sĩ, sắp xuất hiện trong phim truyền hình … .
+1: ことに: thật là; không hợp.
+2: 〜とか: nghe đâu.
+3: さえ: ngay cả; không hợp.
+4: として: với tư cách; không hợp.
+
+@m7_37
+T: Trước khi thi công, đã có buổi giải thích cho cư dân trong vùng.
+S: … , đã có buổi giải thích cho cư dân trong vùng.
+1: Nに先立って: trước khi.
+2: に加えて: thêm vào; không hợp.
+3: にこたえて: đáp ứng; không hợp.
+4: にかけて: về mặt; không hợp.
+
+@m7_38
+T: Cô ấy tính hiền nên không thể nào nói điều làm tổn thương người khác.
+S: Cô ấy tính hiền nên … điều làm tổn thương người khác.
+1: 言いようがない: không biết nói sao; không hợp.
+2: Vるわけがない: không thể nào.
+3: 言ったに違いない: chắc đã nói; ngược ý.
+4: 言うほかない: chỉ còn cách nói; không hợp.
+
+@m7_39
+T: Tôi đã được đọc cuốn sách thầy viết.
+S: Tôi đã … cuốn sách thầy viết.
+1: 読まれて: bị động; sai.
+2: 読ませていただきました: được đọc (khiêm nhường).
+3: 読まされて: bị bắt đọc; sai nghĩa.
+4: 読まさせて: thừa さ; sai dạng.
+
+@m7_40
+T: Bệnh tình xấu đi đến mức đó thì có lẽ chỉ còn cách phẫu thuật.
+S: Bệnh tình xấu đi đến mức đó thì có lẽ … phẫu thuật.
+1: にすぎない: chẳng qua chỉ; không hợp.
+2: ほかでない sai dạng.
+3: にすぎなくない sai dạng.
+4: Vるほかない: chỉ còn cách.
+
+@m7_41
+T: Bỏ qua phần mở đầu, chúng ta bàn ngay vào vấn đề chính.
+S: … , chúng ta bàn ngay vào vấn đề chính.
+1: で sai trợ từ.
+2: ぬきなしに sai dạng.
+3: Nはぬきにして: bỏ qua N.
+4: ぬきなしに sai dạng.
+
+@m7_42
+T: Khi bắt đầu cuộc thi, có phần giới thiệu ban giám khảo.
+S: … cuộc thi, có phần giới thiệu ban giám khảo.
+1: Vるにあたり: khi (bắt đầu).
+2: について: về; không hợp.
+3: 始めてにあたり sai dạng.
+4: 始めたについて sai dạng.
+
+@m7_43
+T: Nếu chưa nghe ý kiến của tiền bối thì không thể đưa vào thực hiện.
+S: … ý kiến của tiền bối thì không thể đưa vào thực hiện.
+1: てからというと không phải mẫu đúng.
+2: Vてからじゃないと: nếu chưa… thì không.
+3: からというと không hợp.
+4: 聞いたから sai dạng.
+
+@m7_44
+T: Nhân tiện đi ngân hàng, tôi sẽ ghé siêu thị mua đồ.
+S: … ngân hàng, tôi sẽ ghé siêu thị mua đồ.
+1: 出かけてついでに sai dạng.
+2: きり: từ đó không; không hợp.
+3: Vるついでに: nhân tiện.
+4: 出かけたきり: đi rồi không về; không hợp.
+
+@m8_45
+T: Đúng là tôi hiểu được câu chuyện của ông Ogawa, nhưng sao cũng không tin được.
+1: どうしても đứng cuối, trước 信用できない.
+2: 理解できた đi sau 話は.
+3: ものの đứng ở ô ★.
+4: 話は nối ngay sau 小川氏の.
+
+@m8_46
+T: Anh ta biết cách giải bài vậy mà không chỉ cho chúng tôi.
+1: 知っている đi sau 解き方を.
+2: 私たち đứng cuối, trước に教えてくれない.
+3: 解き方を nối ngay sau 問題の.
+4: くせに đứng ở ô ★.
+
+@m8_47
+T: Học sinh lớp đó ngoài tỷ lệ đi học tốt ra, trình độ tiếng Nhật cũng cao.
+1: のよさ đi sau 出席率.
+2: に加えて đứng ở ô ★.
+3: 出席率 nối ngay sau 学生は.
+4: 日本語 đứng cuối, trước のレベル.
+
+@m8_48
+T: Bất chấp người bạn thân ngăn cản, anh ấy một mình đi vào giữa rừng rậm.
+1: のもかまわず nối ngay sau 止める.
+2: ジャングルの đứng ở ô ★.
+3: 彼は1人で đi sau のもかまわず.
+4: 中 đứng cuối, trước へ.
+
+@m8_49
+T: Cô bé mới 12 tuổi mà tham gia lớp ba lê ở nước ngoài, thật đáng nể.
+1: 参加するとは đứng ở ô ★.
+2: 海外のバレエ教室に đi sau 彼女が.
+3: 彼女が nối ngay sau 12歳の.
+4: すごい đứng cuối, trước ものだ.
+
+@m9_50
+T: Đứa trẻ nhập học với dáng lưng như thể chiếc cặp đang tự bước đi.
+S: Đứa trẻ nhập học với dáng lưng … chiếc cặp đang tự bước đi.
+1: ほどの: đến mức; không mang nghĩa ví von.
+2: ままの: y nguyên; không hợp.
+3: ような: như thể.
+4: らしい: có vẻ; không hợp.
+
+@m9_51
+T: Người bạn thân trên lưng là sự hiện diện dịu dàng, lặng lẽ dõi theo những vui buồn nhỏ suốt 6 năm.
+S: Người bạn thân trên lưng là sự hiện diện dịu dàng, lặng lẽ … những vui buồn nhỏ suốt 6 năm.
+1: あげる: làm cho người khác; sai hướng.
+2: 見守ってくれる: dõi theo (cho mình).
+3: もらう: được làm cho; sai chủ thể.
+4: やる: làm cho kẻ dưới; không hợp.
+
+@m9_52
+T: Mười "người bạn thân" ấy được đặt ở trung tâm tư vấn trẻ em thành phố Maebashi vào dịp Giáng sinh cuối năm. Lấy đó làm mồi, như mạch nước tình người trào lên, lòng tốt của những người xưng là nhân vật "Tiger Mask" đã lan rộng.
+S: Mười "người bạn thân" ấy … ở trung tâm tư vấn trẻ em. Như mạch nước tình người … , lòng tốt của những người … nhân vật "Tiger Mask" đã lan rộng.
+1: b 名乗る và c わき出す bị đảo.
+2: a 置かれた, b わき出す, c 名乗る.
+3: a 名乗る sai: cặp không thể "xưng tên".
+4: a 名乗る và c 置かれた sai.
+
+@m9_53
+T: Hình ảnh chiếc cặp sáng bóng là biểu tượng cho việc trẻ em không được bị phân biệt theo giàu nghèo, hạnh phúc hay bất hạnh.
+S: Hình ảnh chiếc cặp sáng bóng là biểu tượng cho việc trẻ em … theo giàu nghèo, hạnh phúc hay bất hạnh.
+1: されてはならない: không được bị (phân biệt).
+2: させてはならない: không được để ai làm; sai.
+3: してはならない: trẻ em không được phân biệt; sai chủ thể.
+4: させられて: bị bắt làm; sai.
+
+@m9_54
+T: Mong rằng những thiện ý nhỏ bé ấy sẽ thành sức mạnh nâng lý tưởng mong manh "xã hội cùng nuôi dạy trẻ" thành ý thức vững chắc.
+S: Mong rằng những thiện ý nhỏ bé ấy sẽ … lý tưởng mong manh "xã hội cùng nuôi dạy trẻ" thành ý thức vững chắc.
+1: ならない: không thành; ngược ý.
+2: なろうと思う: ý chí của thiện ý; không hợp.
+3: なってしまう: lỡ thành; sắc thái tiêu cực.
+4: 〜になればいい: mong sẽ thành.
+
+@P d17-passage
+Bài thơ "Hồ nước" của Ibaragi Noriko được trích dẫn ở đầu đoạn: nhà thơ nghe hai bé gái tan học nói một câu rất đáng nhớ về việc người mẹ cần có lúc lặng yên, và khi ngoảnh lại thì thấy hai chiếc cặp sách đung đưa xa dần trên con đường lá rụng.
+Từ "chiếc cặp" thật đắt giá. Đó là bạn đồng hành trong quá trình lớn lên của đứa trẻ. Đứa trẻ nhập học với dáng lưng như thể chiếc cặp đang tự bước đi, rồi lớn dần đến mức đeo nó không còn thua kém. Và cũng bắt đầu nói được những "câu nói đáng nhớ" khiến nhà thơ kinh ngạc. Người bạn thân trên lưng là sự hiện diện dịu dàng, lặng lẽ dõi theo những vui buồn nhỏ suốt 6 năm.
+Mười "người bạn thân" như thế được đặt ở trung tâm tư vấn trẻ em thành phố Maebashi vào dịp Giáng sinh cuối năm. Lấy đó làm mồi, như mạch nước tình người trào lên, lòng tốt của những người xưng là nhân vật chính "Tiger Mask" đã lan rộng.
+Việc những đồng cảm với thiện ý đầu tiên liên tiếp xuất hiện có lẽ cũng nhờ "chiếc cặp". Hình ảnh chiếc cặp sáng bóng là biểu tượng cho việc trẻ em không được bị phân biệt theo giàu nghèo, hạnh phúc hay bất hạnh. Đó hẳn là ngọn đèn nhỏ bé nhưng đầy tâm huyết của ông "Tiger Mask" đầu tiên.
+Tuy khác với thiện ý của người dân thường, tôi nghĩ đến thị trấn Shonai, tỉnh Yamagata. Thị trấn liên tục tặng cặp sách cho toàn bộ học sinh mới, năm nay cũng có 187 em nhận cặp mới. Thị trưởng Harada Maki nói: "Toàn thể người dân cùng chia sẻ niềm tin rằng trẻ em là báu vật của địa phương."
+Mong rằng những thiện ý nhỏ bé từng cái một ấy sẽ thành sức mạnh nâng lý tưởng mong manh "xã hội cùng nuôi dạy trẻ" thành ý thức vững chắc. Ai cũng là con của thế gian. Mùa xuân lại về, tôi cầu chúc hạnh phúc cho những tấm lưng nhỏ đang đung đưa chiếc cặp của lòng tốt.
