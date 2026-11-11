@@ -27,6 +27,8 @@ export type Attempt = {
   deadlineAt?: number;
   endedAt?: number;
   reason?: "manual" | "timeout";
+  /** Bài có giờ ở chế độ thi nghiêm túc: tắt mọi trợ giúp khi đang làm */
+  strict?: boolean;
 };
 export function units(exam: JLPTExam, ids?: string[]): Unit[] {
   const result: Unit[] = [];

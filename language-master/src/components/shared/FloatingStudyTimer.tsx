@@ -63,23 +63,39 @@ export function FloatingStudyTimer() {
   // Nhận diện trạng thái văn bản đang được bôi đen trên trang để phát sáng nút
   const [hasSelectedText, setHasSelectedText] = useState(false);
   const [selectedSnippet, setSelectedSnippet] = useState('');
-  const [isJlptMockActive, setIsJlptMockActive] = useState<boolean>(() => {
-    if (typeof document === 'undefined') return false;
-    return document.body.dataset.jlptMockActive === 'true';
-  });
+  // Trang làm bài JLPT: ẩn nút nổi khi đang làm; thi nghiêm túc thì chặn mọi trợ giúp (JL-08, JL-05)
+  const [jlptAttemptActive, setJlptAttemptActive] = useState<boolean>(
+    () =>
+      typeof document !== 'undefined' &&
+      document.body.dataset.jlptAttemptActive === 'true',
+  );
+  const [jlptStrict, setJlptStrict] = useState<boolean>(
+    () =>
+      typeof document !== 'undefined' &&
+      document.body.dataset.jlptStrict === 'true',
+  );
+  const jlptStrictRef = useRef(jlptStrict);
 
   useEffect(() => {
-    const onJlptMockActive = (e: Event) => {
-      const custom = e as CustomEvent<{ active?: boolean }>;
-      if (typeof custom.detail?.active === 'boolean') {
-        setIsJlptMockActive(custom.detail.active);
-      } else {
-        setIsJlptMockActive(document.body.dataset.jlptMockActive === 'true');
-      }
+    const onWorkspace = (e: Event) => {
+      const detail = (e as CustomEvent<{ attemptActive?: boolean; strict?: boolean }>).detail;
+      setJlptAttemptActive(Boolean(detail?.attemptActive));
+      setJlptStrict(Boolean(detail?.strict));
+      jlptStrictRef.current = Boolean(detail?.strict);
+      if (detail?.strict) setIsOpen(false);
     };
-    window.addEventListener('app:jlpt-mock-active', onJlptMockActive);
-    return () =>
-      window.removeEventListener('app:jlpt-mock-active', onJlptMockActive);
+    const onOpenTools = (e: Event) => {
+      if (jlptStrictRef.current) return;
+      const tab = (e as CustomEvent<{ tab?: 'timer' | 'lookup' }>).detail?.tab;
+      if (tab) setMobileTab(tab);
+      setIsOpen(true);
+    };
+    window.addEventListener('app:jlpt-workspace', onWorkspace);
+    window.addEventListener('app:open-study-tools', onOpenTools);
+    return () => {
+      window.removeEventListener('app:jlpt-workspace', onWorkspace);
+      window.removeEventListener('app:open-study-tools', onOpenTools);
+    };
   }, []);
 
   useEffect(() => {
@@ -197,6 +213,8 @@ export function FloatingStudyTimer() {
   // Phím tắt Bật/Tắt hoặc Tra Cứu Trực Tiếp toàn hệ thống: F9 hoặc Alt + T
   useEffect(() => {
     const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      // Thi nghiêm túc: không cho tra từ hay mở tiện ích (JL-05)
+      if (jlptStrictRef.current) return;
       if (
         e.key === 'F9' ||
         ((e.altKey || e.metaKey) && (e.key === 't' || e.key === 'T'))
@@ -229,9 +247,11 @@ export function FloatingStudyTimer() {
         };
       }
     }
+    // Điện thoại: đặt cao hơn vùng nút chính ở đáy màn hình (JL-08)
+    const bottomGap = window.innerWidth < 640 ? 140 : 70;
     return {
       x: Math.max(16, window.innerWidth - 160),
-      y: Math.max(16, window.innerHeight - 70),
+      y: Math.max(16, window.innerHeight - bottomGap),
     };
   });
 
@@ -424,6 +444,8 @@ export function FloatingStudyTimer() {
       )}
 
       {/* ================= COMPACT FLOATING STUDY CAPSULE ================= */}
+      {/* Ẩn hẳn khi đang làm bài JLPT; tiện ích mở qua menu ⋯ của bài (JL-08) */}
+      {!jlptAttemptActive && (
       <div
         ref={buttonRef}
         data-no-selection-lookup="true"
@@ -434,8 +456,8 @@ export function FloatingStudyTimer() {
         }}
         className="fixed flex items-center p-1 rounded-full shadow-2xl backdrop-blur-md border border-slate-200/90 dark:border-slate-700/80 bg-white/95 dark:bg-slate-900/95 text-slate-700 dark:text-slate-200 select-none touch-none transition-shadow hover:shadow-indigo-500/20 hover:border-indigo-300 dark:hover:border-indigo-600"
       >
-        {/* Khối 1: Nút kéo và Đồng hồ (Ẩn mặt số Pomodoro khi đang thi thử bấm giờ JLPT - B2) */}
-        {!isJlptMockActive && (
+        {/* Khối 1: Nút kéo và Đồng hồ */}
+        {(
           <>
             <div
               onPointerDown={handlePointerDown}
@@ -503,6 +525,7 @@ export function FloatingStudyTimer() {
           />
         </button>
       </div>
+      )}
 
       {/* ================= CENTERED POPUP MODAL (REDESIGNED 2-COLUMN PREMIUM LAYOUT) ================= */}
       {isOpen && (

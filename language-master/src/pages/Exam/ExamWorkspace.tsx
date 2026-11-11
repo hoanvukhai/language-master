@@ -12,7 +12,6 @@ import {
   Clock,
   Eye,
   Filter,
-  LayoutGrid,
   Play,
   RotateCcw,
 } from "lucide-react";
@@ -51,6 +50,11 @@ import ExamText from "./components/ExamText";
 import WordLookupModal from "./components/WordLookupModal";
 import SelectionLookup from "./components/SelectionLookup";
 import { lookupWordInDictionary } from "../../lib/jlpt/sentenceAnalyzer";
+import { useAttemptKeyboard } from "./workspace/useAttemptKeyboard";
+import QuestionPalette from "./workspace/QuestionPalette";
+import BottomSheet from "./workspace/BottomSheet";
+import MobileAttemptBar from "./workspace/MobileAttemptBar";
+import AttemptMenu, { type AttemptMenuItem } from "./workspace/AttemptMenu";
 
 type Mode = "drill" | "mock" | "review" | "detail" | "result";
 
@@ -70,7 +74,7 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
   const location = useLocation();
   const navigate = useNavigate();
   const { ask, cancel, confirmation } = useConfirmation();
-  const { attempt, notice } = useTabSession();
+  const { attempt, notice, noticeKind } = useTabSession();
 
   // Classic states (kept in sync for backward compatibility & tests)
   const [selected, setSelected] = useState("all");
@@ -112,9 +116,7 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
   const [expanded, setExpanded] = useState<string[]>([]);
   const [reviewing, setReviewing] = useState(false);
   const [filter, setFilter] = useState("all");
-  const [paletteFilter, setPaletteFilter] = useState<
-    "all" | "unanswered" | "flagged"
-  >("all");
+  const [showInfo, setShowInfo] = useState(false);
   const [lookup, setLookup] = useState<string | null>(null);
   const lookupContextRef = useRef<{
     attemptId: string | null;
@@ -148,32 +150,30 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
   );
   const exam = active?.exam || catalogExam;
   const clockRunning = mode === "mock" && active?.status === "in_progress";
+  /** Thi nghiêm túc đang diễn ra: chặn tra từ, dịch, nghe (JL-05) */
+  const strictRunning = Boolean(
+    active?.mode === "mock" && active.status === "in_progress" && active.strict,
+  );
+  const lookupAllowed = !strictRunning;
 
-  // B2: Báo cho FloatingStudyTimer thu gọn đồng hồ Pomodoro khi đang thi thử bấm giờ
+  // Báo cho FloatingStudyTimer: đang làm bài thì ẩn nút nổi; thi nghiêm túc thì chặn F9 (JL-08, JL-05)
+  const attemptActive = Boolean(
+    active?.status === "in_progress" &&
+      (mode === "drill" || mode === "mock"),
+  );
   useEffect(() => {
-    if (typeof document !== "undefined") {
-      document.body.dataset.jlptMockActive = clockRunning ? "true" : "false";
-    }
-    if (typeof window !== "undefined") {
+    const publish = (on: boolean, strict: boolean) => {
+      document.body.dataset.jlptAttemptActive = on ? "true" : "false";
+      document.body.dataset.jlptStrict = strict ? "true" : "false";
       window.dispatchEvent(
-        new CustomEvent("app:jlpt-mock-active", {
-          detail: { active: clockRunning },
+        new CustomEvent("app:jlpt-workspace", {
+          detail: { attemptActive: on, strict },
         }),
       );
-    }
-    return () => {
-      if (typeof document !== "undefined") {
-        document.body.dataset.jlptMockActive = "false";
-      }
-      if (typeof window !== "undefined") {
-        window.dispatchEvent(
-          new CustomEvent("app:jlpt-mock-active", {
-            detail: { active: false },
-          }),
-        );
-      }
     };
-  }, [clockRunning]);
+    publish(attemptActive, strictRunning);
+    return () => publish(false, false);
+  }, [attemptActive, strictRunning]);
 
   useEffect(() => {
     const tick = () => {
@@ -310,76 +310,71 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
       setSession(change(a));
   };
 
-  // Keyboard shortcuts during active single-unit session
-  useEffect(() => {
-    if (!active || active.status !== "in_progress" || !current) return;
-    const handleKeyDown = (e: KeyboardEvent) => {
-      const target = e.target as HTMLElement | null;
-      if (
-        !target ||
-        target.tagName === "INPUT" ||
-        target.tagName === "TEXTAREA" ||
-        target.tagName === "SELECT" ||
-        target.isContentEditable ||
-        !!lookup ||
-        document.querySelector('[role="dialog"], dialog[open]')
-      ) {
-        return;
+  // Chọn đáp án dùng chung cho chuột/chạm và phím 1–4
+  const selectOption = (questionId: string, opt: number, singleUnit: boolean) => {
+    if (active?.mode === "drill") {
+      update((a) => {
+        const next = answer(a, questionId, opt);
+        return singleUnit
+          ? { ...next, committed: [...new Set([...next.committed, questionId])] }
+          : next;
+      });
+      if (singleUnit) {
+        setExpanded((prev) =>
+          prev.includes(questionId) ? prev : [...prev, questionId],
+        );
       }
+    } else {
+      update((a) => answer(a, questionId, opt));
+    }
+  };
 
+  const goToUnit = (index: number) => {
+    update((a) => ({ ...a, position: index }));
+    window.scrollTo({ top: 0 });
+  };
+
+  // Phím tắt trong lượt đang làm (JL-01): đăng ký một lần, không bỏ qua radio
+  useAttemptKeyboard(
+    Boolean(active && active.status === "in_progress" && current),
+    (e) => {
+      if (!active || active.status !== "in_progress" || !current || lookup)
+        return false;
+      if (["1", "2", "3", "4"].includes(e.key)) {
+        if (current.questions.length !== 1) return false;
+        const q = current.questions[0];
+        if (active.committed.includes(q.id)) return false;
+        selectOption(q.id, Number(e.key), true);
+        return true;
+      }
+      if (e.key === "ArrowLeft") {
+        if (active.position <= 0) return false;
+        goToUnit(active.position - 1);
+        return true;
+      }
       if (
-        ["1", "2", "3", "4"].includes(e.key) &&
-        current.questions.length === 1
+        e.key === "ArrowRight" ||
+        (e.key === "Enter" &&
+          active.mode === "drill" &&
+          current.questions.every((q) => !!active.answers[q.id]))
       ) {
+        if (active.position >= groups.length - 1) return false;
+        goToUnit(active.position + 1);
+        return true;
+      }
+      if ((e.key === "f" || e.key === "F") && current.questions.length === 1) {
         const q = current.questions[0];
-        if (!active.committed.includes(q.id)) {
-          e.preventDefault();
-          const chosenOpt = Number(e.key);
-          if (active.mode === "drill") {
-            update((a) => {
-              const next = answer(a, q.id, chosenOpt);
-              return {
-                ...next,
-                committed: [...new Set([...next.committed, q.id])],
-              };
-            });
-            setExpanded((prev) =>
-              prev.includes(q.id) ? prev : [...prev, q.id],
-            );
-          } else {
-            update((a) => answer(a, q.id, chosenOpt));
-          }
-        }
-      } else if (e.key === "ArrowLeft" && active.position > 0) {
-        e.preventDefault();
-        update((a) => ({ ...a, position: a.position - 1 }));
-      } else if (
-        (e.key === "ArrowRight" ||
-          (e.key === "Enter" &&
-            active.mode === "drill" &&
-            current.questions.every((q) => !!active.answers[q.id]))) &&
-        active.position < groups.length - 1
-      ) {
-        e.preventDefault();
-        update((a) => ({ ...a, position: a.position + 1 }));
-        window.scrollTo({ top: 0 });
-      } else if (
-        (e.key === "f" || e.key === "F") &&
-        current.questions.length === 1
-      ) {
-        const q = current.questions[0];
-        e.preventDefault();
         update((a) => ({
           ...a,
           flags: a.flags.includes(q.id)
             ? a.flags.filter((id) => id !== q.id)
             : [...a.flags, q.id],
         }));
+        return true;
       }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  });
+      return false;
+    },
+  );
 
   if (!exam)
     return (
@@ -728,27 +723,9 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                       }))
                   : undefined
               }
-              onSelectOption={(opt) => {
-                if (active?.mode === "drill") {
-                  const isSingleUnit = unit.questions.length === 1;
-                  update((a) => {
-                    const next = answer(a, q.id, opt);
-                    return isSingleUnit
-                      ? {
-                          ...next,
-                          committed: [...new Set([...next.committed, q.id])],
-                        }
-                      : next;
-                  });
-                  if (isSingleUnit) {
-                    setExpanded((prev) =>
-                      prev.includes(q.id) ? prev : [...prev, q.id],
-                    );
-                  }
-                } else {
-                  update((a) => answer(a, q.id, opt));
-                }
-              }}
+              onSelectOption={(opt) =>
+                selectOption(q.id, opt, unit.questions.length === 1)
+              }
               onAssist={() => {
                 if (!reading && active?.status === "in_progress") {
                   recordAssistForQuestions(active.id, unitQuestionIds);
@@ -875,6 +852,60 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
       ? computeStandardJLPTScore(active)
       : null;
 
+  const nextEmphasis = Boolean(
+    active?.mode === "drill" &&
+      current &&
+      current.questions.every((q) => !!active.answers[q.id]),
+  );
+  const jumpToQuestion = (unitIdx: number, questionId: string) => {
+    update((a) => ({ ...a, position: unitIdx }));
+    setTimeout(() => {
+      document
+        .getElementById(`q-${questionId}`)
+        ?.scrollIntoView?.({ behavior: "smooth", block: "center" });
+    }, 0);
+  };
+  const attemptMenuItems: AttemptMenuItem[] = active
+    ? [
+        {
+          key: "info",
+          label: "Thông tin bài",
+          onSelect: () => setShowInfo(true),
+        },
+        ...(exam.isPracticePool && active.mode === "drill"
+          ? [
+              {
+                key: "config",
+                label: "Đổi dạng / số câu",
+                onSelect: () => {
+                  setConfiguring(true);
+                  navigate(`/exams/jlpt/${exam.id}/drill`);
+                },
+              },
+            ]
+          : []),
+        ...(lookupAllowed
+          ? [
+              {
+                key: "tools",
+                label: "Tiện ích học tập",
+                onSelect: () =>
+                  window.dispatchEvent(
+                    new CustomEvent("app:open-study-tools", {
+                      detail: { tab: "lookup" },
+                    }),
+                  ),
+              },
+            ]
+          : []),
+        {
+          key: "remove",
+          label: "Kết thúc và xóa phiên",
+          danger: true,
+          onSelect: () => void remove(),
+        },
+      ]
+    : [];
   const attemptDisplayTitle =
     attempt?.exam.isPracticePool && attempt.mode === "mock"
       ? "Bài làm có giờ (Đề trộn 54 câu)"
@@ -889,8 +920,8 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
     <div className="exam-shell">
       {confirmation}
 
-      {/* FIX-07: Active Session Management Bar — Responsive 2-row layout below 640px */}
-      {attempt && (
+      {/* Thanh phiên: chỉ hiện khi trang đang xem không phải chính lượt trong tab (JL-14) */}
+      {attempt && !(active && active.id === attempt.id) && (
         <div className="exam-card flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between mb-4 border-2 border-indigo-500/80 dark:border-indigo-500/70 bg-indigo-50/50 dark:bg-slate-800/90">
           <div className="min-w-0 flex-1 w-full sm:w-auto space-y-0.5">
             <p
@@ -958,15 +989,6 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                 {headerTitle}
               </h1>
             </div>
-            <details className="text-xs text-indigo-100">
-              <summary className="cursor-pointer font-bold px-2.5 py-1 rounded-lg bg-white/10 hover:bg-white/20 select-none">
-                Thông tin bài
-              </summary>
-              <p className="mt-1.5 text-[11px] text-indigo-100">
-                {exam.level} · {exam.bookTitle} · Bôi đen từ tiếng Nhật bất kỳ để
-                tra từ đa sách
-              </p>
-            </details>
           </div>
         </header>
       ) : (
@@ -1006,7 +1028,11 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
 
       <p
         role="status"
-        className="text-xs font-medium mb-3 text-slate-500 dark:text-slate-400 empty:hidden"
+        className={`text-xs font-medium mb-3 empty:hidden ${
+          noticeKind === "warning"
+            ? "text-amber-700 dark:text-amber-300"
+            : "text-slate-600 dark:text-slate-400"
+        }`}
       >
         {notice}
       </p>
@@ -1715,12 +1741,11 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
         </section>
       )}
 
-      {/* Mode 4: In-Progress Exam / Drill Workspace (2-Column Split View on Desktop) */}
+      {/* Mode 4: Lượt đang làm — thanh trên, nội dung, phiếu (aside ≥1024 px, sheet <1024 px) */}
       {active?.status === "in_progress" && current && (
         <>
-          {/* Sticky Top Toolbar (Preserves exact aria-labels for tests & mobile) */}
           <div className="exam-toolbar justify-between">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 min-w-0">
               <strong
                 className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-sm font-black ${
                   active.mode === "mock" && remaining <= 300
@@ -1740,23 +1765,11 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                 <span className="hidden sm:inline">đã chọn</span>
               </span>
             </div>
-
             <div className="flex items-center gap-2">
-              <button
-                className="exam-secondary lg:hidden"
-                aria-expanded={sheet}
-                aria-label="Phiếu câu hỏi"
-                onClick={() => setSheet(!sheet)}
-              >
-                <LayoutGrid size={15} />
-                <span className="sm:hidden">Phiếu</span>
-                <span className="hidden sm:inline">Phiếu câu hỏi</span>
-              </button>
+              <AttemptMenu items={attemptMenuItems} />
               <button
                 className="exam-primary"
-                aria-label={
-                  active.mode === "mock" ? "Nộp bài" : "Kết thúc luyện"
-                }
+                aria-label={active.mode === "mock" ? "Nộp bài" : "Kết thúc luyện"}
                 onClick={submit}
               >
                 {active.mode === "mock" ? (
@@ -1771,273 +1784,112 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
             </div>
           </div>
 
-          {/* Mobile Drawer Sheet */}
-          {sheet && (
-            <nav
-              aria-label="Phiếu câu hỏi"
-              className="exam-card mb-4 lg:hidden"
-            >
-              <p className="text-xs font-bold text-slate-500 mb-3">
-                ✓ Đã chọn · ⚑ Chưa chắc · ○ Chưa chọn
+          {showInfo && (
+            <div className="exam-card mb-4 text-sm text-slate-600 dark:text-slate-300 flex items-start justify-between gap-3">
+              <p>
+                {exam.level} · {exam.bookTitle} · Bôi đen từ tiếng Nhật bất kỳ
+                để tra từ đa sách
               </p>
-              <div className="flex flex-wrap gap-2">
-                {groups.map((g, i) =>
-                  g.questions.map((q) => {
-                    const seqNum = questionSeqMap.get(q.id) ?? q.number;
-                    return (
-                      <button
-                        key={q.id}
-                        type="button"
-                        title={
-                          q.origin
-                            ? `Câu ${seqNum} · Nguồn: Ngày ${q.origin.day} · Câu ${q.origin.number}`
-                            : `Câu ${seqNum}`
-                        }
-                        className="exam-secondary !py-1.5 !px-2.5 !min-h-9 text-xs"
-                        onClick={() => {
-                          update((a) => ({ ...a, position: i }));
-                          setSheet(false);
-                          setTimeout(() => {
-                            document
-                              .getElementById(`q-${q.id}`)
-                              ?.scrollIntoView?.({
-                                behavior: "smooth",
-                                block: "center",
-                              });
-                          }, 0);
-                        }}
-                      >
-                        {seqNum}{" "}
-                        {active.flags.includes(q.id)
-                          ? "⚑"
-                          : active.answers[q.id]
-                            ? "✓"
-                            : "○"}
-                      </button>
-                    );
-                  }),
-                )}
-              </div>
-            </nav>
+              <button
+                type="button"
+                className="exam-secondary !min-h-9 text-xs"
+                onClick={() => setShowInfo(false)}
+              >
+                Đóng
+              </button>
+            </div>
           )}
 
-          {/* 2-Column Split Screen: Left (8 cols) Question Content + Right (4 cols) Sticky Palette Sidebar */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            {/* Left Column: Main Question & Passage Area */}
             <div className="lg:col-span-8 space-y-5 min-w-0">
               {showGroup(current)}
 
-              {/* Bottom Navigation Bar */}
-              <div className="exam-card flex flex-wrap items-center justify-between gap-3">
+              {active.mode === "drill" &&
+                current.questions.length > 1 &&
+                !current.questions.every((q) =>
+                  active.committed.includes(q.id),
+                ) && (
+                  <button
+                    className="exam-primary !from-emerald-700 !to-teal-700 w-full"
+                    disabled={
+                      !current.questions.every((q) => active.answers[q.id])
+                    }
+                    onClick={() => {
+                      const currentIds = current.questions.map((q) => q.id);
+                      update((a) => ({
+                        ...a,
+                        committed: [...new Set([...a.committed, ...currentIds])],
+                      }));
+                      setExpanded((prev) => [...new Set([...prev, ...currentIds])]);
+                    }}
+                  >
+                    Kiểm tra nhóm
+                  </button>
+                )}
+
+              {/* Điều hướng trên máy tính; điện thoại dùng thanh đáy */}
+              <div className="exam-card hidden lg:flex flex-wrap items-center justify-between gap-3">
                 <button
                   className="exam-secondary"
                   disabled={active.position === 0}
-                  onClick={() =>
-                    update((a) => ({ ...a, position: a.position - 1 }))
-                  }
+                  onClick={() => goToUnit(active.position - 1)}
                 >
                   ← Trước
                 </button>
-
-                <div className="flex items-center gap-2.5">
-                  {active.mode === "drill" &&
-                    current.questions.length > 1 &&
-                    !current.questions.every((q) =>
-                      active.committed.includes(q.id),
-                    ) && (
-                      <button
-                        className="exam-primary !from-emerald-600 !to-teal-600"
-                        disabled={
-                          !current.questions.every((q) => active.answers[q.id])
-                        }
-                        onClick={() => {
-                          const currentIds = current.questions.map((q) => q.id);
-                          update((a) => ({
-                            ...a,
-                            committed: [
-                              ...new Set([...a.committed, ...currentIds]),
-                            ],
-                          }));
-                          setExpanded((prev) => [
-                            ...new Set([...prev, ...currentIds]),
-                          ]);
-                        }}
-                      >
-                        Kiểm tra nhóm
-                      </button>
-                    )}
-
-                  <button
-                    className={
-                      active.mode === "drill" &&
-                      current.questions.every((q) => !!active.answers[q.id])
-                        ? "exam-primary"
-                        : "exam-secondary"
-                    }
-                    disabled={active.position >= groups.length - 1}
-                    onClick={() => {
-                      update((a) => ({ ...a, position: a.position + 1 }));
-                      window.scrollTo({ top: 0 });
-                    }}
-                  >
-                    Tiếp / Bỏ qua →
-                  </button>
-                </div>
+                <button
+                  className={nextEmphasis ? "exam-primary" : "exam-secondary"}
+                  disabled={active.position >= groups.length - 1}
+                  onClick={() => goToUnit(active.position + 1)}
+                >
+                  Tiếp / Bỏ qua →
+                </button>
               </div>
             </div>
 
-            {/* Right Column: Sticky Question Palette & Live Status Sidebar */}
-            <aside className="lg:col-span-4 lg:sticky lg:top-20 space-y-4">
-              <div className="exam-card space-y-4">
-                {/* Sidebar Header Status */}
-                <div className="flex items-center justify-between gap-2 pb-3 border-b border-slate-100 dark:border-slate-700/70">
-                  <div>
-                    <p className="text-xs font-extrabold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
-                      {active.mode === "mock"
-                        ? "Phiếu trả lời bài thi"
-                        : "Tiến độ luyện tập"}
-                    </p>
-                    <p className="text-sm font-black text-slate-900 dark:text-white mt-0.5">
-                      Đã chọn {Object.keys(active.answers).length} /{" "}
-                      {active.questionIds.length} câu
-                    </p>
-                  </div>
-                  {active.mode === "drill" && (
-                    <div className="flex items-center gap-1.5 text-xs font-black">
-                      <span className="px-2 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300">
-                        ✓ {liveDrillStats.right}
-                      </span>
-                      <span className="px-2 py-1 rounded-lg bg-rose-50 dark:bg-rose-950/70 text-rose-700 dark:text-rose-300">
-                        ✗ {liveDrillStats.wrong}
-                      </span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Filter Pills */}
-                <div className="flex flex-wrap gap-1.5">
-                  {(
-                    [
-                      ["all", `Tất cả (${active.questionIds.length})`],
-                      [
-                        "unanswered",
-                        `Chưa làm (${active.questionIds.length - Object.keys(active.answers).length})`,
-                      ],
-                      ["flagged", `Chưa chắc ⚑ (${active.flags.length})`],
-                    ] as const
-                  ).map(([key, label]) => (
-                    <button
-                      key={key}
-                      type="button"
-                      onClick={() => setPaletteFilter(key)}
-                      className={`px-2.5 py-1 rounded-xl text-[11px] font-bold transition-all ${
-                        paletteFilter === key
-                          ? "bg-indigo-600 text-white"
-                          : "bg-slate-100 dark:bg-slate-900/70 text-slate-600 dark:text-slate-300"
-                      }`}
-                    >
-                      {label}
-                    </button>
-                  ))}
-                </div>
-
-                {/* 5-Column Question Grid */}
-                <div className="grid grid-cols-5 gap-2 max-h-[46vh] overflow-y-auto pr-1">
-                  {groups.map((g, unitIdx) =>
-                    g.questions.map((q) => {
-                      const isAnswered = !!active.answers[q.id];
-                      const isFlagged = active.flags.includes(q.id);
-                      const isCommitted = active.committed.includes(q.id);
-                      const isRight = active.answers[q.id] === q.answer;
-                      const isCurrent = active.position === unitIdx;
-                      const seqNum = questionSeqMap.get(q.id) ?? q.number;
-
-                      if (paletteFilter === "unanswered" && isAnswered)
-                        return null;
-                      if (paletteFilter === "flagged" && !isFlagged)
-                        return null;
-
-                      let btnStyle =
-                        "bg-slate-100 dark:bg-slate-900/70 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700";
-                      if (isCommitted) {
-                        btnStyle = isRight
-                          ? "bg-emerald-600 text-white border-emerald-600"
-                          : "bg-rose-600 text-white border-rose-600";
-                      } else if (isAnswered) {
-                        btnStyle =
-                          "bg-indigo-600 text-white border-indigo-600";
-                      }
-
-                      return (
-                        <button
-                          key={q.id}
-                          type="button"
-                          onClick={() => {
-                            update((a) => ({ ...a, position: unitIdx }));
-                            setTimeout(() => {
-                              document
-                                .getElementById(`q-${q.id}`)
-                                ?.scrollIntoView?.({
-                                  behavior: "smooth",
-                                  block: "center",
-                                });
-                            }, 0);
-                          }}
-                          title={
-                            q.origin
-                              ? `Câu ${seqNum} · Nguồn: Ngày ${q.origin.day} · Câu ${q.origin.number}`
-                              : `Câu ${seqNum}`
-                          }
-                          className={`relative h-10 rounded-xl border text-xs font-black flex items-center justify-center transition-all ${btnStyle} ${
-                            isCurrent
-                              ? "ring-2 ring-indigo-500 ring-offset-2 dark:ring-offset-slate-800"
-                              : ""
-                          }`}
-                        >
-                          <span>{seqNum}</span>
-                          {isFlagged && (
-                            <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-amber-400 text-slate-950 text-[9px] flex items-center justify-center font-black shadow-2xs">
-                              ⚑
-                            </span>
-                          )}
-                        </button>
-                      );
-                    }),
-                  )}
-                </div>
-
-                {/* Legend */}
-                <div className="pt-2 border-t border-slate-100 dark:border-slate-700/70 flex flex-wrap gap-3 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
-                  <span className="inline-flex items-center gap-1">
-                    <span className="w-2.5 h-2.5 rounded-sm bg-indigo-600 inline-block" />
-                    Đã chọn
-                  </span>
-                  {active.mode === "drill" && (
-                    <>
-                      <span className="inline-flex items-center gap-1">
-                        <span className="w-2.5 h-2.5 rounded-sm bg-emerald-600 inline-block" />
-                        Đúng
-                      </span>
-                      <span className="inline-flex items-center gap-1">
-                        <span className="w-2.5 h-2.5 rounded-sm bg-rose-600 inline-block" />
-                        Sai
-                      </span>
-                    </>
-                  )}
-                  <span className="inline-flex items-center gap-1">
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-400 inline-block" />
-                    Chưa chắc
-                  </span>
-                </div>
-
-                <p className="text-[11px] text-slate-400 dark:text-slate-500">
-                  Phím tắt: <kbd className="px-1 py-0.5 rounded bg-slate-100 dark:bg-slate-900">1–4</kbd> chọn đáp án ·{" "}
-                  <kbd className="px-1 py-0.5 rounded bg-slate-100 dark:bg-slate-900">←/→</kbd> chuyển câu ·{" "}
-                  <kbd className="px-1 py-0.5 rounded bg-slate-100 dark:bg-slate-900">F</kbd> đánh dấu
-                </p>
+            <aside className="hidden lg:block lg:col-span-4 lg:sticky lg:top-20">
+              <div className="exam-card">
+                <QuestionPalette
+                  attempt={active}
+                  groups={groups}
+                  seqMap={questionSeqMap}
+                  stats={liveDrillStats}
+                  onJump={jumpToQuestion}
+                  showShortcutHint
+                />
               </div>
             </aside>
           </div>
+
+          <MobileAttemptBar
+            canPrev={active.position > 0}
+            canNext={active.position < groups.length - 1}
+            answered={Object.keys(active.answers).length}
+            total={active.questionIds.length}
+            sheetOpen={sheet}
+            sheetId="palette-sheet"
+            emphasizeNext={nextEmphasis}
+            onPrev={() => goToUnit(active.position - 1)}
+            onNext={() => goToUnit(active.position + 1)}
+            onPalette={() => setSheet(true)}
+          />
+          <BottomSheet
+            open={sheet}
+            id="palette-sheet"
+            title="Phiếu câu hỏi"
+            onClose={() => setSheet(false)}
+          >
+            <QuestionPalette
+              attempt={active}
+              groups={groups}
+              seqMap={questionSeqMap}
+              stats={liveDrillStats}
+              onJump={(unitIdx, qid) => {
+                setSheet(false);
+                jumpToQuestion(unitIdx, qid);
+              }}
+              gridClassName=""
+            />
+          </BottomSheet>
         </>
       )}
 

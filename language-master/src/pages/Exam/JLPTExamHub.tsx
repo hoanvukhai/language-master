@@ -41,7 +41,7 @@ export default function JLPTExamHub() {
   const navigate = useNavigate();
   const { ask, confirmation } = useConfirmation();
   const [params, setParams] = useSearchParams();
-  const { attempt, notice } = useTabSession();
+  const { attempt, notice, noticeKind } = useTabSession();
   const [upcomingModal, setUpcomingModal] =
     useState<UpcomingSkillModal>(null);
   const startingMockRef = useRef(false);
@@ -207,7 +207,11 @@ export default function JLPTExamHub() {
 
       <p
         role="status"
-        className="text-xs font-medium text-slate-500 dark:text-slate-400 empty:hidden"
+        className={`text-xs font-medium empty:hidden ${
+          noticeKind === "warning"
+            ? "text-amber-700 dark:text-amber-300"
+            : "text-slate-600 dark:text-slate-400"
+        }`}
       >
         {notice}
       </p>

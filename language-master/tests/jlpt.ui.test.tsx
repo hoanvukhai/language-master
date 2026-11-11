@@ -28,6 +28,16 @@ import {
   sanitizeKanaReading,
 } from "../src/lib/dictionary/multiBookLookup";
 
+
+/** Mở menu ⋯ của lượt đang làm rồi chọn một mục (JL-14). */
+async function chooseAttemptMenu(
+  user: ReturnType<typeof userEvent.setup>,
+  name: string,
+) {
+  await user.click(screen.getByRole("button", { name: "Tùy chọn lượt làm" }));
+  await user.click(screen.getByRole("menuitem", { name }));
+}
+
 const exams = Object.values(
   import.meta.glob<JLPTExam>(
     "../src/data/exams/jlpt/n2/kokusho-20days/day*.json",
@@ -216,16 +226,14 @@ describe("pooled practice", () => {
     view.unmount();
     open(pool, "drill");
     expect(getSession()?.questionIds).toEqual(saved.questionIds);
-    await user.click(screen.getByRole("button", { name: "Đổi dạng / số câu" }));
+    await chooseAttemptMenu(user, "Đổi dạng / số câu");
     expect(getSession()?.id).toBe(saved.id);
     await user.selectOptions(screen.getByLabelText("Chọn dạng"), "1");
     await user.click(screen.getByRole("button", { name: "Bắt đầu luyện" }));
     await user.click(screen.getByRole("button", { name: "Quay lại" }));
     expect(getSession()?.id).toBe(saved.id);
     await user.click(screen.getByRole("link", { name: "Làm tiếp" }));
-    await user.click(
-      screen.getByRole("button", { name: "Kết thúc và xóa phiên" }),
-    );
+    await chooseAttemptMenu(user, "Kết thúc và xóa phiên");
     await user.click(screen.getByRole("button", { name: "Xác nhận" }));
     expect(getSession()).toBeNull();
     expect(screen.getByRole("button", { name: "Bắt đầu luyện" })).toBeTruthy();
@@ -332,9 +340,7 @@ it("clears only the JLPT session", async () => {
   sessionStorage.setItem("currentRaceId", "keep");
   act(() => setSession(createAttempt(exams[0], "drill")));
   open(exams[0], "drill");
-  await user.click(
-    screen.getByRole("button", { name: "Kết thúc và xóa phiên" }),
-  );
+  await chooseAttemptMenu(user, "Kết thúc và xóa phiên");
   await user.click(screen.getByRole("button", { name: "Xác nhận" }));
   expect(getSession()).toBeNull();
   expect(sessionStorage.getItem("currentRaceId")).toBe("keep");

@@ -7,6 +7,22 @@ import {
 } from "./examCore.ts";
 let current: Attempt | null = null;
 let notice = "";
+let noticeKind: "info" | "warning" = "info";
+let noticeTimer: ReturnType<typeof setTimeout> | undefined;
+/** Chỉ báo lỗi/cảnh báo lâu dài; thông báo thông tin tự ẩn sau 4 giây (JL-27). */
+function setNotice(text: string, kind: "info" | "warning") {
+  notice = text;
+  noticeKind = kind;
+  if (noticeTimer) clearTimeout(noticeTimer);
+  noticeTimer = undefined;
+  if (text && kind === "info") {
+    noticeTimer = setTimeout(() => {
+      notice = "";
+      noticeTimer = undefined;
+      emit();
+    }, 4000);
+  }
+}
 let initialized = false;
 let version = 0;
 const listeners = new Set<() => void>();
@@ -28,12 +44,15 @@ function persist() {
       SESSION_KEY,
       JSON.stringify({ version: 1, attempt: current }),
     );
-    notice = "Đã lưu tạm trong tab này";
+    if (noticeKind === "warning" && notice.startsWith("Đang giữ bài"))
+      setNotice("", "info");
   } catch {
     const removed = removeStored();
-    notice =
+    setNotice(
       "Đang giữ bài trong bộ nhớ. Tải lại có thể mất bài" +
-      (removed ? "." : " hoặc khôi phục bản đã lưu trước đó.");
+        (removed ? "." : " hoặc khôi phục bản đã lưu trước đó."),
+      "warning",
+    );
   }
 }
 export function loadSession() {
@@ -46,12 +65,15 @@ export function loadSession() {
       if (current) persist();
       else {
         removeStored();
-        notice = "Phiên tạm đã hết hạn.";
+        setNotice("Phiên tạm đã hết hạn.", "warning");
       }
     }
   } catch {
     removeStored();
-    notice = "Không khôi phục được phiên. Bạn vẫn có thể làm bài bằng bộ nhớ.";
+    setNotice(
+      "Không khôi phục được phiên. Bạn vẫn có thể làm bài bằng bộ nhớ.",
+      "warning",
+    );
   }
 }
 export function getSession() {
@@ -61,10 +83,12 @@ export function getSession() {
 export function setSession(next: Attempt | null) {
   current = next;
   if (next) persist();
+  else if (removeStored()) setNotice("Đã xóa phiên tạm.", "info");
   else
-    notice = removeStored()
-      ? "Đã xóa phiên tạm."
-      : "Đã bỏ phiên khỏi bộ nhớ; chưa xóa được bản lưu. Thử xóa lại.";
+    setNotice(
+      "Đã bỏ phiên khỏi bộ nhớ; chưa xóa được bản lưu. Thử xóa lại.",
+      "warning",
+    );
   emit();
 }
 export function refreshSession() {
@@ -73,7 +97,7 @@ export function refreshSession() {
   if (next !== current) {
     setSession(next);
     if (!next) {
-      notice = "Phiên tạm đã hết hạn.";
+      setNotice("Phiên tạm đã hết hạn.", "warning");
       emit();
     }
   }
@@ -89,5 +113,5 @@ export function useTabSession() {
     },
     () => version,
   );
-  return { attempt: current, notice };
+  return { attempt: current, notice, noticeKind };
 }
