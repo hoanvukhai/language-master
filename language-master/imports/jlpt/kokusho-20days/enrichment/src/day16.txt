@@ -1,0 +1,446 @@
+@m1_01
+T: Những học sinh tiểu học khỏe khoắn leo con đường núi hiểm trở mà chẳng chút vất vả.
+W: 険しい | けわしい | HIỂM | dốc, hiểm trở
+1: はげしい là 激しい: dữ dội.
+2: けわしい: cách đọc của 険しい.
+3: きびしい là 厳しい: nghiêm khắc.
+4: あやしい là 怪しい: khả nghi.
+
+@m1_02
+T: Ngay sau chiến tranh, ở Tokyo cũng có ruộng vườn khắp nơi.
+W: 畑 | はたけ | ĐIỀN | ruộng cạn, vườn
+1: とうげ là 峠: đèo.
+2: とち là 土地: đất đai.
+3: た là 田: ruộng lúa.
+4: はたけ: cách đọc của 畑.
+
+@m1_03
+T: Ngày xưa bố tôi làm việc lâu năm ở xưởng đóng tàu tại Hiroshima.
+W: 造船 | ぞうせん | TẠO THUYỀN | đóng tàu
+1: ぞうせん: 造 ぞう + 船 せん.
+2: ぞうぜん: 船 không đục ở đây.
+3: そうせん: 造 đọc ぞう.
+4: そうぜん: sai cả hai âm.
+
+@m1_04
+T: Động đất lớn xảy ra, tòa nhà trước ga đã bị nghiêng.
+W: 傾く | かたむく | KHUYNH | nghiêng
+1: おもむいて là 赴いて: đi đến.
+2: うつむいて là 俯いて: cúi đầu.
+3: かたむいて: thể て của 傾く.
+4: すりむいて là 擦りむいて: trầy da.
+
+@m1_05
+T: Mong là biển Okinawa xinh đẹp sẽ mãi không bị ô nhiễm.
+W: 汚染 | おせん | Ô NHIỄM | ô nhiễm
+1: あせん: 汚 đọc お.
+2: おせん: 汚 お + 染 せん.
+3: あぜん: sai cả hai âm.
+4: おぜん: 染 không đục.
+
+@m2_06
+T: Nhà máy hóa chất phát nổ và gây hỏa hoạn lớn.
+W: 爆発 | ばくはつ | BẠO PHÁT | phát nổ
+1: 爆発: 爆 (BẠO) bộ Hỏa.
+2: 暴発: súng cướp cò, bộc phát; không phải nổ hóa chất.
+3: 縛 (PHƯỢC) là trói; 縛発 không phải từ có thật.
+4: 博 (BÁC); 博発 không phải từ có thật.
+
+@m2_07
+T: Nghe nói lòng đất Siberia có trữ lượng khí đốt tự nhiên dồi dào.
+W: 豊富 | ほうふ | PHONG PHÚ | dồi dào
+1: 豊富: phong phú.
+2: 豊生 không phải từ có thật.
+3: 豊浮 không phải từ có thật.
+4: 豊夫 không phải từ có thật.
+
+@m2_08
+T: Ở sân bay, cảnh sát khám người một người đàn ông từ bên ngoài quần áo.
+W: 衣服 | いふく | Y PHỤC | quần áo
+1: 居 (CƯ); 居服 không phải từ có thật.
+2: 囲 (VI); 囲服 không phải từ có thật.
+3: 衣服: y phục.
+4: 位 (VỊ); 位服 không phải từ có thật.
+
+@m2_09
+T: Người đó thật sự nghiêm túc, đến giờ chưa từng thất hứa.
+W: 破る | やぶる | PHÁ | phá vỡ (lời hứa)
+1: 違 đọc ちがう; không đọc やぶる.
+2: 約束を破る: thất hứa.
+3: 切る: cắt; không đọc やぶる.
+4: 折る: bẻ gãy; không đọc やぶる.
+
+@m2_10
+T: Thể thao hay gì cũng vậy, khi còn trẻ nên dồn nhiệt huyết vào một điều gì đó.
+W: 注ぐ | そそぐ | CHÚ | rót, dồn vào
+1: 担ぐ đọc かつぐ: khiêng.
+2: 継ぐ đọc つぐ: nối tiếp.
+3: 騒ぐ đọc さわぐ: làm ồn.
+4: 注ぐ: rót, dồn vào.
+
+@m3_11
+T: Anh ấy dốc sức để bác bỏ nghi ngờ rằng mình đã quay cóp.
+S: Anh ấy dốc sức để … nghi ngờ rằng mình đã quay cóp.
+W: 打ち消す | うちけす | ĐẢ TIÊU | phủ nhận, bác bỏ | 打ち〜
+1: 断ち消す không phải động từ có thật.
+2: 落ち消す không phải động từ có thật.
+3: 勝ち消す không phải động từ có thật.
+4: 打ち消す: phủ nhận, xóa bỏ.
+
+@m3_12
+T: Lâu lắm mới về nước, bố đã ra đón tôi ở sân bay.
+S: Lâu lắm mới về nước, bố đã … tôi ở sân bay.
+W: 出迎える | でむかえる | XUẤT NGHÊNH | ra đón | 出〜
+1: 入迎える không phải động từ có thật.
+2: 行迎える không phải động từ có thật.
+3: 出迎える: ra đón.
+4: 待迎える không phải động từ có thật.
+
+@m3_13
+T: Tôi với cô ấy cùng thế hệ, nhưng sở thích âm nhạc hoàn toàn không hợp.
+S: Tôi với cô ấy … , nhưng sở thích âm nhạc hoàn toàn không hợp.
+W: 同年代 | どうねんだい | ĐỒNG NIÊN ĐẠI | cùng thế hệ | 同〜
+1: 同年代: cùng thế hệ.
+2: 等年代 không phải từ có thật.
+3: 近年代 không phải từ có thật.
+4: 仲年代 không phải từ có thật.
+
+@m3_14
+T: Nghe nói ở bữa tiệc đó phí vào cửa của nam và nữ khác nhau.
+S: Nghe nói ở bữa tiệc đó … của nam và nữ khác nhau.
+W: 入場料 | にゅうじょうりょう | NHẬP TRƯỜNG LIỆU | phí vào cửa | 〜料
+1: 〜量: lượng; không hợp.
+2: 〜両: toa xe; không hợp.
+3: 〜領: lãnh thổ; không hợp.
+4: 〜料: phí (入場料).
+
+@m3_15
+T: Cuốn tiểu thuyết này là tác phẩm lịch sử miêu tả đời sống của võ sĩ.
+S: Cuốn tiểu thuyết này là … miêu tả đời sống của võ sĩ.
+W: 時代物 | じだいもの | THỜI ĐẠI VẬT | tác phẩm (bối cảnh) lịch sử | 〜物
+1: 〜巻: quyển, tập; không chỉ thể loại.
+2: 〜級: cấp; không hợp.
+3: 〜物: loại tác phẩm (時代物).
+4: 〜編: phần, thiên; không hợp.
+
+@m4_16
+T: Một vụ hỏa hoạn trong gió mạnh mà không có người chết là điều tuyệt vời.
+S: Một vụ … trong gió mạnh mà không có người chết là điều tuyệt vời.
+W: 火災 | かさい | HỎA TAI | hỏa hoạn
+1: 停電: mất điện; ít khi gây chết người.
+2: 火災: hỏa hoạn.
+3: 遅刻: đi muộn; không hợp.
+4: 不運: xui xẻo; không hợp.
+
+@m4_17
+T: Dạ dày không ổn nên tôi định đi khám một lần.
+S: Dạ dày không ổn nên tôi định đi … một lần.
+W: 診察 | しんさつ | CHẨN SÁT | khám bệnh
+1: 薬品: dược phẩm; không 受ける.
+2: 医学: y học; không 受ける.
+3: 保健: bảo vệ sức khỏe; không 受ける.
+4: 診察を受ける: đi khám.
+
+@m4_18
+T: Sắt và nhôm là kim loại nên dẫn điện tốt.
+S: Sắt và nhôm là … nên dẫn điện tốt.
+W: 金属 | きんぞく | KIM THUỘC | kim loại
+1: 金: vàng; sắt không phải vàng.
+2: 金属: kim loại.
+3: 銅: đồng; sắt không phải đồng.
+4: 鉱物: khoáng vật; quá rộng.
+
+@m4_19
+T: Hệ thống tiền lương của công ty đó có phần không minh bạch.
+S: … của công ty đó có phần không minh bạch.
+W: 体系 | たいけい | THỂ HỆ | hệ thống
+1: 測定: đo đạc; không hợp.
+2: 会計: kế toán; 賃金会計 không dùng.
+3: 賃金体系: hệ thống tiền lương.
+4: 貯金: tiết kiệm; không hợp.
+
+@m4_20
+T: Ở giải đấu chính thức, bộ đồ bơi này sẽ vi phạm quy định.
+S: Ở giải đấu chính thức, bộ đồ bơi này sẽ … quy định.
+W: 違反 | いはん | VI PHẢN | vi phạm
+1: ルール禁止 không phải cách nói.
+2: ルール停止 không có nghĩa.
+3: ルール反対 không phải cách nói.
+4: ルール違反: vi phạm quy định.
+
+@m4_21
+T: Từ khi vào công ty, tôi luôn làm công việc kinh doanh.
+S: Từ khi vào công ty, tôi luôn làm công việc … .
+W: 営業 | えいぎょう | DOANH NGHIỆP | kinh doanh, bán hàng
+1: 損得: lỗ lãi; không chỉ công việc.
+2: 営業の仕事: công việc kinh doanh.
+3: 自営: tự kinh doanh; trái với 入社.
+4: 利益: lợi nhuận; không chỉ công việc.
+
+@m4_22
+T: Nghỉ hưu rồi, tôi muốn sống ở nước ngoài nơi vật giá rẻ.
+S: Nghỉ hưu rồi, tôi muốn sống ở … nơi vật giá rẻ.
+W: 海外 | かいがい | HẢI NGOẠI | nước ngoài
+1: 海洋: đại dương; không sống được.
+2: 海外で暮らす: sống ở nước ngoài.
+3: 空中: trên không; không hợp.
+4: 空間: không gian; không hợp.
+
+@m5_23
+T: Chiếc áo phông cô ấy mặc có in hình rất đẹp.
+W: プリント | プリント | | in
+1: 編集: biên tập; khác nghĩa.
+2: 表現: biểu hiện; khác nghĩa.
+3: 印刷: in ấn.
+4: 宣伝: quảng cáo; khác nghĩa.
+
+@m5_24
+T: Cô ấy vốn dĩ đã rất quan tâm đến văn học Nhật.
+W: 元々 | もともと | NGUYÊN | vốn dĩ
+1: 本当に: thật sự; khác nghĩa.
+2: もっとも: nhất, tuy nhiên; khác nghĩa.
+3: 実際: thực tế; khác nghĩa.
+4: はじめから: ngay từ đầu.
+
+@m5_25
+T: Bức tranh này được vẽ xong trong thời gian tương đối ngắn.
+W: 比較的 | ひかくてき | TỶ GIẢO ĐÍCH | tương đối
+1: わりと: tương đối, khá.
+2: かなり: khá nhiều; mức độ mạnh hơn.
+3: まったく: hoàn toàn; khác nghĩa.
+4: たしか: hình như; khác nghĩa.
+
+@m5_26
+T: Đến lượt thi hùng biện, chân tôi run lên vì căng thẳng.
+W: 震える | ふるえる | CHẤN | run
+1: 動いた: chuyển động; quá chung.
+2: 固まった: cứng đờ; khác nghĩa.
+3: 揺れた: rung, lắc.
+4: 向いた: hướng về; khác nghĩa.
+
+@m5_27
+T: Tôi lặng ngắm gương mặt đứa con vừa chào đời.
+W: じっと | じっと | | chăm chú, lặng im
+1: ときどき: thỉnh thoảng; khác nghĩa.
+2: にこにこ: tươi cười; khác nghĩa.
+3: わざわざ: cất công; khác nghĩa.
+4: しみじみ: lặng lẽ thấm thía.
+
+@m6_28
+T: Có mê tín rằng quạ bay trên đầu là sẽ gặp chuyện xui.
+W: 迷信 | めいしん | MÊ TÍN | mê tín
+1: Tin không đúng sự thật dùng デマ・うわさ.
+2: 〜という迷信: mê tín rằng.
+3: Lầm bầm dùng ぶつぶつ言う; 迷信になる không có.
+4: Phát ngôn chính trị gia là 発言.
+
+@m6_29
+T: Thực phẩm này có chứa thành phần tạo màu nhân tạo.
+W: 成分 | せいぶん | THÀNH PHẦN | thành phần
+1: Tính dễ nổi giận là 性格.
+2: Phân loại rác là 分別.
+3: Nội dung công việc là 内容.
+4: 成分が含まれている: có chứa thành phần.
+
+@m6_30
+T: Chợt nhớ ra người bạn đang ở London, tôi thử gọi điện.
+W: ふと | ふと | | chợt, bất chợt
+1: Tuyết rơi bất chợt dùng 急に.
+2: Công trình xong dùng やっと・ようやく.
+3: Con côn trùng bay đi dùng さっと.
+4: ふと思い出す: chợt nhớ ra.
+
+@m6_31
+T: Mãi không làm được, nhưng nghe nói cuối cùng nhà ga cũng sắp hoàn thành.
+W: ようやく | ようやく | | cuối cùng thì (sau bao chờ đợi)
+1: ようやく完成する: cuối cùng cũng hoàn thành.
+2: Cân nặng mong muốn dùng 目標の体重.
+3: Lệnh khẩn dùng すぐに.
+4: Dần dần thạo dùng だんだん・しだいに.
+
+@m6_32
+T: Vì dễ dãi tin những câu chuyện như thế nên mới mất một khoản tiền lớn.
+W: 安易 | あんい | AN DỊ | dễ dãi, khinh suất
+1: 安易に信用する: dễ dãi tin.
+2: Lửa dễ tắt dùng 簡単に.
+3: Thở phào yên tâm là ひと安心.
+4: Người nhanh nhẹn không gọi 安易な男.
+
+@m7_33
+T: Từ việc mang két sắt nặng, thủ phạm chắc chắn là nhiều người.
+S: Từ việc mang két sắt nặng, thủ phạm … nhiều người.
+1: Nにほかならない: chính là, không gì khác.
+2: にすぎない: chỉ là; không hợp kết luận.
+3: にかかわりない: không liên quan; không hợp.
+4: に適している: phù hợp với; không hợp.
+
+@m7_34
+T: Ở các đô thị lớn, tiêu biểu là Tokyo, có rất nhiều người nước ngoài.
+S: Ở các đô thị lớn, … Tokyo, có rất nhiều người nước ngoài.
+1: を通して: thông qua; không hợp.
+2: をもとに: dựa trên; không hợp.
+3: をめぐる: xoay quanh; không hợp.
+4: NをはじめとするN: N tiêu biểu là.
+
+@m7_35
+T: Tôi tìm được ở hiệu sách một cuốn sách thú vị về ẩm thực Nhật.
+S: Tôi tìm được ở hiệu sách một cuốn sách thú vị … ẩm thực Nhật.
+1: Nに関するN: N liên quan đến.
+2: に応じる: đáp ứng; không hợp.
+3: に加える: thêm vào; không hợp.
+4: に比べる: so với; không hợp.
+
+@m7_36
+T: Đáp ứng yêu cầu của nhân viên, công ty quyết định kéo dài giờ nghỉ trưa.
+S: … của nhân viên, công ty quyết định kéo dài giờ nghỉ trưa.
+1: Nにこたえて: đáp ứng.
+2: にかけて: về mặt; không hợp.
+3: にして: ở mức; không hợp.
+4: に際して: nhân dịp; không hợp.
+
+@m7_37
+T: Tuy nghĩ phải bỏ rượu nhưng lại mở lon bia.
+S: … bỏ rượu nhưng lại mở lon bia.
+1: ついでに: nhân tiện; không hợp.
+2: Vつつも: tuy… nhưng.
+3: というより: đúng hơn là; không hợp.
+4: どおり: đúng như; không hợp.
+
+@m7_38
+T: Được ở nhờ biệt thự của thầy, lại còn được nhận cả quà.
+S: Được ở nhờ biệt thự của thầy, … được nhận cả quà.
+1: だけ: chỉ; không hợp.
+2: Vたうえ: không những… mà còn.
+3: さえ: ngay cả; không hợp với cấu trúc này.
+4: こそ: chính; không hợp.
+
+@m7_39
+T: Khi tôi kính nhờ cựu tuyển thủ Nhật làm huấn luyện viên, ông vui vẻ nhận lời.
+S: Khi tôi … cựu tuyển thủ Nhật làm huấn luyện viên, ông vui vẻ nhận lời.
+1: 申し出させた: sai khiến; sai.
+2: 申していた sai dạng.
+3: 申し出した sai dạng.
+4: お願い申しあげた: kính nhờ (khiêm nhường).
+
+@m7_40
+T: Nhiệt độ giữa hè càng cao thì doanh số máy điều hòa càng tăng.
+S: Nhiệt độ giữa hè … thì doanh số máy điều hòa càng tăng.
+1: なるわり sai.
+2: なるなど sai.
+3: VばVるほど: càng… càng.
+4: なるとおり sai.
+
+@m7_41
+T: Bệnh bò lây lan thì với các quán thịt nướng là vấn đề nghiêm trọng.
+S: Bệnh bò lây lan thì … vấn đề nghiêm trọng.
+1: にしたがい: theo; không hợp.
+2: にしたがい và どれほど sai.
+3: Nにしたら: từ lập trường N thì.
+4: どれほど cần câu cảm thán; không hợp.
+
+@m7_42
+T: Kinh doanh gì đi nữa, khách không đến thì không thể tồn tại.
+S: Kinh doanh gì đi nữa, khách … thì không thể tồn tại.
+1: わけには không phải mẫu đúng.
+2: Vないことには: nếu không… thì.
+3: はずには không phải mẫu đúng.
+4: ものには không phải mẫu đúng.
+
+@m7_43
+T: Là tập ảnh của ngôi sao tôi rất thích, nên không thể không mua.
+S: Là tập ảnh của ngôi sao tôi rất thích, nên … .
+1: ずにはならない sai dạng.
+2: 買わないに違いない: chắc không mua; ngược ý.
+3: Vずにはいられない: không thể không.
+4: 買わないにすぎない sai nghĩa.
+
+@m7_44
+T: Tôi tự tin về thể lực, nhưng không phải là hoàn toàn không mệt.
+S: Tôi tự tin về thể lực, nhưng … .
+1: 疲れたわけではない: không phải đã mệt; ngược với まったく.
+2: ことでもない không phải mẫu đúng.
+3: 〜なかったわけではない: không phải là không.
+4: ことではない không phải mẫu đúng.
+
+@m8_45
+T: Dựa trên dữ liệu thí nghiệm nhiều năm, chúng tôi đang nỗ lực phát triển thuốc mới.
+1: 新薬の đứng ở ô ★.
+2: 開発 đứng cuối, trước に取り組んでいる.
+3: 実験データ nối ngay sau 長年の.
+4: をもとに đi sau 実験データ.
+
+@m8_46
+T: Đúng những hôm không chuẩn bị bài gì là hay bị thầy gọi hỏi.
+1: に限って đứng ở ô ★.
+2: こなかった日 đi sau 予習して.
+3: 先生に đứng cuối, trước よく質問される.
+4: 予習して nối ngay sau ぜんぜん.
+
+@m8_47
+T: Xét về độ phổ biến thì sản phẩm của công ty A là số một.
+1: A社の đi sau からいうと.
+2: からいうと nối ngay sau 人気度.
+3: 製品が đứng ở ô ★.
+4: 一番 đứng cuối, trước です.
+
+@m8_48
+T: Đó là trận động đất lớn đến mức bất giác phải thốt lên.
+1: 出して nối ngay sau 声を.
+2: ほどの đứng ở ô ★.
+3: しまう đi sau 出して.
+4: 大きい đứng cuối, trước 地震.
+
+@m8_49
+T: Tôi nghĩ nhìn chung kế hoạch của anh ấy sẽ suôn sẻ.
+1: うまくいく đứng cuối, trước と思う.
+2: 彼の đi sau において.
+3: において nối ngay sau だいたい.
+4: 計画は đứng ở ô ★.
+
+@m9_50
+T: Ông Horie Kenichi (72 tuổi), người năm 1962 một mình băng qua Thái Bình Dương bằng thuyền buồm, đã viết trong ghi chép về chuyến phiêu lưu 94 ngày.
+S: Ông Horie Kenichi, người năm 1962 một mình băng … Thái Bình Dương bằng thuyền buồm, đã viết trong ghi chép về chuyến phiêu lưu 94 ngày.
+1: に: đích đến; không chỉ không gian băng qua.
+2: へ: hướng tới; không hợp.
+3: を: không gian đi xuyên qua.
+4: が: chủ ngữ; sai.
+
+@m9_51
+T: Đến ngày thứ 72 thì ông đã trở nên chịu được cô độc: "Nếu chỉ là nỗi cô độc vì xung quanh không có ai, thì rồi sẽ chịu đựng được."
+S: … ngày thứ 72 thì ông đã trở nên … cô độc.
+1: になっても và 重い không hợp nghĩa.
+2: a になると (đến khi), b 強い (chịu đựng tốt).
+3: 固い không đi với 孤独に theo nghĩa này.
+4: になっては và 良い không hợp.
+
+@m9_52
+T: Con tàu thăm dò trường thọ, từng được chú ý mỗi lần tiến gần Sao Mộc hay Sao Thổ, nay ít được nhắc đến. Tốc độ dòng plasma của Mặt Trời đã về 0, và 4 năm sau nó sẽ thoát hoàn toàn khỏi vùng ảnh hưởng.
+S: Con tàu thăm dò từng được chú ý … tiến gần Sao Mộc hay Sao Thổ. Tốc độ dòng plasma … về 0, và 4 năm sau nó sẽ thoát … khỏi vùng ảnh hưởng.
+1: a すでに sai: "đã tiến gần" không hợp với 脚光.
+2: a すでに và b たびに sai.
+3: b 完全に và c すでに bị đảo.
+4: a たびに, b すでに, c 完全に.
+
+@m9_53
+T: Vì thế mà người ngoài hành tinh mãi không đến Trái Đất.
+S: Vì thế mà người ngoài hành tinh … .
+1: 来てほしくない: không muốn họ đến; khác nhận định.
+2: 来てあげない: sai hướng.
+3: なかなか地球に来ない: mãi không đến.
+4: 来られない: không thể đến từ Trái Đất; sai.
+
+@m9_54
+T: Dù biến mất khỏi tầm nhìn và ý thức của con người, chuyến đi ấy không có kế hoạch kết thúc.
+S: Dù biến mất khỏi tầm nhìn và ý thức của con người, chuyến đi ấy … kết thúc.
+1: 終わりの予定はない: không có dự định kết thúc.
+2: なければならない sai dạng với はない.
+3: 予定になかった: đã không có trong kế hoạch; sai thời.
+4: なくもない: không phải không có; ngược ý.
+
+@P d16-passage
+Khác với bị cô lập, sự cô độc dường như là thứ có thể quen dần. Ông Horie Kenichi (72 tuổi), người năm 1962 một mình băng qua Thái Bình Dương bằng thuyền buồm, đã viết như vậy trong "Một mình trên Thái Bình Dương", ghi chép về chuyến phiêu lưu 94 ngày.
+Ngày thứ 17, trong bão tố và say sóng, ông viết: "Vì lạnh, lo âu và cô độc, tôi như sắp phát điên." Vậy mà đến ngày thứ 72, ông đã trở nên chịu được cô độc: "Nếu chỉ là nỗi cô độc vì xung quanh không có ai, thì rồi sẽ có lúc chịu đựng được." Và: "Trước khi ra khơi, tôi còn bị cô lập hơn nhiều."
+Chuyến đi một mình này đã sang năm thứ 34. Đó là tàu thăm dò hành tinh Voyager 1 của Mỹ, phóng vào mùa thu năm 1977. Theo NASA, hiện nó đang đi xa dần với tốc độ 17 km mỗi giây, ở khoảng cách gấp 3 lần bán kính quỹ đạo Sao Diêm Vương. Đó là vật nhân tạo đã đi xa nhất.
+Con tàu thăm dò trường thọ từng được chú ý mỗi lần tiến gần Sao Mộc hay Sao Thổ, nay ít khi được nhắc đến. Tốc độ dòng plasma Mặt Trời phát ra ở chỗ nó đã về 0, và nghe nói 4 năm sau nó sẽ thoát hoàn toàn khỏi vùng ảnh hưởng. Tôi nghĩ đến con thuyền nhỏ căng buồm đón gió, ra khơi nơi đại dương chưa biết.
+Có thuyết cho rằng những nền văn minh đủ sức du hành vũ trụ sẽ tự hủy diệt. Vì thế mà người ngoài hành tinh mãi không đến Trái Đất. Voyager mang theo đĩa ghi lời chào bằng nhiều ngôn ngữ và âm nhạc để chuẩn bị cho cuộc gặp với sự sống có trí tuệ. Đó là bằng chứng rằng trên hành tinh xanh xa xôi đã có — không, đang có — một nền văn minh.
+Vào thập niên 80, ca sĩ Yuming từng hát về con tàu Voyager biến mất vào vũ trụ (trích dẫn trong nguyên văn). Dù biến mất khỏi tầm nhìn và ý thức của con người, chuyến đi ấy không có kế hoạch kết thúc. Dù nó đã quen với cô độc sâu thẳm và với việc bị lãng quên, tôi vẫn cầu mong phép màu đến với người lữ hành đang tiến vào bóng tối.
