@@ -51,6 +51,7 @@ import WordLookupModal from "./components/WordLookupModal";
 import SelectionLookup from "./components/SelectionLookup";
 import { lookupWordInDictionary } from "../../lib/jlpt/sentenceAnalyzer";
 import { useAttemptKeyboard } from "./workspace/useAttemptKeyboard";
+import { describeAttempt } from "../../lib/jlpt/attemptLabels";
 import QuestionPalette from "./workspace/QuestionPalette";
 import BottomSheet from "./workspace/BottomSheet";
 import MobileAttemptBar from "./workspace/MobileAttemptBar";
@@ -117,6 +118,11 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
   const [reviewing, setReviewing] = useState(false);
   const [filter, setFilter] = useState("all");
   const [showInfo, setShowInfo] = useState(false);
+  // Khung Tùy chọn nâng cao: chỉ tính trạng thái mở lúc đầu, sau đó do người dùng điều khiển (JL-11)
+  const [advancedOpen, setAdvancedOpen] = useState<boolean>(
+    () =>
+      showDayPicker || dayFilter !== "all" || allocationMode !== "standard",
+  );
   const [lookup, setLookup] = useState<string | null>(null);
   const lookupContextRef = useRef<{
     attemptId: string | null;
@@ -906,10 +912,7 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
         },
       ]
     : [];
-  const attemptDisplayTitle =
-    attempt?.exam.isPracticePool && attempt.mode === "mock"
-      ? "Bài làm có giờ (Đề trộn 54 câu)"
-      : attempt?.exam.title || "";
+  const attemptDisplayTitle = attempt ? describeAttempt(attempt, now).title : "";
 
   const headerTitle =
     exam.isPracticePool && (mode === "mock" || active?.mode === "mock")
@@ -1047,29 +1050,92 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
           </p>
         )}
 
-      {/* Mode 1: Detail Screen */}
+      {/* Mode 1: Trang chi tiết bài (JL-28) */}
       {mode === "detail" && (
-        <div className="exam-card space-y-6">
-          <div className="space-y-2">
-            <h2 className="text-xl font-black">Chọn cách học</h2>
+        <div className="space-y-5">
+          <div className="exam-card space-y-3">
+            <h2 className="text-xl font-black">Cấu trúc bài</h2>
             <p className="text-sm text-slate-600 dark:text-slate-300">
-              {exam.totalQuestions} câu · {exam.mondais.length} dạng ·{" "}
-              {exam.timeLimitMinutes} phút luyện tập đề xuất
+              {exam.bookTitle}
+              {exam.subtitle?.match(/Trang\s*[\d–-]+/)?.[0]
+                ? ` · ${exam.subtitle.match(/Trang\s*[\d–-]+/)![0]}`
+                : ""}
             </p>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
-              Hỗ trợ cả 3 chế độ: Ôn tự do chữa từng câu ngay, Làm bài có giờ
-              chấm điểm chuẩn (0–60 điểm), hoặc Xem toàn bộ đề & lời giải.
-            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="text-left text-xs uppercase tracking-wider text-slate-600 dark:text-slate-400">
+                    <th className="py-2 pr-3">Mondai</th>
+                    <th className="py-2 pr-3">Dạng</th>
+                    <th className="py-2 text-right">Số câu</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {exam.mondais.map((m) => (
+                    <tr
+                      key={m.number}
+                      className="border-t border-slate-100 dark:border-slate-700/70"
+                    >
+                      <td className="py-2 pr-3 font-bold">{m.number}</td>
+                      <td className="py-2 pr-3">
+                        {m.titleVi}{" "}
+                        <span lang="ja" className="text-slate-500 dark:text-slate-400">
+                          {m.title}
+                        </span>
+                      </td>
+                      <td className="py-2 text-right">{m.questions.length}</td>
+                    </tr>
+                  ))}
+                  <tr className="border-t-2 border-slate-200 dark:border-slate-700 font-black">
+                    <td className="py-2 pr-3" colSpan={2}>
+                      Tổng
+                    </td>
+                    <td className="py-2 text-right">
+                      {exam.totalQuestions} câu · {exam.timeLimitMinutes} phút
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-          <div className="grid gap-4 sm:grid-cols-3">
-            {(["drill", "mock", "review"] as const).map((m) => (
+
+          {attempt && attempt.exam.id === exam.id && (
+            <div className="exam-card flex flex-wrap items-center justify-between gap-3 border-indigo-300 dark:border-indigo-700">
+              <p className="text-sm font-bold">
+                {describeAttempt(attempt, now).title} ·{" "}
+                {describeAttempt(attempt, now).status}
+              </p>
               <Link
-                className="exam-primary text-center py-4"
-                key={m}
-                to={`/exams/jlpt/${m === "drill" ? poolId(exam.bookId || exam.id, exam.level) : exam.id}/${m}${m === "drill" && exam.day ? `?day=${exam.day}` : ""}`}
+                className="exam-primary"
+                to={`/exams/jlpt/${attempt.exam.id}/${attempt.status === "submitted" ? "result" : attempt.mode}`}
               >
-                {labels[m]}
+                {attempt.status === "submitted" ? "Xem kết quả" : "Làm tiếp"}
               </Link>
+            </div>
+          )}
+
+          <div className="grid gap-4 sm:grid-cols-3">
+            {(
+              [
+                ["drill", "Chọn dạng, chữa từng câu ngay"],
+                ["mock", `${exam.totalQuestions} câu, ${exam.timeLimitMinutes} phút, kết quả theo số câu đúng`],
+                ["review", "Đọc đề và đáp án, không tính điểm"],
+              ] as const
+            ).map(([m, desc]) => (
+              <div key={m} className="exam-card flex flex-col justify-between gap-4">
+                <div>
+                  <h3 className="font-black text-lg">{labels[m]}</h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-300 mt-1">
+                    {desc}
+                  </p>
+                </div>
+                <Link
+                  className={m === "mock" ? "exam-primary" : "exam-secondary"}
+                  to={`/exams/jlpt/${m === "drill" ? poolId(exam.bookId || exam.id, exam.level) : exam.id}/${m}${m === "drill" && exam.day ? `?day=${exam.day}` : ""}`}
+                >
+                  {labels[m]}
+                </Link>
+              </div>
             ))}
           </div>
         </div>
@@ -1165,14 +1231,9 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                   </div>
                 </div>
 
-                {/* Accessible <select> required by existing tests (visually hidden when interactive cards grid is used in Practice Pool) */}
-                <label
-                  className={
-                    exam.isPracticePool
-                      ? "sr-only"
-                      : "block text-xs font-bold text-slate-600 dark:text-slate-300"
-                  }
-                >
+                {/* Bài theo ngày dùng ô chọn; ngân hàng dùng lưới thẻ Mondai bên dưới (JL-32) */}
+                {!exam.isPracticePool && (
+                <label className="block text-xs font-bold text-slate-600 dark:text-slate-300">
                   Chọn dạng
                   <select
                     className="exam-input block mt-1.5 w-full"
@@ -1193,6 +1254,7 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                     <option value="custom">Tùy chọn nhiều dạng</option>
                   </select>
                 </label>
+                )}
 
                 {/* Interactive Multi-select Mondai Cards Grid (Clean 9-card 3x3 layout) */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
@@ -1240,10 +1302,9 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
               {/* Collapsible Advanced Options (Source Day & Allocation Mode) */}
               {exam.isPracticePool && (
                 <details
-                  open={
-                    showDayPicker ||
-                    dayFilter !== "all" ||
-                    allocationMode !== "standard"
+                  open={advancedOpen}
+                  onToggle={(e) =>
+                    setAdvancedOpen((e.currentTarget as HTMLDetailsElement).open)
                   }
                   className="rounded-2xl border border-slate-200/80 dark:border-slate-700/80 bg-slate-50/60 dark:bg-slate-900/40 p-4 space-y-4"
                 >
@@ -1388,15 +1449,13 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                       </div>
 
                       <div className="flex flex-wrap items-center gap-4 pt-1">
+                        {allocationMode === "total" && (
                         <label className="text-xs font-bold text-slate-700 dark:text-slate-200 flex items-center gap-2">
                           Số câu mỗi lượt
                           <select
                             className="exam-input !py-1.5"
                             value={roundSize}
-                            onChange={(e) => {
-                              setRoundSize(e.target.value);
-                              setAllocationMode("total");
-                            }}
+                            onChange={(e) => setRoundSize(e.target.value)}
                           >
                             {["10", "20", "50", "all"].map((n) => (
                               <option key={n} value={n}>
@@ -1407,6 +1466,7 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                             ))}
                           </select>
                         </label>
+                        )}
 
                         {allocationMode === "per_mondai" && (
                           <div className="flex items-center gap-1.5 flex-wrap">
@@ -1443,8 +1503,8 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
           )}
 
           {/* Summary Preview Box before starting (FIX-02 & FIX-03) */}
-          <div className="p-4 sm:p-5 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-200/80 dark:border-indigo-800/60 flex flex-wrap items-center justify-between gap-4">
-            <div className="space-y-1.5 min-w-0 flex-1">
+          <div className="p-4 sm:p-5 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-200/80 dark:border-indigo-800/60 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="space-y-1.5 min-w-0 w-full sm:flex-1">
               <div className="flex items-center gap-2 flex-wrap">
                 <p className="font-black text-lg text-slate-900 dark:text-white">
                   {mode === "drill"
@@ -1454,14 +1514,14 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                     : `Lượt này: ${plannedRound.actualTotal} câu · ${exam.timeLimitMinutes || 50} phút`}
                 </p>
                 <span
-                  className={`px-2.5 py-0.5 rounded-full text-xs font-extrabold ${
+                  className={`w-fit px-2.5 py-0.5 rounded-xl text-xs font-extrabold ${
                     mode === "mock"
                       ? "bg-indigo-600 text-white"
                       : "bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300"
                   }`}
                 >
                   {mode === "mock"
-                    ? "⏱ Làm bài có giờ · Điểm tham khảo 0–60"
+                    ? "⏱ Làm bài có giờ · Kết quả theo số câu đúng"
                     : "⚡ Câu đơn chấm ngay · Đoạn văn kiểm tra theo cụm"}
                 </span>
               </div>
@@ -1490,7 +1550,7 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
 
             <button
               type="button"
-              className="exam-primary !px-6 !py-3 text-base disabled:opacity-50 disabled:cursor-not-allowed"
+              className="exam-primary !px-6 !py-3 text-base w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={
                 !plannedRound.canStart ||
                 (mode === "mock" && !exam.timeLimitMinutes)
@@ -1506,6 +1566,34 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
             >
               <Play size={17} />
               <span>Bắt đầu {mode === "mock" ? "làm bài" : "luyện"}</span>
+            </button>
+          </div>
+
+          {/* Thanh Bắt đầu dính đáy trên điện thoại (JL-07) */}
+          <div className="sm:hidden fixed inset-x-0 bottom-0 z-30 border-t border-slate-200 dark:border-slate-700 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm px-3 py-2.5 pb-[calc(0.625rem+env(safe-area-inset-bottom))] flex items-center justify-between gap-3">
+            <span className="text-sm font-black text-slate-900 dark:text-white">
+              {plannedRound.actualTotal} câu
+            </span>
+            <button
+              type="button"
+              aria-hidden="true"
+              tabIndex={-1}
+              className="exam-primary !px-5"
+              disabled={
+                !plannedRound.canStart ||
+                (mode === "mock" && !exam.timeLimitMinutes)
+              }
+              onClick={() =>
+                start(
+                  mode,
+                  plannedRound.questionIds,
+                  undefined,
+                  plannedRound.configKey,
+                )
+              }
+            >
+              <Play size={15} />
+              <span>Bắt đầu</span>
             </button>
           </div>
         </div>

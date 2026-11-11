@@ -215,7 +215,9 @@ describe("pooled practice", () => {
   it("starts a random 10-question passage round, resumes unchanged and changes configuration without erasing it", async () => {
     const user = userEvent.setup();
     const view = open(pool, "drill");
-    await user.selectOptions(screen.getByLabelText("Chọn dạng"), "9");
+    await user.click(screen.getByRole("button", { name: "Bỏ chọn" }));
+    await user.click(screen.getByText(/Mondai 9 · Chuẩn đề/));
+    await user.click(screen.getByText(/Theo tổng số câu mỗi lượt/));
     await user.selectOptions(screen.getByLabelText("Số câu mỗi lượt"), "10");
     await user.click(screen.getByRole("button", { name: "Bắt đầu luyện" }));
     const saved = getSession()!;
@@ -228,7 +230,8 @@ describe("pooled practice", () => {
     expect(getSession()?.questionIds).toEqual(saved.questionIds);
     await chooseAttemptMenu(user, "Đổi dạng / số câu");
     expect(getSession()?.id).toBe(saved.id);
-    await user.selectOptions(screen.getByLabelText("Chọn dạng"), "1");
+    await user.click(screen.getByRole("button", { name: "Bỏ chọn" }));
+    await user.click(screen.getByText(/Mondai 1 · Chuẩn đề/));
     await user.click(screen.getByRole("button", { name: "Bắt đầu luyện" }));
     await user.click(screen.getByRole("button", { name: "Quay lại" }));
     expect(getSession()?.id).toBe(saved.id);

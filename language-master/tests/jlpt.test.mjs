@@ -327,7 +327,7 @@ test("FIX-02 & FIX-03: planPracticeRound guarantees actualTotal === questionIds.
   assert.equal(c04.actualTotal, 10);
   assert.equal(c04.questionIds.length, 10);
   assert.equal(c04.reason, "passage_expanded");
-  assert.match(c04.reasonMessage || "", /Giữ nguyên nhóm câu trong đoạn văn/);
+  assert.match(c04.reasonMessage || "", /để giữ trọn đoạn văn Mondai 9/);
 
   // C05 & C06: Day 1 + M1 + 20 per mondai -> shortage (only 5 available)
   const c06 = planPracticeRound(pool, {
@@ -341,7 +341,7 @@ test("FIX-02 & FIX-03: planPracticeRound guarantees actualTotal === questionIds.
   assert.equal(c06.actualTotal, 5);
   assert.equal(c06.questionIds.length, 5);
   assert.equal(c06.reason, "shortage");
-  assert.match(c06.reasonMessage || "", /Nguồn đã chọn chỉ có 5 câu phù hợp/);
+  assert.match(c06.reasonMessage || "", /Một số dạng không đủ 20 câu: Mondai 1 có 5\. Lượt này có 5 câu\./);
 
   // C07: 0 Mondai selected -> empty, canStart = false
   const c07 = planPracticeRound(pool, {
@@ -364,3 +364,72 @@ test("FIX-02 & FIX-03: planPracticeRound guarantees actualTotal === questionIds.
   assert.equal(m05.reason, "invalid_mock");
 });
 
+
+// ── Đặc tả 11/11: thông báo số câu (6.3), tìm kiếm (11.1), thời gian (8.5) ──
+import { matchExamQuery } from "../src/lib/jlpt/examSearch.ts";
+import { formatDuration, describeAttempt } from "../src/lib/jlpt/attemptLabels.ts";
+
+test("6.3: round messages explain each shortage and expansion case", async () => {
+  const { buildPracticePool, planPracticeRound } = await import(
+    "../src/lib/jlpt/practicePool.ts"
+  );
+  const dir = new URL("../src/data/exams/jlpt/n2/kokusho-20days/", import.meta.url);
+  const all = fs
+    .readdirSync(dir)
+    .filter((f) => f.endsWith(".json"))
+    .sort()
+    .map((f) => JSON.parse(fs.readFileSync(new URL(f, dir), "utf8")));
+  const pool = buildPracticePool(all);
+  const perMondai = planPracticeRound(pool, {
+    mode: "drill",
+    mondais: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    allocationMode: "per_mondai",
+    perMondaiCount: 10,
+    dayFilter: 1,
+  });
+  assert.equal(perMondai.actualTotal, 52);
+  assert.match(perMondai.reasonMessage, /^Một số dạng không đủ 10 câu: Mondai 1 có 5/);
+  assert.doesNotMatch(perMondai.reasonMessage, /Mondai 7 có/);
+  assert.match(perMondai.reasonMessage, /Lượt này có 52 câu\.$/);
+  const total = planPracticeRound(pool, {
+    mode: "drill",
+    mondais: [1],
+    allocationMode: "total",
+    totalCount: 50,
+    dayFilter: 1,
+  });
+  assert.equal(total.reasonMessage, "Nguồn đã chọn chỉ có 5 câu, ít hơn 50 câu bạn chọn.");
+  const exact = planPracticeRound(pool, {
+    mode: "drill",
+    mondais: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    allocationMode: "standard",
+    dayFilter: 1,
+  });
+  assert.equal(exact.actualTotal, 54);
+  assert.equal(exact.reasonMessage, undefined);
+});
+
+test("11.1: search matches day numbers exactly and ignores page numbers", () => {
+  const book = "日本語能力試験 20日で合格 N2 文字・語彙・文法";
+  const day = (n) => ({ day: n, title: `第${n}日 (Day ${n})`, subtitle: "文字・語彙・文法 · Trang 6–13" });
+  const days = Array.from({ length: 20 }, (_, i) => day(i + 1));
+  const hits = (q) => days.filter((d) => matchExamQuery(d, book, q)).map((d) => d.day);
+  assert.deepEqual(hits("Day 1"), [1]);
+  assert.deepEqual(hits("day 01"), [1]);
+  assert.deepEqual(hits("Ngày 12"), [12]);
+  assert.deepEqual(hits("12"), [12]);
+  assert.deepEqual(hits("１２"), [12]);
+  assert.equal(hits("文法").length, 20);
+  assert.deepEqual(hits("zzznomatch"), []);
+  assert.equal(hits("13").length, 1);
+});
+
+test("8.5 & 8.4: duration format and attempt labels", () => {
+  assert.equal(formatDuration(0), "00:00");
+  assert.equal(formatDuration(65_400), "01:05");
+  assert.equal(formatDuration(50 * 60_000), "50:00");
+  const a = createAttempt(exam, "mock", undefined, now);
+  const d = describeAttempt(a, now + 60_000);
+  assert.equal(d.title, "第1日 (Day 1) · Bài có giờ");
+  assert.equal(d.status, "Còn 49:00 · 0/54 câu");
+});

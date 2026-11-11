@@ -19,7 +19,7 @@ export default function Navbar() {
   const links = [
     { to: '/', end: true, icon: Library, label: t.myCourses },
     { to: '/explore', end: false, icon: Compass, label: t.explore },
-    { to: '/exams', end: false, icon: GraduationCap, label: t.exams },
+    { to: '/exams/jlpt', end: false, icon: GraduationCap, label: t.exams },
     { to: '/dictionary', end: false, icon: BookOpen, label: t.dictionary },
   ];
 

@@ -545,47 +545,70 @@ export function planPracticeRound(
   let reasonMessage: string | undefined;
 
   if (exam.isPracticePool) {
-    if (allocationMode === "standard") {
-      targetTotal = activeMondais.reduce(
-        (sum, m) => sum + (STANDARD_MONDAI_QUOTAS[m.number] ?? 5),
-        0,
-      );
-      if (actualTotal < targetTotal) {
-        reason = "shortage";
-        reasonMessage = `Nguồn đã chọn chỉ có ${actualTotal} câu phù hợp.`;
-      } else if (actualTotal > targetTotal) {
-        reason = "passage_expanded";
-        reasonMessage =
-          "Giữ nguyên nhóm câu trong đoạn văn nên số câu tăng thêm.";
+    // JL-17: thông báo đúng nghĩa theo từng trường hợp
+    const eligibleIn = (m: JLPTMondai) =>
+      m.questions.filter(
+        (q) =>
+          dayFilter === "all" ||
+          q.origin?.day === undefined ||
+          q.origin.day === dayFilter,
+      ).length;
+    const messages: string[] = [];
+    let shortage = false;
+    if (allocationMode === "standard" || allocationMode === "per_mondai") {
+      const need = (n: number) =>
+        allocationMode === "standard"
+          ? (STANDARD_MONDAI_QUOTAS[n] ?? 5)
+          : perMondaiCount;
+      targetTotal = activeMondais.reduce((sum, m) => sum + need(m.number), 0);
+      const short = activeMondais.filter((m) => eligibleIn(m) < need(m.number));
+      if (short.length) {
+        shortage = true;
+        messages.push(
+          allocationMode === "standard"
+            ? `Một số dạng thiếu câu trong nguồn đã chọn: ${short
+                .map((m) => `Mondai ${m.number} có ${eligibleIn(m)}/${need(m.number)}`)
+                .join(", ")}. Lượt này có ${actualTotal} câu.`
+            : `Một số dạng không đủ ${perMondaiCount} câu: ${short
+                .map((m) => `Mondai ${m.number} có ${eligibleIn(m)}`)
+                .join(", ")}. Lượt này có ${actualTotal} câu.`,
+        );
       }
-    } else if (allocationMode === "per_mondai") {
-      targetTotal = activeMondais.length * perMondaiCount;
-      const hasShortMondai = activeMondais.some(
-        (m) => (mondaiMap[m.number] ?? 0) < perMondaiCount,
-      );
-      if (hasShortMondai) {
-        reason = "shortage";
-        reasonMessage = `Nguồn đã chọn chỉ có ${actualTotal} câu phù hợp.`;
-      } else if (actualTotal > targetTotal) {
-        reason = "passage_expanded";
-        reasonMessage =
-          "Giữ nguyên nhóm câu trong đoạn văn nên số câu tăng thêm.";
-      }
+    } else if (totalCount === "all") {
+      targetTotal = "all";
     } else {
-      if (totalCount === "all") {
-        targetTotal = "all";
-      } else {
-        targetTotal = totalCount;
-        if (actualTotal > totalCount) {
-          reason = "passage_expanded";
-          reasonMessage =
-            "Giữ nguyên nhóm câu trong đoạn văn nên số câu tăng thêm.";
-        } else if (actualTotal < totalCount) {
-          reason = "shortage";
-          reasonMessage = `Nguồn đã chọn chỉ có ${actualTotal} câu phù hợp.`;
-        }
+      targetTotal = totalCount;
+      if (eligibleCount < totalCount) {
+        shortage = true;
+        messages.push(
+          `Nguồn đã chọn chỉ có ${eligibleCount} câu, ít hơn ${totalCount} câu bạn chọn.`,
+        );
       }
     }
+    // Số câu dự kiến trước khi kéo thêm câu cùng đoạn văn
+    const plannedBeforeExpansion =
+      allocationMode === "total"
+        ? targetTotal === "all"
+          ? actualTotal
+          : Math.min(eligibleCount, Number(targetTotal))
+        : activeMondais.reduce(
+            (sum, m) =>
+              sum +
+              Math.min(
+                eligibleIn(m),
+                allocationMode === "standard"
+                  ? (STANDARD_MONDAI_QUOTAS[m.number] ?? 5)
+                  : perMondaiCount,
+              ),
+            0,
+          );
+    const added = actualTotal - plannedBeforeExpansion;
+    if (added > 0) {
+      messages.push(`Thêm ${added} câu để giữ trọn đoạn văn Mondai 9.`);
+    }
+    if (shortage) reason = "shortage";
+    else if (added > 0) reason = "passage_expanded";
+    reasonMessage = messages.length ? messages.join(" ") : undefined;
   }
 
   return {

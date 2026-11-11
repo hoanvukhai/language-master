@@ -27,6 +27,9 @@ import {
   setSession,
   useTabSession,
 } from "../../lib/jlpt/tabSession";
+import { matchExamQuery } from "../../lib/jlpt/examSearch";
+import BottomSheet from "./workspace/BottomSheet";
+import { describeAttempt } from "../../lib/jlpt/attemptLabels";
 import { useConfirmation } from "./components/useConfirmation";
 import {
   canCreateStandardMock,
@@ -42,6 +45,7 @@ export default function JLPTExamHub() {
   const { ask, confirmation } = useConfirmation();
   const [params, setParams] = useSearchParams();
   const { attempt, notice, noticeKind } = useTabSession();
+  const [sheetExamId, setSheetExamId] = useState<string | null>(null);
   const [upcomingModal, setUpcomingModal] =
     useState<UpcomingSkillModal>(null);
   const startingMockRef = useRef(false);
@@ -57,22 +61,31 @@ export default function JLPTExamHub() {
       : "ALL",
   );
   const allBooks = getJLPTBooksByLevel("ALL");
+  const levelCounts = allBooks.reduce<Record<string, number>>((acc, b) => {
+    acc[b.level] = (acc[b.level] || 0) + b.exams.length;
+    return acc;
+  }, {});
+  const firstLevelWithExams = ["N1", "N2", "N3", "N4", "N5"].find(
+    (l) => levelCounts[l],
+  );
   const filtered = books
     .map((b) => ({
       ...b,
       exams: normalizedQuery
         ? b.exams.filter((e) =>
-            `${b.title} ${e.title} ${e.subtitle} day ${e.day || ""} day ${String(e.day || "").padStart(2, "0")} ngày ${e.day || ""}`
-              .toLowerCase()
-              .includes(normalizedQuery),
+            matchExamQuery(e, b.title, normalizedQuery),
           )
         : b.exams,
     }))
     .filter((b) => b.exams.length);
 
+  const [now, setNow] = useState(() => Date.now());
   useEffect(() => {
     refreshSession();
-    const timer = setInterval(refreshSession, 1000);
+    const timer = setInterval(() => {
+      refreshSession();
+      setNow(Date.now());
+    }, 1000);
     return () => clearInterval(timer);
   }, []);
 
@@ -98,13 +111,14 @@ export default function JLPTExamHub() {
       null
     : null;
   const isInvalidBookId = Boolean(selectedBookId) && !openedBook;
+  const sheetExam = sheetExamId
+    ? openedBook?.exams.find((e) => e.id === sheetExamId)
+    : undefined;
 
   const matchedBookExams = openedBook
     ? normalizedQuery
       ? openedBook.exams.filter((e) =>
-          `${openedBook.title} ${e.title} ${e.subtitle} day ${e.day || ""} day ${String(e.day || "").padStart(2, "0")} ngày ${e.day || ""}`
-            .toLowerCase()
-            .includes(normalizedQuery),
+          matchExamQuery(e, openedBook.title, normalizedQuery),
         )
       : openedBook.exams
     : [];
@@ -166,21 +180,13 @@ export default function JLPTExamHub() {
             </div>
             <div className="min-w-0 flex-1 space-y-0.5">
               <h2
-                title={attempt.exam.title}
+                title={describeAttempt(attempt, now).title}
                 className="font-black text-base sm:text-lg text-slate-900 dark:text-white line-clamp-2 break-words"
               >
-                {attempt.exam.title}
+                {describeAttempt(attempt, now).title}
               </h2>
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
-                {attempt.status === "submitted"
-                  ? "Kết quả trong tab này"
-                  : "Đang làm"}{" "}
-                ·{" "}
-                <strong>
-                  {Object.keys(attempt.answers).length}/
-                  {attempt.questionIds.length}
-                </strong>{" "}
-                câu
+                {describeAttempt(attempt, now).status}
               </p>
             </div>
           </div>
@@ -322,36 +328,36 @@ export default function JLPTExamHub() {
             {/* Chọn Cấp độ N1 - N5 tích hợp gọn trên Header */}
             {!openedBook && !isInvalidBookId && (
               <div className="flex items-center gap-1 bg-black/20 backdrop-blur-md p-1 rounded-2xl border border-white/15">
-                {["ALL", "N1", "N2", "N3", "N4", "N5"].map((l) => (
-                  <button
-                    key={l}
-                    type="button"
-                    onClick={() => change("level", l)}
-                    className={`px-2.5 py-1 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
-                      level === l
-                        ? "bg-white text-indigo-700 shadow-xs"
-                        : "text-indigo-100 hover:bg-white/10"
-                    }`}
-                  >
-                    {l === "ALL" ? "Tất cả" : l}
-                  </button>
-                ))}
+                {["ALL", "N1", "N2", "N3", "N4", "N5"].map((l) => {
+                  const count =
+                    l === "ALL"
+                      ? allBooks.reduce((sum, b) => sum + b.exams.length, 0)
+                      : levelCounts[l] || 0;
+                  const empty = l !== "ALL" && count === 0;
+                  return (
+                    <button
+                      key={l}
+                      type="button"
+                      aria-pressed={level === l}
+                      disabled={empty}
+                      aria-disabled={empty}
+                      title={empty ? `Chưa có đề ${l}` : undefined}
+                      onClick={() => change("level", l)}
+                      className={`px-2.5 py-1 rounded-xl text-xs font-extrabold transition-all ${
+                        level === l
+                          ? "bg-white text-indigo-700 shadow-xs"
+                          : empty
+                            ? "text-indigo-200/60 cursor-not-allowed"
+                            : "text-indigo-100 hover:bg-white/10 cursor-pointer"
+                      }`}
+                    >
+                      {l === "ALL" ? "Tất cả" : count ? `${l} · ${count}` : l}
+                    </button>
+                  );
+                })}
               </div>
             )}
 
-            <label className="sr-only">
-              Cấp độ
-              <select
-                value={level}
-                onChange={(e) => change("level", e.target.value)}
-              >
-                {["ALL", "N1", "N2", "N3", "N4", "N5"].map((l) => (
-                  <option key={l} value={l}>
-                    {l === "ALL" ? "Tất cả" : l}
-                  </option>
-                ))}
-              </select>
-            </label>
           </div>
 
           {/* Tiêu đề & Nút Kỹ năng (Đọc hiểu / Nghe hiểu mở Popup) */}
@@ -571,7 +577,81 @@ export default function JLPTExamHub() {
 
           {/* Lưới các Thẻ Bài (Day 01 -> Day 20) hoặc Trạng thái rỗng khi tìm kiếm không khớp */}
           {matchedBookExams.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <>
+            {/* Điện thoại: lưới ô ngày gọn, chạm để mở bảng hành động (JL-35) */}
+            <div className="md:hidden grid grid-cols-4 gap-2.5" aria-label="Chọn bài theo ngày">
+              {matchedBookExams.map((e) => {
+                const inTab = attempt?.exam.id === e.id;
+                return (
+                  <button
+                    key={e.id}
+                    type="button"
+                    onClick={() => setSheetExamId(e.id)}
+                    aria-label={`${e.title}${inTab ? (attempt?.status === "submitted" ? ", có kết quả trong tab" : ", đang làm trong tab") : ""}`}
+                    className="relative min-h-16 rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 font-black text-lg text-slate-900 dark:text-white hover:border-indigo-400"
+                  >
+                    {String(e.day || "").padStart(2, "0")}
+                    {inTab && (
+                      <span
+                        className={`absolute top-1.5 right-1.5 w-2.5 h-2.5 rounded-full ${
+                          attempt?.status === "submitted" ? "bg-emerald-500" : "bg-indigo-500"
+                        }`}
+                      />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+            <BottomSheet
+              open={!!sheetExam}
+              title={
+                sheetExam
+                  ? `${sheetExam.title} · ${sheetExam.totalQuestions} câu · ${sheetExam.timeLimitMinutes} phút`
+                  : ""
+              }
+              onClose={() => setSheetExamId(null)}
+            >
+              {sheetExam && (
+                <div className="grid gap-2.5">
+                  {attempt?.exam.id === sheetExam.id && (
+                    <Link
+                      className="exam-primary"
+                      to={`/exams/jlpt/${attempt.exam.id}/${attempt.status === "submitted" ? "result" : attempt.mode}`}
+                    >
+                      {attempt.status === "submitted" ? "Xem kết quả" : "Làm tiếp"}
+                    </Link>
+                  )}
+                  <Link
+                    className="exam-primary !from-emerald-700 !to-teal-700"
+                    to={`/exams/jlpt/${poolId(openedBook.id, openedBook.level)}/drill${sheetExam.day ? `?day=${sheetExam.day}` : ""}`}
+                  >
+                    Luyện theo dạng
+                  </Link>
+                  <button
+                    type="button"
+                    className="exam-secondary"
+                    disabled={!canCreateStandardMock(getExamById(sheetExam.id) || sheetExam)}
+                    onClick={() => {
+                      const id = sheetExam.id;
+                      setSheetExamId(null);
+                      void startDirectMock(id);
+                    }}
+                  >
+                    Làm bài có giờ
+                  </button>
+                  <Link className="exam-secondary" to={`/exams/jlpt/${sheetExam.id}/review`}>
+                    Xem đề & lời giải
+                  </Link>
+                  <Link
+                    className="text-center text-sm font-bold text-indigo-700 dark:text-indigo-300 underline py-2"
+                    to={`/exams/jlpt/${sheetExam.id}`}
+                  >
+                    Mở trang bài
+                  </Link>
+                </div>
+              )}
+            </BottomSheet>
+            <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {matchedBookExams.map((e) => {
                 const isInTab = attempt?.exam.id === e.id;
                 const bookPoolId = poolId(openedBook.id, openedBook.level);
@@ -650,6 +730,7 @@ export default function JLPTExamHub() {
                 );
               })}
             </div>
+            </>
           ) : (
             <div className="exam-card text-center py-10 space-y-3">
               <p className="text-slate-600 dark:text-slate-300 font-medium">
@@ -771,13 +852,31 @@ export default function JLPTExamHub() {
             </div>
           ) : (
             <div className="exam-card text-center py-10 space-y-3">
-              <p className="text-slate-600 dark:text-slate-300 font-medium">
-                Không tìm thấy sách hoặc bài phù hợp. Thử đổi cấp độ hoặc từ
-                khóa.
-              </p>
-              <button className="exam-secondary" onClick={() => setParams({})}>
-                Xóa bộ lọc
-              </button>
+              {level !== "ALL" && !levelCounts[level] ? (
+                <>
+                  <p className="text-slate-600 dark:text-slate-300 font-medium">
+                    Chưa có đề cấp {level}.
+                  </p>
+                  {firstLevelWithExams && (
+                    <button
+                      className="exam-secondary"
+                      onClick={() => setParams({ level: firstLevelWithExams })}
+                    >
+                      Xem {firstLevelWithExams}
+                    </button>
+                  )}
+                </>
+              ) : (
+                <>
+                <p className="text-slate-600 dark:text-slate-300 font-medium">
+                  Không tìm thấy sách hoặc bài phù hợp. Thử đổi cấp độ hoặc từ
+                  khóa.
+                </p>
+                <button className="exam-secondary" onClick={() => setParams({})}>
+                  Xóa bộ lọc
+                </button>
+                </>
+              )}
             </div>
           )}
 

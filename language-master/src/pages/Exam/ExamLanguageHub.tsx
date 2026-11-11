@@ -3,7 +3,6 @@ import {
   ArrowRight,
   BookOpen,
   CheckCircle2,
-  Clock,
   GraduationCap,
   Headphones,
   Layers,
@@ -43,22 +42,22 @@ const upcomingLanguages = [
 
 export default function ExamLanguageHub() {
   return (
-    <div className="exam-shell space-y-8">
+    <div className="exam-shell space-y-6 sm:space-y-8">
       {/* Hero Banner */}
-      <header className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-600 via-indigo-700 to-violet-800 text-white p-6 sm:p-10 shadow-xl">
+      <header className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-600 via-indigo-700 to-violet-800 text-white p-5 sm:p-10 shadow-xl">
         <div className="relative z-10 max-w-3xl space-y-4">
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md text-xs font-extrabold uppercase tracking-wider border border-white/20">
             <GraduationCap size={15} />
             <span>Trung tâm Luyện đề & Khảo thí Đa Ngôn Ngữ</span>
           </span>
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight leading-tight">
+          <h1 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
             Bạn muốn luyện ngôn ngữ nào?
           </h1>
-          <p className="text-indigo-100 text-base sm:text-lg leading-relaxed">
+          <p className="hidden sm:block text-indigo-100 text-base sm:text-lg leading-relaxed">
             Chọn tài liệu, luyện theo dạng hoặc thi thử bấm giờ với bộ công cụ
             tra từ đa sách tích hợp trực tiếp. Không cần đăng nhập.
           </p>
-          <div className="flex flex-wrap gap-3 pt-1 text-xs font-bold text-indigo-100">
+          <div className="hidden sm:flex flex-wrap gap-3 pt-1 text-xs font-bold text-indigo-100">
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 border border-white/15">
               <Trophy size={14} className="text-amber-300" />
               <span>Thi thử chuẩn cấu trúc đề</span>
@@ -152,69 +151,21 @@ export default function ExamLanguageHub() {
           </div>
         </section>
 
-        {/* Cards 2, 3, 4: English, Chinese, Korean (In Development) */}
-        {upcomingLanguages.map((lang) => (
-          <section
-            key={lang.code}
-            className="exam-card flex flex-col justify-between gap-5 bg-slate-50/70 dark:bg-slate-800/60 border-dashed border-slate-300 dark:border-slate-700 opacity-95"
-          >
-            <div className="space-y-4">
-              <div className="flex items-start justify-between gap-3">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-2xl bg-slate-200/80 dark:bg-slate-700 flex items-center justify-center text-2xl">
-                    {lang.flag}
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">
-                        {lang.name}
-                      </h2>
-                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-100 dark:bg-amber-950/70 text-amber-700 dark:text-amber-300 border border-amber-300/60 dark:border-amber-800">
-                        <Clock size={12} />
-                        <span>{lang.badge}</span>
-                      </span>
-                    </div>
-                    <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-0.5">
-                      {lang.exams}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                {lang.desc}
-              </p>
-
-              <div className="flex flex-wrap gap-2">
-                {lang.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-2.5 py-1 rounded-xl text-xs font-semibold bg-white dark:bg-slate-900/60 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="pt-3 border-t border-slate-200/60 dark:border-slate-700/60 flex items-center justify-between gap-3">
-              <span className="text-xs text-slate-500 dark:text-slate-400">
-                Đang biên soạn & chuẩn hóa ngân hàng câu hỏi
-              </span>
-              <button
-                type="button"
-                disabled
-                className="exam-secondary !min-h-9 text-xs"
-              >
-                Đang phát triển
-              </button>
-            </div>
-          </section>
-        ))}
       </div>
 
-      <p className="text-sm text-slate-500 dark:text-slate-400 text-center">
-        Các ngôn ngữ khác sẽ được bổ sung khi có nội dung.
+      {/* Ngôn ngữ sắp có: gom một dòng thay vì ba thẻ lớn (JL-25) */}
+      <p className="flex flex-wrap items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+        <span className="font-bold">Sắp có:</span>
+        {upcomingLanguages.map((lang) => (
+          <span
+            key={lang.code}
+            title={`${lang.exams} · ${lang.badge}`}
+            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold"
+          >
+            <span aria-hidden="true">{lang.flag}</span>
+            {lang.name.split(" · ")[1] || lang.name}
+          </span>
+        ))}
       </p>
     </div>
   );

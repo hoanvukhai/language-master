@@ -180,8 +180,8 @@ export default function ExamQuestionCard({
       id={`q-${q.id}`}
     >
       {/* Question Header */}
-      <div className="flex items-center justify-between gap-2 pb-3 border-b border-slate-100 dark:border-slate-700/60">
-        <div className="flex items-center gap-2 flex-wrap">
+      <div className="flex items-start sm:items-center justify-between gap-2 pb-3 border-b border-slate-100 dark:border-slate-700/60">
+        <div className="flex items-center gap-2 flex-wrap min-w-0">
           <strong className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-indigo-50 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-300 font-black text-sm border border-indigo-200/60 dark:border-indigo-800/60">
             {sequenceNumber
               ? `Câu ${sequenceNumber}${totalQuestions ? ` / ${totalQuestions}` : ""}`
@@ -199,20 +199,24 @@ export default function ExamQuestionCard({
           )}
         </div>
 
-        <div className="flex items-center gap-2 flex-wrap">
+        <div className="flex items-center gap-2 shrink-0">
           {onToggleFlag && (
             <button
               type="button"
-              className={`exam-secondary !py-1.5 !px-3 !min-h-9 text-xs ${
+              className={`exam-secondary !py-1.5 !px-2.5 sm:!px-3 !min-h-9 !min-w-9 text-xs ${
                 isFlagged
                   ? "!border-amber-400 !bg-amber-50 dark:!bg-amber-950/60 !text-amber-700 dark:!text-amber-300"
                   : ""
               }`}
               aria-pressed={isFlagged}
+              aria-label={isFlagged ? "Bỏ đánh dấu chưa chắc" : "Đánh dấu chưa chắc"}
+              title={isFlagged ? "Bỏ đánh dấu chưa chắc" : "Đánh dấu chưa chắc"}
               onClick={onToggleFlag}
             >
               <Flag size={13} className={isFlagged ? "fill-current" : ""} />
-              <span>{isFlagged ? "Chưa chắc" : "Đánh dấu"}</span>
+              <span className="hidden sm:inline">
+                {isFlagged ? "Chưa chắc" : "Đánh dấu"}
+              </span>
             </button>
           )}
           {feedback && (
