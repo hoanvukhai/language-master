@@ -1504,9 +1504,7 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                     onChange={(e) => handleSelectDropdownChange(e.target.value)}
                   >
                     <option value="all">
-                      {exam.isPracticePool
-                        ? "Trộn tất cả dạng"
-                        : "Toàn bộ ngày"}
+                      Toàn bộ ngày
                     </option>
                     {exam.mondais.map((m) => (
                       <option key={m.number} value={m.number}>

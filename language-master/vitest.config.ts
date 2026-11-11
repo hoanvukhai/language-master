@@ -7,6 +7,7 @@ export default defineConfig({
     environment: "jsdom",
     include: ["tests/**/*.ui.test.tsx"],
     globals: true,
+    setupFiles: ["tests/setup/firebaseMock.ts"],
     // Each reference-view case renders all 54 questions in jsdom.
     testTimeout: 15000,
   },

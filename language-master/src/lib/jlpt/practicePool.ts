@@ -733,39 +733,3 @@ export function computeStandardJLPTScore(attempt: Attempt): {
     grammarTotal,
   };
 }
-
-export interface ExamHistoryEntry {
-  examId: string;
-  correct: number;
-  total: number;
-  percent: number;
-  scaledScore?: number;
-  updatedAt: number;
-}
-
-const LEGACY_HISTORY_STORAGE_KEY = "jlpt_exam_history_v1";
-
-/**
- * Results are kept strictly within the current browser tab (sessionStorage via tabSession).
- * Persistent localStorage score history is disabled per architecture spec.
- */
-export function getExamHistory(): Record<string, ExamHistoryEntry> {
-  try {
-    if (typeof localStorage !== "undefined") {
-      localStorage.removeItem(LEGACY_HISTORY_STORAGE_KEY);
-    }
-  } catch {
-    // Ignore storage errors
-  }
-  return {};
-}
-
-export function saveExamResultHistory(): void {
-  try {
-    if (typeof localStorage !== "undefined") {
-      localStorage.removeItem(LEGACY_HISTORY_STORAGE_KEY);
-    }
-  } catch {
-    // Ignore storage errors
-  }
-}

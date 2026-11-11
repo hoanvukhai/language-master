@@ -11,11 +11,6 @@ export interface JLPTTargetWord {
   affix?: string; // Mondai 3: 振り〜
 }
 
-export interface JLPTOptionNote {
-  option: number;
-  note: string;
-}
-
 export interface JLPTExplanation {
   summary?: string;
   rule?: string;

@@ -28,6 +28,7 @@ import {
   useTabSession,
 } from "../../lib/jlpt/tabSession";
 import { matchExamQuery } from "../../lib/jlpt/examSearch";
+import { clearLegacyExamHistory } from "../../lib/jlpt/legacyHistory";
 import BottomSheet from "./workspace/BottomSheet";
 import { describeAttempt } from "../../lib/jlpt/attemptLabels";
 import { useConfirmation } from "./components/useConfirmation";
@@ -95,6 +96,9 @@ export default function JLPTExamHub() {
     .filter((b) => b.exams.length);
 
   const [now, setNow] = useState(() => Date.now());
+  useEffect(() => {
+    clearLegacyExamHistory();
+  }, []);
   useEffect(() => {
     refreshSession();
     const timer = setInterval(() => {
