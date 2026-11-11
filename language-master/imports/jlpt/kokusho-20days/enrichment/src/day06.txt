@@ -1,0 +1,447 @@
+@m1_01
+T: Vì bị thương ở chân nên tôi đã quấn băng.
+W: 巻く | まく | QUYỂN | quấn, cuộn
+1: さいた là 咲いた (nở) hoặc 裂いた (xé).
+2: ふいた là 拭いた: lau.
+3: まいた: thể た của 巻く, quấn.
+4: しいた là 敷いた: trải.
+
+@m1_02
+T: Cái này ghi là dùng cho gia đình, nhưng tôi nghĩ nó không thiết thực.
+W: 実用的 | じつようてき | THỰC DỤNG ĐÍCH | thiết thực, thực dụng
+1: じっようてき: 実 trước よ không biến thành じっ.
+2: じつようてき: 実 じつ + 用 よう + 的 てき.
+3: みっようてき: 実 đọc み là âm Kun; sai trong từ ghép.
+4: みようてき: sai, trộn âm Kun.
+
+@m1_03
+T: Bố tôi là thợ lành nghề, nhưng tôi không nối nghiệp.
+W: 職人 | しょくにん | CHỨC NHÂN | thợ thủ công lành nghề
+1: しきにん: 職 không đọc しき.
+2: しきじん: sai cả hai âm.
+3: しょくにん: 職 しょく + 人 にん.
+4: しょくじん: 人 trong từ này đọc にん.
+
+@m1_04
+T: Tôi trượt băng ở sân băng tự nhiên, người run lên vì lạnh.
+W: 震える | ふるえる | CHẤN | run rẩy
+1: うろたえた: luống cuống; không phải cách đọc 震.
+2: ひえた là 冷えた: bị lạnh.
+3: こごえた là 凍えた: cóng.
+4: ふるえた: thể た của 震える, run.
+
+@m1_05
+T: Dù đối phương là cấp trên, anh ấy vẫn nói ý kiến thẳng thắn.
+W: 率直 | そっちょく | SUẤT TRỰC | thẳng thắn
+1: そっちょく: 率 そつ → そっ + 直 ちょく.
+2: そつちょく: 率 trước ち biến thành そっ.
+3: そっじき: 直 không đọc じき trong từ này.
+4: そつじき: sai cả hai âm.
+
+@m2_06
+T: Nghe nói sao chổi Halley cứ 76 năm lại đến gần Trái Đất.
+W: 接近 | せっきん | TIẾP CẬN | tiến gần
+1: 切 (THIẾT) là cắt; 切近 không phải từ có thật.
+2: 接近: 接 (TIẾP) + 近 (CẬN).
+3: 折 (CHIẾT) là gập; 折近 không phải từ có thật.
+4: 世 (THẾ) là đời; 世近 không phải từ có thật.
+
+@m2_07
+T: Rượu vang được cất trữ trong nhà kho đó.
+W: 貯蔵 | ちょぞう | TRỮ TÀNG | cất trữ
+1: 貯蔵: 貯 (TRỮ) + 蔵 (TÀNG, kho).
+2: 増 (TĂNG) là tăng; 貯増 không phải từ có thật.
+3: 造 (TẠO) là chế tạo; 貯造 không phải từ có thật.
+4: 贈 (TẶNG) là tặng; 貯贈 không phải từ có thật.
+
+@m2_08
+T: Hội thảo về vấn đề hạt nhân đã được tổ chức ở hội trường đại học.
+W: 講堂 | こうどう | GIẢNG ĐƯỜNG | hội trường
+1: 溝 (CÂU) là mương; 溝堂 không phải từ có thật.
+2: 構 (CẤU) là cấu trúc; 構堂 không phải từ có thật.
+3: 講堂: 講 (GIẢNG) + 堂 (ĐƯỜNG).
+4: 購 (CẤU) là mua; 購堂 không phải từ có thật.
+
+@m2_09
+T: Sang giữa tháng 9, cuối cùng trời cũng mát mẻ dần.
+W: 涼しい | すずしい | LƯƠNG | mát mẻ
+1: 清 đọc きよい (trong sạch); không phải すずしい.
+2: 澄 đọc すむ (trong); không phải すずしい.
+3: 冷 đọc つめたい・ひえる; 冷しい không phải từ có thật.
+4: 涼しい: 涼 (LƯƠNG), mát mẻ.
+
+@m2_10
+T: Bão lớn đến, con thuyền đánh cá đang neo đã bị chìm.
+W: 沈む | しずむ | TRẦM | chìm
+1: 没 (MỘT) có trong 沈没; không đọc しずむ đứng một mình.
+2: 潜む đọc ひそむ: ẩn nấp.
+3: 静 đọc しずか; 静む không phải động từ.
+4: 沈んで: 沈 (TRẦM), chìm.
+
+@m3_11
+T: Viết đáp án xong thì hãy xem lại một lần nữa.
+S: Viết đáp án xong thì hãy … một lần nữa.
+W: 見直す | みなおす | KIẾN TRỰC | xem lại, kiểm tra lại | 〜直す
+1: 見直す: xem lại.
+2: 見限る: từ bỏ, hết hy vọng vào.
+3: 見渡す: nhìn bao quát.
+4: 見届ける: chứng kiến đến cùng.
+
+@m3_12
+T: Cứ tưởng đã được nhận làm thêm, ai ngờ việc tuyển dụng bị hủy bỏ.
+S: Cứ tưởng đã được nhận làm thêm, ai ngờ việc tuyển dụng bị … .
+W: 取り消す | とりけす | THỦ TIÊU | hủy bỏ | 取り〜
+1: 取り消す: hủy bỏ (quyết định, đặt chỗ).
+2: 持ち消す không phải động từ ghép có thật.
+3: 書き消す không phải động từ thông dụng (書き直す thì có).
+4: 打ち消す: phủ nhận; không dùng cho tuyển dụng.
+
+@m3_13
+T: Cuối cùng cũng xuất viện, nhưng mãi chưa trở lại phong độ bình thường.
+S: Cuối cùng cũng xuất viện, nhưng mãi chưa trở lại … .
+W: 本調子 | ほんちょうし | BẢN ĐIỆU TỬ | phong độ bình thường | 本〜
+1: 元調子 không phải từ có thật; 元気 thì có.
+2: 原調子 không phải từ có thật.
+3: 本調子: trạng thái vốn có, phong độ thật.
+4: 真調子 không phải từ có thật.
+
+@m3_14
+T: Những người từng chịu ảnh hưởng của giám đốc cũ lần lượt rời công ty.
+S: Những người từng ở … của giám đốc cũ lần lượt rời công ty.
+W: 影響下 | えいきょうか | ẢNH HƯỞNG HẠ | dưới ảnh hưởng | 〜下
+1: 影響上 không phải cách nói.
+2: 〜下: dưới (影響下, 支配下).
+3: 影響中 không phải cách nói.
+4: 影響間 không phải cách nói.
+
+@m3_15
+T: Thời cấp ba, tôi học kém môn lịch sử thế giới, không nhớ nổi niên hiệu.
+S: Thời cấp ba, tôi học kém môn … , không nhớ nổi niên hiệu.
+W: 世界史 | せかいし | THẾ GIỚI SỬ | lịch sử thế giới | 〜史
+1: 〜学: học thuật; 世界学 không phải môn học.
+2: 〜研 không làm hậu tố môn học.
+3: 〜問 không làm hậu tố môn học.
+4: 〜史: lịch sử (世界史, 日本史).
+
+@m4_16
+T: Mỏ dầu ở khu vực này được Nhật Bản và Trung Quốc cùng hợp tác khai thác.
+S: Mỏ dầu ở khu vực này được Nhật Bản và Trung Quốc … khai thác.
+W: 共同 | きょうどう | CỘNG ĐỒNG | cùng nhau, hợp tác
+1: 共通: chung, giống nhau; không chỉ cùng làm.
+2: 共有: cùng sở hữu; không đi với で開発.
+3: 共同で開発: cùng hợp tác khai thác.
+4: 共用: dùng chung (đồ vật).
+
+@m4_17
+T: Công ty phá sản nên tôi đã lập tức làm đơn xin bảo hiểm thất nghiệp.
+S: Công ty phá sản nên tôi đã lập tức làm đơn xin bảo hiểm … .
+W: 失業 | しつぎょう | THẤT NGHIỆP | thất nghiệp
+1: 失意: thất vọng; không phải loại bảo hiểm.
+2: 失敗: thất bại; không phải loại bảo hiểm.
+3: 失格: mất tư cách; không hợp.
+4: 失業保険: bảo hiểm thất nghiệp.
+
+@m4_18
+T: Ở Mỹ tôi đã thấy đoàn tàu chở hàng dài hàng chục toa.
+S: Ở Mỹ tôi đã thấy đoàn tàu chở … dài hàng chục toa.
+W: 貨物 | かもつ | HÓA VẬT | hàng hóa (vận chuyển)
+1: 物質: vật chất; không phải hàng chở trên tàu.
+2: 物価: giá cả; không chở được.
+3: 貨物を載せた列車: tàu chở hàng.
+4: 実物: vật thật; không hợp.
+
+@m4_19
+T: Những chỗ đường giao nhau thường có nhiều đồn cảnh sát.
+S: Những chỗ đường … thường có nhiều đồn cảnh sát.
+W: 交差 | こうさ | GIAO SAI | giao nhau, cắt nhau
+1: 水平: nằm ngang; không chỉ giao lộ.
+2: 直角: góc vuông; không đi với している như vậy.
+3: 道路が交差する: đường giao nhau.
+4: 垂直: thẳng đứng; không hợp.
+
+@m4_20
+T: Từ nhỏ cô ấy đã vẽ truyện tranh giỏi.
+S: Từ nhỏ cô ấy đã vẽ … giỏi.
+W: 漫画 | まんが | MẠN HỌA | truyện tranh
+1: 漫画を描く: vẽ truyện tranh.
+2: 映画: phim; dùng 撮る, không dùng 描く.
+3: 計画: kế hoạch; dùng 立てる.
+4: 企画: dự án; dùng 立てる.
+
+@m4_21
+T: Toàn bộ ghế đều là ghế chỉ định, xin hãy ngồi đúng chỗ đã định.
+S: Toàn bộ ghế đều là ghế … , xin hãy ngồi đúng chỗ đã định.
+W: 指定 | してい | CHỈ ĐỊNH | chỉ định
+1: 支配: chi phối; không dùng cho chỗ ngồi.
+2: 全席指定: toàn bộ ghế chỉ định.
+3: 指示: chỉ thị; không dùng cho ghế.
+4: 決定: quyết định; 全席決定 không dùng.
+
+@m4_22
+T: Ở các buổi trình diễn hàng không trên thế giới, đôi khi xảy ra tai nạn lớn.
+S: Ở các buổi trình diễn … trên thế giới, đôi khi xảy ra tai nạn lớn.
+W: 航空 | こうくう | HÀNG KHÔNG | hàng không
+1: 空港: sân bay; 空港ショー không phải sự kiện.
+2: 上空: bầu trời phía trên; không ghép với ショー.
+3: 航空ショー: triển lãm hàng không.
+4: 大空: bầu trời rộng; không ghép với ショー.
+
+@m5_23
+T: Có lẽ anh ấy sẽ không đến bữa tiệc ngày mai.
+W: たぶん | たぶん | | có lẽ
+1: 絶対: tuyệt đối; mức chắc chắn cao hơn.
+2: おそらく: có lẽ.
+3: 確か: hình như (dựa vào trí nhớ).
+4: やはり: quả nhiên; khác nghĩa.
+
+@m5_24
+T: Đêm khuya trên đường từ cửa hàng tiện lợi về, tôi có cảm giác ai đó đang bám theo.
+W: 気配 | けはい | KHÍ PHỐI | dấu hiệu, cảm giác (có ai đó)
+1: 音: âm thanh; 気配 không chỉ riêng tiếng động.
+2: におい: mùi; khác nghĩa.
+3: 動き: chuyển động; quá cụ thể.
+4: 感じ: cảm giác.
+
+@m5_25
+T: Đúng là sản phẩm hút khách dành cho giới trẻ, loáng cái đã bán hết.
+W: あっという間 | あっというま | GIAN | loáng cái, chớp mắt
+1: まず: trước hết; khác nghĩa.
+2: とうとう: cuối cùng thì; nhấn quá trình dài.
+3: ほとんど: hầu hết; không chỉ tốc độ.
+4: 早速: ngay lập tức; gần nghĩa nhất trong các lựa chọn.
+
+@m5_26
+T: Quên bài tập, tôi bị thầy khiển trách nghiêm khắc.
+W: 厳しい | きびしい | NGHIÊM | nghiêm khắc
+1: 強力: mạnh mẽ (lực); không dùng cho lời khiển trách.
+2: 確実: chắc chắn; khác nghĩa.
+3: 厳重: nghiêm ngặt.
+4: 勝手: tùy tiện; khác nghĩa.
+
+@m5_27
+T: Vì không đủ thời gian nên tôi đã lược bớt phần giải thích.
+W: 略す | りゃくす | LƯỢC | lược bỏ
+1: 省いた: lược bỏ.
+2: 持った: cầm, mang; khác nghĩa.
+3: 加えた: thêm vào; ngược nghĩa.
+4: 聞いた: nghe; khác nghĩa.
+
+@m6_28
+T: Tôi phải chép sạch bản trình bày lý do dự tuyển đại học trước ngày mai.
+W: 清書 | せいしょ | THANH THƯ | chép sạch, viết lại bản chính
+1: 清書する: chép sạch bản cuối.
+2: Gia hạn visa là ビザを延長する; đóng dấu là 押印.
+3: Chất lượng in dùng 印刷状態, không phải 清書状態.
+4: Sách cổ là 古書・古文書.
+
+@m6_29
+T: Nhìn cảnh tượng đau thương của chiến tranh, tôi mất niềm tin vào con người.
+W: 光景 | こうけい | QUANG CẢNH | cảnh tượng
+1: 戦争の悲しい光景: cảnh tượng đau thương.
+2: Giờ trên đồng hồ là 時刻.
+3: Tầm nhìn ra ngoài là 眺め・見晴らし.
+4: Tranh phong cảnh là 風景画.
+
+@m6_30
+T: Luyện tập nhiều đến thế nên chắc chắn sẽ có thành tích tốt.
+W: きっと | きっと | | chắc chắn (phỏng đoán)
+1: Quy định bắt buộc dùng 必ず; きっと là phỏng đoán.
+2: きっと〜だろう: chắc chắn sẽ.
+3: Sự việc đã xảy ra không dùng きっと; dùng ついに.
+4: きっと không bổ nghĩa cho trạng thái hiện tại như vậy.
+
+@m6_31
+T: Đấu với nhà vô địch, người thách đấu đã thua một cách thảm hại.
+W: 惨め | みじめ | THẢM | thảm hại, đáng thương
+1: Gió yếu dùng 弱い風; みじめな風 không có nghĩa.
+2: Tỏ ra hối lỗi dùng しょんぼり; みじめをする không có.
+3: みじめな負け方: thua thảm hại.
+4: Kiểu giày không đi với みじめ型.
+
+@m6_32
+T: Cuộc trò chuyện của hai người đó nhiều phương ngữ nên tôi hoàn toàn không hiểu.
+W: 方言 | ほうげん | PHƯƠNG NGÔN | phương ngữ
+1: Phát ngôn là 発言.
+2: 方言が多い: nhiều phương ngữ.
+3: Làm chứng ở tòa là 証言.
+4: Tin tức từ người thân là 便り.
+
+@m7_33
+T: Xét từ vẻ vui mừng của anh ấy thì có vẻ kỳ thi đã suôn sẻ.
+S: … vẻ vui mừng của anh ấy thì có vẻ kỳ thi đã suôn sẻ.
+1: Nからすると: xét từ N (để suy đoán).
+2: からには: một khi đã; không hợp.
+3: からなると không phải mẫu ngữ pháp.
+4: からといって: dù nói là; không hợp.
+
+@m7_34
+T: Theo thông tin trên mạng, nghe nói quán này được phụ nữ trẻ yêu thích.
+S: … thông tin trên mạng, nghe nói quán này được phụ nữ trẻ yêu thích.
+1: にとれば không phải mẫu ngữ pháp.
+2: Nによれば〜そうだ: theo N thì nghe nói.
+3: にすれば: từ lập trường của; không dùng cho nguồn tin.
+4: にあれば không phải mẫu ngữ pháp.
+
+@m7_35
+T: Bãi biển này ngoài mùa hè ra, chẳng hiểu sao cả mùa đông cũng có khách du lịch.
+S: Bãi biển này … mùa hè, chẳng hiểu sao cả mùa đông cũng có khách du lịch.
+1: に増え không phải mẫu ngữ pháp.
+2: に足し không phải mẫu ngữ pháp.
+3: に重ね không phải mẫu ngữ pháp.
+4: Nに加え: ngoài N ra còn.
+
+@m7_36
+T: Ở Nhật, tiêu biểu là Okinawa, có một số căn cứ quân đội Mỹ.
+S: Ở Nhật, … Okinawa, có một số căn cứ quân đội Mỹ.
+1: をおいて: ngoài… ra không ai; không hợp.
+2: Nをはじめ: tiêu biểu là N.
+3: をもって: bằng, vào lúc; không hợp.
+4: をかぎり: đến hết; không hợp.
+
+@m7_37
+T: Ai cũng có lúc mắc lỗi nên không cần bận tâm đến thế.
+S: Ai cũng có lúc mắc lỗi nên … bận tâm đến thế.
+1: ことにない không phải mẫu ngữ pháp.
+2: ことがない: chưa từng; không hợp.
+3: Vることはない: không cần phải.
+4: ことしかない không phải mẫu tự nhiên.
+
+@m7_38
+T: Lần đầu được tham gia giải toàn quốc, tôi xúc động quá đến rơi nước mắt.
+S: Lần đầu được tham gia giải toàn quốc, tôi … rơi nước mắt.
+1: せい: tại vì (lỗi); không hợp.
+2: おかげ: nhờ; không hợp với cảm xúc.
+3: Nのあまり: vì quá N.
+4: ほか: ngoài ra; không hợp.
+
+@m7_39
+T: Nếu có điểm nào chưa hài lòng về sản phẩm, xin cứ cho chúng tôi biết.
+S: Nếu có điểm nào chưa hài lòng về sản phẩm, xin … .
+1: お申し付けくださいませ: xin cứ yêu cầu (lịch sự).
+2: お申し付けて願います sai dạng.
+3: 申し付き không phải dạng đúng.
+4: 申し付いて願います sai dạng.
+
+@m7_40
+T: Nếu muốn giỏi bóng chày thì chỉ còn cách luyện tập mỗi ngày.
+S: Nếu muốn giỏi bóng chày thì … mỗi ngày.
+1: ところしかない không phải mẫu ngữ pháp.
+2: Vるしかない: chỉ còn cách.
+3: ところではない: không phải lúc; không hợp.
+4: ことではない: không phải việc; không hợp.
+
+@m7_41
+T: Đừng vừa xem tivi vừa ăn cơm.
+S: Đừng … ăn cơm.
+1: つもりとともに không phải mẫu ngữ pháp.
+2: とともに: cùng với; trang trọng, không hợp.
+3: つもりながら không phải mẫu ngữ pháp.
+4: Vながら: vừa… vừa.
+
+@m7_42
+T: Cùng với việc trụ sở chính chuyển đến Osaka, tôi phải chuyển nhà.
+S: … , tôi phải chuyển nhà.
+1: とおりに限り sai kết hợp.
+2: に限り: chỉ giới hạn; không hợp.
+3: とおりに伴い sai kết hợp.
+4: ということに伴い: cùng với việc.
+
+@m7_43
+T: Sau một hồi vật lộn với thủ phạm, cảnh sát cuối cùng đã khống chế được.
+S: … , cảnh sát cuối cùng đã khống chế được.
+1: しようとした: mới định làm; không khớp với việc đã xảy ra.
+2: ために: vì; không hợp quá trình.
+3: Nになった末に: sau một quá trình… cuối cùng.
+4: になったために: vì đã thành; không hợp.
+
+@m7_44
+T: Vì nhiệt độ quá cao nên rất nhiều người bị sốc nhiệt.
+S: Vì nhiệt độ quá … nên rất nhiều người bị sốc nhiệt.
+1: 高くする: làm cho cao; sai chủ thể.
+2: 高くするものだから: sai chủ thể.
+3: ものの: tuy… nhưng; sai quan hệ.
+4: 〜ものだから: vì (giải thích lý do).
+
+@m8_45
+T: Ở nhà máy này, trước khi bắt đầu làm việc người ta tập khởi động.
+1: 作業開始 đi sau 工場では.
+2: に先立って đứng ở ô ★.
+3: 準備運動 đứng cuối, trước をしている.
+4: 工場では nối ngay sau この.
+
+@m8_46
+T: Đã mua cuốn từ điển đắt tiền thì tôi định học với tinh thần mới.
+1: 勉強する đứng cuối, trước つもりだ.
+2: 気持ちで đứng ở ô ★.
+3: 買ったからには nối ngay sau 高価な辞書を.
+4: 新たな bổ nghĩa cho 気持ち.
+
+@m8_47
+T: Bất kể bản báo cáo tốt hay dở, nỗ lực viết xong nó thật đáng khen.
+1: 書き上げた đứng ở ô ★, bổ nghĩa cho 努力.
+2: にかかわらず đi sau いい悪い.
+3: いい悪い nối ngay sau レポートの.
+4: 努力 đứng cuối, trước はすばらしい.
+
+@m8_48
+T: Tuyển nhân viên không kể tuổi tác thì có số đơn ứng tuyển ngoài dự đoán.
+1: 申し込み đứng cuối, trước があった.
+2: 社員を nối ngay sau 年齢を問わず.
+3: 予想外の đứng ở ô ★.
+4: 募集したところ đi sau 社員を.
+
+@m8_49
+T: Hành lý nặng, đúng lúc tôi định gọi người giúp thì bạn tôi đến.
+1: ところに đứng cuối, trước 友人が来た.
+2: 呼ぼうと đi sau 助けを.
+3: 助けを nối ngay sau 重くて.
+4: 思っていた đứng ở ô ★.
+
+@m9_50
+T: Triển lãm Chagall đã khai mạc tại Bảo tàng Mỹ thuật Đại học Nghệ thuật Tokyo ở Ueno.
+S: Triển lãm Chagall đã khai mạc … Bảo tàng Mỹ thuật Đại học Nghệ thuật Tokyo ở Ueno.
+1: が đánh dấu chủ ngữ; bảo tàng không phải thứ bắt đầu.
+2: に chỉ đích đến; không chỉ nơi diễn ra sự kiện.
+3: で: nơi diễn ra sự kiện.
+4: は biến bảo tàng thành chủ đề; sai.
+
+@m9_51
+T: Nhóm tác phẩm của Trung tâm Pompidou gợi nhớ những mảnh giấc mơ rực rỡ sắc màu.
+S: Nhóm tác phẩm của Trung tâm Pompidou … những mảnh giấc mơ … .
+1: a 色鮮やか (rực rỡ màu), b 思わせる (gợi nhớ).
+2: 思われる: được nghĩ là; không nhận を như vậy.
+3: 形鮮やか không phải cách nói; bị động sai.
+4: 形鮮やか không tự nhiên; 思っている sai chủ thể.
+
+@m9_52
+T: Với người họa sĩ Do Thái gốc Nga, New York cũng là vùng đất của nỗi buồn. Tác phẩm "Xoay quanh nàng" ra đời sau cơn thẫn thờ ấy thật đẹp.
+S: Với người … Do Thái gốc Nga, New York cũng là vùng đất của … . Tác phẩm "Xoay quanh nàng" thật … .
+E: Chọn 画家／悲しみ／美しい: với người họa sĩ (a), New York là đất của nỗi buồn (b) vì ông mất vợ ở đó; bức tranh vẽ ra sau đó thật đẹp (c).
+1: 悲しみにとって không có nghĩa; a phải là người.
+2: a sai; "vùng đất họa sĩ" không có nghĩa.
+3: a 画家, b 悲しみ, c 美しい.
+4: "vùng đất đẹp" và tranh "là nỗi buồn" không hợp ngữ pháp ở c.
+
+@m9_53
+T: …như thể ông đang cố gọi trở lại thế gian này những gì đã tan biến cùng Bella.
+S: …như thể ông đang cố gọi trở lại thế gian này những gì đã … Bella.
+1: と共に消え去って: tan biến cùng với.
+2: 持ち去る: mang đi; cần tân ngữ, không hợp.
+3: にとって: đối với; không hợp với 消え去る.
+4: にとって持ち去って sai cả hai.
+
+@m9_54
+T: Nỗi buồn vui lấp đầy 97 năm cuộc đời ông, nay được giải phóng khỏi mọi thứ, đang hiện lên trước mắt chúng ta.
+S: Nỗi buồn vui lấp đầy 97 năm cuộc đời ông, nay được giải phóng khỏi mọi thứ, … trước mắt chúng ta.
+1: だろうか: nghi vấn; không hợp câu khẳng định.
+2: 浮かばせられている: sai khiến bị động; sai.
+3: 浮かばれる: (linh hồn) được siêu thoát; khác nghĩa.
+4: 浮かんでいる: đang hiện lên.
+
+@P d06-passage
+Giấc mơ bay như chim được cho là khát khao tự do, cũng là mặt trái của sự đè nén. Không biết bậc thầy hội họa thế kỷ 20 đã mơ những giấc mơ thế nào. Những đôi tình nhân ôm nhau, những con vật, bóng hình quê hương. Vạn vật nhảy múa trên mặt toan.
+Triển lãm Chagall đã khai mạc tại Bảo tàng Mỹ thuật Đại học Nghệ thuật Tokyo ở Ueno (đến ngày 11 tháng 10). Nhóm tác phẩm của Trung tâm Pompidou (Pháp) gợi nhớ những mảnh giấc mơ rực rỡ sắc màu. Những bản phác thảo trang trí sân khấu cho vở opera "Cây sáo thần", lần đầu được trưng bày cùng lúc, là công việc mà Nhà hát Metropolitan (Mỹ) nhờ ông vào những năm cuối đời.
+Với người họa sĩ Do Thái xuất thân từ nước Nga Sa hoàng, New York, nơi có nhà hát ấy, cũng là vùng đất của nỗi buồn. Ở miền đất xa lạ nơi ông chạy trốn khỏi Đức Quốc xã, ông mất người vợ đồng hương Bella đã gắn bó 30 năm. Tác phẩm "Xoay quanh nàng" ra đời sau những ngày thẫn thờ ấy thật đẹp.
+Giữa sắc xanh thẫm là người vợ đang thổn thức, chính ông, và quả cầu pha lê phản chiếu cố hương; phía trên là đôi vợ chồng mới cưới và chim bồ câu bay lượn. Virginia Haggard, người phụ nữ đã ở bên người đàn ông đau khổ ấy 7 năm, đã ghi lại hình ảnh ông khi vẽ trong cuốn "Những ngày bên Chagall".
+"Gương mặt ông căng thẳng, đầy đau đớn. Trông ông như đang phẫn nộ dữ dội… Đến mức tôi nghĩ phải chăng ông đang cố gọi trở lại thế gian này những gì đã tan biến cùng Bella." Đó là sắc xanh lam như được hòa bằng nước mắt.
+Đối lập với bức tranh này là "Ngày Chủ nhật", vẽ khoảng thời gian ông tái hôn ở tuổi 65. Đó là ngày nghỉ hạnh phúc, ông ôm người vợ mới bay dạo trên bầu trời Paris màu hoa cải. Chagall, khi than khóc thì trôi dạt, khi mỉm cười thì nhảy múa. Nỗi buồn và niềm vui lấp đầy 97 năm cuộc đời ông, nay được giải phóng khỏi mọi thứ, đang hiện lên trước mắt chúng ta.

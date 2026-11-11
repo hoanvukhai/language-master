@@ -1,0 +1,446 @@
+@m1_01
+T: Những người kia đang đào đất, không biết họ tìm gì nhỉ?
+W: 掘る | ほる | QUẬT | đào
+1: けずって là 削って: gọt, bào.
+2: ほって là thể て của 掘る: đào.
+3: わって là 割って: làm vỡ, chia.
+4: とって là 取って: lấy.
+
+@m1_02
+T: Cô ấy nói sẽ đi trượt tuyết vui vẻ, vậy mà lại bị gãy xương trở về.
+W: 骨折 | こっせつ | CỐT CHIẾT | gãy xương
+1: ほねせつ: trộn âm Kun ほね với âm On せつ; sai.
+2: ほねおり là 骨折り (sự vất vả); khác nghĩa và cách đọc.
+3: こっせつ: 骨 こつ → こっ + 折 せつ, gãy xương.
+4: こつおり: trộn âm On với âm Kun; sai.
+
+@m1_03
+T: Định nộp hồ sơ vào đại học thì hạn chót đã là hôm kia.
+W: 一昨日 | いっさくじつ | NHẤT TẠC NHẬT | hôm kia
+1: いちさくじつ: 一 trước さ biến thành いっ.
+2: いっさくじつ: hôm kia (cách đọc trang trọng).
+3: いちさくにち: sai cả hai chỗ.
+4: いっさくにち: 日 đọc じつ, không đọc にち ở đây.
+
+@m1_04
+T: Em trai tôi thích hấp khoai lang để ăn.
+W: 蒸す | むす | CHƯNG | hấp
+1: ほして là 干して: phơi khô.
+2: こして là 漉して: lọc.
+3: のして là 伸して: cán mỏng.
+4: むして là thể て của 蒸す: hấp.
+
+@m1_05
+T: Ngón chân đập vào cột nhà, đau đến chảy nước mắt.
+W: 柱 | はしら | TRỤ | cây cột
+1: ぢゅう không phải cách đọc chuẩn.
+2: ちゅう là âm On (電柱), không dùng khi đứng một mình.
+3: ばしら là dạng biến âm trong từ ghép (大黒柱); không dùng khi đứng riêng.
+4: はしら: cây cột.
+
+@m2_06
+T: Vé đi Thanh Đảo, Trung Quốc, nếu quá cảnh ở Seoul thì rẻ hơn.
+W: 経由 | けいゆ | KINH DO | đi qua, quá cảnh
+1: 経由: 経 (KINH, đi qua) + 由 (DO).
+2: 径 (KÍNH) là đường kính; 径由 không phải từ có thật.
+3: 系 (HỆ) là hệ thống; 系由 không phải từ có thật.
+4: 係 (HỆ) là phụ trách; 係由 không phải từ có thật.
+
+@m2_07
+T: Tôi định đi du lịch Ý nhưng chưa quyết chỗ nghỉ lại.
+W: 宿泊 | しゅくはく | TÚC BẠC | lưu trú, nghỉ trọ
+1: 宿泊: 宿 (TÚC) + 泊 (BẠC), nghỉ qua đêm.
+2: 縮 (SÚC) là co lại; 縮泊 không phải từ có thật.
+3: 拍 (PHÁCH) là nhịp; 宿拍 không phải từ có thật.
+4: 縮拍 sai cả hai chữ.
+
+@m2_08
+T: Ở Nhật có bao nhiêu chính đảng nhỉ?
+W: 政党 | せいとう | CHÍNH ĐẢNG | chính đảng
+1: 正 (CHÍNH) là đúng; 正党 không phải từ có thật.
+2: 征 (CHINH) là chinh phạt; 征党 không phải từ có thật.
+3: 政党: 政 (CHÍNH, chính trị) + 党 (ĐẢNG).
+4: 世 (THẾ) đọc せ; 世党 không phải từ có thật.
+
+@m2_09
+T: Lương thấp nên tôi làm thêm để bù chi phí sinh hoạt.
+W: 補う | おぎなう | BỔ | bù đắp
+1: 捕 (BỘ) đọc とらえる (bắt); không đọc おぎなう.
+2: 補って: 補 (BỔ), bù vào phần thiếu.
+3: 浦 (PHỐ) là bến; không phải động từ.
+4: 舗 (PHÔ) là cửa hiệu; không phải động từ.
+
+@m2_10
+T: Trực giác kém nhạy nên tôi hoàn toàn không nhận ra mối quan hệ của hai người đó.
+W: 鈍い | にぶい | ĐỘN | chậm, kém nhạy
+1: 純 (THUẦN) không có dạng 純い.
+2: 鋭い đọc するどい: nhạy bén; ngược nghĩa.
+3: 鈍くて: 鈍 (ĐỘN), kém nhạy.
+4: 遅い đọc おそい: chậm, muộn.
+
+@m3_11
+T: Dọn dẹp sau chuyển nhà xong, cuối cùng tôi có thể sống ổn định.
+S: Dọn dẹp sau chuyển nhà xong, cuối cùng tôi có thể sống … .
+W: 落ち着く | おちつく | LẠC TRƯỚC | ổn định, bình tĩnh | 落ち〜
+1: 待ちつく không phải động từ ghép có thật.
+2: 勝ちつく không phải động từ ghép có thật.
+3: 持ちつく không phải động từ ghép có thật.
+4: 落ち着く: ổn định, yên ổn.
+
+@m3_12
+T: Tôi ra một hòn đảo phía nam và bơi ở vùng biển trong vắt.
+S: Tôi ra một hòn đảo phía nam và bơi ở vùng biển … .
+W: 透き通る | すきとおる | THẤU THÔNG | trong suốt | 透き〜
+1: 突き通る: đâm xuyên qua; không tả nước trong.
+2: 透き通る: trong vắt, nhìn xuyên qua.
+3: 抜き通る không phải động từ ghép có thật.
+4: 浮き通る không phải động từ ghép có thật.
+
+@m3_13
+T: Tôi chưa hiểu rõ cách dùng trợ động từ trong tiếng Nhật.
+S: Tôi chưa hiểu rõ cách dùng … trong tiếng Nhật.
+W: 助動詞 | じょどうし | TRỢ ĐỘNG TỪ | trợ động từ | 助〜
+1: 語動詞 không phải thuật ngữ.
+2: 補動詞 không phải thuật ngữ thông dụng (補助動詞 thì có).
+3: 助動詞: trợ động từ.
+4: 変動詞 không phải thuật ngữ.
+
+@m3_14
+T: Cây cầu đó chưa hoàn thành nên chưa đi qua được.
+S: Cây cầu đó … nên chưa đi qua được.
+W: 未完成 | みかんせい | VỊ HOÀN THÀNH | chưa hoàn thành | 未〜
+1: 未〜: chưa (未完成, 未解決).
+2: 不〜: không (phủ định tính chất); 不完成 không dùng.
+3: 無〜: không có; 無完成 không có nghĩa.
+4: 半〜: một nửa; 半完成 không phải cách nói thông dụng.
+
+@m3_15
+T: Đã mất công mua sổ nhật ký vậy mà chỉ duy trì được 3 ngày.
+S: Đã mất công mua … vậy mà chỉ duy trì được 3 ngày.
+W: 日記帳 | にっきちょう | NHẬT KÝ TRƯƠNG | sổ nhật ký | 〜帳
+1: 〜版: ấn bản; 日記版 không chỉ cuốn sổ.
+2: 〜帳: cuốn sổ (日記帳, 手帳).
+3: 〜編: phần, thiên; không chỉ cuốn sổ.
+4: 〜巻: quyển trong bộ sách; không hợp.
+
+@m4_16
+T: Chủ nhật cả nhà đông đủ đi dã ngoại.
+S: Chủ nhật … đông đủ đi dã ngoại.
+W: 一家 | いっか | NHẤT GIA | cả nhà
+1: 一軒: một căn nhà (đếm nhà); không chỉ người.
+2: 主人: chồng, chủ nhà; một người không "そろって".
+3: 一家そろって: cả nhà đông đủ.
+4: 集団: tập thể; không dùng cho gia đình.
+
+@m4_17
+T: Một ngày nào đó tôi muốn đi tên lửa du hành vũ trụ.
+S: Một ngày nào đó tôi muốn đi tên lửa du hành … .
+W: 宇宙 | うちゅう | VŨ TRỤ | vũ trụ
+1: 宇宙を旅する: du hành vũ trụ.
+2: 大気: khí quyển; không phải nơi để du hành.
+3: 水平: nằm ngang; không phải nơi chốn.
+4: 平野: đồng bằng; không cần tên lửa.
+
+@m4_18
+T: Diễn viên đó được cho là biểu đạt cảm xúc rất giỏi.
+S: Diễn viên đó được cho là … rất giỏi.
+W: 感情 | かんじょう | CẢM TÌNH | cảm xúc
+1: 心表現 không phải từ ghép thông dụng.
+2: 精神表現 không dùng cho diễn xuất.
+3: 意識表現 không phải cách nói.
+4: 感情表現: biểu đạt cảm xúc.
+
+@m4_19
+T: Tờ rơi này quá nhiều thuật ngữ chuyên môn nên tôi khó hiểu.
+S: Tờ rơi này quá nhiều … nên tôi khó hiểu.
+W: 用語 | ようご | DỤNG NGỮ | thuật ngữ
+1: 専門言語 không phải cách nói thông dụng.
+2: 専門古典 không có nghĩa.
+3: 専門用語: thuật ngữ chuyên môn.
+4: 専門文字 không có nghĩa.
+
+@m4_20
+T: Công việc này cần được tiến hành hợp lý hơn.
+S: Công việc này cần được tiến hành … hơn.
+W: 合理的 | ごうりてき | HỢP LÝ ĐÍCH | hợp lý, hiệu quả
+1: 管理的: mang tính quản lý; không hợp với 進める.
+2: 整理的 không phải từ thông dụng.
+3: 合理的に進める: tiến hành hợp lý.
+4: 真理的 không phải từ thông dụng.
+
+@m4_21
+T: Phóng thất bại, vệ tinh đã phát nổ lớn trên không.
+S: Phóng thất bại, vệ tinh đã phát nổ lớn … .
+W: 空中 | くうちゅう | KHÔNG TRUNG | trên không
+1: 空中で爆発: nổ trên không.
+2: 空気で: bằng không khí; không chỉ nơi chốn.
+3: 地点で cần cụ thể hóa (発射地点で); một mình không đủ.
+4: 快晴: trời quang; không phải nơi chốn.
+
+@m4_22
+T: Siêu thị lớn gần nhà mở cửa đến khuya nên rất tiện.
+S: Siêu thị lớn gần nhà kinh doanh … nên rất tiện.
+W: 深夜 | しんや | THÂM DẠ | đêm khuya
+1: 夜型: người hoạt động về đêm; không ghép với 営業.
+2: 真夜中営業 không phải cách nói thông dụng.
+3: 夜半: nửa đêm (văn viết); không ghép với 営業.
+4: 深夜営業: kinh doanh đến khuya.
+
+@m5_23
+T: Đã cất công đặt chỗ cho cô ấy, vậy mà cô ấy lại không đến…
+W: わざわざ | わざわざ | | cất công
+1: ついに: cuối cùng; không mang nghĩa cất công.
+2: せっかく: đã mất công (mà uổng).
+3: とにかく: dù sao; khác nghĩa.
+4: やっと: mãi mới; khác nghĩa.
+
+@m5_24
+T: Anh ấy là đồng đội của chúng ta nên không có chuyện chỉ chiến thuật cho đối thủ.
+W: チームメート | チームメート | | đồng đội
+1: 親友: bạn thân; hẹp hơn đồng đội.
+2: 家族: gia đình; khác nghĩa.
+3: 助手: trợ lý; khác nghĩa.
+4: 仲間: đồng đội, bạn cùng nhóm.
+
+@m5_25
+T: Buổi tập huấn tuần sau, mỗi người tự mang giáo trình theo.
+W: 各々 | おのおの | CÁC | mỗi người
+1: 1人で: một mình; khác nghĩa "mỗi người".
+2: 各自: mỗi người tự.
+3: 自分で: tự mình làm; không nhấn "từng người".
+4: 独自の: độc đáo, riêng; khác nghĩa.
+
+@m5_26
+T: Người bạn mà đến giờ tôi vẫn nghĩ là gần gũi bỗng trở nên lạnh nhạt.
+W: 身近 | みぢか | THÂN CẬN | gần gũi
+1: 親しい: thân thiết, gần gũi.
+2: 優しい: dịu dàng; không chỉ khoảng cách quan hệ.
+3: うれしい: vui; khác nghĩa.
+4: 楽しい: vui vẻ; khác nghĩa.
+
+@m5_27
+T: Người đàn ông nghe nhà văn diễn thuyết cứ liên tục gật đầu.
+W: しばしば | しばしば | | thường xuyên, nhiều lần
+1: ときどき: thỉnh thoảng; tần suất thấp hơn.
+2: しきりに: liên tục, nhiều lần.
+3: たまに: hiếm khi; ngược nghĩa.
+4: ずっと: suốt không ngừng; khác "nhiều lần".
+
+@m6_28
+T: Trước bảng thông báo kết quả thi, bạn tôi đã thở dài.
+W: ため息 | ためいき | TỨC | tiếng thở dài
+1: ため息をつく: thở dài.
+2: Không nói ため息する; phải là ため息をつく.
+3: Phối hợp nhịp nhàng là 息を合わせる.
+4: Hít sâu là 深呼吸; ため息 là thở ra.
+
+@m6_29
+T: Ở lễ hội, các quầy hàng xếp hai bên đường.
+W: 両側 | りょうがわ | LƯỠNG TRẮC | hai bên
+1: Ý kiến hai phía là 双方・両者 の言い分.
+2: Hai bên biển không có nghĩa; dùng 港の両側 thì được.
+3: 道の両側: hai bên đường.
+4: Hai màu bút là 両方, không phải 両側.
+
+@m6_30
+T: Sắp đến kỳ thi rồi, có lo nghĩ đủ chuyện cũng chẳng ích gì.
+W: あれこれ | あれこれ | | đủ thứ, này nọ
+1: Gió không phải あれこれの風; khác nghĩa.
+2: Người có tiếng là 有名, không phải あれこれ.
+3: Số mèo con dùng 何匹も.
+4: あれこれ悩む: lo nghĩ đủ điều.
+
+@m6_31
+T: Tôi đã làm món hamburger nhưng thành phẩm chưa được như ý.
+W: 満足 | まんぞく | MÃN TÚC | hài lòng, đầy đủ
+1: Bữa nhậu vui dùng 楽しい; 満足な飲み会 không tự nhiên.
+2: Tàu chạy đều đặn dùng 頻繁に.
+3: Trăng tròn là 満月.
+4: 満足なできではない: thành phẩm chưa như ý.
+
+@m6_32
+T: Để ôn thi, tôi chia theo thời kỳ để nhớ tên nhân vật.
+W: 区分 | くぶん | KHU PHÂN | phân chia, phân loại
+1: Khu vực dùng 区域・場所.
+2: Hương vị riêng dùng 本場の味; 区分の味 không có nghĩa.
+3: Đồ rời từng mảnh là セパレート; 区分した服 không có nghĩa.
+4: 時代を区分する: chia theo thời kỳ.
+
+@m7_33
+T: Trong khi du học sinh tăng lên thì ở các trường đại học lại xảy ra tình trạng thiếu chỉ tiêu.
+S: … du học sinh tăng lên, ở các trường đại học lại xảy ra tình trạng thiếu chỉ tiêu.
+1: に伴い: kéo theo; không thể hiện đối lập.
+2: 〜一方で: mặt khác (nêu hai xu hướng trái nhau).
+3: 以上: một khi đã; không hợp.
+4: あまり: vì quá; không hợp.
+
+@m7_34
+T: Tuyết rơi liên tục, tùy nơi có chỗ tích dày hơn 1 mét.
+S: Tuyết rơi liên tục, … có chỗ tích dày hơn 1 mét.
+1: にわたっては: trải dài; không hợp với 場所.
+2: Nによっては: tùy N, có trường hợp.
+3: につれては không phải mẫu tự nhiên.
+4: に対しては: đối với; không hợp.
+
+@m7_35
+T: Đáp ứng yêu cầu của nhân viên, công ty quyết định tăng lương giờ từ tháng sau.
+S: … yêu cầu của nhân viên, công ty quyết định tăng lương giờ từ tháng sau.
+1: にとって: đối với; không hợp.
+2: について: về; không hợp.
+3: Nに応じて: đáp ứng, tùy theo.
+4: につけて: mỗi khi; không hợp.
+
+@m7_36
+T: Bệnh tim trở nặng, tôi không còn cách nào khác ngoài phẫu thuật.
+S: Bệnh tim trở nặng, tôi … phẫu thuật.
+1: Vるよりほかない: không còn cách nào khác.
+2: わけがない: không có lý nào; ngược ý.
+3: までもない: không cần đến mức; ngược ý.
+4: ことでもない: không phải chuyện; không hợp.
+
+@m7_37
+T: Tôi định viết luận văn lấy kính ngữ tiếng Nhật làm đề tài nghiên cứu.
+S: Tôi định viết luận văn lấy kính ngữ tiếng Nhật … .
+1: NをNとして: lấy… làm…
+2: としては: với tư cách là (so sánh); không hợp.
+3: としたら: giả sử; không hợp.
+4: とすれば: nếu giả định; không hợp.
+
+@m7_38
+T: Sushi mà không có wasabi thì chẳng có cảm giác đã ăn.
+S: Sushi mà … thì chẳng có cảm giác đã ăn.
+1: Nぬきでは〜ない: thiếu N thì không.
+2: ぬきに không đi với vế phủ định như vậy.
+3: ぬきの cần danh từ phía sau.
+4: ぬきを không phải mẫu đúng.
+
+@m7_39
+T: Như đã hẹn, chiều mai tôi xin phép được đến quý công ty.
+S: Như đã hẹn, chiều mai tôi … quý công ty.
+1: 申しあげます: khiêm nhường của 言う; thừa và sai cấu trúc.
+2: お思いします không phải dạng đúng.
+3: 参りたいと存じます: tôi muốn đến (khiêm nhường).
+4: 参りたくございます không tự nhiên.
+
+@m7_40
+T: Cửa hàng nhà tôi sắp phá sản, không phải lúc tính chuyện học lên, phải về ngay.
+S: Cửa hàng nhà tôi sắp phá sản, … , phải về ngay.
+1: どころはなく sai trợ từ.
+2: どころもなく sai trợ từ.
+3: どころにもなく sai trợ từ.
+4: Nどころではない: không phải lúc để…
+
+@m7_41
+T: Vì là lời nhờ của tiền bối từng giúp mình nên tôi đành nhận làm người bảo lãnh.
+S: Vì là lời nhờ của tiền bối từng giúp mình nên tôi … làm người bảo lãnh.
+1: 次第だった: là do; không hợp.
+2: ぬほかなかった sai dạng.
+3: だけあった: quả đúng là; không hợp.
+4: Vざるをえない: đành phải.
+
+@m7_42
+T: Nhìn từ góc độ người nước ngoài, nghe nói có lúc không hiểu cách chào hỏi của người Nhật.
+S: … , nghe nói có lúc không hiểu cách chào hỏi của người Nhật.
+1: ではあって không phải mẫu đúng.
+2: までにも không hợp nghĩa.
+3: Nからみて: nhìn từ góc độ N.
+4: だといって: vì nói là; không hợp.
+
+@m7_43
+T: Đúng như nghe dự báo thời tiết, từ chiều tuyết bắt đầu rơi.
+S: … dự báo thời tiết, từ chiều tuyết bắt đầu rơi.
+1: 聞いたまま: y nguyên như nghe; dùng cho truyền đạt lại.
+2: Vたとおり: đúng như.
+3: はずが: tưởng là… vậy mà; ngược ý.
+4: ところで: dù có… cũng vô ích; không hợp.
+
+@m7_44
+T: Tôi nghĩ chính năm nay nhất định phải đỗ, nên đang nhắm đến kỳ thi phiên dịch.
+S: Tôi nghĩ … , nên đang nhắm đến kỳ thi phiên dịch.
+1: しか cần vế phủ định.
+2: Nこそ: chính N (nhấn mạnh quyết tâm).
+3: さえ: ngay cả; không hợp.
+4: ではと思ったら: hễ nghĩ là; không hợp.
+
+@m8_45
+T: Nếu có nhiều người phản đối đến thế thì nên nghĩ một kế hoạch khác.
+1: いるなら đi sau そんなに.
+2: 考えた đứng cuối, trước ほうがいい.
+3: そんなに nối ngay sau 反対する人が.
+4: 別のプランを đứng ở ô ★.
+
+@m8_46
+T: Đối với hành vi phạm luật của cầu thủ Ota, án cấm thi đấu 3 tháng đã được quyết định.
+1: 出場停止が đứng cuối, trước 決定された.
+2: に対して đi sau 反則行為.
+3: 3ヶ月の đứng ở ô ★, bổ nghĩa cho 出場停止.
+4: 反則行為 nối ngay sau 大田選手の.
+
+@m8_47
+T: Cuốn sách tranh này ngay từ hình bìa đã cuốn hút người đọc.
+1: 心 đứng cuối, trước をつかんでいる.
+2: 表紙の絵 nối ngay sau この絵本は.
+3: からして đi sau 表紙の絵.
+4: 読者の đứng ở ô ★, bổ nghĩa cho 心.
+
+@m8_48
+T: Không bỏ cuộc mà tiếp tục thì đến một lúc nào đó con đường sẽ mở ra.
+1: いつか đi sau 続けていれば.
+2: という đứng cuối, trước ものだ.
+3: 道は開ける đứng ở ô ★.
+4: 続けていれば nối ngay sau あきらめずに.
+
+@m8_49
+T: Có nhiều thứ dù là dụng cụ an toàn với người lớn nhưng lại nguy hiểm với trẻ em.
+1: 子どもにとって đứng ở ô ★.
+2: 安全な nối ngay sau 大人には.
+3: 危険な đứng cuối, bổ nghĩa cho もの.
+4: 道具でも đi sau 安全な.
+
+@m9_50
+T: Tuyển thủ Kim Yu-na, người giành huy chương trượt băng nghệ thuật nữ, vừa khóc vừa vẫy tay khi kết thúc bài thi tự do.
+S: Tuyển thủ Kim Yu-na, người giành huy chương trượt băng nghệ thuật nữ, … vẫy tay khi kết thúc bài thi tự do.
+1: Vながら: vừa… vừa (cùng lúc).
+2: たら: nếu, khi; không hợp hành động đồng thời.
+3: ば: điều kiện; không hợp.
+4: なら: nếu; không hợp.
+
+@m9_51
+T: Sau trận gặp Paraguay ở World Cup, nhiều tuyển thủ Nhật cũng đẫm nước mắt trên má.
+S: Sau trận gặp Paraguay ở World Cup, nhiều tuyển thủ Nhật … má … .
+1: に chỉ đối tượng; không làm chủ ngữ được.
+2: に và bị động ぬらされていた đều sai.
+3: a 日本代表も (cũng), b ぬらしていた (làm ướt má).
+4: Bị động ぬらされていた không hợp với 頬を.
+
+@m9_52
+T: Cả bốn trận, đội đã dồn nhiều người để phòng ngự lì lợm. Dù thua kém về thể hình, họ vẫn chạy khắp nơi, chờ những cơ hội hiếm hoi. Sự đoàn kết cũng tuyệt vời, như lời "muốn đi tiếp cùng đội này".
+S: Cả bốn trận, đội đã dồn … để phòng ngự lì lợm. Dù thua kém về … , họ vẫn chạy khắp nơi. Sự đoàn kết cũng tuyệt vời, như lời "muốn đi tiếp cùng … này".
+1: チーム ở a: "dồn cả đội" không hợp với をかけて ở đây.
+2: チーム ở a và 人数 ở c đều sai.
+3: チーム ở b: "thua về đội" không có nghĩa.
+4: a 人数, b 体格, c チーム.
+
+@m9_53
+T: Vậy mà giải chuyên nghiệp có người da đen tham gia đã bị nạn phân biệt chủng tộc bóp nghẹt.
+S: Vậy mà giải chuyên nghiệp có người da đen tham gia đã … .
+1: がつぶれた: phân biệt chủng tộc bị sụp; ngược nghĩa.
+2: つぶさせた: sai khiến; sai chủ thể.
+3: をつぶした: giải đấu bóp nghẹt phân biệt chủng tộc; ngược nghĩa.
+4: 人種差別につぶされた: bị phân biệt chủng tộc bóp nghẹt.
+
+@m9_54
+T: Làm thế giới kinh ngạc, cháy hết mình mà vẫn mang về thành quả chưa từng có.
+S: … , cháy hết mình mà vẫn mang về thành quả chưa từng có.
+1: 世界を驚かせ: làm thế giới kinh ngạc.
+2: 世界に驚かず: không ngạc nhiên trước thế giới; ngược nghĩa.
+3: 世界で驚いて: tự mình ngạc nhiên; sai chủ thể.
+4: 世界が驚かれ: bị động sai.
+
+@P d05-passage
+Tuyển thủ Kim Yu-na, người giành chức vô địch trượt băng nghệ thuật nữ tại Thế vận hội mùa đông vừa qua, đã vừa khóc vừa vẫy tay khi kết thúc bài thi tự do. Cô gái khiến người ta liên tưởng đến trái tim bằng băng. Nghe nói đó là lần đầu tiên cô khóc sau khi thi đấu. Hiểu được áp lực cô phải chịu, cả Hàn Quốc đã khóc theo.
+Nước mắt của người hiếm khi khóc làm lay động lòng người. Sau trận gặp Paraguay ở World Cup, nhiều tuyển thủ Nhật Bản cũng đẫm nước mắt trên má. Trước gương mặt khóc của đồng đội, họ như dùng nước mắt để ca ngợi rằng mình cũng đã cháy hết mình. Những cảm xúc dâng trào ấy cũng làm ướt cả quần đảo lúc nửa đêm.
+Loạt sút luân lưu sau tỷ số 0–0. Trên tóc các cầu thủ dính những mẩu cỏ rách. Những người đàn ông đã chạy, đã ngã suốt 120 phút đến hết hiệp phụ, kiệt sức cả thể lực lẫn tinh thần, khoác vai nhau cầu nguyện. Nghi thức để tạo ra kẻ thua cuộc bao giờ cũng tàn nhẫn.
+Cả bốn trận, đội đã dồn nhiều người để phòng ngự một cách lì lợm. Dù thua kém về thể hình, họ vẫn chạy khắp nơi, chờ đợi những cơ hội hiếm hoi. Như những lần chụm đầu thường xuyên và câu nói "muốn đi tiếp cùng đội này" cho thấy, sự đoàn kết bao gồm cả dự bị lẫn hậu cần cũng thật tuyệt vời.
+Đoàn kết, gắn bó cũng là từ khóa của kỳ World Cup Nam Phi. Với người da đen lên thành phố làm thuê, bóng đá là nơi duy nhất họ kết nối với nhau, vậy mà giải chuyên nghiệp có người da đen tham gia đã bị nạn phân biệt chủng tộc bóp nghẹt. Đó là những con người đã trải qua thời kỳ gian khổ để giành được vinh dự đăng cai World Cup. Tôi nghĩ họ cũng được khích lệ bởi màn thể hiện của đội tuyển chúng ta.
+Những ngày khô khan cứ kéo dài. Kết quả thì thật đáng tiếc, nhưng đôi khi sự đồng cảm đến mức khóc theo cũng tốt. Đội tuyển Nhật của HLV Okada đã khiến người dân sốt ruột, say mê và tiếp thêm sức sống. Họ làm thế giới kinh ngạc, cháy hết mình mà vẫn mang về những thành quả chưa từng có. Tôi muốn chào đón "Hayabusa" thứ hai ấy bằng những tràng pháo tay nồng nhiệt.

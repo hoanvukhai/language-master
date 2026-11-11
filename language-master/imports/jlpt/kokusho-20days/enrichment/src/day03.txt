@@ -1,0 +1,446 @@
+@m1_01
+T: Dù có hét từ sân thượng tòa nhà này thì tiếng cũng khó vọng tới mặt đất.
+W: 叫ぶ | さけぶ | KHIẾU | hét, la lớn
+1: よんで là 呼んで: gọi; khác chữ 叫.
+2: かんで là 噛んで: cắn, nhai.
+3: さけんで là thể て của 叫ぶ: hét lên.
+4: とんで là 飛んで: bay, nhảy.
+
+@m1_02
+T: Động tác chậm rãi của con rùa có liên quan đến việc sống lâu không nhỉ?
+W: 動作 | どうさ | ĐỘNG TÁC | động tác
+1: とうさ: 動 đọc どう, không đọc とう.
+2: とうさく: sai cả hai âm.
+3: どうさ: 動 どう + 作 さ, nghĩa là động tác.
+4: どうさく: 作 trong từ này đọc さ, không đọc さく.
+
+@m1_03
+T: Kế hoạch kinh doanh của giám đốc mới thất bại liên tiếp, khiến nhân viên thất vọng.
+W: 失望 | しつぼう | THẤT VỌNG | thất vọng
+1: しつもう: 望 đọc ぼう, không đọc もう ở đây.
+2: しつぼう: 失 しつ + 望 ぼう, nghĩa là thất vọng.
+3: しっもう: không có âm ngắt っ và 望 không đọc もう.
+4: しっぼう: không có âm ngắt っ trước ぼう.
+
+@m1_04
+T: Khăn đang ẩm nên hãy thay cái mới giúp tôi.
+W: 湿る | しめる | THẤP | ẩm, ướt
+1: しけって là 湿気って (bị ẩm, ỉu); không phải cách đọc 湿って.
+2: しめって là thể て của 湿る: bị ẩm.
+3: うるおって là 潤って: được thấm ẩm, sung túc.
+4: すべって là 滑って: trơn trượt.
+
+@m1_05
+T: Tôi không hẳn là tín đồ Phật giáo, nhưng nhìn tượng Phật thì lòng thấy bình yên.
+W: 信仰 | しんこう | TÍN NGƯỠNG | tín ngưỡng, tin theo
+1: しんこう: 信 しん + 仰 こう, nghĩa là tín ngưỡng.
+2: しんぎょう: 仰 đọc ぎょう trong 仰天, nhưng không phải trong 信仰.
+3: しんごう là 信号 (đèn tín hiệu).
+4: じんぎょう: 信 không đọc じん.
+
+@m2_06
+T: So với thành thị, ở địa phương có vẻ nhiều thanh niên trong sáng, chân thật.
+W: 純情 | じゅんじょう | THUẦN TÌNH | trong sáng, ngây thơ
+1: 順 (THUẬN) là thứ tự; 順情 không phải từ có thật.
+2: 潤 (NHUẬN) là ẩm, thấm; 潤情 không phải từ có thật.
+3: 準 (CHUẨN) là tiêu chuẩn; 準情 không phải từ có thật.
+4: 純情: 純 (THUẦN, trong sạch) + 情 (TÌNH).
+
+@m2_07
+T: Chuyện cô ấy đã kết hôn thì mọi người đều biết rõ.
+W: 承知 | しょうち | THỪA TRI | biết, hiểu rõ
+1: 承知: biết rõ, chấp nhận.
+2: 周知 đọc しゅうち: được nhiều người biết.
+3: 証 (CHỨNG) là bằng chứng; 証知 không phải từ có thật.
+4: 詳 (TƯỜNG) là chi tiết; 詳知 không phải từ có thật.
+
+@m2_08
+T: Dùng máy tính này thì có thể xử lý khối lượng công việc gấp nhiều lần thường ngày.
+W: 処理 | しょり | XỬ LÝ | xử lý
+1: 拠 (CỨ) là căn cứ; 拠理 không phải từ có thật.
+2: 処理: 処 (XỬ) + 理 (LÝ).
+3: 拠利 không phải từ có thật.
+4: 処利 không phải từ có thật; 利 là lợi.
+
+@m2_09
+T: Em gái tôi không mấy bận tâm đến quần áo nhưng lại để ý kiểu tóc.
+W: 構う | かまう | CẤU | bận tâm, để ý
+1: 溝 (CÂU) là con mương; không đọc かまう.
+2: 講 (GIẢNG) là giảng; không đọc かまう.
+3: 構わない: 構 (CẤU) bộ Mộc, nghĩa là không bận tâm.
+4: 購 (CẤU) là mua; không đọc かまう.
+
+@m2_10
+T: Tôi đang phân vân nên gói bao nhiêu tiền mừng cho người bạn được điều về trụ sở chính.
+W: 包む | つつむ | BAO | gói, bọc
+1: 包む: gói; お祝いを包む là bỏ tiền mừng vào phong bì.
+2: 装 (TRANG) đọc よそおう; không đọc つつむ.
+3: 筒 (ĐỒNG) là cái ống; 筒む không phải động từ.
+4: 隠 (ẨN) đọc かくす; không đọc つつむ.
+
+@m3_11
+T: Trừ chi phí cần thiết khỏi doanh thu thì chẳng còn lại bao nhiêu lợi nhuận.
+S: … chi phí cần thiết khỏi doanh thu thì chẳng còn lại bao nhiêu lợi nhuận.
+W: 差し引く | さしひく | SAI DẪN | trừ đi, khấu trừ | 差し〜
+1: 足し引く không phải động từ ghép có thật.
+2: 差し引く: trừ đi.
+3: 割り引く: giảm giá; không dùng cho trừ chi phí.
+4: 掛け引く không phải động từ; 駆け引き là mặc cả.
+
+@m3_12
+T: Thời cấp hai, tôi từng nghịch dại rồi bị gọi lên phòng giáo viên.
+S: Thời cấp hai, tôi từng nghịch dại rồi bị … lên phòng giáo viên.
+W: 呼び出す | よびだす | HÔ XUẤT | gọi đến, triệu tập | 呼び〜
+1: 言い出す: nói ra, đề xuất; không phải gọi người đến.
+2: 話し出す: bắt đầu nói.
+3: 誘い出す: rủ ra ngoài; không hợp với phòng giáo viên.
+4: 呼び出す: gọi ai đó đến.
+
+@m3_13
+T: Vận động viên Tanigawa lần đầu tham dự Olympic đã để tuột mất huy chương.
+S: Vận động viên Tanigawa … Olympic đã để tuột mất huy chương.
+W: 初参加 | はつさんか | SƠ THAM GIA | lần đầu tham gia | 初〜
+1: 新〜: mới; 新参加 không phải cách nói.
+2: 始〜 không làm tiền tố cho 参加.
+3: 初〜: lần đầu (初参加, 初出場).
+4: 最〜 có trong 最高, 最後; không đi với 参加.
+
+@m3_14
+T: Vì đội bóng chày đã vô địch giải trung học, toàn thể học sinh ra đón đội.
+S: Vì đội bóng chày đã vô địch giải trung học, … ra đón đội.
+W: 全生徒 | ぜんせいと | TOÀN SINH ĐỒ | toàn thể học sinh | 全〜
+1: 完〜 có trong 完成; không đi với 生徒.
+2: 丸〜 có trong 丸一日; không đi với 生徒.
+3: 本〜 có trong 本日; 本生徒 không có nghĩa.
+4: 全〜: toàn bộ (全生徒, 全国).
+
+@m3_15
+T: Vào ngày lễ tốt nghiệp, chúng tôi đã chôn hộp thời gian ở góc sân thể dục.
+S: Vào ngày lễ tốt nghiệp, chúng tôi đã chôn hộp thời gian ở góc … .
+W: 運動場 | うんどうじょう | VẬN ĐỘNG TRƯỜNG | sân thể dục | 〜場
+1: 〜所 có trong 研究所; 運動所 không dùng.
+2: 運動庭 không phải từ có thật; 校庭 là sân trường.
+3: 〜角 là góc; 運動角 không có nghĩa.
+4: 〜場: nơi dành cho hoạt động (運動場, 駐車場).
+
+@m4_16
+T: Tổng thống từ chức, đất nước bắt đầu vận hành dưới bộ máy mới.
+S: Tổng thống từ chức, đất nước bắt đầu vận hành dưới … mới.
+W: 体制 | たいせい | THỂ CHẾ | thể chế, bộ máy
+1: 法則: quy luật (tự nhiên); không chỉ bộ máy lãnh đạo.
+2: 方法: phương pháp; không hợp với vận hành đất nước.
+3: 新しい体制: bộ máy, thể chế mới.
+4: 傾向: khuynh hướng; không hợp nghĩa.
+
+@m4_17
+T: Do dòng người về quê dịp Obon, đường cao tốc tắc nghẽn nghiêm trọng.
+S: Do dòng người về quê dịp Obon, đường cao tốc … nghiêm trọng.
+W: 渋滞 | じゅうたい | SÁP TRỆ | tắc đường
+1: 人込み: đám đông người; không dùng cho đường cao tốc.
+2: 渋滞: tắc đường (xe cộ).
+3: 困難: khó khăn; không chỉ tình trạng giao thông.
+4: 停滞: đình trệ (kinh tế, công việc); không dùng cho xe.
+
+@m4_18
+T: Vừa quan sát bầu trời đêm bằng kính viễn vọng, tôi vừa mơ trở thành phi hành gia.
+S: Vừa … bầu trời đêm bằng kính viễn vọng, tôi vừa mơ trở thành phi hành gia.
+W: 観測 | かんそく | QUAN TRẮC | quan sát (thiên văn, thời tiết)
+1: 測定: đo (chỉ số cụ thể); không dùng cho bầu trời.
+2: 実測: đo thực tế; không hợp.
+3: 観測: quan sát thiên văn, khí tượng.
+4: 測量: đo đạc đất đai.
+
+@m4_19
+T: Gia đình anh ấy gồm bà, vợ và ba người con.
+S: Gia đình anh ấy có … gồm bà, vợ và ba người con.
+W: 構成 | こうせい | CẤU THÀNH | cơ cấu, thành phần
+1: 家族構成: thành phần gia đình.
+2: 組織: tổ chức (công ty, đoàn thể); không dùng cho gia đình.
+3: 内容: nội dung; không chỉ thành viên.
+4: 成立: sự thành lập; không hợp.
+
+@m4_20
+T: Camera an ninh trong cửa hàng đã ghi lại hình người đàn ông có vẻ là thủ phạm.
+S: … trong cửa hàng đã ghi lại hình người đàn ông có vẻ là thủ phạm.
+W: 防犯 | ぼうはん | PHÒNG PHẠM | phòng chống tội phạm
+1: 防衛: phòng vệ (quốc phòng); 防衛カメラ không dùng.
+2: 防御: phòng ngự; không ghép với カメラ.
+3: 防止: ngăn ngừa; cần đối tượng (事故防止).
+4: 防犯カメラ: camera an ninh.
+
+@m4_21
+T: Hoàn toàn không ai biết tung tích của vị giám đốc bị nghi trốn thuế.
+S: Hoàn toàn không ai biết … của vị giám đốc bị nghi trốn thuế.
+W: 行方 | ゆくえ | HÀNH PHƯƠNG | tung tích, nơi đi
+1: 進行: tiến triển; không chỉ nơi người đó ở.
+2: 方面: phía, khu vực; không dùng cho người mất tích.
+3: 方向: phương hướng; không phải tung tích.
+4: 行方がわからない: không rõ tung tích.
+
+@m4_22
+T: Nước đó nông nghiệp phát triển, xuất khẩu trà, gạo, cao su.
+S: Nước đó … phát triển, xuất khẩu trà, gạo, cao su.
+W: 農業 | のうぎょう | NÔNG NGHIỆP | nông nghiệp
+1: 工業: công nghiệp; trà, gạo không phải sản phẩm công nghiệp.
+2: 農業: nông nghiệp, khớp với trà, gạo, cao su.
+3: 産業: ngành nghề nói chung; quá rộng so với nông sản.
+4: 職業: nghề nghiệp của cá nhân.
+
+@m5_23
+T: Anh ấy làm việc đến khuya, gánh vững gia đình.
+W: 支える | ささえる | CHI | chống đỡ, gánh vác
+1: 持ち直して: hồi phục lại; khác nghĩa chống đỡ.
+2: 持ち上げて: nâng lên; tâng bốc.
+3: 持ちこたえて: trụ vững, chống đỡ được.
+4: 持ち帰って: mang về.
+
+@m5_24
+T: Nhận tin mẹ ốm, tôi phải về nước gấp.
+W: 大急ぎ | おおいそぎ | ĐẠI CẤP | hết sức gấp
+1: すぐに: ngay lập tức; gần nghĩa 大急ぎで.
+2: 間もなく: chẳng bao lâu nữa; không phải vội.
+3: そろそろ: sắp đến lúc; thiếu sắc thái gấp.
+4: 一瞬で: trong chớp mắt; không dùng cho việc về nước.
+
+@m5_25
+T: Không biết cách đổi tàu ở ga Otemachi, tôi đã lúng túng.
+W: まごまご | まごまご | | lúng túng, luống cuống
+1: 迷って: lúng túng, không biết làm sao.
+2: 鈍って: trở nên cùn, chậm; khác nghĩa.
+3: 考えて: suy nghĩ; không có sắc thái lúng túng.
+4: ちぢんで: co lại.
+
+@m5_26
+T: Từ khi đến Nhật tôi gầy đi, quần trở nên rộng thùng thình.
+W: ぶかぶか | ぶかぶか | | rộng thùng thình
+1: 長く: dài ra; gầy đi không làm quần dài ra.
+2: ゆるく: rộng, lỏng.
+3: きつく: chật; ngược nghĩa.
+4: きらいに: thành ghét; khác nghĩa.
+
+@m5_27
+T: Trên giá sách phòng cô ấy, truyện tranh được xếp kín không chừa khe hở.
+W: すき間なく | すきまなく | | kín, không chừa khe
+1: 何冊か: vài cuốn; ngược nghĩa xếp kín.
+2: 数冊: vài cuốn; ngược nghĩa.
+3: だいぶ: khá nhiều; không chỉ xếp kín.
+4: ぎっしり: chật kín, dày đặc.
+
+@m6_28
+T: Cố nhét đồ vào túi thì khóa kéo bị hỏng.
+W: 無理 | むり | VÔ LÝ | quá sức, cố ép
+1: Lái khi hết xăng không gọi là 無理運転; không có cụm này.
+2: Không được đi nên dùng 乗れない, không cần 無理に.
+3: Gánh nặng lớn dùng 負担が大きい; 無理が大きい không tự nhiên.
+4: 無理に入れる: cố ép nhét vào.
+
+@m6_29
+T: Bài kiểm tra lần này được coi là ngoại lệ nên cho phép thi lại.
+W: 例外 | れいがい | LỆ NGOẠI | ngoại lệ
+1: Lấy làm ví dụ dùng 例に, không dùng 例外に.
+2: 例外として: coi là ngoại lệ.
+3: Bỏ đá riêng dùng 別に; 例外で không đúng.
+4: Phát hiện bất ngờ dùng 意外な, không dùng 例外な.
+
+@m6_30
+T: Nghe nói đích thân giám đốc sẽ làm nhân viên bán hàng để chào bán sản phẩm mới.
+W: 自ら | みずから | TỰ | đích thân, tự mình
+1: Máy móc tự động dùng 自動で; みずから dùng cho người có ý chí.
+2: Rau tự mọc dùng 自然に; không dùng みずから.
+3: 社長みずから: đích thân giám đốc.
+4: Phải tự đi dùng 自分で; みずから nhấn mạnh chủ động, không hợp.
+
+@m6_31
+T: Hãy cẩn thận để không làm rơi hộ chiếu.
+W: 用心 | ようじん | DỤNG TÂM | cẩn thận, đề phòng
+1: 落とさないように用心する: cẩn thận để khỏi đánh rơi.
+2: Bị thầy để ý dùng 注意される; 用心される không hợp.
+3: Uống rượu nhiều thì cần 注意; 用心がない không tự nhiên.
+4: Chuẩn bị tinh thần dùng 覚悟; 血の用心 không có nghĩa.
+
+@m6_32
+T: Vì là cuối tuần nên từ giờ mở cửa đã bận rộn tiếp khách.
+W: 応対 | おうたい | ỨNG ĐỐI | tiếp đón, ứng xử (với khách)
+1: Phòng tiếp khách là 応接間, không phải 応対間.
+2: Chi phí tiếp khách là 交際費・接待費.
+3: Tham dự cuộc thi là 出場・応募, không dùng 応対.
+4: 客の応対: tiếp khách.
+
+@m7_33
+T: Đúng lúc đang vội thì lại mãi không bắt được taxi.
+S: … đang vội thì lại mãi không bắt được taxi.
+1: 〜に応じて: tùy theo; không hợp.
+2: 〜に限って: đúng vào lúc… thì lại (điều không mong).
+3: 〜に先立って: trước khi; không hợp.
+4: 〜に関して: liên quan đến; không hợp.
+
+@m7_34
+T: Vận động viên phải kiểm soát ngay từ chuyện ăn uống.
+S: Vận động viên phải kiểm soát … chuyện ăn uống.
+1: からすると: xét từ góc độ; không mang nghĩa "ngay cả".
+2: からいって: xét theo; không mang nghĩa "ngay cả".
+3: からには: một khi đã; không đi với danh từ như vậy.
+4: Nからして: ngay từ N (đã…).
+
+@m7_35
+T: Tokyo có nhiều tàu điện ngầm, tiện lợi nhưng đôi khi tôi vẫn bị lạc khi đổi tuyến.
+S: Tokyo có nhiều tàu điện ngầm, tiện lợi … đôi khi tôi vẫn bị lạc khi đổi tuyến.
+1: ものか: lẽ nào lại…; phủ định mạnh, không hợp.
+2: ものなら: nếu có thể; không hợp.
+3: 〜ものの: tuy… nhưng.
+4: ものを: giá mà; nghĩa tiếc nuối, không hợp.
+
+@m7_36
+T: Thay cho giám đốc đang ốm, chủ tịch đã phát biểu chào hỏi.
+S: … giám đốc đang ốm, chủ tịch đã phát biểu chào hỏi.
+1: 〜に応じて: tùy theo; không hợp.
+2: 〜に当たって: khi (bắt đầu việc gì); không hợp.
+3: 〜において: tại, trong; không đi với người.
+4: 〜に代わって: thay cho.
+
+@m7_37
+T: Để vượt qua khủng hoảng của công ty, chỉ còn cách mọi người cùng cố gắng.
+S: Để vượt qua khủng hoảng của công ty, … mọi người cùng cố gắng.
+1: しかたない cần が/も: がんばるしかたない sai.
+2: Vるしかない: chỉ còn cách.
+3: しょうがない không nối trực tiếp sau động từ thể từ điển.
+4: しない: không làm; ngược ý.
+
+@m7_38
+T: Trên lý thuyết lẽ ra làm được, nhưng thí nghiệm đã thất bại.
+S: … lẽ ra làm được, nhưng thí nghiệm đã thất bại.
+1: Nの上では: xét về mặt N.
+2: 上には không mang nghĩa "về mặt".
+3: 上とは không tạo nghĩa này.
+4: 上かは không phải mẫu ngữ pháp.
+
+@m7_39
+T: Sản phẩm này sẽ được chúng tôi giao đến từ trung tâm phân phối sau 3 ngày.
+S: Sản phẩm này, từ trung tâm phân phối sau 3 ngày chúng tôi sẽ … .
+1: お届けにあがります: chúng tôi sẽ đến giao (khiêm nhường).
+2: いたす không đi với に: phải là お届けいたします.
+3: 差し上げる không dùng với お届けに.
+4: いただきます: nhận từ phía khách; ngược chủ thể.
+
+@m7_40
+T: Anh ấy là fan bóng đá cuồng nhiệt nên không có chuyện không xem World Cup.
+S: Anh ấy là fan bóng đá cuồng nhiệt nên … World Cup.
+1: 見るわけがない: không thể nào xem; ngược ý.
+2: 見るわけではない: không hẳn là xem; ngược ý.
+3: 見ないわけもない không phải mẫu tự nhiên.
+4: 〜ないわけはない: không có lý nào không (chắc chắn sẽ).
+
+@m7_41
+T: Dù là món ngon đến đâu, cũng không nên ăn như thế trước mặt người khác.
+S: Dù là món ngon đến đâu, … như thế trước mặt người khác.
+1: ほかはない: chỉ còn cách; không hợp.
+2: Vるべきではない: không nên.
+3: 食べないだけではない không có nghĩa hợp lý.
+4: ちがいがない: sai dạng, phải là ちがいない.
+
+@m7_42
+T: Trước khi bắt đầu kỳ thi, đã có phần giải thích các điểm lưu ý.
+S: … kỳ thi, đã có phần giải thích các điểm lưu ý.
+1: につれて: càng… càng; không hợp.
+2: Vるにあたって: khi bắt đầu (việc quan trọng).
+3: 始めたにして không phải mẫu ngữ pháp.
+4: 始めたにかけて không phải mẫu ngữ pháp.
+
+@m7_43
+T: Tôi muốn thử leo núi Phú Sĩ khi cơ thể còn khỏe, còn có thể lực.
+S: Tôi muốn thử leo núi Phú Sĩ khi cơ thể còn khỏe, … .
+1: Vるうちに: trong lúc còn (trước khi mất đi).
+2: 一方で: mặt khác; không hợp.
+3: あまり: vì quá… nên; không hợp.
+4: あげく: rốt cuộc sau khi; không hợp.
+
+@m7_44
+T: Sóng đang dữ mà lại đi bơi, không biết tôi đã lo lắng đến nhường nào.
+S: Sóng đang dữ mà lại đi bơi, … .
+1: ことを không kết thúc câu cảm thán.
+2: しないことに: ngược nghĩa.
+3: どれほど〜たことか: đã… biết bao (cảm thán).
+4: 心配しないことだ: tốt nhất là đừng lo; ngược ý.
+
+@m8_45
+T: Có tài liệu nào hay về giáo dục đại học của Nhật không?
+1: 何かいい đứng ở ô ★, bổ nghĩa cho 資料.
+2: 大学教育 nối ngay sau 日本の.
+3: 資料 đứng cuối, trước はありませんか.
+4: に関して nối sau 大学教育.
+
+@m8_46
+T: Trong khi người ta kêu gọi nâng cao năng suất công việc, số người mất việc cũng tăng lên.
+1: 叫ばれる đi sau 能率化が.
+2: 一方 đứng ở ô ★, nêu mặt trái.
+3: 能率化が nối ngay sau 仕事の.
+4: 職を失う bổ nghĩa cho 人, đứng cuối.
+
+@m8_47
+T: Không phải cứ bỏ tiền bạc và thời gian là ai cũng có thể thành hàng đầu.
+1: 一流になれる đứng cuối, trước わけではない.
+2: をかけた nối ngay sau お金と時間.
+3: 誰もが đứng ở ô ★, chủ ngữ của なれる.
+4: からといって đi sau をかけた.
+
+@m8_48
+T: Đáp ứng mong muốn mạnh mẽ của cư dân, người ta đã trồng cây anh đào trong công viên.
+1: 要望 nối ngay sau 強い.
+2: 桜の木 đứng cuối, trước を植えた.
+3: に応じて đi sau 要望.
+4: 公園に đứng ở ô ★, chỉ nơi trồng.
+
+@m8_49
+T: Khi tai nạn do lái xe say rượu tăng lên, ý thức của người lái xe đang bị đặt câu hỏi.
+1: マナーが đứng cuối, trước 問われている.
+2: につれて đi sau 事故が増える.
+3: ドライバーの đứng ở ô ★, bổ nghĩa cho マナー.
+4: 事故が増える nối ngay sau 飲酒運転の.
+
+@m9_50
+T: Nghe nói sau khi kiểm tra khoang chứa bằng tia X thì biết rằng không có hạt cát nào lớn hơn 1 mm.
+S: Nghe nói … kiểm tra khoang chứa bằng tia X thì biết rằng không có hạt cát nào lớn hơn 1 mm.
+1: Vたばかり: vừa mới; không dẫn đến phát hiện.
+2: Vたところ: làm… thì (phát hiện ra).
+3: からは: một khi đã; không hợp.
+4: ためで: vì; không hợp cấu trúc.
+
+@m9_51
+T: Dù không có hạt cát nào rơi ra, công lao của Hayabusa cũng không vì thế mà giảm đi.
+S: Dù … hạt cát nào rơi ra, công lao của Hayabusa cũng … giảm đi.
+1: 出たとも không phải dạng đúng; ことがある là "có lúc".
+2: 出たとも sai dạng; ことになる là "sẽ thành".
+3: 出ずとも đúng, nhưng ことだ là lời khuyên; không hợp.
+4: 出ずとも (dù không) + ことはない (không đến mức).
+
+@m9_52
+T: Bóng đen đặc trưng in trên bề mặt Itokawa, và hình ảnh tàu cháy vỡ trên dải Ngân Hà nơi chòm Nam Thập Tự tỏa sáng, chỉ còn khoang chứa kéo theo vệt sáng lao về mặt đất, sẽ đọng lại nóng hổi trong lòng chúng ta.
+S: … đặc trưng in trên bề mặt Itokawa, và … tàu cháy vỡ, chỉ còn khoang chứa kéo theo vệt … lao về mặt đất, sẽ đọng lại trong lòng chúng ta.
+1: a 影 (bóng in trên bề mặt), b 光 (vệt sáng), c 絵 (hình ảnh).
+2: 絵の尾 (đuôi bằng tranh) không có nghĩa; b phải là 光.
+3: Bóng in trên bề mặt phải là 影, không phải 光.
+4: 光 ở a và 影 ở c đều sai vị trí.
+
+@m9_53
+T: Chuyến đi 7 năm, 6 tỷ km vượt qua bao khó khăn ấy đã khích lệ người dân rất nhiều.
+S: Chuyến đi 7 năm, 6 tỷ km vượt qua bao khó khăn ấy đã … người dân.
+1: 国民を大いに元気づけた: khích lệ người dân rất nhiều.
+2: のか biến câu thành câu hỏi; không hợp.
+3: 元気づく là nội động từ; không nhận を.
+4: 元気づいたろう: nội động từ và thể suy đoán; sai.
+
+@m9_54
+T: Những hạt bụi nhỏ tô điểm cho niềm tự hào lớn… không, chuyện đó thôi không bàn đến.
+S: Những hạt bụi nhỏ tô điểm cho niềm tự hào lớn… không, chuyện đó … .
+1: 問うべきだ: phải chất vấn; trái mạch kết.
+2: 問うまい: thôi không bàn đến, không đòi hỏi.
+3: 問うしかない: chỉ còn cách hỏi; không hợp.
+4: 問うだろう: có lẽ sẽ hỏi; không hợp.
+
+@P d03-passage
+Cát còn sót lại sau buổi chơi ở bờ biển rơi ra từ đôi giày vừa cởi. Cùng cảm giác sàn sạt ấy, bao kỷ niệm trên bãi biển nóng bỏng ùa về. Cát là bằng chứng mình đã đứng ở nơi đó. Biến kỷ niệm chuyến đi thành chiếc đồng hồ cát độc nhất vô nhị cũng là một ý hay.
+Nói đến đây là tàu thăm dò Hayabusa, con tàu được kỳ vọng mang về "kỷ niệm" từ tiểu hành tinh Itokawa. Nghe nói sau khi kiểm tra khoang chứa bằng tia X thì biết rằng không có hạt cát nào lớn hơn 1 mm. Người ta cho biết vẫn còn khả năng bên trong có các vi hạt dạng bụi.
+Dù không có hạt cát nào rơi ra, công lao của Hayabusa cũng không vì thế mà giảm đi. Đây là lần đầu tiên một con tàu hạ xuống tiểu hành tinh rồi quay trở về. Cái bóng đen đặc trưng in trên bề mặt Itokawa, và hình ảnh con tàu cháy vỡ trên dải Ngân Hà nơi chòm Nam Thập Tự tỏa sáng, chỉ còn khoang chứa kéo theo vệt sáng lao về mặt đất, sẽ còn đọng lại nóng hổi trong lòng chúng ta.
+Itokawa hình hạt đậu phộng, dài khoảng 500 mét. Đó là một kỳ tích, giống như từ Tokyo ném trúng tăm vào hạt đậu nằm trong một quán cà phê ở Paris. Chuyến hành trình 7 năm, 6 tỷ km vượt qua bao lần nguy khốn ấy đã khích lệ người dân rất nhiều. Công trạng đã là rất lớn.
+Nhờ đó, bầu không khí quanh ngành vũ trụ Nhật Bản đã thay đổi hẳn. Ngay cả bà Renho, người phụ trách rà soát chi tiêu từng như sắp cắt sạch ngân sách khoa học, cũng ca ngợi: "Đây là kỳ công mà toàn dân nên tự hào, một thông điệp lớn gửi đến thế giới." Với các nhà khoa học, chắc không có đứa con hiếu thảo nào hơn thế.
+Nếu khoang chứa mang về được dù chỉ một chút vật chất của Itokawa, đó sẽ là tư liệu quý để tìm hiểu nguồn gốc hệ Mặt Trời. Những hạt bụi nhỏ tô điểm thêm cho niềm tự hào lớn… không, chuyện đó thôi không bàn đến. Bởi vì với bất kỳ chuyến đi nào, trở về bình an mới là món quà quý giá nhất.

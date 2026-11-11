@@ -1,0 +1,721 @@
+{
+  "examId": "kokusho-n2-20days-d06",
+  "questions": {
+    "kokusho_n2_d06_m1_01": {
+      "optionNotes": [
+        "さいた là 咲いた (nở) hoặc 裂いた (xé).",
+        "ふいた là 拭いた: lau.",
+        "まいた: thể た của 巻く, quấn.",
+        "しいた là 敷いた: trải."
+      ],
+      "translationVi": "Vì bị thương ở chân nên tôi đã quấn băng.",
+      "targetWord": {
+        "term": "巻く",
+        "reading": "まく",
+        "meaningVi": "quấn, cuộn",
+        "hanViet": "QUYỂN"
+      }
+    },
+    "kokusho_n2_d06_m1_02": {
+      "optionNotes": [
+        "じっようてき: 実 trước よ không biến thành じっ.",
+        "じつようてき: 実 じつ + 用 よう + 的 てき.",
+        "みっようてき: 実 đọc み là âm Kun; sai trong từ ghép.",
+        "みようてき: sai, trộn âm Kun."
+      ],
+      "translationVi": "Cái này ghi là dùng cho gia đình, nhưng tôi nghĩ nó không thiết thực.",
+      "targetWord": {
+        "term": "実用的",
+        "reading": "じつようてき",
+        "meaningVi": "thiết thực, thực dụng",
+        "hanViet": "THỰC DỤNG ĐÍCH"
+      }
+    },
+    "kokusho_n2_d06_m1_03": {
+      "optionNotes": [
+        "しきにん: 職 không đọc しき.",
+        "しきじん: sai cả hai âm.",
+        "しょくにん: 職 しょく + 人 にん.",
+        "しょくじん: 人 trong từ này đọc にん."
+      ],
+      "translationVi": "Bố tôi là thợ lành nghề, nhưng tôi không nối nghiệp.",
+      "targetWord": {
+        "term": "職人",
+        "reading": "しょくにん",
+        "meaningVi": "thợ thủ công lành nghề",
+        "hanViet": "CHỨC NHÂN"
+      }
+    },
+    "kokusho_n2_d06_m1_04": {
+      "optionNotes": [
+        "うろたえた: luống cuống; không phải cách đọc 震.",
+        "ひえた là 冷えた: bị lạnh.",
+        "こごえた là 凍えた: cóng.",
+        "ふるえた: thể た của 震える, run."
+      ],
+      "translationVi": "Tôi trượt băng ở sân băng tự nhiên, người run lên vì lạnh.",
+      "targetWord": {
+        "term": "震える",
+        "reading": "ふるえる",
+        "meaningVi": "run rẩy",
+        "hanViet": "CHẤN"
+      }
+    },
+    "kokusho_n2_d06_m1_05": {
+      "optionNotes": [
+        "そっちょく: 率 そつ → そっ + 直 ちょく.",
+        "そつちょく: 率 trước ち biến thành そっ.",
+        "そっじき: 直 không đọc じき trong từ này.",
+        "そつじき: sai cả hai âm."
+      ],
+      "translationVi": "Dù đối phương là cấp trên, anh ấy vẫn nói ý kiến thẳng thắn.",
+      "targetWord": {
+        "term": "率直",
+        "reading": "そっちょく",
+        "meaningVi": "thẳng thắn",
+        "hanViet": "SUẤT TRỰC"
+      }
+    },
+    "kokusho_n2_d06_m2_06": {
+      "optionNotes": [
+        "切 (THIẾT) là cắt; 切近 không phải từ có thật.",
+        "接近: 接 (TIẾP) + 近 (CẬN).",
+        "折 (CHIẾT) là gập; 折近 không phải từ có thật.",
+        "世 (THẾ) là đời; 世近 không phải từ có thật."
+      ],
+      "translationVi": "Nghe nói sao chổi Halley cứ 76 năm lại đến gần Trái Đất.",
+      "targetWord": {
+        "term": "接近",
+        "reading": "せっきん",
+        "meaningVi": "tiến gần",
+        "hanViet": "TIẾP CẬN"
+      }
+    },
+    "kokusho_n2_d06_m2_07": {
+      "optionNotes": [
+        "貯蔵: 貯 (TRỮ) + 蔵 (TÀNG, kho).",
+        "増 (TĂNG) là tăng; 貯増 không phải từ có thật.",
+        "造 (TẠO) là chế tạo; 貯造 không phải từ có thật.",
+        "贈 (TẶNG) là tặng; 貯贈 không phải từ có thật."
+      ],
+      "translationVi": "Rượu vang được cất trữ trong nhà kho đó.",
+      "targetWord": {
+        "term": "貯蔵",
+        "reading": "ちょぞう",
+        "meaningVi": "cất trữ",
+        "hanViet": "TRỮ TÀNG"
+      }
+    },
+    "kokusho_n2_d06_m2_08": {
+      "optionNotes": [
+        "溝 (CÂU) là mương; 溝堂 không phải từ có thật.",
+        "構 (CẤU) là cấu trúc; 構堂 không phải từ có thật.",
+        "講堂: 講 (GIẢNG) + 堂 (ĐƯỜNG).",
+        "購 (CẤU) là mua; 購堂 không phải từ có thật."
+      ],
+      "translationVi": "Hội thảo về vấn đề hạt nhân đã được tổ chức ở hội trường đại học.",
+      "targetWord": {
+        "term": "講堂",
+        "reading": "こうどう",
+        "meaningVi": "hội trường",
+        "hanViet": "GIẢNG ĐƯỜNG"
+      }
+    },
+    "kokusho_n2_d06_m2_09": {
+      "optionNotes": [
+        "清 đọc きよい (trong sạch); không phải すずしい.",
+        "澄 đọc すむ (trong); không phải すずしい.",
+        "冷 đọc つめたい・ひえる; 冷しい không phải từ có thật.",
+        "涼しい: 涼 (LƯƠNG), mát mẻ."
+      ],
+      "translationVi": "Sang giữa tháng 9, cuối cùng trời cũng mát mẻ dần.",
+      "targetWord": {
+        "term": "涼しい",
+        "reading": "すずしい",
+        "meaningVi": "mát mẻ",
+        "hanViet": "LƯƠNG"
+      }
+    },
+    "kokusho_n2_d06_m2_10": {
+      "optionNotes": [
+        "没 (MỘT) có trong 沈没; không đọc しずむ đứng một mình.",
+        "潜む đọc ひそむ: ẩn nấp.",
+        "静 đọc しずか; 静む không phải động từ.",
+        "沈んで: 沈 (TRẦM), chìm."
+      ],
+      "translationVi": "Bão lớn đến, con thuyền đánh cá đang neo đã bị chìm.",
+      "targetWord": {
+        "term": "沈む",
+        "reading": "しずむ",
+        "meaningVi": "chìm",
+        "hanViet": "TRẦM"
+      }
+    },
+    "kokusho_n2_d06_m3_11": {
+      "optionNotes": [
+        "見直す: xem lại.",
+        "見限る: từ bỏ, hết hy vọng vào.",
+        "見渡す: nhìn bao quát.",
+        "見届ける: chứng kiến đến cùng."
+      ],
+      "translationVi": "Viết đáp án xong thì hãy xem lại một lần nữa.",
+      "stemTranslationVi": "Viết đáp án xong thì hãy … một lần nữa.",
+      "targetWord": {
+        "term": "見直す",
+        "reading": "みなおす",
+        "meaningVi": "xem lại, kiểm tra lại",
+        "hanViet": "KIẾN TRỰC",
+        "affix": "〜直す"
+      }
+    },
+    "kokusho_n2_d06_m3_12": {
+      "optionNotes": [
+        "取り消す: hủy bỏ (quyết định, đặt chỗ).",
+        "持ち消す không phải động từ ghép có thật.",
+        "書き消す không phải động từ thông dụng (書き直す thì có).",
+        "打ち消す: phủ nhận; không dùng cho tuyển dụng."
+      ],
+      "translationVi": "Cứ tưởng đã được nhận làm thêm, ai ngờ việc tuyển dụng bị hủy bỏ.",
+      "stemTranslationVi": "Cứ tưởng đã được nhận làm thêm, ai ngờ việc tuyển dụng bị … .",
+      "targetWord": {
+        "term": "取り消す",
+        "reading": "とりけす",
+        "meaningVi": "hủy bỏ",
+        "hanViet": "THỦ TIÊU",
+        "affix": "取り〜"
+      }
+    },
+    "kokusho_n2_d06_m3_13": {
+      "optionNotes": [
+        "元調子 không phải từ có thật; 元気 thì có.",
+        "原調子 không phải từ có thật.",
+        "本調子: trạng thái vốn có, phong độ thật.",
+        "真調子 không phải từ có thật."
+      ],
+      "translationVi": "Cuối cùng cũng xuất viện, nhưng mãi chưa trở lại phong độ bình thường.",
+      "stemTranslationVi": "Cuối cùng cũng xuất viện, nhưng mãi chưa trở lại … .",
+      "targetWord": {
+        "term": "本調子",
+        "reading": "ほんちょうし",
+        "meaningVi": "phong độ bình thường",
+        "hanViet": "BẢN ĐIỆU TỬ",
+        "affix": "本〜"
+      }
+    },
+    "kokusho_n2_d06_m3_14": {
+      "optionNotes": [
+        "影響上 không phải cách nói.",
+        "〜下: dưới (影響下, 支配下).",
+        "影響中 không phải cách nói.",
+        "影響間 không phải cách nói."
+      ],
+      "translationVi": "Những người từng chịu ảnh hưởng của giám đốc cũ lần lượt rời công ty.",
+      "stemTranslationVi": "Những người từng ở … của giám đốc cũ lần lượt rời công ty.",
+      "targetWord": {
+        "term": "影響下",
+        "reading": "えいきょうか",
+        "meaningVi": "dưới ảnh hưởng",
+        "hanViet": "ẢNH HƯỞNG HẠ",
+        "affix": "〜下"
+      }
+    },
+    "kokusho_n2_d06_m3_15": {
+      "optionNotes": [
+        "〜学: học thuật; 世界学 không phải môn học.",
+        "〜研 không làm hậu tố môn học.",
+        "〜問 không làm hậu tố môn học.",
+        "〜史: lịch sử (世界史, 日本史)."
+      ],
+      "translationVi": "Thời cấp ba, tôi học kém môn lịch sử thế giới, không nhớ nổi niên hiệu.",
+      "stemTranslationVi": "Thời cấp ba, tôi học kém môn … , không nhớ nổi niên hiệu.",
+      "targetWord": {
+        "term": "世界史",
+        "reading": "せかいし",
+        "meaningVi": "lịch sử thế giới",
+        "hanViet": "THẾ GIỚI SỬ",
+        "affix": "〜史"
+      }
+    },
+    "kokusho_n2_d06_m4_16": {
+      "optionNotes": [
+        "共通: chung, giống nhau; không chỉ cùng làm.",
+        "共有: cùng sở hữu; không đi với で開発.",
+        "共同で開発: cùng hợp tác khai thác.",
+        "共用: dùng chung (đồ vật)."
+      ],
+      "translationVi": "Mỏ dầu ở khu vực này được Nhật Bản và Trung Quốc cùng hợp tác khai thác.",
+      "stemTranslationVi": "Mỏ dầu ở khu vực này được Nhật Bản và Trung Quốc … khai thác.",
+      "targetWord": {
+        "term": "共同",
+        "reading": "きょうどう",
+        "meaningVi": "cùng nhau, hợp tác",
+        "hanViet": "CỘNG ĐỒNG"
+      }
+    },
+    "kokusho_n2_d06_m4_17": {
+      "optionNotes": [
+        "失意: thất vọng; không phải loại bảo hiểm.",
+        "失敗: thất bại; không phải loại bảo hiểm.",
+        "失格: mất tư cách; không hợp.",
+        "失業保険: bảo hiểm thất nghiệp."
+      ],
+      "translationVi": "Công ty phá sản nên tôi đã lập tức làm đơn xin bảo hiểm thất nghiệp.",
+      "stemTranslationVi": "Công ty phá sản nên tôi đã lập tức làm đơn xin bảo hiểm … .",
+      "targetWord": {
+        "term": "失業",
+        "reading": "しつぎょう",
+        "meaningVi": "thất nghiệp",
+        "hanViet": "THẤT NGHIỆP"
+      }
+    },
+    "kokusho_n2_d06_m4_18": {
+      "optionNotes": [
+        "物質: vật chất; không phải hàng chở trên tàu.",
+        "物価: giá cả; không chở được.",
+        "貨物を載せた列車: tàu chở hàng.",
+        "実物: vật thật; không hợp."
+      ],
+      "translationVi": "Ở Mỹ tôi đã thấy đoàn tàu chở hàng dài hàng chục toa.",
+      "stemTranslationVi": "Ở Mỹ tôi đã thấy đoàn tàu chở … dài hàng chục toa.",
+      "targetWord": {
+        "term": "貨物",
+        "reading": "かもつ",
+        "meaningVi": "hàng hóa (vận chuyển)",
+        "hanViet": "HÓA VẬT"
+      }
+    },
+    "kokusho_n2_d06_m4_19": {
+      "optionNotes": [
+        "水平: nằm ngang; không chỉ giao lộ.",
+        "直角: góc vuông; không đi với している như vậy.",
+        "道路が交差する: đường giao nhau.",
+        "垂直: thẳng đứng; không hợp."
+      ],
+      "translationVi": "Những chỗ đường giao nhau thường có nhiều đồn cảnh sát.",
+      "stemTranslationVi": "Những chỗ đường … thường có nhiều đồn cảnh sát.",
+      "targetWord": {
+        "term": "交差",
+        "reading": "こうさ",
+        "meaningVi": "giao nhau, cắt nhau",
+        "hanViet": "GIAO SAI"
+      }
+    },
+    "kokusho_n2_d06_m4_20": {
+      "optionNotes": [
+        "漫画を描く: vẽ truyện tranh.",
+        "映画: phim; dùng 撮る, không dùng 描く.",
+        "計画: kế hoạch; dùng 立てる.",
+        "企画: dự án; dùng 立てる."
+      ],
+      "translationVi": "Từ nhỏ cô ấy đã vẽ truyện tranh giỏi.",
+      "stemTranslationVi": "Từ nhỏ cô ấy đã vẽ … giỏi.",
+      "targetWord": {
+        "term": "漫画",
+        "reading": "まんが",
+        "meaningVi": "truyện tranh",
+        "hanViet": "MẠN HỌA"
+      }
+    },
+    "kokusho_n2_d06_m4_21": {
+      "optionNotes": [
+        "支配: chi phối; không dùng cho chỗ ngồi.",
+        "全席指定: toàn bộ ghế chỉ định.",
+        "指示: chỉ thị; không dùng cho ghế.",
+        "決定: quyết định; 全席決定 không dùng."
+      ],
+      "translationVi": "Toàn bộ ghế đều là ghế chỉ định, xin hãy ngồi đúng chỗ đã định.",
+      "stemTranslationVi": "Toàn bộ ghế đều là ghế … , xin hãy ngồi đúng chỗ đã định.",
+      "targetWord": {
+        "term": "指定",
+        "reading": "してい",
+        "meaningVi": "chỉ định",
+        "hanViet": "CHỈ ĐỊNH"
+      }
+    },
+    "kokusho_n2_d06_m4_22": {
+      "optionNotes": [
+        "空港: sân bay; 空港ショー không phải sự kiện.",
+        "上空: bầu trời phía trên; không ghép với ショー.",
+        "航空ショー: triển lãm hàng không.",
+        "大空: bầu trời rộng; không ghép với ショー."
+      ],
+      "translationVi": "Ở các buổi trình diễn hàng không trên thế giới, đôi khi xảy ra tai nạn lớn.",
+      "stemTranslationVi": "Ở các buổi trình diễn … trên thế giới, đôi khi xảy ra tai nạn lớn.",
+      "targetWord": {
+        "term": "航空",
+        "reading": "こうくう",
+        "meaningVi": "hàng không",
+        "hanViet": "HÀNG KHÔNG"
+      }
+    },
+    "kokusho_n2_d06_m5_23": {
+      "optionNotes": [
+        "絶対: tuyệt đối; mức chắc chắn cao hơn.",
+        "おそらく: có lẽ.",
+        "確か: hình như (dựa vào trí nhớ).",
+        "やはり: quả nhiên; khác nghĩa."
+      ],
+      "translationVi": "Có lẽ anh ấy sẽ không đến bữa tiệc ngày mai.",
+      "targetWord": {
+        "term": "たぶん",
+        "reading": "たぶん",
+        "meaningVi": "có lẽ"
+      }
+    },
+    "kokusho_n2_d06_m5_24": {
+      "optionNotes": [
+        "音: âm thanh; 気配 không chỉ riêng tiếng động.",
+        "におい: mùi; khác nghĩa.",
+        "動き: chuyển động; quá cụ thể.",
+        "感じ: cảm giác."
+      ],
+      "translationVi": "Đêm khuya trên đường từ cửa hàng tiện lợi về, tôi có cảm giác ai đó đang bám theo.",
+      "targetWord": {
+        "term": "気配",
+        "reading": "けはい",
+        "meaningVi": "dấu hiệu, cảm giác (có ai đó)",
+        "hanViet": "KHÍ PHỐI"
+      }
+    },
+    "kokusho_n2_d06_m5_25": {
+      "optionNotes": [
+        "まず: trước hết; khác nghĩa.",
+        "とうとう: cuối cùng thì; nhấn quá trình dài.",
+        "ほとんど: hầu hết; không chỉ tốc độ.",
+        "早速: ngay lập tức; gần nghĩa nhất trong các lựa chọn."
+      ],
+      "translationVi": "Đúng là sản phẩm hút khách dành cho giới trẻ, loáng cái đã bán hết.",
+      "targetWord": {
+        "term": "あっという間",
+        "reading": "あっというま",
+        "meaningVi": "loáng cái, chớp mắt",
+        "hanViet": "GIAN"
+      }
+    },
+    "kokusho_n2_d06_m5_26": {
+      "optionNotes": [
+        "強力: mạnh mẽ (lực); không dùng cho lời khiển trách.",
+        "確実: chắc chắn; khác nghĩa.",
+        "厳重: nghiêm ngặt.",
+        "勝手: tùy tiện; khác nghĩa."
+      ],
+      "translationVi": "Quên bài tập, tôi bị thầy khiển trách nghiêm khắc.",
+      "targetWord": {
+        "term": "厳しい",
+        "reading": "きびしい",
+        "meaningVi": "nghiêm khắc",
+        "hanViet": "NGHIÊM"
+      }
+    },
+    "kokusho_n2_d06_m5_27": {
+      "optionNotes": [
+        "省いた: lược bỏ.",
+        "持った: cầm, mang; khác nghĩa.",
+        "加えた: thêm vào; ngược nghĩa.",
+        "聞いた: nghe; khác nghĩa."
+      ],
+      "translationVi": "Vì không đủ thời gian nên tôi đã lược bớt phần giải thích.",
+      "targetWord": {
+        "term": "略す",
+        "reading": "りゃくす",
+        "meaningVi": "lược bỏ",
+        "hanViet": "LƯỢC"
+      }
+    },
+    "kokusho_n2_d06_m6_28": {
+      "optionNotes": [
+        "清書する: chép sạch bản cuối.",
+        "Gia hạn visa là ビザを延長する; đóng dấu là 押印.",
+        "Chất lượng in dùng 印刷状態, không phải 清書状態.",
+        "Sách cổ là 古書・古文書."
+      ],
+      "translationVi": "Tôi phải chép sạch bản trình bày lý do dự tuyển đại học trước ngày mai.",
+      "targetWord": {
+        "term": "清書",
+        "reading": "せいしょ",
+        "meaningVi": "chép sạch, viết lại bản chính",
+        "hanViet": "THANH THƯ"
+      }
+    },
+    "kokusho_n2_d06_m6_29": {
+      "optionNotes": [
+        "戦争の悲しい光景: cảnh tượng đau thương.",
+        "Giờ trên đồng hồ là 時刻.",
+        "Tầm nhìn ra ngoài là 眺め・見晴らし.",
+        "Tranh phong cảnh là 風景画."
+      ],
+      "translationVi": "Nhìn cảnh tượng đau thương của chiến tranh, tôi mất niềm tin vào con người.",
+      "targetWord": {
+        "term": "光景",
+        "reading": "こうけい",
+        "meaningVi": "cảnh tượng",
+        "hanViet": "QUANG CẢNH"
+      }
+    },
+    "kokusho_n2_d06_m6_30": {
+      "optionNotes": [
+        "Quy định bắt buộc dùng 必ず; きっと là phỏng đoán.",
+        "きっと〜だろう: chắc chắn sẽ.",
+        "Sự việc đã xảy ra không dùng きっと; dùng ついに.",
+        "きっと không bổ nghĩa cho trạng thái hiện tại như vậy."
+      ],
+      "translationVi": "Luyện tập nhiều đến thế nên chắc chắn sẽ có thành tích tốt.",
+      "targetWord": {
+        "term": "きっと",
+        "reading": "きっと",
+        "meaningVi": "chắc chắn (phỏng đoán)"
+      }
+    },
+    "kokusho_n2_d06_m6_31": {
+      "optionNotes": [
+        "Gió yếu dùng 弱い風; みじめな風 không có nghĩa.",
+        "Tỏ ra hối lỗi dùng しょんぼり; みじめをする không có.",
+        "みじめな負け方: thua thảm hại.",
+        "Kiểu giày không đi với みじめ型."
+      ],
+      "translationVi": "Đấu với nhà vô địch, người thách đấu đã thua một cách thảm hại.",
+      "targetWord": {
+        "term": "惨め",
+        "reading": "みじめ",
+        "meaningVi": "thảm hại, đáng thương",
+        "hanViet": "THẢM"
+      }
+    },
+    "kokusho_n2_d06_m6_32": {
+      "optionNotes": [
+        "Phát ngôn là 発言.",
+        "方言が多い: nhiều phương ngữ.",
+        "Làm chứng ở tòa là 証言.",
+        "Tin tức từ người thân là 便り."
+      ],
+      "translationVi": "Cuộc trò chuyện của hai người đó nhiều phương ngữ nên tôi hoàn toàn không hiểu.",
+      "targetWord": {
+        "term": "方言",
+        "reading": "ほうげん",
+        "meaningVi": "phương ngữ",
+        "hanViet": "PHƯƠNG NGÔN"
+      }
+    },
+    "kokusho_n2_d06_m7_33": {
+      "optionNotes": [
+        "Nからすると: xét từ N (để suy đoán).",
+        "からには: một khi đã; không hợp.",
+        "からなると không phải mẫu ngữ pháp.",
+        "からといって: dù nói là; không hợp."
+      ],
+      "translationVi": "Xét từ vẻ vui mừng của anh ấy thì có vẻ kỳ thi đã suôn sẻ.",
+      "stemTranslationVi": "… vẻ vui mừng của anh ấy thì có vẻ kỳ thi đã suôn sẻ."
+    },
+    "kokusho_n2_d06_m7_34": {
+      "optionNotes": [
+        "にとれば không phải mẫu ngữ pháp.",
+        "Nによれば〜そうだ: theo N thì nghe nói.",
+        "にすれば: từ lập trường của; không dùng cho nguồn tin.",
+        "にあれば không phải mẫu ngữ pháp."
+      ],
+      "translationVi": "Theo thông tin trên mạng, nghe nói quán này được phụ nữ trẻ yêu thích.",
+      "stemTranslationVi": "… thông tin trên mạng, nghe nói quán này được phụ nữ trẻ yêu thích."
+    },
+    "kokusho_n2_d06_m7_35": {
+      "optionNotes": [
+        "に増え không phải mẫu ngữ pháp.",
+        "に足し không phải mẫu ngữ pháp.",
+        "に重ね không phải mẫu ngữ pháp.",
+        "Nに加え: ngoài N ra còn."
+      ],
+      "translationVi": "Bãi biển này ngoài mùa hè ra, chẳng hiểu sao cả mùa đông cũng có khách du lịch.",
+      "stemTranslationVi": "Bãi biển này … mùa hè, chẳng hiểu sao cả mùa đông cũng có khách du lịch."
+    },
+    "kokusho_n2_d06_m7_36": {
+      "optionNotes": [
+        "をおいて: ngoài… ra không ai; không hợp.",
+        "Nをはじめ: tiêu biểu là N.",
+        "をもって: bằng, vào lúc; không hợp.",
+        "をかぎり: đến hết; không hợp."
+      ],
+      "translationVi": "Ở Nhật, tiêu biểu là Okinawa, có một số căn cứ quân đội Mỹ.",
+      "stemTranslationVi": "Ở Nhật, … Okinawa, có một số căn cứ quân đội Mỹ."
+    },
+    "kokusho_n2_d06_m7_37": {
+      "optionNotes": [
+        "ことにない không phải mẫu ngữ pháp.",
+        "ことがない: chưa từng; không hợp.",
+        "Vることはない: không cần phải.",
+        "ことしかない không phải mẫu tự nhiên."
+      ],
+      "translationVi": "Ai cũng có lúc mắc lỗi nên không cần bận tâm đến thế.",
+      "stemTranslationVi": "Ai cũng có lúc mắc lỗi nên … bận tâm đến thế."
+    },
+    "kokusho_n2_d06_m7_38": {
+      "optionNotes": [
+        "せい: tại vì (lỗi); không hợp.",
+        "おかげ: nhờ; không hợp với cảm xúc.",
+        "Nのあまり: vì quá N.",
+        "ほか: ngoài ra; không hợp."
+      ],
+      "translationVi": "Lần đầu được tham gia giải toàn quốc, tôi xúc động quá đến rơi nước mắt.",
+      "stemTranslationVi": "Lần đầu được tham gia giải toàn quốc, tôi … rơi nước mắt."
+    },
+    "kokusho_n2_d06_m7_39": {
+      "optionNotes": [
+        "お申し付けくださいませ: xin cứ yêu cầu (lịch sự).",
+        "お申し付けて願います sai dạng.",
+        "申し付き không phải dạng đúng.",
+        "申し付いて願います sai dạng."
+      ],
+      "translationVi": "Nếu có điểm nào chưa hài lòng về sản phẩm, xin cứ cho chúng tôi biết.",
+      "stemTranslationVi": "Nếu có điểm nào chưa hài lòng về sản phẩm, xin … ."
+    },
+    "kokusho_n2_d06_m7_40": {
+      "optionNotes": [
+        "ところしかない không phải mẫu ngữ pháp.",
+        "Vるしかない: chỉ còn cách.",
+        "ところではない: không phải lúc; không hợp.",
+        "ことではない: không phải việc; không hợp."
+      ],
+      "translationVi": "Nếu muốn giỏi bóng chày thì chỉ còn cách luyện tập mỗi ngày.",
+      "stemTranslationVi": "Nếu muốn giỏi bóng chày thì … mỗi ngày."
+    },
+    "kokusho_n2_d06_m7_41": {
+      "optionNotes": [
+        "つもりとともに không phải mẫu ngữ pháp.",
+        "とともに: cùng với; trang trọng, không hợp.",
+        "つもりながら không phải mẫu ngữ pháp.",
+        "Vながら: vừa… vừa."
+      ],
+      "translationVi": "Đừng vừa xem tivi vừa ăn cơm.",
+      "stemTranslationVi": "Đừng … ăn cơm."
+    },
+    "kokusho_n2_d06_m7_42": {
+      "optionNotes": [
+        "とおりに限り sai kết hợp.",
+        "に限り: chỉ giới hạn; không hợp.",
+        "とおりに伴い sai kết hợp.",
+        "ということに伴い: cùng với việc."
+      ],
+      "translationVi": "Cùng với việc trụ sở chính chuyển đến Osaka, tôi phải chuyển nhà.",
+      "stemTranslationVi": "… , tôi phải chuyển nhà."
+    },
+    "kokusho_n2_d06_m7_43": {
+      "optionNotes": [
+        "しようとした: mới định làm; không khớp với việc đã xảy ra.",
+        "ために: vì; không hợp quá trình.",
+        "Nになった末に: sau một quá trình… cuối cùng.",
+        "になったために: vì đã thành; không hợp."
+      ],
+      "translationVi": "Sau một hồi vật lộn với thủ phạm, cảnh sát cuối cùng đã khống chế được.",
+      "stemTranslationVi": "… , cảnh sát cuối cùng đã khống chế được."
+    },
+    "kokusho_n2_d06_m7_44": {
+      "optionNotes": [
+        "高くする: làm cho cao; sai chủ thể.",
+        "高くするものだから: sai chủ thể.",
+        "ものの: tuy… nhưng; sai quan hệ.",
+        "〜ものだから: vì (giải thích lý do)."
+      ],
+      "translationVi": "Vì nhiệt độ quá cao nên rất nhiều người bị sốc nhiệt.",
+      "stemTranslationVi": "Vì nhiệt độ quá … nên rất nhiều người bị sốc nhiệt."
+    },
+    "kokusho_n2_d06_m8_45": {
+      "optionNotes": [
+        "作業開始 đi sau 工場では.",
+        "に先立って đứng ở ô ★.",
+        "準備運動 đứng cuối, trước をしている.",
+        "工場では nối ngay sau この."
+      ],
+      "translationVi": "Ở nhà máy này, trước khi bắt đầu làm việc người ta tập khởi động."
+    },
+    "kokusho_n2_d06_m8_46": {
+      "optionNotes": [
+        "勉強する đứng cuối, trước つもりだ.",
+        "気持ちで đứng ở ô ★.",
+        "買ったからには nối ngay sau 高価な辞書を.",
+        "新たな bổ nghĩa cho 気持ち."
+      ],
+      "translationVi": "Đã mua cuốn từ điển đắt tiền thì tôi định học với tinh thần mới."
+    },
+    "kokusho_n2_d06_m8_47": {
+      "optionNotes": [
+        "書き上げた đứng ở ô ★, bổ nghĩa cho 努力.",
+        "にかかわらず đi sau いい悪い.",
+        "いい悪い nối ngay sau レポートの.",
+        "努力 đứng cuối, trước はすばらしい."
+      ],
+      "translationVi": "Bất kể bản báo cáo tốt hay dở, nỗ lực viết xong nó thật đáng khen."
+    },
+    "kokusho_n2_d06_m8_48": {
+      "optionNotes": [
+        "申し込み đứng cuối, trước があった.",
+        "社員を nối ngay sau 年齢を問わず.",
+        "予想外の đứng ở ô ★.",
+        "募集したところ đi sau 社員を."
+      ],
+      "translationVi": "Tuyển nhân viên không kể tuổi tác thì có số đơn ứng tuyển ngoài dự đoán."
+    },
+    "kokusho_n2_d06_m8_49": {
+      "optionNotes": [
+        "ところに đứng cuối, trước 友人が来た.",
+        "呼ぼうと đi sau 助けを.",
+        "助けを nối ngay sau 重くて.",
+        "思っていた đứng ở ô ★."
+      ],
+      "translationVi": "Hành lý nặng, đúng lúc tôi định gọi người giúp thì bạn tôi đến."
+    },
+    "kokusho_n2_d06_m9_50": {
+      "optionNotes": [
+        "が đánh dấu chủ ngữ; bảo tàng không phải thứ bắt đầu.",
+        "に chỉ đích đến; không chỉ nơi diễn ra sự kiện.",
+        "で: nơi diễn ra sự kiện.",
+        "は biến bảo tàng thành chủ đề; sai."
+      ],
+      "translationVi": "Triển lãm Chagall đã khai mạc tại Bảo tàng Mỹ thuật Đại học Nghệ thuật Tokyo ở Ueno.",
+      "stemTranslationVi": "Triển lãm Chagall đã khai mạc … Bảo tàng Mỹ thuật Đại học Nghệ thuật Tokyo ở Ueno."
+    },
+    "kokusho_n2_d06_m9_51": {
+      "optionNotes": [
+        "a 色鮮やか (rực rỡ màu), b 思わせる (gợi nhớ).",
+        "思われる: được nghĩ là; không nhận を như vậy.",
+        "形鮮やか không phải cách nói; bị động sai.",
+        "形鮮やか không tự nhiên; 思っている sai chủ thể."
+      ],
+      "translationVi": "Nhóm tác phẩm của Trung tâm Pompidou gợi nhớ những mảnh giấc mơ rực rỡ sắc màu.",
+      "stemTranslationVi": "Nhóm tác phẩm của Trung tâm Pompidou … những mảnh giấc mơ … ."
+    },
+    "kokusho_n2_d06_m9_52": {
+      "optionNotes": [
+        "悲しみにとって không có nghĩa; a phải là người.",
+        "a sai; \"vùng đất họa sĩ\" không có nghĩa.",
+        "a 画家, b 悲しみ, c 美しい.",
+        "\"vùng đất đẹp\" và tranh \"là nỗi buồn\" không hợp ngữ pháp ở c."
+      ],
+      "translationVi": "Với người họa sĩ Do Thái gốc Nga, New York cũng là vùng đất của nỗi buồn. Tác phẩm \"Xoay quanh nàng\" ra đời sau cơn thẫn thờ ấy thật đẹp.",
+      "stemTranslationVi": "Với người … Do Thái gốc Nga, New York cũng là vùng đất của … . Tác phẩm \"Xoay quanh nàng\" thật … .",
+      "explanationVi": "Chọn 画家／悲しみ／美しい: với người họa sĩ (a), New York là đất của nỗi buồn (b) vì ông mất vợ ở đó; bức tranh vẽ ra sau đó thật đẹp (c)."
+    },
+    "kokusho_n2_d06_m9_53": {
+      "optionNotes": [
+        "と共に消え去って: tan biến cùng với.",
+        "持ち去る: mang đi; cần tân ngữ, không hợp.",
+        "にとって: đối với; không hợp với 消え去る.",
+        "にとって持ち去って sai cả hai."
+      ],
+      "translationVi": "…như thể ông đang cố gọi trở lại thế gian này những gì đã tan biến cùng Bella.",
+      "stemTranslationVi": "…như thể ông đang cố gọi trở lại thế gian này những gì đã … Bella."
+    },
+    "kokusho_n2_d06_m9_54": {
+      "optionNotes": [
+        "だろうか: nghi vấn; không hợp câu khẳng định.",
+        "浮かばせられている: sai khiến bị động; sai.",
+        "浮かばれる: (linh hồn) được siêu thoát; khác nghĩa.",
+        "浮かんでいる: đang hiện lên."
+      ],
+      "translationVi": "Nỗi buồn vui lấp đầy 97 năm cuộc đời ông, nay được giải phóng khỏi mọi thứ, đang hiện lên trước mắt chúng ta.",
+      "stemTranslationVi": "Nỗi buồn vui lấp đầy 97 năm cuộc đời ông, nay được giải phóng khỏi mọi thứ, … trước mắt chúng ta."
+    }
+  },
+  "passages": {
+    "d06-passage": {
+      "translationVi": "Giấc mơ bay như chim được cho là khát khao tự do, cũng là mặt trái của sự đè nén. Không biết bậc thầy hội họa thế kỷ 20 đã mơ những giấc mơ thế nào. Những đôi tình nhân ôm nhau, những con vật, bóng hình quê hương. Vạn vật nhảy múa trên mặt toan.\nTriển lãm Chagall đã khai mạc tại Bảo tàng Mỹ thuật Đại học Nghệ thuật Tokyo ở Ueno (đến ngày 11 tháng 10). Nhóm tác phẩm của Trung tâm Pompidou (Pháp) gợi nhớ những mảnh giấc mơ rực rỡ sắc màu. Những bản phác thảo trang trí sân khấu cho vở opera \"Cây sáo thần\", lần đầu được trưng bày cùng lúc, là công việc mà Nhà hát Metropolitan (Mỹ) nhờ ông vào những năm cuối đời.\nVới người họa sĩ Do Thái xuất thân từ nước Nga Sa hoàng, New York, nơi có nhà hát ấy, cũng là vùng đất của nỗi buồn. Ở miền đất xa lạ nơi ông chạy trốn khỏi Đức Quốc xã, ông mất người vợ đồng hương Bella đã gắn bó 30 năm. Tác phẩm \"Xoay quanh nàng\" ra đời sau những ngày thẫn thờ ấy thật đẹp.\nGiữa sắc xanh thẫm là người vợ đang thổn thức, chính ông, và quả cầu pha lê phản chiếu cố hương; phía trên là đôi vợ chồng mới cưới và chim bồ câu bay lượn. Virginia Haggard, người phụ nữ đã ở bên người đàn ông đau khổ ấy 7 năm, đã ghi lại hình ảnh ông khi vẽ trong cuốn \"Những ngày bên Chagall\".\n\"Gương mặt ông căng thẳng, đầy đau đớn. Trông ông như đang phẫn nộ dữ dội… Đến mức tôi nghĩ phải chăng ông đang cố gọi trở lại thế gian này những gì đã tan biến cùng Bella.\" Đó là sắc xanh lam như được hòa bằng nước mắt.\nĐối lập với bức tranh này là \"Ngày Chủ nhật\", vẽ khoảng thời gian ông tái hôn ở tuổi 65. Đó là ngày nghỉ hạnh phúc, ông ôm người vợ mới bay dạo trên bầu trời Paris màu hoa cải. Chagall, khi than khóc thì trôi dạt, khi mỉm cười thì nhảy múa. Nỗi buồn và niềm vui lấp đầy 97 năm cuộc đời ông, nay được giải phóng khỏi mọi thứ, đang hiện lên trước mắt chúng ta."
+    }
+  }
+}
