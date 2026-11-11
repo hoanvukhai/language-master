@@ -26,6 +26,19 @@ service cloud.firestore {
         // Ghi: chỉ chính chủ
         allow write: if request.auth != null && request.auth.uid == userId;
       }
+
+      // ── Sub-collection: jlpt_attempts (lịch sử điểm Luyện đề JLPT) ──────
+      // Chỉ số liệu tổng và mã câu sai của lượt đã nộp, không có bài làm chi tiết.
+      match /jlpt_attempts/{attemptId} {
+        allow read, delete: if request.auth != null && request.auth.uid == userId;
+        allow create, update: if request.auth != null && request.auth.uid == userId
+          && request.resource.data.v == 1
+          && request.resource.data.total is int
+          && request.resource.data.total > 0
+          && request.resource.data.total <= 1080
+          && request.resource.data.wrongIds is list
+          && request.resource.data.wrongIds.size() <= 1080;
+      }
     }
 
     // ── Collection: custom_courses (Bộ từ vựng người dùng tự tạo) ───────────

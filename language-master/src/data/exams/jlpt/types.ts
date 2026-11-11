@@ -2,10 +2,13 @@
 
 export type JLPTLevel = "N1" | "N2" | "N3" | "N4" | "N5";
 
+/** Từ trọng tâm của câu Mondai 1–6 (mục 14.2 của đặc tả). */
 export interface JLPTTargetWord {
-  kanji?: string;
-  hanViet?: string;
-  meaningVi?: string;
+  term: string; // Dạng chữ như trong từ điển: 賢い, 振り向く
+  reading: string; // Chỉ gồm kana: かしこい
+  hanViet?: string; // Viết hoa: HIỀN; bỏ trống nếu không có kanji
+  meaningVi: string; // Tối đa 60 ký tự
+  affix?: string; // Mondai 3: 振り〜
 }
 
 export interface JLPTOptionNote {
@@ -18,6 +21,7 @@ export interface JLPTExplanation {
   rule?: string;
   vi?: string;
   grammarPoint?: string;
+  /** Đúng 4 phần tử; phần tử i ứng với phương án i + 1 */
   optionNotes?: string[];
 }
 
@@ -55,7 +59,8 @@ export interface JLPTQuestion {
   options: string[]; // 4 lựa chọn (1..4)
   answer: number; // 1..4
   order?: number[]; // Thứ tự đúng cả 4 ô (Mondai 8)
-  translationVi?: string; // Bản dịch tiếng Việt của câu hỏi
+  translationVi?: string; // Bản dịch câu hoàn chỉnh đã điền đáp án đúng (M6: câu của đáp án; M8: câu đã ghép; M9: câu chứa ô trống)
+  stemTranslationVi?: string; // Bản dịch dùng trước khi trả lời, chỗ trống ghi "…" (M3, M4, M7, M9)
   explanation?: JLPTExplanation; // Lời giải chi tiết
   targetWord?: JLPTTargetWord; // Từ vựng trọng tâm
   sentenceBreakdown?: JLPTSentencePart[]; // Phân tích chi tiết từng từ/thành phần trong câu đề bài (tùy chọn)
@@ -90,7 +95,7 @@ export interface JLPTExam {
   isSample?: boolean;
   kind?: "practice_set" | "section_mock";
   skills?: string[];
-  enrichmentStatus?: "draft" | "reviewed";
+  enrichmentStatus?: "draft" | "ai" | "reviewed";
   explanationSource?: string;
   id: string; // "kokusho-n2-20days-d01"
   bookId?: string; // "kokusho-n2-20days"

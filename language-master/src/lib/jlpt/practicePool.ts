@@ -674,12 +674,23 @@ export function isStandardExamStructure(attempt: Attempt): boolean {
   return true;
 }
 
+/**
+ * Ước lượng /60 chỉ hợp lệ với bài có giờ, thi nghiêm túc, không dùng trợ giúp
+ * và đủ cấu trúc 54 câu chuẩn (mục 9.2).
+ */
+export function isEstimateEligible(attempt: Attempt): boolean {
+  return (
+    attempt.mode === "mock" &&
+    attempt.strict === true &&
+    attempt.assisted.length === 0 &&
+    isStandardExamStructure(attempt)
+  );
+}
+
 /** Compute scaled JLPT Language Knowledge score (0 - 60 scale) for a standard 54-question attempt */
 export function computeStandardJLPTScore(attempt: Attempt): {
   scaledScore: number;
   maxScore: 60;
-  passedSection: boolean;
-  passedReference: boolean;
   vocabCorrect: number;
   vocabTotal: number;
   grammarCorrect: number;
@@ -716,8 +727,6 @@ export function computeStandardJLPTScore(attempt: Attempt): {
   return {
     scaledScore,
     maxScore: 60,
-    passedSection: scaledScore >= 19,
-    passedReference: scaledScore >= 38,
     vocabCorrect,
     vocabTotal,
     grammarCorrect,

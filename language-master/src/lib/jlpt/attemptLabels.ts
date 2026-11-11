@@ -4,7 +4,15 @@ export type AttemptKind = "pool" | "day" | "retry";
 
 /** Loại lượt suy ra từ dữ liệu sẵn có trong Attempt. */
 export function attemptKind(attempt: Attempt): AttemptKind {
-  if (attempt.targetQuestionIds.length > 0) return "retry";
+  if (attempt.retry !== undefined) {
+    if (attempt.retry) return "retry";
+  } else if (
+    // Phiên cũ chưa có cờ retry: chỉ coi là luyện lại khi là một phần của đề theo ngày
+    attempt.targetQuestionIds.length > 0 &&
+    !attempt.exam.isPracticePool &&
+    attempt.targetQuestionIds.length < attempt.exam.mondais.reduce((n, m) => n + m.questions.length, 0)
+  )
+    return "retry";
   return attempt.exam.isPracticePool ? "pool" : "day";
 }
 
@@ -16,6 +24,21 @@ export function formatDuration(ms: number): string {
   const sec = total % 60;
   const mm = String(m).padStart(2, "0");
   return `${h ? `${h}:` : ""}${mm}:${String(sec).padStart(2, "0")}`;
+}
+
+/** Thời gian làm bài có giờ: min(endedAt, deadlineAt) − createdAt, không âm (mục 8.5). */
+export function attemptDurationMs(attempt: Attempt, now = Date.now()): number {
+  const end = Math.min(
+    attempt.endedAt ?? now,
+    attempt.deadlineAt ?? Number.POSITIVE_INFINITY,
+  );
+  return Math.max(0, end - attempt.createdAt);
+}
+
+/** "mm:ss", hoặc "50:00 (hết giờ)" khi hết giờ. */
+export function formatAttemptDuration(attempt: Attempt, now = Date.now()): string {
+  const text = formatDuration(attemptDurationMs(attempt, now));
+  return attempt.reason === "timeout" ? `${text} (hết giờ)` : text;
 }
 
 function mondaiSummary(attempt: Attempt): string {

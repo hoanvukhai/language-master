@@ -1,12 +1,23 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { act, cleanup, render, screen, waitFor } from "@testing-library/react";
+import {
+  act,
+  cleanup,
+  render,
+  screen,
+  waitFor,
+  within,
+} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import type { JLPTExam } from "../src/data/exams/jlpt/types";
 import ExamWorkspace from "../src/pages/Exam/ExamWorkspace";
 import { getSession, setSession } from "../src/lib/jlpt/tabSession";
 import { refreshSession } from "../src/lib/jlpt/tabSession";
-import { createAttempt, finish } from "../src/lib/jlpt/examCore";
+import {
+  createAttempt,
+  finish,
+  DRILL_COMMIT_DELAY_MS,
+} from "../src/lib/jlpt/examCore";
 import {
   buildPracticePool,
   pickPracticeQuestions,
@@ -14,11 +25,7 @@ import {
 } from "../src/lib/jlpt/practicePool";
 import { units, decodeSession, validateExam } from "../src/lib/jlpt/examCore";
 import DrillSession from "../src/pages/Exam/sessions/DrillSession";
-import {
-  buildCompletedSentence,
-  buildUnfilledStemForTranslation,
-  clearSentenceTranslationCache,
-} from "../src/lib/jlpt/examText";
+import { buildCompletedSentence } from "../src/lib/jlpt/examText";
 import JLPTExamHub from "../src/pages/Exam/JLPTExamHub";
 import { speakWithVoiceEngine } from "../src/lib/audio/voiceEngine";
 import {
@@ -29,9 +36,35 @@ import {
 } from "../src/lib/dictionary/multiBookLookup";
 
 
+function setupUser() {
+  return userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
+}
+/** Chốt ngay câu đang chờ 1,5 giây trong lượt luyện */
+function commitNow() {
+  act(() => {
+    vi.advanceTimersByTime(DRILL_COMMIT_DELAY_MS + 10);
+  });
+}
+
+/** Bấm "Bắt đầu làm bài" rồi "Bắt đầu" trong hộp xác nhận bài có giờ (JL-22) */
+async function startMock(
+  user: ReturnType<typeof setupUser>,
+  strict = true,
+) {
+  await user.click(screen.getByRole("button", { name: "Bắt đầu làm bài" }));
+  const dialog = screen.getByRole("dialog", { name: "Bắt đầu bài có giờ" });
+  if (!strict)
+    await user.click(
+      within(dialog).getByRole("checkbox", {
+        name: "Thi nghiêm túc (tắt tra từ, dịch, nghe)",
+      }),
+    );
+  await user.click(within(dialog).getByRole("button", { name: "Bắt đầu" }));
+}
+
 /** Mở menu ⋯ của lượt đang làm rồi chọn một mục (JL-14). */
 async function chooseAttemptMenu(
-  user: ReturnType<typeof userEvent.setup>,
+  user: ReturnType<typeof setupUser>,
   name: string,
 ) {
   await user.click(screen.getByRole("button", { name: "Tùy chọn lượt làm" }));
@@ -126,8 +159,9 @@ function open(exam: JLPTExam, mode = "mock") {
 beforeEach(() => {
   localStorage.clear();
   sessionStorage.clear();
-  clearSentenceTranslationCache();
   setSession(null);
+  // Đồng hồ giả chạy theo thời gian thật; commitNow() tua qua 1,5 giây chờ chốt (mục 7.1)
+  vi.useFakeTimers({ shouldAdvanceTime: true });
   vi.spyOn(window, "confirm").mockReturnValue(true);
   vi.spyOn(window, "alert").mockImplementation(() => {});
   vi.spyOn(window, "scrollTo").mockImplementation(() => {});
@@ -221,7 +255,7 @@ describe("pooled practice", () => {
     );
   });
   it("starts a random 10-question passage round, resumes unchanged and changes configuration without erasing it", async () => {
-    const user = userEvent.setup();
+    const user = setupUser();
     const view = open(pool, "drill");
     await user.click(screen.getByRole("button", { name: "Bỏ chọn" }));
     await user.click(screen.getByText(/Mondai 9 · Chuẩn đề/));
@@ -250,7 +284,7 @@ describe("pooled practice", () => {
     expect(screen.getByRole("button", { name: "Bắt đầu luyện" })).toBeTruthy();
   });
   it("shows authored explanations publicly on reference and never during an ongoing mock", async () => {
-    const user = userEvent.setup();
+    const user = setupUser();
     const view = open(exams[1], "review");
     await user.click(
       screen.getAllByRole("button", { name: "Xem đáp án & lời giải" })[0],
@@ -261,7 +295,7 @@ describe("pooled practice", () => {
     expect(screen.getByText(/Lời giải tham khảo do AI/)).toBeTruthy();
     view.unmount();
     open(exams[1], "mock");
-    await user.click(screen.getByRole("button", { name: "Bắt đầu làm bài" }));
+    await startMock(user);
     expect(screen.queryByText(/Lời giải tham khảo do AI/)).toBeNull();
     expect(
       screen.queryByText(exams[1].mondais[0].questions[0].explanation!.vi!),
@@ -271,11 +305,16 @@ describe("pooled practice", () => {
 
 describe.each(exams.map((e) => [e.day, e] as const))("Day %s", (_day, exam) => {
   it("starts only on click, submits, and keeps answers read-only", async () => {
-    const user = userEvent.setup();
+    const user = setupUser();
     open(exam);
     expect(getSession()).toBeNull();
     await user.click(screen.getByRole("button", { name: "Bắt đầu làm bài" }));
+    // Hủy trong hộp xác nhận thì không tạo phiên (JL-22)
+    await user.click(screen.getByRole("button", { name: "Hủy" }));
+    expect(getSession()).toBeNull();
+    await startMock(user);
     expect(getSession()?.questionIds.length).toBe(54);
+    expect(getSession()?.strict).toBe(true);
     expect(screen.getAllByRole("radio")).toHaveLength(4);
     expect(document.querySelectorAll("[data-exam-selectable]")).toHaveLength(5);
     expect(screen.queryByText(/Chọn phương án [1-4]/)).toBeNull();
@@ -291,7 +330,7 @@ describe.each(exams.map((e) => [e.day, e] as const))("Day %s", (_day, exam) => {
     expect(JSON.stringify(getSession()?.answers)).toBe(saved);
   });
   it("JL-15: Xem lại bài opens no explanation; Xem câu sai opens only wrong ones", async () => {
-    const user = userEvent.setup();
+    const user = setupUser();
     const qs = exams[0].mondais[0].questions.slice(0, 3);
     const a = createAttempt(exams[0], "mock", qs.map((q) => q.id));
     a.answers[qs[0].id] = qs[0].answer;
@@ -308,7 +347,7 @@ describe.each(exams.map((e) => [e.day, e] as const))("Day %s", (_day, exam) => {
     expect(screen.getAllByText(/^Đáp án:/).length).toBe(1);
   });
   it("keeps passage and five final questions in one drill unit", async () => {
-    const user = userEvent.setup();
+    const user = setupUser();
     open(exam, "drill");
     await user.selectOptions(screen.getByRole("combobox"), "9");
     await user.click(screen.getByRole("button", { name: "Bắt đầu luyện" }));
@@ -328,7 +367,7 @@ describe.each(exams.map((e) => [e.day, e] as const))("Day %s", (_day, exam) => {
     expect(getSession()?.committed.length).toBe(5);
   });
   it("opens and closes reference answers without creating a session", async () => {
-    const user = userEvent.setup();
+    const user = setupUser();
     open(exam, "review");
     expect(getSession()).toBeNull();
     expect(screen.queryAllByText(/^Đáp án:/).length).toBe(0);
@@ -354,7 +393,7 @@ it("generic review preserves an existing timed session", () => {
   expect(getSession()?.deadlineAt).toBe(a.deadlineAt);
 });
 it("rejects a new answer after deadline and closes with timeout", async () => {
-  const user = userEvent.setup();
+  const user = setupUser();
   const a = createAttempt(exams[0], "mock");
   act(() => setSession(a));
   open(exams[0]);
@@ -364,7 +403,7 @@ it("rejects a new answer after deadline and closes with timeout", async () => {
   expect(Object.keys(getSession()!.answers).length).toBe(0);
 });
 it("clears only the JLPT session", async () => {
-  const user = userEvent.setup();
+  const user = setupUser();
   sessionStorage.setItem("currentRaceId", "keep");
   act(() => setSession(createAttempt(exams[0], "drill")));
   open(exams[0], "drill");
@@ -378,9 +417,9 @@ it("still starts and submits when sessionStorage is blocked", async () => {
   vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
     throw new Error("blocked");
   });
-  const user = userEvent.setup();
+  const user = setupUser();
   open(exams[0]);
-  await user.click(screen.getByRole("button", { name: "Bắt đầu làm bài" }));
+  await startMock(user);
   expect(screen.getByRole("status").textContent).toContain("bộ nhớ");
   await user.click(screen.getByRole("radio", { name: "Phương án 1, câu 1" }));
   await user.click(screen.getByRole("button", { name: "Nộp bài" }));
@@ -389,9 +428,9 @@ it("still starts and submits when sessionStorage is blocked", async () => {
 });
 
 it("provides a zoomable source image for mobile reading", async () => {
-  const user = userEvent.setup();
+  const user = setupUser();
   open(exams[0]);
-  await user.click(screen.getByRole("button", { name: "Bắt đầu làm bài" }));
+  await startMock(user);
   await user.click(screen.getByText("Đối chiếu bản quét gốc"));
   await user.click(screen.getByRole("button", { name: "Phóng to để đọc rõ" }));
   expect(
@@ -402,19 +441,22 @@ it("provides a zoomable source image for mobile reading", async () => {
 });
 
 it("confirmation cancel keeps the current session and deadline", async () => {
-  const user = userEvent.setup();
+  const user = setupUser();
   const a = createAttempt(exams[0], "mock");
   act(() => setSession(a));
   open(exams[1]);
   await user.click(screen.getByRole("button", { name: "Bắt đầu làm bài" }));
-  expect(screen.getByRole("dialog")).toBeTruthy();
-  await user.click(screen.getByRole("button", { name: "Quay lại" }));
+  const dialog = screen.getByRole("dialog", { name: "Bắt đầu bài có giờ" });
+  expect(dialog.textContent).toContain(
+    "Bài đang làm hoặc kết quả hiện tại trong tab sẽ bị thay.",
+  );
+  await user.click(within(dialog).getByRole("button", { name: "Hủy" }));
   expect(getSession()?.id).toBe(a.id);
   expect(getSession()?.deadlineAt).toBe(a.deadlineAt);
 });
 
 it("confirmation closes automatically if the deadline expires", async () => {
-  const user = userEvent.setup();
+  const user = setupUser();
   const a = createAttempt(exams[0], "mock");
   act(() => setSession(a));
   open(exams[0]);
@@ -427,7 +469,7 @@ it("confirmation closes automatically if the deadline expires", async () => {
 });
 
 it("confirmation retries one wrong passage question as a complete group once", async () => {
-  const user = userEvent.setup();
+  const user = setupUser();
   const a = createAttempt(exams[0], "drill");
   for (const q of a.exam.mondais.flatMap((m) => m.questions))
     a.answers[q.id] = q.answer;
@@ -466,29 +508,72 @@ describe("audit regression fixes", () => {
     expect(completed42).not.toContain("／");
   });
 
-  it("never leaks the correct option when translating before answering", async () => {
-    const fetchSpy = vi
-      .spyOn(globalThis, "fetch")
-      .mockResolvedValue(new Response(JSON.stringify([[["Bản dịch đề", ""]]])));
-    const user = userEvent.setup();
+  it("12.1: uses stored translations by Mondai type and never calls the network", async () => {
+    const fetchSpy = vi.spyOn(globalThis, "fetch");
+    const user = setupUser();
     const day1 = exams[0];
-    const q11 = day1.mondais
-      .flatMap((m) => m.questions)
-      .find((q) => q.number === 11)!;
-    const correctOption = q11.options[q11.answer - 1];
-    expect(buildUnfilledStemForTranslation(q11)).not.toContain(correctOption);
-
-    const a = createAttempt(day1, "mock", [q11.id]);
-    act(() => setSession(a));
-    open(day1, "mock");
+    const qById = (n: number) =>
+      day1.mondais.flatMap((m) => m.questions).find((q) => q.number === n)!;
+    const q11 = qById(11);
+    const view = open(day1, "drill");
+    view.unmount();
+    // Câu 11 (Mondai 3): trước khi trả lời dùng stemTranslationVi, có "…", không lộ đáp án
+    act(() => setSession(createAttempt(day1, "drill", [q11.id])));
+    const v2 = open(day1, "drill");
     await user.click(screen.getByRole("button", { name: "Dịch câu" }));
-    expect(fetchSpy).toHaveBeenCalledTimes(1);
-    const requestedUrl = String(fetchSpy.mock.calls[0][0]);
-    expect(decodeURIComponent(requestedUrl)).not.toContain(correctOption);
+    expect(screen.getByText(q11.stemTranslationVi!)).toBeTruthy();
+    expect(screen.getByText("AI dịch")).toBeTruthy();
+    expect(screen.queryByText(q11.translationVi!)).toBeNull();
+    // Sau khi chốt: bản dịch câu hoàn chỉnh trong lời giải
+    await user.click(screen.getByRole("radio", { name: "Phương án 1, câu 11" }));
+    commitNow();
+    expect(await screen.findByText(q11.translationVi!)).toBeTruthy();
+    v2.unmount();
+    // Mondai 6 và 8: không có nút Dịch câu trước khi trả lời
+    for (const n of [28, 45]) {
+      act(() => setSession(createAttempt(day1, "drill", [qById(n).id])));
+      const v = open(day1, "drill");
+      expect(screen.queryByRole("button", { name: "Dịch câu" })).toBeNull();
+      v.unmount();
+    }
+    expect(fetchSpy).not.toHaveBeenCalled();
+  });
+
+  it("JL-05: strict mock hides Nghe câu and Dịch câu; turning strict off brings them back", async () => {
+    const user = setupUser();
+    const day1 = exams[0];
+    const q6 = day1.mondais[1].questions[0];
+    act(() => setSession({ ...createAttempt(day1, "mock", [q6.id]), strict: true }));
+    open(day1, "mock");
+    expect(screen.queryByRole("button", { name: "Dịch câu" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Nghe câu" })).toBeNull();
+    await chooseAttemptMenu(user, "Tắt thi nghiêm túc");
+    await user.click(screen.getByRole("button", { name: "Xác nhận" }));
+    expect(getSession()?.strict).toBe(false);
+    expect(screen.getByRole("button", { name: "Dịch câu" })).toBeTruthy();
+  });
+
+  it("7.1: a single drill question commits after 1.5 s and can be undone before that", async () => {
+    const user = setupUser();
+    const q1 = exams[0].mondais[0].questions[0];
+    act(() => setSession(createAttempt(exams[0], "drill", [q1.id])));
+    open(exams[0], "drill");
+    await user.click(screen.getByRole("radio", { name: "Phương án 1, câu 1" }));
+    expect(screen.getByText("Đã chọn 1 · đang chốt…")).toBeTruthy();
+    expect(getSession()?.answers[q1.id]).toBeUndefined();
+    await user.click(screen.getByRole("button", { name: "Hoàn tác" }));
+    act(() => {
+      vi.advanceTimersByTime(DRILL_COMMIT_DELAY_MS + 50);
+    });
+    expect(getSession()?.committed).toEqual([]);
+    await user.click(screen.getByRole("radio", { name: "Phương án 2, câu 1" }));
+    commitNow();
+    expect(getSession()?.answers[q1.id]).toBe(2);
+    expect(getSession()?.committed).toEqual([q1.id]);
   });
 
   it("keeps passage group answers as draft without showing answer until Kiểm tra nhóm is clicked", async () => {
-    const user = userEvent.setup();
+    const user = setupUser();
     open(exams[0], "drill");
     await user.selectOptions(screen.getByRole("combobox"), "9");
     await user.click(screen.getByRole("button", { name: "Bắt đầu luyện" }));
@@ -503,7 +588,7 @@ describe("audit regression fixes", () => {
   });
 
   it("preserves all 5 passage questions when retrying 1 wrong passage question from a pooled session and survives decodeSession", async () => {
-    const user = userEvent.setup();
+    const user = setupUser();
     const passageIds = pool.mondais[8].questions.slice(0, 5).map((q) => q.id);
     const snap = practiceSnapshot(pool, [passageIds[2]]);
     expect(snap.mondais[0].questions).toHaveLength(5);
@@ -537,7 +622,7 @@ describe("audit regression fixes", () => {
   });
 
   it("marks current unit assisted on F9 / app:trigger-selection-lookup and blocks 1-4 keys while lookup dialog is open", async () => {
-    const user = userEvent.setup();
+    const user = setupUser();
     const a = createAttempt(exams[0], "drill", [
       exams[0].mondais[0].questions[0].id,
     ]);
@@ -570,7 +655,7 @@ describe("QA spec 2026-11-08 regression suite", () => {
   const pool = buildPracticePool(exams)!;
 
   it("FIX-01: keeps book view open when searching Day 12 or 0-match query and handles invalid book param", async () => {
-    const user = userEvent.setup();
+    const user = setupUser();
     render(
       <MemoryRouter
         initialEntries={["/exams/jlpt?book=kokusho-n2-20days&q=Day%2012"]}
@@ -612,7 +697,7 @@ describe("QA spec 2026-11-08 regression suite", () => {
   });
 
   it("FIX-02 & FIX-03: allows unchecking all Mondais to 0 câu and matches preview count with started session", async () => {
-    const user = userEvent.setup();
+    const user = setupUser();
     open(pool, "drill");
 
     await user.click(screen.getByRole("button", { name: "Bỏ chọn" }));
@@ -635,31 +720,20 @@ describe("QA spec 2026-11-08 regression suite", () => {
     expect(getSession()?.questionIds).toHaveLength(5);
   });
 
-  it("FIX-04: records assist only on successful help for uncommitted questions, not on errors or hide toggle", async () => {
-    const user = userEvent.setup();
-    // Use Mondai 2 question so both "Nghe câu" and "Dịch câu" are available pre-answer
+  it("FIX-04: records assist only when help is shown for uncommitted questions, not on hide toggle", async () => {
+    const user = setupUser();
+    // Mondai 2: có cả "Nghe câu" và "Dịch câu" trước khi trả lời
     const q6 = exams[0].mondais[1].questions[0];
     const a = createAttempt(exams[0], "drill", [q6.id]);
     act(() => setSession(a));
     open(exams[0], "drill");
 
-    // 1. Translation HTTP 500 -> does NOT record assist
-    const fetchSpy = vi
-      .spyOn(globalThis, "fetch")
-      .mockResolvedValueOnce(new Response("err", { status: 500 }));
+    // 1. Mở bản dịch soạn sẵn -> ghi nhận hỗ trợ
     await user.click(screen.getByRole("button", { name: "Dịch câu" }));
-    expect(fetchSpy).toHaveBeenCalledTimes(1);
-    expect(getSession()?.assisted).toEqual([]);
-
-    // 2. Translation 200 OK -> records assist
-    fetchSpy.mockResolvedValueOnce(
-      new Response(JSON.stringify([[["Bản dịch câu 6", ""]]])),
-    );
-    await user.click(screen.getByRole("button", { name: "Dịch câu" }));
-    expect(await screen.findByText("Bản dịch câu 6")).toBeTruthy();
+    expect(screen.getByText(q6.translationVi!)).toBeTruthy();
     expect(getSession()?.assisted).toEqual([q6.id]);
 
-    // 3. Reset assisted, then toggle "Ẩn bản dịch" -> does NOT record assist
+    // 2. Reset, rồi bấm "Ẩn bản dịch" -> KHÔNG ghi nhận
     act(() => {
       const current = getSession()!;
       setSession({ ...current, assisted: [] });
@@ -667,7 +741,7 @@ describe("QA spec 2026-11-08 regression suite", () => {
     await user.click(screen.getByRole("button", { name: "Ẩn bản dịch" }));
     expect(getSession()?.assisted).toEqual([]);
 
-    // 4. Speak returning false -> does NOT record assist; returning true -> records assist
+    // 3. Nghe câu thất bại -> không ghi; thành công -> ghi
     vi.mocked(speakWithVoiceEngine).mockReturnValueOnce(false);
     await user.click(screen.getByRole("button", { name: "Nghe câu" }));
     expect(getSession()?.assisted).toEqual([]);
@@ -745,7 +819,7 @@ describe("QA spec 2026-11-08 regression suite", () => {
   });
 
   it("FIX-06 & B3: synchronizes Quick-Jump TOC with active filter, renders 1 Mondai header per Mondai, and shows context badge for passage siblings", async () => {
-    const user = userEvent.setup();
+    const user = setupUser();
     // 1. Review mode filtered by Mondai 1 -> 5 cards, 5 TOC links, 1 Mondai header
     open(exams[0], "review");
     await user.selectOptions(screen.getByRole("combobox"), "1");

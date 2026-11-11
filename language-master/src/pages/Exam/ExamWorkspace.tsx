@@ -1,4 +1,12 @@
-import { startTransition, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  startTransition,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import {
   Link,
   useLocation,
@@ -18,6 +26,7 @@ import {
 import { getExamById } from "../../data/exams/jlpt";
 import type { JLPTQuestion } from "../../data/exams/jlpt/types";
 import {
+  DRILL_COMMIT_DELAY_MS,
   answer,
   createAttempt,
   finish,
@@ -25,6 +34,7 @@ import {
   score,
   units,
   type Attempt,
+  type AttemptRoundConfig,
 } from "../../lib/jlpt/examCore";
 import {
   getSession,
@@ -39,6 +49,7 @@ import {
   STANDARD_MONDAI_QUOTAS,
   buildPlannedRoundKey,
   computeStandardJLPTScore,
+  isEstimateEligible,
   isStandardExamStructure,
   planPracticeRound,
   poolId,
@@ -48,10 +59,16 @@ import ExamQuestionCard from "./components/ExamQuestionCard";
 import SourceImage from "./components/SourceImage";
 import ExamText from "./components/ExamText";
 import WordLookupModal from "./components/WordLookupModal";
+import { useStartMockDialog } from "./components/useStartMockDialog";
 import { prefetchLexicon } from "../../lib/dictionary/dictionaryLoader";
 import SelectionLookup from "./components/SelectionLookup";
 import { useAttemptKeyboard } from "./workspace/useAttemptKeyboard";
-import { describeAttempt } from "../../lib/jlpt/attemptLabels";
+import {
+  describeAttempt,
+  formatAttemptDuration,
+} from "../../lib/jlpt/attemptLabels";
+import ReviewWords from "./workspace/ReviewWords";
+import { useSaveAttemptHistory } from "./workspace/useSaveAttemptHistory";
 import QuestionPalette from "./workspace/QuestionPalette";
 import BottomSheet from "./workspace/BottomSheet";
 import MobileAttemptBar from "./workspace/MobileAttemptBar";
@@ -75,6 +92,7 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
   const location = useLocation();
   const navigate = useNavigate();
   const { ask, cancel, confirmation } = useConfirmation();
+  const { askStartMock, startMockDialog } = useStartMockDialog();
   const { attempt, notice, noticeKind } = useTabSession();
 
   // Classic states (kept in sync for backward compatibility & tests)
@@ -140,6 +158,26 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
     }
   });
   const [sheet, setSheet] = useState(false);
+  /** Câu đơn đang chờ chốt trong lượt luyện (mục 7.1); không ghi vào phiên */
+  const [pending, setPending] = useState<{
+    attemptId: string;
+    questionId: string;
+    option: number;
+    until: number;
+  } | null>(null);
+  const pendingRef = useRef(pending);
+  useLayoutEffect(() => {
+    pendingRef.current = pending;
+  }, [pending]);
+  const commitPendingRef = useRef<() => void>(() => undefined);
+  useEffect(() => {
+    if (!pending) return;
+    const timer = window.setTimeout(
+      () => commitPendingRef.current(),
+      Math.max(0, pending.until - Date.now()),
+    );
+    return () => clearTimeout(timer);
+  }, [pending]);
   const [now, setNow] = useState(() => Date.now());
 
   const active =
@@ -208,6 +246,10 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
 
   const submitted = active?.status === "submitted";
   const result = active && submitted ? score(active) : null;
+  // Lịch sử điểm cho người đăng nhập (mục 10): chạy ở màn kết quả, bắt cả trường hợp hết giờ
+  const historySave = useSaveAttemptHistory(
+    mode === "result" && submitted ? active : null,
+  );
 
   // JL-04: nạp trước lexicon lúc rảnh cho luyện, xem đề, kết quả.
   // Bài có giờ đang chạy chỉ nạp khi dùng trợ giúp; thi nghiêm túc không nạp gì.
@@ -262,7 +304,7 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
   const openLookupModal = useCallback(
     (word: string, unitQuestionIds?: string[]) => {
       const trimmed = word.trim();
-      if (!trimmed) return;
+      if (!trimmed || strictRunning) return;
       refreshSession();
       const a = getSession();
       let candidateIds = unitQuestionIds || [];
@@ -285,7 +327,7 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
       };
       setLookup(trimmed);
     },
-    [active?.id],
+    [active?.id, strictRunning],
   );
 
   // Đồng bộ trạng thái bật/tắt tra từ từ thanh tiện ích nổi toàn hệ thống
@@ -324,26 +366,57 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
       setSession(change(a));
   };
 
+  /** Chốt ngay câu đang chờ (hết 1,5 giây, Enter, chuyển câu, kết thúc luyện) */
+  const commitPending = () => {
+    const p = pendingRef.current;
+    if (!p) return;
+    pendingRef.current = null;
+    setPending(null);
+    refreshSession();
+    const a = getSession();
+    if (!a || a.id !== p.attemptId || a.status !== "in_progress") return;
+    if (a.committed.includes(p.questionId)) return;
+    const next = answer(a, p.questionId, p.option);
+    setSession({
+      ...next,
+      committed: [...new Set([...next.committed, p.questionId])],
+    });
+    setExpanded((prev) =>
+      prev.includes(p.questionId) ? prev : [...prev, p.questionId],
+    );
+  };
+  useLayoutEffect(() => {
+    commitPendingRef.current = commitPending;
+  });
+  const undoPending = () => {
+    pendingRef.current = null;
+    setPending(null);
+  };
+
   // Chọn đáp án dùng chung cho chuột/chạm và phím 1–4
   const selectOption = (questionId: string, opt: number, singleUnit: boolean) => {
     if (active?.mode === "drill") {
-      update((a) => {
-        const next = answer(a, questionId, opt);
-        return singleUnit
-          ? { ...next, committed: [...new Set([...next.committed, questionId])] }
-          : next;
-      });
       if (singleUnit) {
-        setExpanded((prev) =>
-          prev.includes(questionId) ? prev : [...prev, questionId],
-        );
+        if (active.committed.includes(questionId)) return;
+        // Câu đơn: chờ 1,5 giây trước khi chốt, chọn lại thì đếm lại từ đầu
+        const p = {
+          attemptId: active.id,
+          questionId,
+          option: opt,
+          until: Date.now() + DRILL_COMMIT_DELAY_MS,
+        };
+        pendingRef.current = p;
+        setPending(p);
+        return;
       }
+      update((a) => answer(a, questionId, opt));
     } else {
       update((a) => answer(a, questionId, opt));
     }
   };
 
   const goToUnit = (index: number) => {
+    commitPending();
     update((a) => ({ ...a, position: index }));
     window.scrollTo({ top: 0 });
   };
@@ -354,6 +427,10 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
     (e) => {
       if (!active || active.status !== "in_progress" || !current || lookup)
         return false;
+      if (e.key === "Escape" && pendingRef.current) {
+        undoPending();
+        return true;
+      }
       if (["1", "2", "3", "4"].includes(e.key)) {
         if (current.questions.length !== 1) return false;
         const q = current.questions[0];
@@ -366,13 +443,22 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
         goToUnit(active.position - 1);
         return true;
       }
+      const pendingHere = Boolean(
+        pendingRef.current &&
+          current.questions.some((q) => q.id === pendingRef.current?.questionId),
+      );
       if (
         e.key === "ArrowRight" ||
         (e.key === "Enter" &&
           active.mode === "drill" &&
-          current.questions.every((q) => !!active.answers[q.id]))
+          (pendingHere ||
+            current.questions.every((q) => !!active.answers[q.id])))
       ) {
-        if (active.position >= groups.length - 1) return false;
+        if (active.position >= groups.length - 1) {
+          if (!pendingHere) return false;
+          commitPending();
+          return true;
+        }
         goToUnit(active.position + 1);
         return true;
       }
@@ -479,6 +565,7 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
     ids?: string[],
     promptText?: string,
     expectedConfigKey?: string,
+    opts?: { config?: AttemptRoundConfig; retry?: boolean },
   ) => {
     if (startingRef.current) return;
     startingRef.current = true;
@@ -496,7 +583,17 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
       }
 
       refreshSession();
-      if (
+      let strict: boolean | undefined;
+      if (nextMode === "mock") {
+        // Mọi lối bắt đầu bài có giờ đi qua cùng một hộp xác nhận (JL-22)
+        const res = await askStartMock({
+          questionCount: planAtClick?.actualTotal || ids?.length || exam.totalQuestions,
+          minutes: source.timeLimitMinutes || exam.timeLimitMinutes || 50,
+          replacing: !!getSession(),
+        });
+        if (!res) return;
+        strict = res.strict;
+      } else if (
         getSession() &&
         !(await ask(
           promptText ||
@@ -534,7 +631,25 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
         source.isPracticePool && picked
           ? practiceSnapshot(source, picked)
           : source;
-      setSession(createAttempt(snapshot, nextMode, picked));
+      // Lưu cấu hình đã chuẩn hóa của lượt luyện từ ngân hàng để trộn lại (JL-09)
+      const roundConfig: AttemptRoundConfig | undefined =
+        opts?.config ??
+        (source.isPracticePool && nextMode === "drill" && expectedConfigKey
+          ? {
+              mondais: [...plannedRound.config.mondais],
+              allocationMode: plannedRound.config.allocationMode,
+              totalCount: plannedRound.config.totalCount,
+              perMondaiCount: plannedRound.config.perMondaiCount,
+              dayFilter: plannedRound.config.dayFilter,
+            }
+          : undefined);
+      const created = createAttempt(snapshot, nextMode, picked);
+      setSession({
+        ...created,
+        ...(strict !== undefined ? { strict } : {}),
+        retry: opts?.retry === true,
+        ...(roundConfig ? { config: roundConfig } : {}),
+      });
       plannedRoundRef.current = null;
       setConfiguring(false);
       setReviewing(false);
@@ -559,6 +674,7 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
   };
 
   const submit = async () => {
+    commitPending();
     const a = getSession();
     if (!a || a.id !== active?.id) return;
     const blank = questions(a).filter((q) => !a.answers[q.id]).length;
@@ -575,6 +691,18 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
     }
   };
 
+  const contentReady =
+    exam.enrichmentStatus === "ai" || exam.enrichmentStatus === "reviewed";
+
+  /** Mondai 9: cuộn tới ô trống trong đoạn văn và tô sáng 1,5 giây (JL-13) */
+  const focusBlank = (passageId: string, blankId: string) => {
+    const el = document.getElementById(`blank-${passageId}-${blankId}`);
+    if (!el) return;
+    el.scrollIntoView?.({ behavior: "smooth", block: "center" });
+    el.classList.add("exam-blank-flash");
+    window.setTimeout(() => el.classList.remove("exam-blank-flash"), 1500);
+  };
+
   const showGroup = (
     unit: (typeof groups)[number],
     reading = false,
@@ -586,6 +714,19 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
       (p) => p.id === unit.questions[0].passageId,
     );
     const unitQuestionIds = unit.questions.map((q) => q.id);
+    // Bản dịch/giải nghĩa đoạn văn: chỉ khi nội dung ai/reviewed và đã có phản hồi (mục 12.4)
+    const groupChecked = unit.questions.every((q) =>
+      active?.committed.includes(q.id),
+    );
+    const passageHelpVisible =
+      contentReady &&
+      !(active?.mode === "mock" && active.status === "in_progress" && !reading) &&
+      (mode === "review" || submitted || groupChecked || reading);
+    const blankToQuestion = new Map<string, string>();
+    for (const q of unit.questions) {
+      for (const b of q.blankIds?.length ? q.blankIds : [q.blankLabel || ""])
+        if (b) blankToQuestion.set(b, q.id);
+    }
     return (
       <section key={unit.id} className="space-y-4">
         {/* Mondai Instruction Banner (B3: Chỉ hiển thị ở đầu mỗi Mondai khi xem danh sách dài) */}
@@ -608,9 +749,16 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
           </div>
         )}
 
-        {/* Reading / Text Grammar Passage */}
+        <div
+          className={
+            passage
+              ? "space-y-4 xl:space-y-0 xl:grid xl:grid-cols-2 xl:gap-5 xl:items-start"
+              : "space-y-4"
+          }
+        >
+        {/* Reading / Text Grammar Passage — từ 1280 px dính bên trái, cuộn riêng (JL-13) */}
         {passage && (
-          <article className="exam-card border-2 border-indigo-200/80 dark:border-indigo-800/60 bg-amber-50/20 dark:bg-slate-800/90 space-y-4">
+          <article className="exam-card xl:sticky xl:top-24 xl:max-h-[calc(100vh-8rem)] xl:overflow-y-auto border-2 border-indigo-200/80 dark:border-indigo-800/60 bg-amber-50/20 dark:bg-slate-800/90 space-y-4">
             <div className="flex items-center justify-between gap-2 pb-2 border-b border-slate-200/70 dark:border-slate-700">
               <h3 className="font-black text-base text-slate-900 dark:text-white flex items-center gap-2">
                 <BookOpen size={16} className="text-indigo-600" />
@@ -643,7 +791,23 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                 data-exam-selectable
                 className="select-text text-lg leading-[1.95] font-medium text-slate-900 dark:text-slate-100"
               >
-                <ExamText text={passage.text} />
+                <ExamText
+                  text={passage.text}
+                  blanks={{
+                    idPrefix: `blank-${passage.id}-`,
+                    answered: (b) => {
+                      const qid = blankToQuestion.get(b);
+                      return !!(qid && (active?.answers[qid] || pending?.questionId === qid));
+                    },
+                    onClick: (b) => {
+                      const qid = blankToQuestion.get(b);
+                      if (qid)
+                        document
+                          .getElementById(`q-${qid}`)
+                          ?.scrollIntoView?.({ behavior: "smooth", block: "start" });
+                    },
+                  }}
+                />
               </div>
             )}
 
@@ -666,17 +830,21 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                 data-exam-selectable
                 className="select-text mt-3 p-3 rounded-xl bg-slate-100/80 dark:bg-slate-900/60 text-sm leading-7"
               >
-                {exam.enrichmentStatus !== "reviewed" ||
-                (mode === "mock" && !reading)
-                  ? n.replace(/\([^)]*[A-Za-zÀ-ỹ][^)]*\)/g, "")
-                  : n}
+                {passageHelpVisible
+                  ? n
+                  : n.replace(/\([^)]*[A-Za-zÀ-ỹ][^)]*\)/g, "")}
               </p>
             ))}
 
-            {reading && passage.translationVi && (
+            {passageHelpVisible && passage.translationVi && (
               <details className="mt-4 p-3.5 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200/70 dark:border-emerald-800/50 text-sm">
                 <summary className="cursor-pointer font-bold text-emerald-800 dark:text-emerald-300">
                   Bản dịch tham khảo
+                  {exam.enrichmentStatus === "ai" && (
+                    <span className="ml-1.5 px-1.5 py-px rounded-md bg-emerald-100 dark:bg-emerald-900/60 text-[10px] font-bold text-emerald-800 dark:text-emerald-200">
+                      AI dịch
+                    </span>
+                  )}
                 </summary>
                 <p className="whitespace-pre-wrap leading-7 mt-2">
                   {passage.translationVi}
@@ -687,6 +855,7 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
         )}
 
         {/* Questions in Unit */}
+        <div className="space-y-4 min-w-0">
         {unit.questions.map((q) => {
           const checked = !!active?.committed.includes(q.id);
           const isContextOnly = Boolean(matchedIds && !matchedIds.has(q.id));
@@ -697,11 +866,12 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
               totalQuestions={totalQuestionsInView}
               contextRole={isContextOnly ? "context_only" : "matched"}
               question={
-                exam.enrichmentStatus === "reviewed"
+                contentReady
                   ? q
                   : {
                       ...q,
                       translationVi: undefined,
+                      stemTranslationVi: undefined,
                       explanation:
                         q.explanationStatus === "authored"
                           ? q.explanation
@@ -740,6 +910,20 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
               onSelectOption={(opt) =>
                 selectOption(q.id, opt, unit.questions.length === 1)
               }
+              mondaiType={unit.mondai.type}
+              enrichmentStatus={exam.enrichmentStatus}
+              strict={strictRunning}
+              pendingOption={
+                pending && pending.questionId === q.id ? pending.option : null
+              }
+              onUndoPending={undoPending}
+              passage={passage}
+              onShowInPassage={
+                passage && (q.blankIds?.[0] || q.blankLabel)
+                  ? () =>
+                      focusBlank(passage.id, q.blankIds?.[0] || q.blankLabel!)
+                  : undefined
+              }
               onAssist={() => {
                 if (!reading && active?.status === "in_progress") {
                   recordAssistForQuestions(active.id, unitQuestionIds);
@@ -758,15 +942,14 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                 active?.mode === "drill" &&
                 unit.questions.length === 1 &&
                 active.position < groups.length - 1
-                  ? () => {
-                      update((a) => ({ ...a, position: a.position + 1 }));
-                      window.scrollTo({ top: 0 });
-                    }
+                  ? () => goToUnit(active.position + 1)
                   : undefined
               }
             />
           );
         })}
+        </div>
+        </div>
       </section>
     );
   };
@@ -826,6 +1009,59 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
     ? displayedQuestions.some((q) => q.id === hashQuestionId)
     : false;
 
+  // JL-15: "Xem câu sai" mở bộ lọc Sai và chỉ mở lời giải của các câu sai
+  const openWrongReview = () => {
+    setFilter("wrong");
+    setReviewing(true);
+    setExpanded(
+      exam.mondais.flatMap((m) =>
+        m.questions
+          .filter(
+            (q) => !!active?.answers[q.id] && active.answers[q.id] !== q.answer,
+          )
+          .map((q) => q.id),
+      ),
+    );
+  };
+
+  /** Điền màn thiết lập theo cấu hình đã lưu của lượt (JL-09) */
+  const applyRoundConfig = (config: AttemptRoundConfig) => {
+    selectMondaiGroup([...config.mondais]);
+    setAllocationMode(config.allocationMode);
+    setRoundSize(String(config.totalCount));
+    setPerMondaiCount(config.perMondaiCount);
+    setDayFilter(config.dayFilter);
+    setShowDayPicker(config.dayFilter !== "all");
+    if (config.dayFilter !== "all" || config.allocationMode !== "standard")
+      setAdvancedOpen(true);
+  };
+  const openSetupFromConfig = () => {
+    if (active?.config) applyRoundConfig(active.config);
+    setConfiguring(true);
+    navigate(`/exams/jlpt/${exam.id}/drill`);
+  };
+  /** "Trộn lượt mới cùng cấu hình": bốc lại câu theo attempt.config; phiên cũ không có config thì mở thiết lập */
+  const reshuffleSameConfig = async () => {
+    const config = active?.config;
+    const source = catalogExam || exam;
+    if (!config || !source.isPracticePool) {
+      openSetupFromConfig();
+      return;
+    }
+    const plan = planPracticeRound(source, { mode: "drill", ...config });
+    if (!plan.canStart) {
+      openSetupFromConfig();
+      return;
+    }
+    await start(
+      "drill",
+      plan.questionIds,
+      `Lượt mới ${plan.actualTotal} câu cùng cấu hình sẽ thay kết quả hiện tại. Tiếp tục?`,
+      undefined,
+      { config },
+    );
+  };
+
   const retry = async (kind: string) => {
     if (!active) return;
     const ids = questions(active)
@@ -843,6 +1079,8 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
       "drill",
       ids,
       `${ids.length} câu cần ôn, ${count} câu thực hành để giữ ngữ cảnh. Lượt mới sẽ thay kết quả hiện tại. Tiếp tục?`,
+      undefined,
+      { retry: true },
     );
   };
 
@@ -862,16 +1100,19 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
   })();
 
   const standardScore =
-    active && submitted && isStandardExamStructure(active)
+    active && submitted && isEstimateEligible(active)
       ? computeStandardJLPTScore(active)
       : null;
 
   const nextEmphasis = Boolean(
     active?.mode === "drill" &&
       current &&
-      current.questions.every((q) => !!active.answers[q.id]),
+      current.questions.every(
+        (q) => !!active.answers[q.id] || pending?.questionId === q.id,
+      ),
   );
   const jumpToQuestion = (unitIdx: number, questionId: string) => {
+    commitPending();
     update((a) => ({ ...a, position: unitIdx }));
     setTimeout(() => {
       document
@@ -891,9 +1132,22 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
               {
                 key: "config",
                 label: "Đổi dạng / số câu",
-                onSelect: () => {
-                  setConfiguring(true);
-                  navigate(`/exams/jlpt/${exam.id}/drill`);
+                onSelect: openSetupFromConfig,
+              },
+            ]
+          : []),
+        ...(strictRunning
+          ? [
+              {
+                key: "strict-off",
+                label: "Tắt thi nghiêm túc",
+                onSelect: async () => {
+                  if (
+                    await ask(
+                      "Tắt thi nghiêm túc? Bạn sẽ dùng được tra từ, dịch và nghe; lượt này không còn ước lượng /60 và không bật lại được.",
+                    )
+                  )
+                    update((a) => ({ ...a, strict: false }));
                 },
               },
             ]
@@ -930,6 +1184,7 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
   return (
     <div className="exam-shell">
       {confirmation}
+      {startMockDialog}
 
       {/* Thanh phiên: chỉ hiện khi trang đang xem không phải chính lượt trong tab (JL-14) */}
       {attempt && !(active && active.id === attempt.id) && (
@@ -1620,103 +1875,71 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
         </div>
       )}
 
-      {result && (
+      {result && active && (
         <section className="exam-card mb-6 space-y-6">
-          <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-100 dark:border-slate-700/70">
-            <div>
-              <span className="exam-eyebrow">
-                {standardScore
-                  ? "Kết quả bài luyện Chữ Hán · Từ vựng · Ngữ pháp (54 câu)"
-                  : "Kết quả lượt ôn tập tùy chỉnh"}
-              </span>
-              <h2 className="text-2xl font-black mt-2 text-slate-900 dark:text-white">
-                Kết quả hiện tại {active?.reason === "timeout" ? "· Hết giờ" : ""}
-              </h2>
-            </div>
+          <div className="space-y-2 pb-4 border-b border-slate-100 dark:border-slate-700/70">
             <div className="flex flex-wrap items-center gap-2">
-              {(active?.assisted.length || 0) > 0 && (
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800 text-xs font-bold text-amber-700 dark:text-amber-300">
-                  Có dùng trợ giúp ({active?.assisted.length} câu)
+              <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+                {describeAttempt(active, now).title}
+              </h2>
+              {active.reason === "timeout" && (
+                <span className="px-2.5 py-1 rounded-xl bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800 text-xs font-bold text-rose-800 dark:text-rose-200">
+                  Hết giờ
                 </span>
               )}
-              {active?.mode === "mock" && (
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-900 text-xs font-bold text-slate-700 dark:text-slate-300">
-                  <Clock size={14} className="text-indigo-500" />
-                  <span>
-                    Thời gian:{" "}
-                    {Math.floor(
-                      ((active.endedAt || now) - active.createdAt) / 60000,
-                    )}{" "}
-                    phút
+              {active.mode === "mock" &&
+                active.strict === true &&
+                active.assisted.length === 0 && (
+                  <span className="px-2.5 py-1 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-xs font-bold text-indigo-800 dark:text-indigo-200">
+                    Thi nghiêm túc
                   </span>
+                )}
+              {active.assisted.length > 0 && (
+                <span className="px-2.5 py-1 rounded-xl bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800 text-xs font-bold text-amber-800 dark:text-amber-300">
+                  Có dùng trợ giúp ({active.assisted.length} câu)
                 </span>
               )}
             </div>
+            <p className="text-2xl sm:text-3xl font-black text-indigo-700 dark:text-indigo-300">
+              {result.correct}/{result.total} câu đúng · {result.percent}%
+            </p>
           </div>
 
-          {/* 4 Core Stat Cards (Primary Result Metrics) */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {[
-              ["Đúng", result.correct, "text-emerald-600 dark:text-emerald-400"],
-              ["Sai", result.wrong, "text-rose-600 dark:text-rose-400"],
-              ["Bỏ trống", result.blank, "text-amber-600 dark:text-amber-400"],
+          {/* Ô số liệu: Đúng, Sai, Bỏ trống (+ Thời gian làm với bài có giờ) */}
+          <div
+            className={`grid grid-cols-2 gap-3 ${active.mode === "mock" ? "sm:grid-cols-4" : "sm:grid-cols-3"}`}
+          >
+            {(
               [
-                "Tỷ lệ",
-                `${result.percent}%`,
-                "text-indigo-600 dark:text-indigo-400",
-              ],
-            ].map(([label, v, color]) => (
+                ["Đúng", String(result.correct), "text-emerald-700 dark:text-emerald-400"],
+                ["Sai", String(result.wrong), "text-rose-700 dark:text-rose-400"],
+                ["Bỏ trống", String(result.blank), "text-amber-700 dark:text-amber-400"],
+                ...(active.mode === "mock"
+                  ? [
+                      [
+                        "Thời gian làm",
+                        formatAttemptDuration(active, now),
+                        "text-slate-800 dark:text-slate-100",
+                      ],
+                    ]
+                  : []),
+              ] as [string, string, string][]
+            ).map(([label, v, color]) => (
               <div
                 key={label}
                 className="p-4 bg-slate-50 dark:bg-slate-900/60 border border-slate-200/70 dark:border-slate-700/60 rounded-2xl"
               >
-                <p className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                <p className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">
                   {label}
                 </p>
-                <strong className={`text-2xl sm:text-3xl font-black ${color}`}>
+                <strong
+                  className={`font-black ${color} ${label === "Thời gian làm" ? "text-lg sm:text-xl" : "text-2xl sm:text-3xl"}`}
+                >
                   {v}
                 </strong>
               </div>
             ))}
           </div>
-
-          {/* Internal Reference Scaled Score Panel when full 54-question structure */}
-          {standardScore ? (
-            <div className="p-4 sm:p-5 rounded-2xl border border-indigo-200 dark:border-indigo-800/60 bg-indigo-50/40 dark:bg-indigo-950/30 space-y-2">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <div className="flex items-center gap-2">
-                  <Award size={18} className="text-indigo-600 shrink-0" />
-                  <span className="text-xs sm:text-sm font-black text-slate-900 dark:text-white">
-                    Điểm quy đổi tham khảo nội bộ (Chữ Hán · Từ vựng · Ngữ pháp):{" "}
-                    <strong className="text-indigo-600 dark:text-indigo-400 text-base sm:text-lg">
-                      {standardScore.scaledScore}/60
-                    </strong>
-                  </span>
-                </div>
-                <span className="text-xs font-bold text-slate-600 dark:text-slate-300">
-                  Từ vựng (M1–6): {standardScore.vocabCorrect}/
-                  {standardScore.vocabTotal} · Ngữ pháp (M7–9):{" "}
-                  {standardScore.grammarCorrect}/{standardScore.grammarTotal}
-                </span>
-              </div>
-              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                Đây là điểm luyện tập quy đổi tuyến tính nội bộ (Mondai 9 nhân
-                trọng số 2) để theo dõi mức độ nắm vững kiến thức ngôn ngữ; kỳ
-                thi JLPT chính thức chấm điểm chuẩn hóa theo mô hình thống kê và
-                gộp chung phần Đọc hiểu trong 105 phút.
-              </p>
-            </div>
-          ) : (
-            <div className="p-4 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200/70 dark:border-emerald-800/50 text-xs sm:text-sm text-emerald-800 dark:text-emerald-200 font-medium">
-              ⚡ Lượt ôn tập tự do ({result.total} câu) · Đánh giá trực tiếp theo
-              số câu Đúng / Sai và tỷ lệ từng dạng bài bên dưới.
-            </div>
-          )}
-
-          <p className="text-xs text-slate-500 dark:text-slate-400">
-            {active?.assisted.length || 0} câu đã dùng trợ giúp trước khi chốt đáp
-            án. Kết quả chỉ giữ trong tab, không ghi vào tài khoản.
-          </p>
 
           {/* Per-Mondai Accuracy Progress Bars */}
           <div className="space-y-2.5">
@@ -1765,10 +1988,65 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
             </div>
           </div>
 
-          {/* Action Buttons */}
+          {/* Ước lượng /60 chỉ khi đủ điều kiện (mục 9.2) */}
+          {standardScore ? (
+            <div className="p-4 sm:p-5 rounded-2xl border border-indigo-200 dark:border-indigo-800/60 bg-indigo-50/40 dark:bg-indigo-950/30 space-y-1.5">
+              <p className="flex items-center gap-2 text-sm sm:text-base font-black text-slate-900 dark:text-white">
+                <Award size={18} className="text-indigo-600 shrink-0" />
+                Ước lượng nội bộ: {standardScore.scaledScore}/60
+              </p>
+              <p className="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300">
+                Từ vựng (Mondai 1–6): {standardScore.vocabCorrect}/{standardScore.vocabTotal} · Ngữ
+                pháp (Mondai 7–9): {standardScore.grammarCorrect}/{standardScore.grammarTotal}
+              </p>
+              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                Quy đổi tuyến tính từ số câu đúng, Mondai 9 tính hệ số 2. Kỳ thi thật quy đổi
+                điểm theo IRT và chấm chung với phần Đọc hiểu, nên không dùng số này để đoán đậu
+                hay trượt.
+              </p>
+            </div>
+          ) : (
+            isStandardExamStructure(active) && (
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+                Không có ước lượng /60 vì lượt này dùng trợ giúp hoặc không thi nghiêm túc.
+              </p>
+            )
+          )}
+
+          <div className="space-y-1 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+            <p>{active.assisted.length} câu đã dùng trợ giúp trước khi chốt đáp án.</p>
+            {historySave.state.status === "guest" && (
+              <p>Kết quả chỉ giữ trong tab. Đăng nhập để lưu tiến bộ.</p>
+            )}
+            {historySave.state.status === "saving" && <p role="status">Đang lưu…</p>}
+            {historySave.state.status === "saved" && (
+              <p role="status" className="text-emerald-800 dark:text-emerald-300 font-semibold">
+                Đã lưu vào tài khoản
+                {historySave.state.previous &&
+                  ` · Lượt trước: ${historySave.state.previous.correct}/${historySave.state.previous.total} → lượt này: ${result.correct}/${result.total}`}
+              </p>
+            )}
+            {historySave.state.status === "error" && (
+              <p role="status" className="text-rose-700 dark:text-rose-300 font-semibold">
+                Chưa lưu được ·{" "}
+                <button type="button" className="underline underline-offset-2" onClick={historySave.retry}>
+                  Thử lại
+                </button>
+              </p>
+            )}
+          </div>
+
+          <ReviewWords attempt={active} onOpenLookup={(w) => openLookupModal(w, [])} />
+
+          {/* Nút: nút chính là "Xem câu sai" khi có câu sai, nếu không thì "Xem lại bài" (mục 9.1) */}
           <div className="flex flex-wrap gap-2.5 pt-2 border-t border-slate-100 dark:border-slate-700/70">
+            {result.wrong > 0 && (
+              <button className="exam-primary" onClick={openWrongReview}>
+                Xem câu sai
+              </button>
+            )}
             <button
-              className="exam-primary"
+              className={result.wrong > 0 ? "exam-secondary" : "exam-primary"}
               onClick={() => {
                 // JL-15: chỉ mở danh sách, không tự mở lời giải nào
                 const next = !reviewing;
@@ -1778,27 +2056,6 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
             >
               <Eye size={15} />
               <span>{reviewing ? "Thu gọn bài" : "Xem lại bài"}</span>
-            </button>
-            <button
-              className="exam-secondary"
-              onClick={() => {
-                // JL-15: chỉ mở lời giải của đúng các câu sai
-                setFilter("wrong");
-                setReviewing(true);
-                setExpanded(
-                  exam.mondais.flatMap((m) =>
-                    m.questions
-                      .filter(
-                        (q) =>
-                          !!active?.answers[q.id] &&
-                          active.answers[q.id] !== q.answer,
-                      )
-                      .map((q) => q.id),
-                  ),
-                );
-              }}
-            >
-              Xem câu sai
             </button>
             <button
               className="exam-secondary"
@@ -1816,26 +2073,31 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
             </button>
             <button
               className="exam-secondary"
-              disabled={!active?.flags.length}
+              disabled={!active.flags.length}
               onClick={() => retry("flags")}
             >
               Luyện câu chưa chắc
             </button>
-            <button
-              className="exam-secondary"
-              onClick={() => start(active!.mode)}
-            >
-              <RotateCcw size={14} />
-              <span>
-                {exam.isPracticePool
-                  ? active?.mode === "mock"
-                    ? "Thi đề ngẫu nhiên mới (54 câu)"
-                    : "Trộn lượt mới"
-                  : "Làm lại toàn bài"}
-              </span>
-            </button>
+            {exam.isPracticePool && active.mode === "drill" ? (
+              <>
+                <button className="exam-secondary" onClick={() => void reshuffleSameConfig()}>
+                  <RotateCcw size={14} />
+                  <span>Trộn lượt mới cùng cấu hình</span>
+                </button>
+                <button className="exam-secondary" onClick={openSetupFromConfig}>
+                  Đổi cấu hình
+                </button>
+              </>
+            ) : (
+              <button className="exam-secondary" onClick={() => start(active.mode)}>
+                <RotateCcw size={14} />
+                <span>
+                  {exam.isPracticePool ? "Thi đề trộn mới (54 câu)" : "Làm lại toàn bài"}
+                </span>
+              </button>
+            )}
             <Link className="exam-secondary" to="/exams/jlpt">
-              Về trang Kho JLPT
+              Về kho JLPT
             </Link>
           </div>
         </section>
@@ -2222,7 +2484,7 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
       />
       <SelectionLookup
         key={`${examId}:${mode}:${active?.position}:${active?.status}`}
-        enabled={lookupEnabled}
+        enabled={lookupEnabled && !strictRunning}
         onLookup={(text) => {
           openLookupModal(text);
         }}

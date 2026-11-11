@@ -20,7 +20,7 @@ import {
   getJLPTBooksByLevel,
   type JLPTLevel,
 } from "../../data/exams/jlpt";
-import { createAttempt } from "../../lib/jlpt/examCore";
+import { createAttempt, type Attempt } from "../../lib/jlpt/examCore";
 import {
   getSession,
   refreshSession,
@@ -31,6 +31,7 @@ import { matchExamQuery } from "../../lib/jlpt/examSearch";
 import BottomSheet from "./workspace/BottomSheet";
 import { describeAttempt } from "../../lib/jlpt/attemptLabels";
 import { useConfirmation } from "./components/useConfirmation";
+import { useStartMockDialog } from "./components/useStartMockDialog";
 import {
   canCreateStandardMock,
   planPracticeRound,
@@ -40,9 +41,23 @@ import {
 
 type UpcomingSkillModal = "dokkai" | "choukai" | null;
 
+/** Nút tiếp tục phiên trong tab (JL-21): "Làm tiếp · còn 32:15", "Làm tiếp" hoặc "Xem kết quả" */
+function resumeLabel(a: Attempt, now: number): string {
+  if (a.status === "submitted") return "Xem kết quả";
+  if (a.mode === "mock" && a.deadlineAt) {
+    const left = Math.max(0, Math.ceil((a.deadlineAt - now) / 1000));
+    return `Làm tiếp · còn ${Math.floor(left / 60)}:${String(left % 60).padStart(2, "0")}`;
+  }
+  return "Làm tiếp";
+}
+function resumeHref(a: Attempt): string {
+  return `/exams/jlpt/${a.exam.id}/${a.status === "submitted" ? "result" : a.mode}`;
+}
+
 export default function JLPTExamHub() {
   const navigate = useNavigate();
   const { ask, confirmation } = useConfirmation();
+  const { askStartMock, startMockDialog } = useStartMockDialog();
   const [params, setParams] = useSearchParams();
   const { attempt, notice, noticeKind } = useTabSession();
   const [sheetExamId, setSheetExamId] = useState<string | null>(null);
@@ -111,6 +126,11 @@ export default function JLPTExamHub() {
       null
     : null;
   const isInvalidBookId = Boolean(selectedBookId) && !openedBook;
+  // Phiên từ ngân hàng của sách đang hiện (JL-21)
+  const poolMockAttempt =
+    attempt?.exam.isPracticePool && attempt.mode === "mock" ? attempt : null;
+  const poolDrillAttempt =
+    attempt?.exam.isPracticePool && attempt.mode === "drill" ? attempt : null;
   const sheetExam = sheetExamId
     ? openedBook?.exams.find((e) => e.id === sheetExamId)
     : undefined;
@@ -147,20 +167,23 @@ export default function JLPTExamHub() {
         return;
       }
       refreshSession();
-      if (
-        getSession() &&
-        !(await ask(
-          "Bắt đầu đề thi mới sẽ thay bài làm hoặc kết quả hiện tại trong tab này. Tiếp tục?",
-        ))
-      ) {
-        return;
-      }
+      // Hộp xác nhận chung của bài có giờ (JL-22), mặc định thi nghiêm túc (JL-05)
+      const res = await askStartMock({
+        questionCount: plan.actualTotal || source.totalQuestions,
+        minutes: source.timeLimitMinutes || 50,
+        replacing: !!getSession(),
+      });
+      if (!res) return;
       const picked = source.isPracticePool ? plan.questionIds : undefined;
       const snapshot =
         source.isPracticePool && picked
           ? practiceSnapshot(source, picked)
           : source;
-      setSession(createAttempt(snapshot, "mock", picked));
+      setSession({
+        ...createAttempt(snapshot, "mock", picked),
+        strict: res.strict,
+        retry: false,
+      });
       navigate(`/exams/jlpt/${targetExamId}/mock`);
     } finally {
       startingMockRef.current = false;
@@ -170,6 +193,7 @@ export default function JLPTExamHub() {
   return (
     <div className="exam-shell space-y-6">
       {confirmation}
+      {startMockDialog}
 
       {/* Active Session Resume Banner — Placed at the very top for instant resume */}
       {attempt && (
@@ -195,7 +219,7 @@ export default function JLPTExamHub() {
               className="exam-primary flex-1 sm:flex-initial min-h-11"
               to={`/exams/jlpt/${attempt.exam.id}/${attempt.status === "submitted" ? "result" : attempt.mode}`}
             >
-              {attempt.status === "submitted" ? "Xem kết quả" : "Làm tiếp"}
+              {resumeLabel(attempt, now)}
             </Link>
             <button
               type="button"
@@ -435,15 +459,22 @@ export default function JLPTExamHub() {
                       ? "Vào thẳng bài làm · Không qua trang chờ"
                       : "Nguồn hiện tại chưa đủ câu để tạo bài 54 câu."}
                   </span>
-                  <button
-                    type="button"
-                    disabled={!canStartPrimaryMock}
-                    onClick={() => startDirectMock(primaryPoolId)}
-                    className="exam-primary cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    <Trophy size={15} />
-                    <span>Vào làm ngay (54 câu)</span>
-                  </button>
+                  <div className="flex flex-wrap gap-2">
+                    {poolMockAttempt && (
+                      <Link className="exam-primary" to={resumeHref(poolMockAttempt)}>
+                        {resumeLabel(poolMockAttempt, now)}
+                      </Link>
+                    )}
+                    <button
+                      type="button"
+                      disabled={!canStartPrimaryMock}
+                      onClick={() => startDirectMock(primaryPoolId)}
+                      className={`${poolMockAttempt ? "exam-secondary" : "exam-primary"} cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed`}
+                    >
+                      <Trophy size={15} />
+                      <span>{poolMockAttempt ? "Đề mới (54 câu)" : "Vào làm ngay (54 câu)"}</span>
+                    </button>
+                  </div>
                 </div>
               </div>
 
@@ -472,13 +503,27 @@ export default function JLPTExamHub() {
                   <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
                     Hỗ trợ lọc theo từng dạng bài
                   </span>
-                  <Link
-                    className="exam-primary !from-emerald-700 !to-teal-700 hover:!from-emerald-800 hover:!to-teal-800"
-                    to={`/exams/jlpt/${primaryPoolId}/drill`}
-                  >
-                    <Zap size={15} />
-                    <span>Luyện theo dạng →</span>
-                  </Link>
+                  <div className="flex flex-wrap gap-2">
+                    {poolDrillAttempt && (
+                      <Link
+                        className="exam-primary !from-emerald-700 !to-teal-700 hover:!from-emerald-800 hover:!to-teal-800"
+                        to={resumeHref(poolDrillAttempt)}
+                      >
+                        {resumeLabel(poolDrillAttempt, now)}
+                      </Link>
+                    )}
+                    <Link
+                      className={
+                        poolDrillAttempt
+                          ? "exam-secondary"
+                          : "exam-primary !from-emerald-700 !to-teal-700 hover:!from-emerald-800 hover:!to-teal-800"
+                      }
+                      to={`/exams/jlpt/${primaryPoolId}/drill`}
+                    >
+                      <Zap size={15} />
+                      <span>{poolDrillAttempt ? "Lượt mới" : "Luyện theo dạng →"}</span>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -618,11 +663,15 @@ export default function JLPTExamHub() {
                       className="exam-primary"
                       to={`/exams/jlpt/${attempt.exam.id}/${attempt.status === "submitted" ? "result" : attempt.mode}`}
                     >
-                      {attempt.status === "submitted" ? "Xem kết quả" : "Làm tiếp"}
+                      {resumeLabel(attempt, now)}
                     </Link>
                   )}
                   <Link
-                    className="exam-primary !from-emerald-700 !to-teal-700"
+                    className={
+                      attempt?.exam.id === sheetExam.id
+                        ? "exam-secondary"
+                        : "exam-primary !from-emerald-700 !to-teal-700"
+                    }
                     to={`/exams/jlpt/${poolId(openedBook.id, openedBook.level)}/drill${sheetExam.day ? `?day=${sheetExam.day}` : ""}`}
                   >
                     Luyện theo dạng
@@ -697,8 +746,16 @@ export default function JLPTExamHub() {
                     </div>
 
                     <div className="flex flex-wrap gap-2 pt-3 border-t border-slate-100 dark:border-slate-700/70">
+                      {isInTab && attempt && (
+                        <Link
+                          className="exam-primary !py-1.5 !px-3 !min-h-9 text-xs w-full"
+                          to={resumeHref(attempt)}
+                        >
+                          {resumeLabel(attempt, now)}
+                        </Link>
+                      )}
                       <Link
-                        className="exam-primary !from-emerald-700 !to-teal-700 hover:!from-emerald-800 hover:!to-teal-800 !py-1.5 !px-3 !min-h-9 text-xs flex-1"
+                        className={`${isInTab ? "exam-secondary" : "exam-primary !from-emerald-700 !to-teal-700 hover:!from-emerald-800 hover:!to-teal-800"} !py-1.5 !px-3 !min-h-9 text-xs flex-1`}
                         to={`/exams/jlpt/${bookPoolId}/drill${e.day ? `?day=${e.day}` : ""}`}
                       >
                         <Zap size={13} />
@@ -713,7 +770,7 @@ export default function JLPTExamHub() {
                             : "Nguồn hiện tại chưa đủ câu để tạo bài 54 câu."
                         }
                         onClick={() => startDirectMock(e.id)}
-                        className="exam-primary !py-1.5 !px-3 !min-h-9 text-xs flex-1 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                        className={`${isInTab ? "exam-secondary" : "exam-primary"} !py-1.5 !px-3 !min-h-9 text-xs flex-1 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed`}
                       >
                         <Clock size={13} />
                         <span>Làm bài có giờ</span>

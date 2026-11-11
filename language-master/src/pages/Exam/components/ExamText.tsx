@@ -1,5 +1,18 @@
 import { parseExamText } from "../../../lib/jlpt/examText";
-export default function ExamText({ text }: { text: string }) {
+type BlankLinks = {
+  idPrefix: string;
+  answered?: (blankId: string) => boolean;
+  onClick?: (blankId: string) => void;
+};
+
+/** blanks: (Mondai 9) mỗi ô trống thành nút có id, bấm để tới thẻ câu (JL-13). */
+export default function ExamText({
+  text,
+  blanks,
+}: {
+  text: string;
+  blanks?: BlankLinks;
+}) {
   return (
     <span className="whitespace-pre-wrap break-words">
       {parseExamText(text).map((t, i) => {
@@ -11,6 +24,22 @@ export default function ExamText({ text }: { text: string }) {
             >
               <ExamText text={t.text} />
             </u>
+          );
+        if (t.kind === "blank" && blanks)
+          return (
+            <button
+              key={i}
+              type="button"
+              id={`${blanks.idPrefix}${t.text}`}
+              onClick={() => blanks.onClick?.(t.text)}
+              aria-label={`Ô trống ${t.text}${blanks.answered?.(t.text) ? ", đã chọn" : ""}, tới câu hỏi`}
+              className="inline-flex items-center gap-1 mx-1 px-2.5 py-0.5 border-2 border-indigo-400 dark:border-indigo-500 bg-indigo-50/70 dark:bg-indigo-950/60 rounded-lg font-bold text-base text-indigo-800 dark:text-indigo-200 hover:bg-indigo-100 dark:hover:bg-indigo-900 scroll-mt-28"
+            >
+              {t.text}
+              {blanks.answered?.(t.text) && (
+                <span aria-hidden="true" className="text-emerald-700 dark:text-emerald-400">✓</span>
+              )}
+            </button>
           );
         if (t.kind === "blank")
           return (

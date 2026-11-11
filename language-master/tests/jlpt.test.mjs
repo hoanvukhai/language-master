@@ -496,3 +496,151 @@ test("13.1: committed lexicon covers the analyzer queries of every question", ()
   const ids = new Set(lex.entries.map((x) => x.id));
   for (const list of Object.values(lex.queries)) for (const id of list) assert.ok(ids.has(id), id);
 });
+
+// ── Đợt 3: Mondai 9, câu hoàn chỉnh, ước lượng, lịch sử, nội dung ─────────
+import {
+  extractBlankSentence,
+  buildCompletedSentence,
+} from "../src/lib/jlpt/examText.ts";
+import {
+  attemptDurationMs,
+  formatAttemptDuration,
+} from "../src/lib/jlpt/attemptLabels.ts";
+import { isEstimateEligible } from "../src/lib/jlpt/practicePool.ts";
+import {
+  buildAttemptSummary,
+  sameAttemptKind,
+  accuracyByMondai,
+} from "../src/lib/jlpt/historySummary.ts";
+import { checkPatch, applyPatch } from "../scripts/jlpt/apply-enrichment.mjs";
+
+test("JL-13: extractBlankSentence keeps the sentence with the blank and drops (注n)", () => {
+  assert.equal(
+    extractBlankSentence(
+      "前の文。これが堅守のイタリア[[50]]だと、通は1－0を尊ぶという（注1）。次の文。",
+      "50",
+    ),
+    "これが堅守のイタリア[[50]]だと、通は1－0を尊ぶという。",
+  );
+  assert.equal(extractBlankSentence("ô trống không có", "50"), null);
+});
+
+test("JL-13: every Mondai 9 question in the corpus resolves to a completed sentence", () => {
+  for (const e of corpus) {
+    const m = e.mondais.find((x) => x.type === "text_grammar");
+    for (const q of m.questions) {
+      const p = m.passages.find((x) => x.id === q.passageId) || m.passages[0];
+      const s = buildCompletedSentence(q, "text_grammar", p.text);
+      assert.ok(s && !s.includes("[["), `${q.id}: ${s}`);
+      const first = examPlainText(q.options[q.answer - 1]).split(/[／/]/)[0].replace(/^[a-z]\s*/, "").trim();
+      assert.ok(s.includes(first), `${q.id}: ${first}`);
+    }
+  }
+});
+
+test("JL-30: Mondai 6 completed sentence depends on mondaiType, not question number", () => {
+  const q = { stem: "器用", options: ["a", "手先が器用な人", "c", "d"], answer: 2 };
+  assert.equal(buildCompletedSentence(q, "usage"), "手先が器用な人");
+  assert.equal(buildCompletedSentence({ ...q, number: 1 }, "usage"), "手先が器用な人");
+  assert.equal(buildCompletedSentence(q, "kanji_reading"), "器用");
+});
+
+test("8.5: duration uses min(endedAt, deadlineAt) and marks timeout", () => {
+  const a = createAttempt(exam, "mock", undefined, now);
+  const done = { ...a, status: "submitted", endedAt: a.deadlineAt + 5000, reason: "timeout" };
+  assert.equal(attemptDurationMs(done), a.deadlineAt - a.createdAt);
+  assert.equal(formatAttemptDuration(done), `${exam.timeLimitMinutes || 50}:00 (hết giờ)`.replace(/^(\d):/, "0$1:"));
+  const early = { ...a, status: "submitted", endedAt: a.createdAt + 65000, reason: "manual" };
+  assert.equal(formatAttemptDuration(early), "01:05");
+});
+
+test("9.2: /60 estimate only for strict, unassisted, standard mock", () => {
+  const a = { ...createAttempt(exam, "mock", undefined, now), strict: true };
+  assert.equal(isEstimateEligible(a), true);
+  assert.equal(isEstimateEligible({ ...a, strict: false }), false);
+  assert.equal(isEstimateEligible({ ...a, strict: undefined }), false);
+  assert.equal(isEstimateEligible({ ...a, assisted: [a.questionIds[0]] }), false);
+  assert.equal(isEstimateEligible({ ...createAttempt(exam, "drill", undefined, now), strict: true }), false);
+  const part = { ...createAttempt(exam, "mock", a.questionIds.slice(0, 10), now), strict: true };
+  assert.equal(isEstimateEligible(part), false);
+});
+
+test("10.2: buildAttemptSummary keeps totals, wrong ids and no answers", () => {
+  let a = { ...createAttempt(exam, "mock", undefined, now), strict: true };
+  const qs = exam.mondais.flatMap((m) => m.questions);
+  a = answer(a, qs[0].id, qs[0].answer, now + 1000);
+  a = answer(a, qs[1].id, (qs[1].answer % 4) + 1, now + 2000);
+  a = finish(a, now + 60000);
+  const s = buildAttemptSummary(a);
+  assert.equal(s.v, 1);
+  assert.equal(s.total, 54);
+  assert.equal(s.correct, 1);
+  assert.equal(s.wrong, 1);
+  assert.equal(s.blank, 52);
+  assert.equal(s.wrongIds.length, 53);
+  assert.ok(!s.wrongIds.includes(qs[0].id));
+  assert.equal(s.byMondai["1"].total, 5);
+  assert.equal(s.byMondai["1"].correct, 1);
+  assert.equal(s.durationSec, 60);
+  assert.equal(typeof s.estimate60, "number");
+  assert.equal("answers" in s, false);
+  assert.equal(sameAttemptKind(s, { ...s }), true);
+  assert.equal(sameAttemptKind(s, { ...s, mode: "drill" }), false);
+  assert.deepEqual(accuracyByMondai([s, s])[0], { mondai: 1, correct: 2, total: 10, percent: 20 });
+});
+
+test("14.4: checkPatch rejects incomplete patches and applyPatch keeps answers", () => {
+  const raw = JSON.parse(fs.readFileSync(new URL("../imports/jlpt/kokusho-20days/enrichment/day01.json", import.meta.url), "utf8"));
+  const before = JSON.parse(fs.readFileSync(new URL("../src/data/exams/jlpt/n2/kokusho-20days/day01.json", import.meta.url), "utf8"));
+  assert.deepEqual(checkPatch(before, raw), []);
+  const broken = structuredClone(raw);
+  const firstId = Object.keys(broken.questions)[0];
+  broken.questions[firstId].optionNotes = ["a", "b"];
+  delete broken.questions[firstId].targetWord;
+  const errs = checkPatch(before, broken);
+  assert.ok(errs.some((e) => e.includes("optionNotes")));
+  assert.ok(errs.some((e) => e.includes("targetWord")));
+  const out = applyPatch(before, raw);
+  for (let i = 0; i < before.mondais.length; i++)
+    for (let j = 0; j < before.mondais[i].questions.length; j++) {
+      const a = before.mondais[i].questions[j];
+      const b = out.mondais[i].questions[j];
+      assert.equal(b.id, a.id);
+      assert.equal(b.answer, a.answer);
+      assert.deepEqual(b.options, a.options);
+    }
+  assert.equal(out.contentRevision, 5);
+});
+
+const KANA = /^[぀-ゟ゠-ヿー・〜～\s]+$/;
+const STEM_TYPES = new Set(["word_formation", "context", "grammar_form", "text_grammar"]);
+for (const e of corpus.filter((x) => x.enrichmentStatus === "ai" || x.enrichmentStatus === "reviewed")) {
+  test(`14.5: day ${e.day} content is complete`, () => {
+    assert.equal(e.contentRevision, 5);
+    for (const m of e.mondais) {
+      for (const p of m.passages || []) assert.ok(p.translationVi?.trim(), p.id);
+      for (const q of m.questions) {
+        assert.ok(q.translationVi?.trim(), `${q.id} translationVi`);
+        const notes = q.explanation?.optionNotes;
+        assert.ok(Array.isArray(notes) && notes.length === 4 && notes.every((n) => n.trim()), `${q.id} optionNotes`);
+        if (STEM_TYPES.has(m.type)) assert.ok(q.stemTranslationVi?.includes("…"), `${q.id} stemTranslationVi`);
+        if (m.number <= 6) {
+          const t = q.targetWord;
+          assert.ok(t?.term && t.meaningVi && KANA.test(t.reading || ""), `${q.id} targetWord`);
+        }
+      }
+    }
+  });
+}
+
+test("8.4: attempt kind uses the retry flag, not picked question ids", () => {
+  const qs = exam.mondais.flatMap((m) => m.questions);
+  const all = qs.map((q) => q.id);
+  // Lượt luyện cả ngày có danh sách câu nhưng không phải luyện lại
+  assert.equal(describeAttempt({ ...createAttempt(exam, "drill", all, now), retry: false }, now).title.startsWith("Luyện lại"), false);
+  const r = { ...createAttempt(exam, "drill", all.slice(0, 6), now), retry: true };
+  assert.equal(describeAttempt(r, now).title, "Luyện lại · 6 câu");
+  // Phiên cũ không có cờ: 54 câu của cả ngày không bị coi là luyện lại
+  assert.equal(describeAttempt(createAttempt(exam, "mock", all, now), now).title, "第1日 (Day 1) · Bài có giờ");
+  assert.equal(describeAttempt(createAttempt(exam, "drill", all.slice(0, 6), now), now).title, "Luyện lại · 6 câu");
+});

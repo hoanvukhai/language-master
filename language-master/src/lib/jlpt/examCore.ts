@@ -7,6 +7,8 @@ export const SESSION_KEY = "language-master:jlpt:v1:session";
 /** Phiên v2 (JL-20): bản chụp đề ghi một lần, trạng thái ghi mỗi lần thay đổi */
 export const SESSION_CONTENT_KEY = "language-master:jlpt:v2:content";
 export const SESSION_STATE_KEY = "language-master:jlpt:v2:state";
+/** Thời gian chờ trước khi chốt một câu đơn trong lượt luyện, có thể Hoàn tác (mục 7.1) */
+export const DRILL_COMMIT_DELAY_MS = 1500;
 export const TTL = 86400000;
 export type Unit = {
   id: string;
@@ -32,6 +34,8 @@ export type Attempt = {
   reason?: "manual" | "timeout";
   /** Bài có giờ ở chế độ thi nghiêm túc: tắt mọi trợ giúp khi đang làm */
   strict?: boolean;
+  /** Lượt luyện lại câu sai / bỏ trống / chưa chắc (tạo từ màn kết quả) */
+  retry?: boolean;
   /** Cấu hình lượt luyện từ ngân hàng, để "Trộn lượt mới" giữ cấu hình (JL-09) */
   config?: AttemptRoundConfig;
 };
@@ -306,6 +310,8 @@ export function decodeSession(raw: string, now = Date.now()): Attempt | null {
     throw new Error("Hạn luyện sai");
   if (a.strict !== undefined && (typeof a.strict !== "boolean" || a.mode !== "mock"))
     throw new Error("Cờ thi nghiêm túc sai");
+  if (a.retry !== undefined && typeof a.retry !== "boolean")
+    throw new Error("Cờ luyện lại sai");
   if (a.config !== undefined) {
     const c = a.config;
     if (

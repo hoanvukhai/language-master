@@ -12,18 +12,45 @@ import {
   XCircle,
 } from "lucide-react";
 import type {
+  JLPTExam,
+  JLPTPassage,
   JLPTQuestion,
   ExamPracticeMode,
 } from "../../../data/exams/jlpt/types";
+import TargetWordSave from "./TargetWordSave";
 import SourceImage from "./SourceImage";
 import ExamText from "./ExamText";
 import { speakWithVoiceEngine } from "../../../lib/audio/voiceEngine";
 import {
   buildCompletedSentence,
-  buildUnfilledStemForTranslation,
   examPlainText,
-  sentenceTranslationCache,
+  extractBlankSentence,
 } from "../../../lib/jlpt/examText";
+import { DRILL_COMMIT_DELAY_MS } from "../../../lib/jlpt/examCore";
+
+/** Trường dịch dùng TRƯỚC khi trả lời theo dạng Mondai (mục 12.1). null = không có nút. */
+const PRE_ANSWER_TRANSLATION: Record<string, "translationVi" | "stemTranslationVi" | null> = {
+  kanji_reading: "translationVi",
+  kanji_writing: "translationVi",
+  word_formation: "stemTranslationVi",
+  context: "stemTranslationVi",
+  synonym: "translationVi",
+  usage: null,
+  grammar_form: "stemTranslationVi",
+  sentence_order: null,
+  text_grammar: "stemTranslationVi",
+};
+/** Dạng không cho nghe trước khi trả lời (lộ cách đọc hoặc thứ tự) — mục 12.2 */
+const NO_PRE_ANSWER_SPEECH = new Set(["kanji_reading", "sentence_order", "text_grammar"]);
+/** Dạng có từ trọng tâm (Mondai 1–6) */
+const TARGET_WORD_TYPES = new Set([
+  "kanji_reading",
+  "kanji_writing",
+  "word_formation",
+  "context",
+  "synonym",
+  "usage",
+]);
 
 // Phần phân tích từ vựng nặng: tách gói, chỉ tải khi lời giải được mở (JL-04, 9.4)
 const SentenceBreakdownPanel = lazy(() => import("./SentenceBreakdownPanel"));
@@ -48,6 +75,17 @@ type Props = {
   ) => void;
   onNextQuestion?: () => void;
   contextRole?: "matched" | "context_only";
+  /** JLPTMondai.type của đơn vị (JL-30) */
+  mondaiType?: string;
+  enrichmentStatus?: JLPTExam["enrichmentStatus"];
+  /** Thi nghiêm túc đang làm: ẩn Nghe câu, Dịch câu (JL-05) */
+  strict?: boolean;
+  /** Lựa chọn đang chờ chốt trong lượt luyện (mục 7.1) */
+  pendingOption?: number | null;
+  onUndoPending?: () => void;
+  /** Mondai 9: đoạn văn chứa ô trống của câu */
+  passage?: JLPTPassage;
+  onShowInPassage?: () => void;
 };
 
 export default function ExamQuestionCard({
@@ -67,50 +105,55 @@ export default function ExamQuestionCard({
   onAssist,
   onNextQuestion,
   contextRole = "matched",
+  mondaiType,
+  enrichmentStatus,
+  strict = false,
+  pendingOption = null,
+  onUndoPending,
+  passage,
+  onShowInPassage,
 }: Props) {
-  const [preAnswerTranslation, setPreAnswerTranslation] = useState<
-    string | null
-  >(null);
-  const [postAnswerTranslation, setPostAnswerTranslation] = useState<
-    string | null
-  >(() => q.translationVi || null);
-  const [translating, setTranslating] = useState(false);
   const [showInlineTranslation, setShowInlineTranslation] = useState(false);
-  const isMountedRef = useRef(true);
   const onAssistRef = useRef(onAssist);
-  onAssistRef.current = onAssist;
-
   useEffect(() => {
-    isMountedRef.current = true;
-    return () => {
-      isMountedRef.current = false;
-    };
-  }, []);
+    onAssistRef.current = onAssist;
+  }, [onAssist]);
 
   const feedback = Boolean(showFeedback && (mode !== "review" || expanded));
-  const help = true;
+  /** Đã trả lời hoặc đang xem đề: dùng bản dịch câu hoàn chỉnh */
+  const answeredView = feedback || mode === "review";
   const textReady = q.transcriptionStatus === "verified" || !q.sourceImage;
   const isShortOptions = q.options.every((opt) => opt.length <= 22);
-  const qOriginNum = q.origin?.number ?? q.number;
-  const isMondai1KanjiReading = qOriginNum <= 5;
-  const isMondai6Usage = qOriginNum >= 28 && qOriginNum <= 32;
-  const canSpeak =
-    textReady && (feedback || (mode !== "mock" && !isMondai1KanjiReading));
+  const helpBlocked = strict && !feedback;
 
-  // Câu đề gốc chưa điền đáp án (an toàn khi dịch trước lúc trả lời)
-  const unfilledStem = useMemo(() => buildUnfilledStemForTranslation(q), [q]);
-  // Câu hoàn chỉnh sau khi điền đáp án đúng (CHỈ dùng sau khi đã mở đáp án feedback === true)
-  const completedSentence = useMemo(() => buildCompletedSentence(q), [q]);
+  // Mondai 9: câu chứa ô trống tách từ đoạn văn (JL-13)
+  const blankId = q.blankIds?.[0] || q.blankLabel;
+  const blankIdsKey = (q.blankIds?.length ? q.blankIds : blankId ? [blankId] : []).join(",");
+  const blankSentence = useMemo(
+    () =>
+      mondaiType === "text_grammar" && passage && blankIdsKey
+        ? extractBlankSentence(passage.text, blankIdsKey.split(","))
+        : null,
+    [mondaiType, passage, blankIdsKey],
+  );
+  // Câu hoàn chỉnh sau khi điền đáp án đúng (CHỈ dùng khi answeredView)
+  const completedSentence = useMemo(
+    () => buildCompletedSentence(q, mondaiType, passage?.text),
+    [q, mondaiType, passage?.text],
+  );
 
-  const displayedTranslation = feedback
-    ? q.translationVi ||
-      postAnswerTranslation ||
-      (completedSentence
-        ? sentenceTranslationCache.get(completedSentence) || null
-        : null) ||
-      preAnswerTranslation
-    : preAnswerTranslation ||
-      (unfilledStem ? sentenceTranslationCache.get(unfilledStem) || null : null);
+  // Bản dịch soạn sẵn theo dạng (mục 12.1); chỉ dùng khi nội dung đã ở trạng thái ai/reviewed
+  const translationsReady =
+    enrichmentStatus === "ai" || enrichmentStatus === "reviewed";
+  const preField = mondaiType ? PRE_ANSWER_TRANSLATION[mondaiType] : undefined;
+  const preTranslation = preField ? q[preField]?.trim() || null : null;
+  const postTranslation = q.translationVi?.trim() || null;
+  const displayedTranslation = translationsReady
+    ? answeredView
+      ? postTranslation
+      : preTranslation
+    : null;
+  const isAiTranslation = enrichmentStatus === "ai";
 
   // Chỉ ghi nhận hỗ trợ dịch câu khi bản dịch thực sự đang hiển thị và câu chưa chốt đáp án (FIX-04)
   useEffect(() => {
@@ -132,49 +175,47 @@ export default function ExamQuestionCard({
     q.id,
   ]);
 
-  const fetchSentenceTranslation = async (
-    textToTranslate: string,
-    isCompletedTarget: boolean,
-  ) => {
-    const clean = textToTranslate.replace(/\[★\s*|\]|\[/g, "").trim();
-    if (!clean || clean.length < 2) return;
-    if (sentenceTranslationCache.has(clean)) {
-      const cached = sentenceTranslationCache.get(clean)!;
-      if (!isMountedRef.current) return;
-      if (isCompletedTarget) setPostAnswerTranslation(cached);
-      else setPreAnswerTranslation(cached);
-      return;
-    }
-    try {
-      if (isMountedRef.current) setTranslating(true);
-      const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=ja&tl=vi&dt=t&q=${encodeURIComponent(clean)}`;
-      const res = await fetch(url);
-      if (!res.ok) return;
-      const data = await res.json();
-      if (Array.isArray(data?.[0])) {
-        const translated = data[0]
-          .map((part: unknown[]) => (typeof part?.[0] === "string" ? part[0] : ""))
-          .join("")
-          .trim();
-        if (translated) {
-          sentenceTranslationCache.set(clean, translated);
-          sentenceTranslationCache.set(textToTranslate, translated);
-          if (!isMountedRef.current) return;
-          if (isCompletedTarget) setPostAnswerTranslation(translated);
-          else setPreAnswerTranslation(translated);
-        }
-      }
-    } catch {
-      // Bỏ qua nếu offline hoặc môi trường test không có mạng
-    } finally {
-      if (isMountedRef.current) setTranslating(false);
-    }
-  };
+  // Nghe câu (mục 12.2)
+  const speechText = (
+    answeredView
+      ? completedSentence || examPlainText(blankSentence || q.stem)
+      : examPlainText(q.stem)
+  ).trim();
+  const canSpeak =
+    textReady &&
+    !helpBlocked &&
+    !!speechText &&
+    !/^\s*$/.test(speechText) &&
+    (answeredView ||
+      (mode !== "mock" && !(mondaiType && NO_PRE_ANSWER_SPEECH.has(mondaiType))));
+  const canTranslate = textReady && !helpBlocked && !!displayedTranslation;
+
+  const notes = q.explanation?.optionNotes;
+  const hasOptionNotes =
+    Array.isArray(notes) &&
+    notes.length === 4 &&
+    notes.every((n) => typeof n === "string" && n.trim());
+  const showTargetWord =
+    !!q.targetWord?.term &&
+    !!q.targetWord.meaningVi &&
+    (!mondaiType || TARGET_WORD_TYPES.has(mondaiType));
+  const shownAnswer = pendingOption ?? userAnswer;
 
   const correctOptionText = examPlainText(q.options[q.answer - 1] || "");
   const userOptionText = userAnswer
     ? examPlainText(q.options[userAnswer - 1] || "")
     : "";
+  const translationLabel = (
+    <span className="font-bold text-emerald-800 dark:text-emerald-300 mr-1.5">
+      Dịch câu
+      {isAiTranslation && (
+        <span className="ml-1 align-middle px-1.5 py-px rounded-md bg-emerald-100 dark:bg-emerald-900/60 text-[10px] font-bold text-emerald-800 dark:text-emerald-200">
+          AI dịch
+        </span>
+      )}
+      :
+    </span>
+  );
 
   return (
     <article
@@ -262,18 +303,38 @@ export default function ExamQuestionCard({
           </details>
         </div>
       ) : (
-        <p
-          lang="ja"
-          data-exam-selectable
-          className="select-text text-lg sm:text-xl leading-[1.9] font-medium text-slate-900 dark:text-slate-100 py-1"
-        >
-          <ExamText text={q.stem} />
-        </p>
+        <div className="space-y-1.5">
+          <p
+            lang="ja"
+            data-exam-selectable
+            className="select-text text-lg sm:text-xl leading-[1.9] font-medium text-slate-900 dark:text-slate-100 py-1"
+          >
+            <ExamText text={blankSentence || q.stem} />
+          </p>
+          {passage && blankId && onShowInPassage && (
+            <button
+              type="button"
+              className="text-xs font-bold text-indigo-700 dark:text-indigo-300 hover:underline underline-offset-2"
+              onClick={onShowInPassage}
+            >
+              Xem trong đoạn văn ↑
+            </button>
+          )}
+        </div>
       )}
 
       {/* 4 Options Grid */}
       <div
-        className={`grid gap-2.5 ${isShortOptions ? "sm:grid-cols-2" : "grid-cols-1"}`}
+        className={`grid gap-2.5 ${
+          isShortOptions
+            ? // Cột câu hỏi hẹp khi đoạn văn dính bên trái (≥1280 px): 2 cột chỉ cho phương án rất ngắn
+              passage
+              ? q.options.every((opt) => opt.length <= 6)
+                ? "sm:grid-cols-2"
+                : "sm:grid-cols-2 xl:grid-cols-1"
+              : "sm:grid-cols-2"
+            : "grid-cols-1"
+        }`}
         role="group"
         aria-label={`Phương án câu ${q.number}`}
       >
@@ -281,7 +342,7 @@ export default function ExamQuestionCard({
           const isCorrectOption = feedback && q.answer === i + 1;
           const isWrongOption =
             feedback && userAnswer === i + 1 && q.answer !== i + 1;
-          const isSelectedOption = userAnswer === i + 1;
+          const isSelectedOption = shownAnswer === i + 1;
 
           return (
             <label
@@ -313,7 +374,7 @@ export default function ExamQuestionCard({
                 aria-label={`Phương án ${i + 1}, câu ${q.number}`}
                 aria-describedby={`opt-text-${q.id}-${i}`}
                 disabled={locked || mode === "review"}
-                checked={userAnswer === i + 1}
+                checked={shownAnswer === i + 1}
                 onChange={() => onSelectOption(i + 1)}
               />
               <span
@@ -347,8 +408,31 @@ export default function ExamQuestionCard({
         })}
       </div>
 
+      {/* Chờ chốt 1,5 giây, có Hoàn tác (mục 7.1) */}
+      {pendingOption != null && (
+        <div
+          role="status"
+          className="relative overflow-hidden flex items-center justify-between gap-2 px-3 py-2 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800 text-xs sm:text-sm font-bold text-indigo-900 dark:text-indigo-100"
+        >
+          <span>Đã chọn {pendingOption} · đang chốt…</span>
+          <button
+            type="button"
+            className="px-2.5 py-1 rounded-lg bg-white dark:bg-slate-900 border border-indigo-200 dark:border-indigo-700 hover:bg-indigo-100 dark:hover:bg-indigo-900"
+            onClick={onUndoPending}
+          >
+            Hoàn tác
+          </button>
+          <span
+            key={`${q.id}-${pendingOption}`}
+            aria-hidden="true"
+            className="absolute left-0 bottom-0 h-0.5 w-full bg-indigo-500 origin-left exam-commit-progress"
+            style={{ animationDuration: `${DRILL_COMMIT_DELAY_MS}ms` }}
+          />
+        </div>
+      )}
+
       {/* Compact Study & Action Bar (No repetitive text inputs) */}
-      {help && (
+      {(canSpeak || canTranslate || showFeedback || (textReady && q.sourceImage)) && (
         <div className="pt-1 flex flex-wrap items-center justify-between gap-2">
           <div className="flex flex-wrap items-center gap-2">
             {canSpeak && (
@@ -356,11 +440,7 @@ export default function ExamQuestionCard({
                 type="button"
                 className="exam-secondary !py-1.5 !px-3 !min-h-9 text-xs"
                 onClick={() => {
-                  const speechTarget =
-                    feedback && completedSentence
-                      ? completedSentence.replace(/\[★\s*|\]|\[/g, "")
-                      : examPlainText(q.stem);
-                  const started = speakWithVoiceEngine(speechTarget, {
+                  const started = speakWithVoiceEngine(speechText, {
                     lang: "ja-JP",
                   });
                   if (started && !locked && !feedback && mode !== "review") {
@@ -373,37 +453,17 @@ export default function ExamQuestionCard({
               </button>
             )}
 
-            {textReady &&
-              !/^\[\[\d+\]\]$/.test(q.stem.trim()) &&
-              (feedback || !isMondai6Usage) && (
-                <button
-                  type="button"
-                  disabled={translating}
-                  className="exam-secondary !py-1.5 !px-3 !min-h-9 text-xs"
-                  onClick={() => {
-                    const target = feedback
-                      ? completedSentence || unfilledStem
-                      : unfilledStem;
-                    if (!displayedTranslation) {
-                      setShowInlineTranslation(true);
-                      void fetchSentenceTranslation(target, feedback);
-                    } else {
-                      setShowInlineTranslation((v) => !v);
-                    }
-                  }}
-                >
-                  <Languages size={14} className="text-emerald-600" />
-                  <span>
-                    {translating
-                      ? "Đang dịch…"
-                      : displayedTranslation &&
-                          showInlineTranslation &&
-                          !expanded
-                        ? "Ẩn bản dịch"
-                        : "Dịch câu"}
-                  </span>
-                </button>
-              )}
+            {canTranslate && !(showFeedback && expanded) && (
+              <button
+                type="button"
+                className="exam-secondary !py-1.5 !px-3 !min-h-9 text-xs"
+                aria-expanded={showInlineTranslation}
+                onClick={() => setShowInlineTranslation((v) => !v)}
+              >
+                <Languages size={14} className="text-emerald-600" />
+                <span>{showInlineTranslation ? "Ẩn bản dịch" : "Dịch câu"}</span>
+              </button>
+            )}
 
             {showFeedback && (
               <button
@@ -443,16 +503,14 @@ export default function ExamQuestionCard({
       )}
 
       {/* Inline Translation when Explanation is collapsed */}
-      {showInlineTranslation && displayedTranslation && !(showFeedback && expanded) && (
+      {showInlineTranslation && canTranslate && !(showFeedback && expanded) && (
         <div className="p-3 rounded-xl bg-emerald-50/80 dark:bg-emerald-950/35 border border-emerald-200/70 dark:border-emerald-800/50 text-xs sm:text-sm leading-relaxed text-slate-800 dark:text-slate-200 flex items-start gap-2">
           <Languages
             size={15}
             className="text-emerald-600 dark:text-emerald-400 shrink-0 mt-1"
           />
           <div>
-            <span className="font-bold text-emerald-800 dark:text-emerald-300 mr-1.5">
-              Dịch câu:
-            </span>
+            {translationLabel}
             <span>{displayedTranslation}</span>
           </div>
         </div>
@@ -488,24 +546,6 @@ export default function ExamQuestionCard({
             </div>
 
             <div className="flex items-center gap-2 flex-wrap">
-              {!displayedTranslation &&
-                completedSentence &&
-                !/^\[\[\d+\]\]$/.test(q.stem.trim()) && (
-                  <button
-                    type="button"
-                    disabled={translating}
-                    onClick={() =>
-                      void fetchSentenceTranslation(completedSentence, true)
-                    }
-                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-emerald-700 dark:text-emerald-300 hover:border-emerald-400 transition-colors"
-                  >
-                    <Languages size={13} />
-                    <span>
-                      {translating ? "Đang dịch câu…" : "Dịch nghĩa cả câu"}
-                    </span>
-                  </button>
-                )}
-
               {onNextQuestion && (
                 <button
                   type="button"
@@ -520,17 +560,15 @@ export default function ExamQuestionCard({
           </div>
 
           {/* Sentence Translation Box (Shown automatically when available) */}
-          {displayedTranslation && (
+          {translationsReady && postTranslation && (
             <div className="p-3 rounded-xl bg-emerald-50/80 dark:bg-emerald-950/35 border border-emerald-200/70 dark:border-emerald-800/50 text-xs sm:text-sm leading-relaxed text-slate-800 dark:text-slate-200 flex items-start gap-2">
               <Languages
                 size={15}
                 className="text-emerald-600 dark:text-emerald-400 shrink-0 mt-1"
               />
               <div>
-                <span className="font-bold text-emerald-800 dark:text-emerald-300 mr-1.5">
-                  Dịch câu:
-                </span>
-                <span>{displayedTranslation}</span>
+                {translationLabel}
+                <span>{postTranslation}</span>
               </div>
             </div>
           )}
@@ -543,15 +581,57 @@ export default function ExamQuestionCard({
                 "Chưa có lời giải."}
             </p>
 
-            {q.explanation?.optionNotes?.map((n, i) => (
-              <p
-                key={i}
-                className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 pl-3 border-l-2 border-indigo-300 dark:border-indigo-700"
-              >
-                {n}
-              </p>
-            ))}
+            {/* Lời giải từng phương án (mục 9.5) */}
+            {hasOptionNotes && (
+              <ol className="space-y-1.5" aria-label="Lời giải từng phương án">
+                {notes!.map((n, i) => {
+                  const isAnswer = q.answer === i + 1;
+                  const isUserWrong =
+                    !!userAnswer && userAnswer === i + 1 && !isAnswer;
+                  return (
+                    <li
+                      key={i}
+                      className={`text-xs sm:text-sm leading-relaxed pl-3 border-l-2 ${
+                        isAnswer
+                          ? "border-emerald-500 text-slate-800 dark:text-slate-100"
+                          : isUserWrong
+                            ? "border-rose-500 text-slate-800 dark:text-slate-100"
+                            : "border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300"
+                      }`}
+                    >
+                      <span className="font-bold">{i + 1}. </span>
+                      <span lang="ja" className="font-bold">
+                        {examPlainText(q.options[i] || "")}
+                      </span>
+                      <span> — {n}</span>
+                      {isAnswer && (
+                        <span className="ml-1.5 px-1.5 py-px rounded-md bg-emerald-100 dark:bg-emerald-900/60 text-[10px] font-bold text-emerald-800 dark:text-emerald-200">
+                          Đúng
+                        </span>
+                      )}
+                      {isUserWrong && (
+                        <span className="ml-1.5 px-1.5 py-px rounded-md bg-rose-100 dark:bg-rose-900/60 text-[10px] font-bold text-rose-800 dark:text-rose-200">
+                          Bạn chọn
+                        </span>
+                      )}
+                    </li>
+                  );
+                })}
+              </ol>
+            )}
           </div>
+
+          {/* Từ trọng tâm + lưu vào sổ tay (mục 9.6) */}
+          {showTargetWord && (
+            <TargetWordSave
+              input={{
+                word: q.targetWord!,
+                example: completedSentence,
+                exampleMeaning: postTranslation,
+              }}
+              onOpenLookup={onWordLookup}
+            />
+          )}
 
           {/* Star Question Order Assembly (Mondai 8) */}
           {q.order && (
@@ -564,7 +644,7 @@ export default function ExamQuestionCard({
                 className="text-slate-900 dark:text-slate-100 font-semibold"
               >
                 {completedSentence ||
-                  q.order.map((i) => q.options[i - 1]).join(" ")}
+                  q.order.map((i) => examPlainText(q.options[i - 1] || "")).join("")}
               </p>
             </div>
           )}

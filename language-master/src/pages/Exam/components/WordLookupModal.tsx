@@ -21,6 +21,7 @@ import type {
 } from "../../../lib/dictionary/multiBookLookup";
 import { speakWithVoiceEngine } from "../../../lib/audio/voiceEngine";
 import { loadFullDictionary } from "../../../lib/dictionary/dictionaryLoader";
+import { useOptionalAuth } from "../../../context/auth/useOptionalAuth";
 import { lookupWordInDictionary } from "../../../lib/jlpt/sentenceAnalyzer";
 
 type MultiBookModule = typeof import("../../../lib/dictionary/multiBookLookup");
@@ -74,6 +75,8 @@ export default function WordLookupModal({
   onAssistProvided,
 }: Props) {
   const ref = useRef<HTMLDialogElement>(null);
+  // JL-16: lưu vào sổ tay của tài khoản đang đăng nhập (đồng bộ giữa các máy)
+  const user = useOptionalAuth()?.user ?? null;
   const externalReqIdRef = useRef(0);
   const saveReqIdRef = useRef(0);
   const onAssistRef = useRef(onAssistProvided);
@@ -298,6 +301,8 @@ export default function WordLookupModal({
         meaning: params.meaning,
         exampleKanji: params.example,
         exampleMeaning: params.exampleMeaning,
+        userId: user?.uid ?? null,
+        userProfile: user,
         lookupStatus: params.lookupStatus,
       });
 

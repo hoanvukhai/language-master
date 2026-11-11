@@ -69,7 +69,7 @@ try {
     for (const m of exam.mondais) {
       for (const q of m.questions || []) {
         analyzer.analyzeSentenceComponents(q.stem, q.sentenceBreakdown, q.explanation?.vi);
-        if (q.targetWord?.kanji) analyzer.lookupWordInDictionary(q.targetWord.kanji);
+        if (q.targetWord?.term) analyzer.lookupWordInDictionary(q.targetWord.term);
         questions++;
       }
     }
