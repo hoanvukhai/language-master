@@ -87,7 +87,7 @@ Một kỳ thi JLPT đầy đủ gồm **3 Phần (3 Kỹ năng lớn, mỗi ph�
 3. **Phần 3: Nghe hiểu (`聴解 · Choukai` — Nghe hiểu có tranh, không tranh, phản xạ nhanh)** *(Hiện tại: Gắn nhãn `Đang phát triển`)*.
 
 - **Tại trang Kho đề JLPT (`/exams/jlpt`)**: Hiển thị dải **Tab Kỹ năng** (`✅ Tất cả` | `✅ Chữ Hán · Từ vựng · Ngữ pháp` | `⏳ Đọc hiểu · 読解 (Đang phát triển)` | `⏳ Nghe hiểu · 聴解 (Đang phát triển)`). Khi về sau thêm sách có `skills: ["reading"]` hoặc `skills: ["listening"]`, tab tương ứng tự động mở khóa.
-- **Tại màn hình Thiết lập Luyện tập (`Setup`)**: Bên dưới 3 nhóm đang hoạt động (`漢字 Chữ Hán`, `語彙 Từ vựng`, `文法 Ngữ pháp`), hiển thị 2 thẻ Preview виền nét đứt cho **`📖 Đọc hiểu chuyên sâu · 読解 (Đang phát triển)`** và **`🎧 Nghe hiểu · 聴解 (Đang phát triển)`**.
+- **Tại màn hình Thiết lập Luyện tập (`Setup`)**: Bên dưới 3 nhóm đang hoạt động (`漢字 Chữ Hán`, `語彙 Từ vựng`, `文法 Ngữ pháp`), hiển thị 2 thẻ Preview viền nét đứt cho **`📖 Đọc hiểu chuyên sâu · 読解 (Đang phát triển)`** và **`🎧 Nghe hiểu · 聴解 (Đang phát triển)`**.
 - **Tại màn hình Kết quả Chấm điểm Chuẩn (`/result`)**: Hiển thị khung 3 cột điểm của JLPT:
   1. **Kiến thức ngôn ngữ (Chữ Hán · Từ vựng · Ngữ pháp)**: **`X / 60 điểm`** *(Chấm thực tế)*.
   2. **Đọc hiểu (`読解`)**: **`— / 60 điểm`** *(Đang phát triển)*.
