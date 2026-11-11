@@ -43,7 +43,7 @@ export default function MobileAttemptBar({
         </button>
         <button
           type="button"
-          className="exam-secondary !min-h-11"
+          className="exam-secondary !min-h-11 !px-2 whitespace-nowrap"
           aria-expanded={sheetOpen}
           aria-controls={sheetId}
           onClick={onPalette}

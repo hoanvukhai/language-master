@@ -44,7 +44,11 @@ export default function BottomSheet({ open, title, onClose, children, id }: Prop
 
   if (!open) return null;
   return createPortal(
-    <div className="fixed inset-0 z-50" data-no-selection-lookup="true">
+    <div
+      className="fixed inset-0"
+      style={{ zIndex: 100000 }}
+      data-no-selection-lookup="true"
+    >
       <div
         className="absolute inset-0 bg-slate-950/50 animate-in fade-in duration-150"
         onClick={onClose}
