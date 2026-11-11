@@ -275,3 +275,92 @@ test("malformed nested data returns validation errors rather than crashing the c
   e.mondais = [null];
   assert.ok(validateExam(e).length);
 });
+
+test("FIX-02 & FIX-03: planPracticeRound guarantees actualTotal === questionIds.length across all modes", async () => {
+  const {
+    buildPracticePool,
+    planPracticeRound,
+    canCreateStandardMock,
+  } = await import("../src/lib/jlpt/practicePool.ts");
+  const pool = buildPracticePool(corpus);
+
+  // C01: Standard 9 Mondai = 54 questions
+  const c01 = planPracticeRound(
+    pool,
+    { mode: "drill", mondais: [1, 2, 3, 4, 5, 6, 7, 8, 9], allocationMode: "standard" },
+    () => 0.25,
+  );
+  assert.equal(c01.actualTotal, 54);
+  assert.equal(c01.questionIds.length, 54);
+  assert.equal(c01.canStart, true);
+
+  // C02: Standard M1 + M2 = 10 questions
+  const c02 = planPracticeRound(
+    pool,
+    { mode: "drill", mondais: [1, 2], allocationMode: "standard" },
+    () => 0.25,
+  );
+  assert.equal(c02.actualTotal, 10);
+  assert.equal(c02.questionIds.length, 10);
+
+  // C03: Total 10 questions on M9 -> passage intact = 10 questions
+  const c03 = planPracticeRound(
+    pool,
+    { mode: "drill", mondais: [9], allocationMode: "total", totalCount: 10 },
+    () => 0.1,
+  );
+  assert.equal(c03.actualTotal, 10);
+  assert.equal(c03.questionIds.length, 10);
+
+  // C04: Total 10 questions on M8 + M9 when a 5-question passage is pulled in -> passage_expanded
+  const c04 = planPracticeRound(
+    pool,
+    {
+      mode: "drill",
+      mondais: [9],
+      allocationMode: "total",
+      totalCount: 7,
+    },
+    () => 0.1,
+  );
+  assert.equal(c04.targetTotal, 7);
+  assert.equal(c04.actualTotal, 10);
+  assert.equal(c04.questionIds.length, 10);
+  assert.equal(c04.reason, "passage_expanded");
+  assert.match(c04.reasonMessage || "", /Giữ nguyên nhóm câu trong đoạn văn/);
+
+  // C05 & C06: Day 1 + M1 + 20 per mondai -> shortage (only 5 available)
+  const c06 = planPracticeRound(pool, {
+    mode: "drill",
+    mondais: [1],
+    allocationMode: "per_mondai",
+    perMondaiCount: 20,
+    dayFilter: 1,
+  });
+  assert.equal(c06.targetTotal, 20);
+  assert.equal(c06.actualTotal, 5);
+  assert.equal(c06.questionIds.length, 5);
+  assert.equal(c06.reason, "shortage");
+  assert.match(c06.reasonMessage || "", /Nguồn đã chọn chỉ có 5 câu phù hợp/);
+
+  // C07: 0 Mondai selected -> empty, canStart = false
+  const c07 = planPracticeRound(pool, {
+    mode: "drill",
+    mondais: [],
+    allocationMode: "standard",
+  });
+  assert.equal(c07.actualTotal, 0);
+  assert.equal(c07.canStart, false);
+  assert.equal(c07.reason, "empty");
+
+  // M01–M05: Mock validation
+  assert.equal(canCreateStandardMock(pool), true);
+  assert.equal(canCreateStandardMock(exam), true);
+  const brokenExam = structuredClone(exam);
+  brokenExam.mondais = brokenExam.mondais.slice(0, 8);
+  assert.equal(canCreateStandardMock(brokenExam), false);
+  const m05 = planPracticeRound(brokenExam, { mode: "mock" });
+  assert.equal(m05.canStart, false);
+  assert.equal(m05.reason, "invalid_mock");
+});
+

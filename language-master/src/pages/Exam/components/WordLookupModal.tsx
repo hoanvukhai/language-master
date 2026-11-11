@@ -1,10 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import {
+  AlertCircle,
   BookOpen,
   Check,
+  ExternalLink,
   Globe,
   Loader2,
   Plus,
+  RefreshCw,
   Search,
   Sparkles,
   Volume2,
@@ -14,14 +17,41 @@ import type { DictionaryEntry } from "../../../lib/dictionary/localDictionaryInd
 import type {
   BookWordGroup,
   ExternalLookupResult,
+  QuickSaveStatus,
 } from "../../../lib/dictionary/multiBookLookup";
 import { speakWithVoiceEngine } from "../../../lib/audio/voiceEngine";
+
+type MultiBookModule = typeof import("../../../lib/dictionary/multiBookLookup");
+let cachedMultiBookMod: MultiBookModule | null = null;
+const preloadMultiBookPromise = import(
+  "../../../lib/dictionary/multiBookLookup"
+)
+  .then((m) => {
+    cachedMultiBookMod = m;
+    return m;
+  })
+  .catch(() => null);
+
+type ItemSaveState = {
+  status: "unsaved" | "saving" | QuickSaveStatus;
+  courseId?: string;
+  courseTitle?: string;
+  message?: string;
+};
+
+type SaveBannerState = {
+  type: QuickSaveStatus;
+  message: string;
+  courseId?: string;
+  courseTitle?: string;
+} | null;
 
 type Props = {
   isOpen?: boolean;
   word: string;
   entry: DictionaryEntry | null;
   onClose: () => void;
+  onAssistProvided?: () => void;
 };
 
 export default function WordLookupModal({
@@ -29,16 +59,26 @@ export default function WordLookupModal({
   word,
   entry,
   onClose,
+  onAssistProvided,
 }: Props) {
   const ref = useRef<HTMLDialogElement>(null);
   const externalReqIdRef = useRef(0);
+  const saveReqIdRef = useRef(0);
+  const onAssistRef = useRef(onAssistProvided);
+  useEffect(() => {
+    onAssistRef.current = onAssistProvided;
+  }, [onAssistProvided]);
+
   const [groups, setGroups] = useState<BookWordGroup[]>([]);
   const [totalBooks, setTotalBooks] = useState(0);
+  const [isPreparingDict, setIsPreparingDict] = useState(false);
   const [externalResult, setExternalResult] =
     useState<ExternalLookupResult | null>(null);
   const [isLoadingExternal, setIsLoadingExternal] = useState(false);
-  const [savingKey, setSavingKey] = useState<string | null>(null);
-  const [savedNotice, setSavedNotice] = useState<string | null>(null);
+  const [itemSaveMap, setItemSaveMap] = useState<Record<string, ItemSaveState>>(
+    {},
+  );
+  const [saveBanner, setSaveBanner] = useState<SaveBannerState>(null);
 
   useEffect(() => {
     const dialog = ref.current;
@@ -53,59 +93,156 @@ export default function WordLookupModal({
   }, [isOpen]);
 
   useEffect(() => {
-    // Invalidate any in-flight online translation request when word or modal state changes
+    // Hủy mọi yêu cầu dịch hoặc thông báo lưu cũ khi đổi từ hoặc đóng modal
     externalReqIdRef.current += 1;
+    saveReqIdRef.current += 1;
     setIsLoadingExternal(false);
+    setSaveBanner(null);
+    setExternalResult(null);
+    setItemSaveMap({});
 
-    if (!isOpen || !word.trim()) {
+    const cleanWord = word.trim();
+    if (!isOpen || !cleanWord) {
       setGroups([]);
       setTotalBooks(0);
-      setExternalResult(null);
-      setSavedNotice(null);
+      setIsPreparingDict(false);
+      return;
+    }
+
+    if (entry) {
+      onAssistRef.current?.();
+    }
+
+    const applyLocalLookup = (mod: MultiBookModule) => {
+      const res = mod.lookupInSystemMultiBook(cleanWord);
+      setGroups(res.groups);
+      setTotalBooks(res.totalBooks);
+      setIsPreparingDict(false);
+
+      if (entry || res.totalMatches > 0) {
+        onAssistRef.current?.();
+      }
+
+      const nextMap: Record<string, ItemSaveState> = {};
+      if (entry) {
+        const st = mod.getWordNotebookStatus({
+          term: entry.term,
+          reading: entry.reading,
+          meaning: entry.meaning,
+        });
+        if (st.status !== "unsaved") {
+          nextMap.primary = {
+            status: st.status,
+            courseId: st.courseId,
+            courseTitle: st.courseTitle,
+          };
+        }
+      }
+      for (const g of res.groups.slice(0, 4)) {
+        for (const m of g.matches.slice(0, 2)) {
+          const st = mod.getWordNotebookStatus({
+            term: m.term,
+            reading: m.reading,
+            meaning: m.meaning,
+          });
+          if (st.status !== "unsaved") {
+            nextMap[m.id] = {
+              status: st.status,
+              courseId: st.courseId,
+              courseTitle: st.courseTitle,
+            };
+          }
+        }
+      }
+      setItemSaveMap(nextMap);
+    };
+
+    if (cachedMultiBookMod) {
+      applyLocalLookup(cachedMultiBookMod);
       return;
     }
 
     let cancelled = false;
-    setSavedNotice(null);
-    setExternalResult(null);
-
-    import("../../../lib/dictionary/multiBookLookup")
-      .then((mod) => {
-        if (cancelled) return;
-        const res = mod.lookupInSystemMultiBook(word.trim());
-        setGroups(res.groups);
-        setTotalBooks(res.totalBooks);
-      })
-      .catch(() => {
-        // Fallback quietly if dynamic import fails in isolated test env
-      });
+    setIsPreparingDict(true);
+    preloadMultiBookPromise.then((mod) => {
+      if (cancelled || !mod) {
+        setIsPreparingDict(false);
+        return;
+      }
+      applyLocalLookup(mod);
+    });
 
     return () => {
       cancelled = true;
     };
-  }, [isOpen, word]);
+  }, [isOpen, word, entry]);
 
   const handleLookupOnline = async () => {
     const targetWord = word.trim();
-    if (!targetWord) return;
+    if (!targetWord || isLoadingExternal) return;
     const reqId = ++externalReqIdRef.current;
     setIsLoadingExternal(true);
+    // Ẩn kết quả/nút lưu cũ trong lúc đang thử lại để tránh lưu nhầm kết quả cũ
+    setExternalResult(null);
+    setItemSaveMap((prev) => {
+      const copy = { ...prev };
+      delete copy.external;
+      return copy;
+    });
+
     try {
-      const mod = await import("../../../lib/dictionary/multiBookLookup");
+      const mod =
+        cachedMultiBookMod ||
+        (await import("../../../lib/dictionary/multiBookLookup"));
+      cachedMultiBookMod = mod;
       const res = await mod.lookupExternal(targetWord, "japanese");
       if (externalReqIdRef.current !== reqId) return;
       setExternalResult(res);
+      if (res.status === "success" && res.canSave) {
+        onAssistRef.current?.();
+        const st = mod.getWordNotebookStatus({
+          term: res.term,
+          reading: res.readingKana,
+          meaning: res.translation,
+        });
+        if (st.status !== "unsaved") {
+          setItemSaveMap((prev) => ({
+            ...prev,
+            external: {
+              status: st.status,
+              courseId: st.courseId,
+              courseTitle: st.courseTitle,
+            },
+          }));
+        }
+      }
     } catch {
       if (externalReqIdRef.current !== reqId) return;
       setExternalResult({
+        status: "network_error",
         term: targetWord,
-        translation: "Không thể kết nối dịch trực tuyến lúc này.",
+        translation: "",
         source: "google",
+        errorMessage: "Không thể tra trực tuyến lúc này. Thử lại",
+        canSave: false,
       });
     } finally {
       if (externalReqIdRef.current === reqId) {
         setIsLoadingExternal(false);
       }
+    }
+  };
+
+  const handleSpeak = (textToSpeak: string) => {
+    const clean = textToSpeak.trim();
+    if (!clean) return;
+    try {
+      const ok = speakWithVoiceEngine(clean, { lang: "ja-JP" });
+      if (ok !== false) {
+        onAssistRef.current?.();
+      }
+    } catch {
+      // Bỏ qua nếu môi trường không hỗ trợ âm thanh
     }
   };
 
@@ -116,26 +253,83 @@ export default function WordLookupModal({
     meaning: string;
     example?: string;
     exampleMeaning?: string;
+    lookupStatus?: ExternalLookupResult["status"];
   }) => {
-    setSavingKey(params.key);
+    if (itemSaveMap[params.key]?.status === "saving") return;
+    const currentSaveReqId = ++saveReqIdRef.current;
+
+    setItemSaveMap((prev) => ({
+      ...prev,
+      [params.key]: { status: "saving" },
+    }));
+
     try {
-      const mod = await import("../../../lib/dictionary/multiBookLookup");
+      const mod =
+        cachedMultiBookMod ||
+        (await import("../../../lib/dictionary/multiBookLookup"));
+      cachedMultiBookMod = mod;
       const res = await mod.quickSaveWordToNotebook({
         term: params.term,
         reading: params.reading,
         meaning: params.meaning,
         exampleKanji: params.example,
         exampleMeaning: params.exampleMeaning,
+        lookupStatus: params.lookupStatus,
       });
-      if (res.success) {
-        setSavedNotice(`Đã lưu "${params.term}" vào "${res.courseTitle}"`);
-      }
+
+      if (saveReqIdRef.current !== currentSaveReqId) return;
+
+      setItemSaveMap((prev) => ({
+        ...prev,
+        [params.key]: {
+          status: res.status,
+          courseId: res.courseId,
+          courseTitle: res.courseTitle,
+          message: res.message,
+        },
+      }));
+
+      setSaveBanner({
+        type: res.status,
+        message:
+          res.status === "added"
+            ? `Đã lưu "${params.term}" vào "${res.courseTitle}"`
+            : res.status === "already_exists"
+              ? `Đã có trong sổ tay (${res.courseTitle})`
+              : res.message,
+        courseId: res.courseId,
+        courseTitle: res.courseTitle,
+      });
     } catch {
-      setSavedNotice("Chưa lưu được vào sổ tay.");
-    } finally {
-      setSavingKey(null);
+      if (saveReqIdRef.current !== currentSaveReqId) return;
+      setItemSaveMap((prev) => ({
+        ...prev,
+        [params.key]: {
+          status: "failed",
+          message: "Chưa lưu được. Thử lại",
+        },
+      }));
+      setSaveBanner({
+        type: "failed",
+        message: "Chưa lưu được. Thử lại",
+      });
     }
   };
+
+  const renderSaveButtonLabel = (key: string, defaultLabel = "Lưu vào sổ tay") => {
+    const st = itemSaveMap[key]?.status;
+    if (st === "saving") return "Đang lưu…";
+    if (st === "added") return "Đã lưu";
+    if (st === "already_exists") return "Đã có trong sổ tay";
+    if (st === "failed") return "Chưa lưu được. Thử lại";
+    return defaultLabel;
+  };
+
+  // Kiểm tra xem mục từ có chứa ký tự Latin để gắn nhãn Phiên âm vs Cách đọc Kana đúng chuẩn
+  const isEntryReadingLatin =
+    entry?.reading &&
+    /[A-Za-zÀ-ỹ\u0100-\u024F]/.test(entry.reading) &&
+    entry.subject !== "kanji";
 
   return (
     <dialog
@@ -176,16 +370,53 @@ export default function WordLookupModal({
 
       {/* Body */}
       <div className="p-6 max-h-[75vh] overflow-y-auto space-y-4">
-        {savedNotice && (
-          <div className="p-3 rounded-2xl bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800/60 text-emerald-700 dark:text-emerald-300 text-xs font-bold flex items-center gap-2">
-            <Check size={15} className="shrink-0" />
-            <span>{savedNotice}</span>
+        {saveBanner && (
+          <div
+            role="status"
+            className={`p-3 rounded-2xl border text-xs font-bold flex items-center justify-between gap-2 flex-wrap ${
+              saveBanner.type === "added" || saveBanner.type === "already_exists"
+                ? "bg-emerald-50 dark:bg-emerald-950/50 border-emerald-200 dark:border-emerald-800/60 text-emerald-700 dark:text-emerald-300"
+                : saveBanner.type === "conflict"
+                  ? "bg-amber-50 dark:bg-amber-950/50 border-amber-200 dark:border-amber-800/60 text-amber-800 dark:text-amber-300"
+                  : "bg-rose-50 dark:bg-rose-950/50 border-rose-200 dark:border-rose-800/60 text-rose-700 dark:text-rose-300"
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              {saveBanner.type === "added" ||
+              saveBanner.type === "already_exists" ? (
+                <Check size={15} className="shrink-0" />
+              ) : (
+                <AlertCircle size={15} className="shrink-0" />
+              )}
+              <span>{saveBanner.message}</span>
+            </div>
+            {saveBanner.type === "conflict" && (
+              <a
+                href={
+                  saveBanner.courseId
+                    ? `/course/${saveBanner.courseId}`
+                    : "/dictionary"
+                }
+                onClick={onClose}
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-amber-100 dark:bg-amber-900/70 text-amber-900 dark:text-amber-200 hover:underline shrink-0"
+              >
+                <span>Mở sổ tay</span>
+                <ExternalLink size={12} />
+              </a>
+            )}
+          </div>
+        )}
+
+        {isPreparingDict && !entry && groups.length === 0 && (
+          <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200/70 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-300 flex items-center gap-2">
+            <Loader2 size={14} className="animate-spin text-indigo-500" />
+            <span>Đang chuẩn bị chỉ mục từ điển…</span>
           </div>
         )}
 
         {entry ? (
           <div className="p-4 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/30 border border-indigo-200/70 dark:border-indigo-800/60 space-y-3">
-            <div className="flex items-start justify-between gap-3">
+            <div className="flex items-start justify-between gap-3 flex-wrap">
               <div>
                 <div className="flex items-center gap-2 flex-wrap">
                   <p className="text-2xl font-black text-slate-900 dark:text-white">
@@ -197,23 +428,26 @@ export default function WordLookupModal({
                     </span>
                   )}
                 </div>
-                <p className="text-sm font-medium text-indigo-700 dark:text-indigo-300 mt-1">
-                  {entry.subject === "kanji"
-                    ? "Âm / thông tin từ điển"
-                    : "Cách đọc tiếng Nhật"}
-                  : {entry.reading}
-                </p>
+                {entry.reading && (
+                  <p className="text-sm font-medium text-indigo-700 dark:text-indigo-300 mt-1">
+                    {entry.subject === "kanji"
+                      ? "Âm / thông tin từ điển"
+                      : isEntryReadingLatin
+                        ? "Phiên âm"
+                        : "Cách đọc tiếng Nhật"}
+                    : {entry.reading}
+                  </p>
+                )}
               </div>
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-1.5 flex-wrap">
                 <button
                   type="button"
                   className="exam-primary !px-3 !py-2 !min-h-9 text-xs"
                   onClick={() =>
-                    speakWithVoiceEngine(
+                    handleSpeak(
                       entry.subject === "kanji"
                         ? entry.term
                         : entry.reading || entry.term,
-                      { lang: "ja-JP" },
                     )
                   }
                 >
@@ -222,7 +456,7 @@ export default function WordLookupModal({
                 </button>
                 <button
                   type="button"
-                  disabled={savingKey === "primary"}
+                  disabled={itemSaveMap.primary?.status === "saving"}
                   onClick={() =>
                     handleQuickSave({
                       key: "primary",
@@ -236,8 +470,15 @@ export default function WordLookupModal({
                   className="exam-secondary !px-2.5 !py-2 !min-h-9 text-xs"
                   title="Lưu vào Sổ tay từ vựng"
                 >
-                  <Plus size={14} />
-                  <span>Lưu sổ tay</span>
+                  {itemSaveMap.primary?.status === "saving" ? (
+                    <Loader2 size={14} className="animate-spin" />
+                  ) : itemSaveMap.primary?.status === "added" ||
+                    itemSaveMap.primary?.status === "already_exists" ? (
+                    <Check size={14} className="text-emerald-600" />
+                  ) : (
+                    <Plus size={14} />
+                  )}
+                  <span>{renderSaveButtonLabel("primary", "Lưu vào sổ tay")}</span>
                 </button>
               </div>
             </div>
@@ -270,11 +511,7 @@ export default function WordLookupModal({
               <button
                 type="button"
                 className="exam-secondary !min-h-9 text-xs"
-                onClick={() =>
-                  speakWithVoiceEngine(word, {
-                    lang: "ja-JP",
-                  })
-                }
+                onClick={() => handleSpeak(word)}
               >
                 <Volume2 size={14} />
                 <span>Nghe phát âm</span>
@@ -290,7 +527,11 @@ export default function WordLookupModal({
                 ) : (
                   <Globe size={14} />
                 )}
-                <span>Tra cứu & dịch trực tuyến</span>
+                <span>
+                  {isLoadingExternal
+                    ? "Đang tra cứu…"
+                    : "Tra cứu & dịch trực tuyến"}
+                </span>
               </button>
             </div>
           </div>
@@ -311,8 +552,16 @@ export default function WordLookupModal({
                   onClick={handleLookupOnline}
                   className="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline inline-flex items-center gap-1"
                 >
-                  <Globe size={12} />
-                  <span>Dịch thêm bằng Google</span>
+                  {isLoadingExternal ? (
+                    <Loader2 size={12} className="animate-spin" />
+                  ) : (
+                    <Globe size={12} />
+                  )}
+                  <span>
+                    {isLoadingExternal
+                      ? "Đang tra cứu…"
+                      : "Dịch thêm bằng Google"}
+                  </span>
                 </button>
               )}
             </div>
@@ -332,85 +581,178 @@ export default function WordLookupModal({
                       </span>
                     )}
                   </div>
-                  {group.matches.slice(0, 2).map((m) => (
-                    <div
-                      key={m.id}
-                      className="flex items-start justify-between gap-2 pt-1 border-t border-slate-200/50 dark:border-slate-800 first:border-t-0 first:pt-0"
-                    >
-                      <div className="text-xs space-y-0.5">
-                        <p className="font-bold text-slate-900 dark:text-white">
-                          {m.term}{" "}
-                          {m.reading && m.reading !== m.term && (
-                            <span className="font-normal text-indigo-600 dark:text-indigo-400">
-                              [{m.reading}]
-                            </span>
-                          )}
-                        </p>
-                        <p className="text-slate-600 dark:text-slate-300">
-                          {m.meaning}
-                        </p>
-                      </div>
-                      <button
-                        type="button"
-                        disabled={savingKey === m.id}
-                        onClick={() =>
-                          handleQuickSave({
-                            key: m.id,
-                            term: m.term,
-                            reading: m.reading,
-                            meaning: m.meaning,
-                            example: m.example,
-                            exampleMeaning: m.exampleMeaning,
-                          })
-                        }
-                        className="p-1.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-indigo-400 text-slate-500 hover:text-indigo-600 transition-colors shrink-0"
-                        title="Lưu vào sổ tay"
+                  {group.matches.slice(0, 2).map((m) => {
+                    const st = itemSaveMap[m.id]?.status;
+                    return (
+                      <div
+                        key={m.id}
+                        className="flex items-start justify-between gap-2 pt-1 border-t border-slate-200/50 dark:border-slate-800 first:border-t-0 first:pt-0"
                       >
-                        <Plus size={13} />
-                      </button>
-                    </div>
-                  ))}
+                        <div className="text-xs space-y-0.5">
+                          <p className="font-bold text-slate-900 dark:text-white">
+                            {m.term}{" "}
+                            {m.reading && m.reading !== m.term && (
+                              <span className="font-normal text-indigo-600 dark:text-indigo-400">
+                                [{m.reading}]
+                              </span>
+                            )}
+                          </p>
+                          <p className="text-slate-600 dark:text-slate-300">
+                            {m.meaning}
+                          </p>
+                        </div>
+                        <button
+                          type="button"
+                          disabled={st === "saving"}
+                          onClick={() =>
+                            handleQuickSave({
+                              key: m.id,
+                              term: m.term,
+                              reading: m.reading,
+                              meaning: m.meaning,
+                              example: m.example,
+                              exampleMeaning: m.exampleMeaning,
+                            })
+                          }
+                          aria-label={`Lưu ${m.term} từ ${group.courseName}`}
+                          className="px-2.5 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-indigo-400 text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-indigo-600 transition-colors shrink-0 inline-flex items-center gap-1"
+                          title={renderSaveButtonLabel(m.id, "Lưu vào sổ tay")}
+                        >
+                          {st === "saving" ? (
+                            <Loader2 size={13} className="animate-spin" />
+                          ) : st === "added" || st === "already_exists" ? (
+                            <Check size={13} className="text-emerald-600" />
+                          ) : (
+                            <Plus size={13} />
+                          )}
+                          <span>{renderSaveButtonLabel(m.id, "Lưu")}</span>
+                        </button>
+                      </div>
+                    );
+                  })}
                 </div>
               ))}
             </div>
           </div>
         )}
 
-        {/* Online Translation Result */}
+        {/* Online Translation Result (FIX-08: Distinct states for success vs not_found / network_error / invalid_response / timeout) */}
         {externalResult && (
-          <div className="p-4 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200/70 dark:border-emerald-800/50 space-y-2">
-            <div className="flex items-center justify-between gap-2">
-              <span className="text-xs font-extrabold uppercase tracking-wider text-emerald-700 dark:text-emerald-300 flex items-center gap-1.5">
-                <Globe size={13} />
-                <span>Bản dịch trực tuyến</span>
-              </span>
-              <button
-                type="button"
-                disabled={savingKey === "external"}
-                onClick={() =>
-                  handleQuickSave({
-                    key: "external",
-                    term: externalResult.term,
-                    reading: externalResult.phonetic,
-                    meaning: externalResult.translation,
-                  })
-                }
-                className="text-xs font-bold text-emerald-700 dark:text-emerald-300 hover:underline inline-flex items-center gap-1"
+          <div
+            className={`p-4 rounded-2xl border space-y-2.5 ${
+              externalResult.status === "success"
+                ? "bg-emerald-50/60 dark:bg-emerald-950/30 border-emerald-200/70 dark:border-emerald-800/50"
+                : "bg-amber-50/60 dark:bg-amber-950/30 border-amber-200/70 dark:border-amber-800/50"
+            }`}
+          >
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+              <span
+                className={`text-xs font-extrabold uppercase tracking-wider flex items-center gap-1.5 ${
+                  externalResult.status === "success"
+                    ? "text-emerald-700 dark:text-emerald-300"
+                    : "text-amber-800 dark:text-amber-300"
+                }`}
               >
-                <Plus size={13} />
-                <span>Lưu vào sổ tay</span>
-              </button>
+                <Globe size={13} />
+                <span>
+                  {externalResult.status === "success"
+                    ? `Bản dịch trực tuyến (${externalResult.source === "combined" ? "Google · FreeDict" : "Google"})`
+                    : "Tra cứu trực tuyến"}
+                </span>
+              </span>
+
+              {externalResult.status === "success" && externalResult.canSave ? (
+                <button
+                  type="button"
+                  disabled={itemSaveMap.external?.status === "saving"}
+                  onClick={() =>
+                    handleQuickSave({
+                      key: "external",
+                      term: externalResult.term,
+                      // Chỉ truyền cách đọc Kana hợp lệ (nếu có); không truyền phiên âm Latin (Shōhai) vào trường hiragana
+                      reading: externalResult.readingKana,
+                      meaning: externalResult.translation,
+                      lookupStatus: externalResult.status,
+                    })
+                  }
+                  className="text-xs font-bold text-emerald-700 dark:text-emerald-300 hover:underline inline-flex items-center gap-1 disabled:opacity-50"
+                >
+                  {itemSaveMap.external?.status === "saving" ? (
+                    <Loader2 size={13} className="animate-spin" />
+                  ) : itemSaveMap.external?.status === "added" ||
+                    itemSaveMap.external?.status === "already_exists" ? (
+                    <Check size={13} />
+                  ) : (
+                    <Plus size={13} />
+                  )}
+                  <span>
+                    {renderSaveButtonLabel("external", "Lưu vào sổ tay")}
+                  </span>
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  disabled={isLoadingExternal}
+                  onClick={handleLookupOnline}
+                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-white dark:bg-slate-800 border border-amber-300 dark:border-amber-700 text-xs font-bold text-amber-800 dark:text-amber-200 hover:border-amber-500"
+                >
+                  <RefreshCw size={12} />
+                  <span>Thử lại</span>
+                </button>
+              )}
             </div>
-            <p className="text-base font-bold text-slate-900 dark:text-white">
-              {externalResult.translation}
-            </p>
-            {externalResult.phonetic && (
-              <p className="text-xs text-slate-500 dark:text-slate-400">
-                Phiên âm: {externalResult.phonetic}
+
+            {externalResult.status === "success" ? (
+              <>
+                <p className="text-base font-bold text-slate-900 dark:text-white">
+                  {externalResult.translation}
+                </p>
+                {externalResult.readingKana && (
+                  <p className="text-xs font-medium text-emerald-700 dark:text-emerald-300">
+                    Cách đọc Kana: {externalResult.readingKana}
+                  </p>
+                )}
+                {externalResult.phonetic &&
+                  externalResult.phonetic !== externalResult.readingKana && (
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                      Phiên âm: {externalResult.phonetic}
+                    </p>
+                  )}
+                {externalResult.partialWarning && (
+                  <p className="text-[11px] text-amber-700 dark:text-amber-300">
+                    {externalResult.partialWarning}
+                  </p>
+                )}
+              </>
+            ) : (
+              <p className="text-sm font-semibold text-amber-900 dark:text-amber-200">
+                {externalResult.errorMessage || "Chưa tìm thấy nghĩa phù hợp"}
               </p>
             )}
+
+            {externalResult.definitions &&
+              externalResult.definitions.length > 0 && (
+                <div className="pt-2 border-t border-slate-200/60 dark:border-slate-700/60 space-y-1 text-xs">
+                  <p className="font-bold text-slate-600 dark:text-slate-300">
+                    Định nghĩa tiếng Anh tham khảo (FreeDict):
+                  </p>
+                  <ul className="list-disc list-inside space-y-0.5 text-slate-600 dark:text-slate-300">
+                    {externalResult.definitions.map((d, i) => (
+                      <li key={i} lang="en">
+                        {d}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
           </div>
         )}
+
+        {/* Ghi chú phạm vi lưu trữ rõ ràng cho khách & người dùng (FIX-05 Rule 8.4) */}
+        <p className="pt-2 border-t border-slate-100 dark:border-slate-700/60 text-[11px] text-slate-500 dark:text-slate-400">
+          Từ đã lưu nằm trong sổ tay trên trình duyệt này; bài làm JLPT chỉ giữ
+          tạm trong tab.
+        </p>
       </div>
     </dialog>
   );

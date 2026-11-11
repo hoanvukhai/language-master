@@ -14,22 +14,20 @@ import ScrollToTop from "./components/ScrollToTop";
 import { TimeTracker } from "./components/shared/TimeTracker";
 import { FloatingStudyTimer } from "./components/shared/FloatingStudyTimer";
 
-import Dictionary from "./pages/Dictionary";
-
-import Settings from "./pages/Settings";
 import LoginScreen from "./components/auth/LoginScreen";
 
-// Legacy imports removed
+const Dictionary = lazy(() => import("./pages/Dictionary"));
+const Settings = lazy(() => import("./pages/Settings"));
 
 // Courses Hub
-import MyCourses from "./pages/Course/MyCourses";
-import Explore from "./pages/Course/Explore";
-import CourseHub from "./pages/Course/CourseHub";
-import StudyRoadmap from "./pages/StudyRoadmap";
-import Profile from "./pages/Profile/Profile";
+const MyCourses = lazy(() => import("./pages/Course/MyCourses"));
+const Explore = lazy(() => import("./pages/Course/Explore"));
+const CourseHub = lazy(() => import("./pages/Course/CourseHub"));
+const StudyRoadmap = lazy(() => import("./pages/StudyRoadmap"));
+const Profile = lazy(() => import("./pages/Profile/Profile"));
 
 // Learn (SRS)
-import LearnSession from "./pages/Learn/LearnSession";
+const LearnSession = lazy(() => import("./pages/Learn/LearnSession"));
 
 // Exam Practice (Multi-Language)
 const ExamWorkspace = lazy(() => import("./pages/Exam/ExamWorkspace"));

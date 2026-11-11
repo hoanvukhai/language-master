@@ -17,7 +17,16 @@ import DrillSession from "../src/pages/Exam/sessions/DrillSession";
 import {
   buildCompletedSentence,
   buildUnfilledStemForTranslation,
+  clearSentenceTranslationCache,
 } from "../src/lib/jlpt/examText";
+import JLPTExamHub from "../src/pages/Exam/JLPTExamHub";
+import { speakWithVoiceEngine } from "../src/lib/audio/voiceEngine";
+import {
+  getWordNotebookStatus,
+  lookupExternal,
+  quickSaveWordToNotebook,
+  sanitizeKanaReading,
+} from "../src/lib/dictionary/multiBookLookup";
 
 const exams = Object.values(
   import.meta.glob<JLPTExam>(
@@ -31,11 +40,31 @@ vi.mock("../src/data/exams/jlpt", async () => {
     "../src/data/exams/jlpt/n2/kokusho-20days/day*.json",
     { eager: true, import: "default" },
   );
+  const sorted = Object.values(modules).sort((a, b) => (a.day ?? 0) - (b.day ?? 0));
   return {
     getExamById: (id: string) =>
       id.startsWith("pool-")
-        ? buildPracticePool(Object.values(modules))
-        : Object.values(modules).find((e) => e.id === id),
+        ? buildPracticePool(sorted)
+        : sorted.find((e) => e.id === id),
+    getJLPTBooksByLevel: (level?: string) => {
+      if (level && level !== "ALL" && level.toUpperCase() !== "N2") return [];
+      return [
+        {
+          id: "kokusho-n2-20days",
+          level: "N2" as const,
+          title: "日本語能力試験 20日で合格 N2 文字・語彙・文法",
+          subtitle: "Bộ đề thực chiến 20 ngày Chữ Hán, Từ vựng & Ngữ pháp N2",
+          totalDays: sorted.length,
+          totalQuestions: sorted.reduce(
+            (sum, exam) =>
+              sum +
+              exam.mondais.reduce((mSum, m) => mSum + m.questions.length, 0),
+            0,
+          ),
+          exams: sorted,
+        },
+      ];
+    },
   };
 });
 vi.mock("../src/lib/jlpt/sentenceAnalyzer", () => ({
@@ -77,7 +106,9 @@ function open(exam: JLPTExam, mode = "mock") {
   );
 }
 beforeEach(() => {
+  localStorage.clear();
   sessionStorage.clear();
+  clearSentenceTranslationCache();
   setSession(null);
   vi.spyOn(window, "confirm").mockReturnValue(true);
   vi.spyOn(window, "alert").mockImplementation(() => {});
@@ -495,5 +526,223 @@ describe("audit regression fixes", () => {
     expect(getSession()?.answers[exams[0].mondais[0].questions[0].id]).toBe(
       undefined,
     );
+  });
+});
+
+describe("QA spec 2026-11-08 regression suite", () => {
+  const pool = buildPracticePool(exams)!;
+
+  it("FIX-01: keeps book view open when searching Day 12 or 0-match query and handles invalid book param", async () => {
+    const user = userEvent.setup();
+    render(
+      <MemoryRouter
+        initialEntries={["/exams/jlpt?book=kokusho-n2-20days&q=Day%2012"]}
+      >
+        <Routes>
+          <Route path="/exams/jlpt" element={<JLPTExamHub />} />
+        </Routes>
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByText(/Danh sách bài tập \(1 bài\)/)).toBeTruthy();
+    expect(screen.getAllByText(/Day 12/i).length).toBeGreaterThan(0);
+
+    const searchInput = screen.getByRole("textbox");
+    await user.clear(searchInput);
+    await user.type(searchInput, "zzzz");
+
+    expect(
+      screen.getByText("Không tìm thấy bài phù hợp trong sách này."),
+    ).toBeTruthy();
+    expect(screen.getAllByText(/Quay lại danh sách sách/).length).toBeGreaterThan(0);
+
+    await user.click(screen.getByRole("button", { name: "Xóa từ khóa" }));
+    expect(screen.getByText(/Danh sách bài tập \(20 bài\)/)).toBeTruthy();
+
+    cleanup();
+    render(
+      <MemoryRouter initialEntries={["/exams/jlpt?book=invalid-book-id"]}>
+        <Routes>
+          <Route path="/exams/jlpt" element={<JLPTExamHub />} />
+        </Routes>
+      </MemoryRouter>,
+    );
+    expect(screen.getByText("Không tìm thấy bộ sách này.")).toBeTruthy();
+    await user.click(
+      screen.getAllByRole("button", { name: /Quay lại danh sách sách/ })[0],
+    );
+    expect(screen.getByText(/Sách & Bộ Đề Luyện Thi/)).toBeTruthy();
+  });
+
+  it("FIX-02 & FIX-03: allows unchecking all Mondais to 0 câu and matches preview count with started session", async () => {
+    const user = userEvent.setup();
+    open(pool, "drill");
+
+    await user.click(screen.getByRole("button", { name: "Bỏ chọn" }));
+    expect(screen.getByText("Lượt này: 0 câu")).toBeTruthy();
+    expect(
+      screen.getByText(
+        "Chưa có dạng bài hoặc câu hỏi phù hợp. Vui lòng chọn lại ít nhất một Mondai để bắt đầu.",
+      ),
+    ).toBeTruthy();
+    const startBtn = screen.getByRole("button", {
+      name: /Bắt đầu luyện/,
+    }) as HTMLButtonElement;
+    expect(startBtn.disabled).toBe(true);
+
+    // Select only Mondai 9 (in standard mode, Mondai 9 quota is 5 questions = 1 full passage)
+    await user.click(screen.getByText(/Mondai 9 · Chuẩn đề/));
+    expect(screen.getByText("Lượt này: 5 câu")).toBeTruthy();
+
+    await user.click(screen.getByRole("button", { name: /Bắt đầu luyện/ }));
+    expect(getSession()?.questionIds).toHaveLength(5);
+  });
+
+  it("FIX-04: records assist only on successful help for uncommitted questions, not on errors or hide toggle", async () => {
+    const user = userEvent.setup();
+    // Use Mondai 2 question so both "Nghe câu" and "Dịch câu" are available pre-answer
+    const q6 = exams[0].mondais[1].questions[0];
+    const a = createAttempt(exams[0], "drill", [q6.id]);
+    act(() => setSession(a));
+    open(exams[0], "drill");
+
+    // 1. Translation HTTP 500 -> does NOT record assist
+    const fetchSpy = vi
+      .spyOn(globalThis, "fetch")
+      .mockResolvedValueOnce(new Response("err", { status: 500 }));
+    await user.click(screen.getByRole("button", { name: "Dịch câu" }));
+    expect(fetchSpy).toHaveBeenCalledTimes(1);
+    expect(getSession()?.assisted).toEqual([]);
+
+    // 2. Translation 200 OK -> records assist
+    fetchSpy.mockResolvedValueOnce(
+      new Response(JSON.stringify([[["Bản dịch câu 6", ""]]])),
+    );
+    await user.click(screen.getByRole("button", { name: "Dịch câu" }));
+    expect(await screen.findByText("Bản dịch câu 6")).toBeTruthy();
+    expect(getSession()?.assisted).toEqual([q6.id]);
+
+    // 3. Reset assisted, then toggle "Ẩn bản dịch" -> does NOT record assist
+    act(() => {
+      const current = getSession()!;
+      setSession({ ...current, assisted: [] });
+    });
+    await user.click(screen.getByRole("button", { name: "Ẩn bản dịch" }));
+    expect(getSession()?.assisted).toEqual([]);
+
+    // 4. Speak returning false -> does NOT record assist; returning true -> records assist
+    vi.mocked(speakWithVoiceEngine).mockReturnValueOnce(false);
+    await user.click(screen.getByRole("button", { name: "Nghe câu" }));
+    expect(getSession()?.assisted).toEqual([]);
+
+    vi.mocked(speakWithVoiceEngine).mockReturnValueOnce(true);
+    await user.click(screen.getByRole("button", { name: "Nghe câu" }));
+    expect(getSession()?.assisted).toEqual([q6.id]);
+  });
+
+  it("FIX-05 & FIX-08: sanitizes readings, detects duplicate/conflict, serializes quickSave, and separates online statuses", async () => {
+    expect(sanitizeKanaReading("kashikoi")).toBe("");
+    expect(sanitizeKanaReading("かしこい")).toBe("かしこい");
+
+    // Save new word
+    const res1 = await quickSaveWordToNotebook({
+      term: "未知語テスト",
+      reading: "みちごてすと",
+      meaning: "Từ mới kiểm thử",
+    });
+    expect(res1.status).toBe("added");
+
+    // Identical save -> already_exists
+    const res2 = await quickSaveWordToNotebook({
+      term: "未知語テスト",
+      reading: "みちごてすと",
+      meaning: "Từ mới kiểm thử",
+    });
+    expect(res2.status).toBe("already_exists");
+
+    // Different meaning -> conflict without overwriting
+    const res3 = await quickSaveWordToNotebook({
+      term: "未知語テスト",
+      reading: "みちごてすと",
+      meaning: "Nghĩa hoàn toàn khác",
+    });
+    expect(res3.status).toBe("conflict");
+
+    const statusCheck = getWordNotebookStatus({
+      term: "未知語テスト",
+      reading: "みちごてすと",
+      meaning: "Nghĩa hoàn toàn khác",
+    });
+    expect(statusCheck.status).toBe("conflict");
+
+    // Concurrent saves of a brand-new word produce only 1 item
+    const [c1, c2] = await Promise.all([
+      quickSaveWordToNotebook({
+        term: "並列保存語",
+        reading: "へいれつほぞんご",
+        meaning: "Từ lưu song song",
+      }),
+      quickSaveWordToNotebook({
+        term: "並列保存語",
+        reading: "へいれつほぞんご",
+        meaning: "Từ lưu song song",
+      }),
+    ]);
+    expect([c1.status, c2.status]).toEqual(["added", "already_exists"]);
+
+    // Online lookup statuses (template='japanese' makes 1 fetch call to Google Translate)
+    const fetchSpy = vi
+      .spyOn(globalThis, "fetch")
+      .mockResolvedValueOnce(new Response("err", { status: 500 }));
+    const netErr = await lookupExternal("テスト語");
+    expect(netErr.status).toBe("network_error");
+    expect(netErr.canSave).toBe(false);
+
+    // Not found when Google returns identical term
+    fetchSpy.mockResolvedValueOnce(
+      new Response(JSON.stringify([[["テスト語", "テスト語"]]])),
+    );
+    const notFound = await lookupExternal("テスト語");
+    expect(notFound.status).toBe("not_found");
+    expect(notFound.canSave).toBe(false);
+  });
+
+  it("FIX-06 & B3: synchronizes Quick-Jump TOC with active filter, renders 1 Mondai header per Mondai, and shows context badge for passage siblings", async () => {
+    const user = userEvent.setup();
+    // 1. Review mode filtered by Mondai 1 -> 5 cards, 5 TOC links, 1 Mondai header
+    open(exams[0], "review");
+    await user.selectOptions(screen.getByRole("combobox"), "1");
+    const tocNav = screen.getByRole("complementary");
+    expect(tocNav.querySelectorAll("a")).toHaveLength(5);
+    expect(
+      screen.getAllByRole("heading", { name: /Mondai 1 · Cách đọc Kanji/ }),
+    ).toHaveLength(1);
+
+    cleanup();
+
+    // 2. Post-submit result screen with 1 wrong passage question -> shows 1 câu sai · Hiển thị 5 câu để giữ ngữ cảnh + 4 context badges
+    const passageIds = exams[0].mondais[8].questions.map((q) => q.id);
+    const a = createAttempt(exams[0], "mock", passageIds);
+    for (const q of exams[0].mondais[8].questions) {
+      a.answers[q.id] = q.answer;
+    }
+    const wrongQ = exams[0].mondais[8].questions[2];
+    a.answers[wrongQ.id] = (wrongQ.answer % 4) + 1;
+    act(() => setSession(finish(a)));
+
+    open(exams[0], "result");
+    await user.click(screen.getByRole("button", { name: "Xem câu sai" }));
+    expect(
+      screen.getByText("1 câu sai · Hiển thị 5 câu để giữ ngữ cảnh"),
+    ).toBeTruthy();
+    expect(screen.getAllByText("Giữ ngữ cảnh đoạn văn")).toHaveLength(4);
+    const reviewToc = screen.getByRole("complementary");
+    expect(reviewToc.querySelectorAll("a")).toHaveLength(5);
+
+    // Filter by flags (0) -> shows empty state in both main and TOC
+    await user.selectOptions(screen.getByRole("combobox"), "flags");
+    expect(
+      screen.getAllByText("Không có câu phù hợp bộ lọc.").length,
+    ).toBeGreaterThanOrEqual(2);
   });
 });

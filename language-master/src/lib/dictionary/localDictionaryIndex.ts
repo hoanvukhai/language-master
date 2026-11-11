@@ -317,6 +317,13 @@ export function getDictionaryCourseList(customCourses: CustomCourseDoc[] = []): 
 const searchResultCache = new Map<string, { total: number; results: DictionaryEntry[] }>();
 
 /**
+ * Xóa cache kết quả tìm kiếm khi Sổ tay hoặc Bộ từ cá nhân thay đổi
+ */
+export function invalidateDictionaryCache(): void {
+  searchResultCache.clear();
+}
+
+/**
  * Tra cứu toàn diện từ điển (Global Search) - Tối ưu hóa hiệu năng cao
  */
 export function searchGlobalDictionary(

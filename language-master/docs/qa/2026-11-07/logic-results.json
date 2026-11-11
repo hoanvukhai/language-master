@@ -1,0 +1,106 @@
+{
+  "date": "2026-11-07",
+  "scope": "Logic-only execution against current source; no application code modified",
+  "picker": {
+    "cases": 6849,
+    "failures": []
+  },
+  "retry": {
+    "cases": 100,
+    "status": "all pass; previous pooled passage retry defect is fixed",
+    "examples": [
+      {
+        "day": 1,
+        "number": 50,
+        "count": 5,
+        "restored": true
+      },
+      {
+        "day": 1,
+        "number": 51,
+        "count": 5,
+        "restored": true
+      },
+      {
+        "day": 1,
+        "number": 52,
+        "count": 5,
+        "restored": true
+      },
+      {
+        "day": 1,
+        "number": 53,
+        "count": 5,
+        "restored": true
+      },
+      {
+        "day": 1,
+        "number": 54,
+        "count": 5,
+        "restored": true
+      }
+    ]
+  },
+  "timing": {
+    "days": 20,
+    "status": "all pass",
+    "checks": {
+      "day": 1,
+      "deadline": true,
+      "lateAnswerRejected": true,
+      "ttl": true,
+      "tabCopyIndependent": true,
+      "submittedLocked": true
+    }
+  },
+  "multipleBlanks": [
+    {
+      "day": 7,
+      "number": 41,
+      "stem": "富士山（　）形の美しい山はそんなに（　）。",
+      "correct": "ほど ／ ないだろう",
+      "completed": "富士山ほど形の美しい山はそんなにないだろう。",
+      "unfilled": "富士山 … 形の美しい山はそんなに … 。"
+    },
+    {
+      "day": 8,
+      "number": 42,
+      "stem": "青木「きのう、娘さんとデパートに行ったんですって。」 藤沢「ええ、靴（　）、服（　）せがまれて大変でした。」",
+      "correct": "だの ／ だの",
+      "completed": "青木「きのう、娘さんとデパートに行ったんですって。」 藤沢「ええ、靴だの、服だのせがまれて大変でした。」",
+      "unfilled": "青木「きのう、娘さんとデパートに行ったんですって。」 藤沢「ええ、靴 … 、服 … せがまれて大変でした。」"
+    }
+  ],
+  "persistentHistory": {
+    "status": "disabled; legacy history removed; unrelated key retained"
+  },
+  "sessionStorage": {
+    "emptyStore": true,
+    "successfulPersist": true,
+    "blockedWriteKeepsRAM": true,
+    "staleStoredAttemptRemoved": true,
+    "clearPreservesUnrelatedKey": true
+  },
+  "storageLoadEdgeCases": [
+    {
+      "case": "storage-undefined",
+      "result": null
+    },
+    {
+      "case": "storage-read-blocked",
+      "result": null
+    },
+    {
+      "case": "corrupt-json",
+      "result": null
+    },
+    {
+      "case": "expired-session",
+      "result": null
+    },
+    {
+      "case": "timeout-restored",
+      "result": "submitted"
+    }
+  ]
+}

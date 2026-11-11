@@ -204,6 +204,407 @@ export function pickAdvancedPracticeQuestions(
   return ids;
 }
 
+/**
+ * Ensure any question belonging to a shared passage brings its entire passage cluster
+ * in original question order, without duplicate IDs.
+ */
+export function expandPassageClusters(exam: JLPTExam, ids: string[]): string[] {
+  if (!ids.length) return [];
+  const questionById = new Map<string, { passageId?: string }>();
+  const passageGroups = new Map<string, string[]>();
+
+  for (const m of exam.mondais) {
+    for (const q of m.questions) {
+      questionById.set(q.id, q);
+      if (q.passageId) {
+        const list = passageGroups.get(q.passageId) || [];
+        list.push(q.id);
+        passageGroups.set(q.passageId, list);
+      }
+    }
+  }
+
+  const result: string[] = [];
+  const seen = new Set<string>();
+
+  for (const id of ids) {
+    if (seen.has(id)) continue;
+    const q = questionById.get(id);
+    if (!q) continue;
+    if (q.passageId && passageGroups.has(q.passageId)) {
+      for (const sibId of passageGroups.get(q.passageId)!) {
+        if (!seen.has(sibId)) {
+          seen.add(sibId);
+          result.push(sibId);
+        }
+      }
+    } else {
+      seen.add(id);
+      result.push(id);
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Verify whether an exam source has enough valid questions across all 9 Mondais
+ * to form a standard 54-question timed exam.
+ */
+export function canCreateStandardMock(exam?: JLPTExam | null): boolean {
+  if (!exam || !Array.isArray(exam.mondais) || !exam.timeLimitMinutes) {
+    return false;
+  }
+  for (let mNum = 1; mNum <= 9; mNum++) {
+    const quota = STANDARD_MONDAI_QUOTAS[mNum] ?? 5;
+    const m = exam.mondais.find((x) => x.number === mNum);
+    if (!m || !Array.isArray(m.questions) || m.questions.length < quota) {
+      return false;
+    }
+  }
+  return true;
+}
+
+export interface PlannedRoundConfig {
+  mode: "drill" | "mock";
+  mondais: number[];
+  allocationMode: AllocationMode;
+  totalCount: number | "all";
+  perMondaiCount: number;
+  dayFilter: number | "all";
+}
+
+export interface PlannedRound {
+  configKey: string;
+  config: PlannedRoundConfig;
+  examId: string;
+  contentRevision: number;
+  questionIds: string[];
+  actualTotal: number;
+  targetTotal: number | "all";
+  eligibleCount: number;
+  bankTotal: number;
+  mondaiDistribution: { mondai: number; count: number }[];
+  reason?: "passage_expanded" | "shortage" | "empty" | "invalid_mock";
+  reasonMessage?: string;
+  canStart: boolean;
+}
+
+export function buildPlannedRoundKey(
+  exam: JLPTExam,
+  rawConfig: Partial<PlannedRoundConfig>,
+): string {
+  const mode = rawConfig.mode === "mock" ? "mock" : "drill";
+  const validMondaiSet = new Set(exam.mondais.map((m) => m.number));
+  const mondais =
+    mode === "mock"
+      ? [1, 2, 3, 4, 5, 6, 7, 8, 9]
+      : Array.from(
+          new Set(
+            (rawConfig.mondais ?? exam.mondais.map((m) => m.number)).filter(
+              (n) => validMondaiSet.has(n),
+            ),
+          ),
+        ).sort((a, b) => a - b);
+  const allocationMode: AllocationMode =
+    mode === "mock" ? "standard" : (rawConfig.allocationMode ?? "standard");
+  const totalCount: number | "all" =
+    rawConfig.totalCount === "all" || rawConfig.totalCount === Infinity
+      ? "all"
+      : Number.isFinite(Number(rawConfig.totalCount)) &&
+          Number(rawConfig.totalCount) > 0
+        ? Math.floor(Number(rawConfig.totalCount))
+        : 20;
+  const perMondaiCount =
+    Number.isFinite(Number(rawConfig.perMondaiCount)) &&
+    Number(rawConfig.perMondaiCount) > 0
+      ? Math.floor(Number(rawConfig.perMondaiCount))
+      : 5;
+  const dayFilter: number | "all" =
+    !exam.isPracticePool ||
+    rawConfig.dayFilter === undefined ||
+    rawConfig.dayFilter === "all"
+      ? "all"
+      : rawConfig.dayFilter;
+
+  return JSON.stringify({
+    examId: exam.id,
+    rev: exam.contentRevision || 0,
+    mode,
+    mondais,
+    allocationMode,
+    totalCount,
+    perMondaiCount,
+    dayFilter,
+  });
+}
+
+/**
+ * Create an in-memory PlannedRound so the setup preview and the actual started Attempt
+ * share the exact same question list, count, and per-Mondai distribution.
+ */
+export function planPracticeRound(
+  exam: JLPTExam,
+  rawConfig: Partial<PlannedRoundConfig>,
+  random = Math.random,
+): PlannedRound {
+  const mode = rawConfig.mode === "mock" ? "mock" : "drill";
+  const validMondaiSet = new Set(exam.mondais.map((m) => m.number));
+  const mondais =
+    mode === "mock"
+      ? [1, 2, 3, 4, 5, 6, 7, 8, 9]
+      : Array.from(
+          new Set(
+            (rawConfig.mondais ?? exam.mondais.map((m) => m.number)).filter(
+              (n) => validMondaiSet.has(n),
+            ),
+          ),
+        ).sort((a, b) => a - b);
+  const allocationMode: AllocationMode =
+    mode === "mock" ? "standard" : (rawConfig.allocationMode ?? "standard");
+  const totalCount: number | "all" =
+    rawConfig.totalCount === "all" || rawConfig.totalCount === Infinity
+      ? "all"
+      : Number.isFinite(Number(rawConfig.totalCount)) &&
+          Number(rawConfig.totalCount) > 0
+        ? Math.floor(Number(rawConfig.totalCount))
+        : 20;
+  const perMondaiCount =
+    Number.isFinite(Number(rawConfig.perMondaiCount)) &&
+    Number(rawConfig.perMondaiCount) > 0
+      ? Math.floor(Number(rawConfig.perMondaiCount))
+      : 5;
+  const dayFilter: number | "all" =
+    !exam.isPracticePool ||
+    rawConfig.dayFilter === undefined ||
+    rawConfig.dayFilter === "all"
+      ? "all"
+      : rawConfig.dayFilter;
+
+  const config: PlannedRoundConfig = {
+    mode,
+    mondais,
+    allocationMode,
+    totalCount,
+    perMondaiCount,
+    dayFilter,
+  };
+  const configKey = buildPlannedRoundKey(exam, config);
+  const bankTotal = exam.mondais.reduce(
+    (sum, m) => sum + m.questions.length,
+    0,
+  );
+
+  if (mode === "mock") {
+    if (!canCreateStandardMock(exam)) {
+      return {
+        configKey,
+        config,
+        examId: exam.id,
+        contentRevision: exam.contentRevision || 0,
+        questionIds: [],
+        actualTotal: 0,
+        targetTotal: 54,
+        eligibleCount: bankTotal,
+        bankTotal,
+        mondaiDistribution: [],
+        reason: "invalid_mock",
+        reasonMessage: "Nguồn hiện tại chưa đủ câu để tạo bài 54 câu.",
+        canStart: false,
+      };
+    }
+
+    const rawIds = exam.isPracticePool
+      ? pickAdvancedPracticeQuestions(
+          exam,
+          {
+            mondais: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            allocationMode: "standard",
+            totalCount: 54,
+            perMondaiCount: 5,
+            dayFilter: "all",
+          },
+          random,
+        )
+      : exam.mondais.flatMap((m) => m.questions.map((q) => q.id));
+
+    const questionIds = expandPassageClusters(exam, rawIds);
+    const idSet = new Set(questionIds);
+    const mondaiMap: Record<number, number> = {};
+    const mondaiDistribution: { mondai: number; count: number }[] = [];
+    let validStructure = questionIds.length === 54;
+    for (const m of exam.mondais) {
+      const cnt = m.questions.filter((q) => idSet.has(q.id)).length;
+      if (cnt > 0) {
+        mondaiMap[m.number] = cnt;
+        mondaiDistribution.push({ mondai: m.number, count: cnt });
+      }
+    }
+    for (let mNum = 1; mNum <= 9; mNum++) {
+      if (mondaiMap[mNum] !== (STANDARD_MONDAI_QUOTAS[mNum] ?? 5)) {
+        validStructure = false;
+      }
+    }
+
+    return {
+      configKey,
+      config,
+      examId: exam.id,
+      contentRevision: exam.contentRevision || 0,
+      questionIds: validStructure ? questionIds : [],
+      actualTotal: validStructure ? questionIds.length : 0,
+      targetTotal: 54,
+      eligibleCount: bankTotal,
+      bankTotal,
+      mondaiDistribution: validStructure ? mondaiDistribution : [],
+      reason: validStructure ? undefined : "invalid_mock",
+      reasonMessage: validStructure
+        ? undefined
+        : "Nguồn hiện tại chưa đủ câu để tạo bài 54 câu.",
+      canStart: validStructure,
+    };
+  }
+
+  // Drill mode
+  const activeMondais = exam.mondais.filter((m) => mondais.includes(m.number));
+  const eligibleCount = activeMondais.reduce(
+    (sum, m) =>
+      sum +
+      m.questions.filter(
+        (q) =>
+          dayFilter === "all" ||
+          q.origin?.day === undefined ||
+          q.origin.day === dayFilter,
+      ).length,
+    0,
+  );
+
+  if (activeMondais.length === 0 || eligibleCount === 0) {
+    return {
+      configKey,
+      config,
+      examId: exam.id,
+      contentRevision: exam.contentRevision || 0,
+      questionIds: [],
+      actualTotal: 0,
+      targetTotal: 0,
+      eligibleCount: 0,
+      bankTotal,
+      mondaiDistribution: [],
+      reason: "empty",
+      reasonMessage:
+        "Chưa có dạng bài hoặc câu hỏi phù hợp. Vui lòng chọn lại ít nhất một Mondai để bắt đầu.",
+      canStart: false,
+    };
+  }
+
+  let rawIds: string[];
+  if (!exam.isPracticePool) {
+    rawIds = activeMondais.flatMap((m) => m.questions.map((q) => q.id));
+  } else if (
+    allocationMode === "total" &&
+    dayFilter === "all" &&
+    (activeMondais.length === 1 ||
+      activeMondais.length === exam.mondais.length)
+  ) {
+    const mondaiArg =
+      activeMondais.length === 1 ? String(activeMondais[0].number) : "all";
+    rawIds = pickPracticeQuestions(
+      exam,
+      mondaiArg,
+      totalCount === "all" ? Infinity : totalCount,
+      random,
+    );
+  } else {
+    rawIds = pickAdvancedPracticeQuestions(
+      exam,
+      {
+        mondais,
+        allocationMode,
+        totalCount: totalCount === "all" ? Infinity : totalCount,
+        perMondaiCount,
+        dayFilter,
+      },
+      random,
+    );
+  }
+
+  const questionIds = expandPassageClusters(exam, rawIds);
+  const idSet = new Set(questionIds);
+  const mondaiMap: Record<number, number> = {};
+  const mondaiDistribution: { mondai: number; count: number }[] = [];
+  for (const m of activeMondais) {
+    const cnt = m.questions.filter((q) => idSet.has(q.id)).length;
+    mondaiMap[m.number] = cnt;
+    mondaiDistribution.push({ mondai: m.number, count: cnt });
+  }
+
+  const actualTotal = questionIds.length;
+  let targetTotal: number | "all" = actualTotal;
+  let reason: PlannedRound["reason"];
+  let reasonMessage: string | undefined;
+
+  if (exam.isPracticePool) {
+    if (allocationMode === "standard") {
+      targetTotal = activeMondais.reduce(
+        (sum, m) => sum + (STANDARD_MONDAI_QUOTAS[m.number] ?? 5),
+        0,
+      );
+      if (actualTotal < targetTotal) {
+        reason = "shortage";
+        reasonMessage = `Nguồn đã chọn chỉ có ${actualTotal} câu phù hợp.`;
+      } else if (actualTotal > targetTotal) {
+        reason = "passage_expanded";
+        reasonMessage =
+          "Giữ nguyên nhóm câu trong đoạn văn nên số câu tăng thêm.";
+      }
+    } else if (allocationMode === "per_mondai") {
+      targetTotal = activeMondais.length * perMondaiCount;
+      const hasShortMondai = activeMondais.some(
+        (m) => (mondaiMap[m.number] ?? 0) < perMondaiCount,
+      );
+      if (hasShortMondai) {
+        reason = "shortage";
+        reasonMessage = `Nguồn đã chọn chỉ có ${actualTotal} câu phù hợp.`;
+      } else if (actualTotal > targetTotal) {
+        reason = "passage_expanded";
+        reasonMessage =
+          "Giữ nguyên nhóm câu trong đoạn văn nên số câu tăng thêm.";
+      }
+    } else {
+      if (totalCount === "all") {
+        targetTotal = "all";
+      } else {
+        targetTotal = totalCount;
+        if (actualTotal > totalCount) {
+          reason = "passage_expanded";
+          reasonMessage =
+            "Giữ nguyên nhóm câu trong đoạn văn nên số câu tăng thêm.";
+        } else if (actualTotal < totalCount) {
+          reason = "shortage";
+          reasonMessage = `Nguồn đã chọn chỉ có ${actualTotal} câu phù hợp.`;
+        }
+      }
+    }
+  }
+
+  return {
+    configKey,
+    config,
+    examId: exam.id,
+    contentRevision: exam.contentRevision || 0,
+    questionIds,
+    actualTotal,
+    targetTotal,
+    eligibleCount,
+    bankTotal,
+    mondaiDistribution,
+    reason,
+    reasonMessage,
+    canStart: actualTotal > 0,
+  };
+}
+
 /** Store only this round in the tab, rather than duplicating the whole bank.
  *  Always keeps sibling questions sharing the same passage so passage blanks remain valid.
  */

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import {
   ArrowLeft,
@@ -30,7 +30,8 @@ import {
 import "./exam.css";
 import { useConfirmation } from "./components/useConfirmation";
 import {
-  pickAdvancedPracticeQuestions,
+  canCreateStandardMock,
+  planPracticeRound,
   poolId,
   practiceSnapshot,
 } from "../../lib/jlpt/practicePool";
@@ -44,24 +45,29 @@ export default function JLPTExamHub() {
   const { attempt, notice } = useTabSession();
   const [upcomingModal, setUpcomingModal] =
     useState<UpcomingSkillModal>(null);
+  const startingMockRef = useRef(false);
 
   const level = params.get("level") || "ALL",
     query = params.get("q") || "",
     selectedBookId = params.get("book") || "";
+  const normalizedQuery = query.trim().toLowerCase();
 
   const books = getJLPTBooksByLevel(
     ["N1", "N2", "N3", "N4", "N5"].includes(level)
       ? (level as JLPTLevel)
       : "ALL",
   );
+  const allBooks = getJLPTBooksByLevel("ALL");
   const filtered = books
     .map((b) => ({
       ...b,
-      exams: b.exams.filter((e) =>
-        `${b.title} ${e.title} ${e.subtitle} day ${e.day || ""}`
-          .toLowerCase()
-          .includes(query.toLowerCase()),
-      ),
+      exams: normalizedQuery
+        ? b.exams.filter((e) =>
+            `${b.title} ${e.title} ${e.subtitle} day ${e.day || ""} day ${String(e.day || "").padStart(2, "0")} ngày ${e.day || ""}`
+              .toLowerCase()
+              .includes(normalizedQuery),
+          )
+        : b.exams,
     }))
     .filter((b) => b.exams.length);
 
@@ -86,46 +92,66 @@ export default function JLPTExamHub() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const selectedBook =
-    filtered.find((b) => b.id === selectedBookId) ||
-    books.find((b) => b.id === selectedBookId) ||
-    null;
+  // FIX-01: Tách riêng sách đang mở (openedBook) và danh sách bài khớp từ khóa (matchedBookExams)
+  const openedBook = selectedBookId
+    ? books.find((b) => b.id === selectedBookId) ||
+      allBooks.find((b) => b.id === selectedBookId) ||
+      null
+    : null;
+  const isInvalidBookId = Boolean(selectedBookId) && !openedBook;
 
-  const primaryBook = selectedBook || filtered[0] || books[0];
+  const matchedBookExams = openedBook
+    ? normalizedQuery
+      ? openedBook.exams.filter((e) =>
+          `${openedBook.title} ${e.title} ${e.subtitle} day ${e.day || ""} day ${String(e.day || "").padStart(2, "0")} ngày ${e.day || ""}`
+            .toLowerCase()
+            .includes(normalizedQuery),
+        )
+      : openedBook.exams
+    : [];
+
+  const primaryBook = openedBook || filtered[0] || books[0];
   const primaryPoolId = primaryBook
     ? poolId(primaryBook.id, primaryBook.level)
     : "pool-N2-kokusho-20days";
+  const primaryPoolExam = getExamById(primaryPoolId);
+  const canStartPrimaryMock = primaryPoolExam
+    ? canCreateStandardMock(primaryPoolExam)
+    : false;
 
   /** Vào thẳng phòng thi bấm giờ (Không qua màn hình chờ trung gian) */
   const startDirectMock = async (targetExamId: string) => {
-    refreshSession();
-    if (
-      getSession() &&
-      !(await ask(
-        "Bắt đầu đề thi mới sẽ thay bài làm hoặc kết quả hiện tại trong tab này. Tiếp tục?",
-      ))
-    ) {
-      return;
-    }
-    const source = getExamById(targetExamId);
-    if (!source) {
+    if (startingMockRef.current) return;
+    startingMockRef.current = true;
+    try {
+      const source = getExamById(targetExamId);
+      if (!source) {
+        navigate(`/exams/jlpt/${targetExamId}/mock`);
+        return;
+      }
+      const plan = planPracticeRound(source, { mode: "mock" });
+      if (!plan.canStart) {
+        return;
+      }
+      refreshSession();
+      if (
+        getSession() &&
+        !(await ask(
+          "Bắt đầu đề thi mới sẽ thay bài làm hoặc kết quả hiện tại trong tab này. Tiếp tục?",
+        ))
+      ) {
+        return;
+      }
+      const picked = source.isPracticePool ? plan.questionIds : undefined;
+      const snapshot =
+        source.isPracticePool && picked
+          ? practiceSnapshot(source, picked)
+          : source;
+      setSession(createAttempt(snapshot, "mock", picked));
       navigate(`/exams/jlpt/${targetExamId}/mock`);
-      return;
+    } finally {
+      startingMockRef.current = false;
     }
-    const picked = source.isPracticePool
-      ? pickAdvancedPracticeQuestions(source, {
-          mondais: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-          allocationMode: "standard",
-          totalCount: 54,
-          perMondaiCount: 5,
-        })
-      : undefined;
-    const snapshot =
-      source.isPracticePool && picked
-        ? practiceSnapshot(source, picked)
-        : source;
-    setSession(createAttempt(snapshot, "mock", picked));
-    navigate(`/exams/jlpt/${targetExamId}/mock`);
   };
 
   return (
@@ -134,19 +160,23 @@ export default function JLPTExamHub() {
 
       {/* Active Session Resume Banner — Placed at the very top for instant resume */}
       {attempt && (
-        <section className="exam-card border-2 border-indigo-500/80 dark:border-indigo-500/70 bg-indigo-50/50 dark:bg-indigo-950/30 flex flex-wrap gap-4 items-center justify-between">
-          <div className="flex items-center gap-3.5 min-w-0">
+        <section className="exam-card border-2 border-indigo-500/80 dark:border-indigo-500/70 bg-indigo-50/50 dark:bg-indigo-950/30 flex flex-col sm:flex-row gap-3.5 sm:gap-4 items-stretch sm:items-center justify-between">
+          <div className="flex items-start sm:items-center gap-3.5 min-w-0 flex-1 w-full sm:w-auto">
             <div className="w-11 h-11 rounded-2xl bg-indigo-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-indigo-500/20">
               <Play size={18} />
             </div>
-            <div className="min-w-0">
-              <h2 className="font-black text-base sm:text-lg text-slate-900 dark:text-white">
+            <div className="min-w-0 flex-1 space-y-0.5">
+              <h2
+                title={attempt.exam.title}
+                className="font-black text-base sm:text-lg text-slate-900 dark:text-white line-clamp-2 break-words"
+              >
+                {attempt.exam.title}
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
                 {attempt.status === "submitted"
                   ? "Kết quả trong tab này"
-                  : "Bài đang làm trong tab này"}
-              </h2>
-              <p className="text-sm text-slate-600 dark:text-slate-300 truncate">
-                {attempt.exam.title} · Đã chọn{" "}
+                  : "Đang làm"}{" "}
+                ·{" "}
                 <strong>
                   {Object.keys(attempt.answers).length}/
                   {attempt.questionIds.length}
@@ -155,21 +185,22 @@ export default function JLPTExamHub() {
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-2.5">
+          <div className="flex flex-wrap items-center gap-2.5 w-full sm:w-auto shrink-0">
             <Link
-              className="exam-primary"
+              className="exam-primary flex-1 sm:flex-initial min-h-11"
               to={`/exams/jlpt/${attempt.exam.id}/${attempt.status === "submitted" ? "result" : attempt.mode}`}
             >
               {attempt.status === "submitted" ? "Xem kết quả" : "Làm tiếp"}
             </Link>
             <button
-              className="exam-secondary"
+              type="button"
+              className="exam-secondary flex-1 sm:flex-initial min-h-11"
               onClick={async () => {
                 if (await ask("Xóa phiên tạm trong tab này?")) setSession(null);
               }}
             >
               <Trash2 size={15} />
-              <span>Xóa phiên</span>
+              <span>Kết thúc và xóa phiên</span>
             </button>
           </div>
         </section>
@@ -267,7 +298,7 @@ export default function JLPTExamHub() {
         <div className="relative z-10 space-y-5">
           {/* Thanh điều hướng trên cùng + Chọn Cấp Độ & Kỹ Năng */}
           <div className="flex items-center justify-between gap-3 flex-wrap">
-            {selectedBook ? (
+            {openedBook || isInvalidBookId ? (
               <button
                 type="button"
                 onClick={() => selectBook(null)}
@@ -286,7 +317,7 @@ export default function JLPTExamHub() {
             )}
 
             {/* Chọn Cấp độ N1 - N5 tích hợp gọn trên Header */}
-            {!selectedBook && (
+            {!openedBook && !isInvalidBookId && (
               <div className="flex items-center gap-1 bg-black/20 backdrop-blur-md p-1 rounded-2xl border border-white/15">
                 {["ALL", "N1", "N2", "N3", "N4", "N5"].map((l) => (
                   <button
@@ -324,22 +355,22 @@ export default function JLPTExamHub() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
             <div>
               <p className="text-xs font-extrabold uppercase tracking-wider text-indigo-200">
-                {selectedBook
-                  ? `Giáo trình ${selectedBook.level} · Chọn bài học theo ngày`
+                {openedBook
+                  ? `Giáo trình ${openedBook.level} · Chọn bài học theo ngày`
                   : "Ngân hàng luyện đề tiếng Nhật"}
               </p>
               <h1 className="text-2xl sm:text-4xl font-black mt-1 tracking-tight">
-                {selectedBook ? selectedBook.title : "Kho bài luyện JLPT"}
+                {openedBook ? openedBook.title : "Kho bài luyện JLPT"}
               </h1>
               <p className="mt-2 text-indigo-100 text-sm sm:text-base max-w-2xl leading-relaxed">
-                {selectedBook
-                  ? `Gồm ${selectedBook.exams.length} bài học theo ngày đã đối chiếu bản gốc PDF. Chọn bài bên dưới để ôn từng câu ngay, làm bài bấm giờ hoặc xem lời giải.`
+                {openedBook
+                  ? `Gồm ${openedBook.exams.length} bài học theo ngày đã đối chiếu bản gốc PDF. Chọn bài bên dưới để ôn từng câu ngay, làm bài bấm giờ hoặc xem lời giải.`
                   : "Thi thử ngẫu nhiên 54 câu rút từ toàn bộ ngân hàng đề, ôn tập tự do chữa từng câu ngay theo Mondai, hoặc học lần lượt theo từng cuốn sách."}
               </p>
             </div>
 
             {/* Các phân hệ Kỹ năng (Bấm vào Đọc hiểu / Nghe hiểu sẽ bật Popup Modal) */}
-            {!selectedBook && (
+            {!openedBook && !isInvalidBookId && (
               <div className="flex flex-wrap items-center gap-2">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/25 border border-emerald-300/40 text-xs font-extrabold text-white">
                   <CheckCircle2 size={13} className="text-emerald-300" />
@@ -366,7 +397,7 @@ export default function JLPTExamHub() {
           </div>
 
           {/* 2 Nút / Thẻ Chế Độ Ngân Hàng Tổng Hợp đặt ngay trong Khối 1 */}
-          {!selectedBook && primaryBook && (
+          {!openedBook && !isInvalidBookId && primaryBook && (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-2">
               {/* Lối vào 1: Làm bài có giờ từ ngân hàng trộn -> VÀO THẲNG PHÒNG THI */}
               <div className="rounded-2xl bg-white/95 dark:bg-slate-900/95 text-slate-900 dark:text-white p-5 shadow-lg border border-white/40 flex flex-col justify-between gap-4">
@@ -389,14 +420,17 @@ export default function JLPTExamHub() {
                     đến khi nộp bài hoặc hết giờ.
                   </p>
                 </div>
-                <div className="flex items-center justify-between gap-3 pt-3 border-t border-slate-200/70 dark:border-slate-800">
+                <div className="flex items-center justify-between gap-3 pt-3 border-t border-slate-200/70 dark:border-slate-800 flex-wrap">
                   <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
-                    Vào thẳng bài làm · Không qua trang chờ
+                    {canStartPrimaryMock
+                      ? "Vào thẳng bài làm · Không qua trang chờ"
+                      : "Nguồn hiện tại chưa đủ câu để tạo bài 54 câu."}
                   </span>
                   <button
                     type="button"
+                    disabled={!canStartPrimaryMock}
                     onClick={() => startDirectMock(primaryPoolId)}
-                    className="exam-primary cursor-pointer"
+                    className="exam-primary cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Trophy size={15} />
                     <span>Vào làm ngay (54 câu)</span>
@@ -446,7 +480,24 @@ export default function JLPTExamHub() {
       {/* =====================================================================
           KHỐI 2: SÁCH & BỘ ĐỀ LUYỆN THI (KÈM THANH TÌM KIẾM Ở BÊN DƯỚI)
          ===================================================================== */}
-      {selectedBook ? (
+      {isInvalidBookId ? (
+        <section className="exam-card text-center py-10 space-y-3">
+          <p className="text-slate-700 dark:text-slate-200 font-bold text-base">
+            Không tìm thấy bộ sách này.
+          </p>
+          <p className="text-xs text-slate-500 dark:text-slate-400">
+            Mã sách không tồn tại hoặc đã thay đổi.
+          </p>
+          <button
+            type="button"
+            className="exam-primary"
+            onClick={() => selectBook(null)}
+          >
+            <ArrowLeft size={14} />
+            <span>Quay lại danh sách sách</span>
+          </button>
+        </section>
+      ) : openedBook ? (
         <section className="space-y-5">
           {/* Thanh tiêu đề Sách đang mở + Ô tìm kiếm bài học */}
           <div className="exam-card flex flex-col lg:flex-row lg:items-center justify-between gap-4">
@@ -461,7 +512,7 @@ export default function JLPTExamHub() {
               </button>
               <div>
                 <h2 className="font-black text-base sm:text-lg text-slate-900 dark:text-white">
-                  Danh sách bài tập ({selectedBook.exams.length} bài)
+                  Danh sách bài tập ({matchedBookExams.length} bài)
                 </h2>
                 <p className="text-xs text-slate-500 dark:text-slate-400">
                   Chọn bài bên dưới để ôn từng câu, thi bấm giờ hoặc xem lời
@@ -497,7 +548,7 @@ export default function JLPTExamHub() {
 
               <Link
                 className="exam-primary !from-emerald-600 !to-teal-600 hover:!from-emerald-700 hover:!to-teal-700 !py-2 !px-3.5 !min-h-9 text-xs"
-                to={`/exams/jlpt/${poolId(selectedBook.id, selectedBook.level)}/drill`}
+                to={`/exams/jlpt/${poolId(openedBook.id, openedBook.level)}/drill`}
               >
                 <Zap size={14} />
                 <span>Ôn tự do toàn sách</span>
@@ -505,7 +556,7 @@ export default function JLPTExamHub() {
               <button
                 type="button"
                 onClick={() =>
-                  startDirectMock(poolId(selectedBook.id, selectedBook.level))
+                  startDirectMock(poolId(openedBook.id, openedBook.level))
                 }
                 className="exam-primary !py-2 !px-3.5 !min-h-9 text-xs cursor-pointer"
               >
@@ -515,78 +566,101 @@ export default function JLPTExamHub() {
             </div>
           </div>
 
-          {/* Lưới các Thẻ Bài (Day 01 -> Day 20) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {selectedBook.exams.map((e) => {
-              const isInTab = attempt?.exam.id === e.id;
-              const bookPoolId = poolId(selectedBook.id, selectedBook.level);
-              return (
-                <article
-                  key={e.id}
-                  className="p-5 rounded-3xl bg-white dark:bg-slate-800 border-2 border-slate-200/90 dark:border-slate-700/80 hover:border-indigo-400 dark:hover:border-indigo-500 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between gap-4"
-                >
-                  <div className="space-y-2.5">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="px-2.5 py-1 rounded-xl text-xs font-black uppercase tracking-wider bg-indigo-100 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300">
-                        Day {String(e.day || "").padStart(2, "0")}
-                      </span>
-                      {isInTab ? (
-                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300">
-                          <CheckCircle2 size={12} />
-                          <span>
-                            {attempt.status === "submitted"
-                              ? "Có kết quả trong tab"
-                              : "Đang làm trong tab"}
+          {/* Lưới các Thẻ Bài (Day 01 -> Day 20) hoặc Trạng thái rỗng khi tìm kiếm không khớp */}
+          {matchedBookExams.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {matchedBookExams.map((e) => {
+                const isInTab = attempt?.exam.id === e.id;
+                const bookPoolId = poolId(openedBook.id, openedBook.level);
+                const sourceExam = getExamById(e.id) || e;
+                const canStartExamMock = canCreateStandardMock(sourceExam);
+                return (
+                  <article
+                    key={e.id}
+                    className="p-5 rounded-3xl bg-white dark:bg-slate-800 border-2 border-slate-200/90 dark:border-slate-700/80 hover:border-indigo-400 dark:hover:border-indigo-500 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between gap-4"
+                  >
+                    <div className="space-y-2.5">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="px-2.5 py-1 rounded-xl text-xs font-black uppercase tracking-wider bg-indigo-100 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300">
+                          Day {String(e.day || "").padStart(2, "0")}
+                        </span>
+                        {isInTab ? (
+                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300">
+                            <CheckCircle2 size={12} />
+                            <span>
+                              {attempt.status === "submitted"
+                                ? "Có kết quả trong tab"
+                                : "Đang làm trong tab"}
+                            </span>
                           </span>
-                        </span>
-                      ) : (
-                        <span className="text-xs font-semibold text-slate-400 dark:text-slate-500">
-                          {e.totalQuestions} câu
-                        </span>
-                      )}
+                        ) : (
+                          <span className="text-xs font-semibold text-slate-400 dark:text-slate-500">
+                            {e.totalQuestions} câu
+                          </span>
+                        )}
+                      </div>
+
+                      <Link
+                        className="font-black text-lg text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 underline-offset-4 hover:underline block"
+                        to={`/exams/jlpt/${e.id}`}
+                      >
+                        {e.title}
+                      </Link>
+
+                      <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
+                        {e.totalQuestions} câu · {e.mondais.length} dạng ·{" "}
+                        {e.timeLimitMinutes} phút
+                      </p>
                     </div>
 
-                    <Link
-                      className="font-black text-lg text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 underline-offset-4 hover:underline block"
-                      to={`/exams/jlpt/${e.id}`}
-                    >
-                      {e.title}
-                    </Link>
-
-                    <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
-                      {e.totalQuestions} câu · {e.mondais.length} dạng ·{" "}
-                      {e.timeLimitMinutes} phút
-                    </p>
-                  </div>
-
-                  <div className="flex flex-wrap gap-2 pt-3 border-t border-slate-100 dark:border-slate-700/70">
-                    <Link
-                      className="exam-primary !from-emerald-600 !to-teal-600 hover:!from-emerald-700 hover:!to-teal-700 !py-1.5 !px-3 !min-h-9 text-xs flex-1"
-                      to={`/exams/jlpt/${bookPoolId}/drill${e.day ? `?day=${e.day}` : ""}`}
-                    >
-                      <Zap size={13} />
-                      <span>Luyện theo dạng</span>
-                    </Link>
-                    <button
-                      type="button"
-                      onClick={() => startDirectMock(e.id)}
-                      className="exam-primary !py-1.5 !px-3 !min-h-9 text-xs flex-1 cursor-pointer"
-                    >
-                      <Clock size={13} />
-                      <span>Làm bài có giờ</span>
-                    </button>
-                    <Link
-                      className="exam-secondary !py-1.5 !px-3 !min-h-9 text-xs w-full"
-                      to={`/exams/jlpt/${e.id}/review`}
-                    >
-                      <FileText size={13} />
-                      <span>Xem đề & lời giải</span>
-                    </Link>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
+                    <div className="flex flex-wrap gap-2 pt-3 border-t border-slate-100 dark:border-slate-700/70">
+                      <Link
+                        className="exam-primary !from-emerald-600 !to-teal-600 hover:!from-emerald-700 hover:!to-teal-700 !py-1.5 !px-3 !min-h-9 text-xs flex-1"
+                        to={`/exams/jlpt/${bookPoolId}/drill${e.day ? `?day=${e.day}` : ""}`}
+                      >
+                        <Zap size={13} />
+                        <span>Luyện theo dạng</span>
+                      </Link>
+                      <button
+                        type="button"
+                        disabled={!canStartExamMock}
+                        title={
+                          canStartExamMock
+                            ? undefined
+                            : "Nguồn hiện tại chưa đủ câu để tạo bài 54 câu."
+                        }
+                        onClick={() => startDirectMock(e.id)}
+                        className="exam-primary !py-1.5 !px-3 !min-h-9 text-xs flex-1 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        <Clock size={13} />
+                        <span>Làm bài có giờ</span>
+                      </button>
+                      <Link
+                        className="exam-secondary !py-1.5 !px-3 !min-h-9 text-xs w-full"
+                        to={`/exams/jlpt/${e.id}/review`}
+                      >
+                        <FileText size={13} />
+                        <span>Xem đề & lời giải</span>
+                      </Link>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="exam-card text-center py-10 space-y-3">
+              <p className="text-slate-600 dark:text-slate-300 font-medium">
+                Không tìm thấy bài phù hợp trong sách này.
+              </p>
+              <button
+                type="button"
+                className="exam-secondary"
+                onClick={() => change("q", "")}
+              >
+                Xóa từ khóa
+              </button>
+            </div>
+          )}
         </section>
       ) : (
         <section className="space-y-4">

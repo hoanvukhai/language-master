@@ -97,3 +97,10 @@ export function buildUnfilledStemForTranslation(question: {
     .replace(/\s+/g, " ")
     .trim();
 }
+
+export const sentenceTranslationCache = new Map<string, string>();
+
+export function clearSentenceTranslationCache(): void {
+  sentenceTranslationCache.clear();
+}
+

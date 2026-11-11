@@ -1,6 +1,7 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   Link,
+  useLocation,
   useNavigate,
   useParams,
   useSearchParams,
@@ -16,6 +17,7 @@ import {
   RotateCcw,
 } from "lucide-react";
 import { getExamById } from "../../data/exams/jlpt";
+import type { JLPTQuestion } from "../../data/exams/jlpt/types";
 import {
   answer,
   createAttempt,
@@ -34,11 +36,12 @@ import {
 import { useConfirmation } from "./components/useConfirmation";
 import {
   type AllocationMode,
+  type PlannedRound,
   STANDARD_MONDAI_QUOTAS,
+  buildPlannedRoundKey,
   computeStandardJLPTScore,
   isStandardExamStructure,
-  pickAdvancedPracticeQuestions,
-  pickPracticeQuestions,
+  planPracticeRound,
   poolId,
   practiceSnapshot,
 } from "../../lib/jlpt/practicePool";
@@ -65,6 +68,7 @@ const ALL_MONDAI_NUMBERS = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 export default function ExamWorkspace({ mode }: { mode: Mode }) {
   const { examId } = useParams();
   const [searchParams] = useSearchParams();
+  const location = useLocation();
   const navigate = useNavigate();
   const { ask, cancel, confirmation } = useConfirmation();
   const { attempt, notice } = useTabSession();
@@ -113,6 +117,13 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
     "all" | "unanswered" | "flagged"
   >("all");
   const [lookup, setLookup] = useState<string | null>(null);
+  const lookupContextRef = useRef<{
+    attemptId: string | null;
+    questionIds: string[];
+  } | null>(null);
+  const plannedRoundRef = useRef<PlannedRound | null>(null);
+  const startingRef = useRef(false);
+
   const [lookupEnabled, setLookupEnabled] = useState<boolean>(() => {
     if (typeof window === "undefined") return true;
     try {
@@ -138,6 +149,32 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
   );
   const exam = active?.exam || catalogExam;
   const clockRunning = mode === "mock" && active?.status === "in_progress";
+
+  // B2: Báo cho FloatingStudyTimer thu gọn đồng hồ Pomodoro khi đang thi thử bấm giờ
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.body.dataset.jlptMockActive = clockRunning ? "true" : "false";
+    }
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(
+        new CustomEvent("app:jlpt-mock-active", {
+          detail: { active: clockRunning },
+        }),
+      );
+    }
+    return () => {
+      if (typeof document !== "undefined") {
+        document.body.dataset.jlptMockActive = "false";
+      }
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(
+          new CustomEvent("app:jlpt-mock-active", {
+            detail: { active: false },
+          }),
+        );
+      }
+    };
+  }, [clockRunning]);
 
   useEffect(() => {
     const tick = () => {
@@ -187,6 +224,57 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
     return { questionSeqMap: map, totalQuestionsInView: idx };
   }, [groups, mode, exam]);
 
+  // FIX-04: Chỉ ghi nhận assisted cho các câu chưa chốt đáp án trong phiên đang làm
+  const recordAssistForQuestions = (
+    attemptId: string | null | undefined,
+    candidateQuestionIds: string[],
+  ) => {
+    if (!attemptId || candidateQuestionIds.length === 0) return;
+    refreshSession();
+    const a = getSession();
+    if (!a || a.id !== attemptId || a.status !== "in_progress") return;
+    const uncommittedIds = candidateQuestionIds.filter(
+      (id) => !a.committed.includes(id),
+    );
+    if (uncommittedIds.length === 0) return;
+    const nextAssisted = [...new Set([...a.assisted, ...uncommittedIds])];
+    if (nextAssisted.length !== a.assisted.length) {
+      setSession({
+        ...a,
+        assisted: nextAssisted,
+      });
+    }
+  };
+
+  const openLookupModal = useCallback(
+    (word: string, unitQuestionIds?: string[]) => {
+      const trimmed = word.trim();
+      if (!trimmed) return;
+      refreshSession();
+      const a = getSession();
+      let candidateIds = unitQuestionIds || [];
+      if (
+        candidateIds.length === 0 &&
+        a &&
+        a.id === active?.id &&
+        a.status === "in_progress"
+      ) {
+        const unitGroups = units(a.exam, a.questionIds);
+        const curUnit = unitGroups[a.position];
+        if (curUnit) {
+          candidateIds = curUnit.questions.map((q) => q.id);
+        }
+      }
+      lookupContextRef.current = {
+        attemptId:
+          a && a.id === active?.id && a.status === "in_progress" ? a.id : null,
+        questionIds: candidateIds,
+      };
+      setLookup(trimmed);
+    },
+    [active?.id],
+  );
+
   // Đồng bộ trạng thái bật/tắt tra từ từ thanh tiện ích nổi toàn hệ thống
   useEffect(() => {
     const onToggle = (e: Event) => {
@@ -202,24 +290,7 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
         window.getSelection()?.toString().trim() ||
         "";
       if (text && text.length >= 1 && text.length <= 120) {
-        refreshSession();
-        const a = getSession();
-        if (a && a.id === active?.id && a.status === "in_progress") {
-          const unitGroups = units(a.exam, a.questionIds);
-          const curUnit = unitGroups[a.position];
-          if (curUnit) {
-            setSession({
-              ...a,
-              assisted: [
-                ...new Set([
-                  ...a.assisted,
-                  ...curUnit.questions.map((q) => q.id),
-                ]),
-              ],
-            });
-          }
-        }
-        setLookup(text);
+        openLookupModal(text);
       }
     };
     window.addEventListener("app:selection-lookup-toggle", onToggle);
@@ -231,7 +302,7 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
         onTriggerLookup,
       );
     };
-  }, [active?.id]);
+  }, [openLookupModal]);
 
   const update = (change: (a: Attempt) => Attempt) => {
     refreshSession();
@@ -323,11 +394,13 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
       </div>
     );
 
-  // Sync handlers for Mondai selection
+  // Sync handlers for Mondai selection (FIX-02: Cho phép bỏ chọn hết về 0 câu)
   const handleSelectDropdownChange = (val: string) => {
     setSelected(val);
     if (val === "all") {
       setSelectedMondais(exam.mondais.map((m) => m.number));
+    } else if (val === "none") {
+      setSelectedMondais([]);
     } else {
       const num = Number(val);
       if (Number.isFinite(num)) {
@@ -340,17 +413,17 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
     setSelectedMondais((prev) => {
       const exists = prev.includes(num);
       const next = exists
-        ? prev.length > 1
-          ? prev.filter((x) => x !== num)
-          : prev
+        ? prev.filter((x) => x !== num)
         : [...prev, num].sort((a, b) => a - b);
 
       if (next.length === exam.mondais.length) {
         setSelected("all");
       } else if (next.length === 1) {
         setSelected(String(next[0]));
+      } else if (next.length === 0) {
+        setSelected("none");
       } else {
-        setSelected("all");
+        setSelected("custom");
       }
       return next;
     });
@@ -362,81 +435,107 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
       setSelected("all");
     } else if (nums.length === 1) {
       setSelected(String(nums[0]));
+    } else if (nums.length === 0) {
+      setSelected("none");
     } else {
-      setSelected("all");
+      setSelected("custom");
     }
   };
 
-  const computeDrillIds = (sourceExam: typeof exam) => {
-    if (!sourceExam.isPracticePool) {
-      return sourceExam.mondais
-        .filter((m) =>
-          selected !== "all"
-            ? String(m.number) === selected
-            : selectedMondais.includes(m.number),
-        )
-        .flatMap((m) => m.questions.map((q) => q.id));
-    }
+  const activeMondaiNums = selectedMondais;
+  const setupSourceExam = exam.isPracticePool ? catalogExam || exam : exam;
 
-    // If classic single-select or total mode is active without custom day filter, preserve exact pickPracticeQuestions behavior
-    if (
-      allocationMode === "total" &&
-      dayFilter === "all" &&
-      (selected !== "all" || selectedMondais.length === sourceExam.mondais.length)
-    ) {
-      return pickPracticeQuestions(
-        sourceExam,
-        selected,
-        roundSize === "all" ? Infinity : Number(roundSize),
-      );
-    }
-
-    return pickAdvancedPracticeQuestions(sourceExam, {
-      mondais:
-        selected !== "all" ? [Number(selected)] : selectedMondais,
+  // FIX-02 & FIX-03: PlannedRound duy nhất cho cả Preview và Bắt đầu (không bị đổi khi re-render hay timer tick)
+  const plannedRound: PlannedRound = (() => {
+    const planMode: "drill" | "mock" = mode === "mock" ? "mock" : "drill";
+    const config = {
+      mode: planMode,
+      mondais: activeMondaiNums,
       allocationMode,
-      totalCount: roundSize === "all" ? Infinity : Number(roundSize),
+      totalCount:
+        roundSize === "all" ? ("all" as const) : Number(roundSize) || 20,
       perMondaiCount,
       dayFilter,
-    });
-  };
+    };
+    const key = buildPlannedRoundKey(setupSourceExam, config);
+    if (plannedRoundRef.current && plannedRoundRef.current.configKey === key) {
+      return plannedRoundRef.current;
+    }
+    const nextPlan = planPracticeRound(setupSourceExam, config);
+    plannedRoundRef.current = nextPlan;
+    return nextPlan;
+  })();
 
   const start = async (
     nextMode: "drill" | "mock",
     ids?: string[],
     promptText?: string,
+    expectedConfigKey?: string,
   ) => {
-    refreshSession();
-    if (
-      getSession() &&
-      !(await ask(
-        promptText ||
-          "Bắt đầu lượt mới sẽ thay bài làm hoặc kết quả hiện tại trong tab này. Tiếp tục?",
-      ))
-    )
-      return;
-    const source = exam.isPracticePool ? catalogExam || exam : exam;
-    const picked =
-      source.isPracticePool && !ids
-        ? nextMode === "mock"
-          ? pickAdvancedPracticeQuestions(source, {
-              mondais: ALL_MONDAI_NUMBERS,
-              allocationMode: "standard",
-              totalCount: 54,
-              perMondaiCount: 5,
-            })
-          : computeDrillIds(source)
-        : ids;
-    const snapshot =
-      source.isPracticePool && picked
-        ? practiceSnapshot(source, picked)
-        : source;
-    setSession(createAttempt(snapshot, nextMode, picked));
-    setConfiguring(false);
-    setReviewing(false);
-    setFilter("all");
-    setExpanded([]);
-    navigate(`/exams/jlpt/${exam.id}/${nextMode}`);
+    if (startingRef.current) return;
+    startingRef.current = true;
+    try {
+      const source = exam.isPracticePool ? catalogExam || exam : exam;
+      const planAtClick =
+        ids !== undefined
+          ? null
+          : nextMode === "mock" && mode !== "mock"
+            ? planPracticeRound(source, { mode: "mock" })
+            : plannedRound;
+
+      if (planAtClick && !planAtClick.canStart) {
+        return;
+      }
+
+      refreshSession();
+      if (
+        getSession() &&
+        !(await ask(
+          promptText ||
+            "Bắt đầu lượt mới sẽ thay bài làm hoặc kết quả hiện tại trong tab này. Tiếp tục?",
+        ))
+      ) {
+        return;
+      }
+
+      if (expectedConfigKey) {
+        const currentKey = buildPlannedRoundKey(source, {
+          mode: nextMode,
+          mondais: activeMondaiNums,
+          allocationMode,
+          totalCount:
+            roundSize === "all" ? ("all" as const) : Number(roundSize) || 20,
+          perMondaiCount,
+          dayFilter,
+        });
+        if (currentKey !== expectedConfigKey) {
+          return;
+        }
+      }
+
+      const picked =
+        ids !== undefined
+          ? ids
+          : source.isPracticePool
+            ? planAtClick?.questionIds
+            : nextMode === "drill"
+              ? planAtClick?.questionIds
+              : undefined;
+
+      const snapshot =
+        source.isPracticePool && picked
+          ? practiceSnapshot(source, picked)
+          : source;
+      setSession(createAttempt(snapshot, nextMode, picked));
+      plannedRoundRef.current = null;
+      setConfiguring(false);
+      setReviewing(false);
+      setFilter("all");
+      setExpanded([]);
+      navigate(`/exams/jlpt/${exam.id}/${nextMode}`);
+    } finally {
+      startingRef.current = false;
+    }
   };
 
   const remove = async () => {
@@ -468,40 +567,38 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
     }
   };
 
-  const markAssisted = () =>
-    update((a) => ({
-      ...a,
-      assisted: [
-        ...new Set([
-          ...a.assisted,
-          ...(current?.questions.map((q) => q.id) || []),
-        ]),
-      ],
-    }));
-
-  const showGroup = (unit: (typeof groups)[number], reading = false) => {
+  const showGroup = (
+    unit: (typeof groups)[number],
+    reading = false,
+    showMondaiHeader = true,
+    mondaiQuestionCount?: number,
+    matchedIds?: Set<string>,
+  ) => {
     const passage = unit.mondai.passages?.find(
       (p) => p.id === unit.questions[0].passageId,
     );
+    const unitQuestionIds = unit.questions.map((q) => q.id);
     return (
       <section key={unit.id} className="space-y-4">
-        {/* Mondai Instruction Banner */}
-        <div className="exam-card bg-gradient-to-r from-indigo-50/80 via-white to-violet-50/50 dark:from-indigo-950/40 dark:via-slate-800 dark:to-slate-800 border-l-4 border-l-indigo-600">
-          <div className="flex items-center justify-between gap-2 flex-wrap">
-            <h2 className="font-black text-base sm:text-lg text-indigo-950 dark:text-indigo-200">
-              Mondai {unit.mondai.number} · {unit.mondai.titleVi}
-            </h2>
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-indigo-100 dark:bg-indigo-900/70 text-indigo-700 dark:text-indigo-300">
-              {unit.questions.length} câu trong mục này
-            </span>
+        {/* Mondai Instruction Banner (B3: Chỉ hiển thị ở đầu mỗi Mondai khi xem danh sách dài) */}
+        {showMondaiHeader && (
+          <div className="exam-card bg-gradient-to-r from-indigo-50/80 via-white to-violet-50/50 dark:from-indigo-950/40 dark:via-slate-800 dark:to-slate-800 border-l-4 border-l-indigo-600">
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+              <h2 className="font-black text-base sm:text-lg text-indigo-950 dark:text-indigo-200">
+                Mondai {unit.mondai.number} · {unit.mondai.titleVi}
+              </h2>
+              <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-indigo-100 dark:bg-indigo-900/70 text-indigo-700 dark:text-indigo-300">
+                {mondaiQuestionCount ?? unit.questions.length} câu trong mục này
+              </span>
+            </div>
+            <p
+              lang="ja"
+              className="mt-2 leading-7 text-slate-700 dark:text-slate-200 font-medium"
+            >
+              <ExamText text={unit.mondai.instruction} />
+            </p>
           </div>
-          <p
-            lang="ja"
-            className="mt-2 leading-7 text-slate-700 dark:text-slate-200 font-medium"
-          >
-            <ExamText text={unit.mondai.instruction} />
-          </p>
-        </div>
+        )}
 
         {/* Reading / Text Grammar Passage */}
         {passage && (
@@ -584,11 +681,13 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
         {/* Questions in Unit */}
         {unit.questions.map((q) => {
           const checked = !!active?.committed.includes(q.id);
+          const isContextOnly = Boolean(matchedIds && !matchedIds.has(q.id));
           return (
             <ExamQuestionCard
               key={q.id}
               sequenceNumber={questionSeqMap.get(q.id)}
               totalQuestions={totalQuestionsInView}
+              contextRole={isContextOnly ? "context_only" : "matched"}
               question={
                 exam.enrichmentStatus === "reviewed"
                   ? q
@@ -651,10 +750,18 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                   update((a) => answer(a, q.id, opt));
                 }
               }}
-              onAssist={markAssisted}
+              onAssist={() => {
+                if (!reading && active?.status === "in_progress") {
+                  recordAssistForQuestions(active.id, unitQuestionIds);
+                }
+              }}
               onWordLookup={(word) => {
-                markAssisted();
-                setLookup(word);
+                openLookupModal(
+                  word,
+                  !reading && active?.status === "in_progress"
+                    ? unitQuestionIds
+                    : [],
+                );
               }}
               onNextQuestion={
                 !reading &&
@@ -678,48 +785,56 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
     ? Math.max(0, Math.ceil((active.deadlineAt - now) / 1000))
     : 0;
 
-  const visible = groups.filter((g) =>
-    g.questions.some(
-      (q) =>
-        filter === "all" ||
-        (filter === "wrong" &&
-          !!active?.answers[q.id] &&
-          active.answers[q.id] !== q.answer) ||
-        (filter === "blank" && !active?.answers[q.id]) ||
-        (filter === "flags" && active?.flags.includes(q.id)),
-    ),
+  // FIX-06: Đồng bộ danh sách câu hiển thị và mục lục chuyển nhanh (Quick-Jump TOC)
+  const isDirectFilterMatch = (q: JLPTQuestion) =>
+    filter === "all" ||
+    (filter === "wrong" &&
+      !!active?.answers[q.id] &&
+      active.answers[q.id] !== q.answer) ||
+    (filter === "blank" && !active?.answers[q.id]) ||
+    (filter === "flags" && Boolean(active?.flags.includes(q.id)));
+
+  const matchedQuestionIds = new Set(
+    mode === "review"
+      ? units(exam)
+          .filter(
+            (g) => selected === "all" || String(g.mondai.number) === selected,
+          )
+          .flatMap((g) => g.questions.map((q) => q.id))
+      : groups
+          .flatMap((g) => g.questions)
+          .filter(isDirectFilterMatch)
+          .map((q) => q.id),
   );
 
-  const activeMondaiNums =
-    selected !== "all" ? [Number(selected)] : selectedMondais;
-
-  const chosen = exam.mondais
-    .filter((m) => activeMondaiNums.includes(m.number))
-    .flatMap((m) =>
-      m.questions
-        .filter(
-          (q) =>
-            dayFilter === "all" ||
-            q.origin?.day === undefined ||
-            q.origin.day === dayFilter,
+  const displayedUnits =
+    mode === "review"
+      ? units(exam).filter(
+          (g) => selected === "all" || String(g.mondai.number) === selected,
         )
-        .map((q) => q.id),
-    );
+      : groups.filter((g) =>
+          g.questions.some((q) => matchedQuestionIds.has(q.id)),
+        );
 
-  // Preview count for Drill setup
-  const previewDrillCount = !exam.isPracticePool
-    ? chosen.length
-    : allocationMode === "standard"
-      ? activeMondaiNums.reduce(
-          (sum, mNum) => sum + (STANDARD_MONDAI_QUOTAS[mNum] ?? 5),
-          0,
-        )
-      : allocationMode === "per_mondai"
-        ? Math.min(chosen.length, activeMondaiNums.length * perMondaiCount)
-        : Math.min(
-            roundSize === "all" ? Infinity : Number(roundSize),
-            chosen.length,
-          );
+  const displayedQuestions = displayedUnits.flatMap((g) => g.questions);
+  const filterLabelVi =
+    filter === "wrong"
+      ? "sai"
+      : filter === "blank"
+        ? "bỏ trống"
+        : filter === "flags"
+          ? "chưa chắc"
+          : "";
+
+  const hashQuestionId = location.hash.startsWith("#q-")
+    ? decodeURIComponent(location.hash.slice(3))
+    : null;
+  const hashExistsInExam = hashQuestionId
+    ? questionSeqMap.has(hashQuestionId)
+    : false;
+  const hashIsDisplayed = hashQuestionId
+    ? displayedQuestions.some((q) => q.id === hashQuestionId)
+    : false;
 
   const retry = async (kind: string) => {
     if (!active) return;
@@ -761,92 +876,134 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
       ? computeStandardJLPTScore(active)
       : null;
 
+  const attemptDisplayTitle =
+    attempt?.exam.isPracticePool && attempt.mode === "mock"
+      ? "Bài làm có giờ (Đề trộn 54 câu)"
+      : attempt?.exam.title || "";
+
+  const headerTitle =
+    exam.isPracticePool && (mode === "mock" || active?.mode === "mock")
+      ? "Bài làm có giờ · Chữ · Từ vựng · Ngữ pháp (54 câu)"
+      : exam.title;
+
   return (
     <div className="exam-shell">
       {confirmation}
 
-      {/* Active Session Management Bar — Placed at the very top for instant visibility */}
+      {/* FIX-07: Active Session Management Bar — Responsive 2-row layout below 640px */}
       {attempt && (
-        <div className="exam-card flex flex-wrap gap-2.5 items-center mb-4 border-2 border-indigo-500/80 dark:border-indigo-500/70 bg-indigo-50/50 dark:bg-slate-800/90">
-          <span className="flex-1 text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100">
-            Trong tab:{" "}
-            {attempt.exam.isPracticePool && attempt.mode === "mock"
-              ? "Bài làm có giờ (Đề trộn 54 câu)"
-              : attempt.exam.title}{" "}
-            ·{" "}
-            <span className="text-indigo-600 dark:text-indigo-400">
-              {attempt.status === "submitted" ? "đã nộp" : "đang làm"} (
-              {Object.keys(attempt.answers).length}/
-              {attempt.questionIds.length} câu)
-            </span>
-          </span>
-          {(configuring || !active) && (
-            <Link
-              className="exam-primary !py-1.5 !px-3.5 !min-h-9 text-xs"
-              to={`/exams/jlpt/${attempt.exam.id}/${attempt.status === "submitted" ? "result" : attempt.mode}`}
-              onClick={() => setConfiguring(false)}
+        <div className="exam-card flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between mb-4 border-2 border-indigo-500/80 dark:border-indigo-500/70 bg-indigo-50/50 dark:bg-slate-800/90">
+          <div className="min-w-0 flex-1 w-full sm:w-auto space-y-0.5">
+            <p
+              title={attemptDisplayTitle}
+              className="text-xs sm:text-sm font-black text-slate-900 dark:text-slate-100 line-clamp-2 break-words"
             >
-              {attempt.status === "submitted" ? "Xem kết quả" : "Làm tiếp"}
-            </Link>
-          )}
-          {exam.isPracticePool &&
-            !configuring &&
-            (mode === "drill" || active?.mode === "drill") && (
-              <button
-                className="exam-secondary !py-1.5 !px-3 !min-h-9 text-xs"
-                onClick={() => {
-                  setConfiguring(true);
-                  navigate(`/exams/jlpt/${exam.id}/drill`);
-                }}
+              Trong tab: {attemptDisplayTitle}
+            </p>
+            <p className="text-xs font-bold text-indigo-600 dark:text-indigo-400">
+              {attempt.status === "submitted" ? "Đã nộp" : "Đang làm"} ·{" "}
+              {Object.keys(attempt.answers).length}/
+              {attempt.questionIds.length} câu
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto shrink-0">
+            {(configuring || !active) && (
+              <Link
+                className="exam-primary !py-2 !px-3.5 min-h-11 text-xs flex-1 sm:flex-initial"
+                to={`/exams/jlpt/${attempt.exam.id}/${attempt.status === "submitted" ? "result" : attempt.mode}`}
+                onClick={() => setConfiguring(false)}
               >
-                Đổi dạng / số câu
-              </button>
+                {attempt.status === "submitted" ? "Xem kết quả" : "Làm tiếp"}
+              </Link>
             )}
-          <button
-            className="exam-secondary !py-1.5 !px-3 !min-h-9 text-xs"
-            onClick={remove}
-          >
-            Kết thúc và xóa phiên
-          </button>
+            {exam.isPracticePool &&
+              !configuring &&
+              (mode === "drill" || active?.mode === "drill") && (
+                <button
+                  type="button"
+                  className="exam-secondary !py-2 !px-3 min-h-11 text-xs flex-1 sm:flex-initial"
+                  onClick={() => {
+                    setConfiguring(true);
+                    navigate(`/exams/jlpt/${exam.id}/drill`);
+                  }}
+                >
+                  Đổi dạng / số câu
+                </button>
+              )}
+            <button
+              type="button"
+              className="exam-secondary !py-2 !px-3 min-h-11 text-xs flex-1 sm:flex-initial"
+              onClick={remove}
+            >
+              Kết thúc và xóa phiên
+            </button>
+          </div>
         </div>
       )}
 
-      {/* Hero Header (Đồng bộ form thiết kế với trang Kho JLPT) */}
-      <header className="mb-5 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-indigo-600 via-indigo-700 to-violet-800 text-white shadow-xl space-y-4">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <Link
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-xs font-bold text-white transition-colors"
-            to="/exams/jlpt"
-          >
-            ← Kho JLPT
-          </Link>
-          <div className="flex flex-wrap items-center gap-2">
-            {exam.isPracticePool && (
-              <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-400/20 border border-emerald-300/40 text-emerald-100">
-                Ngân hàng 20 ngày · 1.080 câu
-              </span>
-            )}
-            <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-white/15 text-indigo-100">
-              {active?.mode === "mock" ? labels.mock : labels[mode]}
-            </span>
+      {/* B1: Compact Header when in_progress so Question 1 is visible above the fold on mobile */}
+      {active?.status === "in_progress" ? (
+        <header className="mb-3 px-4 py-3 rounded-2xl bg-gradient-to-r from-indigo-600 via-indigo-700 to-violet-800 text-white shadow-md">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="flex items-center gap-2.5 min-w-0 flex-1">
+              <Link
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-white/15 hover:bg-white/25 text-xs font-bold text-white shrink-0 transition-colors"
+                to="/exams/jlpt"
+              >
+                ← Kho JLPT
+              </Link>
+              <h1
+                title={headerTitle}
+                className="text-sm sm:text-base font-black text-white truncate"
+              >
+                {headerTitle}
+              </h1>
+            </div>
+            <details className="text-xs text-indigo-100">
+              <summary className="cursor-pointer font-bold px-2.5 py-1 rounded-lg bg-white/10 hover:bg-white/20 select-none">
+                Thông tin bài
+              </summary>
+              <p className="mt-1.5 text-[11px] text-indigo-100">
+                {exam.level} · {exam.bookTitle} · Bôi đen từ tiếng Nhật bất kỳ để
+                tra từ đa sách
+              </p>
+            </details>
           </div>
-        </div>
+        </header>
+      ) : (
+        <header className="mb-5 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-indigo-600 via-indigo-700 to-violet-800 text-white shadow-xl space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <Link
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-xs font-bold text-white transition-colors"
+              to="/exams/jlpt"
+            >
+              ← Kho JLPT
+            </Link>
+            <div className="flex flex-wrap items-center gap-2">
+              {exam.isPracticePool && (
+                <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-400/20 border border-emerald-300/40 text-emerald-100">
+                  Ngân hàng 20 ngày · 1.080 câu
+                </span>
+              )}
+              <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-white/15 text-indigo-100">
+                {active?.mode === "mock" ? labels.mock : labels[mode]}
+              </span>
+            </div>
+          </div>
 
-        <div>
-          <p className="text-xs font-extrabold uppercase tracking-wider text-indigo-200">
-            {exam.level} · Chữ Hán · Từ vựng · Ngữ pháp
-          </p>
-          <h1 className="text-2xl sm:text-3xl font-black mt-1 tracking-tight text-white">
-            {exam.isPracticePool &&
-            (mode === "mock" || active?.mode === "mock")
-              ? "Bài làm có giờ · Chữ · Từ vựng · Ngữ pháp (54 câu)"
-              : exam.title}
-          </h1>
-          <p className="text-xs sm:text-sm font-medium text-indigo-100 mt-1.5">
-            {exam.bookTitle} · Bôi đen từ tiếng Nhật bất kỳ để tra từ đa sách
-          </p>
-        </div>
-      </header>
+          <div>
+            <p className="text-xs font-extrabold uppercase tracking-wider text-indigo-200">
+              {exam.level} · Chữ Hán · Từ vựng · Ngữ pháp
+            </p>
+            <h1 className="text-2xl sm:text-3xl font-black mt-1 tracking-tight text-white">
+              {headerTitle}
+            </h1>
+            <p className="text-xs sm:text-sm font-medium text-indigo-100 mt-1.5">
+              {exam.bookTitle} · Bôi đen từ tiếng Nhật bất kỳ để tra từ đa sách
+            </p>
+          </div>
+        </header>
+      )}
 
       <p
         role="status"
@@ -968,6 +1125,18 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                     >
                       Ngữ pháp (M7–9)
                     </button>
+                    <button
+                      type="button"
+                      aria-pressed={activeMondaiNums.length === 0}
+                      onClick={() => selectMondaiGroup([])}
+                      className={`px-2.5 py-1 rounded-lg text-xs font-bold ${
+                        activeMondaiNums.length === 0
+                          ? "bg-rose-600 text-white"
+                          : "bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-rose-50"
+                      }`}
+                    >
+                      Bỏ chọn
+                    </button>
                   </div>
                 </div>
 
@@ -995,6 +1164,8 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                         Mondai {m.number} · {m.titleVi}
                       </option>
                     ))}
+                    <option value="none">Chưa chọn dạng nào</option>
+                    <option value="custom">Tùy chọn nhiều dạng</option>
                   </select>
                 </label>
 
@@ -1235,7 +1406,8 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                         )}
 
                         <p className="text-xs text-slate-500 dark:text-slate-400 flex-1">
-                          Có {chosen.length} câu phù hợp trong ngân hàng.
+                          Có {plannedRound.eligibleCount} câu phù hợp /{" "}
+                          {plannedRound.bankTotal} câu trong ngân hàng.
                         </p>
                       </div>
                     </div>
@@ -1245,16 +1417,16 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
             </div>
           )}
 
-          {/* Summary Preview Box before starting */}
+          {/* Summary Preview Box before starting (FIX-02 & FIX-03) */}
           <div className="p-4 sm:p-5 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-200/80 dark:border-indigo-800/60 flex flex-wrap items-center justify-between gap-4">
-            <div className="space-y-1">
+            <div className="space-y-1.5 min-w-0 flex-1">
               <div className="flex items-center gap-2 flex-wrap">
                 <p className="font-black text-lg text-slate-900 dark:text-white">
-                  {mode === "drill" ? previewDrillCount : exam.totalQuestions}{" "}
-                  câu
-                  {mode === "mock"
-                    ? ` · ${exam.timeLimitMinutes || 50} phút`
-                    : ""}
+                  {mode === "drill"
+                    ? plannedRound.reason === "passage_expanded"
+                      ? `Mục tiêu: ${plannedRound.targetTotal} câu · Lượt này: ${plannedRound.actualTotal} câu`
+                      : `Lượt này: ${plannedRound.actualTotal} câu`
+                    : `Lượt này: ${plannedRound.actualTotal} câu · ${exam.timeLimitMinutes || 50} phút`}
                 </p>
                 <span
                   className={`px-2.5 py-0.5 rounded-full text-xs font-extrabold ${
@@ -1268,6 +1440,22 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                     : "⚡ Câu đơn chấm ngay · Đoạn văn kiểm tra theo cụm"}
                 </span>
               </div>
+
+              {plannedRound.reasonMessage && (
+                <p className="text-xs font-bold text-amber-700 dark:text-amber-300">
+                  {plannedRound.reasonMessage}
+                </p>
+              )}
+
+              {plannedRound.mondaiDistribution.length > 0 && (
+                <p className="text-xs font-semibold text-indigo-700 dark:text-indigo-300">
+                  Phân bổ:{" "}
+                  {plannedRound.mondaiDistribution
+                    .map((d) => `M${d.mondai}: ${d.count}`)
+                    .join(" · ")}
+                </p>
+              )}
+
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                 {mode === "mock"
                   ? "Đồng hồ 50 phút chạy ngay khi bắt đầu. Rời trang không tạm dừng thời gian."
@@ -1276,12 +1464,18 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
             </div>
 
             <button
-              className="exam-primary !px-6 !py-3 text-base"
-              disabled={mode === "mock" && !exam.timeLimitMinutes}
+              type="button"
+              className="exam-primary !px-6 !py-3 text-base disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled={
+                !plannedRound.canStart ||
+                (mode === "mock" && !exam.timeLimitMinutes)
+              }
               onClick={() =>
                 start(
                   mode,
-                  mode === "drill" ? computeDrillIds(exam) : undefined,
+                  plannedRound.questionIds,
+                  undefined,
+                  plannedRound.configKey,
                 )
               }
             >
@@ -1321,7 +1515,7 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
             <div className="flex flex-wrap items-center gap-2">
               {(active?.assisted.length || 0) > 0 && (
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800 text-xs font-bold text-amber-700 dark:text-amber-300">
-                  Có hỗ trợ tra cứu ({active?.assisted.length} câu)
+                  Có dùng trợ giúp ({active?.assisted.length} câu)
                 </span>
               )}
               {active?.mode === "mock" && (
@@ -1399,8 +1593,8 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
           )}
 
           <p className="text-xs text-slate-500 dark:text-slate-400">
-            {active?.assisted.length || 0} câu có hỗ trợ trước khi kiểm tra. Kết
-            quả chỉ giữ trong tab, không ghi vào tài khoản.
+            {active?.assisted.length || 0} câu đã dùng trợ giúp trước khi chốt đáp
+            án. Kết quả chỉ giữ trong tab, không ghi vào tài khoản.
           </p>
 
           {/* Per-Mondai Accuracy Progress Bars */}
@@ -1887,6 +2081,7 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
 
             <div className="flex flex-wrap gap-2">
               <button
+                type="button"
                 className="exam-secondary !py-1.5 !px-3 !min-h-9 text-xs"
                 onClick={() =>
                   setExpanded(
@@ -1897,6 +2092,7 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                 Mở tất cả lời giải
               </button>
               <button
+                type="button"
                 className="exam-secondary !py-1.5 !px-3 !min-h-9 text-xs"
                 onClick={() => setExpanded([])}
               >
@@ -1905,19 +2101,82 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
             </div>
           </div>
 
+          {/* FIX-06: Thông báo khi câu trong hash URL không nằm trong bộ lọc hoặc không tồn tại */}
+          {hashQuestionId && hashExistsInExam && !hashIsDisplayed && (
+            <div className="exam-card flex flex-wrap items-center justify-between gap-3 border-amber-300 dark:border-amber-700 bg-amber-50/70 dark:bg-amber-950/30">
+              <p className="text-xs sm:text-sm font-bold text-amber-800 dark:text-amber-200">
+                Câu này không nằm trong bộ lọc hiện tại.
+              </p>
+              <button
+                type="button"
+                className="exam-secondary !py-1.5 !px-3 !min-h-9 text-xs"
+                onClick={() => {
+                  if (mode === "review") setSelected("all");
+                  else setFilter("all");
+                  setTimeout(() => {
+                    document
+                      .getElementById(`q-${hashQuestionId}`)
+                      ?.scrollIntoView?.({ behavior: "smooth", block: "start" });
+                  }, 0);
+                }}
+              >
+                Xem tất cả câu
+              </button>
+            </div>
+          )}
+
+          {hashQuestionId && !hashExistsInExam && (
+            <div className="exam-card flex flex-wrap items-center justify-between gap-3">
+              <p className="text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-300">
+                Không tìm thấy câu được liên kết trong bài này.
+              </p>
+              <button
+                type="button"
+                className="exam-secondary !py-1.5 !px-3 !min-h-9 text-xs"
+                onClick={() =>
+                  window.scrollTo({ top: 0, behavior: "smooth" })
+                }
+              >
+                Về đầu danh sách
+              </button>
+            </div>
+          )}
+
+          {/* FIX-06: Thông báo khi nhóm đoạn văn kéo thêm các câu cùng cụm để giữ ngữ cảnh */}
+          {mode !== "review" &&
+            filter !== "all" &&
+            matchedQuestionIds.size > 0 &&
+            displayedQuestions.length > matchedQuestionIds.size && (
+              <div className="exam-card py-3 px-4 border-indigo-200 dark:border-indigo-800/60 bg-indigo-50/60 dark:bg-indigo-950/30 text-xs sm:text-sm font-bold text-indigo-800 dark:text-indigo-200">
+                {matchedQuestionIds.size} câu {filterLabelVi} · Hiển thị{" "}
+                {displayedQuestions.length} câu để giữ ngữ cảnh
+              </div>
+            )}
+
           {/* 2-Column Review Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             <div className="lg:col-span-8 space-y-7 min-w-0">
-              {(mode === "review"
-                ? units(exam).filter(
-                    (g) =>
-                      selected === "all" ||
-                      String(g.mondai.number) === selected,
-                  )
-                : visible
-              ).map((g) => showGroup(g, true))}
+              {displayedUnits.map((g, idx) => {
+                const isFirstOfMondai =
+                  idx === 0 ||
+                  displayedUnits[idx - 1].mondai.number !== g.mondai.number;
+                const mondaiCountInView = isFirstOfMondai
+                  ? displayedUnits
+                      .filter((u) => u.mondai.number === g.mondai.number)
+                      .reduce((sum, u) => sum + u.questions.length, 0)
+                  : undefined;
+                return showGroup(
+                  g,
+                  true,
+                  isFirstOfMondai,
+                  mondaiCountInView,
+                  mode !== "review" && filter !== "all"
+                    ? matchedQuestionIds
+                    : undefined,
+                );
+              })}
 
-              {mode !== "review" && !visible.length && (
+              {displayedUnits.length === 0 && (
                 <div className="exam-card text-center py-8">
                   <p className="font-semibold text-slate-600 dark:text-slate-300">
                     Không có câu phù hợp bộ lọc.
@@ -1926,19 +2185,22 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
               )}
             </div>
 
-            {/* Sticky Quick-Jump Review Sidebar */}
+            {/* Sticky Quick-Jump Review Sidebar (FIX-06: Đồng bộ 100% với danh sách đang hiển thị) */}
             <aside className="lg:col-span-4 lg:sticky lg:top-20 space-y-4">
               <div className="exam-card space-y-3">
                 <p className="text-xs font-extrabold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
                   Mục lục chuyển nhanh câu hỏi
                 </p>
-                <div className="grid grid-cols-5 gap-2 max-h-[55vh] overflow-y-auto pr-1">
-                  {(mode === "review" ? units(exam) : groups)
-                    .flatMap((g) => g.questions)
-                    .map((q, idx) => {
+                {displayedQuestions.length > 0 ? (
+                  <div className="grid grid-cols-5 gap-2 max-h-[55vh] overflow-y-auto pr-1">
+                    {displayedQuestions.map((q, idx) => {
                       const userAns = active?.answers[q.id];
                       const isRight = userAns === q.answer;
                       const seqNum = questionSeqMap.get(q.id) ?? idx + 1;
+                      const isContextOnly =
+                        mode !== "review" &&
+                        filter !== "all" &&
+                        !matchedQuestionIds.has(q.id);
                       let badgeClass =
                         "bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700";
                       if (submitted) {
@@ -1948,14 +2210,28 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                             ? "bg-emerald-600 text-white border-emerald-600"
                             : "bg-rose-600 text-white border-rose-600";
                       }
+                      if (isContextOnly) {
+                        badgeClass += " border-dashed opacity-75";
+                      }
+                      const baseTitle = q.origin
+                        ? `Câu ${seqNum} · Nguồn: Ngày ${q.origin.day} · Câu ${q.origin.number}`
+                        : `Câu ${seqNum}`;
                       return (
                         <a
                           key={q.id}
                           href={`#q-${q.id}`}
+                          onClick={() => {
+                            document
+                              .getElementById(`q-${q.id}`)
+                              ?.scrollIntoView?.({
+                                behavior: "smooth",
+                                block: "start",
+                              });
+                          }}
                           title={
-                            q.origin
-                              ? `Câu ${seqNum} · Nguồn: Ngày ${q.origin.day} · Câu ${q.origin.number}`
-                              : `Câu ${seqNum}`
+                            isContextOnly
+                              ? `${baseTitle} · Giữ ngữ cảnh đoạn văn`
+                              : baseTitle
                           }
                           className={`h-9 rounded-xl border text-xs font-black flex items-center justify-center transition-all hover:border-indigo-500 ${badgeClass}`}
                         >
@@ -1963,7 +2239,12 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                         </a>
                       );
                     })}
-                </div>
+                  </div>
+                ) : (
+                  <p className="text-xs font-medium text-slate-500 dark:text-slate-400 py-2">
+                    Không có câu phù hợp bộ lọc.
+                  </p>
+                )}
               </div>
             </aside>
           </div>
@@ -1975,14 +2256,22 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
         isOpen={!!lookup}
         word={lookup || ""}
         entry={lookup ? lookupWordInDictionary(lookup) : null}
-        onClose={() => setLookup(null)}
+        onAssistProvided={() => {
+          const ctx = lookupContextRef.current;
+          if (ctx && ctx.attemptId) {
+            recordAssistForQuestions(ctx.attemptId, ctx.questionIds);
+          }
+        }}
+        onClose={() => {
+          lookupContextRef.current = null;
+          setLookup(null);
+        }}
       />
       <SelectionLookup
         key={`${examId}:${mode}:${active?.position}:${active?.status}`}
         enabled={lookupEnabled}
         onLookup={(text) => {
-          markAssisted();
-          setLookup(text);
+          openLookupModal(text);
         }}
       />
     </div>

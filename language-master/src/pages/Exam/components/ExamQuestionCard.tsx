@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowRight,
   BookOpen,
@@ -23,10 +23,8 @@ import {
   buildCompletedSentence,
   buildUnfilledStemForTranslation,
   examPlainText,
+  sentenceTranslationCache,
 } from "../../../lib/jlpt/examText";
-
-// Cache bản dịch câu tự động trong phiên làm việc để không gọi lại API
-const sentenceTranslationCache = new Map<string, string>();
 
 type Props = {
   question: JLPTQuestion;
@@ -42,8 +40,12 @@ type Props = {
   onToggleFlag?: () => void;
   onSelectOption: (option: number) => void;
   onWordLookup?: (word: string) => void;
-  onAssist?: () => void;
+  onAssist?: (
+    questionId: string,
+    source: "translate" | "speak" | "lookup",
+  ) => void;
   onNextQuestion?: () => void;
+  contextRole?: "matched" | "context_only";
 };
 
 export default function ExamQuestionCard({
@@ -62,6 +64,7 @@ export default function ExamQuestionCard({
   onWordLookup,
   onAssist,
   onNextQuestion,
+  contextRole = "matched",
 }: Props) {
   const [preAnswerTranslation, setPreAnswerTranslation] = useState<
     string | null
@@ -71,6 +74,16 @@ export default function ExamQuestionCard({
   >(() => q.translationVi || null);
   const [translating, setTranslating] = useState(false);
   const [showInlineTranslation, setShowInlineTranslation] = useState(false);
+  const isMountedRef = useRef(true);
+  const onAssistRef = useRef(onAssist);
+  onAssistRef.current = onAssist;
+
+  useEffect(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
 
   const feedback = Boolean(showFeedback && (mode !== "review" || expanded));
   const help = true;
@@ -97,6 +110,26 @@ export default function ExamQuestionCard({
     : preAnswerTranslation ||
       (unfilledStem ? sentenceTranslationCache.get(unfilledStem) || null : null);
 
+  // Chỉ ghi nhận hỗ trợ dịch câu khi bản dịch thực sự đang hiển thị và câu chưa chốt đáp án (FIX-04)
+  useEffect(() => {
+    if (
+      !locked &&
+      !feedback &&
+      mode !== "review" &&
+      showInlineTranslation &&
+      Boolean(displayedTranslation)
+    ) {
+      onAssistRef.current?.(q.id, "translate");
+    }
+  }, [
+    locked,
+    feedback,
+    mode,
+    showInlineTranslation,
+    displayedTranslation,
+    q.id,
+  ]);
+
   const fetchSentenceTranslation = async (
     textToTranslate: string,
     isCompletedTarget: boolean,
@@ -105,12 +138,13 @@ export default function ExamQuestionCard({
     if (!clean || clean.length < 2) return;
     if (sentenceTranslationCache.has(clean)) {
       const cached = sentenceTranslationCache.get(clean)!;
+      if (!isMountedRef.current) return;
       if (isCompletedTarget) setPostAnswerTranslation(cached);
       else setPreAnswerTranslation(cached);
       return;
     }
     try {
-      setTranslating(true);
+      if (isMountedRef.current) setTranslating(true);
       const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=ja&tl=vi&dt=t&q=${encodeURIComponent(clean)}`;
       const res = await fetch(url);
       if (!res.ok) return;
@@ -123,6 +157,7 @@ export default function ExamQuestionCard({
         if (translated) {
           sentenceTranslationCache.set(clean, translated);
           sentenceTranslationCache.set(textToTranslate, translated);
+          if (!isMountedRef.current) return;
           if (isCompletedTarget) setPostAnswerTranslation(translated);
           else setPreAnswerTranslation(translated);
         }
@@ -130,7 +165,7 @@ export default function ExamQuestionCard({
     } catch {
       // Bỏ qua nếu offline hoặc môi trường test không có mạng
     } finally {
-      setTranslating(false);
+      if (isMountedRef.current) setTranslating(false);
     }
   };
 
@@ -141,7 +176,7 @@ export default function ExamQuestionCard({
 
   return (
     <article
-      className="exam-card space-y-4 border border-slate-200/90 dark:border-slate-700/80"
+      className="exam-card scroll-mt-28 space-y-4 border border-slate-200/90 dark:border-slate-700/80"
       id={`q-${q.id}`}
     >
       {/* Question Header */}
@@ -155,6 +190,11 @@ export default function ExamQuestionCard({
           {q.origin && (
             <span className="inline-flex items-center px-2.5 py-1 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-bold text-xs border border-slate-200/80 dark:border-slate-700">
               {`Ngày ${q.origin.day ?? q.origin.title} · Câu ${q.origin.number}`}
+            </span>
+          )}
+          {contextRole === "context_only" && (
+            <span className="inline-flex items-center px-2.5 py-1 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 font-bold text-xs border border-amber-200/80 dark:border-amber-800/60">
+              Giữ ngữ cảnh đoạn văn
             </span>
           )}
         </div>
@@ -310,14 +350,16 @@ export default function ExamQuestionCard({
                 type="button"
                 className="exam-secondary !py-1.5 !px-3 !min-h-9 text-xs"
                 onClick={() => {
-                  onAssist?.();
                   const speechTarget =
                     feedback && completedSentence
                       ? completedSentence.replace(/\[★\s*|\]|\[/g, "")
                       : examPlainText(q.stem);
-                  speakWithVoiceEngine(speechTarget, {
+                  const started = speakWithVoiceEngine(speechTarget, {
                     lang: "ja-JP",
                   });
+                  if (started && !locked && !feedback && mode !== "review") {
+                    onAssistRef.current?.(q.id, "speak");
+                  }
                 }}
               >
                 <Volume2 size={14} className="text-indigo-500" />
@@ -333,7 +375,6 @@ export default function ExamQuestionCard({
                   disabled={translating}
                   className="exam-secondary !py-1.5 !px-3 !min-h-9 text-xs"
                   onClick={() => {
-                    onAssist?.();
                     const target = feedback
                       ? completedSentence || unfilledStem
                       : unfilledStem;

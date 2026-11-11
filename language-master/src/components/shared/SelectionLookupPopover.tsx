@@ -13,16 +13,25 @@ import {
   Bookmark,
   Sparkles,
   Info,
-  Languages
+  Languages,
+  RefreshCw,
+  AlertCircle
 } from 'lucide-react';
-import { 
-  lookupInSystemMultiBook, 
-  lookupExternal, 
-  quickSaveWordToNotebook,
-  type BookWordGroup,
-  type ExternalLookupResult
+import type { 
+  BookWordGroup,
+  ExternalLookupResult,
+  QuickSaveStatus
 } from '../../lib/dictionary/multiBookLookup';
 import { useAuth } from '../../context/auth/useAuth';
+
+type MultiBookModule = typeof import('../../lib/dictionary/multiBookLookup');
+let cachedPopoverMultiBookMod: MultiBookModule | null = null;
+async function loadMultiBookModule(): Promise<MultiBookModule> {
+  if (cachedPopoverMultiBookMod) return cachedPopoverMultiBookMod;
+  const mod = await import('../../lib/dictionary/multiBookLookup');
+  cachedPopoverMultiBookMod = mod;
+  return mod;
+}
 
 interface SelectionLookupPopoverProps {
   enabled?: boolean;
@@ -60,11 +69,13 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
 
   // Trạng thái lưu từ
   const [savingKey, setSavingKey] = useState<string | null>(null);
-  const [savedCoursesMap, setSavedCoursesMap] = useState<Record<string, string>>({});
+  const [savedCoursesMap, setSavedCoursesMap] = useState<Record<string, QuickSaveStatus>>({});
+  const [saveMessage, setSaveMessage] = useState<string | null>(null);
 
   const popoverRef = useRef<HTMLDivElement | null>(null);
   const touchTriggerRef = useRef<HTMLDivElement | null>(null);
   const lastTouchPosRef = useRef<{ x: number; y: number } | null>(null);
+  const externalReqIdRef = useRef(0);
 
   // Phát âm TTS
   const speakText = useCallback((text: string) => {
@@ -82,11 +93,46 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
 
   // Đóng popover
   const handleClose = useCallback(() => {
+    externalReqIdRef.current += 1;
     setIsOpen(false);
     setSelectedText('');
     setCoords(null);
     setTouchTrigger(null);
+    setSaveMessage(null);
   }, []);
+
+  const runExternalLookup = useCallback((text: string) => {
+    const reqId = ++externalReqIdRef.current;
+    setIsLoadingExternal(true);
+    setExternalResult(null);
+    setSavedCoursesMap(prev => {
+      const next = { ...prev };
+      delete next[`ext_${text}`];
+      return next;
+    });
+    loadMultiBookModule()
+      .then(mod => mod.lookupExternal(text, languageTemplate))
+      .then(res => {
+        if (externalReqIdRef.current !== reqId) return;
+        setExternalResult(res);
+      })
+      .catch(() => {
+        if (externalReqIdRef.current !== reqId) return;
+        setExternalResult({
+          status: 'network_error',
+          term: text,
+          translation: '',
+          source: 'google',
+          errorMessage: 'Không thể tra trực tuyến lúc này. Thử lại',
+          canSave: false,
+        });
+      })
+      .finally(() => {
+        if (externalReqIdRef.current === reqId) {
+          setIsLoadingExternal(false);
+        }
+      });
+  }, [languageTemplate]);
 
   // Thực thi mở Popover tra cứu với văn bản được chỉ định
   const executeLookup = useCallback((text: string, sourceRect?: DOMRect) => {
@@ -110,29 +156,26 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
     setCoords({ x, y, placeAbove, width: popoverWidth });
     setIsOpen(true);
     setSavedCoursesMap({});
+    setSaveMessage(null);
     setTouchTrigger(null);
 
-    // 1. Tra cứu Trong Hệ Thống (Đa Sách)
-    const sysLookup = lookupInSystemMultiBook(text);
-    setSystemGroups(sysLookup.groups);
-
-    if (sysLookup.groups.length === 0) {
-      setActiveTab('external');
-    } else {
-      setActiveTab('system');
-    }
-
-    // 2. Tra cứu Ngoài Hệ Thống (Online)
-    setIsLoadingExternal(true);
-    setExternalResult(null);
-    lookupExternal(text, languageTemplate)
-      .then(res => {
-        setExternalResult(res);
+    // 1. Tra cứu Trong Hệ Thống (Đa Sách) + 2. Tra cứu Ngoài Hệ Thống (Online)
+    runExternalLookup(text);
+    loadMultiBookModule()
+      .then(mod => {
+        const sysLookup = mod.lookupInSystemMultiBook(text);
+        setSystemGroups(sysLookup.groups);
+        if (sysLookup.groups.length === 0) {
+          setActiveTab('external');
+        } else {
+          setActiveTab('system');
+        }
       })
-      .finally(() => {
-        setIsLoadingExternal(false);
+      .catch(() => {
+        setSystemGroups([]);
+        setActiveTab('external');
       });
-  }, [languageTemplate]);
+  }, [runExternalLookup]);
 
   // Bắt sự kiện bôi đen:
   // - PC (Chuột): Nhả chuột (mouseup) -> Tự động mở Popover ngay lập tức
@@ -314,11 +357,13 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
     key: string;
     exampleKanji?: string;
     exampleMeaning?: string;
+    lookupStatus?: ExternalLookupResult['status'];
   }) => {
-    const { term, reading = '', meaning, key, exampleKanji, exampleMeaning } = params;
+    const { term, reading = '', meaning, key, exampleKanji, exampleMeaning, lookupStatus } = params;
     try {
       setSavingKey(key);
-      const res = await quickSaveWordToNotebook({
+      const mod = await loadMultiBookModule();
+      const res = await mod.quickSaveWordToNotebook({
         term,
         reading,
         meaning,
@@ -326,11 +371,15 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
         exampleMeaning: exampleMeaning || currentSentenceTranslation || '',
         userId: user?.uid,
         userProfile: user,
+        lookupStatus,
       });
 
-      setSavedCoursesMap(prev => ({ ...prev, [key]: res.courseTitle }));
+      setSavedCoursesMap(prev => ({ ...prev, [key]: res.status }));
+      setSaveMessage(res.message);
     } catch (err) {
       console.error('Lỗi lưu từ vựng:', err);
+      setSavedCoursesMap(prev => ({ ...prev, [key]: 'failed' }));
+      setSaveMessage('Chưa lưu được. Thử lại');
     } finally {
       setSavingKey(null);
     }
@@ -502,7 +551,8 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
                       <div className="space-y-2">
                         {group.matches.map(m => {
                           const itemKey = `sys_${m.id}`;
-                          const isSaved = Boolean(savedCoursesMap[itemKey]);
+                          const saveSt = savedCoursesMap[itemKey];
+                          const isSaved = saveSt === 'added' || saveSt === 'already_exists';
 
                           return (
                             <div key={m.id} className="space-y-1.5">
@@ -524,7 +574,7 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
                                 {/* Nút thêm nhanh 1-chạm */}
                                 <button
                                   type="button"
-                                  disabled={savingKey === itemKey || isSaved}
+                                  disabled={savingKey === itemKey}
                                   onClick={() => handleSaveWord({
                                     term: m.term,
                                     reading: m.reading,
@@ -542,10 +592,15 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
                                 >
                                   {savingKey === itemKey ? (
                                     <Loader2 className="w-3 h-3 animate-spin text-indigo-500" />
-                                  ) : isSaved ? (
+                                  ) : saveSt === 'added' ? (
                                     <>
                                       <Check className="w-3 h-3 text-emerald-500" />
                                       <span>Đã lưu</span>
+                                    </>
+                                  ) : saveSt === 'already_exists' ? (
+                                    <>
+                                      <Check className="w-3 h-3 text-emerald-500" />
+                                      <span>Đã có trong sổ tay</span>
                                     </>
                                   ) : (
                                     <>
@@ -582,20 +637,24 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
               isLoadingExternal ? (
                 <div className="py-8 text-center text-slate-400 flex flex-col items-center justify-center gap-2">
                   <Loader2 className="w-6 h-6 animate-spin text-emerald-500" />
-                  <p className="text-xs">Đang tra cứu từ điển trực tuyến...</p>
+                  <p className="text-xs">Đang tra cứu…”</p>
                 </div>
               ) : externalResult ? (
                 <div className="space-y-3">
-                  <div className="p-3 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-800/60 space-y-2">
+                  <div className={`p-3 rounded-xl border space-y-2 ${
+                    externalResult.status === 'success'
+                      ? 'bg-emerald-50/50 dark:bg-emerald-950/30 border-emerald-200/60 dark:border-emerald-800/60'
+                      : 'bg-amber-50/50 dark:bg-amber-950/30 border-amber-200/60 dark:border-amber-800/60'
+                  }`}>
                     <div className="flex items-start justify-between gap-2">
                       <div>
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 flex-wrap">
                           <span className="font-bold text-slate-900 dark:text-slate-100 text-sm">
                             {externalResult.term}
                           </span>
                           {externalResult.phonetic && (
                             <span className="text-emerald-700 dark:text-emerald-400 font-mono text-[11px]">
-                              /{externalResult.phonetic}/
+                              Phiên âm: {externalResult.phonetic}
                             </span>
                           )}
                           {externalResult.partOfSpeech && (
@@ -605,27 +664,36 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
                           )}
                         </div>
 
-                        <div className="text-emerald-950 dark:text-emerald-200 font-medium text-xs mt-1 leading-relaxed">
-                          {externalResult.translation}
-                        </div>
+                        {externalResult.status === 'success' ? (
+                          <div className="text-emerald-950 dark:text-emerald-200 font-medium text-xs mt-1 leading-relaxed">
+                            {externalResult.translation}
+                          </div>
+                        ) : (
+                          <div className="text-amber-800 dark:text-amber-200 font-medium text-xs mt-1 leading-relaxed flex items-center gap-1.5">
+                            <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                            <span>{externalResult.errorMessage || 'Chưa tìm thấy nghĩa phù hợp'}</span>
+                          </div>
+                        )}
                       </div>
 
-                      {/* Nút thêm từ kết quả tra ngoài */}
-                      {(() => {
+                      {/* Nút thêm từ kết quả tra ngoài (chỉ hiển thị khi tra cứu thành công) */}
+                      {externalResult.status === 'success' && externalResult.canSave ? (() => {
                         const itemKey = `ext_${externalResult.term}`;
-                        const isSaved = Boolean(savedCoursesMap[itemKey]);
+                        const saveSt = savedCoursesMap[itemKey];
+                        const isSaved = saveSt === 'added' || saveSt === 'already_exists';
 
                         return (
                           <button
                             type="button"
-                            disabled={savingKey === itemKey || isSaved}
+                            disabled={savingKey === itemKey}
                             onClick={() => handleSaveWord({
                               term: externalResult.term,
-                              reading: externalResult.phonetic || '',
+                              reading: externalResult.readingKana || '',
                               meaning: externalResult.translation,
                               key: itemKey,
                               exampleKanji: currentSentence,
                               exampleMeaning: currentSentenceTranslation,
+                              lookupStatus: externalResult.status,
                             })}
                             className={`px-2.5 py-1.5 rounded-lg text-[11px] font-semibold shrink-0 transition-all cursor-pointer inline-flex items-center gap-1 ${
                               isSaved
@@ -636,10 +704,15 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
                           >
                             {savingKey === itemKey ? (
                               <Loader2 className="w-3 h-3 animate-spin text-white" />
-                            ) : isSaved ? (
+                            ) : saveSt === 'added' ? (
                               <>
                                 <Check className="w-3 h-3 text-emerald-700 dark:text-emerald-300" />
                                 <span>Đã lưu</span>
+                              </>
+                            ) : saveSt === 'already_exists' ? (
+                              <>
+                                <Check className="w-3 h-3 text-emerald-700 dark:text-emerald-300" />
+                                <span>Đã có trong sổ tay</span>
                               </>
                             ) : (
                               <>
@@ -649,18 +722,34 @@ export const SelectionLookupPopover: React.FC<SelectionLookupPopoverProps> = ({
                             )}
                           </button>
                         );
-                      })()}
+                      })() : (
+                        <button
+                          type="button"
+                          disabled={isLoadingExternal}
+                          onClick={() => runExternalLookup(selectedText)}
+                          className="px-2.5 py-1.5 rounded-lg text-[11px] font-semibold shrink-0 bg-white dark:bg-slate-800 border border-amber-300 dark:border-amber-700 text-amber-800 dark:text-amber-200 inline-flex items-center gap-1 cursor-pointer"
+                        >
+                          <RefreshCw className="w-3 h-3" />
+                          <span>Thử lại</span>
+                        </button>
+                      )}
                     </div>
+
+                    {saveMessage && (
+                      <div className="text-[11px] font-semibold text-indigo-700 dark:text-indigo-300 pt-1">
+                        {saveMessage}
+                      </div>
+                    )}
 
                     {/* Các định nghĩa mở rộng nếu có */}
                     {externalResult.definitions && externalResult.definitions.length > 0 && (
                       <div className="pt-2 border-t border-emerald-200/40 dark:border-emerald-800/40 space-y-1">
                         <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">
-                          Định nghĩa bổ sung:
+                          Định nghĩa tiếng Anh tham khảo (FreeDict):
                         </span>
                         <ul className="list-disc list-inside space-y-1 text-slate-600 dark:text-slate-400 text-[11px]">
                           {externalResult.definitions.map((def, idx) => (
-                            <li key={idx} className="leading-snug">{def}</li>
+                            <li key={idx} className="leading-snug" lang="en">{def}</li>
                           ))}
                         </ul>
                       </div>

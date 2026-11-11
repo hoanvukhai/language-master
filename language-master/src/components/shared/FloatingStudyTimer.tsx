@@ -63,6 +63,24 @@ export function FloatingStudyTimer() {
   // Nhận diện trạng thái văn bản đang được bôi đen trên trang để phát sáng nút
   const [hasSelectedText, setHasSelectedText] = useState(false);
   const [selectedSnippet, setSelectedSnippet] = useState('');
+  const [isJlptMockActive, setIsJlptMockActive] = useState<boolean>(() => {
+    if (typeof document === 'undefined') return false;
+    return document.body.dataset.jlptMockActive === 'true';
+  });
+
+  useEffect(() => {
+    const onJlptMockActive = (e: Event) => {
+      const custom = e as CustomEvent<{ active?: boolean }>;
+      if (typeof custom.detail?.active === 'boolean') {
+        setIsJlptMockActive(custom.detail.active);
+      } else {
+        setIsJlptMockActive(document.body.dataset.jlptMockActive === 'true');
+      }
+    };
+    window.addEventListener('app:jlpt-mock-active', onJlptMockActive);
+    return () =>
+      window.removeEventListener('app:jlpt-mock-active', onJlptMockActive);
+  }, []);
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout> | null = null;
@@ -416,38 +434,42 @@ export function FloatingStudyTimer() {
         }}
         className="fixed flex items-center p-1 rounded-full shadow-2xl backdrop-blur-md border border-slate-200/90 dark:border-slate-700/80 bg-white/95 dark:bg-slate-900/95 text-slate-700 dark:text-slate-200 select-none touch-none transition-shadow hover:shadow-indigo-500/20 hover:border-indigo-300 dark:hover:border-indigo-600"
       >
-        {/* Khối 1: Nút kéo và Đồng hồ (Bấm mở Modal) */}
-        <div
-          onPointerDown={handlePointerDown}
-          className={`flex items-center gap-1.5 pl-2.5 pr-2 py-1 rounded-full cursor-grab active:cursor-grabbing transition-all ${
-            isRunning
-              ? 'bg-amber-500/15 text-amber-700 dark:text-amber-300 font-bold'
-              : 'hover:bg-slate-100 dark:hover:bg-slate-800'
-          }`}
-          title="Kéo để di chuyển • Nhấp để mở Bảng tiện ích học tập & tra từ"
-        >
-          <GripVertical
-            size={11}
-            className="text-slate-400 dark:text-slate-500 opacity-60 shrink-0 pointer-events-none"
-          />
-          <Timer
-            size={14}
-            className={
-              isRunning
-                ? 'text-amber-500 animate-pulse'
-                : 'text-indigo-600 dark:text-indigo-400'
-            }
-          />
-          <span className="font-mono font-bold text-xs tracking-tight">
-            {displayTime}
-          </span>
-          {isRunning && (
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-ping shrink-0" />
-          )}
-        </div>
+        {/* Khối 1: Nút kéo và Đồng hồ (Ẩn mặt số Pomodoro khi đang thi thử bấm giờ JLPT - B2) */}
+        {!isJlptMockActive && (
+          <>
+            <div
+              onPointerDown={handlePointerDown}
+              className={`flex items-center gap-1.5 pl-2.5 pr-2 py-1 rounded-full cursor-grab active:cursor-grabbing transition-all ${
+                isRunning
+                  ? 'bg-amber-500/15 text-amber-700 dark:text-amber-300 font-bold'
+                  : 'hover:bg-slate-100 dark:hover:bg-slate-800'
+              }`}
+              title="Kéo để di chuyển • Nhấp để mở Bảng tiện ích học tập & tra từ"
+            >
+              <GripVertical
+                size={11}
+                className="text-slate-400 dark:text-slate-500 opacity-60 shrink-0 pointer-events-none"
+              />
+              <Timer
+                size={14}
+                className={
+                  isRunning
+                    ? 'text-amber-500 animate-pulse'
+                    : 'text-indigo-600 dark:text-indigo-400'
+                }
+              />
+              <span className="font-mono font-bold text-xs tracking-tight">
+                {displayTime}
+              </span>
+              {isRunning && (
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-ping shrink-0" />
+              )}
+            </div>
 
-        {/* Vạch ngăn cách dọc mảnh */}
-        <div className="w-px h-3.5 bg-slate-200 dark:bg-slate-800 mx-0.5 shrink-0" />
+            {/* Vạch ngăn cách dọc mảnh */}
+            <div className="w-px h-3.5 bg-slate-200 dark:bg-slate-800 mx-0.5 shrink-0" />
+          </>
+        )}
 
         {/* Khối 2: Nút Tra Cứu Trực Tiếp */}
         <button

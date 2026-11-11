@@ -156,18 +156,23 @@ export interface SpeakOptions {
   rate?: number;
   pitch?: number;
   volume?: number;
+  onStart?: () => void;
   onEnd?: () => void;
   onError?: () => void;
 }
 
 /**
  * Speaks text using the highest-quality voice matching the requested language.
+ * Returns true if speech playback was successfully initiated, false otherwise.
  */
-export function speakWithVoiceEngine(text: string, options?: SpeakOptions): void {
-  if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+export function speakWithVoiceEngine(text: string, options?: SpeakOptions): boolean {
+  if (typeof window === 'undefined' || !('speechSynthesis' in window) || !window.speechSynthesis?.speak) {
+    options?.onError?.();
+    return false;
+  }
 
   const cleanText = text ? text.trim() : '';
-  if (!cleanText) return;
+  if (!cleanText) return false;
 
   try {
     window.speechSynthesis.cancel();
@@ -179,26 +184,35 @@ export function speakWithVoiceEngine(text: string, options?: SpeakOptions): void
     try {
       const v = window.speechSynthesis.getVoices();
       if (v && v.length > 0) cachedVoices = v;
-    } catch {}
+    } catch {
+      // Ignore voice enumeration errors
+    }
   }
 
-  const u = new SpeechSynthesisUtterance(cleanText);
-  const targetLang = options?.lang || 'en-US';
+  try {
+    const u = new SpeechSynthesisUtterance(cleanText);
+    const targetLang = options?.lang || 'en-US';
 
-  const bestVoice = getBestVoice(targetLang);
-  if (bestVoice) {
-    u.voice = bestVoice;
-    u.lang = bestVoice.lang;
-  } else {
-    u.lang = targetLang;
+    const bestVoice = getBestVoice(targetLang);
+    if (bestVoice) {
+      u.voice = bestVoice;
+      u.lang = bestVoice.lang;
+    } else {
+      u.lang = targetLang;
+    }
+
+    u.rate = options?.rate ?? 0.9;
+    if (options?.pitch !== undefined) u.pitch = options.pitch;
+    if (options?.volume !== undefined) u.volume = options.volume;
+
+    if (options?.onEnd) u.onend = options.onEnd;
+    if (options?.onError) u.onerror = options.onError;
+
+    window.speechSynthesis.speak(u);
+    options?.onStart?.();
+    return true;
+  } catch {
+    options?.onError?.();
+    return false;
   }
-
-  u.rate = options?.rate ?? 0.9;
-  if (options?.pitch !== undefined) u.pitch = options.pitch;
-  if (options?.volume !== undefined) u.volume = options.volume;
-
-  if (options?.onEnd) u.onend = options.onEnd;
-  if (options?.onError) u.onerror = options.onError;
-
-  window.speechSynthesis.speak(u);
 }
