@@ -1280,7 +1280,7 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                           <p className="text-xs sm:text-sm font-bold truncate">
                             {m.titleVi}
                           </p>
-                          <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                          <p className="text-[11px] text-slate-600 dark:text-slate-400">
                             Kho: {m.questions.length} câu
                           </p>
                         </div>
@@ -1406,7 +1406,7 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                           <p className="font-black text-xs text-slate-900 dark:text-white">
                             🎯 Theo tỷ lệ chuẩn đề (Mặc định)
                           </p>
-                          <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                          <p className="text-[11px] text-slate-600 dark:text-slate-400">
                             Đủ 9 Mondai = 54 câu theo cấu trúc phần từ vựng –
                             ngữ pháp.
                           </p>
@@ -1424,7 +1424,7 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                           <p className="font-black text-xs text-slate-900 dark:text-white">
                             📊 Theo tổng số câu mỗi lượt
                           </p>
-                          <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                          <p className="text-[11px] text-slate-600 dark:text-slate-400">
                             Chọn tổng 10, 20, 50 câu hoặc toàn bộ kho.
                           </p>
                         </button>
@@ -1441,7 +1441,7 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                           <p className="font-black text-xs text-slate-900 dark:text-white">
                             🔢 Số câu bằng nhau mỗi Mondai
                           </p>
-                          <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                          <p className="text-[11px] text-slate-600 dark:text-slate-400">
                             Lấy cố định 5, 10, 15 hoặc 20 câu cho mỗi dạng đã
                             chọn.
                           </p>
@@ -2146,7 +2146,7 @@ export default function ExamWorkspace({ mode }: { mode: Mode }) {
                         badgeClass = !userAns
                           ? "bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border-amber-300"
                           : isRight
-                            ? "bg-emerald-600 text-white border-emerald-600"
+                            ? "bg-emerald-700 text-white border-emerald-700"
                             : "bg-rose-600 text-white border-rose-600";
                       }
                       if (isContextOnly) {

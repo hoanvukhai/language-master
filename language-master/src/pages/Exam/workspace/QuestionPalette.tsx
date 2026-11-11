@@ -151,10 +151,10 @@ export default function QuestionPalette({
         </span>
       </div>
       {showShortcutHint && (
-        <p className="text-[11px] text-slate-500 dark:text-slate-400">
-          Phím tắt: <kbd className="px-1 py-0.5 rounded bg-slate-100 dark:bg-slate-900">1–4</kbd> chọn đáp án ·{" "}
-          <kbd className="px-1 py-0.5 rounded bg-slate-100 dark:bg-slate-900">←/→</kbd> chuyển câu ·{" "}
-          <kbd className="px-1 py-0.5 rounded bg-slate-100 dark:bg-slate-900">F</kbd> đánh dấu
+        <p className="text-[11px] text-slate-600 dark:text-slate-400">
+          Phím tắt: <kbd className="px-1 py-0.5 rounded bg-slate-100 text-slate-700 dark:bg-slate-900 dark:text-slate-300">1–4</kbd> chọn đáp án ·{" "}
+          <kbd className="px-1 py-0.5 rounded bg-slate-100 text-slate-700 dark:bg-slate-900 dark:text-slate-300">←/→</kbd> chuyển câu ·{" "}
+          <kbd className="px-1 py-0.5 rounded bg-slate-100 text-slate-700 dark:bg-slate-900 dark:text-slate-300">F</kbd> đánh dấu
         </p>
       )}
     </div>

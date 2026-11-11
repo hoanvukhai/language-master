@@ -317,7 +317,7 @@ export default function ExamQuestionCard({
               <span
                 className={`inline-flex items-center justify-center w-6 h-6 rounded-lg text-xs font-black shrink-0 mt-0.5 ${
                   isCorrectOption
-                    ? "bg-emerald-600 text-white"
+                    ? "bg-emerald-700 text-white"
                     : isWrongOption
                       ? "bg-rose-600 text-white"
                       : isSelectedOption
@@ -579,7 +579,7 @@ export default function ExamQuestionCard({
 
           {/* Subtle Source & AI Reference Footer */}
           {q.explanationStatus === "authored" && (
-            <p className="pt-2 border-t border-slate-200/60 dark:border-slate-800 text-[11px] text-slate-400 dark:text-slate-500 flex items-center gap-1.5">
+            <p className="pt-2 border-t border-slate-200/60 dark:border-slate-800 text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
               <Sparkles size={11} className="shrink-0" />
               <span>
                 Đáp án đối chiếu bảng cuối sách · Lời giải tham khảo do AI biên

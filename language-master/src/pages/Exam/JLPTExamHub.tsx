@@ -451,7 +451,7 @@ export default function JLPTExamHub() {
               <div className="rounded-2xl bg-white/95 dark:bg-slate-900/95 text-slate-900 dark:text-white p-5 shadow-lg border border-white/40 flex flex-col justify-between gap-4">
                 <div className="space-y-2">
                   <div className="flex items-center justify-between gap-2 flex-wrap">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-emerald-600 text-white">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-emerald-700 text-white">
                       <Zap size={12} />
                       <span>Chữa từng câu tức thì</span>
                     </span>
@@ -473,7 +473,7 @@ export default function JLPTExamHub() {
                     Hỗ trợ lọc theo từng dạng bài
                   </span>
                   <Link
-                    className="exam-primary !from-emerald-600 !to-teal-600 hover:!from-emerald-700 hover:!to-teal-700"
+                    className="exam-primary !from-emerald-700 !to-teal-700 hover:!from-emerald-800 hover:!to-teal-800"
                     to={`/exams/jlpt/${primaryPoolId}/drill`}
                   >
                     <Zap size={15} />
@@ -556,7 +556,7 @@ export default function JLPTExamHub() {
               </div>
 
               <Link
-                className="exam-primary !from-emerald-600 !to-teal-600 hover:!from-emerald-700 hover:!to-teal-700 !py-2 !px-3.5 !min-h-9 text-xs"
+                className="exam-primary !from-emerald-700 !to-teal-700 hover:!from-emerald-800 hover:!to-teal-800 !py-2 !px-3.5 !min-h-9 text-xs"
                 to={`/exams/jlpt/${poolId(openedBook.id, openedBook.level)}/drill`}
               >
                 <Zap size={14} />
@@ -698,7 +698,7 @@ export default function JLPTExamHub() {
 
                     <div className="flex flex-wrap gap-2 pt-3 border-t border-slate-100 dark:border-slate-700/70">
                       <Link
-                        className="exam-primary !from-emerald-600 !to-teal-600 hover:!from-emerald-700 hover:!to-teal-700 !py-1.5 !px-3 !min-h-9 text-xs flex-1"
+                        className="exam-primary !from-emerald-700 !to-teal-700 hover:!from-emerald-800 hover:!to-teal-800 !py-1.5 !px-3 !min-h-9 text-xs flex-1"
                         to={`/exams/jlpt/${bookPoolId}/drill${e.day ? `?day=${e.day}` : ""}`}
                       >
                         <Zap size={13} />
@@ -911,7 +911,7 @@ export default function JLPTExamHub() {
                         </div>
                         <div className="flex flex-wrap gap-2 pt-2 border-t border-slate-100 dark:border-slate-700">
                           <Link
-                            className="exam-primary !from-emerald-600 !to-teal-600 !py-1.5 !px-3 !min-h-8 text-xs flex-1"
+                            className="exam-primary !from-emerald-700 !to-teal-700 !py-1.5 !px-3 !min-h-8 text-xs flex-1"
                             to={`/exams/jlpt/${bookPoolId}/drill${e.day ? `?day=${e.day}` : ""}`}
                           >
                             <Zap size={12} />
