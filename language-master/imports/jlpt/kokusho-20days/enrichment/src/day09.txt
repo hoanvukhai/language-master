@@ -285,6 +285,7 @@ S: … của cha mẹ, tôi mong con được sống theo cách nó thích.
 @m7_35
 T: Cầu thủ bóng rổ mà luyện bóng bàn thì có ích không nhỉ?
 S: Cầu thủ bóng rổ … luyện bóng bàn thì có ích không nhỉ?
+E: Vるなんて: việc cầu thủ bóng rổ đi luyện bóng bàn khiến người nói ngạc nhiên và nghi ngờ hiệu quả. なんて nêu sự việc để bình luận; として là với tư cách, ほど là mức độ, さえ là ngay cả.
 1: として: với tư cách; không hợp.
 2: ほど: đến mức; không hợp.
 3: Vるなんて: việc… (ngạc nhiên, nghi ngờ).

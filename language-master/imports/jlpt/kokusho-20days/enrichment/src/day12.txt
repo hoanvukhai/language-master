@@ -333,7 +333,7 @@ S: … , anh ta lại động đến rượu.
 @m7_41
 T: Cảnh sát mà gây tai nạn rồi bỏ chạy, thì còn hơn cả chuyện trái với đạo làm người.
 S: Cảnh sát mà gây tai nạn rồi bỏ chạy, thì … .
-E: Đáp án sách là 3: 人の道に反するどころではない, nhấn mạnh việc nghiêm trọng vượt xa một sự "trái đạo lý" thông thường. Các phương án khác dùng sai mẫu hoặc sai nghĩa.
+E: Nどころではない: không chỉ dừng ở mức N. 人の道に反するどころではない nghĩa là cảnh sát gây tai nạn rồi bỏ chạy còn tệ hơn cả việc trái đạo làm người. 人の道 không đi với こたえる, 伴う hay 基づく.
 1: にこたえる: đáp ứng; không đi với 人の道.
 2: に伴うべきではない không có nghĩa hợp lý.
 3: に反するどころではない: còn hơn cả trái đạo lý.

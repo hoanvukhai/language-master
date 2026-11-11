@@ -343,7 +343,7 @@ T: Nghe nói từ tuần này sang tuần sau sẽ thi công đường trước 
 S: Nghe nói … , sẽ thi công đường trước ga.
 1: にかけたそうだが sai dạng.
 2: にかけたように sai dạng.
-3: にかけて: kéo dài từ… đến.
+3: にかけてらしいが: hình như kéo dài từ… đến; らしい dè dặt về khoảng thời gian.
 4: にかけてのことで không nối được với そうだ.
 
 @m7_43

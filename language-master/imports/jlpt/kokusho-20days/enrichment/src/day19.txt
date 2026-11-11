@@ -66,7 +66,7 @@ W: 可決 | かけつ | KHẢ QUYẾT | thông qua (biểu quyết)
 T: Tôi rút nút bồn tắm và thay nước mới.
 W: 抜く | ぬく | BẠT | rút ra
 1: 抜いて: rút ra.
-2: 抽 (TRỪU) đọc ぬく hiếm khi dùng; không phải cách viết chuẩn.
+2: 抽 (TRỪU) dùng trong 抽選, 抽出; không viết ぬく bằng chữ này.
 3: 板 (BẢN) là tấm ván; không phải động từ.
 4: 机 (KỶ) là bàn; không phải động từ.
 
@@ -269,6 +269,7 @@ W: 相違 | そうい | TƯƠNG VI | khác biệt
 @m7_33
 T: Cửa tàu vừa mới bắt đầu đóng thì một người đàn ông nhảy lên.
 S: Cửa tàu … thì một người đàn ông nhảy lên.
+E: Vたかと思うと: việc trước vừa xảy ra thì việc sau đến ngay, gây bất ngờ. Cửa tàu vừa bắt đầu đóng thì một người đàn ông nhảy lên.
 1: Vたかと思うと: vừa… thì ngay lập tức.
 2: ことか: biết bao; không hợp.
 3: だけあって: quả xứng đáng; không hợp.
