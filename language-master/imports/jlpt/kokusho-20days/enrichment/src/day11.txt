@@ -1,0 +1,446 @@
+@m1_01
+T: Món này cho thêm chút dầu ô liu thì sẽ ngon hơn.
+W: 加える | くわえる | GIA | thêm vào
+1: そえる là 添える: đính kèm, điểm thêm.
+2: あたえる là 与える: cho, trao.
+3: くわえる: cách đọc của 加える, thêm vào.
+4: たくわえる là 蓄える: tích trữ.
+
+@m1_02
+T: Lưu vực con sông đó ngày xưa hầu hết là ruộng lúa.
+W: 流域 | りゅういき | LƯU VỰC | lưu vực
+1: りゅうき: thiếu い của 域.
+2: りゅいき: thiếu trường âm của 流.
+3: りゅういき: 流 りゅう + 域 いき.
+4: りゅうえき: 域 đọc いき, không đọc えき.
+
+@m1_03
+T: Xin hãy nén tệp tài liệu cuộc họp rồi lưu lại.
+W: 圧縮 | あっしゅく | ÁP SÚC | nén
+1: あっしゅく: 圧 あつ → あっ + 縮 しゅく.
+2: あっすく: 縮 đọc しゅく.
+3: あつしゅく: 圧 trước し biến thành あっ.
+4: あつすく: sai cả hai chỗ.
+
+@m1_04
+T: Con dao đó mũi rất sắc, xin hãy cẩn thận.
+W: 鋭い | するどい | DUỆ | sắc bén
+1: きわどい: suýt soát, nguy hiểm sát nút; khác chữ.
+2: あぶない là 危ない: nguy hiểm.
+3: ひどい là 酷い: tồi tệ.
+4: するどい: cách đọc của 鋭い.
+
+@m1_05
+T: Thể tích của bể bơi trường học khoảng bao nhiêu nhỉ?
+W: 体積 | たいせき | THỂ TÍCH | thể tích
+1: たいしゃく là 貸借 (vay mượn); khác chữ.
+2: たいせき: 体 たい + 積 せき.
+3: ていしゃく: 体 đọc たい.
+4: ていせき: 体 trong từ này đọc たい.
+
+@m2_06
+T: Nếu không tăng cường phần thân dưới hơn nữa thì không trụ được trong giới chuyên nghiệp.
+W: 強化 | きょうか | CƯỜNG HÓA | tăng cường
+1: 科 (KHOA); 強科 không phải từ có thật.
+2: 加 (GIA); 強加 không phải từ có thật.
+3: 強化: 強 (CƯỜNG) + 化 (HÓA).
+4: 可 (KHẢ); 強可 không phải từ có thật.
+
+@m2_07
+T: Tôi muốn con trai thành người mê thể thao, nhưng hình như sở thích của nó là đan len.
+W: 編物 | あみもの | BIÊN VẬT | đồ đan, việc đan len
+1: 編物: 編 (BIÊN, đan) + 物.
+2: 騙 là lừa; 騙物 không phải từ có thật.
+3: 偏 (THIÊN) là lệch; 偏物 không phải từ có thật.
+4: 遍 (BIẾN) là khắp; 遍物 không phải từ có thật.
+
+@m2_08
+T: Khu trượt tuyết đó có thiết bị tạo tuyết nhân tạo.
+W: 装置 | そうち | TRANG TRÍ | thiết bị
+1: 地 (ĐỊA); 装地 không phải từ có thật.
+2: 値 (TRỊ); 装値 không phải từ có thật.
+3: 致 (TRÍ) là đạt tới; 装致 không phải từ có thật.
+4: 装置: 装 (TRANG) + 置 (TRÍ, đặt).
+
+@m2_09
+T: Cây cổ thụ mục ruỗng, đổ xuống cùng một tiếng động lớn.
+W: 倒れる | たおれる | ĐẢO | đổ, ngã
+1: 潰れる đọc つぶれる: bẹp, phá sản.
+2: 倒れた: đổ xuống.
+3: 折れる đọc おれる: gãy.
+4: 壊れる đọc こわれる: hỏng.
+
+@m2_10
+T: Ngày mai là Tết Nguyên đán Trung Quốc nên chúng tôi làm sủi cảo để đón năm mới.
+W: 迎える | むかえる | NGHÊNH | đón
+1: 向 đọc むく・むかう; 向える không phải từ có thật.
+2: 迎える: đón.
+3: 訪 đọc おとずれる; không đọc むかえる.
+4: 歓 (HOAN) không có dạng 歓える.
+
+@m3_11
+T: Để nhớ từ vựng, quan trọng nhất là dùng đi dùng lại.
+S: Để nhớ từ vựng, quan trọng nhất là … dùng.
+W: 繰り返す | くりかえす | SÀO PHẢN | lặp lại | 繰り〜
+1: 盛り返す: lấy lại khí thế; không phải lặp lại.
+2: 折り返す: gập lại, quay ngược; không phải lặp lại.
+3: 繰り返す: lặp đi lặp lại.
+4: 切り返す: phản đòn; không hợp.
+
+@m3_12
+T: Dù thế nào thì trẻ con chắc cũng không nhấc nổi kiện hàng này.
+S: Dù thế nào thì trẻ con chắc cũng không … kiện hàng này.
+W: 持ち上げる | もちあげる | TRÌ THƯỢNG | nhấc lên | 持ち〜
+1: 打ち上げる: phóng lên (pháo hoa, tên lửa).
+2: 持ち上げる: nhấc lên.
+3: 立ち上げる: khởi động, thành lập.
+4: 勝ち上げる không phải động từ có thật.
+
+@m3_13
+T: Các trận bóng đá quốc tế, trận nào tôi cũng xem trên tivi.
+S: Các trận bóng đá quốc tế, … tôi cũng xem trên tivi.
+W: 毎試合 | まいしあい | MỖI THÍ HỢP | mỗi trận | 毎〜
+1: 本試合: trận chính thức; không mang nghĩa mỗi trận.
+2: 毎〜: mỗi (毎試合, 毎日).
+3: 常試合 không phải từ có thật.
+4: 何試合: bao nhiêu trận; câu hỏi, không hợp.
+
+@m3_14
+T: Từ năm học tới sẽ mở thêm lớp tiếng Anh mới.
+S: Từ … sẽ mở thêm lớp tiếng Anh mới.
+W: 来年度 | らいねんど | LAI NIÊN ĐỘ | năm học (tài chính) tới | 来〜
+1: 来〜: tới (来年度, 来週).
+2: 近年度 không phải từ có thật.
+3: 後年度 không phải cách nói thông dụng.
+4: 順年度 không phải từ có thật.
+
+@m3_15
+T: Quán chuyên lươn trước ga thật sự rất ngon.
+S: … lươn trước ga thật sự rất ngon.
+W: 専門店 | せんもんてん | CHUYÊN MÔN ĐIẾM | cửa hàng chuyên doanh | 〜店
+1: 〜屋 có trong うなぎ屋, nhưng 専門屋 không dùng.
+2: 〜堂 dùng trong tên cửa hiệu cổ; 専門堂 không dùng.
+3: 〜軒 dùng trong tên quán (来々軒); 専門軒 không dùng.
+4: 専門店: cửa hàng chuyên doanh.
+
+@m4_16
+T: Lớp đã bầu cử để chọn cán bộ lớp.
+S: Lớp đã bầu cử để chọn … .
+W: 委員 | いいん | ỦY VIÊN | ủy viên, cán bộ
+1: 役人: công chức; không phải chức trong lớp.
+2: 学生: sinh viên; không cần bầu.
+3: 学級委員: cán bộ lớp.
+4: 生徒: học sinh; không cần bầu.
+
+@m4_17
+T: Năm nay kinh tế kém, không biết có được thưởng hay không.
+S: Năm nay kinh tế kém, không biết có được … hay không.
+W: ボーナス | ボーナス | | tiền thưởng
+1: レジャー: giải trí; không đi với 出る theo nghĩa này.
+2: マーケット: thị trường; không hợp.
+3: パーティー: tiệc; không hợp.
+4: ボーナスが出る: được thưởng.
+
+@m4_18
+T: Nghe nói thầy hướng dẫn chuyên đề còn viết phê bình sân khấu.
+S: Nghe nói thầy hướng dẫn chuyên đề còn viết … sân khấu.
+W: 評論 | ひょうろん | BÌNH LUẬN | phê bình
+1: 絵本: sách tranh; không đi với 演劇の.
+2: 文字: chữ viết; không hợp.
+3: 詩: thơ; 演劇の詩 không tự nhiên.
+4: 演劇の評論: phê bình sân khấu.
+
+@m4_19
+T: Xem kết quả chẩn đoán của bệnh viện thì quả đúng là tôi bị thừa cân.
+S: Xem kết quả … của bệnh viện thì quả đúng là tôi bị thừa cân.
+W: 診断 | しんだん | CHẨN ĐOÁN | chẩn đoán
+1: 相談結果 không dùng cho khám bệnh.
+2: 解釈: giải thích; không hợp.
+3: 実例: ví dụ thực tế; không hợp.
+4: 診断結果: kết quả chẩn đoán.
+
+@m4_20
+T: Trực thăng quân đội Mỹ đã rơi trên đường trở về căn cứ.
+S: Trực thăng quân đội Mỹ đã rơi trên đường … căn cứ.
+W: 戻る | もどる | LỆ | quay về
+1: 渡る: băng qua; không đi với 基地に.
+2: 飛ぶ: bay; không thể hiện ý quay về.
+3: 基地に戻る: quay về căn cứ.
+4: 越える: vượt qua; không đi với に.
+
+@m4_21
+T: Trên đảo đó có nhà máy chế biến thủy sản.
+S: Trên đảo đó có nhà máy chế biến … .
+W: 水産 | すいさん | THỦY SẢN | thủy sản
+1: 水産加工: chế biến thủy sản.
+2: 資本: vốn; không chế biến được.
+3: 財産: tài sản; không hợp.
+4: 金融: tài chính; không hợp.
+
+@m4_22
+T: Dù thành tích ở trường tốt, không hẳn năng lực làm việc đã cao.
+S: Dù thành tích ở trường tốt, … năng lực làm việc đã cao.
+W: 限る | かぎる | HẠN | giới hạn
+1: 〜とは限らない: không hẳn là.
+2: 残らない: không còn lại; không hợp.
+3: 目立たない: không nổi bật; không hợp.
+4: 望まない: không mong; không hợp.
+
+@m5_23
+T: Trong lúc con ngủ, tôi lặng lẽ đặt quà ở đầu giường.
+W: そっと | そっと | | khẽ khàng, lặng lẽ
+1: ゆっくり: chậm rãi; không nhấn sự kín đáo.
+2: ひそかに: lặng lẽ, kín đáo.
+3: ざっと: qua loa; khác nghĩa.
+4: ふと: chợt; khác nghĩa.
+
+@m5_24
+T: Là nhân viên mới mà lại nói những lời vượt phận với cấp trên.
+W: 出過ぎる | ですぎる | XUẤT QUÁ | vượt phận, quá đà
+1: 大きい: to; không mang nghĩa vượt phận.
+2: うるさい: ồn ào; khác nghĩa.
+3: 不満な: bất mãn; khác nghĩa.
+4: 生意気な: xấc xược, vượt phận.
+
+@m5_25
+T: Liệu có thật sự giảm thuế được như lời hứa của thị trưởng không?
+W: 果たして | はたして | QUẢ | liệu có thật
+1: おそらく: có lẽ; không đi với nghi vấn だろうか như vậy.
+2: まるで: cứ như; khác nghĩa.
+3: 本当に: thật sự.
+4: かならず: chắc chắn; trái với sắc thái nghi ngờ.
+
+@m5_26
+T: Sét đánh gần đó, phát ra một tiếng động khủng khiếp.
+W: すごい | すごい | | ghê gớm, khủng khiếp
+1: まごまごする: lúng túng; không tả âm thanh.
+2: がたがたする: lạch cạch; không phải tiếng sét.
+3: びっくりする音: tiếng làm giật mình.
+4: はっきりする音: tiếng rõ ràng; không mang nghĩa dữ dội.
+
+@m5_27
+T: Nếu nỗ lực bền bỉ, rồi sẽ có ngày thành công.
+W: やがて | やがて | | rồi thì, chẳng bao lâu
+1: いずれ: rồi sẽ, một ngày nào đó.
+2: そろそろ: sắp sửa; dùng cho việc gần.
+3: まもなく: ngay sắp; thời gian quá ngắn.
+4: いよいよ: cuối cùng thì (đã đến); không hợp.
+
+@m6_28
+T: Ngôi sao nổi tiếng bước lên sân khấu, cả nhà hát bỗng ồn ào hẳn.
+W: 騒々しい | そうぞうしい | TAO | ồn ào, náo động
+1: そうぞうしくなった: trở nên ồn ào.
+2: Văn giàu trí tưởng tượng là 想像力豊かな; dễ nhầm cách đọc.
+3: Dọn phòng dùng 片付ける; không liên quan そうぞうしい.
+4: Quần áo lòe loẹt dùng 派手; không dùng そうぞうしい.
+
+@m6_29
+T: Câu thông báo quen thuộc "xin hạn chế gọi điện trên tàu" vang lên.
+W: 文句 | もんく | VĂN CÚ | câu chữ; lời phàn nàn
+1: Khen thật lòng là お世辞・ほめ言葉; không gọi 文句.
+2: Chỉnh âm thanh dùng 音量を調節.
+3: Thuật ngữ máy tính là コンピューター用語.
+4: いつもの文句: câu nói quen thuộc.
+
+@m6_30
+T: Cửa hàng tiện lợi đó cứ đến khuya là thanh niên đi lảng vảng.
+W: うろうろ | うろうろ | | lảng vảng, loanh quanh
+1: Ngồi yên không dùng うろうろ.
+2: Sống thong thả dùng のんびり.
+3: うろうろしている: đi lảng vảng.
+4: Đông người dùng 大勢; うろうろの人々 không dùng.
+
+@m6_31
+T: Mới một lần thi tốt mà đã đắc ý thì về sau sẽ vất vả.
+W: 得意 | とくい | ĐẮC Ý | đắc ý; sở trường
+1: Làm riêng cho ai dùng 特別に.
+2: Rẻ hơn 3000 yên dùng 得 (とく).
+3: 得意になる: đắc ý, tự mãn.
+4: Điểm mạnh dùng 特長・長所.
+
+@m6_32
+T: Loài thực vật này chỉ phân bố ở vùng Okinawa.
+W: 分布 | ぶんぷ | PHÂN BỐ | phân bố
+1: Phát chương trình là 配布.
+2: 〜に分布している: phân bố ở.
+3: Phun thuốc là 散布.
+4: Ban hành luật là 公布.
+
+@m7_33
+T: Không phải cứ bố mẹ là nhạc sĩ thì con cái hát hay.
+S: … bố mẹ là nhạc sĩ, không hẳn con cái hát hay.
+1: からいうと: xét từ; không hợp với とは限らない.
+2: からといって〜とは限らない: dù… cũng không hẳn.
+3: からすれば: xét từ; không hợp.
+4: からには: một khi đã; không hợp.
+
+@m7_34
+T: Chương trình radio này được phát dành cho thính giả nước ngoài.
+S: Chương trình radio này được phát … .
+1: 上に: hơn nữa; không hợp.
+2: ともに: cùng với; không hợp.
+3: ほどに: đến mức; không hợp.
+4: N向けに: dành cho N.
+
+@m7_35
+T: Kỳ thi chứng chỉ này người Nhật thì đương nhiên, người nước ngoài cũng thi được.
+S: Kỳ thi chứng chỉ này người Nhật … , người nước ngoài cũng thi được.
+1: とにかく: dù sao; không hợp.
+2: さておき: tạm gác; không hợp.
+3: Nはもちろん: N thì đương nhiên.
+4: なにしろ: dù gì thì; không hợp.
+
+@m7_36
+T: Trong thí nghiệm vật lý đã ra kết quả không ai ngờ tới.
+S: … thí nghiệm vật lý đã ra kết quả không ai ngờ tới.
+1: Nにおいて: trong, tại.
+2: にとって: đối với; không hợp.
+3: にかけて: về mặt; không hợp.
+4: にわたって: kéo dài; không hợp.
+
+@m7_37
+T: Vì lò vi sóng bị hỏng nên không hâm nóng được món gratin.
+S: … lò vi sóng bị hỏng nên không hâm nóng được món gratin.
+1: Vたせいで: vì (nguyên nhân xấu).
+2: せいか: có lẽ vì; nguyên nhân chưa chắc.
+3: せいも: cũng do; không hợp.
+4: せいに: đổ lỗi cho; không hợp.
+
+@m7_38
+T: Tôi đã tra cứu đủ thứ ở thư viện về lịch sử Mông Cổ.
+S: Tôi đã tra cứu đủ thứ ở thư viện … lịch sử Mông Cổ.
+1: に当たって: khi; không hợp.
+2: Nに関して: về.
+3: に際して: nhân dịp; không hợp.
+4: に加えて: thêm vào; không hợp.
+
+@m7_39
+T: Tôi cho rằng vị ấy chắc chắn là ông Watanabe.
+S: Vị ấy … là ông Watanabe.
+1: 存じています: dùng cho "biết", không phải ý kiến lúc này.
+2: 相違ないと存じます: tôi cho rằng chắc chắn.
+3: 存じあります sai dạng.
+4: 存じ上げます: biết (người); không hợp.
+
+@m7_40
+T: Dù trái đất đang nóng lên, không phải là sẽ không có tuyết rơi.
+S: Dù trái đất đang nóng lên, … .
+1: 降るわけではない: không phải sẽ có tuyết; ngược ý.
+2: 降らないわけはない: chắc chắn có tuyết; quá mạnh.
+3: 降るわけではないだろう: ngược ý.
+4: 降らないわけではない: không phải là không có tuyết.
+
+@m7_41
+T: Vòng loại quần vợt được tổ chức kéo dài suốt 3 tuần.
+S: Vòng loại quần vợt được tổ chức … .
+1: からわたって sai trợ từ.
+2: までわたって sai trợ từ.
+3: Nにわたって: kéo dài suốt.
+4: をわたって sai trợ từ.
+
+@m7_42
+T: Trời mưa thì sự kiện theo quy định sẽ hủy.
+S: Trời mưa thì sự kiện … hủy.
+1: ことがなっている sai trợ từ.
+2: ものがなっている sai.
+3: ことになっている: theo quy định.
+4: ものになっている sai.
+
+@m7_43
+T: Đã đến nước này thì chỉ còn cách chia tay cô ấy.
+S: … , chỉ còn cách chia tay cô ấy.
+1: なってもうえで sai dạng.
+2: なったうえで: sau khi; không hợp.
+3: なってもうえに sai dạng.
+4: こうなったうえは: một khi đã thế này.
+
+@m7_44
+T: Càng tiết kiệm thì lại càng muốn tích nhiều tiền hơn.
+S: … , lại càng muốn tích nhiều tiền hơn.
+1: してもしなくても: dù làm hay không; không hợp.
+2: VばVるほど: càng… càng.
+3: しなかったら sai dạng.
+4: すればしたらと sai dạng.
+
+@m8_45
+T: Nghĩ quá nhiều về thất bại trong công việc, buổi tối tôi không thể ngủ say được.
+1: 夜ぐっすり đứng ở ô ★.
+2: ことを nối ngay sau 失敗の.
+3: 寝られなく đứng cuối, trước なった.
+4: 考えすぎて đi sau ことを.
+
+@m8_46
+T: Mỗi khi nghe những bài hát cũ thập niên 70, tôi lại nhớ thời thanh xuân.
+1: 聴く đi sau 古い歌を.
+2: 青春時代 đứng cuối, trước を思い出す.
+3: たびに đứng ở ô ★.
+4: 古い歌を nối ngay sau 70年代の.
+
+@m8_47
+T: Khi giao dịch với công ty A, phải ứng xử cẩn thận.
+1: きちんと đứng ở ô ★.
+2: 対応をしなければ đứng cuối, trước ならない.
+3: に際して đi sau 取り引き.
+4: 取り引き nối ngay sau A社との.
+
+@m8_48
+T: Vì đột nhiên bị chóng mặt nên tôi đã hủy buổi phỏng vấn làm thêm.
+1: 起こした đi sau めまいを.
+2: ものだから đứng ở ô ★, nêu lý do.
+3: めまいを nối ngay sau 急に.
+4: アルバイトの面接 đứng cuối, trước をキャンセルした.
+
+@m8_49
+T: Nghe nói anh ấy đã làm rơi tiền lương vừa mới rút từ ngân hàng.
+1: おろした nối ngay sau 銀行から.
+2: 給料を đứng ở ô ★.
+3: 落として đứng cuối, trước しまった.
+4: ばかりの đi sau おろした.
+
+@m9_50
+T: Thế là ông trả lời như thế này.
+S: … ông trả lời như thế này.
+1: やはり: quả nhiên; không nối phản ứng.
+2: また: lại; không hợp.
+3: そこで: thế là, vì vậy (phản ứng trước tình huống).
+4: さて: nào; chuyển đề tài.
+
+@m9_51
+T: "Được thôi, đứa nào không đi học thì bài thi có hơi kém tôi cũng thông cảm, nhưng đứa nào đã đi học mà bài vẫn kém thì tôi đánh trượt không nương tay đâu."
+S: "Được thôi, đứa nào không đi học thì bài thi có hơi kém tôi cũng … , nhưng đứa nào đã đi học mà bài vẫn kém thì tôi … không nương tay đâu."
+1: a 同情する (thông cảm), b 落とす (đánh trượt).
+2: 落とさない: không đánh trượt; mâu thuẫn với 容赦なく.
+3: 同情しない với けど không tạo tương phản.
+4: Cả hai đều phủ định; mất ý câu đùa.
+
+@m9_52
+T: Ông, người được yêu mến là "giáo sư nổi tiếng cuối cùng" nhờ những phát ngôn độc đáo, đã qua đời. Sau khi nghỉ hưu ông tự gọi mình là "lão già làm tự do". Đó là người đã giữ trọn sự tự do và phóng khoáng.
+S: Ông, người nổi tiếng nhờ những phát ngôn … , đã qua đời. Sau khi nghỉ hưu ông tự gọi mình là "lão … ". Đó là người đã giữ trọn … và phóng khoáng.
+1: b 自由 và c フリーター bị đảo; "lão tự do" và "giữ trọn người làm tự do" sai.
+2: a ユニーク, b フリーター, c 自由.
+3: a 自由な発言 có thể, nhưng b ユニーク sai.
+4: c ユニーク と放任 không tự nhiên.
+
+@m9_53
+T: Ông cũng từng lo rằng "có quá nhiều thông điệp bảo hãy khỏe lên, hãy cố gắng".
+S: Ông cũng … rằng "có quá nhiều thông điệp bảo hãy khỏe lên, hãy cố gắng".
+1: 案じないことにした: quyết không lo; ngược nghĩa.
+2: 案じさせていた: khiến người khác lo; sai chủ thể.
+3: 案じてもいた: cũng từng lo.
+4: 案じなかった: không lo; ngược nghĩa.
+
+@m9_54
+T: Với trường đại học ngày nay, nơi sinh viên chạy thẳng từ nhập học đến xin việc, hẳn ông có nhiều lời muốn góp ý.
+S: Với trường đại học ngày nay, … nhiều lời muốn góp ý.
+1: 多かったわけではない: không phải nhiều; ngược với さぞ.
+2: はずはなかった: không lẽ nào; ngược.
+3: べきではなかった: không nên; không hợp.
+4: 〜に違いない: chắc hẳn; đi với さぞ.
+
+@P d11-passage
+Khi còn là giáo sư Đại học Kyoto, nhà toán học Mori Tsuyoshi không điểm danh trong giờ học. Có lần sinh viên đến xin ông điểm danh. Hình như họ muốn việc đi học được tính vào khi xét tín chỉ. Thế là ông trả lời như thế này.
+"Được thôi, đứa nào không đi học thì bài thi có hơi kém tôi cũng thông cảm, nhưng đứa nào đã đi học mà bài vẫn kém thì tôi đánh trượt không nương tay đâu." Nghe nói sinh viên im bặt. Bản thân ông hồi sinh viên cũng hay trốn học. Ông kể bố từng dặn: "Ngày nào nghỉ học thì phải sống một ngày phong phú hơn cả đi học."
+Ông Mori, người được yêu mến là "giáo sư nổi tiếng cuối cùng" nhờ nhiều giai thoại và những phát ngôn độc đáo về các vấn đề xã hội, đã qua đời. Sau khi nghỉ hưu, ông tự gọi mình là "lão già làm tự do" hay "nghệ sĩ ngôn luận". Đó là người đã giữ trọn sự tự do và phóng khoáng với cả bản thân lẫn người khác.
+Lời ông mềm dẻo, hóm hỉnh, đôi khi cũng cực đoan. Nhưng thái độ thì nhất quán. "Muốn bắt đầu điều mới thì chỉ học sinh giỏi là không được. Người nói ra điều kỳ quặc thường là người hay trật lất." Tình thương dành cho những người hay lạc khỏi khuôn khổ thấm trong từng câu chữ.
+"Cẩu thả mới thú vị", "Thôi, được rồi mà", "Cứ từ từ thôi"… Những tựa sách thả lỏng vai ấy có lẽ cũng là lời cổ vũ của một bậc thầy cuộc sống. Ông cũng từng lo rằng "có quá nhiều thông điệp bảo hãy khỏe lên, hãy cố gắng".
+Với trường đại học ngày nay, nơi sinh viên chạy thẳng con đường ngắn nhất từ nhập học đến xin việc, hẳn ông có nhiều lời muốn góp ý. "Cuộc đời đúng như dự định thì đâu có nhiều." Ông hưởng thọ 82 tuổi. Tôi như vẫn nghe đâu đây giọng Kansai mềm mại ấy.

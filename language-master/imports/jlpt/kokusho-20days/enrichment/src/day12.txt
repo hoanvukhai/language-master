@@ -1,0 +1,447 @@
+@m1_01
+T: Hồ sâu nhất thế giới là hồ Baikal.
+W: 最も | もっとも | TỐI | nhất
+1: もっとも: cách đọc của 最も, nhất.
+2: ちっとも: chút nào (đi với phủ định); không phải 最.
+3: いとも: rất, quá đỗi; không phải 最.
+4: まとも: đàng hoàng; không phải 最.
+
+@m1_02
+T: Núi lửa phun trào, thị trấn đang trong tình trạng nguy hiểm.
+W: 状況 | じょうきょう | TRẠNG HUỐNG | tình hình, tình trạng
+1: じょうぎょう: 況 không đọc ぎょう.
+2: じょうきょう: 状 じょう + 況 きょう.
+3: しょうぎょう là 商業 (thương mại).
+4: しょうきょう: 状 đọc じょう.
+
+@m1_03
+T: Một tàu khách lớn đang neo ở cảng Yokohama.
+W: 港 | みなと | CẢNG | cảng
+1: せと là 瀬戸: eo biển hẹp.
+2: みなと: cách đọc của 港.
+3: とまり là 泊まり: nghỉ đêm.
+4: みさき là 岬: mũi đất.
+
+@m1_04
+T: Trên đại lục châu Phi, đàn trâu rừng đã bắt đầu cuộc di cư lớn.
+W: 群れ | むれ | QUẦN | bầy, đàn
+1: むれ: cách đọc của 群れ.
+2: まれ là 稀: hiếm.
+3: ぐれ không phải cách đọc.
+4: ぐんれ: trộn âm On với okurigana; sai.
+
+@m1_05
+T: Điều tác giả muốn nói trong đoạn văn này thật khó hiểu.
+W: 筆者 | ひっしゃ | BÚT GIẢ | tác giả, người viết
+1: ひつもの: sai, 者 đọc しゃ.
+2: ふでもの: đọc Kun; sai.
+3: ひっしゃ: 筆 ひつ → ひっ + 者 しゃ.
+4: ふでしゃ: trộn Kun với On; sai.
+
+@m2_06
+T: Thiệt hại do vụ tai nạn đó gây ra là không thể đo đếm.
+W: 損害 | そんがい | TỔN HẠI | thiệt hại
+1: 存 (TỒN) là tồn tại; 存害 không phải từ có thật.
+2: 尊 (TÔN) là tôn kính; 尊害 không phải từ có thật.
+3: 損害: 損 (TỔN) + 害 (HẠI).
+4: 戦 (CHIẾN); 戦害 không phải từ có thật.
+
+@m2_07
+T: Màn trình diễn của đoàn múa dân tộc vừa sang Nhật lần này thật tuyệt.
+W: 演技 | えんぎ | DIỄN KỸ | màn trình diễn, diễn xuất
+1: 演義 là thể loại truyện (三国志演義); khác nghĩa.
+2: 奴 (NÔ); 演奴 không phải từ có thật.
+3: 疑 (NGHI); 演疑 không phải từ có thật.
+4: 演技: 技 (KỸ, kỹ năng).
+
+@m2_08
+T: Cô ấy được gọi là ngôi sao hy vọng của làng trượt băng.
+W: 希望 | きぼう | HY VỌNG | hy vọng
+1: 祈 (KỲ) là cầu nguyện; 祈望 không dùng.
+2: 希望: hy vọng.
+3: 企 (XÍ) là kế hoạch; 企望 không dùng.
+4: 喜 (HỶ) là vui; 喜望 không dùng.
+
+@m2_09
+T: Vùng này được hưởng ân huệ của thiên nhiên phong phú nên làm ra rượu ngon.
+W: 被る | こうむる | BỊ | chịu, nhận (ân huệ, thiệt hại)
+1: 初 đọc はじめ; không đọc こうむる.
+2: 袖 đọc そで (ống tay áo).
+3: 裕 (DỤ) không phải động từ.
+4: 被り: 被 (BỊ), chịu, nhận.
+
+@m2_10
+T: Đang vô thức sờ tìm trong túi thì lòi ra đồng 500 yên.
+W: 探る | さぐる | THÁM | dò tìm, sờ tìm
+1: 探って: dò tìm.
+2: 捜 đọc さがす; không đọc さぐる.
+3: 触 đọc さわる; khác nghĩa.
+4: 調 đọc しらべる; không đọc さぐる.
+
+@m3_11
+T: Có lẽ có tai nạn, xe cứu thương đã vượt lên với tốc độ kinh hoàng.
+S: Có lẽ có tai nạn, xe cứu thương đã … với tốc độ kinh hoàng.
+W: 追い越す | おいこす | TRUY VIỆT | vượt lên | 追い〜
+1: 勝ち越す: thắng nhiều hơn thua; không hợp.
+2: 追い越す: vượt qua (xe phía trước).
+3: 飛び越す: nhảy qua; không hợp.
+4: 乗り越す: đi quá ga; không hợp.
+
+@m3_12
+T: Đang tiễn cô ấy về nước ở sân bay thì nước mắt tôi trào ra.
+S: Đang … cô ấy về nước ở sân bay thì nước mắt tôi trào ra.
+W: 見送る | みおくる | KIẾN TỐNG | tiễn | 見〜
+1: 見定める: xem xét kỹ; không hợp.
+2: 見返す: nhìn lại, rửa hận; không hợp.
+3: 見渡す: nhìn bao quát; không hợp.
+4: 見送る: tiễn.
+
+@m3_13
+T: Chính phủ hai nước Nhật và Nga đã đàm phán về việc khai thác Siberia.
+S: … của Nhật và Nga đã đàm phán về việc khai thác Siberia.
+W: 両政府 | りょうせいふ | LƯỠNG CHÍNH PHỦ | chính phủ hai nước | 両〜
+1: 双政府 không phải cách nói (双方 thì có).
+2: 共政府 không phải cách nói.
+3: 両〜: cả hai (両政府, 両国).
+4: 対政府 có nghĩa "đối với chính phủ"; không hợp.
+
+@m3_14
+T: Đặc sản từ khắp nước Nhật tập trung về, thành một triển lãm đậm nét địa phương.
+S: Đặc sản từ khắp nước Nhật tập trung về, thành một triển lãm đậm … .
+W: 地方色 | ちほうしょく | ĐỊA PHƯƠNG SẮC | sắc thái địa phương | 〜色
+1: 地方風 không phải cách nói thông dụng.
+2: 地方様 không phải cách nói.
+3: 地方的 là tính từ; không đi với 豊か như danh từ.
+4: 〜色: sắc thái (地方色).
+
+@m3_15
+T: Cô ấy đi làm rồi mà chẳng những tiền ăn, ngay cả tiền xăng cũng bắt bố mẹ trả.
+S: Cô ấy đi làm rồi mà chẳng những tiền ăn, ngay cả … cũng bắt bố mẹ trả.
+W: ガソリン代 | ガソリンだい | ĐẠI | tiền xăng | 〜代
+1: 〜費 có trong 食費; ガソリン費 không thông dụng.
+2: 〜代: tiền trả cho (ガソリン代, 電気代).
+3: 〜料 có trong 入場料; không đi với ガソリン.
+4: 〜額: số tiền (tổng); không hợp.
+
+@m4_16
+T: Tôi sinh ra ở vùng nông thôn Kyushu nên không hợp với không khí thành phố.
+S: Tôi sinh ra ở … Kyushu nên không hợp với không khí thành phố.
+W: 農村 | のうそん | NÔNG THÔN | nông thôn
+1: 地区: khu vực; không đối lập với 都会.
+2: 農村の生まれ: sinh ra ở nông thôn.
+3: 付近: vùng lân cận; không hợp.
+4: 土地: đất; không đối lập rõ với 都会.
+
+@m4_17
+T: Tôi muốn nghĩ việc học ngôn ngữ không phải là mục đích mà là phương tiện.
+S: Tôi muốn nghĩ việc học ngôn ngữ không phải là mục đích mà là … .
+W: 手段 | しゅだん | THỦ ĐOẠN | phương tiện, cách thức
+1: 目的ではなく手段: không phải mục đích mà là phương tiện.
+2: 整理: sắp xếp; không đối lập với 目的.
+3: 直接: trực tiếp; không hợp.
+4: 処理: xử lý; không hợp.
+
+@m4_18
+T: Do mất điện, mô-tơ ngừng quay.
+S: Do mất điện, … ngừng quay.
+W: モーター | モーター | | mô-tơ, động cơ
+1: スピーカー: loa; không 回る.
+2: ポスター: áp phích; không 回る.
+3: モーターが回る: mô-tơ quay.
+4: シャッター: cửa cuốn; không 回る.
+
+@m4_19
+T: Dù văn minh phát triển đến đâu, ung thư có lẽ cũng không dễ chữa.
+S: Dù … phát triển đến đâu, ung thư có lẽ cũng không dễ chữa.
+W: 文明 | ぶんめい | VĂN MINH | văn minh
+1: 医者が発達 không phải cách nói.
+2: 農薬: thuốc trừ sâu; không hợp.
+3: 文明が発達する: văn minh phát triển.
+4: 身体が発達: cơ thể phát triển; không liên quan chữa bệnh.
+
+@m4_20
+T: Con trai tôi tự ý độ xe và bị cảnh sát bắt.
+S: Con trai tôi tự ý … xe và bị cảnh sát bắt.
+W: 改造 | かいぞう | CẢI TẠO | cải tạo, độ (xe)
+1: 車を改造する: độ xe.
+2: 工業: công nghiệp; không hợp.
+3: 作品: tác phẩm; không hợp.
+4: 人造: nhân tạo; không đi với 車を…して.
+
+@m4_21
+T: Đã có thời nhà ở Nhật bị gọi là "chuồng thỏ" vì chật chội.
+S: Đã có thời nhà ở Nhật … , bị gọi là "chuồng thỏ".
+W: 狭い | せまい | HIỆP | chật hẹp
+1: 丸くて: tròn; không hợp.
+2: 高くて: cao, đắt; không phải lý do gọi chuồng thỏ.
+3: 広くて: rộng; ngược nghĩa.
+4: 狭くて: chật hẹp.
+
+@m4_22
+T: Ngô không dễ tiêu lắm, đừng ăn quá nhiều.
+S: Ngô không … lắm, đừng ăn quá nhiều.
+W: 消化 | しょうか | TIÊU HÓA | tiêu hóa
+1: 消化がよくない: khó tiêu.
+2: 解散: giải tán; không hợp.
+3: 分解: phân giải; không dùng cho tiêu hóa thức ăn.
+4: 始末: xử lý hậu quả; không hợp.
+
+@m5_23
+T: Sang tháng 3, những ngày ấm áp dần dần nhiều lên.
+W: だんだん | だんだん | | dần dần
+1: にわかに: đột ngột; ngược nghĩa.
+2: すぐに: ngay lập tức; khác nghĩa.
+3: しだいに: dần dần.
+4: はるかに: hơn hẳn; khác nghĩa.
+
+@m5_24
+T: Món anh ấy nấu ngon thì không gì bằng.
+W: この上ない | このうえない | THƯỢNG | không gì hơn
+1: 本当だ: là thật; khác nghĩa.
+2: 格別だ: đặc biệt, hơn hẳn.
+3: 高級だ: cao cấp; không chỉ mức tuyệt nhất.
+4: 上等だ: hảo hạng; không hoàn toàn đồng nghĩa.
+
+@m5_25
+T: Kết quả đúng y như bạn tôi đã dự đoán.
+W: 正に | まさに | CHÍNH | chính là, đúng là
+1: 仕方なく: bất đắc dĩ; khác nghĩa.
+2: 限りなく: vô hạn; khác nghĩa.
+3: 間違いなく: chắc chắn, không sai.
+4: 決まりなく không phải cách nói.
+
+@m5_26
+T: Đang nghĩ ngoài kia sao ồn ào thì hóa ra có xe bị lật.
+W: 騒がしい | さわがしい | TAO | ồn ào
+1: おそろしい: đáng sợ; khác nghĩa.
+2: やかましい: ồn ào.
+3: そそっかしい: hấp tấp; khác nghĩa.
+4: はなはだしい: quá mức; khác nghĩa.
+
+@m5_27
+T: Công trình cây cầu tiến triển vững chắc, nhưng nghe nói còn lâu mới xong.
+W: 着々と | ちゃくちゃくと | TRỨ | đều đặn, vững chắc
+1: 割合に: tương đối; khác nghĩa.
+2: 確実に: chắc chắn, vững vàng.
+3: 静かに: yên lặng; khác nghĩa.
+4: 懸命に: hết sức; khác nghĩa.
+
+@m6_28
+T: Lùi xe vào gara thất bại, xe bị trầy.
+W: 車庫 | しゃこ | XA KHỐ | nhà để xe, gara
+1: 車庫入れ: đưa xe vào gara.
+2: Bãi đỗ trả phí là 有料駐車場.
+3: Đỗ xe sai luật là 駐車違反.
+4: Chỗ để xe đạp là 駐輪場.
+
+@m6_29
+T: Cuộc thi đố vui toàn quốc dành cho học sinh cấp ba đã được tổ chức.
+W: 対象 | たいしょう | ĐỐI TƯỢNG | đối tượng
+1: Phải là 対象とする; 対象する không đúng.
+2: 〜を対象とした: dành cho (đối tượng).
+3: Người giàu chịu thuế cao dùng 税金が高い.
+4: Phải là 対象とした; 対象した không đúng.
+
+@m6_30
+T: Việc ngày mai nghỉ làm thêm tôi đã báo trước với quản lý rồi.
+W: 既に | すでに | KÝ | đã (rồi)
+1: Né kịp dùng とっさに.
+2: Bắt tay vào ngay dùng さっそく.
+3: すでに伝えてある: đã báo trước rồi.
+4: Định làm sau khi bàn thì không dùng すでに.
+
+@m6_31
+T: Đứa bé đó thường ngày hiền lành, nhưng hễ nổi giận thì không ai trị nổi.
+W: 普段 | ふだん | PHỔ ĐOẠN | thường ngày
+1: Hàng phổ thông là 普及品・日用品.
+2: Lý luận chung là 一般論.
+3: Giá bình thường dùng 普通・妥当.
+4: 普段はおとなしい: thường ngày hiền.
+
+@m6_32
+T: Lương giờ 1200 yên mà làm thực 8 tiếng thì được gần 10 nghìn yên.
+W: 正味 | しょうみ | CHÍNH VỊ | thực tế, ròng
+1: 正味8時間: thực làm 8 tiếng.
+2: Vị thật của thịt dùng 本来の味.
+3: Món ngon dùng 味がいい.
+4: Đồ trong hộp là 中身.
+
+@m7_33
+T: Thổi nhạc bằng ống hút, đúng là có những người kỳ lạ.
+S: Thổi nhạc bằng ống hút, … có những người kỳ lạ.
+1: ことだ: nên (lời khuyên); không hợp.
+2: 〜ものだ: thật là (cảm thán).
+3: ほどだ: đến mức; không hợp.
+4: わけだ: thảo nào; không hợp.
+
+@m7_34
+T: Việc xây công viên đã bắt đầu theo hướng phù hợp với nguyện vọng của cư dân.
+S: Việc xây công viên đã bắt đầu theo hướng … nguyện vọng của cư dân.
+1: Nに沿った: phù hợp, theo đúng.
+2: になった: trở thành; không hợp.
+3: に当たった: trúng; không hợp.
+4: においた không phải mẫu đúng.
+
+@m7_35
+T: Dù là cô ấy nhờ đi nữa, tôi cũng không thể làm điều đó.
+S: Dù là cô ấy nhờ đi nữa, tôi cũng … điều đó.
+1: わけだ: thảo nào; không hợp.
+2: はずだ: chắc hẳn; không hợp.
+3: Vるわけにはいかない: không thể (vì lẽ phải).
+4: はずにはいかない không phải mẫu đúng.
+
+@m7_36
+T: Tùy vào kết quả bài kiểm tra lần này, đại học quốc lập cũng không phải là mơ.
+S: … bài kiểm tra lần này, đại học quốc lập cũng không phải là mơ.
+1: 以来では không phải mẫu đúng.
+2: 以上では không phải mẫu đúng.
+3: N次第では: tùy vào N mà.
+4: 相違では không phải mẫu đúng.
+
+@m7_37
+T: Ở Nhật, cùng với tỷ lệ sinh giảm, già hóa dân số cứ ngày càng tăng.
+S: Ở Nhật, cùng với tỷ lệ sinh giảm, già hóa dân số … .
+1: どころではない: không phải lúc; không hợp.
+2: しかない: chỉ còn cách; không hợp.
+3: Vる一方だ: ngày càng (theo một chiều).
+4: にすぎない: chỉ là; không hợp.
+
+@m7_38
+T: Dù thế nào đi nữa, học sinh cấp hai làm sao giải nổi bài này.
+S: Dù thế nào đi nữa, học sinh cấp hai … bài này.
+1: ようだ: có vẻ; không phủ định.
+2: ようか: không phải dạng đúng.
+3: ものだ: cảm thán; không phủ định.
+4: 〜ものか: làm sao mà (phủ định mạnh).
+
+@m7_39
+T: Xin lỗi, quý khách có thể vui lòng không hút thuốc được không ạ?
+S: Xin lỗi, quý khách có thể vui lòng … ?
+1: もらいませんか: rủ rê; sai mẫu nhờ.
+2: していただけませんでしょうか: xin vui lòng (lịch sự).
+3: もらいませんでしょうか sai dạng.
+4: いただかないでしょうか sai dạng.
+
+@m7_40
+T: Dù đã nói đến thế, anh ta lại động đến rượu.
+S: … , anh ta lại động đến rượu.
+1: Vたにもかかわらず: mặc dù đã.
+2: ものだから: vì; sai quan hệ.
+3: にしても: dù cho; nhẹ hơn, không hợp sự thật đã xảy ra.
+4: どころか: chẳng những; không hợp.
+
+@m7_41
+T: Cảnh sát mà gây tai nạn rồi bỏ chạy, thì còn hơn cả chuyện trái với đạo làm người.
+S: Cảnh sát mà gây tai nạn rồi bỏ chạy, thì … .
+E: Đáp án sách là 3: 人の道に反するどころではない, nhấn mạnh việc nghiêm trọng vượt xa một sự "trái đạo lý" thông thường. Các phương án khác dùng sai mẫu hoặc sai nghĩa.
+1: にこたえる: đáp ứng; không đi với 人の道.
+2: に伴うべきではない không có nghĩa hợp lý.
+3: に反するどころではない: còn hơn cả trái đạo lý.
+4: に基づくべきではない: không nên dựa vào; ngược ý.
+
+@m7_42
+T: Một khi đã quyết định du học Nhật, tôi nhất định sẽ đi.
+S: … du học Nhật, tôi nhất định sẽ đi.
+1: 次第は không phải mẫu đúng.
+2: 一方では: mặt khác; không hợp.
+3: Vた以上は: một khi đã.
+4: ためには: để; không hợp.
+
+@m7_43
+T: Con gái tôi tuần trước đi Osaka một mình, rồi từ đó không liên lạc gì.
+S: Con gái tôi tuần trước … , rồi từ đó không liên lạc gì.
+1: 1人に sai trợ từ; こそ không hợp.
+2: 1人に sai trợ từ.
+3: ことさえ: ngay cả việc; không hợp.
+4: Vたきり: từ sau khi… thì không.
+
+@m7_44
+T: Ca sĩ nổi tiếng sẽ sang Nhật nên tôi không thể không đặt vé buổi hòa nhạc.
+S: Ca sĩ nổi tiếng sẽ sang Nhật nên tôi … vé buổi hòa nhạc.
+1: どころではない: không phải lúc; ngược ý.
+2: わけでもない: không hẳn; ngược ý.
+3: Vないではいられない: không thể không.
+4: ないことがない: không phải là không bao giờ; không hợp.
+
+@m8_45
+T: Nếu lỡ nói chuyện đó ra thì sẽ thành náo loạn lớn đấy.
+1: ものなら đi sau 言おう.
+2: 大変な đứng ở ô ★, bổ nghĩa cho 騒ぎ.
+3: 言おう nối ngay sau そんなことを.
+4: 騒ぎ đứng cuối, trước になるよ.
+
+@m8_46
+T: Dự kiến cuộc điều tra sinh trưởng của lúa sẽ được tiến hành khắp cả nước.
+1: 行われる đứng cuối, trước 予定だ.
+2: 発育調査が nối ngay sau 稲の.
+3: にわたって đứng ở ô ★.
+4: 全国各地 đi sau 発育調査が.
+
+@m8_47
+T: Về việc này, chúng tôi đành phải thừa nhận trách nhiệm thuộc về phía mình.
+1: こちらに nối ngay sau このことについては.
+2: 認めざる đứng cuối, trước をえない.
+3: 責任が đi sau こちらに.
+4: あると đứng ở ô ★.
+
+@m8_48
+T: Thị trấn này có nhiều cửa hàng cho giới trẻ, vậy mà lại yên tĩnh bất ngờ.
+1: 意外 đứng cuối, trước に静かだ.
+2: 店が多い đi sau 若者向けの.
+3: 若者向けの nối ngay sau この町は.
+4: わりに đứng ở ô ★.
+
+@m8_49
+T: Xét từ việc có dấu chân, có vẻ thủ phạm đã vào từ đây.
+1: ここから入った đứng cuối, trước ようだ.
+2: 犯人は đứng ở ô ★.
+3: から見て đi sau あること.
+4: あること nối ngay sau 足跡が.
+
+@m9_50
+T: "Người thổi sáo thành Hamelin" là truyền thuyết Đức thời trung cổ được biết đến qua truyện cổ Grimm.
+S: "Người thổi sáo thành Hamelin" là truyền thuyết Đức thời trung cổ được biết đến … truyện cổ Grimm.
+1: が không đánh dấu kênh khiến chuyện nổi tiếng.
+2: Nで知られる: được biết đến qua N.
+3: を không đi với 知られる như vậy.
+4: も: cũng; không hợp.
+
+@m9_51
+T: Theo tiếng sáo của người đàn ông kỳ lạ, rất nhiều đứa trẻ như bị hút theo, và cứ thế biến mất.
+S: Theo tiếng sáo của người đàn ông kỳ lạ, rất nhiều đứa trẻ như bị … theo, và … biến mất.
+1: 吸い寄せる là ngoại động từ; trẻ là bên bị hút nên phải bị động.
+2: Chủ động và それほど đều sai.
+3: a 寄せられる (bị hút), b そのまま (cứ thế).
+4: それほど chỉ mức độ; không nối trình tự.
+
+@m9_52
+T: Hình ảnh những đứa trẻ từng chạy chơi khắp đồng núi đã biến mất như bị tiếng sáo dẫn đi. Ông lo rằng sóng phép thuật đã dụ dỗ trẻ em và nhốt chúng trong nhà.
+S: Hình ảnh những đứa trẻ từng chạy chơi khắp … đã biến mất. Ông lo rằng sóng phép thuật đã nhốt trẻ em trong … .
+1: 室内 ở a sai: trẻ chơi trong nhà không phải điều đã mất.
+2: 室内 ở a và 野山 ở c bị đảo.
+3: b 室内 sai: "hình ảnh trong nhà biến mất" ngược nghĩa.
+4: a 野山, b 姿, c 室内.
+
+@m9_53
+T: Nghe nói trên thực tế trẻ em ngày càng ít vận động cơ thể.
+S: Nghe nói trên thực tế trẻ em ngày càng … cơ thể.
+1: 動かない là tự động từ; không nhận 体を.
+2: 動けない: không cử động được; quá mạnh.
+3: 体を動かさなくなっている: ngày càng không vận động.
+4: 動けなくなっている: mất khả năng cử động; sai nghĩa.
+
+@m9_54
+T: Thử bịt tai trước tiếng sáo một lần. Một kỳ nghỉ hè như thế cũng hay.
+S: Thử bịt tai trước tiếng sáo một lần. Một kỳ nghỉ hè như thế … .
+1: あっただろう: chắc đã có; không hợp lời đề xuất.
+2: あってもいい: có thì cũng hay (đề xuất).
+3: あったのだろうか: nghi vấn quá khứ; không hợp.
+4: あってはよくない: không nên có; ngược ý.
+
+@P d12-passage
+"Người thổi sáo thành Hamelin" là truyền thuyết Đức thời trung cổ được biết đến qua truyện cổ Grimm. Theo tiếng sáo của một người đàn ông kỳ lạ, rất nhiều đứa trẻ như bị hút theo, và cứ thế biến mất. Có thuyết cho rằng đó là chuyện có thật.
+Trên tờ báo này hôm trước, nhà nghiên cứu linh trưởng Kawai Masao đã lấy truyền thuyết này làm ví dụ. Ông nói hình ảnh những đứa trẻ từng chạy chơi khắp đồng núi đã biến mất như bị tiếng sáo dẫn đi. "Tiếng sáo" thời nay là sóng điện. Ông lo rằng sóng phép thuật đã dụ dỗ trẻ em và nhốt chúng trong nhà.
+Gần đây, tivi lại có thêm trò chơi điện tử, thành một bản song tấu. Ngay cả hình ảnh trẻ em chơi đùa sau giờ học cũng quá ít. Nghe nói trên thực tế trẻ em ngày càng ít vận động cơ thể. Cuối cùng, Sở Giáo dục Tokyo đã quyết định đặt mục tiêu học sinh tiểu học, trung học cơ sở và trung học phổ thông mỗi ngày đi bộ trên 15.000 bước. Trước hết sẽ phát máy đếm bước cho các trường thí điểm.
+Nghe chẳng khác gì biện pháp chống béo phì, nhưng tình hình không đáng cười. Chẳng hạn, số bước đi một ngày của học sinh tiểu học trong khảo sát toàn quốc năm 1979 trung bình là 27.000 bước. Đến năm 2007 đã giảm một nửa, còn 13.000 bước. Người ta nói chân và hông là nền tảng của thể lực nên thật đáng lo.
+Cũng có kết quả nghiên cứu cho thấy thể lực ở tuổi thiếu niên có khả năng cao liên quan đến tuổi thọ. Có lẽ là vì vui chơi và vận động thời thơ ấu mài giũa sức sống. Tức là chúng trở thành tài sản cả đời.
+Không chỉ thể lực. Nhà giáo dục người Đức Fröbel từng nói: "Vui chơi là sự tắm gội tinh thần giúp con người mạnh mẽ." Nhưng những thứ như trò chơi điện tử, "tiếng sáo" thời nay, có phải là kiểu vui chơi ấy hay không thì còn đáng ngờ. Thử bịt tai trước tiếng sáo một lần. Một kỳ nghỉ hè như thế cũng hay.
