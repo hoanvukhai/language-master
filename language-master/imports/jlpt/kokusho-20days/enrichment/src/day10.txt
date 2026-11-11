@@ -1,0 +1,446 @@
+@m1_01
+T: Tan học xong xin hãy ghé qua văn phòng.
+W: 寄る | よる | KÝ | ghé qua
+1: よる: cách đọc của 寄る, ghé qua.
+2: もる là 盛る (đơm) hoặc 漏る (dột).
+3: やる: làm, cho; không phải cách đọc 寄.
+4: くる là 来る: đến.
+
+@m1_02
+T: Nghe nói hôm qua một thiên thạch khổng lồ đã rơi xuống bang Alaska.
+W: 巨大 | きょだい | CỰ ĐẠI | khổng lồ
+1: きょうたい: 巨 không có trường âm, 大 đọc だい.
+2: きょたい: 大 đọc だい, không đọc たい.
+3: きょうだい là 兄弟 (anh em).
+4: きょだい: 巨 きょ + 大 だい.
+
+@m1_03
+T: Áo len bị vướng vào cành cây nên bị sổ sợi.
+W: 枝 | えだ | CHI | cành cây
+1: みき là 幹: thân cây.
+2: くき là 茎: thân (cỏ, hoa).
+3: えだ: cách đọc của 枝, cành cây.
+4: は là 葉: lá.
+
+@m1_04
+T: Cô ấy bị trộm ví ở New York nên không muốn sang Mỹ thêm lần nào nữa.
+W: 再び | ふたたび | TÁI | lại lần nữa
+1: たびたび là 度々: nhiều lần.
+2: ふたたび: cách đọc của 再び.
+3: いくたび là 幾度: bao nhiêu lần.
+4: このたび là 此の度: lần này.
+
+@m1_05
+T: Khi thang máy đang đi xuống thì đột nhiên dừng lại.
+W: 下降 | かこう | HẠ GIÁNG | đi xuống
+1: げごう: sai cả hai âm.
+2: かごう: 降 không biến thành ごう.
+3: げこう là 下校 (tan học); khác chữ.
+4: かこう: 下 か + 降 こう.
+
+@m2_06
+T: Hồi trẻ bố tôi làm việc ở mỏ than.
+W: 炭鉱 | たんこう | THÁN KHOÁNG | mỏ than
+1: 工 (CÔNG); 炭工 không phải từ có thật.
+2: 溝 (CÂU) là mương; 炭溝 không phải từ có thật.
+3: 炭鉱: 鉱 (KHOÁNG) bộ Kim.
+4: 抗 (KHÁNG) là chống; 炭抗 không phải từ có thật.
+
+@m2_07
+T: Sinh viên đông nên việc chấm điểm tốn thời gian.
+W: 採点 | さいてん | THÁI ĐIỂM | chấm điểm
+1: 採点: chấm điểm.
+2: 采 (THÁI) cổ, không dùng trong từ này.
+3: 彩 (THÁI) là màu sắc; 彩点 không phải từ có thật.
+4: 菜 (THÁI) là rau; 菜点 không phải từ có thật.
+
+@m2_08
+T: Nhờ lá thư góp ý của một học sinh cấp hai mà xe đạp trước ga đã được dọn gọn gàng.
+W: 投書 | とうしょ | ĐẦU THƯ | thư góp ý (gửi báo, cơ quan)
+1: 問 (VẤN) là hỏi; 問書 không phải từ có thật.
+2: 投書: 投 (ĐẦU, gửi) + 書.
+3: 当 (ĐƯƠNG); 当書 không phải từ có thật.
+4: 答 (ĐÁP); 答書 không phải từ có thật.
+
+@m2_09
+T: Con chó nhà tôi có tật chôn quả bóng chày vào hố cát.
+W: 埋める | うめる | MAI | chôn, lấp
+1: 沈める đọc しずめる: làm chìm.
+2: 下める không phải từ có thật.
+3: 潜める đọc ひそめる: giấu.
+4: 埋める: chôn, vùi.
+
+@m2_10
+T: Cơn bão hình thành ngoài khơi vịnh Mexico đã đạt sức gió 50 mét/giây.
+W: 達する | たっする | ĐẠT | đạt đến
+1: 発する đọc はっする: phát ra.
+2: 立 không có dạng 立する đọc たっする.
+3: 辰 là chi Thìn; không phải động từ.
+4: 達した: đạt đến.
+
+@m3_11
+T: Tôi định nghỉ làm thêm thì bị anh khóa trên giữ lại.
+S: Tôi định nghỉ làm thêm thì bị anh khóa trên … .
+W: 引き止める | ひきとめる | DẪN CHỈ | giữ lại, níu kéo | 引き〜
+1: 受け止める: đón nhận; không hợp.
+2: 追い止める không phải động từ ghép thông dụng.
+3: 引き止める: giữ người lại.
+4: 差し止める: đình chỉ (theo lệnh); không hợp.
+
+@m3_12
+T: Thị trấn nhìn từ trên cao xuống trông như đồ chơi.
+S: Thị trấn … trông như đồ chơi.
+W: 見下ろす | みおろす | KIẾN HẠ | nhìn xuống | 見〜
+1: 見さげる: coi thường; không phải nhìn xuống về vật lý.
+2: 見くだる không phải động từ có thật (見くだす thì có).
+3: 見おりる không phải động từ có thật.
+4: 見おろす: nhìn từ trên xuống.
+
+@m3_13
+T: Để lại được những tác phẩm như thế, chỉ có thể nói ông đúng là nhà văn lớn.
+S: Để lại được những tác phẩm như thế, chỉ có thể nói ông đúng là … .
+W: 大作家 | だいさっか | ĐẠI TÁC GIA | nhà văn lớn | 大〜
+1: 高作家 không phải từ có thật.
+2: 強作家 không phải từ có thật.
+3: 長作家 không phải từ có thật.
+4: 大作家: nhà văn lớn.
+
+@m3_14
+T: Đội đó vào vòng đấu loại trực tiếp là chuyện không đáng bàn.
+S: Đội đó vào vòng đấu loại trực tiếp là chuyện … .
+W: 問題外 | もんだいがい | VẤN ĐỀ NGOẠI | ngoài vòng bàn luận | 〜外
+1: 除 không làm hậu tố như vậy.
+2: 問題外: không đáng bàn tới.
+3: 問題余 không phải từ có thật.
+4: 問題反 không phải từ có thật.
+
+@m3_15
+T: Nếu nhập khẩu gạo được tự do hóa thì nông nghiệp Nhật sẽ gặp khó khăn.
+S: Nếu nhập khẩu gạo được … thì nông nghiệp Nhật sẽ gặp khó khăn.
+W: 自由化 | じゆうか | TỰ DO HÓA | tự do hóa | 〜化
+1: 自由的 không thêm される được.
+2: 〜化: hóa (自由化, 国際化).
+3: 自由性 không phải từ thông dụng.
+4: 自由級 không có nghĩa.
+
+@m4_16
+T: Cô ấy là nghệ sĩ piano nhưng cũng chơi giỏi các nhạc cụ khác như guitar.
+S: Cô ấy là nghệ sĩ piano nhưng cũng chơi giỏi các … khác như guitar.
+W: 楽器 | がっき | NHẠC KHÍ | nhạc cụ
+1: 楽器: nhạc cụ.
+2: 音楽: âm nhạc; guitar không phải "âm nhạc".
+3: 作曲: sáng tác nhạc; không hợp.
+4: 歌謡: ca khúc; không hợp.
+
+@m4_17
+T: Nhật Bản nên chú trọng hơn vào giao lưu văn hóa ở cấp quốc gia.
+S: Nhật Bản nên chú trọng hơn vào … văn hóa ở cấp quốc gia.
+W: 交流 | こうりゅう | GIAO LƯU | giao lưu
+1: 交際: quan hệ, hẹn hò (cá nhân).
+2: 文化の交流: giao lưu văn hóa.
+3: 交換: trao đổi (vật); không hợp.
+4: 交代: thay phiên; không hợp.
+
+@m4_18
+T: Để hiệp ước giữa hai nước được ký kết, vai trò của ông Okamoto rất quan trọng.
+S: Để hiệp ước giữa hai nước được ký kết, … của ông Okamoto rất quan trọng.
+W: 役割 | やくわり | DỊCH CÁT | vai trò
+1: 一緒: cùng nhau; không hợp.
+2: 会合: cuộc họp; không hợp.
+3: 活用: tận dụng; không hợp.
+4: 役割: vai trò.
+
+@m4_19
+T: Hóa thạch voi ma mút lần này phát hiện được ở tình trạng bảo quản tốt nhất.
+S: Hóa thạch voi ma mút lần này phát hiện được ở tình trạng … tốt nhất.
+W: 保存 | ほぞん | BẢO TỒN | bảo quản
+1: 保存状態: tình trạng bảo quản.
+2: 健康状態 dùng cho sinh vật sống.
+3: 事実: sự thật; không đi với 状態.
+4: 実物: vật thật; không đi với 状態.
+
+@m4_20
+T: Đây là ý kiến cá nhân, nhưng tôi nghĩ trong tương lai gần ông M sẽ đoạt giải Nobel.
+S: Đây là … cá nhân, nhưng tôi nghĩ trong tương lai gần ông M sẽ đoạt giải Nobel.
+W: 意見 | いけん | Ý KIẾN | ý kiến
+1: 言語: ngôn ngữ; không hợp.
+2: 個人的な意見: ý kiến cá nhân.
+3: 見物: tham quan; không hợp.
+4: 批評: phê bình (tác phẩm); không hợp dự đoán.
+
+@m4_21
+T: Nhờ sức mạnh khoa học mà loài người đã có thể du hành vào vũ trụ.
+S: Nhờ sức mạnh … mà loài người đã có thể du hành vào vũ trụ.
+W: 科学 | かがく | KHOA HỌC | khoa học
+1: 宗教: tôn giáo; không đưa người lên vũ trụ.
+2: 自然: tự nhiên; không hợp.
+3: 科学の力: sức mạnh khoa học.
+4: 未来: tương lai; không hợp.
+
+@m4_22
+T: Bãi biển ở đây là do con người tạo ra.
+S: Bãi biển ở đây được tạo ra một cách … .
+W: 人工 | じんこう | NHÂN CÔNG | nhân tạo
+1: 人造的 không phải từ thông dụng; 人造 bổ nghĩa trực tiếp (人造湖).
+2: 加工的 không phải từ thông dụng.
+3: 建造的 không phải từ thông dụng.
+4: 人工的: một cách nhân tạo.
+
+@m5_23
+T: Tôi đã nhờ anh ấy nhiều lần nhưng anh ấy không chịu tham gia buổi họp mặt.
+W: 度々 | たびたび | ĐỘ | nhiều lần
+1: 常に: luôn luôn; khác "nhiều lần".
+2: 毎回: mỗi lần; khác nghĩa.
+3: 再度: một lần nữa; chỉ lần thứ hai.
+4: 再三: nhiều lần.
+
+@m5_24
+T: Tôi không hiểu rõ công dụng của dụng cụ này.
+W: 使い道 | つかいみち | SỬ ĐẠO | công dụng, cách dùng
+1: 法則: quy luật; khác nghĩa.
+2: 用途: công dụng.
+3: 見当: ước đoán; khác nghĩa.
+4: 作業: công việc; khác nghĩa.
+
+@m5_25
+T: Lý do chia tay với cô ấy không chỉ đơn thuần là vấn đề tính cách.
+W: ただ | ただ | | chỉ, đơn thuần
+1: たしかに: quả thật; khác nghĩa.
+2: まったく: hoàn toàn; khác nghĩa.
+3: やはり: quả nhiên; khác nghĩa.
+4: たんに: chỉ đơn thuần.
+
+@m5_26
+T: Món này vị rất đậm nên ăn xong sẽ muốn uống nước.
+W: 濃厚 | のうこう | NỒNG HẬU | đậm đà
+1: つよい: mạnh; không dùng cho vị như vậy.
+2: まずい: dở; khác nghĩa.
+3: からい: cay, mặn; quá cụ thể.
+4: こい: đậm.
+
+@m5_27
+T: Bức ảnh này nhìn chung mờ mờ, không rõ.
+W: ぼんやり | ぼんやり | | mờ mờ, lờ mờ
+1: かすんで: mờ, nhòe.
+2: 揺れて: rung lắc; khác nghĩa.
+3: 消えて: biến mất; khác nghĩa.
+4: 流れて: trôi; khác nghĩa.
+
+@m6_28
+T: Vết thương nông nên nếu xử lý thích hợp sẽ lành nhanh.
+W: 適切 | てきせつ | THÍCH THIẾT | thích hợp
+1: Tuổi phù hợp kết hôn là 適齢.
+2: 適切な処置: xử lý thích hợp.
+3: Vận động vừa phải dùng 適度な運動.
+4: Không được để ý đến dùng まともに相手にされない.
+
+@m6_29
+T: Đi bể bơi kỳ nghỉ hè, cậu con trai 3 tuổi của tôi bị lạc.
+W: 迷子 | まいご | MÊ TỬ | trẻ lạc
+1: Người phân vân hướng đi không gọi là 迷子; dùng 迷っている.
+2: Con bướm lạc mùa không dùng 迷子 theo nghĩa này.
+3: 迷子になる: bị lạc.
+4: Đèn tín hiệu hỏng dùng 故障.
+
+@m6_30
+T: Mỗi người hãy nộp đề tài luận văn tốt nghiệp trước tuần sau.
+W: めいめい | めいめい | | mỗi người, từng người
+1: Đi riêng lẻ dùng ばらばらに.
+2: Từng người tham gia dùng 一人一人.
+3: Người nổi tiếng dùng 有名人.
+4: めいめい提出する: mỗi người tự nộp.
+
+@m6_31
+T: Đúng là cầu thủ chuyên nghiệp, thể lực cơ bản khác hẳn.
+W: さすが | さすが | | quả đúng là
+1: Dễ đến mức trẻ con cũng làm được dùng きっと.
+2: さすが〜だけあって: quả đúng là.
+3: Mong cố gắng dùng なんとか・ぜひ.
+4: Đáng ngạc nhiên dùng 意外; さすが là khen đúng tầm.
+
+@m6_32
+T: Tháng sau bố mẹ từ quê lên Tokyo nên tôi phải dọn phòng.
+W: 上京 | じょうきょう | THƯỢNG KINH | lên Tokyo
+1: Tham quan Tokyo dùng 東京 hoặc 都内をめぐる.
+2: 上京する: lên Tokyo.
+3: Vùng phía Bắc dùng 北国・北陸地方.
+4: 上京区 là tên quận ở Kyoto; câu này không dùng nghĩa đó.
+
+@m7_33
+T: Món Nhật thì không thể nghĩ đến mà thiếu canh miso.
+S: Món Nhật thì không thể nghĩ đến … canh miso.
+1: はもちろん: đương nhiên; không đi với 考えられない.
+2: Nぬきには〜ない: thiếu N thì không.
+3: のもとで: dưới; không hợp.
+4: ばかりか: không chỉ; không hợp.
+
+@m7_34
+T: Nguyện vọng của mọi người khác nhau đến mức này thì không cách nào tổng hợp được.
+S: Nguyện vọng của mọi người khác nhau đến mức này thì … .
+1: わけがない: không có lý nào; không đi sau thân động từ.
+2: Vようがない: không có cách nào.
+3: そうがない không phải mẫu ngữ pháp.
+4: ことがない: chưa từng; không đi sau thân động từ.
+
+@m7_35
+T: Tôi viết báo cáo về văn học thời Minh Trị.
+S: Tôi viết báo cáo … văn học thời Minh Trị.
+1: Nについて: về.
+2: にとって: đối với; không hợp.
+3: において: tại, trong; không hợp.
+4: にわたって: trải dài; không hợp.
+
+@m7_36
+T: Chuyến leo núi ngày mai có thể bị hủy tùy vào thời tiết.
+S: Chuyến leo núi ngày mai có thể bị hủy … thời tiết.
+1: にあたり: khi; không hợp.
+2: どころか: chẳng những; không hợp.
+3: せいで: tại vì (đã xảy ra); không hợp với かもしれない.
+4: N次第で: tùy vào N.
+
+@m7_37
+T: Nghe nói anh ấy làm việc với tư cách phiên dịch tiếng Ý.
+S: Nghe nói anh ấy làm việc … phiên dịch tiếng Ý.
+1: ことで: bằng việc; không hợp.
+2: に際し: nhân dịp; không hợp.
+3: Nとして: với tư cách.
+4: 向きに: hướng về; không hợp.
+
+@m7_38
+T: Một khi đã đính hôn với cô ấy, tôi định không đi nhậu với phụ nữ khác.
+S: … với cô ấy, tôi định không đi nhậu với phụ nữ khác.
+1: 末に: sau rốt; không hợp.
+2: にせよ: dù; không hợp.
+3: からして: ngay từ; không hợp.
+4: Vた以上: một khi đã.
+
+@m7_39
+T: Tôi là Suzuki, người được sắp xếp phỏng vấn làm thêm hôm nay.
+S: Tôi là Suzuki, người hôm nay … phỏng vấn làm thêm.
+1: させてくれる: không trang trọng, không hợp lời tự giới thiệu.
+2: させられる: bị bắt; sai nghĩa.
+3: させていただくことになっている: được phép (khiêm nhường).
+4: させられていただく sai dạng.
+
+@m7_40
+T: Kỳ nghỉ xuân được đi du lịch suốt 2 tuần, thật là ghen tị.
+S: Kỳ nghỉ xuân … 2 tuần, thật là ghen tị.
+1: Nにわたって: kéo dài suốt.
+2: ばかりに: chỉ vì; không hợp.
+3: のもとで: dưới; không hợp.
+4: もかまわず: bất chấp; không hợp.
+
+@m7_41
+T: Chỉ cần bạn tiện thì giờ đi xem hòa nhạc không?
+S: … , giờ đi xem hòa nhạc không?
+1: ほど: đến mức; không hợp.
+2: Nさえ〜ば: chỉ cần N.
+3: ほど…ても sai cả hai.
+4: さえ…ても: さえ đi với ば, không đi với ても.
+
+@m7_42
+T: Bảo cho mượn ngay 100 nghìn yên, thì đó đúng là chuyện vô lý.
+S: Bảo cho mượn ngay 100 nghìn yên, thì đó … .
+1: ということだ: nghe nói; không hợp.
+2: 〜というものだ: đúng là (đánh giá).
+3: というわけだ: thì ra là; không hợp.
+4: というほどだ: đến mức; không hợp.
+
+@m7_43
+T: Chuyện cô ấy đã có con thật khó tin.
+S: Chuyện cô ấy đã có con là chuyện … .
+1: 信じやすい: dễ tin; ngược nghĩa.
+2: とにかく信じる: dù sao cũng tin; không hợp.
+3: Vがたい: khó mà.
+4: とにかく信じるという không hợp.
+
+@m7_44
+T: Trưởng phòng nghỉ việc mà không chào từ biệt ai.
+S: Trưởng phòng nghỉ việc … ai.
+1: 告げさせずに: không để ai nói; sai chủ thể.
+2: ことでもなく không phải mẫu đúng.
+3: 告げようとして: định nói; ngược nghĩa.
+4: Vることなく: mà không.
+
+@m8_45
+T: Ở Ikebukuro đã diễn ra cuộc thi nhảy của một số nhóm nổi tiếng.
+1: 大会 đứng cuối, trước が行われた.
+2: グループによる đi sau いくつかの人気.
+3: ダンスの đứng ở ô ★.
+4: いくつかの人気 nối ngay sau 池袋で.
+
+@m8_46
+T: Bị cảm, đi bệnh viện nhân tiện tôi được xét nghiệm máu luôn.
+1: 行った đi sau 病院へ.
+2: 血液検査 đứng cuối, trước もしてもらった.
+3: 病院へ nối ngay sau かぜで.
+4: ついでに đứng ở ô ★.
+
+@m8_47
+T: Dù thầy chủ nhiệm đã vào lớp, bạn tôi vẫn còn ăn cơm hộp.
+1: 先生が đi sau 担任の.
+2: 担任の nối ngay sau 教室に.
+3: まだ弁当を đứng cuối, trước 食べていた.
+4: 入ってきても đứng ở ô ★.
+
+@m8_48
+T: Khi đến đây, xin nhất định ghé qua.
+1: お立ち寄り đứng cuối, trước ください.
+2: ぜひ đứng ở ô ★.
+3: お出かけの nối ngay sau こちらへ.
+4: 際は đi sau お出かけの.
+
+@m8_49
+T: Chuyện quá khứ thì tạm gác lại, chỉ còn cách nỗ lực hướng tới tương lai.
+1: 努力する đứng cuối, trước しかない.
+2: 未来 đi sau はともかく.
+3: はともかく nối ngay sau 過去のこと.
+4: に向かって đứng ở ô ★.
+
+@m9_50
+T: Làm salad, nhồi tôm nhỏ… quả đúng là vai trò của trái đỏ này giống món khai vị hay đồ ăn kèm.
+S: Làm salad, nhồi tôm nhỏ… … vai trò của trái đỏ này giống món khai vị hay đồ ăn kèm.
+1: しかし: nhưng; không có ý tương phản ở đây.
+2: さて: nào, bây giờ; chuyển ý, không hợp.
+3: なるほど: quả đúng là (công nhận).
+4: ところで: nhân tiện; chuyển đề tài.
+
+@m9_51
+T: Vừa hình dung hình ảnh rực rỡ trên đĩa, tôi đã trồng hai chậu cà chua ngoài ban công.
+S: … hình ảnh rực rỡ trên đĩa, tôi đã … hai chậu cà chua ngoài ban công.
+1: a 思い描きながら, b 育ててきた (ngoại động từ).
+2: 育ってきた là tự động từ; không nhận トマトを.
+3: 思い描いても: dù có hình dung; không hợp.
+4: 育てられなかった: không trồng được; trái với đoạn sau.
+
+@m9_52
+T: Hoa vàng héo đi thì để lại quả xanh nhỏ. Quả lớn dần và lần lượt chín màu giữa mùa mưa.
+S: … màu vàng héo đi thì để lại … xanh nhỏ. Quả lớn dần và lần lượt chín màu giữa … .
+1: a 実 sai: quả màu vàng héo không hợp trình tự.
+2: c 梅雨 đúng nhưng a 実, b 花 bị đảo.
+3: b 梅雨 sai: "mưa xanh nhỏ" không có nghĩa.
+4: a 花, b 実, c 梅雨.
+
+@m9_53
+T: Nghĩ đến tiền chậu và đất thì đó là những trái đắt giá, nhưng tôi đã học được nhiều điều từ việc tự cung tự cấp nhỏ bé này.
+S: Nghĩ đến tiền chậu và đất thì … những trái đắt giá, nhưng tôi đã học được nhiều điều.
+1: もので: vì; không mang nghĩa nhượng bộ.
+2: 〜ものの: tuy… nhưng.
+3: ものを: giá mà; nghĩa tiếc nuối.
+4: ものか: lẽ nào; không hợp.
+
+@m9_54
+T: Cơn mưa không biết chừng mực ấy còn để lại những vết thương sâu.
+S: Cơn mưa không biết chừng mực ấy … .
+1: なかった: không có; trái với ngữ cảnh.
+2: に消えた: tan biến trong; không hợp.
+3: だろうか: nghi vấn; không hợp.
+4: 深いつめ跡も残した: còn để lại thiệt hại sâu.
+
+@P d10-passage
+Có một cuộc tranh cãi cũ: cà chua là rau hay là trái cây? Chuyện ở nước Mỹ ngày xưa, rau nhập khẩu bị đánh thuế 10% nhưng trái cây thì miễn thuế. Nghe nói khi thương nhân kiện rằng cà chua cũng là trái cây, họ đã bị bác với lý do "không làm món tráng miệng được". Tôi biết chuyện này qua cuốn "Cà chua thiên đường" mới xuất bản.
+Làm salad, nhồi tôm nhỏ… quả đúng là vai trò của trái đỏ này giống món khai vị hay đồ ăn kèm. Những buổi chiều oi ả, chỉ cần ướp thật lạnh rồi rắc muối là đủ. Vừa hình dung hình ảnh rực rỡ trên đĩa, tôi đã trồng hai chậu cà chua ngoài ban công.
+Một là loại nhỏ màu đỏ, một là loại vừa màu cam. Hoa vàng héo đi thì để lại những trái xanh nhỏ. Chúng lớn dần và lần lượt chín màu giữa mùa mưa. Sáng ngày nghỉ, vừa thức dậy tôi hái vài quả. Không gì tươi hơn thế.
+Vỏ dày hơn hàng ngoài chợ, nhưng vị ngọt thoang thoảng và vị chua thật dễ chịu. Với con mắt thiên vị, tôi chấm đạt, rồi gửi kèm ảnh báo tin cho người đã tặng cây giống. "Ngọt sao trái cà chua buổi sáng còn thiếu ngủ" (Urabe Ori).
+Nghĩ đến tiền chậu và đất thì đó là những trái đắt giá, nhưng tôi đã học được nhiều điều từ việc tự cung tự cấp nhỏ bé này. Những ngày tháng nắng thì lo cho lá, mưa thì lo cho rễ, gió thì lo cho quả. Đúng là "bước đi lo âu" của Miyazawa Kenji. Có thể sẽ bị nông dân cười, nhưng tôi đã biết rằng trước chữ "ăn" là biết bao nỗi "lo".
+Ở khá nhiều vùng, mùa mưa đã kết thúc trong một lần. Với nông nghiệp, đây là lúc tích nước chuẩn bị cho giữa hè, nhưng cơn mưa không biết chừng mực ấy còn để lại những vết thương sâu. Tôi rồi sẽ sớm trở về làm người "chỉ biết ăn", nhưng vẫn mong một mùa hè vững vàng, không thiên tai.

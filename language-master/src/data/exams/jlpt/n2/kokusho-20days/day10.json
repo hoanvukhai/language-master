@@ -6,7 +6,7 @@
   "timeLimitMinutes": 50,
   "totalQuestions": 54,
   "schemaVersion": 1,
-  "contentRevision": 4,
+  "contentRevision": 5,
   "status": "published",
   "isSample": false,
   "kind": "practice_set",
@@ -14,7 +14,7 @@
     "vocabulary",
     "grammar"
   ],
-  "enrichmentStatus": "draft",
+  "enrichmentStatus": "ai",
   "delivery": "text",
   "transcriptionStatus": "verified",
   "sourceRef": {
@@ -102,9 +102,21 @@
           "ocrText": "1授業が終わっら事務室に寄るようにしてください。\n1よる2もる3やる4くる",
           "explanation": {
             "vi": "寄る đọc よる: ghé qua. 事務室に寄る là ghé văn phòng, không đọc くる là 来る.",
-            "optionNotes": []
+            "optionNotes": [
+              "よる: cách đọc của 寄る, ghé qua.",
+              "もる là 盛る (đơm) hoặc 漏る (dột).",
+              "やる: làm, cho; không phải cách đọc 寄.",
+              "くる là 来る: đến."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Tan học xong xin hãy ghé qua văn phòng.",
+          "targetWord": {
+            "term": "寄る",
+            "reading": "よる",
+            "hanViet": "KÝ",
+            "meaningVi": "ghé qua"
+          }
         },
         {
           "id": "kokusho_n2_d10_m1_02",
@@ -133,9 +145,21 @@
           "ocrText": "2」昨日アラスカ州に巨大ないん石が落ちそうだ\n1きょうたい2きょたい3きょうだい4きょだい",
           "explanation": {
             "vi": "巨大 đọc きょだい: khổng lồ. 巨 không có trường âm う; 大 là だい.",
-            "optionNotes": []
+            "optionNotes": [
+              "きょうたい: 巨 không có trường âm, 大 đọc だい.",
+              "きょたい: 大 đọc だい, không đọc たい.",
+              "きょうだい là 兄弟 (anh em).",
+              "きょだい: 巨 きょ + 大 だい."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Nghe nói hôm qua một thiên thạch khổng lồ đã rơi xuống bang Alaska.",
+          "targetWord": {
+            "term": "巨大",
+            "reading": "きょだい",
+            "hanViet": "CỰ ĐẠI",
+            "meaningVi": "khổng lồ"
+          }
         },
         {
           "id": "kokusho_n2_d10_m1_03",
@@ -164,9 +188,21 @@
           "ocrText": "3」セタが木の枝にひっかてほつれてしまった。\n1みき2くき3えだ4は",
           "explanation": {
             "vi": "枝 đọc えだ: cành cây. 幹 là みき, 茎 là くき, 葉 là は.",
-            "optionNotes": []
+            "optionNotes": [
+              "みき là 幹: thân cây.",
+              "くき là 茎: thân (cỏ, hoa).",
+              "えだ: cách đọc của 枝, cành cây.",
+              "は là 葉: lá."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Áo len bị vướng vào cành cây nên bị sổ sợi.",
+          "targetWord": {
+            "term": "枝",
+            "reading": "えだ",
+            "hanViet": "CHI",
+            "meaningVi": "cành cây"
+          }
         },
         {
           "id": "kokusho_n2_d10_m1_04",
@@ -195,9 +231,21 @@
           "ocrText": "4」ニヨークで財布を次まれた彼女、再びアメリカへ行こうとはしなかた\n1たびたび2ふたたび3いくたび4このたび",
           "explanation": {
             "vi": "再び đọc ふたたび: một lần nữa. たびたび là nhiều lần; このたび là dịp này.",
-            "optionNotes": []
+            "optionNotes": [
+              "たびたび là 度々: nhiều lần.",
+              "ふたたび: cách đọc của 再び.",
+              "いくたび là 幾度: bao nhiêu lần.",
+              "このたび là 此の度: lần này."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Cô ấy bị trộm ví ở New York nên không muốn sang Mỹ thêm lần nào nữa.",
+          "targetWord": {
+            "term": "再び",
+            "reading": "ふたたび",
+            "hanViet": "TÁI",
+            "meaningVi": "lại lần nữa"
+          }
         },
         {
           "id": "kokusho_n2_d10_m1_05",
@@ -226,9 +274,21 @@
           "ocrText": "5」エレベタが下降しているときに突然目ってしまった\n1げごう2かごう3ばげこう4かこう",
           "explanation": {
             "vi": "下降 đọc かこう: đi xuống. 下 là か, 降 là こう trong từ ghép này.",
-            "optionNotes": []
+            "optionNotes": [
+              "げごう: sai cả hai âm.",
+              "かごう: 降 không biến thành ごう.",
+              "げこう là 下校 (tan học); khác chữ.",
+              "かこう: 下 か + 降 こう."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Khi thang máy đang đi xuống thì đột nhiên dừng lại.",
+          "targetWord": {
+            "term": "下降",
+            "reading": "かこう",
+            "hanViet": "HẠ GIÁNG",
+            "meaningVi": "đi xuống"
+          }
         }
       ]
     },
@@ -270,9 +330,21 @@
           "ocrText": "6」若いころ、父はたんこうで働いていた\n1上炭工2炭溝3炭鉱4炭抗",
           "explanation": {
             "vi": "たんこう viết 炭鉱: mỏ than. 鉱 có bộ 金 liên quan khoáng sản; 抗・溝・工 không thay được.",
-            "optionNotes": []
+            "optionNotes": [
+              "工 (CÔNG); 炭工 không phải từ có thật.",
+              "溝 (CÂU) là mương; 炭溝 không phải từ có thật.",
+              "炭鉱: 鉱 (KHOÁNG) bộ Kim.",
+              "抗 (KHÁNG) là chống; 炭抗 không phải từ có thật."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Hồi trẻ bố tôi làm việc ở mỏ than.",
+          "targetWord": {
+            "term": "炭鉱",
+            "reading": "たんこう",
+            "hanViet": "THÁN KHOÁNG",
+            "meaningVi": "mỏ than"
+          }
         },
         {
           "id": "kokusho_n2_d10_m2_07",
@@ -301,9 +373,21 @@
           "ocrText": "7|学生大勢いるのでさいてんに時間が取られる\n1採点2来点3彩点4菜点\n78",
           "explanation": {
             "vi": "さいてん viết 採点: chấm điểm. 採 là chấm/chọn trong từ này; 彩 là màu sắc, 菜 là rau.",
-            "optionNotes": []
+            "optionNotes": [
+              "採点: chấm điểm.",
+              "采 (THÁI) cổ, không dùng trong từ này.",
+              "彩 (THÁI) là màu sắc; 彩点 không phải từ có thật.",
+              "菜 (THÁI) là rau; 菜点 không phải từ có thật."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Sinh viên đông nên việc chấm điểm tốn thời gian.",
+          "targetWord": {
+            "term": "採点",
+            "reading": "さいてん",
+            "hanViet": "THÁI ĐIỂM",
+            "meaningVi": "chấm điểm"
+          }
         },
         {
           "id": "kokusho_n2_d10_m2_08",
@@ -332,9 +416,21 @@
           "ocrText": "中学生のとうしょきっかけで駅前の自転車がきれに片付けられた。\n1問書2投書3当書4答書",
           "explanation": {
             "vi": "とうしょ viết 投書: gửi thư góp ý cho báo/cơ quan. 投 chỉ gửi/ném vào, khác 問・当・答.",
-            "optionNotes": []
+            "optionNotes": [
+              "問 (VẤN) là hỏi; 問書 không phải từ có thật.",
+              "投書: 投 (ĐẦU, gửi) + 書.",
+              "当 (ĐƯƠNG); 当書 không phải từ có thật.",
+              "答 (ĐÁP); 答書 không phải từ có thật."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Nhờ lá thư góp ý của một học sinh cấp hai mà xe đạp trước ga đã được dọn gọn gàng.",
+          "targetWord": {
+            "term": "投書",
+            "reading": "とうしょ",
+            "hanViet": "ĐẦU THƯ",
+            "meaningVi": "thư góp ý (gửi báo, cơ quan)"
+          }
         },
         {
           "id": "kokusho_n2_d10_m2_09",
@@ -363,9 +459,21 @@
           "ocrText": "うちの犬は野球のボールを砂場にうめるくせがある\n1沈める2_下める3潜める4埋める",
           "explanation": {
             "vi": "うめる viết 埋める: chôn dưới đất/cát. 沈める đọc しずめる là làm chìm; 潜める đọc ひそめる.",
-            "optionNotes": []
+            "optionNotes": [
+              "沈める đọc しずめる: làm chìm.",
+              "下める không phải từ có thật.",
+              "潜める đọc ひそめる: giấu.",
+              "埋める: chôn, vùi."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Con chó nhà tôi có tật chôn quả bóng chày vào hố cát.",
+          "targetWord": {
+            "term": "埋める",
+            "reading": "うめる",
+            "hanViet": "MAI",
+            "meaningVi": "chôn, lấp"
+          }
         },
         {
           "id": "kokusho_n2_d10_m2_10",
@@ -394,9 +502,21 @@
           "ocrText": "10メキシコ湾沖で発生しハリケーンが風速50メートルにたっした\n。\n1発した2立した3辰した4遅した",
           "explanation": {
             "vi": "たっする viết 達する: đạt đến. 達した là đạt tốc độ gió; 発・立・辰 không tạo đúng động từ.",
-            "optionNotes": []
+            "optionNotes": [
+              "発する đọc はっする: phát ra.",
+              "立 không có dạng 立する đọc たっする.",
+              "辰 là chi Thìn; không phải động từ.",
+              "達した: đạt đến."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Cơn bão hình thành ngoài khơi vịnh Mexico đã đạt sức gió 50 mét/giây.",
+          "targetWord": {
+            "term": "達する",
+            "reading": "たっする",
+            "hanViet": "ĐẠT",
+            "meaningVi": "đạt đến"
+          }
         }
       ]
     },
@@ -438,9 +558,23 @@
           "ocrText": "11アルバイトを辞めようとしたら光礁に()止め\nられた。\n1受け2追い3引き4差し",
           "explanation": {
             "vi": "引き止める: giữ người lại, ngăn nghỉ việc. 受け止める là đón/tiếp nhận, 差し止める thường là đình chỉ theo lệnh.",
-            "optionNotes": []
+            "optionNotes": [
+              "受け止める: đón nhận; không hợp.",
+              "追い止める không phải động từ ghép thông dụng.",
+              "引き止める: giữ người lại.",
+              "差し止める: đình chỉ (theo lệnh); không hợp."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Tôi định nghỉ làm thêm thì bị anh khóa trên giữ lại.",
+          "stemTranslationVi": "Tôi định nghỉ làm thêm thì bị anh khóa trên … .",
+          "targetWord": {
+            "term": "引き止める",
+            "reading": "ひきとめる",
+            "hanViet": "DẪN CHỈ",
+            "meaningVi": "giữ lại, níu kéo",
+            "affix": "引き〜"
+          }
         },
         {
           "id": "kokusho_n2_d10_m3_12",
@@ -469,9 +603,23 @@
           "ocrText": "12下に()町はおもちゃのようだた\n。\n1さげる2くだる3おりる4おろす",
           "explanation": {
             "vi": "見おろす: nhìn từ trên xuống. 見くだす là khinh thường, khác hướng nhìn vật lý trong câu.",
-            "optionNotes": []
+            "optionNotes": [
+              "見さげる: coi thường; không phải nhìn xuống về vật lý.",
+              "見くだる không phải động từ có thật (見くだす thì có).",
+              "見おりる không phải động từ có thật.",
+              "見おろす: nhìn từ trên xuống."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Thị trấn nhìn từ trên cao xuống trông như đồ chơi.",
+          "stemTranslationVi": "Thị trấn … trông như đồ chơi.",
+          "targetWord": {
+            "term": "見下ろす",
+            "reading": "みおろす",
+            "hanViet": "KIẾN HẠ",
+            "meaningVi": "nhìn xuống",
+            "affix": "見〜"
+          }
         },
         {
           "id": "kokusho_n2_d10_m3_13",
@@ -500,9 +648,23 @@
           "ocrText": "13あれだけの作品を残すなん、まさにて)作家としか言いようない。\n1高2強3長4大",
           "explanation": {
             "vi": "大作家: nhà văn lớn. 大 dùng trước vai trò để chỉ tầm vóc; 高・強・長 không tạo đúng từ ở đây.",
-            "optionNotes": []
+            "optionNotes": [
+              "高作家 không phải từ có thật.",
+              "強作家 không phải từ có thật.",
+              "長作家 không phải từ có thật.",
+              "大作家: nhà văn lớn."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Để lại được những tác phẩm như thế, chỉ có thể nói ông đúng là nhà văn lớn.",
+          "stemTranslationVi": "Để lại được những tác phẩm như thế, chỉ có thể nói ông đúng là … .",
+          "targetWord": {
+            "term": "大作家",
+            "reading": "だいさっか",
+            "hanViet": "ĐẠI TÁC GIA",
+            "meaningVi": "nhà văn lớn",
+            "affix": "大〜"
+          }
         },
         {
           "id": "kokusho_n2_d10_m3_14",
@@ -531,9 +693,23 @@
           "ocrText": "14|あのチームが決勝トーナメントへ進むのは問題)だろう。\n1除2外3余4反",
           "explanation": {
             "vi": "問題外: ngoài khả năng đáng bàn, không có cửa vào vòng chung kết. 外 nêu bị loại khỏi phạm vi xem xét.",
-            "optionNotes": []
+            "optionNotes": [
+              "除 không làm hậu tố như vậy.",
+              "問題外: không đáng bàn tới.",
+              "問題余 không phải từ có thật.",
+              "問題反 không phải từ có thật."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Đội đó vào vòng đấu loại trực tiếp là chuyện không đáng bàn.",
+          "stemTranslationVi": "Đội đó vào vòng đấu loại trực tiếp là chuyện … .",
+          "targetWord": {
+            "term": "問題外",
+            "reading": "もんだいがい",
+            "hanViet": "VẤN ĐỀ NGOẠI",
+            "meaningVi": "ngoài vòng bàn luận",
+            "affix": "〜外"
+          }
         },
         {
           "id": "kokusho_n2_d10_m3_15",
@@ -562,9 +738,23 @@
           "ocrText": "15」米の輸入が《)されたら、日本の農業は大変だろう\n1的2化3性4級",
           "explanation": {
             "vi": "自由化: tự do hóa, như bỏ hạn chế nhập gạo. 化 biến danh từ/tính chất thành quá trình thay đổi.",
-            "optionNotes": []
+            "optionNotes": [
+              "自由的 không thêm される được.",
+              "〜化: hóa (自由化, 国際化).",
+              "自由性 không phải từ thông dụng.",
+              "自由級 không có nghĩa."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Nếu nhập khẩu gạo được tự do hóa thì nông nghiệp Nhật sẽ gặp khó khăn.",
+          "stemTranslationVi": "Nếu nhập khẩu gạo được … thì nông nghiệp Nhật sẽ gặp khó khăn.",
+          "targetWord": {
+            "term": "自由化",
+            "reading": "じゆうか",
+            "hanViet": "TỰ DO HÓA",
+            "meaningVi": "tự do hóa",
+            "affix": "〜化"
+          }
         }
       ]
     },
@@ -606,9 +796,22 @@
           "ocrText": "16」ピアニストの彼女はギターなど他の()も上手だ。\n1楽器2音楽3作曲4歌謡",
           "explanation": {
             "vi": "楽器: nhạc cụ như guitar, piano. 音楽 là âm nhạc nói chung, 作曲 là sáng tác.",
-            "optionNotes": []
+            "optionNotes": [
+              "楽器: nhạc cụ.",
+              "音楽: âm nhạc; guitar không phải \"âm nhạc\".",
+              "作曲: sáng tác nhạc; không hợp.",
+              "歌謡: ca khúc; không hợp."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Cô ấy là nghệ sĩ piano nhưng cũng chơi giỏi các nhạc cụ khác như guitar.",
+          "stemTranslationVi": "Cô ấy là nghệ sĩ piano nhưng cũng chơi giỏi các … khác như guitar.",
+          "targetWord": {
+            "term": "楽器",
+            "reading": "がっき",
+            "hanViet": "NHẠC KHÍ",
+            "meaningVi": "nhạc cụ"
+          }
         },
         {
           "id": "kokusho_n2_d10_m4_17",
@@ -637,9 +840,22 @@
           "ocrText": "17|日本はもと国レベルでの文化の(《)に力を人和信れるべきだ。\n1交際2交流3交換4交代\n79",
           "explanation": {
             "vi": "文化交流: giao lưu văn hóa. 交換 là trao đổi vật/thông tin, 交代 là thay phiên, 交際 là quan hệ cá nhân.",
-            "optionNotes": []
+            "optionNotes": [
+              "交際: quan hệ, hẹn hò (cá nhân).",
+              "文化の交流: giao lưu văn hóa.",
+              "交換: trao đổi (vật); không hợp.",
+              "交代: thay phiên; không hợp."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Nhật Bản nên chú trọng hơn vào giao lưu văn hóa ở cấp quốc gia.",
+          "stemTranslationVi": "Nhật Bản nên chú trọng hơn vào … văn hóa ở cấp quốc gia.",
+          "targetWord": {
+            "term": "交流",
+            "reading": "こうりゅう",
+            "hanViet": "GIAO LƯU",
+            "meaningVi": "giao lưu"
+          }
         },
         {
           "id": "kokusho_n2_d10_m4_18",
@@ -668,9 +884,22 @@
           "ocrText": "18]両国の条約を成立させるめに簡本氏の()は重要だった。\n1一緒2会合3活用4役割",
           "explanation": {
             "vi": "役割が重要: vai trò quan trọng trong việc đạt hiệp ước. 会合 là cuộc gặp, 活用 là tận dụng.",
-            "optionNotes": []
+            "optionNotes": [
+              "一緒: cùng nhau; không hợp.",
+              "会合: cuộc họp; không hợp.",
+              "活用: tận dụng; không hợp.",
+              "役割: vai trò."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Để hiệp ước giữa hai nước được ký kết, vai trò của ông Okamoto rất quan trọng.",
+          "stemTranslationVi": "Để hiệp ước giữa hai nước được ký kết, … của ông Okamoto rất quan trọng.",
+          "targetWord": {
+            "term": "役割",
+            "reading": "やくわり",
+            "hanViet": "DỊCH CÁT",
+            "meaningVi": "vai trò"
+          }
         },
         {
           "id": "kokusho_n2_d10_m4_19",
@@ -699,9 +928,22 @@
           "ocrText": "19|今度発見されたマンモスの化石は最高の(_)状態だった。\n1保存2健康3事実4実物",
           "explanation": {
             "vi": "保存状態: tình trạng bảo quản của hóa thạch. 健康 dùng cho sức khỏe sinh vật, không hợp di vật.",
-            "optionNotes": []
+            "optionNotes": [
+              "保存状態: tình trạng bảo quản.",
+              "健康状態 dùng cho sinh vật sống.",
+              "事実: sự thật; không đi với 状態.",
+              "実物: vật thật; không đi với 状態."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Hóa thạch voi ma mút lần này phát hiện được ở tình trạng bảo quản tốt nhất.",
+          "stemTranslationVi": "Hóa thạch voi ma mút lần này phát hiện được ở tình trạng … tốt nhất.",
+          "targetWord": {
+            "term": "保存",
+            "reading": "ほぞん",
+            "hanViet": "BẢO TỒN",
+            "meaningVi": "bảo quản"
+          }
         },
         {
           "id": "kokusho_n2_d10_m4_20",
@@ -730,9 +972,22 @@
           "ocrText": "[20]個人的な(_)だが近い将、M氏はノーベル賞を取ると思う\n1言語2意見_3見物4批評",
           "explanation": {
             "vi": "個人的な意見: ý kiến cá nhân. 批評 là bình luận/phê bình, 見物 là xem thưởng ngoạn.",
-            "optionNotes": []
+            "optionNotes": [
+              "言語: ngôn ngữ; không hợp.",
+              "個人的な意見: ý kiến cá nhân.",
+              "見物: tham quan; không hợp.",
+              "批評: phê bình (tác phẩm); không hợp dự đoán."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Đây là ý kiến cá nhân, nhưng tôi nghĩ trong tương lai gần ông M sẽ đoạt giải Nobel.",
+          "stemTranslationVi": "Đây là … cá nhân, nhưng tôi nghĩ trong tương lai gần ông M sẽ đoạt giải Nobel.",
+          "targetWord": {
+            "term": "意見",
+            "reading": "いけん",
+            "hanViet": "Ý KIẾN",
+            "meaningVi": "ý kiến"
+          }
         },
         {
           "id": "kokusho_n2_d10_m4_21",
@@ -761,9 +1016,22 @@
           "ocrText": "21]人類は(_)のカカで宇宙にまで旅行できるようになた\n1宗教2自然3科学4未来",
           "explanation": {
             "vi": "科学の力: nhờ khoa học mà đi được vào vũ trụ. 自然・宗教 không khớp cơ sở công nghệ trong câu.",
-            "optionNotes": []
+            "optionNotes": [
+              "宗教: tôn giáo; không đưa người lên vũ trụ.",
+              "自然: tự nhiên; không hợp.",
+              "科学の力: sức mạnh khoa học.",
+              "未来: tương lai; không hợp."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Nhờ sức mạnh khoa học mà loài người đã có thể du hành vào vũ trụ.",
+          "stemTranslationVi": "Nhờ sức mạnh … mà loài người đã có thể du hành vào vũ trụ.",
+          "targetWord": {
+            "term": "科学",
+            "reading": "かがく",
+            "hanViet": "KHOA HỌC",
+            "meaningVi": "khoa học"
+          }
         },
         {
           "id": "kokusho_n2_d10_m4_22",
@@ -792,9 +1060,22 @@
           "ocrText": "22|]ここの浜辺は(_)的に造られたものだ\n1人造2加工3建造4人工",
           "explanation": {
             "vi": "人工的: do con người tạo ra, như bãi biển nhân tạo. 人造 thường bổ nghĩa trực tiếp một sản phẩm, không tạo 人造的 ở đây.",
-            "optionNotes": []
+            "optionNotes": [
+              "人造的 không phải từ thông dụng; 人造 bổ nghĩa trực tiếp (人造湖).",
+              "加工的 không phải từ thông dụng.",
+              "建造的 không phải từ thông dụng.",
+              "人工的: một cách nhân tạo."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Bãi biển ở đây là do con người tạo ra.",
+          "stemTranslationVi": "Bãi biển ở đây được tạo ra một cách … .",
+          "targetWord": {
+            "term": "人工",
+            "reading": "じんこう",
+            "hanViet": "NHÂN CÔNG",
+            "meaningVi": "nhân tạo"
+          }
         }
       ]
     },
@@ -836,9 +1117,21 @@
           "ocrText": "23|彼にはびたびお願いしているが会に参加してくれない。\n1常に2毎回3再度4再三",
           "explanation": {
             "vi": "たびたび gần 再三: nhiều lần. 再度 chỉ một lần nữa; 常に là luôn luôn.",
-            "optionNotes": []
+            "optionNotes": [
+              "常に: luôn luôn; khác \"nhiều lần\".",
+              "毎回: mỗi lần; khác nghĩa.",
+              "再度: một lần nữa; chỉ lần thứ hai.",
+              "再三: nhiều lần."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Tôi đã nhờ anh ấy nhiều lần nhưng anh ấy không chịu tham gia buổi họp mặt.",
+          "targetWord": {
+            "term": "度々",
+            "reading": "たびたび",
+            "hanViet": "ĐỘ",
+            "meaningVi": "nhiều lần"
+          }
         },
         {
           "id": "kokusho_n2_d10_m5_24",
@@ -867,9 +1160,21 @@
           "ocrText": "[24|この道具の使いみちがよくわからない。\n1法則2用途3見当4作業",
           "explanation": {
             "vi": "使いみち gần 用途: công dụng/cách dùng vào việc gì. 法則 là quy luật, 見当 là phỏng đoán.",
-            "optionNotes": []
+            "optionNotes": [
+              "法則: quy luật; khác nghĩa.",
+              "用途: công dụng.",
+              "見当: ước đoán; khác nghĩa.",
+              "作業: công việc; khác nghĩa."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Tôi không hiểu rõ công dụng của dụng cụ này.",
+          "targetWord": {
+            "term": "使い道",
+            "reading": "つかいみち",
+            "hanViet": "SỬ ĐẠO",
+            "meaningVi": "công dụng, cách dùng"
+          }
         },
         {
           "id": "kokusho_n2_d10_m5_25",
@@ -898,9 +1203,20 @@
           "ocrText": "25]彼女と別れた理由はただ性格の間題だけではなかた。\n1たしかに2まったく3やはり4たんに",
           "explanation": {
             "vi": "ただ gần たんに: chỉ đơn thuần, trong mẫu không chỉ vì tính cách. まったく là hoàn toàn, やはり là quả nhiên.",
-            "optionNotes": []
+            "optionNotes": [
+              "たしかに: quả thật; khác nghĩa.",
+              "まったく: hoàn toàn; khác nghĩa.",
+              "やはり: quả nhiên; khác nghĩa.",
+              "たんに: chỉ đơn thuần."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Lý do chia tay với cô ấy không chỉ đơn thuần là vấn đề tính cách.",
+          "targetWord": {
+            "term": "ただ",
+            "reading": "ただ",
+            "meaningVi": "chỉ, đơn thuần"
+          }
         },
         {
           "id": "kokusho_n2_d10_m5_26",
@@ -929,9 +1245,21 @@
           "ocrText": "26この料理は味がとても濃厚なので後で水が飲みたくなる\n1つよい2まずい3からい4",
           "explanation": {
             "vi": "濃厚な味 gần こい味: vị đậm. Không nhất thiết cay/mặn からい hay dở まずい.",
-            "optionNotes": []
+            "optionNotes": [
+              "つよい: mạnh; không dùng cho vị như vậy.",
+              "まずい: dở; khác nghĩa.",
+              "からい: cay, mặn; quá cụ thể.",
+              "こい: đậm."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Món này vị rất đậm nên ăn xong sẽ muốn uống nước.",
+          "targetWord": {
+            "term": "濃厚",
+            "reading": "のうこう",
+            "hanViet": "NỒNG HẬU",
+            "meaningVi": "đậm đà"
+          }
         },
         {
           "id": "kokusho_n2_d10_m5_27",
@@ -960,9 +1288,20 @@
           "ocrText": "27この写真は全体的にぼんやりしてよくわからない。\n1かすんで2据れて3て4流れて\n消え\n80",
           "explanation": {
             "vi": "ぼんやりした写真 gần かすんだ写真: ảnh mờ không rõ nét. 消える là biến mất, 流れる là trôi.",
-            "optionNotes": []
+            "optionNotes": [
+              "かすんで: mờ, nhòe.",
+              "揺れて: rung lắc; khác nghĩa.",
+              "消えて: biến mất; khác nghĩa.",
+              "流れて: trôi; khác nghĩa."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Bức ảnh này nhìn chung mờ mờ, không rõ.",
+          "targetWord": {
+            "term": "ぼんやり",
+            "reading": "ぼんやり",
+            "meaningVi": "mờ mờ, lờ mờ"
+          }
         }
       ]
     },
@@ -1004,9 +1343,21 @@
           "ocrText": "5適切\n1彼女は適切な年齢なの、もうすぐ結婚するだろう\n2性は浅いので適切な処置をすれば、すぐ治る。\n3いくら仕事が忙しくても適切な運動はしたほうがいい。\n4上司に相談しが適切に相手にされなかた\n。",
           "explanation": {
             "vi": "適切な処置: xử trí phù hợp vết thương. 適齢 chỉ tuổi kết hôn thích hợp, 適度な運動 là vận động vừa phải.",
-            "optionNotes": []
+            "optionNotes": [
+              "Tuổi phù hợp kết hôn là 適齢.",
+              "適切な処置: xử lý thích hợp.",
+              "Vận động vừa phải dùng 適度な運動.",
+              "Không được để ý đến dùng まともに相手にされない."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Vết thương nông nên nếu xử lý thích hợp sẽ lành nhanh.",
+          "targetWord": {
+            "term": "適切",
+            "reading": "てきせつ",
+            "hanViet": "THÍCH THIẾT",
+            "meaningVi": "thích hợp"
+          }
         },
         {
           "id": "kokusho_n2_d10_m6_29",
@@ -1035,9 +1386,21 @@
           "ocrText": "29迷子\n1彼は迷子らしく、ななか自分の進路が決められない。\n2もう寒くってきたのに迷子のチョウが1匹飛んでいた\n3夏休みにプールに出かけら、3歳の息子が迷子になた\n4交差点の信号迷子のよう、なかなか変わらなくなた",
           "explanation": {
             "vi": "迷子になる: trẻ lạc người đi cùng, như bé ba tuổi ở bể bơi. Không dùng cho hướng nghiệp phân vân hoặc tín hiệu bị hỏng.",
-            "optionNotes": []
+            "optionNotes": [
+              "Người phân vân hướng đi không gọi là 迷子; dùng 迷っている.",
+              "Con bướm lạc mùa không dùng 迷子 theo nghĩa này.",
+              "迷子になる: bị lạc.",
+              "Đèn tín hiệu hỏng dùng 故障."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Đi bể bơi kỳ nghỉ hè, cậu con trai 3 tuổi của tôi bị lạc.",
+          "targetWord": {
+            "term": "迷子",
+            "reading": "まいご",
+            "hanViet": "MÊ TỬ",
+            "meaningVi": "trẻ lạc"
+          }
         },
         {
           "id": "kokusho_n2_d10_m6_30",
@@ -1066,9 +1429,20 @@
           "ocrText": "30めいめい\nいくらピクニックでもめいめいに歩かないようにしてください。\n2パーティの参加者のめいめいを紹介してもらえなかた。\n3あの人たちは10年前にワールドカップに出場しためいめいだ。\n4来週までに卒業論文のテーマをめいめい提出すること",
           "explanation": {
             "vi": "めいめい提出する: mỗi người nộp riêng đề tài. めいめい là từng người, không phải danh sách tên hay người nổi danh.",
-            "optionNotes": []
+            "optionNotes": [
+              "Đi riêng lẻ dùng ばらばらに.",
+              "Từng người tham gia dùng 一人一人.",
+              "Người nổi tiếng dùng 有名人.",
+              "めいめい提出する: mỗi người tự nộp."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Mỗi người hãy nộp đề tài luận văn tốt nghiệp trước tuần sau.",
+          "targetWord": {
+            "term": "めいめい",
+            "reading": "めいめい",
+            "meaningVi": "mỗi người, từng người"
+          }
         },
         {
           "id": "kokusho_n2_d10_m6_31",
@@ -1097,9 +1471,20 @@
           "ocrText": "31さすが\n1この問題なら小学生でもさすができるだろう\n2さすがプロ選手だけあて薩礎体力が全然ちがう。\n3愛犬が病気たたかっているが、さすががんばてほしい。\n4それほど大きい揺れでもなのに木が倒れるとはがだ。\nさす",
           "explanation": {
             "vi": "さすがプロだけあって: quả đúng vận động viên chuyên nghiệp, thể lực khác hẳn. さすが đánh giá xứng danh, không thay cho chắc chắn hay cố lên.",
-            "optionNotes": []
+            "optionNotes": [
+              "Dễ đến mức trẻ con cũng làm được dùng きっと.",
+              "さすが〜だけあって: quả đúng là.",
+              "Mong cố gắng dùng なんとか・ぜひ.",
+              "Đáng ngạc nhiên dùng 意外; さすが là khen đúng tầm."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Đúng là cầu thủ chuyên nghiệp, thể lực cơ bản khác hẳn.",
+          "targetWord": {
+            "term": "さすが",
+            "reading": "さすが",
+            "meaningVi": "quả đúng là"
+          }
         },
         {
           "id": "kokusho_n2_d10_m6_32",
@@ -1128,9 +1513,21 @@
           "ocrText": "32上上京\n1最近の修学旅行はお金をかけて上京をめぐるらしい。\n2来月田舎から両親が上京するので部屋を片付けねばならない。\n3冬京地方はとても寒く、また雪も多い。\n4京都の上京には美しいお寺がくさんある。\n81",
           "explanation": {
             "vi": "上京する: từ địa phương lên Tokyo. 上京 là hành động, không phải khu vực hay tên nơi tham quan trong các câu khác.",
-            "optionNotes": []
+            "optionNotes": [
+              "Tham quan Tokyo dùng 東京 hoặc 都内をめぐる.",
+              "上京する: lên Tokyo.",
+              "Vùng phía Bắc dùng 北国・北陸地方.",
+              "上京区 là tên quận ở Kyoto; câu này không dùng nghĩa đó."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Tháng sau bố mẹ từ quê lên Tokyo nên tôi phải dọn phòng.",
+          "targetWord": {
+            "term": "上京",
+            "reading": "じょうきょう",
+            "hanViet": "THƯỢNG KINH",
+            "meaningVi": "lên Tokyo"
+          }
         }
       ]
     },
@@ -1172,9 +1569,16 @@
           "ocrText": "日本の和食はみそ汁()考えられない。\n1はもちろん2ぬきには3のもとで4ばかりか",
           "explanation": {
             "vi": "Nぬきには…ない: không thể nghĩ về món Nhật mà thiếu canh miso. のもとで là dưới điều kiện/chỉ đạo.",
-            "optionNotes": []
+            "optionNotes": [
+              "はもちろん: đương nhiên; không đi với 考えられない.",
+              "Nぬきには〜ない: thiếu N thì không.",
+              "のもとで: dưới; không hợp.",
+              "ばかりか: không chỉ; không hợp."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Món Nhật thì không thể nghĩ đến mà thiếu canh miso.",
+          "stemTranslationVi": "Món Nhật thì không thể nghĩ đến … canh miso."
         },
         {
           "id": "kokusho_n2_d10_m7_34",
@@ -1203,9 +1607,16 @@
           "ocrText": "34|ここまでみんなの希望が違う、まとめ()。\n1わけがない2ようがない3そうがない4ことがない",
           "explanation": {
             "vi": "Vます bỏ ます + ようがない: không có cách nào làm. Mong muốn khác quá nhiều nên không thể tổng hợp.",
-            "optionNotes": []
+            "optionNotes": [
+              "わけがない: không có lý nào; không đi sau thân động từ.",
+              "Vようがない: không có cách nào.",
+              "そうがない không phải mẫu ngữ pháp.",
+              "ことがない: chưa từng; không đi sau thân động từ."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Nguyện vọng của mọi người khác nhau đến mức này thì không cách nào tổng hợp được.",
+          "stemTranslationVi": "Nguyện vọng của mọi người khác nhau đến mức này thì … ."
         },
         {
           "id": "kokusho_n2_d10_m7_35",
@@ -1234,9 +1645,16 @@
           "ocrText": "35明治時代の文学()レポトを書く。\n1について2にとて3において4にわたって",
           "explanation": {
             "vi": "Nについてレポートを書く: viết báo cáo về chủ đề văn học Minh Trị. にとって là đối với, にわたって là trải khắp.",
-            "optionNotes": []
+            "optionNotes": [
+              "Nについて: về.",
+              "にとって: đối với; không hợp.",
+              "において: tại, trong; không hợp.",
+              "にわたって: trải dài; không hợp."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Tôi viết báo cáo về văn học thời Minh Trị.",
+          "stemTranslationVi": "Tôi viết báo cáo … văn học thời Minh Trị."
         },
         {
           "id": "kokusho_n2_d10_m7_36",
@@ -1265,9 +1683,16 @@
           "ocrText": "36|明の登山は候()中止になるもしれない。\n1にあたり2どころか3せいで4次第で",
           "explanation": {
             "vi": "N次第で: tùy tình hình thời tiết mà chuyến leo núi có thể hủy. せいで chỉ nguyên nhân xấu đã xác định hơn.",
-            "optionNotes": []
+            "optionNotes": [
+              "にあたり: khi; không hợp.",
+              "どころか: chẳng những; không hợp.",
+              "せいで: tại vì (đã xảy ra); không hợp với かもしれない.",
+              "N次第で: tùy vào N."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Chuyến leo núi ngày mai có thể bị hủy tùy vào thời tiết.",
+          "stemTranslationVi": "Chuyến leo núi ngày mai có thể bị hủy … thời tiết."
         },
         {
           "id": "kokusho_n2_d10_m7_37",
@@ -1296,9 +1721,16 @@
           "ocrText": "37|彼イタ語の通訳()働いているそうだ。\nはリア\n1ことで2に際し3として4向きに",
           "explanation": {
             "vi": "Nとして働く: làm việc với tư cách phiên dịch tiếng Ý. に際し chỉ dịp, 向き chỉ phù hợp.",
-            "optionNotes": []
+            "optionNotes": [
+              "ことで: bằng việc; không hợp.",
+              "に際し: nhân dịp; không hợp.",
+              "Nとして: với tư cách.",
+              "向きに: hướng về; không hợp."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Nghe nói anh ấy làm việc với tư cách phiên dịch tiếng Ý.",
+          "stemTranslationVi": "Nghe nói anh ấy làm việc … phiên dịch tiếng Ý."
         },
         {
           "id": "kokusho_n2_d10_m7_38",
@@ -1327,9 +1759,16 @@
           "ocrText": "38|彼女と婚約した(《)、他の女性とは飲みに行かないつもりだ。\n1末に2にせよ3からして4以上",
           "explanation": {
             "vi": "Vた以上: một khi đã đính hôn thì phải có trách nhiệm tương ứng. 末に là sau quá trình, にせよ là dù cho.",
-            "optionNotes": []
+            "optionNotes": [
+              "末に: sau rốt; không hợp.",
+              "にせよ: dù; không hợp.",
+              "からして: ngay từ; không hợp.",
+              "Vた以上: một khi đã."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Một khi đã đính hôn với cô ấy, tôi định không đi nhậu với phụ nữ khác.",
+          "stemTranslationVi": "… với cô ấy, tôi định không đi nhậu với phụ nữ khác."
         },
         {
           "id": "kokusho_n2_d10_m7_39",
@@ -1358,9 +1797,16 @@
           "ocrText": "きぎ\n39本日アルバイトの面接を()なている鈴木と申します\n1させてくれることに.2させられることに\n3させていただくことに4させられていただくことに",
           "explanation": {
             "vi": "面接をさせていただくことになっている: được sắp xếp cho phép dự phỏng vấn, cách nói khiêm nhường. させられる là bị ép, sai ý tự giới thiệu.",
-            "optionNotes": []
+            "optionNotes": [
+              "させてくれる: không trang trọng, không hợp lời tự giới thiệu.",
+              "させられる: bị bắt; sai nghĩa.",
+              "させていただくことになっている: được phép (khiêm nhường).",
+              "させられていただく sai dạng."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Tôi là Suzuki, người được sắp xếp phỏng vấn làm thêm hôm nay.",
+          "stemTranslationVi": "Tôi là Suzuki, người hôm nay … phỏng vấn làm thêm."
         },
         {
           "id": "kokusho_n2_d10_m7_40",
@@ -1389,9 +1835,16 @@
           "ocrText": "40春休みに2週間()なんて本当にうらやましい。\n1にわたて旅行する2ばかりに旅行しよう\n3のもとで旅行できる4もかまわず了旅行したい",
           "explanation": {
             "vi": "2週間にわたって旅行する: du lịch kéo dài hai tuần. にわたって đi sau khoảng thời gian/phạm vi.",
-            "optionNotes": []
+            "optionNotes": [
+              "Nにわたって: kéo dài suốt.",
+              "ばかりに: chỉ vì; không hợp.",
+              "のもとで: dưới; không hợp.",
+              "もかまわず: bất chấp; không hợp."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Kỳ nghỉ xuân được đi du lịch suốt 2 tuần, thật là ghen tị.",
+          "stemTranslationVi": "Kỳ nghỉ xuân … 2 tuần, thật là ghen tị."
         },
         {
           "id": "kokusho_n2_d10_m7_41",
@@ -1420,9 +1873,16 @@
           "ocrText": "[41|あなた(ハ、これからコンサトに行きませんか。\n1ほど都合がよければ2さえ都合がよければ\n3ほど都合がよくても4さえ都合がよくても\n82",
           "explanation": {
             "vi": "あなたさえ都合がよければ: chỉ cần bạn tiện thì…; さえ…ば nêu điều kiện tối thiểu. ほど là mức độ.",
-            "optionNotes": []
+            "optionNotes": [
+              "ほど: đến mức; không hợp.",
+              "Nさえ〜ば: chỉ cần N.",
+              "ほど…ても sai cả hai.",
+              "さえ…ても: さえ đi với ば, không đi với ても."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Chỉ cần bạn tiện thì giờ đi xem hòa nhạc không?",
+          "stemTranslationVi": "… , giờ đi xem hòa nhạc không?"
         },
         {
           "id": "kokusho_n2_d10_m7_42",
@@ -1451,9 +1911,16 @@
           "ocrText": "42|今すぐ10万円貸してって、それは()。\n1無理ということだ2無理というものだ\n3無理というわけだ4無理というほどだ",
           "explanation": {
             "vi": "無理というものだ: điều ấy quả là vô lý, lời đánh giá mạnh của người nói. というほどだ không hoàn thành được ý này.",
-            "optionNotes": []
+            "optionNotes": [
+              "ということだ: nghe nói; không hợp.",
+              "〜というものだ: đúng là (đánh giá).",
+              "というわけだ: thì ra là; không hợp.",
+              "というほどだ: đến mức; không hợp."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Bảo cho mượn ngay 100 nghìn yên, thì đó đúng là chuyện vô lý.",
+          "stemTranslationVi": "Bảo cho mượn ngay 100 nghìn yên, thì đó … ."
         },
         {
           "id": "kokusho_n2_d10_m7_43",
@@ -1482,9 +1949,16 @@
           "ocrText": "43|彼女に子どもがいるとは()話だ。\n1とても信じやすい2とにかく信じる\n3とても信じがたい4とにかく信じるという",
           "explanation": {
             "vi": "Vます bỏ ます + がたい: khó mà chấp nhận/tin được. 信じがたい là khó tin; 信じやすい là dễ tin, trái nghĩa.",
-            "optionNotes": []
+            "optionNotes": [
+              "信じやすい: dễ tin; ngược nghĩa.",
+              "とにかく信じる: dù sao cũng tin; không hợp.",
+              "Vがたい: khó mà.",
+              "とにかく信じるという không hợp."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Chuyện cô ấy đã có con thật khó tin.",
+          "stemTranslationVi": "Chuyện cô ấy đã có con là chuyện … ."
         },
         {
           "id": "kokusho_n2_d10_m7_44",
@@ -1513,9 +1987,16 @@
           "ocrText": "44課長は誰にも別れを)会社をやめてしまった\n(0。\n1告げばさせずに告げばないことでもなく\n3告げばようとして4告げることなく",
           "explanation": {
             "vi": "Vることなく: không làm hành động đó mà…; nghỉ việc không từ biệt ai. 告げることなく là hình thức đúng.",
-            "optionNotes": []
+            "optionNotes": [
+              "告げさせずに: không để ai nói; sai chủ thể.",
+              "ことでもなく không phải mẫu đúng.",
+              "告げようとして: định nói; ngược nghĩa.",
+              "Vることなく: mà không."
+            ]
           },
-          "explanationStatus": "authored"
+          "explanationStatus": "authored",
+          "translationVi": "Trưởng phòng nghỉ việc mà không chào từ biệt ai.",
+          "stemTranslationVi": "Trưởng phòng nghỉ việc … ai."
         }
       ]
     },
@@ -1557,7 +2038,12 @@
           "ocrText": "いけく\n45|池袋でい4が行われた\n1大会2グループによる\n3ダンスの4いくつかの人気",
           "explanation": {
             "vi": "Ghép 4→2→3→1: 池袋でいくつかの人気グループによるダンスの大会が行われた. による nêu nhóm thực hiện. Ô sao là 3.",
-            "optionNotes": []
+            "optionNotes": [
+              "大会 đứng cuối, trước が行われた.",
+              "グループによる đi sau いくつかの人気.",
+              "ダンスの đứng ở ô ★.",
+              "いくつかの人気 nối ngay sau 池袋で."
+            ]
           },
           "explanationStatus": "authored",
           "order": [
@@ -1565,7 +2051,8 @@
             2,
             3,
             1
-          ]
+          ],
+          "translationVi": "Ở Ikebukuro đã diễn ra cuộc thi nhảy của một số nhóm nổi tiếng."
         },
         {
           "id": "kokusho_n2_d10_m8_46",
@@ -1594,7 +2081,12 @@
           "ocrText": "46|かぜで太もしてもらた。\n1行った2血液検査3病院へ4ついでに",
           "explanation": {
             "vi": "Ghép 3→1→4→2: かぜで病院へ行ったついでに血液検査もしてもらった. ついでに là nhân tiện. Ô sao là 4.",
-            "optionNotes": []
+            "optionNotes": [
+              "行った đi sau 病院へ.",
+              "血液検査 đứng cuối, trước もしてもらった.",
+              "病院へ nối ngay sau かぜで.",
+              "ついでに đứng ở ô ★."
+            ]
           },
           "explanationStatus": "authored",
           "order": [
@@ -1602,7 +2094,8 @@
             1,
             4,
             2
-          ]
+          ],
+          "translationVi": "Bị cảm, đi bệnh viện nhân tiện tôi được xét nghiệm máu luôn."
         },
         {
           "id": "kokusho_n2_d10_m8_47",
@@ -1631,7 +2124,12 @@
           "ocrText": "47|友だちは教室に太食べていた。\n1先生が2担任の3まだ弁当を4入ってきても",
           "explanation": {
             "vi": "Ghép 2→1→4→3: 教室に担任の先生が入ってきてもまだ弁当を食べていた. ても nhượng bộ. Ô sao là 4.",
-            "optionNotes": []
+            "optionNotes": [
+              "先生が đi sau 担任の.",
+              "担任の nối ngay sau 教室に.",
+              "まだ弁当を đứng cuối, trước 食べていた.",
+              "入ってきても đứng ở ô ★."
+            ]
           },
           "explanationStatus": "authored",
           "order": [
@@ -1639,7 +2137,8 @@
             1,
             4,
             3
-          ]
+          ],
+          "translationVi": "Dù thầy chủ nhiệm đã vào lớp, bạn tôi vẫn còn ăn cơm hộp."
         },
         {
           "id": "kokusho_n2_d10_m8_48",
@@ -1668,7 +2167,12 @@
           "ocrText": "48|こちらへ文ください。\n1お立ち寄り2ぜひ3お出かけの4際は",
           "explanation": {
             "vi": "Ghép 3→4→2→1: こちらへお出かけの際はぜひお立ち寄りください. 際は là khi, お立ち寄りください là kính mời ghé. Ô sao là 2.",
-            "optionNotes": []
+            "optionNotes": [
+              "お立ち寄り đứng cuối, trước ください.",
+              "ぜひ đứng ở ô ★.",
+              "お出かけの nối ngay sau こちらへ.",
+              "際は đi sau お出かけの."
+            ]
           },
           "explanationStatus": "authored",
           "order": [
@@ -1676,7 +2180,8 @@
             4,
             2,
             1
-          ]
+          ],
+          "translationVi": "Khi đến đây, xin nhất định ghé qua."
         },
         {
           "id": "kokusho_n2_d10_m8_49",
@@ -1705,7 +2210,12 @@
           "ocrText": "49|過去のことし4しかない。\n1努力する2未来3はともかく4に向かって\n83",
           "explanation": {
             "vi": "Ghép 3→2→4→1: 過去のことはともかく未来に向かって努力するしかない. はともかく là gác sang bên; しかない là chỉ còn cách. Ô sao là 4.",
-            "optionNotes": []
+            "optionNotes": [
+              "努力する đứng cuối, trước しかない.",
+              "未来 đi sau はともかく.",
+              "はともかく nối ngay sau 過去のこと.",
+              "に向かって đứng ở ô ★."
+            ]
           },
           "explanationStatus": "authored",
           "order": [
@@ -1713,7 +2223,8 @@
             2,
             4,
             1
-          ]
+          ],
+          "translationVi": "Chuyện quá khứ thì tạm gác lại, chỉ còn cách nỗ lực hướng tới tương lai."
         }
       ]
     },
@@ -1756,13 +2267,20 @@
           "passageId": "d10-passage",
           "explanation": {
             "vi": "なるほど: quả đúng là…, công nhận từ những món salad/đồ kèm rằng cà chua thường đóng vai món khai vị. しかし báo tương phản, ところで chuyển đề tài.",
-            "optionNotes": []
+            "optionNotes": [
+              "しかし: nhưng; không có ý tương phản ở đây.",
+              "さて: nào, bây giờ; chuyển ý, không hợp.",
+              "なるほど: quả đúng là (công nhận).",
+              "ところで: nhân tiện; chuyển đề tài."
+            ]
           },
           "explanationStatus": "authored",
           "blankIds": [
             "50"
           ],
-          "blankLabel": "50"
+          "blankLabel": "50",
+          "translationVi": "Làm salad, nhồi tôm nhỏ… quả đúng là vai trò của trái đỏ này giống món khai vị hay đồ ăn kèm.",
+          "stemTranslationVi": "Làm salad, nhồi tôm nhỏ… … vai trò của trái đỏ này giống món khai vị hay đồ ăn kèm."
         },
         {
           "id": "kokusho_n2_d10_m9_51",
@@ -1792,14 +2310,21 @@
           "passageId": "d10-passage",
           "explanation": {
             "vi": "思い描きながら／育ててきた: vừa hình dung món ăn vừa trồng hai chậu cà chua tới nay. トマトを cần ngoại động từ 育てる, không phải tự động từ 育つ.",
-            "optionNotes": []
+            "optionNotes": [
+              "a 思い描きながら, b 育ててきた (ngoại động từ).",
+              "育ってきた là tự động từ; không nhận トマトを.",
+              "思い描いても: dù có hình dung; không hợp.",
+              "育てられなかった: không trồng được; trái với đoạn sau."
+            ]
           },
           "explanationStatus": "authored",
           "blankIds": [
             "51-a",
             "51-b"
           ],
-          "blankLabel": "51"
+          "blankLabel": "51",
+          "translationVi": "Vừa hình dung hình ảnh rực rỡ trên đĩa, tôi đã trồng hai chậu cà chua ngoài ban công.",
+          "stemTranslationVi": "… hình ảnh rực rỡ trên đĩa, tôi đã … hai chậu cà chua ngoài ban công."
         },
         {
           "id": "kokusho_n2_d10_m9_52",
@@ -1829,7 +2354,12 @@
           "passageId": "d10-passage",
           "explanation": {
             "vi": "Chọn 花／実／梅雨: hoa vàng héo để lại quả xanh, quả lớn dần và đổi màu giữa mùa mưa. Trình tự sinh trưởng quyết định ba từ.",
-            "optionNotes": []
+            "optionNotes": [
+              "a 実 sai: quả màu vàng héo không hợp trình tự.",
+              "c 梅雨 đúng nhưng a 実, b 花 bị đảo.",
+              "b 梅雨 sai: \"mưa xanh nhỏ\" không có nghĩa.",
+              "a 花, b 実, c 梅雨."
+            ]
           },
           "explanationStatus": "authored",
           "blankIds": [
@@ -1837,7 +2367,9 @@
             "52-b",
             "52-c"
           ],
-          "blankLabel": "52"
+          "blankLabel": "52",
+          "translationVi": "Hoa vàng héo đi thì để lại quả xanh nhỏ. Quả lớn dần và lần lượt chín màu giữa mùa mưa.",
+          "stemTranslationVi": "… màu vàng héo đi thì để lại … xanh nhỏ. Quả lớn dần và lần lượt chín màu giữa … ."
         },
         {
           "id": "kokusho_n2_d10_m9_53",
@@ -1867,13 +2399,20 @@
           "passageId": "d10-passage",
           "explanation": {
             "vi": "となったものの: tuy thành ra những quả khá đắt nếu tính cả chậu đất, nhưng học được nhiều điều. ものの nhượng bộ, khác もので nêu nguyên nhân.",
-            "optionNotes": []
+            "optionNotes": [
+              "もので: vì; không mang nghĩa nhượng bộ.",
+              "〜ものの: tuy… nhưng.",
+              "ものを: giá mà; nghĩa tiếc nuối.",
+              "ものか: lẽ nào; không hợp."
+            ]
           },
           "explanationStatus": "authored",
           "blankIds": [
             "53"
           ],
-          "blankLabel": "53"
+          "blankLabel": "53",
+          "translationVi": "Nghĩ đến tiền chậu và đất thì đó là những trái đắt giá, nhưng tôi đã học được nhiều điều từ việc tự cung tự cấp nhỏ bé này.",
+          "stemTranslationVi": "Nghĩ đến tiền chậu và đất thì … những trái đắt giá, nhưng tôi đã học được nhiều điều."
         },
         {
           "id": "kokusho_n2_d10_m9_54",
@@ -1903,13 +2442,20 @@
           "passageId": "d10-passage",
           "explanation": {
             "vi": "深いつめ跡も残した: mưa còn để lại vết thương/thiệt hại sâu. Ngữ cảnh lo thiên tai rồi cầu mùa hè ổn định nên không chọn phủ định không có thiệt hại.",
-            "optionNotes": []
+            "optionNotes": [
+              "なかった: không có; trái với ngữ cảnh.",
+              "に消えた: tan biến trong; không hợp.",
+              "だろうか: nghi vấn; không hợp.",
+              "深いつめ跡も残した: còn để lại thiệt hại sâu."
+            ]
           },
           "explanationStatus": "authored",
           "blankIds": [
             "54"
           ],
-          "blankLabel": "54"
+          "blankLabel": "54",
+          "translationVi": "Cơn mưa không biết chừng mực ấy còn để lại những vết thương sâu.",
+          "stemTranslationVi": "Cơn mưa không biết chừng mực ấy … ."
         }
       ],
       "passages": [
@@ -1925,12 +2471,13 @@
           "notes": [
             "（注1）しおれる…草木が生気を失ってぐったりする。",
             "（注2）ひいき目…気に入ったものを引き立てて好意的に見ること。"
-          ]
+          ],
+          "translationVi": "Có một cuộc tranh cãi cũ: cà chua là rau hay là trái cây? Chuyện ở nước Mỹ ngày xưa, rau nhập khẩu bị đánh thuế 10% nhưng trái cây thì miễn thuế. Nghe nói khi thương nhân kiện rằng cà chua cũng là trái cây, họ đã bị bác với lý do \"không làm món tráng miệng được\". Tôi biết chuyện này qua cuốn \"Cà chua thiên đường\" mới xuất bản.\nLàm salad, nhồi tôm nhỏ… quả đúng là vai trò của trái đỏ này giống món khai vị hay đồ ăn kèm. Những buổi chiều oi ả, chỉ cần ướp thật lạnh rồi rắc muối là đủ. Vừa hình dung hình ảnh rực rỡ trên đĩa, tôi đã trồng hai chậu cà chua ngoài ban công.\nMột là loại nhỏ màu đỏ, một là loại vừa màu cam. Hoa vàng héo đi thì để lại những trái xanh nhỏ. Chúng lớn dần và lần lượt chín màu giữa mùa mưa. Sáng ngày nghỉ, vừa thức dậy tôi hái vài quả. Không gì tươi hơn thế.\nVỏ dày hơn hàng ngoài chợ, nhưng vị ngọt thoang thoảng và vị chua thật dễ chịu. Với con mắt thiên vị, tôi chấm đạt, rồi gửi kèm ảnh báo tin cho người đã tặng cây giống. \"Ngọt sao trái cà chua buổi sáng còn thiếu ngủ\" (Urabe Ori).\nNghĩ đến tiền chậu và đất thì đó là những trái đắt giá, nhưng tôi đã học được nhiều điều từ việc tự cung tự cấp nhỏ bé này. Những ngày tháng nắng thì lo cho lá, mưa thì lo cho rễ, gió thì lo cho quả. Đúng là \"bước đi lo âu\" của Miyazawa Kenji. Có thể sẽ bị nông dân cười, nhưng tôi đã biết rằng trước chữ \"ăn\" là biết bao nỗi \"lo\".\nỞ khá nhiều vùng, mùa mưa đã kết thúc trong một lần. Với nông nghiệp, đây là lúc tích nước chuẩn bị cho giữa hè, nhưng cơn mưa không biết chừng mực ấy còn để lại những vết thương sâu. Tôi rồi sẽ sớm trở về làm người \"chỉ biết ăn\", nhưng vẫn mong một mùa hè vững vàng, không thiên tai."
         }
       ]
     }
   ],
-  "explanationSource": "AI-authored Vietnamese reference notes; answer key checked against source book",
+  "explanationSource": "AI-authored Vietnamese notes and translations; answer key checked against source book",
   "transcriptionReview": {
     "method": "Visual comparison of all 8 rendered source pages; corrected OCR; original distractors retained",
     "pdfPages": [
