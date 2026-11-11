@@ -1,0 +1,446 @@
+@m1_01
+T: Thành viên mạnh đến thế này tập hợp lại thì chức vô địch chắc chắn trong tầm tay.
+W: 堅い | かたい | KIÊN | chắc chắn, vững
+1: がたい: 堅 không đục ở đầu.
+2: がだい: sai cả hai âm.
+3: かたい: cách đọc của 堅い.
+4: かだい là 課題 (bài tập); khác từ.
+
+@m1_02
+T: Cứ ăn toàn đồ ăn vặt thì cân bằng dinh dưỡng sẽ kém đi.
+W: 栄養 | えいよう | VINH DƯỠNG | dinh dưỡng
+1: ええゆう: sai cả hai âm.
+2: ええよう: 栄 đọc えい.
+3: えいゆう là 英雄 (anh hùng); khác chữ.
+4: えいよう: 栄 えい + 養 よう.
+
+@m1_03
+T: "Xin lỗi, có ghim bấm không ạ?"
+W: 針 | はり | CHÂM | kim, ghim
+1: びょう là 鋲: đinh ghim.
+2: くぎ là 釘: đinh.
+3: は là 刃: lưỡi dao.
+4: はり: cách đọc của 針.
+
+@m1_04
+T: Mặt trời lên ở phía đông, không khí bên ngoài bỗng ấm lên.
+W: 昇る | のぼる | THĂNG | mọc, lên cao
+1: のぼる: cách đọc của 昇る.
+2: あがる là 上がる; khác chữ.
+3: のほる: âm thứ ba phải đục ぼ.
+4: あかる không phải cách đọc.
+
+@m1_05
+T: Con đường này được học sinh tiểu học dùng làm đường đi học.
+W: 児童 | じどう | NHI ĐỒNG | nhi đồng, học sinh tiểu học
+1: しとう: sai cả hai âm.
+2: じとう: 童 đọc どう.
+3: しどう là 指導 (chỉ đạo); khác chữ.
+4: じどう: 児 じ + 童 どう.
+
+@m2_06
+T: Nhựa có tính chất khó dẫn nhiệt.
+W: 性質 | せいしつ | TÍNH CHẤT | tính chất
+1: 正質 không phải từ có thật.
+2: 生質 không phải từ có thật.
+3: 性質: tính chất.
+4: 成質 không phải từ có thật.
+
+@m2_07
+T: Công trạng của anh ấy hẳn sẽ được kể lại mãi mãi.
+W: 永久 | えいきゅう | VĨNH CỬU | vĩnh viễn
+1: 永久: vĩnh viễn.
+2: 球 (CẦU) là quả bóng; 永球 không phải từ có thật.
+3: 求 (CẦU) là tìm; 永求 không phải từ có thật.
+4: 及 (CẬP); 永及 không phải từ có thật.
+
+@m2_08
+T: Ngân sách khẩn cấp để cứu trợ người bị nạn đã được thông qua.
+W: 可決 | かけつ | KHẢ QUYẾT | thông qua (biểu quyết)
+1: 何 (HÀ); 何決 không phải từ có thật.
+2: 可決: thông qua.
+3: 加 (GIA); 加決 không phải từ có thật.
+4: 過 (QUÁ); 過決 không phải từ có thật.
+
+@m2_09
+T: Tôi rút nút bồn tắm và thay nước mới.
+W: 抜く | ぬく | BẠT | rút ra
+1: 抜いて: rút ra.
+2: 抽 (TRỪU) đọc ぬく hiếm khi dùng; không phải cách viết chuẩn.
+3: 板 (BẢN) là tấm ván; không phải động từ.
+4: 机 (KỶ) là bàn; không phải động từ.
+
+@m2_10
+T: Bọn trẻ cứ làm bừa phòng ngay nên tôi đã mắng nghiêm.
+W: 散らかす | ちらかす | TÁN | làm bừa bộn
+1: 破 đọc やぶる; không đọc ちらかす.
+2: 敗 đọc やぶれる; không đọc ちらかす.
+3: 散らかす: làm bừa bộn.
+4: 乱 đọc みだす; không đọc ちらかす.
+
+@m3_11
+T: Nước này có chất độc hại hòa tan bên trong nên không uống được.
+S: Nước này có chất độc hại … bên trong nên không uống được.
+W: 溶け込む | とけこむ | DUNG NHẬP | hòa tan vào | 〜込む
+1: 吹き込む: thổi vào; không hợp.
+2: 溶け込む: hòa tan vào.
+3: 混ぜ込む: trộn vào (ngoại động từ); chủ ngữ là chất độc nên không hợp.
+4: 潜り込む: chui vào; không hợp.
+
+@m3_12
+T: Bàn bạc thống nhất lịch giải thể thao, đã quyết định tổ chức vào tháng 5.
+S: … lịch giải thể thao, đã quyết định tổ chức vào tháng 5.
+W: 打ち合わせる | うちあわせる | ĐẢ HỢP | bàn bạc trước | 打ち〜
+1: 言い合わせる: hẹn trước với nhau; không hợp.
+2: 話し合わせる không phải động từ thông dụng.
+3: 持ち合わせる: có sẵn trong người; không hợp.
+4: 打ち合わせる: bàn bạc thống nhất.
+
+@m3_13
+T: Thí nghiệm khoa học của các sinh viên đã kết thúc bằng một thất bại thảm hại.
+S: Thí nghiệm khoa học của các sinh viên đã kết thúc bằng một … .
+W: 大失敗 | だいしっぱい | ĐẠI THẤT BẠI | thất bại lớn | 大〜
+1: 真失敗 không phải từ có thật.
+2: 急失敗 không phải từ có thật.
+3: 強失敗 không phải từ có thật.
+4: 大失敗: thất bại lớn.
+
+@m3_14
+T: Chị tôi từ xưa đã hay buôn điện thoại dài, nói cả tiếng đồng hồ.
+S: Chị tôi từ xưa đã hay … , nói cả tiếng đồng hồ.
+W: 長電話 | ながでんわ | TRƯỜNG ĐIỆN THOẠI | gọi điện thoại lâu | 長〜
+1: 高電話 không phải từ có thật.
+2: 多電話 không phải từ có thật.
+3: 長電話: cuộc điện thoại dài.
+4: 大電話 không phải từ có thật.
+
+@m3_15
+T: Với chính trị gia, năng lực thực hiện quan trọng hơn lời nói.
+S: Với chính trị gia, … quan trọng hơn lời nói.
+W: 実行力 | じっこうりょく | THỰC HÀNH LỰC | năng lực thực hiện | 〜力
+1: 〜権: quyền; 実行権 không hợp.
+2: 〜力: năng lực (実行力).
+3: 〜性: tính; 実行性 không thông dụng.
+4: 〜見 không làm hậu tố như vậy.
+
+@m4_16
+T: Trước khi bắt đầu thí nghiệm, chúng tôi đã xác nhận các điểm cần lưu ý.
+S: Trước khi bắt đầu thí nghiệm, chúng tôi đã … các điểm cần lưu ý.
+W: 確認 | かくにん | XÁC NHẬN | xác nhận, kiểm tra
+1: 確認する: xác nhận.
+2: 発見: phát hiện; không hợp.
+3: 注文: đặt hàng; không hợp.
+4: 予定: dự định; không hợp.
+
+@m4_17
+T: Nhà thờ cũ đó vẫn giữ nguyên phong cách kiến trúc thời trung cổ.
+S: Nhà thờ cũ đó vẫn giữ nguyên phong cách … thời trung cổ.
+W: 建築 | けんちく | KIẾN TRÚC | kiến trúc
+1: 材木: gỗ; không có "phong cách gỗ".
+2: 技: kỹ thuật; 技様式 không dùng.
+3: 建築様式: phong cách kiến trúc.
+4: 修理: sửa chữa; không hợp.
+
+@m4_18
+T: Trang phục của cô ấy thường thuộc tông màu nào nhỉ?
+S: Trang phục của cô ấy thường thuộc … màu nào nhỉ?
+W: 系統 | けいとう | HỆ THỐNG | hệ, tông (màu)
+1: 感覚: cảm giác; không chỉ nhóm màu.
+2: 系統の色: tông màu.
+3: 状態: tình trạng; không hợp.
+4: 方面: phương diện; không hợp.
+
+@m4_19
+T: Vụ việc lần này có vẻ không phải vấn đề đơn giản như thế.
+S: Vụ việc lần này có vẻ không phải vấn đề … như thế.
+W: 単純 | たんじゅん | ĐƠN THUẦN | đơn giản
+1: 短縮: rút ngắn; không hợp.
+2: 直通: thông thẳng; không hợp.
+3: 一方: một phía; không hợp.
+4: 単純な問題: vấn đề đơn giản.
+
+@m4_20
+T: Vấn đề dân tộc thì tấm lòng tôn trọng lẫn nhau là quan trọng.
+S: Vấn đề dân tộc thì tấm lòng … tôn trọng nhau là quan trọng.
+W: 相互 | そうご | TƯƠNG HỖ | lẫn nhau
+1: 平行: song song; không hợp.
+2: 一対: một cặp; không hợp.
+3: 相互に: lẫn nhau.
+4: 同僚: đồng nghiệp; không hợp.
+
+@m4_21
+T: Dù lớn lên trong gia đình thế nào, trẻ em cũng có khả năng vô hạn.
+S: Dù lớn lên trong … thế nào, trẻ em cũng có khả năng vô hạn.
+W: 家庭 | かてい | GIA ĐÌNH | gia đình
+1: 周囲: xung quanh; không đi với で育つ như vậy.
+2: 結婚: hôn nhân; không hợp.
+3: どんな家庭で育とうと: dù lớn lên trong gia đình nào.
+4: 親族: họ hàng; không phải môi trường trực tiếp.
+
+@m4_22
+T: Tiến sĩ Noguchi Hideyo đã tiếp tục nghiên cứu bệnh sốt vàng ở châu Phi.
+S: Tiến sĩ Noguchi Hideyo đã tiếp tục … bệnh sốt vàng ở châu Phi.
+W: 研究 | けんきゅう | NGHIÊN CỨU | nghiên cứu
+1: 黄熱病の研究: nghiên cứu bệnh sốt vàng.
+2: 学術: học thuật; không đi với 続ける như vậy.
+3: 働き: hoạt động; không hợp với bệnh.
+4: 学士: cử nhân; không hợp.
+
+@m5_23
+T: Không biết có chuyện gì mà lịch tàu điện bị xáo trộn rất nhiều.
+W: 非常に | ひじょうに | PHI THƯỜNG | rất, hết sức
+1: 少々: một chút; ngược nghĩa.
+2: たいそう: rất, hết sức.
+3: ほとんど: hầu hết; khác nghĩa.
+4: いくらか: phần nào; ngược nghĩa.
+
+@m5_24
+T: Thang máy này 10 người lên là vượt quá số người cho phép.
+W: オーバー | オーバー | | vượt quá
+1: 一杯: đầy; không nhất thiết vượt.
+2: 限界: giới hạn; không phải vượt.
+3: 満員: đầy người; chưa chắc vượt mức.
+4: 超過: vượt quá.
+
+@m5_25
+T: Cứ ăn quá đà như thế thì sẽ ốm đấy.
+W: 無闇に | むやみに | VÔ ÁM | quá mức, bừa bãi
+1: 度を守って: giữ chừng mực; ngược nghĩa.
+2: 度を失って: mất bình tĩnh; khác nghĩa.
+3: 度を重ねて: lặp lại nhiều lần; khác nghĩa.
+4: 度を越して: quá mức.
+
+@m5_26
+T: Lâu lắm mới gặp chú, chú đã già đi nhiều.
+W: 老ける | ふける | LÃO | già đi
+1: 年をとって: già đi.
+2: 年をこえて: vượt qua năm mới; khác nghĩa.
+3: 年をわたって không phải cách nói.
+4: 年をまもって không phải cách nói.
+
+@m5_27
+T: Thầy hỏi thì các học sinh đồng loạt giơ tay.
+W: 揃う | そろう | TIỄN | đồng loạt, cùng nhau
+1: すぐに: ngay lập tức; không nhấn "cùng lúc".
+2: いっせいに: đồng loạt.
+3: はっきり: rõ ràng; khác nghĩa.
+4: 急に: đột ngột; khác nghĩa.
+
+@m6_28
+T: Những vùng ôn đới trên Trái Đất có sự thay đổi mùa rõ rệt.
+W: 温帯 | おんたい | ÔN ĐỚI | ôn đới
+1: Trời ấm dần dùng 暖かく.
+2: 温帯地方: vùng ôn đới.
+3: Trái Đất nóng lên là 温暖化.
+4: Người ấm lên dùng 温かくなる.
+
+@m6_29
+T: Ngoài vườn có tiếng động lớn, nhưng không thấy gì khác thường.
+W: 物音 | ものおと | VẬT ÂM | tiếng động
+1: 物音がした: có tiếng động (không rõ nguồn).
+2: Tiếng sấm dùng 雷の音・雷鳴.
+3: Âm đàn piano dùng ピアノの音.
+4: Tiếng tivi dùng テレビの音.
+
+@m6_30
+T: Tàu đang dừng đã chạy lại, sự hỗn loạn trước mắt đã lắng xuống.
+W: ひとまず | ひとまず | | tạm thời, trước mắt
+1: Một khi núi lửa phun dùng 万一・ひとたび.
+2: Mời dùng thử dùng ぜひ・どうぞ.
+3: ひとまずおさまった: tạm thời lắng xuống.
+4: 6 năm một lần dùng 6年に一度.
+
+@m6_31
+T: Nghe nói rạng sáng mai trời sẽ rất lạnh.
+W: 明け方 | あけがた | MINH PHƯƠNG | rạng sáng
+1: Chiều tối không thể có cảnh rạng sáng; mâu thuẫn.
+2: Tính cách cởi mở dùng 明るい.
+3: 明日の明け方: rạng sáng mai.
+4: Côn trùng bay về chỗ sáng dùng 明かり.
+
+@m6_32
+T: Về nội dung hiệp định, hai nước có sự khác biệt về quan điểm.
+W: 相違 | そうい | TƯƠNG VI | khác biệt
+1: Câu trả lời sai dùng 間違い.
+2: 見解の相違: khác biệt quan điểm.
+3: Khác với hôm qua dùng 昨日と違って.
+4: Phố xá khác xưa dùng 昔とは違う.
+
+@m7_33
+T: Cửa tàu vừa mới bắt đầu đóng thì một người đàn ông nhảy lên.
+S: Cửa tàu … thì một người đàn ông nhảy lên.
+1: Vたかと思うと: vừa… thì ngay lập tức.
+2: ことか: biết bao; không hợp.
+3: だけあって: quả xứng đáng; không hợp.
+4: というと: nói đến; không hợp.
+
+@m7_34
+T: Một đội tình nguyện viên cứu trợ thiên tai lấy sinh viên làm nòng cốt đã được thành lập.
+S: Một đội tình nguyện viên cứu trợ thiên tai … sinh viên đã được thành lập.
+1: の未に sai dạng.
+2: Nを中心とするN: lấy N làm trung tâm.
+3: に基づき: dựa trên; không hợp.
+4: ばかりに: chỉ vì; không hợp.
+
+@m7_35
+T: Trước khi thành lập công ty, đã được họ hàng hỗ trợ vốn.
+S: … công ty, đã được họ hàng hỗ trợ vốn.
+1: Nに先立ち: trước khi.
+2: にすれば: đối với; không hợp.
+3: に限り: chỉ giới hạn; không hợp.
+4: に加え: thêm vào; không hợp.
+
+@m7_36
+T: Nếu chưa được cấp trên đồng ý thì không thể dễ dàng xin nghỉ.
+S: … cấp trên đồng ý thì không thể dễ dàng xin nghỉ.
+1: Vてからでなければ〜ない: nếu chưa… thì không.
+2: だけあって: quả xứng đáng; không hợp.
+3: ことから: từ việc; không hợp.
+4: こたえて: đáp ứng; không hợp.
+
+@m7_37
+T: Tổng thống tiền nhiệm của Pháp là ai nhỉ?
+S: Tổng thống tiền nhiệm của Pháp là ai … ?
+1: かな: tự hỏi (chưa biết); không nhấn ý cố nhớ.
+2: わけ: lý do; không hợp.
+3: っけ: … nhỉ (cố nhớ điều từng biết).
+4: ものか: làm sao mà; không hợp.
+
+@m7_38
+T: Để chạy hết marathon trong 2 tiếng 10 phút, cần chạy mỗi 100 mét trong khoảng 18 giây.
+S: Để … marathon trong 2 tiếng 10 phút, cần chạy mỗi 100 mét trong khoảng 18 giây.
+1: 走りくる không hợp.
+2: 走りいたる không phải động từ thông dụng.
+3: 走りすぎる: chạy quá nhiều; không hợp.
+4: Vきる: làm trọn, hoàn thành.
+
+@m7_39
+T: Kinoshita này, phiền cậu photo tài liệu này 10 bản trước cuộc họp nhé.
+S: Kinoshita này, phiền cậu … tài liệu này 10 bản trước cuộc họp nhé.
+1: してあげないか: sai hướng.
+2: してくれたまえ: hãy làm cho tôi (người trên nói).
+3: してあげさせろ sai dạng.
+4: してくれてほしい sai dạng.
+
+@m7_40
+T: Tôi phản đối án tử hình, nhưng không phải là không hiểu được cảm xúc của nạn nhân.
+S: Tôi phản đối án tử hình, nhưng … cảm xúc của nạn nhân.
+1: ことにする: quyết định coi như; không hợp.
+2: わけだ: thảo nào; không hợp.
+3: ではいられない: không thể không; quá mạnh.
+4: Vないこともない: không phải là không.
+
+@m7_41
+T: Nếu xét từ cách nghĩ của cô ấy thì chắc sẽ thấy thế nào cũng kỳ quặc.
+S: … của cô ấy thì chắc sẽ thấy thế nào cũng kỳ quặc.
+1: 次第で: tùy vào; không hợp.
+2: に従うとして không hợp.
+3: Nからすれば: xét từ N.
+4: に基づき: dựa trên; không hợp.
+
+@m7_42
+T: Vé vừa mở bán là đã hết sạch ngay.
+S: Vé … là đã hết sạch ngay.
+1: のことで không phải mẫu đúng.
+2: ばかりで không phải mẫu đúng.
+3: VるかVないかのうちに: vừa mới… thì đã.
+4: かぎりに không phải mẫu đúng.
+
+@m7_43
+T: Lấy một câu nói thiếu cẩn trọng của bộ trưởng làm khởi đầu, người dân rơi vào lo âu.
+S: … một câu nói thiếu cẩn trọng của bộ trưởng, người dân rơi vào lo âu.
+1: にすれば: nếu coi là; không hợp.
+2: だけに: chính vì; không hợp.
+3: Nをきっかけとして: nhân N, bắt nguồn từ N.
+4: ながら: tuy; không hợp.
+
+@m7_44
+T: Dù là vô địch thế giới cũng không phải cứ thế là chắc chắn thắng.
+S: Dù là vô địch thế giới cũng … chắc chắn thắng.
+1: 〜というものでもない: không hẳn là.
+2: はずであるにちがいない: chồng chéo, sai.
+3: というところだろう: khoảng chừng; không hợp.
+4: はずであるわけだ: chồng chéo, sai.
+
+@m8_45
+T: Nhờ đọc cuốn tiểu thuyết này mà tôi đã có thể tự tin vào tương lai.
+1: 将来に đi sau おかげで.
+2: 自信が đứng ở ô ★.
+3: 持てる đứng cuối, trước ようになった.
+4: おかげで nối ngay sau 読んだ.
+
+@m8_46
+T: Ủy ban điều tra đang điều tra kỹ lưỡng nguyên nhân vụ tai nạn máy bay lần này.
+1: 調査委員会 đứng cuối, trước が調べている.
+2: 原因 nối ngay sau 事故の.
+3: くわしく đứng ở ô ★.
+4: について đi sau 原因.
+
+@m8_47
+T: Bộ dao giá đắt thế này thì dành cho đầu bếp chuyên nghiệp.
+1: プロの đứng ở ô ★.
+2: 料理人向き đứng cuối, trước だ.
+3: 高い nối ngay sau 値段が.
+4: 包丁セットは đi sau 高い.
+
+@m8_48
+T: Từ nãy tôi cứ có cảm giác như đang bị ai đó bám theo.
+1: 誰かに nối ngay sau さっきから.
+2: 気がして đứng cuối, trước ならない.
+3: つけられている đi sau 誰かに.
+4: ような đứng ở ô ★.
+
+@m8_49
+T: Dù vất vả đến đâu, cô ấy vẫn không bỏ cuộc mà tiếp tục nghiên cứu.
+1: 研究 đứng cuối, trước を続けた.
+2: 苦しくても nối ngay sau どんなに.
+3: ことなく đứng ở ô ★.
+4: 彼女はあきらめる đi sau 苦しくても.
+
+@m9_50
+T: Có khi ta cứ mang theo nỗi chán ghét bản thân, nghĩ rằng lẽ ra phải nhắc nhở, sao mình hèn nhát thế.
+S: … ta cứ mang theo nỗi chán ghét bản thân, nghĩ rằng lẽ ra phải nhắc nhở, sao mình hèn nhát thế.
+1: こともある: cũng có khi.
+2: ことにする: quyết định; không hợp.
+3: ことだ: nên; không hợp.
+4: ことである: là việc; không hợp.
+
+@m9_51
+T: Hai người đi cùng ngoài 40 tuổi đều là đàn anh ở chỗ làm của người lái. Các thẩm phán nhân dân phán rằng: "Họ đã có thể dễ dàng ngăn lại."
+S: … ngoài 40 tuổi đều là đàn anh ở chỗ làm của người lái. Các thẩm phán nhân dân phán rằng: "Họ đã có thể dễ dàng … ."
+1: a 同乗者は, b 止めることができた: người đi cùng đã có thể ngăn.
+2: b 止められることになった: bị ngăn; sai hướng.
+3: a 運転手は sai: hai người là đàn anh của người lái.
+4: a 運転手は và b 止められずにすんだ đều sai.
+
+@m9_52
+T: Tính mạng và cuộc đời của bản thân và người đi cùng, của gia đình, và hơn ai hết là của người xa lạ.
+S: Tính mạng và cuộc đời của … và người đi cùng, của … , và hơn ai hết là của … xa lạ.
+1: Đảo ngược: 見知らぬ cần đi với 人, không đi với 自分.
+2: c 家族 sai: 見知らぬ家族 không hợp mạch "người xa lạ".
+3: a 自分, b 家族, c 人: mở rộng dần đối tượng.
+4: b 人 và c 家族 bị đảo chỗ.
+
+@m9_53
+T: Một cảnh sát gây tai nạn rồi bỏ chạy khi chở con trai học cấp hai, đã nhờ vợ nhận tội thay, bị bắt ở thành phố Shizuoka.
+S: Một cảnh sát gây tai nạn rồi bỏ chạy khi chở con trai học cấp hai, đã … , bị bắt ở thành phố Shizuoka.
+1: 頼ませた: sai khiến; sai.
+2: 頼まれた: bị nhờ; sai chủ thể.
+3: 頼まされた: sai dạng.
+4: 妻に身代わりを頼んだ: nhờ vợ nhận thay.
+
+@m9_54
+T: "Đã uống thì đừng lái, đã lái thì đừng uống, đừng chở, đừng để người khác uống."
+S: "Đã uống thì đừng lái, đã lái thì đừng uống, đừng chở, … ."
+1: 飲めるな: sai dạng.
+2: 飲ませるな: đừng để (người khác) uống.
+3: 乗られているな sai dạng.
+4: 乗られるな: bị động; không hợp.
+
+@P d19-passage
+Dù là việc xấu nào, giả vờ không thấy cũng làm hại sức khỏe tâm hồn. Có khi ta cứ mang theo nỗi chán ghét bản thân, nghĩ rằng lẽ ra phải nhắc nhở, sao mình hèn nhát thế. Tệ hơn, chuyện không chỉ dừng ở vấn đề tâm lý.
+Trong vụ tai nạn giao thông ở tỉnh Saitama 3 năm trước, hai người đi cùng xe với người lái say rượu đã bị tuyên án 2 năm tù giam. Tội danh là tiếp tay cho hành vi lái xe nguy hiểm. Người lái xe say mềm (35 tuổi), kẻ đã đề nghị "đi một vòng nào", đã chịu án 16 năm tù.
+Chiếc xe chạy hơn 100 km/giờ đâm vào hai xe ngược chiều, khiến một cặp vợ chồng tử vong. Hai người đi cùng ngoài 40 tuổi, đã uống rượu cùng suốt gần 5 tiếng từ trưa, đều là đàn anh ở chỗ làm của người lái. Các thẩm phán nhân dân phán rằng: "Họ đã có thể dễ dàng ngăn lại." Không ngăn lại cũng chẳng khác gì tiếp tay.
+Khác với lơ đãng hay ngủ gật, lái xe sau khi uống rượu có thể xóa bỏ hoàn toàn bằng ý chí. Vì thế mà tội càng nặng. Gia đình nạn nhân căm ghét đó là tội phạm giao thông và đòi xử nặng là điều đương nhiên. Tính mạng và cuộc đời của bản thân và người đi cùng, của gia đình, và hơn ai hết là của người xa lạ. Chẳng có "một vòng" nào cần thiết đến mức đặt tất cả những điều ấy vào nguy hiểm.
+Nhưng con người thì yếu đuối. Ở thành phố Shizuoka, một cảnh sát gây tai nạn rồi bỏ chạy khi chở con trai học cấp hai, đã nhờ vợ nhận tội thay và bị bắt. Người vợ đã khai sự thật với cảnh sát, và nghe nói người chồng khi bị gọi đến vẫn còn hơi men. Với tư cách người làm nghề, người chồng và người cha, hẳn anh ta cũng muốn có ai đó đánh cho tỉnh ra.
+Dù vần điệu có lệch đi, tôi vẫn muốn nối dài khẩu hiệu này: "Đã uống thì đừng lái, đã lái thì đừng uống, đừng chở, đừng để người khác uống." Có sẵn quyết tâm ngăn lại kể cả bằng nắm đấm không? Nếu vẫn không nghe, song sắt sẽ bắt đầu hạ xuống bốn phía chiếc xe ấy. Hãy xuống xe ngay và báo cảnh sát.
