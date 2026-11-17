@@ -1,6 +1,6 @@
 // src/components/auth/LoginScreen.tsx
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/auth/useAuth';
 import { LogIn, Mail, Eye, EyeOff, AlertCircle, ShieldCheck, RotateCcw } from 'lucide-react';
 import { resetAllAppStorageAndCache } from '../../lib/offline/offlineStorage';
@@ -8,6 +8,10 @@ import { resetAllAppStorageAndCache } from '../../lib/offline/offlineStorage';
 export default function LoginScreen() {
   const { signInWithEmail } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  // Quay về trang đã bấm Đăng nhập (chỉ địa chỉ nội bộ)
+  const fromState = (location.state as { from?: unknown } | null)?.from;
+  const afterLogin = typeof fromState === 'string' && fromState.startsWith('/') && !fromState.startsWith('//') ? fromState : '/';
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -27,7 +31,7 @@ export default function LoginScreen() {
     try {
       setLoading(true);
       await signInWithEmail(email, password);
-      navigate('/');
+      navigate(afterLogin);
     } catch (err: any) {
       const errorMap: Record<string, string> = {
         'auth/user-not-found': 'Tài khoản không tồn tại.',

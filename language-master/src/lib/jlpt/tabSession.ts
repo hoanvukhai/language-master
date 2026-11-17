@@ -1,6 +1,7 @@
 import { useSyncExternalStore } from "react";
 import {
   decodeSession,
+  LAST_RESULT_KEY,
   reconcile,
   SESSION_CONTENT_KEY,
   SESSION_KEY,
@@ -27,6 +28,32 @@ function setNotice(text: string, kind: "info" | "warning") {
     }, 4000);
   }
 }
+/** Chủ của phiên trong tab: mã tài khoản hoặc "guest" (JL: tách dữ liệu theo tài khoản). */
+const OWNER_KEY = "language-master:jlpt:v2:owner";
+export const GUEST_OWNER = "guest";
+let activeOwner: string | null = null;
+/**
+ * Người đã đăng nhập: bài trong tab chỉ giữ trong RAM của trang (dữ liệu lâu dài nằm trên Firebase),
+ * không ghi vào bộ nhớ trình duyệt. Khách: lưu sessionStorage như trước.
+ */
+let memoryOnly = false;
+/** Bản sao kết quả để quay lại sau khi ôn câu sai (người đăng nhập: chỉ trong RAM) */
+let memoryBackup: Attempt | null = null;
+function readOwner(): string | null {
+  try {
+    return sessionStorage.getItem(OWNER_KEY);
+  } catch {
+    return null;
+  }
+}
+function writeOwner(owner: string | null) {
+  try {
+    if (owner) sessionStorage.setItem(OWNER_KEY, owner);
+    else sessionStorage.removeItem(OWNER_KEY);
+  } catch {
+    /* bỏ qua nếu storage bị chặn */
+  }
+}
 let initialized = false;
 let version = 0;
 const listeners = new Set<() => void>();
@@ -48,6 +75,7 @@ function removeStored() {
 /** Ghi phiên v2: bản chụp đề chỉ ghi khi đổi lượt, trạng thái ghi mỗi lần (JL-20). */
 function persist() {
   if (!current) return;
+  if (memoryOnly) return;
   try {
     if (writtenContentId !== current.id) {
       sessionStorage.setItem(
@@ -111,13 +139,13 @@ export function loadSession() {
       }
       else {
         removeStored();
-        setNotice("Phiên tạm đã hết hạn.", "warning");
+        setNotice("Bài đang làm đã hết hạn.", "warning");
       }
     }
   } catch {
     removeStored();
     setNotice(
-      "Không khôi phục được phiên. Bạn vẫn có thể làm bài bằng bộ nhớ.",
+      "Không khôi phục được bài đang làm. Bạn vẫn có thể làm bài tiếp.",
       "warning",
     );
   }
@@ -126,13 +154,17 @@ export function getSession() {
   loadSession();
   return current;
 }
-export function setSession(next: Attempt | null) {
+export function setSession(next: Attempt | null, opts: { silent?: boolean } = {}) {
   current = next;
-  if (next) persist();
-  else if (removeStored()) setNotice("Đã xóa phiên tạm.", "info");
+  if (next) {
+    persist();
+    if (activeOwner && !memoryOnly) writeOwner(activeOwner);
+  } else if (removeStored()) {
+    if (!opts.silent) setNotice("Đã xóa bài đang làm.", "info");
+  }
   else
     setNotice(
-      "Đã bỏ phiên khỏi bộ nhớ; chưa xóa được bản lưu. Thử xóa lại.",
+      "Đã bỏ bài đang làm; chưa xóa được bản lưu. Thử xóa lại.",
       "warning",
     );
   emit();
@@ -143,9 +175,79 @@ export function refreshSession() {
   if (next !== current) {
     setSession(next);
     if (!next) {
-      setNotice("Phiên tạm đã hết hạn.", "warning");
+      setNotice("Bài đang làm đã hết hạn.", "warning");
       emit();
     }
+  }
+}
+/**
+ * Gắn phiên trong tab với tài khoản đang dùng.
+ * - Khách vừa đăng nhập: bài trong tab được nhận vào tài khoản (bài đã nộp sẽ được lưu).
+ * - Đăng xuất hoặc đổi tài khoản: bài của tài khoản cũ bị bỏ khỏi tab (bản nháp của tài khoản đó vẫn còn).
+ */
+export function claimSession(uid: string | null) {
+  const next = uid ?? GUEST_OWNER;
+  loadSession();
+  activeOwner = next;
+  const signedIn = next !== GUEST_OWNER;
+  const stored = readOwner() ?? GUEST_OWNER;
+  if (current && stored !== next && stored !== GUEST_OWNER) {
+    // Bài của tài khoản khác (hoặc của lúc trước khi đăng xuất): bỏ khỏi tab, báo ngắn (LS-4)
+    const hadInProgress = current.status === "in_progress";
+    current = null;
+    memoryBackup = null;
+    removeStored();
+    try {
+      sessionStorage.removeItem(LAST_RESULT_KEY);
+    } catch {
+      /* bỏ qua */
+    }
+    if (hadInProgress) {
+      setNotice("Tài khoản đã thay đổi hoặc đăng xuất. Bài đang làm vẫn nằm trong tài khoản cũ.", "info");
+    }
+    emit();
+  }
+  if (signedIn) {
+    // Đăng nhập: chuyển bài trong tab (của khách hoặc bản cũ) vào RAM, xóa khỏi bộ nhớ trình duyệt
+    if (!memoryBackup) memoryBackup = getLastResultBackup();
+    memoryOnly = true;
+    removeStored();
+    try {
+      sessionStorage.removeItem(LAST_RESULT_KEY);
+    } catch {
+      /* bỏ qua */
+    }
+    writeOwner(null);
+  } else {
+    if (memoryOnly && current) {
+      // Vừa đăng xuất mà bài trong RAM là của tài khoản: không để lại cho khách
+      current = null;
+      emit();
+    }
+    memoryOnly = false;
+    memoryBackup = null;
+    writeOwner(GUEST_OWNER);
+  }
+}
+
+/** Xóa dữ liệu luyện đề cũ của tài khoản còn sót trong bộ nhớ trình duyệt (bản nháp, hàng chờ lưu, dấu đã lưu). */
+export function purgeAccountLocalData(uid: string) {
+  try {
+    for (const key of [
+      `language-master:jlpt:v1:drafts:${uid}`,
+      `language-master:jlpt:v2:drafts:${uid}`,
+      `language-master:jlpt:v2:drafts-migrated:${uid}`,
+      `language-master:jlpt:v1:pending-saves:${uid}`,
+    ])
+      localStorage.removeItem(key);
+  } catch {
+    /* bỏ qua */
+  }
+  try {
+    sessionStorage.removeItem(`language-master:jlpt:v1:history-saved:${uid}`);
+    sessionStorage.removeItem("language-master:jlpt:v1:history-saved");
+  } catch {
+    /* bỏ qua */
   }
 }
 export function useTabSession() {
@@ -160,4 +262,41 @@ export function useTabSession() {
     () => version,
   );
   return { attempt: current, notice, noticeKind };
+}
+
+/** Lưu bản sao kết quả trước khi chuyển sang Ôn câu sai để quay lại bảng kết quả được */
+export function saveLastResultBackup(attempt: Attempt | null) {
+  if (!attempt || attempt.status !== "submitted") return;
+  if (memoryOnly) {
+    memoryBackup = attempt;
+    return;
+  }
+  try {
+    sessionStorage.setItem(
+      LAST_RESULT_KEY,
+      JSON.stringify({ version: 2, attempt }),
+    );
+  } catch {
+    /* bỏ qua nếu hết dung lượng sessionStorage */
+  }
+}
+
+export function getLastResultBackup(): Attempt | null {
+  if (memoryOnly) return memoryBackup;
+  try {
+    const raw = sessionStorage.getItem(LAST_RESULT_KEY);
+    if (!raw) return null;
+    return decodeSession(raw);
+  } catch {
+    return null;
+  }
+}
+
+export function clearLastResultBackup() {
+  memoryBackup = null;
+  try {
+    sessionStorage.removeItem(LAST_RESULT_KEY);
+  } catch {
+    /* bỏ qua */
+  }
 }

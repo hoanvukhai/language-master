@@ -40,12 +40,12 @@ export default function UserMenu() {
     <div ref={menuRef} className="relative z-[100]">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 px-2 py-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+        className="flex items-center gap-1 sm:gap-2 px-1 sm:px-2 py-1 sm:py-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
       >
         {photoURL ? (
-          <img src={photoURL} alt="" className="w-8 h-8 rounded-full" referrerPolicy="no-referrer" />
+          <img src={photoURL} alt="" className="w-7 h-7 sm:w-8 sm:h-8 rounded-full" referrerPolicy="no-referrer" />
         ) : (
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white text-sm font-bold">
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white text-xs sm:text-sm font-bold">
             {displayName.charAt(0).toUpperCase()}
           </div>
         )}
@@ -60,17 +60,17 @@ export default function UserMenu() {
         
         {/* Lửa Chuỗi - Hiện ngay trên Navbar cho mọi thiết bị */}
         {userProfile && userProfile.currentStreak > 0 && (
-          <div className="flex items-center gap-1 ml-1 text-orange-500 font-bold text-sm bg-orange-50 dark:bg-orange-900/20 px-2 py-1 rounded-md border border-orange-200 dark:border-orange-800/50 shadow-sm">
-            <Flame size={14} className="fill-orange-500" />
+          <div className="flex items-center gap-0.5 sm:gap-1 ml-0.5 sm:ml-1 text-orange-500 font-bold text-xs sm:text-sm bg-orange-50 dark:bg-orange-900/20 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md border border-orange-200 dark:border-orange-800/50 shadow-sm">
+            <Flame size={13} className="fill-orange-500 sm:w-[14px] sm:h-[14px]" />
             {userProfile.currentStreak}
           </div>
         )}
         
-        <ChevronDown className={`w-4 h-4 ml-1 text-slate-400 transition-transform ${open ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`w-3.5 h-3.5 sm:w-4 sm:h-4 sm:ml-1 text-slate-400 transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-2 w-72 bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 py-3 z-[100] animate-in fade-in slide-in-from-top-2">
+        <div className="absolute right-0 top-full mt-2 w-72 max-w-[calc(100vw-1rem)] bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 py-3 z-[100] animate-in fade-in slide-in-from-top-2">
           
           {/* Thông tin Cấp độ & EXP (Header) */}
           <div className="px-4 pb-4 border-b border-slate-100 dark:border-slate-700">

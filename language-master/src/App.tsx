@@ -5,6 +5,7 @@ import {
   Routes,
   Route,
   Navigate,
+  useParams,
 } from "react-router-dom";
 import { SettingsProvider } from "./context/global/SettingsProvider";
 import { FlashcardSettingsProvider } from "./context/features/flashcard/FlashcardSettingsProvider";
@@ -33,6 +34,7 @@ const LearnSession = lazy(() => import("./pages/Learn/LearnSession"));
 const ExamWorkspace = lazy(() => import("./pages/Exam/ExamWorkspace"));
 const ExamLanguageHub = lazy(() => import("./pages/Exam/ExamLanguageHub"));
 const JLPTExamHub = lazy(() => import("./pages/Exam/JLPTExamHub"));
+const FreePracticeRoom = lazy(() => import("./pages/Exam/FreePracticeRoom"));
 const DrillSession = lazy(() => import("./pages/Exam/sessions/DrillSession"));
 const MockExamSession = lazy(
   () => import("./pages/Exam/sessions/MockExamSession"),
@@ -48,6 +50,11 @@ function StudyTools() {
   return <FloatingStudyTimer />;
 }
 
+function DayDetailRedirect() {
+  const { examId } = useParams();
+  return <Navigate to={`/exams/jlpt/${examId}/review`} replace />;
+}
+
 export default function App() {
   return (
     <AuthProvider>
@@ -58,9 +65,9 @@ export default function App() {
               <ScrollToTop />
               <TimeTracker />
               <StudyTools />
-              <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-slate-900 transition-colors duration-300 font-sans">
+              <div className="flex flex-col min-h-screen w-full overflow-x-clip bg-slate-50 dark:bg-slate-900 transition-colors duration-300 font-sans">
                 <Navbar />
-                <main className="flex-1">
+                <main className="flex-1 w-full min-w-0">
                   <Suspense
                     fallback={
                       <div className="p-8 text-center" role="status">
@@ -110,11 +117,35 @@ export default function App() {
                       <Route path="/exams" element={<ExamLanguageHub />} />
                       <Route path="/exams/jlpt" element={<JLPTExamHub />} />
                       <Route
+                        path="/exams/jlpt/free"
+                        element={<FreePracticeRoom />}
+                      />
+                      <Route
+                        path="/exams/jlpt/books"
+                        element={<JLPTExamHub initialView="books" />}
+                      />
+                      <Route
+                        path="/exams/jlpt/practice"
+                        element={<JLPTExamHub tab="practice" />}
+                      />
+                      <Route
+                        path="/exams/jlpt/history"
+                        element={<Navigate to="/exams/jlpt?lich-su=1" replace />}
+                      />
+                      <Route
+                        path="/exams/jlpt/stats"
+                        element={<Navigate to="/exams/jlpt" replace />}
+                      />
+                      <Route
                         path="/exams/jlpt/:examId"
-                        element={<ExamWorkspace mode="detail" />}
+                        element={<DayDetailRedirect />}
                       />
                       <Route
                         path="/exams/jlpt/:examId/result"
+                        element={<ExamWorkspace mode="result" />}
+                      />
+                      <Route
+                        path="/exams/jlpt/:examId/result/:attemptId"
                         element={<ExamWorkspace mode="result" />}
                       />
                       <Route

@@ -4,8 +4,11 @@ import fs from "node:fs";
 import {
   createAttempt,
   answer,
+  effectiveNow,
   finish,
+  pauseAttempt,
   reconcile,
+  resumeAttempt,
   decodeSession,
   score,
   units,
@@ -445,7 +448,7 @@ test("8.5 & 8.4: duration format and attempt labels", () => {
   assert.equal(formatDuration(50 * 60_000), "50:00");
   const a = createAttempt(exam, "mock", undefined, now);
   const d = describeAttempt(a, now + 60_000);
-  assert.equal(d.title, "第1日 (Day 1) · Bài có giờ");
+  assert.equal(d.title, "Ngày 01 · Bài có giờ");
   assert.equal(d.status, "Còn 49:00 · 0/54 câu");
 });
 
@@ -508,10 +511,30 @@ import {
 } from "../src/lib/jlpt/attemptLabels.ts";
 import { isEstimateEligible } from "../src/lib/jlpt/practicePool.ts";
 import {
-  buildAttemptSummary,
-  sameAttemptKind,
+  HISTORY_MAX_ATTEMPTS,
+  RADAR_AXES,
   accuracyByMondai,
+  aggregateMistakeBuckets,
+  buildAttemptHistoryRecord,
+  buildAttemptSummary,
+  computeSkillRadarAxes,
+  computeTrendSeries,
+  detectWeakMondais,
+  filterAnalyticsAttempts,
+  reconstructAttemptFromHistory,
+  restoreAttemptFromDraft,
+  sameAttemptKind,
+  toCompactDraft,
 } from "../src/lib/jlpt/historySummary.ts";
+import { buildPracticePool } from "../src/lib/jlpt/practicePool.ts";
+import {
+  buildSeedsFromExams,
+  createEndlessQueue,
+  drawNextEndlessUnit,
+  fillLookaheadBuffer,
+  parseFreeScopeSearchParams,
+  shuffleQuestionOptions,
+} from "../src/lib/jlpt/freePracticeEngine.ts";
 import { checkPatch, applyPatch } from "../scripts/jlpt/apply-enrichment.mjs";
 
 test("JL-13: extractBlankSentence keeps the sentence with the blank and drops (注n)", () => {
@@ -641,6 +664,500 @@ test("8.4: attempt kind uses the retry flag, not picked question ids", () => {
   const r = { ...createAttempt(exam, "drill", all.slice(0, 6), now), retry: true };
   assert.equal(describeAttempt(r, now).title, "Luyện lại · 6 câu");
   // Phiên cũ không có cờ: 54 câu của cả ngày không bị coi là luyện lại
-  assert.equal(describeAttempt(createAttempt(exam, "mock", all, now), now).title, "第1日 (Day 1) · Bài có giờ");
+  assert.equal(describeAttempt(createAttempt(exam, "mock", all, now), now).title, "Ngày 01 · Bài có giờ");
   assert.equal(describeAttempt(createAttempt(exam, "drill", all.slice(0, 6), now), now).title, "Luyện lại · 6 câu");
+});
+
+test("Stage 1: mock clock pauses on leave and resumes with remaining time preserved", () => {
+  const start = now;
+  const mock = createAttempt(exam, "mock", undefined, start);
+  const beforePauseRemaining = mock.deadlineAt - (start + 10_000);
+  // Tạm dừng sau 10 giây
+  const paused = pauseAttempt(mock, start + 10_000);
+  assert.equal(paused.pausedAt, start + 10_000);
+  // Thời gian trôi 5 phút ngoài phòng thi vẫn không làm tụt giờ còn lại hay bị auto-submit timeout
+  const checkedAway = reconcile(paused, start + 310_000);
+  assert.equal(checkedAway.status, "in_progress");
+  assert.equal(effectiveNow(checkedAway, start + 310_000), start + 10_000);
+  assert.equal(
+    describeAttempt(checkedAway, start + 310_000).status.startsWith("Tạm dừng"),
+    true,
+  );
+  // Quay lại sau 5 phút: deadline dời +300_000ms, thời gian làm trừ pausedMs = 10s
+  const resumed = resumeAttempt(checkedAway, start + 310_000);
+  assert.equal(resumed.pausedAt, undefined);
+  assert.equal(resumed.pausedMs, 300_000);
+  assert.equal(resumed.deadlineAt - (start + 310_000), beforePauseRemaining);
+  const raw = JSON.stringify({ version: 1, attempt: paused });
+  const decoded = decodeSession(raw, start + 310_000);
+  assert.equal(decoded?.pausedAt, start + 10_000);
+});
+
+test("Stage 1: retryKind produces clear retry labels and survives decodeSession", () => {
+  const qs = exam.mondais.flatMap((m) => m.questions).slice(0, 4).map((q) => q.id);
+  const wrongRetry = { ...createAttempt(exam, "drill", qs, now), retry: true, retryKind: "wrong" };
+  const blankRetry = { ...createAttempt(exam, "drill", qs, now), retry: true, retryKind: "blank" };
+  const flagRetry = { ...createAttempt(exam, "drill", qs, now), retry: true, retryKind: "flags" };
+  assert.equal(describeAttempt(wrongRetry, now).title, "Ôn câu sai · 4 câu");
+  assert.equal(describeAttempt(blankRetry, now).title, "Ôn câu bỏ trống · 4 câu");
+  assert.equal(describeAttempt(flagRetry, now).title, "Ôn câu chưa chắc · 4 câu");
+  const decoded = decodeSession(JSON.stringify({ version: 1, attempt: wrongRetry }), now + 10);
+  assert.equal(decoded?.retryKind, "wrong");
+});
+
+test("Stage 2: RADAR_AXES covers all Mondais 1..9 and computes rolling analytics cleanly", () => {
+  const covered = RADAR_AXES.flatMap((a) => a.mondais).sort((a, b) => a - b);
+  assert.deepEqual(covered, [1, 2, 3, 4, 5, 6, 7, 8, 9]);
+
+  const t0 = now - 40 * 86400000;
+  const tRecent = now - 2 * 86400000;
+  const makeRec = (overrides) => ({
+    v: 1,
+    examId: "pool-N2-kokusho-n2-20days",
+    bookId: "kokusho-n2-20days",
+    level: "N2",
+    mode: "drill",
+    kind: "pool",
+    title: "Luyện",
+    config: null,
+    strict: null,
+    assistedCount: 0,
+    total: 10,
+    correct: 5,
+    wrong: 5,
+    blank: 0,
+    byMondai: { 1: { total: 5, correct: 1 }, 9: { total: 5, correct: 4 } },
+    wrongIds: [],
+    durationSec: null,
+    estimate60: null,
+    contentRevision: 0,
+    startedAt: tRecent - 1000,
+    endedAt: tRecent,
+    ...overrides,
+  });
+
+  const dayRec = makeRec({ kind: "day", endedAt: now - 1000 });
+  const retryRec = makeRec({ retry: true, endedAt: now - 500 });
+  const oldRec = makeRec({ endedAt: t0, byMondai: { 1: { total: 5, correct: 5 } } });
+  const freshRec = makeRec({
+    endedAt: tRecent,
+    byMondai: { 1: { total: 5, correct: 1 }, 2: { total: 5, correct: 4 }, 9: { total: 5, correct: 4 } },
+  });
+
+  // Chỉ lọc kind === "pool" && retry !== true, thống nhất duy nhất theo 20 bài gần nhất
+  assert.equal(HISTORY_MAX_ATTEMPTS, 20);
+  const extraPool = Array.from({ length: 22 }, (_, idx) =>
+    makeRec({
+      endedAt: t0 + idx * 1000,
+      correct: 6,
+      total: 10,
+      estimate60: idx % 2 === 0 ? 35 + idx : null,
+    }),
+  );
+  const poolSample = [dayRec, retryRec, oldRec, ...extraPool, freshRec];
+  const filtered20 = filterAnalyticsAttempts(poolSample);
+  assert.equal(filtered20.length, 20);
+  assert.equal(filtered20[0].endedAt, freshRec.endedAt);
+
+  // Kể cả bài từ t0 (40 ngày trước) vẫn nằm trong thống kê 20 bài nếu chưa đủ 20 bài mới hơn
+  const underCap = filterAnalyticsAttempts([dayRec, retryRec, oldRec, freshRec]);
+  assert.deepEqual(underCap, [freshRec, oldRec]);
+
+  // Kiểm tra đường xu hướng sắp từ cũ -> mới
+  const trend = computeTrendSeries([freshRec, oldRec]);
+  assert.equal(trend.length, 2);
+  assert.equal(trend[0].endedAt, oldRec.endedAt);
+  assert.equal(trend[1].endedAt, freshRec.endedAt);
+  assert.equal(trend[1].percent, 50);
+
+  const axes = computeSkillRadarAxes([freshRec]);
+  assert.equal(axes.find((a) => a.id === "kanji")?.percent, 50); // M1(1/5)+M2(4/5) = 5/10 = 50%
+  assert.equal(axes.find((a) => a.id === "reading")?.percent, 80); // M9(4/5) = 80%
+  assert.equal(axes.find((a) => a.id === "context")?.percent, null);
+
+  const weak = detectWeakMondais(accuracyByMondai([freshRec]), 2);
+  assert.deepEqual(
+    weak.map((w) => w.mondai),
+    [1],
+  );
+});
+
+test("Stage 2: aggregateMistakeBuckets separates wrong/blank/flags without auto-curing and collects allQuestionIds", () => {
+  const t1 = now - 5000;
+  const t2 = now - 1000;
+  const firstPool = {
+    v: 1,
+    examId: "pool-N2-kokusho-n2-20days",
+    bookId: "kokusho-n2-20days",
+    level: "N2",
+    mode: "mock",
+    kind: "pool",
+    title: "Mock",
+    config: null,
+    strict: true,
+    assistedCount: 0,
+    total: 3,
+    correct: 1,
+    wrong: 1,
+    blank: 1,
+    byMondai: {},
+    questionIds: ["q1", "q2", "q3"],
+    wrongIds: ["q2", "q3"],
+    answeredWrongIds: ["q2"],
+    blankIds: ["q3"],
+    flagIds: ["q2"],
+    durationSec: 60,
+    estimate60: null,
+    contentRevision: 0,
+    startedAt: t1 - 60000,
+    endedAt: t1,
+  };
+  // Bài theo ngày không được trộn vào kho sai của ngân hàng
+  const dayWrong = { ...firstPool, kind: "day", questionIds: ["d1"], wrongIds: ["d1"], answeredWrongIds: ["d1"], blankIds: [], endedAt: t2 };
+  // Bài mới hơn làm đúng q2 và q3 -> hai câu rời kho (R7: mỗi câu lấy kết quả gần nhất)
+  const newerPoolRight = {
+    ...firstPool,
+    mode: "mock",
+    correct: 3,
+    wrong: 0,
+    blank: 0,
+    questionIds: ["q1", "q2", "q3"],
+    wrongIds: [],
+    answeredWrongIds: [],
+    blankIds: [],
+    flagIds: [],
+    endedAt: t2,
+  };
+
+  const beforeRetry = aggregateMistakeBuckets([firstPool, dayWrong]);
+  assert.deepEqual(beforeRetry, {
+    wrongIds: ["q2"],
+    blankIds: ["q3"],
+    flagIds: ["q2"],
+    allQuestionIds: ["q1", "q2", "q3"],
+  });
+
+  // Làm đúng ở bài mới KHÔNG làm câu sai cũ biến mất: chỉ mất khi bài cũ bị xóa/đẩy khỏi cửa sổ
+  const withNewer = aggregateMistakeBuckets([firstPool, dayWrong, newerPoolRight]);
+  assert.deepEqual(withNewer, {
+    wrongIds: ["q2"],
+    blankIds: ["q3"],
+    flagIds: [],
+    allQuestionIds: ["q1", "q2", "q3"],
+  });
+
+  // Lượt ôn lại (không còn được lưu) cũng không trừ câu sai
+  const retryRightQ2 = {
+    ...firstPool,
+    retry: true,
+    retryKind: "wrong",
+    mode: "drill",
+    questionIds: ["q2"],
+    wrongIds: [],
+    answeredWrongIds: [],
+    blankIds: [],
+    flagIds: [],
+    endedAt: t2,
+  };
+  assert.deepEqual(aggregateMistakeBuckets([firstPool, retryRightQ2]), {
+    wrongIds: ["q2"],
+    blankIds: ["q3"],
+    flagIds: [],
+    allQuestionIds: ["q1", "q2", "q3"],
+  });
+  // Lượt ôn lại làm sai q2: q2 vẫn ở kho
+  const retryWrongQ2 = { ...retryRightQ2, wrongIds: ["q2"], answeredWrongIds: ["q2"] };
+  assert.deepEqual(aggregateMistakeBuckets([firstPool, retryWrongQ2]).wrongIds, ["q2"]);
+});
+
+test("Free Practice engine: shuffles options/optionNotes/M8 order/references and fills non-repeating lookahead buffer", () => {
+  // 1. Đảo 4 đáp án câu thường + optionNotes + tham chiếu "Câu 3" / "câu 2 và 4" + giữ nguyên số không phải đáp án ("100 năm", "3%")
+  const mockSeedRandom = (() => {
+    const seq = [0.1, 0.2, 0.3];
+    let idx = 0;
+    return () => seq[idx++ % seq.length];
+  })();
+  const qNormal = {
+    id: "test-m6",
+    number: 28,
+    stem: "テスト",
+    options: ["opt1", "opt2", "opt3", "opt4"],
+    answer: 1,
+    explanation: {
+      vi: "Câu 3 đúng ngữ cảnh 100 năm và 3%; câu 2 và 4 sai kết hợp.",
+      optionNotes: ["n1", "n2", "n3", "n4"],
+    },
+  };
+  const shuffledNormal = shuffleQuestionOptions(qNormal, "usage", mockSeedRandom);
+  assert.equal(qNormal.answer, 1);
+  assert.deepEqual(qNormal.options, ["opt1", "opt2", "opt3", "opt4"]);
+  const newIndexOfOpt1 = shuffledNormal.options.indexOf("opt1") + 1;
+  const newIndexOfOpt2 = shuffledNormal.options.indexOf("opt2") + 1;
+  const newIndexOfOpt3 = shuffledNormal.options.indexOf("opt3") + 1;
+  const newIndexOfOpt4 = shuffledNormal.options.indexOf("opt4") + 1;
+  assert.equal(shuffledNormal.answer, newIndexOfOpt1);
+  assert.equal(
+    shuffledNormal.explanation.optionNotes[newIndexOfOpt3 - 1],
+    "n3",
+  );
+  assert.ok(shuffledNormal.explanation.vi.includes(`Câu ${newIndexOfOpt3}`));
+  assert.ok(
+    shuffledNormal.explanation.vi.includes(
+      `câu ${newIndexOfOpt2} và ${newIndexOfOpt4}`,
+    ),
+  );
+  assert.ok(shuffledNormal.explanation.vi.includes("100 năm và 3%"));
+
+  // 2. Kiểm tra trên toàn bộ 1.080 câu thật (đặc biệt 100 câu Mondai 8 ★): ghép câu theo order mới khớp 100% đáp án & chuỗi gốc
+  const dir = new URL("../src/data/exams/jlpt/n2/kokusho-20days/", import.meta.url);
+  const allExams = fs
+    .readdirSync(dir)
+    .filter((f) => f.endsWith(".json"))
+    .sort()
+    .map((f) => JSON.parse(fs.readFileSync(new URL(f, dir), "utf8")));
+  let checkedOrderQuestions = 0;
+  for (const ex of allExams) {
+    for (const m of ex.mondais) {
+      for (const q of m.questions) {
+        const s = shuffleQuestionOptions(q, m.type, () => 0.42);
+        assert.equal(s.options[s.answer - 1], q.options[q.answer - 1]);
+        if (q.order?.length) {
+          checkedOrderQuestions++;
+          const origSentence = q.order.map((n) => q.options[n - 1]).join("|");
+          const newSentence = s.order.map((n) => s.options[n - 1]).join("|");
+          assert.equal(newSentence, origSentence);
+          if (s.explanation?.vi && s.explanation.vi.includes("Vị trí ★ là")) {
+            assert.ok(s.explanation.vi.includes(`Vị trí ★ là ${s.answer}`));
+          }
+        }
+      }
+    }
+  }
+  assert.equal(checkedOrderQuestions, 100);
+
+  // 3. Queue trộn vô hạn + lookahead buffer không lặp liên tiếp qua ranh giới túi
+  const seeds = buildSeedsFromExams(allExams.slice(0, 2), new Set([1, 9]));
+  assert.ok(seeds.some((u) => u.mondai.number === 1));
+  assert.ok(seeds.some((u) => u.mondai.number === 9 && Boolean(u.passage)));
+  let qState = createEndlessQueue(seeds);
+  const drawnIds = [];
+  for (let i = 0; i < seeds.length + 3; i++) {
+    const step = drawNextEndlessUnit(qState);
+    qState = step.nextQueue;
+    assert.ok(step.unit);
+    if (drawnIds.length > 0 && seeds.length > 1) {
+      assert.notEqual(step.unit.sourceId, drawnIds[drawnIds.length - 1]);
+    }
+    drawnIds.push(step.unit.sourceId);
+  }
+
+  const filled = fillLookaheadBuffer(qState, [], 5);
+  assert.equal(filled.buffer.length, 5);
+
+  const parsed = parseFreeScopeSearchParams("?level=n2&books=b1,b2&mondais=1,8,8,99");
+  assert.deepEqual(parsed, {
+    level: "N2",
+    bookIds: ["b1", "b2"],
+    examIds: null,
+    mondais: [1, 8],
+  });
+
+  const parsedExams = parseFreeScopeSearchParams("?level=n2&exams=d01,d03,d01&mondais=2");
+  assert.deepEqual(parsedExams, {
+    level: "N2",
+    bookIds: null,
+    examIds: ["d01", "d03"],
+    mondais: [2],
+  });
+});
+
+test("Stage 2: history record & compact draft round-trip past 24h TTL safely", () => {
+  const pool = buildPracticePool([exam]);
+  assert.ok(pool);
+  const qs = pool.mondais.flatMap((m) => m.questions).slice(0, 5).map((q) => q.id);
+
+  // Bài theo ngày đang làm cũng có bản nháp (không mất khi đóng tab) và khôi phục hợp lệ
+  const dayQ = exam.mondais[0].questions[0].id;
+  const dayAttempt = answer(createAttempt(exam, "drill", [dayQ], now - 5000), dayQ, 2, now - 4000);
+  const dayDraft = toCompactDraft(dayAttempt, now);
+  assert.ok(dayDraft);
+  assert.equal(dayDraft.pool, false);
+  const dayRestored = restoreAttemptFromDraft(dayDraft, exam, now);
+  assert.ok(dayRestored);
+  assert.equal(dayRestored.answers[dayQ], 2);
+  assert.ok(decodeSession(JSON.stringify({ version: 1, attempt: dayRestored }), now));
+  // Bài đã nộp thì không có bản nháp
+  assert.equal(toCompactDraft(finish(dayAttempt, now), now), null);
+
+  // In-progress pooled mock tạo bản nháp gọn nhẹ và khôi phục được kể cả khi tạo từ 3 ngày trước
+  const oldStart = now - 3 * 86400000;
+  let mockAttempt = createAttempt(pool, "mock", qs, oldStart);
+  mockAttempt = answer(mockAttempt, qs[0], 1, oldStart + 1000);
+  const draft = toCompactDraft(mockAttempt, oldStart + 10 * 60000);
+  assert.ok(draft);
+  assert.equal("exam" in draft, false);
+  const restored = restoreAttemptFromDraft(draft, pool, now);
+  assert.ok(restored);
+  assert.equal(restored.answers[qs[0]], 1);
+  assert.ok(decodeSession(JSON.stringify({ version: 1, attempt: restored }), now));
+
+  // Submitted history record khôi phục xem lại kết quả kể cả khi >24h TTL
+  const submitted = {
+    ...finish(mockAttempt, oldStart + 12 * 60000),
+    retry: false,
+  };
+  const record = buildAttemptHistoryRecord(submitted);
+  assert.equal(record.choices?.[qs[0]], 1);
+  const replayed = reconstructAttemptFromHistory({ ...record, id: "hist-1" }, pool, now);
+  assert.ok(replayed);
+  assert.equal(replayed.id, "hist-1");
+  assert.equal(replayed.status, "submitted");
+  assert.equal(replayed.answers[qs[0]], 1);
+  assert.ok(decodeSession(JSON.stringify({ version: 1, attempt: replayed }), now));
+});
+
+// ---------- Một nguồn cho bài làm: ô bài dở, danh sách Đang làm, quy tắc bắt đầu bài mới ----------
+import {
+  slotOf,
+  attemptSlot,
+  draftSlot,
+  planNewAttempt,
+  buildUnfinishedList,
+} from "../src/lib/jlpt/attemptSlots.ts";
+import { isValidDraft } from "../src/lib/jlpt/historySummary.ts";
+import { classifyFirebaseError } from "../src/lib/jlpt/firebaseErrors.ts";
+import {
+  describeAttempt as describeAttemptLabel,
+  resumeButtonLabel,
+} from "../src/lib/jlpt/attemptLabels.ts";
+
+test("slots: one unfinished attempt per kind (pool mock, pool drill, retry, each day)", () => {
+  const pool = buildPracticePool([exam]);
+  assert.equal(slotOf({ examId: pool.id, isPool: true, mode: "mock" }), `mock:${pool.id}`);
+  assert.equal(slotOf({ examId: pool.id, isPool: true, mode: "drill" }), `drill:${pool.id}`);
+  assert.equal(slotOf({ examId: pool.id, isPool: true, mode: "drill", retry: true }), `retry:${pool.id}`);
+  // Bài theo ngày: làm có giờ hay luyện đều chung một ô
+  assert.equal(slotOf({ examId: exam.id, isPool: false, mode: "mock" }), `day:${exam.id}`);
+  assert.equal(slotOf({ examId: exam.id, isPool: false, mode: "drill" }), `day:${exam.id}`);
+  const mock = createAttempt(pool, "mock", undefined, now);
+  assert.equal(attemptSlot(mock), `mock:${pool.id}`);
+  const draft = toCompactDraft(mock, now);
+  assert.equal(draftSlot(draft), `mock:${pool.id}`);
+  // Bản nháp cũ chưa có cờ pool vẫn nhận ra nhờ tiền tố "pool-"
+  const legacy = { ...draft };
+  delete legacy.pool;
+  assert.equal(draftSlot(legacy), `mock:${pool.id}`);
+});
+
+test("start guard: same kind asks then drops; other kind kept as draft (signed in) or warned (guest)", () => {
+  const pool = buildPracticePool([exam]);
+  const mockSlot = `mock:${pool.id}`;
+  const liveMock = createAttempt(pool, "mock", undefined, now);
+  const same = planNewAttempt({ current: liveMock, slot: mockSlot, signedIn: true, drafts: [], now });
+  assert.ok(same.question?.includes("sẽ bị xóa và không tính điểm"));
+  assert.deepEqual(same.dropIds, [liveMock.id]);
+  assert.equal(same.keepLive, null);
+
+  const liveDay = createAttempt(exam, "drill", undefined, now);
+  const other = planNewAttempt({ current: liveDay, slot: mockSlot, signedIn: true, drafts: [], now });
+  assert.equal(other.question, null);
+  assert.equal(other.keepLive?.id, liveDay.id);
+
+  const guest = planNewAttempt({ current: liveDay, slot: mockSlot, signedIn: false, drafts: [], now });
+  assert.ok(guest.question?.includes("sẽ mất vì bạn chưa đăng nhập"));
+  assert.equal(guest.keepLive, null);
+
+  // Bài dở cùng loại chỉ còn ở bản nháp (tab đang trống) vẫn phải hỏi và bị xóa
+  const draft = toCompactDraft(liveMock, now);
+  const fromDraft = planNewAttempt({ current: null, slot: mockSlot, signedIn: true, drafts: [draft], now });
+  assert.ok(fromDraft.question);
+  assert.deepEqual(fromDraft.dropIds, [liveMock.id]);
+
+  // Kết quả đã nộp trong tab không chặn bài mới
+  const submitted = finish(liveMock, now + 1000);
+  assert.equal(planNewAttempt({ current: submitted, slot: mockSlot, signedIn: true, drafts: [], now }).question, null);
+});
+
+test("unfinished list: tab copy and its draft appear once; drafts keep their own status", () => {
+  const pool = buildPracticePool([exam]);
+  const live = createAttempt(pool, "mock", undefined, now);
+  const liveDraft = toCompactDraft(live, now);
+  const day = createAttempt(exam, "drill", undefined, now - 5000);
+  const dayDraft = toCompactDraft(day, now - 4000);
+  const list = buildUnfinishedList(live, [liveDraft, dayDraft], now + 1000);
+  assert.equal(list.length, 2);
+  assert.equal(list[0].id, live.id);
+  assert.equal(list[0].live, true);
+  assert.equal(list[0].kindLabel, "Thi thử");
+  assert.equal(list[1].live, false);
+  assert.equal(list[1].kindLabel, "Theo ngày");
+  // Không có bài trong tab: bản nháp thi thử hiện "Tạm dừng · Còn …"
+  const pausedDraft = toCompactDraft(pauseAttempt(live, now + 3000), now + 4000);
+  const onlyDrafts = buildUnfinishedList(null, [pausedDraft], now + 5000);
+  assert.match(onlyDrafts[0].status, /^Tạm dừng · Còn 49:57 · 0\/54 câu$/);
+  assert.equal(onlyDrafts[0].resumeLabel, "Làm tiếp · tạm dừng 49:57");
+});
+
+test("remaining time shows the same second everywhere (no 1-second mismatch)", () => {
+  const pool = buildPracticePool([exam]);
+  const a = pauseAttempt(createAttempt(pool, "mock", undefined, now), now + 2400);
+  const status = describeAttemptLabel(a, now + 9999).status;
+  assert.match(status, /Còn 49:58/);
+  assert.equal(resumeButtonLabel(a, now + 9999), "Làm tiếp · tạm dừng 49:58");
+});
+
+test("start guard warns before replacing a result that could not be saved to the account", () => {
+  const pool = buildPracticePool([exam]);
+  const done = finish(createAttempt(pool, "mock", undefined, now), now + 60000);
+  const slot = `mock:${pool.id}`;
+  const warned = planNewAttempt({ current: done, slot, signedIn: true, drafts: [], unsavedResult: true, now });
+  assert.ok(warned.question?.includes("chưa lưu được lên tài khoản sẽ mất"));
+  const saved = planNewAttempt({ current: done, slot, signedIn: true, drafts: [], unsavedResult: false, now });
+  assert.equal(saved.question, null);
+});
+
+test("drafts read back from Firebase are validated", () => {
+  const pool = buildPracticePool([exam]);
+  const d = toCompactDraft(createAttempt(pool, "drill", undefined, now), now);
+  assert.equal(isValidDraft(d), true);
+  assert.equal(isValidDraft({ id: "x", examId: "y", mode: "drill", questionIds: [] }), false);
+  assert.equal(isValidDraft(null), false);
+});
+
+test("firebase errors are classified so the UI can say why saving failed", () => {
+  assert.equal(classifyFirebaseError({ code: "permission-denied" }), "permission");
+  assert.equal(classifyFirebaseError({ code: "firestore/permission-denied" }), "permission");
+  assert.equal(classifyFirebaseError({ message: "Missing or insufficient permissions." }), "permission");
+  assert.equal(classifyFirebaseError({ code: "unavailable" }), "offline");
+  assert.equal(classifyFirebaseError({ code: "resource-exhausted" }), "quota");
+  assert.equal(classifyFirebaseError(new Error("boom")), "unknown");
+});
+
+test("Ôn tập: câu sai giữ nguyên cho tới khi bài chứa nó bị xóa/đẩy khỏi cửa sổ", () => {
+  const base = {
+    v: 1, examId: "e", bookId: "b", level: "N2", mode: "mock", kind: "pool", title: "t", config: null,
+    strict: true, assistedCount: 0, total: 2, correct: 0, wrong: 2, blank: 0, byMondai: {},
+    wrongIds: ["q1", "q2"], questionIds: ["q1", "q2"], answeredWrongIds: ["q1", "q2"], blankIds: [],
+    durationSec: 100, estimate60: null, contentRevision: 1, startedAt: 1000, endedAt: 2000,
+  };
+  assert.deepEqual(aggregateMistakeBuckets([base]).wrongIds.sort(), ["q1", "q2"]);
+  // Bài mới làm đúng cả hai câu: vẫn còn trong kho vì bài cũ còn trong danh sách
+  const later = { ...base, wrongIds: [], answeredWrongIds: [], endedAt: 3000 };
+  assert.deepEqual(aggregateMistakeBuckets([base, later]).wrongIds.sort(), ["q1", "q2"]);
+  // Bài cũ bị xóa / đẩy ra khỏi cửa sổ thì hết
+  assert.deepEqual(aggregateMistakeBuckets([later]).wrongIds, []);
+});
+
+import { seededRandom, fisherYatesShuffle as fyShuffle, shuffleQuestionOptions as shuffleOpts } from "../src/lib/jlpt/freePracticeEngine.ts";
+
+test("LT-3: cùng hạt giống cho cùng thứ tự câu và cùng thứ tự đáp án trộn", () => {
+  const a = fyShuffle([1, 2, 3, 4, 5, 6, 7, 8], seededRandom(12345));
+  const b = fyShuffle([1, 2, 3, 4, 5, 6, 7, 8], seededRandom(12345));
+  assert.deepEqual(a, b);
+  const q = { id: "x", number: 1, prompt: "p", options: ["a", "b", "c", "d"], answer: 2 };
+  const s1 = shuffleOpts(q, "vocab", seededRandom(777));
+  const s2 = shuffleOpts(q, "vocab", seededRandom(777));
+  assert.deepEqual(s1.options, s2.options);
+  assert.equal(s1.answer, s2.answer);
+  assert.equal(s1.options[s1.answer - 1], "b");
 });

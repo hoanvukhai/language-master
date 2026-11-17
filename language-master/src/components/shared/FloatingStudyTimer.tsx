@@ -6,6 +6,7 @@
 // - Đứng trên mọi lớp (zIndex: 99999)
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useInRouterContext, useLocation } from 'react-router-dom';
 import {
   Timer,
   Play,
@@ -232,9 +233,14 @@ export function FloatingStudyTimer() {
     return () => window.removeEventListener('keydown', handleGlobalKeyDown);
   }, [handleTriggerLookupNow, handleToggleLookup]);
 
-  // Draggable position state
+  // Draggable position state (giữ top >= 64px để không đè lên thanh Navbar h-14)
   const [pos, setPos] = useState<{ x: number; y: number }>(() => {
     if (typeof window === 'undefined') return { x: 100, y: 100 };
+    const vw = document.documentElement.clientWidth || window.innerWidth;
+    const vh = document.documentElement.clientHeight || window.innerHeight;
+    const estWidth = 152;
+    const minY = 64;
+    const maxY = Math.max(minY, vh - 56);
     const savedX = localStorage.getItem('timer_pos_x');
     const savedY = localStorage.getItem('timer_pos_y');
     if (savedX !== null && savedY !== null) {
@@ -242,20 +248,31 @@ export function FloatingStudyTimer() {
       const y = parseFloat(savedY);
       if (!isNaN(x) && !isNaN(y)) {
         return {
-          x: Math.min(Math.max(12, x), window.innerWidth - 160),
-          y: Math.min(Math.max(12, y), window.innerHeight - 60),
+          x: Math.min(Math.max(8, x), Math.max(8, vw - estWidth - 8)),
+          y: Math.min(Math.max(minY, y), maxY),
         };
       }
     }
     // Điện thoại: đặt cao hơn vùng nút chính ở đáy màn hình (JL-08)
-    const bottomGap = window.innerWidth < 640 ? 140 : 70;
+    const bottomGap = vw < 640 ? 96 : 70;
     return {
-      x: Math.max(16, window.innerWidth - 160),
-      y: Math.max(16, window.innerHeight - bottomGap),
+      x: Math.max(8, vw - estWidth - 12),
+      y: Math.max(minY, vh - bottomGap),
     };
   });
 
   const buttonRef = useRef<HTMLDivElement>(null);
+  // Trong khu Luyện đề: nút nổi luôn nằm nửa dưới màn hình, chừa chỗ thanh nút dưới, không đè đầu trang/đáp án (C-1)
+  const inRouter = useInRouterContext();
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const routePath = inRouter ? useLocation().pathname : '';
+  const inJlpt = routePath.startsWith('/exams/jlpt');
+  const renderY = (() => {
+    if (!inJlpt || typeof window === 'undefined') return pos.y;
+    const vh = window.innerHeight || 800;
+    const bottomReserve = (window.innerWidth || 1024) < 640 ? 150 : 72;
+    return Math.min(Math.max(pos.y, Math.round(vh * 0.55)), Math.max(64, vh - bottomReserve));
+  })();
   const isDraggingRef = useRef(false);
   const dragStartPosRef = useRef({ x: 0, y: 0 });
   const buttonStartPosRef = useRef({ x: 0, y: 0 });
@@ -268,15 +285,25 @@ export function FloatingStudyTimer() {
 
   useEffect(() => {
     const handleResize = () => {
+      const vw = document.documentElement.clientWidth || window.innerWidth;
+      const vh = document.documentElement.clientHeight || window.innerHeight;
+      const bw = buttonRef.current?.offsetWidth || 152;
+      const bh = buttonRef.current?.offsetHeight || 42;
+      const minY = 64;
       setPos(prev => {
-        const next = {
-          x: Math.min(Math.max(12, prev.x), window.innerWidth - 160),
-          y: Math.min(Math.max(12, prev.y), window.innerHeight - 60),
-        };
+        const nx = Math.min(Math.max(8, prev.x), Math.max(8, vw - bw - 8));
+        const ny = Math.min(Math.max(minY, prev.y), Math.max(minY, vh - bh - 8));
+        if (nx === prev.x && ny === prev.y) return prev;
+        const next = { x: nx, y: ny };
         currentPosRef.current = next;
+        if (buttonRef.current) {
+          buttonRef.current.style.left = `${nx}px`;
+          buttonRef.current.style.top = `${ny}px`;
+        }
         return next;
       });
     };
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -383,7 +410,7 @@ export function FloatingStudyTimer() {
     dragStartPosRef.current = { x: e.clientX, y: e.clientY };
     buttonStartPosRef.current = {
       x: currentPosRef.current.x,
-      y: currentPosRef.current.y,
+      y: buttonRef.current ? buttonRef.current.offsetTop : currentPosRef.current.y,
     };
 
     const handlePointerMove = (moveEv: PointerEvent) => {
@@ -395,16 +422,18 @@ export function FloatingStudyTimer() {
         hasDraggedRef.current = true;
       }
 
+      const vw = document.documentElement.clientWidth || window.innerWidth;
+      const vh = document.documentElement.clientHeight || window.innerHeight;
       const buttonWidth = buttonRef.current.offsetWidth || 135;
       const buttonHeight = buttonRef.current.offsetHeight || 38;
 
       const nextX = Math.min(
         Math.max(8, buttonStartPosRef.current.x + dx),
-        window.innerWidth - buttonWidth - 8,
+        Math.max(8, vw - buttonWidth - 8),
       );
       const nextY = Math.min(
-        Math.max(8, buttonStartPosRef.current.y + dy),
-        window.innerHeight - buttonHeight - 8,
+        Math.max(64, buttonStartPosRef.current.y + dy),
+        Math.max(64, vh - buttonHeight - 8),
       );
 
       buttonRef.current.style.left = `${nextX}px`;
@@ -451,7 +480,7 @@ export function FloatingStudyTimer() {
         data-no-selection-lookup="true"
         style={{
           left: `${pos.x}px`,
-          top: `${pos.y}px`,
+          top: `${renderY}px`,
           zIndex: 99999,
         }}
         className="fixed flex items-center p-1 rounded-full shadow-2xl backdrop-blur-md border border-slate-200/90 dark:border-slate-700/80 bg-white/95 dark:bg-slate-900/95 text-slate-700 dark:text-slate-200 select-none touch-none transition-shadow hover:shadow-indigo-500/20 hover:border-indigo-300 dark:hover:border-indigo-600"
@@ -461,7 +490,7 @@ export function FloatingStudyTimer() {
           <>
             <div
               onPointerDown={handlePointerDown}
-              className={`flex items-center gap-1.5 pl-2.5 pr-2 py-1 rounded-full cursor-grab active:cursor-grabbing transition-all ${
+              className={`flex items-center gap-1 sm:gap-1.5 pl-2 pr-1.5 py-0.5 sm:pl-2.5 sm:pr-2 sm:py-1 rounded-full cursor-grab active:cursor-grabbing transition-all ${
                 isRunning
                   ? 'bg-amber-500/15 text-amber-700 dark:text-amber-300 font-bold'
                   : 'hover:bg-slate-100 dark:hover:bg-slate-800'

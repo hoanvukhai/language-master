@@ -5,7 +5,6 @@ import {
   CheckCircle2,
   ChevronDown,
   ChevronUp,
-  Flag,
   Languages,
   Sparkles,
   Volume2,
@@ -17,7 +16,7 @@ import type {
   JLPTQuestion,
   ExamPracticeMode,
 } from "../../../data/exams/jlpt/types";
-import TargetWordSave from "./TargetWordSave";
+import BottomSheet from "../workspace/BottomSheet";
 import SourceImage from "./SourceImage";
 import ExamText from "./ExamText";
 import { speakWithVoiceEngine } from "../../../lib/audio/voiceEngine";
@@ -27,6 +26,47 @@ import {
   extractBlankSentence,
 } from "../../../lib/jlpt/examText";
 import { DRILL_COMMIT_DELAY_MS } from "../../../lib/jlpt/examCore";
+
+/** Điện thoại (dưới 640px): dùng cho lời giải dạng bottom sheet */
+function useIsPhone(): boolean {
+  const query = "(max-width: 639px)";
+  const [isPhone, setIsPhone] = useState(
+    () => typeof window !== "undefined" && !!window.matchMedia?.(query).matches,
+  );
+  useEffect(() => {
+    const mq = window.matchMedia?.(query);
+    if (!mq) return;
+    const on = () => setIsPhone(mq.matches);
+    on();
+    mq.addEventListener("change", on);
+    return () => mq.removeEventListener("change", on);
+  }, []);
+  return isPhone;
+}
+
+const readingCache = new Map<string, string>();
+let readingsPromise: Promise<Record<string, string>> | null = null;
+/** Cách đọc hiragana của câu hoàn chỉnh (bảng tạo sẵn bằng scripts/jlpt/build-readings.mjs) */
+function useSentenceReading(id?: string): string {
+  const [, force] = useState(0);
+  useEffect(() => {
+    if (!id || readingCache.has(id)) return;
+    let alive = true;
+    readingsPromise ??= import("../../../data/exams/jlpt/readings.json").then(
+      (m) => m.default as Record<string, string>,
+    );
+    readingsPromise
+      .then((all) => {
+        readingCache.set(id, all[id] ?? "");
+        if (alive) force((n) => n + 1);
+      })
+      .catch(() => {});
+    return () => {
+      alive = false;
+    };
+  }, [id]);
+  return (id && readingCache.get(id)) || "";
+}
 
 /** Trường dịch dùng TRƯỚC khi trả lời theo dạng Mondai (mục 12.1). null = không có nút. */
 const PRE_ANSWER_TRANSLATION: Record<string, "translationVi" | "stemTranslationVi" | null> = {
@@ -65,8 +105,15 @@ type Props = {
   locked?: boolean;
   expanded?: boolean;
   onExpand?: () => void;
-  isFlagged?: boolean;
-  onToggleFlag?: () => void;
+  /** Cho phép mở xem đáp án & lời giải ngay mà không cần chọn phương án (chế độ tự do) */
+  onRevealAnswer?: () => void;
+  /** Ẩn nút "Dịch câu" trước khi trả lời (phòng Luyện nhanh) */
+  hideTranslateButton?: boolean;
+  /** Điện thoại: lời giải mở bằng bảng trượt; máy tính: dropdown trong thẻ */
+  explanationSheetOnPhone?: boolean;
+  /** Điều khiển mở/đóng bảng lời giải từ ngoài (phím tắt) */
+  explanationOpen?: boolean;
+  onExplanationOpenChange?: (open: boolean) => void;
   onSelectOption: (option: number) => void;
   onWordLookup?: (word: string) => void;
   onAssist?: (
@@ -86,6 +133,7 @@ type Props = {
   /** Mondai 9: đoạn văn chứa ô trống của câu */
   passage?: JLPTPassage;
   onShowInPassage?: () => void;
+  onOpenPassage?: () => void;
 };
 
 export default function ExamQuestionCard({
@@ -98,8 +146,11 @@ export default function ExamQuestionCard({
   locked,
   expanded,
   onExpand,
-  isFlagged,
-  onToggleFlag,
+  onRevealAnswer,
+  hideTranslateButton,
+  explanationSheetOnPhone,
+  explanationOpen,
+  onExplanationOpenChange,
   onSelectOption,
   onWordLookup,
   onAssist,
@@ -112,8 +163,18 @@ export default function ExamQuestionCard({
   onUndoPending,
   passage,
   onShowInPassage,
+  onOpenPassage,
 }: Props) {
   const [showInlineTranslation, setShowInlineTranslation] = useState(false);
+  const isPhone = useIsPhone();
+  const sheetMode = Boolean(explanationSheetOnPhone && isPhone);
+  const [sheetOpenLocal, setSheetOpenLocal] = useState(false);
+  const sheetOpen = explanationOpen ?? sheetOpenLocal;
+  const setSheetOpen = (v: boolean) => {
+    setSheetOpenLocal(v);
+    onExplanationOpenChange?.(v);
+  };
+  const reading = useSentenceReading(mondaiType === "text_grammar" ? undefined : q.id);
   const onAssistRef = useRef(onAssist);
   useEffect(() => {
     onAssistRef.current = onAssist;
@@ -209,7 +270,7 @@ export default function ExamQuestionCard({
     <span className="font-bold text-emerald-800 dark:text-emerald-300 mr-1.5">
       Dịch câu
       {isAiTranslation && (
-        <span className="ml-1 align-middle px-1.5 py-px rounded-md bg-emerald-100 dark:bg-emerald-900/60 text-[10px] font-bold text-emerald-800 dark:text-emerald-200">
+        <span className="ml-1 align-middle px-1.5 py-px rounded-md bg-emerald-100 dark:bg-emerald-900/60 text-xs font-bold text-emerald-800 dark:text-emerald-200">
           AI dịch
         </span>
       )}
@@ -217,61 +278,241 @@ export default function ExamQuestionCard({
     </span>
   );
 
+  const explanationBlock = (
+        <div className="pt-3.5 border-t border-slate-200/80 dark:border-slate-800 space-y-3 text-sm leading-relaxed">
+          {/* Cách đọc câu (hiragana) */}
+          {reading && (
+            <div className="pb-3 border-b border-slate-200/60 dark:border-slate-800/70 flex items-start gap-2">
+              <Volume2 size={15} className="text-indigo-600 dark:text-indigo-400 shrink-0 mt-1" />
+              <div>
+                <span className="font-bold text-indigo-800 dark:text-indigo-300 mr-1.5 text-xs sm:text-sm">Cách đọc</span>
+                <span lang="ja" className="text-sm sm:text-base text-slate-800 dark:text-slate-100">{reading}</span>
+              </div>
+            </div>
+          )}
+
+          {/* Sentence Translation Row (Shown automatically when available) */}
+          {translationsReady && postTranslation && (
+            <div className="pb-3 border-b border-slate-200/60 dark:border-slate-800/70 text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-slate-200 flex items-start gap-2">
+              <Languages
+                size={15}
+                className="text-emerald-600 dark:text-emerald-400 shrink-0 mt-1"
+              />
+              <div>
+                {translationLabel}
+                <span>{postTranslation}</span>
+              </div>
+            </div>
+          )}
+
+          {/* Tier 1: Answer Verdict & User Choice Comparison */}
+          <div className="flex items-center justify-between gap-2 flex-wrap pb-3 border-b border-slate-200/70 dark:border-slate-800">
+            <div className="flex items-center gap-2 flex-wrap">
+              <p className="font-bold text-base text-emerald-700 dark:text-emerald-300 flex items-center gap-1.5">
+                {userAnswer && userAnswer !== q.answer ? (
+                  <XCircle size={18} className="text-rose-500 shrink-0" />
+                ) : (
+                  <CheckCircle2 size={18} className="text-emerald-500 shrink-0" />
+                )}
+                <span>Đáp án: {q.answer}</span>
+              </p>
+              {correctOptionText && (
+                <span
+                  lang="ja"
+                  className="px-2.5 py-0.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-200 font-semibold text-sm border border-emerald-200/70 dark:border-emerald-800/60"
+                >
+                  {correctOptionText}
+                </span>
+              )}
+              {userAnswer && userAnswer !== q.answer && (
+                <span className="px-2.5 py-0.5 rounded-lg bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 font-medium text-xs border border-rose-200/70 dark:border-rose-800/60">
+                  Bạn chọn: {userAnswer}. {userOptionText}
+                </span>
+              )}
+            </div>
+
+            <div className="flex items-center gap-2 flex-wrap">
+              {onNextQuestion && (
+                <button
+                  type="button"
+                  onClick={onNextQuestion}
+                  className="exam-primary !py-1.5 !px-3 !min-h-8 text-xs"
+                >
+                  <span>Câu tiếp</span>
+                  <ArrowRight size={13} />
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Tier 2: Core Explanation & Option Notes */}
+          <div className="space-y-2.5">
+            <p className="text-slate-800 dark:text-slate-100 font-medium leading-relaxed">
+              {q.explanation?.vi ||
+                q.explanation?.summary ||
+                "Chưa có lời giải."}
+            </p>
+
+            {/* Lời giải từng phương án (mục 9.5) */}
+            {hasOptionNotes && (
+              <ol className="space-y-2 pt-1" aria-label="Lời giải từng phương án">
+                {notes!.map((n, i) => {
+                  const isAnswer = q.answer === i + 1;
+                  const isUserWrong =
+                    !!userAnswer && userAnswer === i + 1 && !isAnswer;
+                  return (
+                    <li
+                      key={i}
+                      className={`text-xs sm:text-sm leading-relaxed pl-3 border-l-2 ${
+                        isAnswer
+                          ? "border-emerald-500 text-slate-800 dark:text-slate-100"
+                          : isUserWrong
+                            ? "border-rose-500 text-slate-800 dark:text-slate-100"
+                            : "border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
+                      }`}
+                    >
+                      <span className="font-semibold">{i + 1}. </span>
+                      <span lang="ja" className="font-semibold text-slate-900 dark:text-slate-100">
+                        {examPlainText(q.options[i] || "")}
+                      </span>
+                      <span> — {n}</span>
+                      {isAnswer && (
+                        <span className="ml-1.5 px-1.5 py-px rounded-md bg-emerald-100 dark:bg-emerald-900/60 text-xs font-bold text-emerald-800 dark:text-emerald-200">
+                          Đúng
+                        </span>
+                      )}
+                      {isUserWrong && (
+                        <span className="ml-1.5 px-1.5 py-px rounded-md bg-rose-100 dark:bg-rose-900/60 text-xs font-bold text-rose-800 dark:text-rose-200">
+                          Bạn chọn
+                        </span>
+                      )}
+                    </li>
+                  );
+                })}
+              </ol>
+            )}
+          </div>
+
+          {/* Từ trọng tâm: khối nhấn mạnh */}
+          {showTargetWord && (
+            <div className="rounded-2xl border-2 border-amber-300/80 dark:border-amber-700/70 bg-amber-50 dark:bg-amber-950/30 px-3.5 py-3">
+              <p className="text-xs font-bold uppercase tracking-wide text-amber-800 dark:text-amber-300">Từ trọng tâm</p>
+              <div className="mt-1 flex items-baseline gap-2 flex-wrap">
+                <button
+                  type="button"
+                  lang="ja"
+                  onClick={() => onWordLookup?.(q.targetWord!.term)}
+                  className="text-lg font-bold text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-300"
+                  title="Bấm để tra từ điển"
+                >
+                  {q.targetWord!.term}
+                </button>
+                {q.targetWord!.reading && (
+                  <span lang="ja" className="text-sm font-medium text-indigo-700 dark:text-indigo-300">{q.targetWord!.reading}</span>
+                )}
+                {q.targetWord!.hanViet && (
+                  <span className="text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">· {q.targetWord!.hanViet}</span>
+                )}
+              </div>
+              <p className="mt-0.5 text-sm text-slate-800 dark:text-slate-100">{q.targetWord!.meaningVi}</p>
+            </div>
+          )}
+
+          {/* Star Question Order Assembly (Mondai 8) */}
+          {q.order && (
+            <div className="pt-3 border-t border-slate-200/60 dark:border-slate-800/70 text-xs sm:text-sm space-y-1">
+              <p className="font-semibold text-amber-800 dark:text-amber-300">
+                Thứ tự ghép câu: {q.order.join(" → ")} (Ô ★ là đáp án {q.answer})
+              </p>
+              <p
+                lang="ja"
+                className="text-slate-900 dark:text-slate-100 font-medium"
+              >
+                {completedSentence ||
+                  q.order.map((i) => examPlainText(q.options[i - 1] || "")).join("")}
+              </p>
+            </div>
+          )}
+
+          {/* Tier 3: Smart Vocabulary & Grammar Breakdown (Zero Empty Cards) */}
+          {textReady && (
+            <Suspense
+              fallback={
+                <p className="mt-3 text-xs text-slate-500 dark:text-slate-400">
+                  Đang phân tích từ vựng…
+                </p>
+              }
+            >
+              <SentenceBreakdownPanel
+                stem={q.stem}
+                sentenceBreakdown={q.sentenceBreakdown}
+                explanationVi={q.explanation?.vi}
+                onWordClick={onWordLookup}
+                inline={!passage}
+              />
+            </Suspense>
+          )}
+
+          {/* Subtle Source & AI Reference Footer */}
+          {q.explanationStatus === "authored" && (
+            <p className="pt-2.5 border-t border-slate-200/60 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+              <Sparkles size={11} className="shrink-0" />
+              <span>
+                Đáp án đối chiếu cuối sách · Lời giải tham khảo do AI.
+              </span>
+            </p>
+          )}
+        </div>
+  );
+
   return (
     <article
-      className="exam-card scroll-mt-28 space-y-4 border border-slate-200/90 dark:border-slate-700/80"
+      className="exam-card !p-4 sm:!p-6 scroll-mt-28 space-y-3.5 sm:space-y-4 border border-slate-200/90 dark:border-slate-700/80"
       id={`q-${q.id}`}
     >
       {/* Question Header */}
-      <div className="flex items-start sm:items-center justify-between gap-2 pb-3 border-b border-slate-100 dark:border-slate-700/60">
+      <div className="flex items-start sm:items-center justify-between gap-2 pb-2.5 border-b border-slate-100 dark:border-slate-800">
         <div className="flex items-center gap-2 flex-wrap min-w-0">
-          <strong className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-indigo-50 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-300 font-black text-sm border border-indigo-200/60 dark:border-indigo-800/60">
+          <strong className="inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 font-bold text-xs sm:text-sm border border-indigo-200/60 dark:border-indigo-800/50">
             {sequenceNumber
               ? `Câu ${sequenceNumber}${totalQuestions ? ` / ${totalQuestions}` : ""}`
               : `Câu ${q.number}`}
           </strong>
-          {q.origin && (
-            <span className="inline-flex items-center px-2.5 py-1 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-bold text-xs border border-slate-200/80 dark:border-slate-700">
+          {/* Đề thi thử ẩn nguồn "Ngày X · Câu Y" để không lộ nơi câu đến từ đâu (R10) */}
+          {q.origin && mode !== "mock" && (
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 whitespace-nowrap">
               {`Ngày ${q.origin.day ?? q.origin.title} · Câu ${q.origin.number}`}
             </span>
           )}
           {contextRole === "context_only" && (
-            <span className="inline-flex items-center px-2.5 py-1 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 font-bold text-xs border border-amber-200/80 dark:border-amber-800/60">
+            <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 font-medium text-xs border border-amber-200/70 dark:border-amber-800/50">
               Giữ ngữ cảnh đoạn văn
             </span>
           )}
         </div>
 
-        <div className="flex items-center gap-2 shrink-0">
-          {onToggleFlag && (
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          {passage && onOpenPassage && (
             <button
               type="button"
-              className={`exam-secondary !py-1.5 !px-2.5 sm:!px-3 !min-h-9 !min-w-9 text-xs ${
-                isFlagged
-                  ? "!border-amber-400 !bg-amber-50 dark:!bg-amber-950/60 !text-amber-700 dark:!text-amber-300"
-                  : ""
-              }`}
-              aria-pressed={isFlagged}
-              aria-label={isFlagged ? "Bỏ đánh dấu chưa chắc" : "Đánh dấu chưa chắc"}
-              title={isFlagged ? "Bỏ đánh dấu chưa chắc" : "Đánh dấu chưa chắc"}
-              onClick={onToggleFlag}
+              onClick={onOpenPassage}
+              className="exam-secondary !py-1 !px-2 sm:!px-2.5 !min-h-8 text-xs sm:text-xs font-semibold"
+              title="Mở đoạn văn (R)"
             >
-              <Flag size={13} className={isFlagged ? "fill-current" : ""} />
-              <span className="hidden sm:inline">
-                {isFlagged ? "Chưa chắc" : "Đánh dấu"}
-              </span>
+              <BookOpen size={12} className="text-indigo-600 dark:text-indigo-400" />
+              <span>Đoạn văn</span>
             </button>
           )}
           {feedback && (
             <span
-              className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-extrabold ${
+              className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-xs font-semibold ${
                 mode === "review"
-                  ? "bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300"
+                  ? "bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800/50"
                   : !userAnswer
-                    ? "bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300"
+                    ? "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700"
                     : userAnswer === q.answer
-                      ? "bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300"
-                      : "bg-rose-100 dark:bg-rose-950/80 text-rose-700 dark:text-rose-300"
+                      ? "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200/70 dark:border-emerald-800/50"
+                      : "bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 border border-rose-200/70 dark:border-rose-800/50"
               }`}
             >
               {mode === "review"
@@ -326,14 +567,7 @@ export default function ExamQuestionCard({
       {/* 4 Options Grid */}
       <div
         className={`grid gap-2.5 ${
-          isShortOptions
-            ? // Cột câu hỏi hẹp khi đoạn văn dính bên trái (≥1280 px): 2 cột chỉ cho phương án rất ngắn
-              passage
-              ? q.options.every((opt) => opt.length <= 6)
-                ? "sm:grid-cols-2"
-                : "sm:grid-cols-2 xl:grid-cols-1"
-              : "sm:grid-cols-2"
-            : "grid-cols-1"
+          isShortOptions ? "sm:grid-cols-2" : "grid-cols-1"
         }`}
         role="group"
         aria-label={`Phương án câu ${q.number}`}
@@ -367,28 +601,37 @@ export default function ExamQuestionCard({
                   event.preventDefault();
               }}
             >
-              <input
-                type="radio"
-                className="mt-2 shrink-0 accent-indigo-600"
-                name={`answer-${q.id}`}
-                aria-label={`Phương án ${i + 1}, câu ${q.number}`}
-                aria-describedby={`opt-text-${q.id}-${i}`}
-                disabled={locked || mode === "review"}
-                checked={shownAnswer === i + 1}
-                onChange={() => onSelectOption(i + 1)}
-              />
-              <span
-                className={`inline-flex items-center justify-center w-6 h-6 rounded-lg text-xs font-black shrink-0 mt-0.5 ${
-                  isCorrectOption
-                    ? "bg-emerald-700 text-white"
-                    : isWrongOption
-                      ? "bg-rose-600 text-white"
-                      : isSelectedOption
-                        ? "bg-indigo-600 text-white"
-                        : "bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200"
-                }`}
-              >
-                {i + 1}.
+              <span className="relative w-7 h-7 shrink-0 mt-0.5 flex items-center justify-center">
+                <input
+                  type="radio"
+                  className={`peer appearance-none w-7 h-7 rounded-lg border transition-colors ${
+                    locked || mode === "review" ? "" : "cursor-pointer"
+                  } ${
+                    isCorrectOption
+                      ? "bg-emerald-600 border-emerald-600"
+                      : isWrongOption
+                        ? "bg-rose-600 border-rose-600"
+                        : isSelectedOption
+                          ? "bg-indigo-600 border-indigo-600"
+                          : "bg-slate-100/90 dark:bg-slate-800 border-slate-200/90 dark:border-slate-700"
+                  }`}
+                  name={`answer-${q.id}`}
+                  aria-label={`Phương án ${i + 1}, câu ${sequenceNumber ?? q.number}`}
+                  aria-describedby={`opt-text-${q.id}-${i}`}
+                  disabled={locked || mode === "review"}
+                  checked={shownAnswer === i + 1}
+                  onChange={() => onSelectOption(i + 1)}
+                />
+                <span
+                  aria-hidden="true"
+                  className={`pointer-events-none absolute inset-0 flex items-center justify-center text-xs font-extrabold ${
+                    isCorrectOption || isWrongOption || isSelectedOption
+                      ? "text-white"
+                      : "text-slate-700 dark:text-slate-200"
+                  }`}
+                >
+                  {i + 1}
+                </span>
               </span>
               <span
                 id={`opt-text-${q.id}-${i}`}
@@ -408,106 +651,124 @@ export default function ExamQuestionCard({
         })}
       </div>
 
-      {/* Chờ chốt 1,5 giây, có Hoàn tác (mục 7.1) */}
-      {pendingOption != null && (
-        <div
-          role="status"
-          className="relative overflow-hidden flex items-center justify-between gap-2 px-3 py-2 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800 text-xs sm:text-sm font-bold text-indigo-900 dark:text-indigo-100"
-        >
-          <span>Đã chọn {pendingOption} · đang chốt…</span>
-          <button
-            type="button"
-            className="px-2.5 py-1 rounded-lg bg-white dark:bg-slate-900 border border-indigo-200 dark:border-indigo-700 hover:bg-indigo-100 dark:hover:bg-indigo-900"
-            onClick={onUndoPending}
-          >
-            Hoàn tác
-          </button>
-          <span
-            key={`${q.id}-${pendingOption}`}
-            aria-hidden="true"
-            className="absolute left-0 bottom-0 h-0.5 w-full bg-indigo-500 origin-left exam-commit-progress"
-            style={{ animationDuration: `${DRILL_COMMIT_DELAY_MS}ms` }}
-          />
-        </div>
-      )}
-
-      {/* Compact Study & Action Bar (No repetitive text inputs) */}
-      {(canSpeak || canTranslate || showFeedback || (textReady && q.sourceImage)) && (
-        <div className="pt-1 flex flex-wrap items-center justify-between gap-2">
-          <div className="flex flex-wrap items-center gap-2">
-            {canSpeak && (
+      {/* Unified Study Footer & 1.5s Pending Bar (Zero Layout Shift) */}
+      {(canSpeak ||
+        canTranslate ||
+        showFeedback ||
+        (!showFeedback && !!onRevealAnswer) ||
+        (textReady && q.sourceImage) ||
+        pendingOption != null ||
+        (mode === "drill" && !locked && !feedback && !!onUndoPending)) && (
+        <div className="pt-2.5 border-t border-slate-100 dark:border-slate-800/80 min-h-[44px] flex flex-wrap items-center justify-between gap-2">
+          {pendingOption != null ? (
+            <div
+              role="status"
+              className="relative overflow-hidden w-full flex items-center justify-between gap-2 px-3 py-1.5 min-h-[38px] rounded-xl bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800 text-xs sm:text-sm font-bold text-indigo-900 dark:text-indigo-100"
+            >
+              <span>Đã chọn {pendingOption} · đang chốt…</span>
               <button
                 type="button"
-                className="exam-secondary !py-1.5 !px-3 !min-h-9 text-xs"
-                onClick={() => {
-                  const started = speakWithVoiceEngine(speechText, {
-                    lang: "ja-JP",
-                  });
-                  if (started && !locked && !feedback && mode !== "review") {
-                    onAssistRef.current?.(q.id, "speak");
-                  }
-                }}
+                className="px-2.5 py-1 rounded-lg bg-white dark:bg-slate-900 border border-indigo-200 dark:border-indigo-700 hover:bg-indigo-100 dark:hover:bg-indigo-900"
+                onClick={onUndoPending}
               >
-                <Volume2 size={14} className="text-indigo-500" />
-                <span>Nghe câu</span>
+                Hoàn tác
               </button>
-            )}
-
-            {canTranslate && !(showFeedback && expanded) && (
-              <button
-                type="button"
-                className="exam-secondary !py-1.5 !px-3 !min-h-9 text-xs"
-                aria-expanded={showInlineTranslation}
-                onClick={() => setShowInlineTranslation((v) => !v)}
-              >
-                <Languages size={14} className="text-emerald-600" />
-                <span>{showInlineTranslation ? "Ẩn bản dịch" : "Dịch câu"}</span>
-              </button>
-            )}
-
-            {showFeedback && (
-              <button
-                type="button"
-                className="exam-secondary !py-1.5 !px-3 !min-h-9 text-xs"
-                aria-expanded={!!expanded}
-                onClick={onExpand}
-              >
-                {expanded ? (
-                  <ChevronUp size={14} />
-                ) : (
-                  <ChevronDown size={14} />
+              <span
+                key={`${q.id}-${pendingOption}`}
+                aria-hidden="true"
+                className="absolute left-0 bottom-0 h-0.5 w-full bg-indigo-500 origin-left exam-commit-progress"
+                style={{ animationDuration: `${DRILL_COMMIT_DELAY_MS}ms` }}
+              />
+            </div>
+          ) : (
+            <>
+              <div className="flex flex-wrap items-center gap-2">
+                {canSpeak && (
+                  <button
+                    type="button"
+                    className="exam-secondary !py-1.5 !px-2.5 sm:!px-3 !min-h-9 text-xs"
+                    onClick={() => {
+                      const started = speakWithVoiceEngine(speechText, {
+                        lang: "ja-JP",
+                      });
+                      if (started && !locked && !feedback && mode !== "review") {
+                        onAssistRef.current?.(q.id, "speak");
+                      }
+                    }}
+                  >
+                    <Volume2 size={14} className="text-indigo-500" />
+                    <span>Nghe câu</span>
+                  </button>
                 )}
-                <span>
-                  {expanded ? "Thu gọn lời giải" : "Xem đáp án & lời giải"}
-                </span>
-              </button>
-            )}
-          </div>
 
-          {/* Collapsible Source Scan Verification */}
-          {textReady && q.sourceImage && (
-            <details className="text-xs text-slate-500 dark:text-slate-400">
-              <summary className="cursor-pointer font-semibold hover:text-indigo-600 dark:hover:text-indigo-400 inline-flex items-center gap-1.5 py-1">
-                <BookOpen size={13} />
-                <span>Đối chiếu bản quét gốc</span>
-              </summary>
-              <div className="mt-2">
-                <SourceImage
-                  src={q.sourceImage}
-                  alt={`Bản gốc câu ${q.number}, gồm đề và bốn phương án`}
-                />
+                {canTranslate && !hideTranslateButton && !(showFeedback && expanded) && (
+                  <button
+                    type="button"
+                    className="exam-secondary !py-1.5 !px-2.5 sm:!px-3 !min-h-9 text-xs"
+                    aria-expanded={showInlineTranslation}
+                    onClick={() => setShowInlineTranslation((v) => !v)}
+                  >
+                    <Languages size={14} className="text-emerald-600" />
+                    <span>{showInlineTranslation ? "Ẩn bản dịch" : "Dịch câu"}</span>
+                  </button>
+                )}
+
+                {!showFeedback && onRevealAnswer && (
+                  <button
+                    type="button"
+                    className="exam-secondary !py-1.5 !px-2.5 sm:!px-3 !min-h-9 text-xs"
+                    onClick={onRevealAnswer}
+                  >
+                    <ChevronDown size={14} />
+                    <span>Xem đáp án luôn</span>
+                  </button>
+                )}
+
+                {showFeedback && onExpand && !sheetMode && (
+                  <button
+                    type="button"
+                    className="exam-secondary !py-1.5 !px-2.5 sm:!px-3 !min-h-9 text-xs"
+                    aria-expanded={!!expanded}
+                    onClick={onExpand}
+                  >
+                    {expanded ? (
+                      <ChevronUp size={14} />
+                    ) : (
+                      <ChevronDown size={14} />
+                    )}
+                    <span>
+                      {expanded ? "Thu gọn lời giải" : "Xem đáp án & lời giải"}
+                    </span>
+                  </button>
+                )}
               </div>
-            </details>
+
+              {/* Quiet Collapsible Source Scan Verification */}
+              {textReady && q.sourceImage && (
+                <details className="open:w-full text-xs text-slate-500 dark:text-slate-400">
+                  <summary className="cursor-pointer font-medium hover:text-indigo-600 dark:hover:text-indigo-400 inline-flex items-center gap-1 py-1">
+                    <BookOpen size={12} />
+                    <span>Đối chiếu bản quét gốc</span>
+                  </summary>
+                  <div className="mt-2">
+                    <SourceImage
+                      src={q.sourceImage}
+                      alt={`Bản gốc câu ${q.number}, gồm đề và bốn phương án`}
+                    />
+                  </div>
+                </details>
+              )}
+            </>
           )}
         </div>
       )}
 
       {/* Inline Translation when Explanation is collapsed */}
       {showInlineTranslation && canTranslate && !(showFeedback && expanded) && (
-        <div className="p-3 rounded-xl bg-emerald-50/80 dark:bg-emerald-950/35 border border-emerald-200/70 dark:border-emerald-800/50 text-xs sm:text-sm leading-relaxed text-slate-800 dark:text-slate-200 flex items-start gap-2">
+        <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/70 text-xs sm:text-sm leading-relaxed text-slate-800 dark:text-slate-200 flex items-start gap-2.5">
           <Languages
             size={15}
-            className="text-emerald-600 dark:text-emerald-400 shrink-0 mt-1"
+            className="text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5"
           />
           <div>
             {translationLabel}
@@ -516,168 +777,33 @@ export default function ExamQuestionCard({
         </div>
       )}
 
-      {/* Detailed Explanation Callout (3-Tier Pedagogical Review Layout) */}
-      {showFeedback && expanded && (
-        <div className="mt-3 p-4 sm:p-5 rounded-2xl bg-slate-50/95 dark:bg-slate-900/65 border border-slate-200/90 dark:border-slate-700/80 space-y-3.5 text-sm leading-7">
-          {/* Tier 1: Answer Verdict & User Choice Comparison */}
-          <div className="flex items-center justify-between gap-2 flex-wrap pb-2.5 border-b border-slate-200/70 dark:border-slate-700/60">
-            <div className="flex items-center gap-2 flex-wrap">
-              <p className="font-black text-base text-emerald-700 dark:text-emerald-300 flex items-center gap-1.5">
-                {userAnswer && userAnswer !== q.answer ? (
-                  <XCircle size={18} className="text-rose-500 shrink-0" />
-                ) : (
-                  <CheckCircle2 size={18} className="text-emerald-500 shrink-0" />
-                )}
-                <span>Đáp án: {q.answer}</span>
-              </p>
-              {correctOptionText && (
-                <span
-                  lang="ja"
-                  className="px-2.5 py-0.5 rounded-lg bg-emerald-100/80 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-200 font-bold text-sm border border-emerald-200/70 dark:border-emerald-800/60"
-                >
-                  {correctOptionText}
-                </span>
-              )}
-              {userAnswer && userAnswer !== q.answer && (
-                <span className="px-2.5 py-0.5 rounded-lg bg-rose-100/80 dark:bg-rose-950/70 text-rose-700 dark:text-rose-300 font-semibold text-xs border border-rose-200/70 dark:border-rose-800/60">
-                  Bạn chọn: {userAnswer}. {userOptionText}
-                </span>
-              )}
-            </div>
-
-            <div className="flex items-center gap-2 flex-wrap">
-              {onNextQuestion && (
-                <button
-                  type="button"
-                  onClick={onNextQuestion}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-extrabold shadow-xs transition-colors"
-                >
-                  <span>Câu tiếp</span>
-                  <ArrowRight size={13} />
-                </button>
-              )}
-            </div>
-          </div>
-
-          {/* Sentence Translation Box (Shown automatically when available) */}
-          {translationsReady && postTranslation && (
-            <div className="p-3 rounded-xl bg-emerald-50/80 dark:bg-emerald-950/35 border border-emerald-200/70 dark:border-emerald-800/50 text-xs sm:text-sm leading-relaxed text-slate-800 dark:text-slate-200 flex items-start gap-2">
-              <Languages
-                size={15}
-                className="text-emerald-600 dark:text-emerald-400 shrink-0 mt-1"
-              />
-              <div>
-                {translationLabel}
-                <span>{postTranslation}</span>
-              </div>
-            </div>
-          )}
-
-          {/* Tier 2: Core Explanation & Option Notes */}
-          <div className="space-y-2">
-            <p className="text-slate-800 dark:text-slate-100 font-medium leading-relaxed">
-              {q.explanation?.vi ||
-                q.explanation?.summary ||
-                "Chưa có lời giải."}
-            </p>
-
-            {/* Lời giải từng phương án (mục 9.5) */}
-            {hasOptionNotes && (
-              <ol className="space-y-1.5" aria-label="Lời giải từng phương án">
-                {notes!.map((n, i) => {
-                  const isAnswer = q.answer === i + 1;
-                  const isUserWrong =
-                    !!userAnswer && userAnswer === i + 1 && !isAnswer;
-                  return (
-                    <li
-                      key={i}
-                      className={`text-xs sm:text-sm leading-relaxed pl-3 border-l-2 ${
-                        isAnswer
-                          ? "border-emerald-500 text-slate-800 dark:text-slate-100"
-                          : isUserWrong
-                            ? "border-rose-500 text-slate-800 dark:text-slate-100"
-                            : "border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300"
-                      }`}
-                    >
-                      <span className="font-bold">{i + 1}. </span>
-                      <span lang="ja" className="font-bold">
-                        {examPlainText(q.options[i] || "")}
-                      </span>
-                      <span> — {n}</span>
-                      {isAnswer && (
-                        <span className="ml-1.5 px-1.5 py-px rounded-md bg-emerald-100 dark:bg-emerald-900/60 text-[10px] font-bold text-emerald-800 dark:text-emerald-200">
-                          Đúng
-                        </span>
-                      )}
-                      {isUserWrong && (
-                        <span className="ml-1.5 px-1.5 py-px rounded-md bg-rose-100 dark:bg-rose-900/60 text-[10px] font-bold text-rose-800 dark:text-rose-200">
-                          Bạn chọn
-                        </span>
-                      )}
-                    </li>
-                  );
-                })}
-              </ol>
+      {/* Lời giải: trong thẻ (máy tính) hoặc bottom sheet (điện thoại) */}
+      {showFeedback && sheetMode && (
+        <div className="pt-3 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-3">
+          <p className="min-w-0 text-sm font-bold flex items-center gap-1.5">
+            {userAnswer && userAnswer !== q.answer ? (
+              <XCircle size={18} className="text-rose-500 shrink-0" />
+            ) : (
+              <CheckCircle2 size={18} className="text-emerald-500 shrink-0" />
             )}
-          </div>
-
-          {/* Từ trọng tâm + lưu vào sổ tay (mục 9.6) */}
-          {showTargetWord && (
-            <TargetWordSave
-              input={{
-                word: q.targetWord!,
-                example: completedSentence,
-                exampleMeaning: postTranslation,
-              }}
-              onOpenLookup={onWordLookup}
-            />
-          )}
-
-          {/* Star Question Order Assembly (Mondai 8) */}
-          {q.order && (
-            <div className="p-3 rounded-xl bg-amber-50/80 dark:bg-amber-950/40 border border-amber-200/70 dark:border-amber-800/50 text-xs sm:text-sm space-y-1">
-              <p className="font-bold text-amber-800 dark:text-amber-200">
-                Thứ tự ghép câu: {q.order.join(" → ")} (Ô ★ là đáp án {q.answer})
-              </p>
-              <p
-                lang="ja"
-                className="text-slate-900 dark:text-slate-100 font-semibold"
-              >
-                {completedSentence ||
-                  q.order.map((i) => examPlainText(q.options[i - 1] || "")).join("")}
-              </p>
-            </div>
-          )}
-
-          {/* Tier 3: Smart Vocabulary & Grammar Breakdown (Zero Empty Cards) */}
-          {textReady && (
-            <Suspense
-              fallback={
-                <p className="mt-3 text-xs text-slate-500 dark:text-slate-400">
-                  Đang phân tích từ vựng…
-                </p>
-              }
-            >
-              <SentenceBreakdownPanel
-                stem={q.stem}
-                sentenceBreakdown={q.sentenceBreakdown}
-                explanationVi={q.explanation?.vi}
-                onWordClick={onWordLookup}
-              />
-            </Suspense>
-          )}
-
-          {/* Subtle Source & AI Reference Footer */}
-          {q.explanationStatus === "authored" && (
-            <p className="pt-2 border-t border-slate-200/60 dark:border-slate-800 text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-              <Sparkles size={11} className="shrink-0" />
-              <span>
-                Đáp án đối chiếu bảng cuối sách · Lời giải tham khảo do AI biên
-                soạn, không phải lời giải của nhà xuất bản.
-              </span>
-            </p>
-          )}
+            <span className="truncate text-slate-800 dark:text-slate-100">
+              {userAnswer && userAnswer !== q.answer ? "Chưa đúng" : "Đúng rồi"} · Đáp án {q.answer}
+            </span>
+          </p>
+          <button
+            type="button"
+            className="exam-primary !py-1.5 !px-3 !min-h-10 text-xs shrink-0"
+            onClick={() => setSheetOpen(true)}
+          >
+            Xem lời giải
+          </button>
         </div>
+      )}
+      {showFeedback && !sheetMode && expanded && explanationBlock}
+      {sheetMode && showFeedback && (
+        <BottomSheet open={sheetOpen} title="Lời giải" onClose={() => setSheetOpen(false)}>
+          {explanationBlock}
+        </BottomSheet>
       )}
     </article>
   );

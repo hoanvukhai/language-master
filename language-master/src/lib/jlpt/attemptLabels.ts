@@ -1,6 +1,32 @@
-import type { Attempt } from "./examCore";
+import { effectiveNow, type Attempt } from "./examCore.ts";
 
 export type AttemptKind = "pool" | "day" | "retry";
+
+export const MONDAI_NAMES: Record<number, string> = {
+  1: "Cách đọc Kanji",
+  2: "Cách viết Kanji",
+  3: "Cấu tạo từ",
+  4: "Ngữ cảnh câu",
+  5: "Từ đồng nghĩa",
+  6: "Cách dùng từ",
+  7: "Ngữ pháp câu",
+  8: "Sắp xếp câu ★",
+  9: "Điền đoạn văn",
+};
+
+/** Tên thống nhất cho ba hành động trên một đề (C-3, KS-2) */
+export const ACTION_LABELS = {
+  drill: "Luyện theo dạng",
+  mock: "Làm bài có giờ",
+  review: "Làm bài",
+} as const;
+
+/** Tên ngày hiển thị một kiểu: "Ngày 01" (bỏ "第1日 (Day 1)" lặp) */
+export function dayName(exam: { day?: number; title: string; isPracticePool?: boolean }): string {
+  return exam.day && !exam.isPracticePool
+    ? `Ngày ${String(exam.day).padStart(2, "0")}`
+    : exam.title;
+}
 
 /** Loại lượt suy ra từ dữ liệu sẵn có trong Attempt. */
 export function attemptKind(attempt: Attempt): AttemptKind {
@@ -26,13 +52,34 @@ export function formatDuration(ms: number): string {
   return `${h ? `${h}:` : ""}${mm}:${String(sec).padStart(2, "0")}`;
 }
 
-/** Thời gian làm bài có giờ: min(endedAt, deadlineAt) − createdAt, không âm (mục 8.5). */
+/** Thời gian còn lại của bài có giờ (null với bài luyện không giờ). */
+export function remainingMs(attempt: Attempt, now = Date.now()): number | null {
+  if (attempt.mode !== "mock" || attempt.deadlineAt === undefined) return null;
+  return Math.max(0, attempt.deadlineAt - effectiveNow(attempt, now));
+}
+
+/** Giờ còn lại làm tròn lên theo giây; dùng chung cho mọi nơi hiển thị để không lệch nhau 1 giây. */
+export function formatRemaining(ms: number): string {
+  return formatDuration(Math.ceil(Math.max(0, ms) / 1000) * 1000);
+}
+
+/** Nhãn nút làm tiếp: "Làm tiếp · còn 43:46", "Làm tiếp · tạm dừng 43:46" hoặc "Làm tiếp". */
+export function resumeButtonLabel(attempt: Attempt, now = Date.now()): string {
+  const rem = remainingMs(attempt, now);
+  if (rem === null) return "Làm tiếp";
+  return attempt.pausedAt !== undefined
+    ? `Làm tiếp · tạm dừng ${formatRemaining(rem)}`
+    : `Làm tiếp · còn ${formatRemaining(rem)}`;
+}
+
+/** Thời gian làm bài có giờ: min(endedAt, deadlineAt) − createdAt − pausedMs, không âm (mục 8.5). */
 export function attemptDurationMs(attempt: Attempt, now = Date.now()): number {
+  const curNow = effectiveNow(attempt, now);
   const end = Math.min(
-    attempt.endedAt ?? now,
+    attempt.endedAt ?? curNow,
     attempt.deadlineAt ?? Number.POSITIVE_INFINITY,
   );
-  return Math.max(0, end - attempt.createdAt);
+  return Math.max(0, end - attempt.createdAt - (attempt.pausedMs ?? 0));
 }
 
 /** "mm:ss", hoặc "50:00 (hết giờ)" khi hết giờ. */
@@ -60,17 +107,26 @@ export function describeAttempt(
   const total = attempt.questionIds.length;
   const answered = Object.keys(attempt.answers).length;
   let title: string;
-  if (kind === "retry") title = `Luyện lại · ${total} câu`;
-  else if (attempt.mode === "mock")
+  if (kind === "retry") {
+    const label =
+      attempt.retryKind === "wrong"
+        ? "Ôn câu sai"
+        : attempt.retryKind === "blank"
+          ? "Ôn câu bỏ trống"
+          : attempt.retryKind === "flags"
+            ? "Ôn câu chưa chắc"
+            : "Luyện lại";
+    title = `${label} · ${total} câu`;
+  } else if (attempt.mode === "mock")
     title =
       kind === "pool"
         ? `Bài có giờ · Đề trộn ${total} câu`
-        : `${attempt.exam.title} · Bài có giờ`;
+        : `${dayName(attempt.exam)} · Bài có giờ`;
   else
     title =
       kind === "pool"
         ? `Luyện theo dạng · ${mondaiSummary(attempt)} · ${total} câu`
-        : `${attempt.exam.title} · Luyện theo dạng`;
+        : `${dayName(attempt.exam)} · Luyện theo dạng`;
 
   let status: string;
   if (attempt.status === "submitted") {
@@ -82,7 +138,11 @@ export function describeAttempt(
     }).length;
     status = `Đã nộp · ${correct}/${total} đúng`;
   } else if (attempt.mode === "mock" && attempt.deadlineAt) {
-    status = `Còn ${formatDuration(attempt.deadlineAt - now)} · ${answered}/${total} câu`;
+    const rem = formatRemaining(attempt.deadlineAt - effectiveNow(attempt, now));
+    status =
+      attempt.pausedAt !== undefined
+        ? `Tạm dừng · Còn ${rem} · ${answered}/${total} câu`
+        : `Còn ${rem} · ${answered}/${total} câu`;
   } else {
     status = `Đang luyện · ${answered}/${total} câu`;
   }

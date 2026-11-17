@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { LogIn, Library, Compass, WifiOff, BookOpen, GraduationCap } from 'lucide-react';
 import { useSettings } from '../context/global/useSettings';
@@ -10,6 +11,16 @@ export default function Navbar() {
   const { user } = useAuth();
   const { isOnline } = useNetworkStatus();
   const navigate = useNavigate();
+  // Thi nghiêm túc đang chạy: ẩn thanh điều hướng để không có lối thoát giữa giờ (R10)
+  const [examLocked, setExamLocked] = useState<boolean>(
+    () => typeof document !== 'undefined' && document.body.dataset.jlptStrict === 'true',
+  );
+  useEffect(() => {
+    const onWorkspace = (e: Event) =>
+      setExamLocked(Boolean((e as CustomEvent<{ strict?: boolean }>).detail?.strict));
+    window.addEventListener('app:jlpt-workspace', onWorkspace);
+    return () => window.removeEventListener('app:jlpt-workspace', onWorkspace);
+  }, []);
 
   const t = {
     vi: { myCourses: 'Của tôi', explore: 'Khám phá', exams: 'Luyện đề', dictionary: 'Từ điển', settings: 'Cài đặt', login: 'Đăng nhập', profile: 'Hồ sơ' },
@@ -24,31 +35,33 @@ export default function Navbar() {
   ];
 
   const navClass = ({ isActive }: { isActive: boolean }) =>
-    `flex items-center justify-center gap-1.5 p-2 sm:px-3 sm:py-2 rounded-xl font-bold transition-all text-xs sm:text-sm select-none ${
+    `flex items-center justify-center gap-1.5 p-1.5 sm:px-2.5 md:px-3 sm:py-2 rounded-xl font-bold transition-all text-xs sm:text-sm select-none whitespace-nowrap shrink-0 ${
       isActive
-        ? 'bg-blue-600 text-white shadow-sm'
+        ? 'bg-indigo-600 text-white shadow-sm'
         : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/60'
     }`;
 
+  if (examLocked) return null;
+
   return (
     <nav className="bg-white dark:bg-slate-800 shadow-sm border-b border-gray-100 dark:border-slate-700 sticky top-0 z-40 transition-colors duration-300">
-      <div className="max-w-5xl mx-auto px-3 sm:px-4 h-14 flex items-center justify-between gap-2">
+      <div className="max-w-5xl mx-auto px-2.5 sm:px-4 h-14 flex items-center justify-between gap-1 sm:gap-2 min-w-0">
 
         {/* Logo */}
         <div
           onClick={() => navigate('/')}
-          className="text-lg font-bold text-slate-800 dark:text-white flex items-center gap-2 transition-colors flex-shrink-0 cursor-pointer select-none group"
+          className="text-lg font-bold text-slate-800 dark:text-white flex items-center gap-2 transition-colors shrink-0 cursor-pointer select-none group"
         >
-          <img src="/favicon.svg" alt="Language Master" className="w-8 h-8 rounded-xl shadow-md transition-transform group-hover:scale-105" />
+          <img src="/favicon.svg" alt="Language Master" className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl shadow-md transition-transform group-hover:scale-105" />
           <span className="hidden md:inline font-black tracking-tight bg-gradient-to-r from-blue-600 via-indigo-600 to-amber-500 bg-clip-text text-transparent">
             Language Master
           </span>
-          <span className="md:hidden font-black text-blue-600 dark:text-blue-400 text-base">LM</span>
+          <span className="hidden sm:inline md:hidden font-black text-blue-600 dark:text-blue-400 text-base">LM</span>
         </div>
 
         {/* Right Section: Navigation Links pushed to the right + UserMenu / Login */}
-        <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
-          <div className="flex items-center gap-1 sm:gap-1.5">
+        <div className="flex items-center gap-0.5 sm:gap-2 min-w-0">
+          <div className="flex items-center gap-0.5 sm:gap-1.5">
             {links.map(link => {
               const Icon = link.icon;
               return (
@@ -59,7 +72,7 @@ export default function Navbar() {
                   className={navClass}
                   title={link.label}
                 >
-                  <Icon size={18} className="shrink-0" />
+                  <Icon size={17} className="sm:w-[18px] sm:h-[18px] shrink-0" />
                   <span className="hidden sm:inline">{link.label}</span>
                 </NavLink>
               );
@@ -68,7 +81,7 @@ export default function Navbar() {
 
           {!isOnline && (
             <div
-              className="flex items-center gap-1 px-2 py-1 rounded-full bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/40 text-[11px] font-bold animate-pulse"
+              className="flex items-center gap-1 px-1.5 sm:px-2 py-1 rounded-full bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/40 text-[11px] font-bold animate-pulse"
               title="Đang mất kết nối mạng. Bạn đang ở chế độ Ngoại tuyến."
             >
               <WifiOff size={12} />
@@ -81,7 +94,7 @@ export default function Navbar() {
           ) : (
             <button
               onClick={() => navigate('/login')}
-              className="flex items-center gap-1.5 p-2 sm:px-3 sm:py-2 rounded-xl text-xs sm:text-sm font-bold bg-indigo-500 text-white hover:bg-indigo-600 transition-colors shadow-sm"
+              className="flex items-center gap-1.5 p-1.5 sm:px-3 sm:py-2 rounded-xl text-xs sm:text-sm font-bold bg-indigo-600 text-white hover:bg-indigo-700 transition-colors shadow-sm whitespace-nowrap shrink-0"
               title={t.login}
             >
               <LogIn size={16} />

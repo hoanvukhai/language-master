@@ -7,6 +7,8 @@ export const SESSION_KEY = "language-master:jlpt:v1:session";
 /** Phiên v2 (JL-20): bản chụp đề ghi một lần, trạng thái ghi mỗi lần thay đổi */
 export const SESSION_CONTENT_KEY = "language-master:jlpt:v2:content";
 export const SESSION_STATE_KEY = "language-master:jlpt:v2:state";
+/** Lưu tạm kết quả bài thi gần nhất khi chuyển sang ôn câu sai/trống để quay lại được */
+export const LAST_RESULT_KEY = "language-master:jlpt:v2:last-result";
 /** Thời gian chờ trước khi chốt một câu đơn trong lượt luyện, có thể Hoàn tác (mục 7.1) */
 export const DRILL_COMMIT_DELAY_MS = 1500;
 export const TTL = 86400000;
@@ -36,6 +38,12 @@ export type Attempt = {
   strict?: boolean;
   /** Lượt luyện lại câu sai / bỏ trống / chưa chắc (tạo từ màn kết quả) */
   retry?: boolean;
+  /** Phân loại lượt ôn lại để hiển thị đúng danh tính */
+  retryKind?: "wrong" | "blank" | "flags";
+  /** Mốc thời điểm tạm dừng khi rời trang thi thử (chỉ đếm giờ khi đang ở trong trang) */
+  pausedAt?: number;
+  /** Tổng mili-giây đã tạm dừng ngoài trang thi thử */
+  pausedMs?: number;
   /** Cấu hình lượt luyện từ ngân hàng, để "Trộn lượt mới" giữ cấu hình (JL-09) */
   config?: AttemptRoundConfig;
 };
@@ -113,18 +121,53 @@ export function createAttempt(
       mode === "mock" ? now + exam.timeLimitMinutes! * 60000 : undefined,
   };
 }
+export function effectiveNow(
+  a: Attempt | null | undefined,
+  now = Date.now(),
+): number {
+  return a?.pausedAt !== undefined ? Math.min(now, a.pausedAt) : now;
+}
+export function pauseAttempt(a: Attempt, now = Date.now()): Attempt {
+  const c = reconcile(a, now);
+  if (
+    !c ||
+    c.status !== "in_progress" ||
+    c.mode !== "mock" ||
+    c.pausedAt !== undefined
+  )
+    return c || a;
+  return { ...c, pausedAt: now };
+}
+export function resumeAttempt(a: Attempt, now = Date.now()): Attempt {
+  if (
+    a.status !== "in_progress" ||
+    a.mode !== "mock" ||
+    a.pausedAt === undefined
+  )
+    return a;
+  const addedPause = Math.max(0, now - a.pausedAt);
+  const pausedMs = (a.pausedMs ?? 0) + addedPause;
+  const deadlineAt =
+    a.deadlineAt !== undefined ? a.deadlineAt + addedPause : undefined;
+  const copy = { ...a, pausedMs, deadlineAt };
+  delete copy.pausedAt;
+  return copy;
+}
 export function finish(a: Attempt, now = Date.now()): Attempt {
   if (a.status === "submitted") return a;
+  const base = resumeAttempt(a, now);
   return {
-    ...a,
+    ...base,
     status: "submitted",
-    committed: [...a.questionIds],
-    endedAt: Math.min(now, a.deadlineAt ?? now),
-    reason: a.deadlineAt && now >= a.deadlineAt ? "timeout" : "manual",
+    committed: [...base.questionIds],
+    endedAt: Math.min(now, base.deadlineAt ?? now),
+    reason: base.deadlineAt && now >= base.deadlineAt ? "timeout" : "manual",
   };
 }
 export function reconcile(a: Attempt | null, now = Date.now()): Attempt | null {
   if (!a || now >= a.expiresAt) return null;
+  if (a.status === "in_progress" && a.mode === "mock" && a.pausedAt !== undefined)
+    return a;
   return a.status === "in_progress" && a.deadlineAt && now >= a.deadlineAt
     ? finish(a, now)
     : a;
@@ -298,12 +341,27 @@ export function decodeSession(raw: string, now = Date.now()): Attempt | null {
   )
     throw new Error("Đáp án sai");
   if (
+    a.pausedMs !== undefined &&
+    (a.mode !== "mock" || !Number.isFinite(a.pausedMs) || a.pausedMs < 0)
+  )
+    throw new Error("Thời gian tạm dừng sai");
+  if (
+    a.pausedAt !== undefined &&
+    (a.mode !== "mock" ||
+      a.status !== "in_progress" ||
+      !Number.isFinite(a.pausedAt) ||
+      a.pausedAt < a.createdAt ||
+      a.pausedAt > now)
+  )
+    throw new Error("Mốc tạm dừng sai");
+  if (
     a.mode === "mock" &&
     (!a.exam.timeLimitMinutes ||
       !Number.isInteger(a.exam.timeLimitMinutes) ||
       a.exam.timeLimitMinutes <= 0 ||
       a.exam.timeLimitMinutes >= 1440 ||
-      a.deadlineAt !== a.createdAt + a.exam.timeLimitMinutes * 60000)
+      a.deadlineAt !==
+        a.createdAt + a.exam.timeLimitMinutes * 60000 + (a.pausedMs ?? 0))
   )
     throw new Error("Hạn sai");
   if (a.mode === "drill" && a.deadlineAt !== undefined)
@@ -312,6 +370,11 @@ export function decodeSession(raw: string, now = Date.now()): Attempt | null {
     throw new Error("Cờ thi nghiêm túc sai");
   if (a.retry !== undefined && typeof a.retry !== "boolean")
     throw new Error("Cờ luyện lại sai");
+  if (
+    a.retryKind !== undefined &&
+    !["wrong", "blank", "flags"].includes(a.retryKind)
+  )
+    throw new Error("Loại luyện lại sai");
   if (a.config !== undefined) {
     const c = a.config;
     if (

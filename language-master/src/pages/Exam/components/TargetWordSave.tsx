@@ -21,7 +21,7 @@ export function SaveStateButton({
   compact?: boolean;
 }) {
   const base = `inline-flex items-center gap-1.5 rounded-xl border font-bold ${
-    compact ? "px-2 py-1 text-[11px]" : "px-2.5 py-1 text-xs"
+    compact ? "px-2 py-1 text-xs" : "px-2.5 py-1 text-xs"
   }`;
   if (state.status === "saving")
     return (

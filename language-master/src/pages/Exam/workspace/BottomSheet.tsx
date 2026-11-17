@@ -8,13 +8,19 @@ type Props = {
   onClose: () => void;
   children: ReactNode;
   id?: string;
+  /** Từ màn hình vừa trở lên hiện thành hộp thoại giữa màn hình (điện thoại vẫn trượt từ dưới lên) */
+  centeredOnDesktop?: boolean;
+  /** Hộp rộng hơn và cao gần hết màn hình (ví dụ Lịch sử) */
+  wide?: boolean;
+  /** Khung cao cố định: tiêu đề giữ yên, nội dung tự lo phần cuộn bên trong (không co giãn theo số mục) */
+  fixedHeight?: boolean;
 };
 
 /**
  * Bottom sheet cho màn hình nhỏ: nền mờ, khóa cuộn trang, Esc để đóng,
  * đưa focus vào sheet khi mở và trả focus về chỗ cũ khi đóng.
  */
-export default function BottomSheet({ open, title, onClose, children, id }: Props) {
+export default function BottomSheet({ open, title, onClose, children, id, centeredOnDesktop = false, wide = false, fixedHeight = false }: Props) {
   const panelRef = useRef<HTMLDivElement>(null);
   const onCloseRef = useRef(onClose);
   useLayoutEffect(() => {
@@ -29,6 +35,8 @@ export default function BottomSheet({ open, title, onClose, children, id }: Prop
     panelRef.current?.focus();
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
+        // Hộp xác nhận mở chồng lên sheet tự xử lý Esc của nó
+        if (panelRef.current && !panelRef.current.contains(e.target as Node)) return;
         e.preventDefault();
         e.stopPropagation();
         onCloseRef.current();
@@ -55,15 +63,26 @@ export default function BottomSheet({ open, title, onClose, children, id }: Prop
         aria-hidden="true"
       />
       <div
+        className={`absolute inset-x-0 bottom-0 flex justify-center pointer-events-none ${
+          centeredOnDesktop ? "sm:inset-0 sm:items-center" : ""
+        }`}
+      >
+      <div
         id={id}
         ref={panelRef}
         role="dialog"
         aria-modal="true"
         aria-label={title}
         tabIndex={-1}
-        className="absolute inset-x-0 bottom-0 max-h-[70vh] overflow-y-auto rounded-t-3xl bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 shadow-2xl p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] outline-none animate-in slide-in-from-bottom duration-200 text-slate-900 dark:text-slate-100"
+        className={`pointer-events-auto w-full rounded-t-3xl ${
+          fixedHeight ? "flex flex-col overflow-hidden h-[88dvh] sm:h-[min(44rem,88dvh)]" : "overflow-y-auto"
+        } ${
+          centeredOnDesktop
+            ? `${wide ? "sm:max-w-2xl" : "sm:max-w-md"} ${fixedHeight ? "" : wide ? "max-h-[92vh]" : "max-h-[85vh]"} sm:rounded-3xl sm:border`
+            : "sm:max-w-2xl max-h-[70vh] sm:border-x"
+        } bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 shadow-2xl p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] outline-none animate-in slide-in-from-bottom duration-200 text-slate-900 dark:text-slate-100`}
       >
-        <div className="flex items-center justify-between gap-2 mb-3">
+        <div className="shrink-0 flex items-center justify-between gap-2 mb-3">
           <h2 className="text-base font-black">{title}</h2>
           <button
             type="button"
@@ -75,6 +94,7 @@ export default function BottomSheet({ open, title, onClose, children, id }: Prop
           </button>
         </div>
         {children}
+      </div>
       </div>
     </div>,
     document.body,

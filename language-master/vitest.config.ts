@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   test: {
     environment: "jsdom",
-    include: ["tests/**/*.ui.test.tsx"],
+    include: ["tests/**/*.ui.test.{ts,tsx}"],
     globals: true,
     setupFiles: ["tests/setup/firebaseMock.ts"],
     // Each reference-view case renders all 54 questions in jsdom.

@@ -2,6 +2,7 @@ import { parseExamText } from "../../../lib/jlpt/examText";
 type BlankLinks = {
   idPrefix: string;
   answered?: (blankId: string) => boolean;
+  active?: (blankId: string) => boolean;
   onClick?: (blankId: string) => void;
 };
 
@@ -25,22 +26,39 @@ export default function ExamText({
               <ExamText text={t.text} />
             </u>
           );
-        if (t.kind === "blank" && blanks)
+        if (t.kind === "blank" && blanks) {
+          const isActive = Boolean(blanks.active?.(t.text));
+          const isAnswered = Boolean(blanks.answered?.(t.text));
           return (
             <button
               key={i}
               type="button"
               id={`${blanks.idPrefix}${t.text}`}
               onClick={() => blanks.onClick?.(t.text)}
-              aria-label={`Ô trống ${t.text}${blanks.answered?.(t.text) ? ", đã chọn" : ""}, tới câu hỏi`}
-              className="inline-flex items-center gap-1 mx-1 px-2.5 py-0.5 border-2 border-indigo-400 dark:border-indigo-500 bg-indigo-50/70 dark:bg-indigo-950/60 rounded-lg font-bold text-base text-indigo-800 dark:text-indigo-200 hover:bg-indigo-100 dark:hover:bg-indigo-900 scroll-mt-28"
+              aria-current={isActive ? "step" : undefined}
+              aria-label={`Ô trống ${t.text}${isAnswered ? ", đã chọn" : ""}, tới câu hỏi`}
+              className={`inline-flex items-center gap-1 mx-1 px-2.5 py-0.5 border-2 rounded-lg font-bold text-base transition-colors scroll-mt-28 cursor-pointer ${
+                isActive
+                  ? "border-indigo-600 bg-indigo-600 text-white ring-2 ring-indigo-300 dark:ring-indigo-700"
+                  : "border-indigo-400 dark:border-indigo-500 bg-indigo-50/70 dark:bg-indigo-950/60 text-indigo-800 dark:text-indigo-200 hover:bg-indigo-100 dark:hover:bg-indigo-900"
+              }`}
             >
               {t.text}
-              {blanks.answered?.(t.text) && (
-                <span aria-hidden="true" className="text-emerald-700 dark:text-emerald-400">✓</span>
+              {isAnswered && (
+                <span
+                  aria-hidden="true"
+                  className={
+                    isActive
+                      ? "text-emerald-200"
+                      : "text-emerald-700 dark:text-emerald-400"
+                  }
+                >
+                  ✓
+                </span>
               )}
             </button>
           );
+        }
         if (t.kind === "blank")
           return (
             <span

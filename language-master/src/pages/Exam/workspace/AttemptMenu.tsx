@@ -42,7 +42,7 @@ export default function AttemptMenu({ items }: { items: AttemptMenuItem[] }) {
       <button
         ref={buttonRef}
         type="button"
-        className="exam-secondary !px-3"
+        className="exam-secondary !px-2.5 !min-h-9 lg:!min-h-10 shrink-0"
         aria-label="Tùy chọn lượt làm"
         aria-haspopup="menu"
         aria-expanded={open}

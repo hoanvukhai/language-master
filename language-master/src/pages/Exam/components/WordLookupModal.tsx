@@ -471,7 +471,7 @@ export default function WordLookupModal({
                     {entry.term}
                   </p>
                   {entry.level && (
-                    <span className="px-2 py-0.5 rounded-full text-[11px] font-extrabold bg-indigo-600 text-white">
+                    <span className="px-2 py-0.5 rounded-full text-xs font-extrabold bg-indigo-600 text-white">
                       {entry.level}
                     </span>
                   )}
@@ -624,7 +624,7 @@ export default function WordLookupModal({
                       {group.courseName}
                     </span>
                     {group.level && (
-                      <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-200/70 dark:bg-slate-700 text-slate-700 dark:text-slate-300">
+                      <span className="px-2 py-0.5 rounded-md text-xs font-bold bg-slate-200/70 dark:bg-slate-700 text-slate-700 dark:text-slate-300">
                         {group.level}
                       </span>
                     )}
@@ -767,7 +767,7 @@ export default function WordLookupModal({
                     </p>
                   )}
                 {externalResult.partialWarning && (
-                  <p className="text-[11px] text-amber-700 dark:text-amber-300">
+                  <p className="text-xs text-amber-700 dark:text-amber-300">
                     {externalResult.partialWarning}
                   </p>
                 )}
@@ -797,7 +797,7 @@ export default function WordLookupModal({
         )}
 
         {/* Ghi chú phạm vi lưu trữ rõ ràng cho khách & người dùng (FIX-05 Rule 8.4) */}
-        <p className="pt-2 border-t border-slate-100 dark:border-slate-700/60 text-[11px] text-slate-500 dark:text-slate-400">
+        <p className="pt-2 border-t border-slate-100 dark:border-slate-700/60 text-xs text-slate-500 dark:text-slate-400">
           Từ đã lưu nằm trong sổ tay trên trình duyệt này; bài làm JLPT chỉ giữ
           tạm trong tab.
         </p>

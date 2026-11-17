@@ -9,6 +9,8 @@ export default function Confirmation({
   onAnswer: (answer: boolean) => void;
 }) {
   const box = useRef<HTMLDivElement>(null);
+  // PT-10: tiêu đề theo hành động (câu hỏi đầu của thông điệp), mặc định "Xác nhận"
+  const title = message.match(/^([^?.!\n]{3,40}\?)/)?.[1] ?? "Xác nhận";
   useEffect(() => {
     const previous = document.activeElement as HTMLElement | null;
     box.current?.querySelector<HTMLButtonElement>("button")?.focus();
@@ -16,7 +18,7 @@ export default function Confirmation({
   }, []);
   return (
     <div
-      className="fixed inset-0 z-[100] bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4"
+      className="fixed inset-0 z-[100100] bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4"
       onClick={() => onAnswer(false)}
     >
       <div
@@ -49,7 +51,7 @@ export default function Confirmation({
             <AlertTriangle size={22} />
           </div>
           <h2 id="exam-confirm-title" className="text-xl font-black">
-            Xác nhận thao tác
+            {title}
           </h2>
         </div>
         <p
