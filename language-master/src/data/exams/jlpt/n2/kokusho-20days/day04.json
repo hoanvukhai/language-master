@@ -2038,7 +2038,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "45」入学試験前に大をしてください、。\n1ように2食事3栄養のある4体調を崩さない",
           "explanation": {
-            "vi": "Ghép 4→1→3→2: 体調を崩さないように栄養のある食事をしてください. ように chỉ mục đích phòng ốm; 栄養のある bổ nghĩa 食事. Ô sao là 3.",
+            "vi": "Ghép: 体調を崩さないように栄養のある食事をしてください. ように chỉ mục đích phòng ốm; 栄養のある bổ nghĩa 食事. Ô ★ là 栄養のある.",
             "optionNotes": [
               "ように đi sau 体調を崩さない.",
               "食事 đứng cuối, trước をしてください.",
@@ -2081,7 +2081,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "にこのスープに太食感に近い。\n1肉の2_魚というより3入っている4魚は",
           "explanation": {
-            "vi": "Ghép 3→4→2→1: このスープに入っている魚は魚というより肉の食感に近い. というより đính chính ấn tượng: giống thịt hơn cá. Ô sao là 2.",
+            "vi": "Ghép: このスープに入っている魚は魚というより肉の食感に近い. というより đính chính ấn tượng: giống thịt hơn cá. Ô ★ là 魚というより.",
             "optionNotes": [
               "肉の đứng cuối, trước 食感.",
               "魚というより đứng ở ô ★.",
@@ -2124,7 +2124,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "47|東京でしならない。\n1まず部屋を2探さなければ3にあたり4学生生活を始める",
           "explanation": {
-            "vi": "Ghép 4→3→1→2: 東京で学生生活を始めるにあたり、まず部屋を探さなければならない. にあたり là khi bắt đầu; なければならない là phải. Ô sao là 1.",
+            "vi": "Ghép: 東京で学生生活を始めるにあたり、まず部屋を探さなければならない. にあたり là khi bắt đầu; なければならない là phải. Ô ★ là まず部屋を.",
             "optionNotes": [
               "まず部屋を đứng ở ô ★.",
               "探さなければ đứng cuối, trước ならない.",
@@ -2167,7 +2167,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "48」|アンケトでしを分析した。\n1若者たちが考える2集めたデータ\n3理想の社会4に基づき",
           "explanation": {
-            "vi": "Ghép 2→4→1→3: アンケートで集めたデータに基づき若者たちが考える理想の社会を分析した. に基づき là dựa vào. Ô sao là 1.",
+            "vi": "Ghép: アンケートで集めたデータに基づき若者たちが考える理想の社会を分析した. に基づき là dựa vào. Ô ★ là 若者たちが考える.",
             "optionNotes": [
               "若者たちが考える đứng ở ô ★, bổ nghĩa cho 理想の社会.",
               "集めたデータ nối ngay sau アンケートで.",
@@ -2210,7 +2210,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "49」エネルギー4は語れない。\n1ぬきにして2生活3未来における4問題を\n35",
           "explanation": {
-            "vi": "Ghép 4→1→3→2: エネルギー問題をぬきにして未来における生活は語れない. をぬきにして là bỏ qua; における bổ nghĩa danh từ. Ô sao là 3.",
+            "vi": "Ghép: エネルギー問題をぬきにして未来における生活は語れない. をぬきにして là bỏ qua; における bổ nghĩa danh từ. Ô ★ là 未来における.",
             "optionNotes": [
               "ぬきにして đi sau 問題を.",
               "生活 đứng cuối, trước は語れない.",

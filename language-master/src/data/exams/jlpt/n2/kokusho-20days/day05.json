@@ -2037,7 +2037,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "45|反対する人が三ほうがいい。\n1いるなら2考えた3そんなに4別のプランを",
           "explanation": {
-            "vi": "Ghép 3→1→4→2: 反対する人がそんなにいるなら別のプランを考えたほうがいい. なら nêu điều kiện, Vたほうがいい khuyên nên. Ô sao là 4.",
+            "vi": "Ghép: 反対する人がそんなにいるなら別のプランを考えたほうがいい. なら nêu điều kiện, Vたほうがいい khuyên nên. Ô ★ là 別のプランを.",
             "optionNotes": [
               "いるなら đi sau そんなに.",
               "考えた đứng cuối, trước ほうがいい.",
@@ -2080,7 +2080,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "46」大田選の大決定された。\n1出場停止2に対して33ヶ月4反則行放\nの",
           "explanation": {
-            "vi": "Ghép 4→2→3→1: 大田選手の反則行為に対して3ヶ月の出場停止が決定された. に対して nêu hành vi nhận hình phạt. Ô sao là 3.",
+            "vi": "Ghép: 大田選手の反則行為に対して3ヶ月の出場停止が決定された. に対して nêu hành vi nhận hình phạt. Ô ★ là 3ヶ月の.",
             "optionNotes": [
               "出場停止が đứng cuối, trước 決定された.",
               "に対して đi sau 反則行為.",
@@ -2123,7 +2123,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "47|この絵本は大をつかんでいる。\n1心2表紙の絵3からして4読者の",
           "explanation": {
-            "vi": "Ghép 2→3→4→1: この絵本は表紙の絵からして読者の心をつかんでいる. からして là ngay từ, 心をつかむ là cuốn hút. Ô sao là 4.",
+            "vi": "Ghép: この絵本は表紙の絵からして読者の心をつかんでいる. からして là ngay từ, 心をつかむ là cuốn hút. Ô ★ là 読者の.",
             "optionNotes": [
               "心 đứng cuối, trước をつかんでいる.",
               "表紙の絵 nối ngay sau この絵本は.",
@@ -2166,7 +2166,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "48|あきらめずにしものだ\n1いつか2という3道は開ける4続けていれば",
           "explanation": {
-            "vi": "Ghép 4→1→3→2: あきらめずに続けていればいつか道は開けるというものだ. Tiếp tục không bỏ cuộc thì rồi sẽ có lối. Ô sao là 3.",
+            "vi": "Ghép: あきらめずに続けていればいつか道は開けるというものだ. Tiếp tục không bỏ cuộc thì rồi sẽ có lối. Ô ★ là 道は開ける.",
             "optionNotes": [
               "いつか đi sau 続けていれば.",
               "という đứng cuối, trước ものだ.",
@@ -2209,7 +2209,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "49|大人には大ものはたくさんある。\n1子どもにとって2安全な3危険な4道具でも\n43",
           "explanation": {
-            "vi": "Ghép 2→4→1→3: 大人には安全な道具でも子どもにとって危険なものはたくさんある. でも nhượng bộ, にとって nêu đối tượng đánh giá. Ô sao là 1.",
+            "vi": "Ghép: 大人には安全な道具でも子どもにとって危険なものはたくさんある. でも nhượng bộ, にとって nêu đối tượng đánh giá. Ô ★ là 子どもにとって.",
             "optionNotes": [
               "子どもにとって đứng ở ô ★.",
               "安全な nối ngay sau 大人には.",

@@ -2039,7 +2039,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "45この太をしている。\n作業開始2に先立って3準備運動4工場では",
           "explanation": {
-            "vi": "Ghép 4→1→2→3: この工場では作業開始に先立って準備運動をしている. に先立って là trước khi bắt đầu. Ô sao là 2.",
+            "vi": "Ghép: この工場では作業開始に先立って準備運動をしている. に先立って là trước khi bắt đầu. Ô ★ là に先立って.",
             "optionNotes": [
               "作業開始 đi sau 工場では.",
               "に先立って đứng ở ô ★.",
@@ -2082,7 +2082,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "高価な辞書を大つもりだ。\n勉強する2気持ちで3買ったからには4新たな",
           "explanation": {
-            "vi": "Ghép 3→4→2→1: 高価な辞書を買ったからには新たな気持ちで勉強するつもりだ. からには nhấn quyết tâm sau việc đã làm. Ô sao là 2.",
+            "vi": "Ghép: 高価な辞書を買ったからには新たな気持ちで勉強するつもりだ. からには nhấn quyết tâm sau việc đã làm. Ô ★ là 気持ちで.",
             "optionNotes": [
               "勉強する đứng cuối, trước つもりだ.",
               "気持ちで đứng ở ô ★.",
@@ -2125,7 +2125,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "47レポートのし4はすばらしい。\n書き上げた2にかかわらず3いい悪い",
           "explanation": {
-            "vi": "Ghép 3→2→1→4: レポートのいい悪いにかかわらず書き上げた努力はすばらしい. にかかわらず là bất kể tốt xấu; khen nỗ lực hoàn thành. Ô sao là 1.",
+            "vi": "Ghép: レポートのいい悪いにかかわらず書き上げた努力はすばらしい. にかかわらず là bất kể tốt xấu; khen nỗ lực hoàn thành. Ô ★ là 書き上げた.",
             "optionNotes": [
               "書き上げた đứng ở ô ★, bổ nghĩa cho 努力.",
               "にかかわらず đi sau いい悪い.",
@@ -2168,7 +2168,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "48年齢を間わずしがあった。\n申し込み2社員を3予想外の4募集したところ",
           "explanation": {
-            "vi": "Ghép 2→4→3→1: 年齢を問わず社員を募集したところ予想外の申し込みがあった. たところ dẫn kết quả phát hiện. Ô sao là 3.",
+            "vi": "Ghép: 年齢を問わず社員を募集したところ予想外の申し込みがあった. たところ dẫn kết quả phát hiện. Ô ★ là 予想外の.",
             "optionNotes": [
               "申し込み đứng cuối, trước があった.",
               "社員を nối ngay sau 年齢を問わず.",
@@ -2211,7 +2211,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "49荷物が重くて大友人が来\n1ところに2呼ばぼうと3助けを4思っていた\n51",
           "explanation": {
-            "vi": "Ghép 3→2→4→1: 荷物が重くて助けを呼ぼうと思っていたところに友人が来た. ところに là đúng lúc ấy thì. Ô sao là 4.",
+            "vi": "Ghép: 荷物が重くて助けを呼ぼうと思っていたところに友人が来た. ところに là đúng lúc ấy thì. Ô ★ là 思っていた.",
             "optionNotes": [
               "ところに đứng cuối, trước 友人が来た.",
               "呼ぼうと đi sau 助けを.",

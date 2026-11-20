@@ -2038,7 +2038,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "45」あのし4だろう\n1横江の2連敗だら\nは3ことか4しない",
           "explanation": {
-            "vi": "Ghép 1→3→2→4: 横綱のことだから連敗はしないだろう. のことだから dựa vào hiểu biết về đối tượng (nhà vô địch sumo Yokozuna) để đoán. Ô sao là 2.",
+            "vi": "Ghép: 横綱のことだから連敗はしないだろう. のことだから dựa vào hiểu biết về đối tượng (nhà vô địch sumo Yokozuna) để đoán. Ô ★ là 連敗は.",
             "optionNotes": [
               "横綱の nối ngay sau あの.",
               "連敗は đứng ở ô ★.",
@@ -2081,7 +2081,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "46」彼は事件の犯人文をした人です\n1最初に2どころか3救助活動4被害者の",
           "explanation": {
-            "vi": "Ghép 2→1→4→3: 犯人どころか最初に被害者の救助活動をした人です. どころか nêu sự thật ngược hoàn toàn. Ô sao là 4.",
+            "vi": "Ghép: 犯人どころか最初に被害者の救助活動をした人です. どころか nêu sự thật ngược hoàn toàn. Ô ★ là 被害者の.",
             "optionNotes": [
               "最初に đi sau どころか.",
               "どころか nối ngay sau 犯人.",
@@ -2124,7 +2124,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "47|今日は文つもりだ。\n1ぬきで2楽しく飲む3話は4仕事の",
           "explanation": {
-            "vi": "Ghép 4→3→1→2: 仕事の話はぬきで楽しく飲むつもりだ. Nぬきで là bỏ qua N. Ô sao là 1.",
+            "vi": "Ghép: 仕事の話はぬきで楽しく飲むつもりだ. Nぬきで là bỏ qua N. Ô ★ là ぬきで.",
             "optionNotes": [
               "ぬきで đứng ở ô ★.",
               "楽しく飲む đứng cuối, trước つもりだ.",
@@ -2167,7 +2167,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "48箇さんはテレビ局員だが\n文ことになった。\n1受ける2宇宙飛行3訓練を4として",
           "explanation": {
-            "vi": "Ghép 2→4→3→1: 宇宙飛行士として訓練を受けることになった. として chỉ vai trò, 訓練を受ける là được huấn luyện. Ô sao là 3.",
+            "vi": "Ghép: 宇宙飛行士として訓練を受けることになった. として chỉ vai trò, 訓練を受ける là được huấn luyện. Ô ★ là 訓練を.",
             "optionNotes": [
               "受ける đứng cuối, trước ことになった.",
               "宇宙飛行士 nối ngay sau だが.",
@@ -2210,7 +2210,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "49|留学生の日本語のレベルが文きびしくなている\n1にたがて2大学受験の3上がる4競争も\n115",
           "explanation": {
-            "vi": "Ghép 3→1→2→4: レベルが上がるにしたがって大学受験の競争もきびしくなっている. にしたがって nêu biến đổi song song. Ô sao là 2.",
+            "vi": "Ghép: レベルが上がるにしたがって大学受験の競争もきびしくなっている. にしたがって nêu biến đổi song song. Ô ★ là 大学受験の.",
             "optionNotes": [
               "にしたがって đi sau 上がる.",
               "大学受験の đứng ở ô ★.",

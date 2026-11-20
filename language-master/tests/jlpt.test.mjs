@@ -927,7 +927,8 @@ test("Free Practice engine: shuffles options/optionNotes/M8 order/references and
           const newSentence = s.order.map((n) => s.options[n - 1]).join("|");
           assert.equal(newSentence, origSentence);
           if (s.explanation?.vi && s.explanation.vi.includes("Vị trí ★ là")) {
-            assert.ok(s.explanation.vi.includes(`Vị trí ★ là ${s.answer}`));
+            assert.ok(s.explanation.vi.includes(`Vị trí ★ là ${s.options[s.answer - 1]}`));
+          assert.ok(!/(?:Ô sao|Ô ★|Vị trí ★)(?: thứ ba)? là [1-4]\b/.test(s.explanation.vi));
           }
         }
       }
@@ -1160,4 +1161,23 @@ test("LT-3: cùng hạt giống cho cùng thứ tự câu và cùng thứ tự �
   assert.deepEqual(s1.options, s2.options);
   assert.equal(s1.answer, s2.answer);
   assert.equal(s1.options[s1.answer - 1], "b");
+});
+
+test("Câu sắp xếp ★: lời giải không ghi cứng số thứ tự đáp án (đề trộn đáp án vẫn đúng)", () => {
+  const dir = new URL("../src/data/exams/jlpt/n2/kokusho-20days/", import.meta.url);
+  let checked = 0;
+  for (const f of fs.readdirSync(dir).filter((n) => /^day\d+\.json$/.test(n))) {
+    const exam = JSON.parse(fs.readFileSync(new URL(f, dir), "utf8"));
+    for (const m of exam.mondais) {
+      for (const q of m.questions) {
+        if (!q.stem?.includes("★")) continue;
+        checked++;
+        const vi = q.explanation?.vi ?? "";
+        assert.ok(!/Ghép\s*\d\s*[→>]/.test(vi), `${f} q${q.number}: còn "Ghép 4→2→1→3"`);
+        assert.ok(!/Ô sao(?: thứ ba)? là \d/.test(vi), `${f} q${q.number}: còn "Ô sao là N"`);
+        assert.ok(!/\([1-4]\)/.test(vi), `${f} q${q.number}: còn "(N)"`);
+      }
+    }
+  }
+  assert.equal(checked, 100);
 });

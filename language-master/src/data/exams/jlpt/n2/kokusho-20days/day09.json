@@ -2037,7 +2037,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "45」この商品は大お待ちください。\n1_次の入荷が2品切れ3あるまで4につき",
           "explanation": {
-            "vi": "Ghép 2→4→1→3: 品切れにつき次の入荷があるまでお待ちください. につき nêu lý do thông báo, まで chỉ hạn đợi. Ô sao là 1.",
+            "vi": "Ghép: 品切れにつき次の入荷があるまでお待ちください. につき nêu lý do thông báo, まで chỉ hạn đợi. Ô ★ là 次の入荷が.",
             "optionNotes": [
               "次の入荷が đứng ở ô ★.",
               "品切れ nối ngay sau この商品は.",
@@ -2080,7 +2080,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "[46]雨で遠足をし4した\n1することに2ボーリングを3中止する4かわりに",
           "explanation": {
-            "vi": "Ghép 3→4→2→1: 遠足を中止するかわりにボーリングをすることにした. かわりに là thay cho. Ô sao là 2.",
+            "vi": "Ghép: 遠足を中止するかわりにボーリングをすることにした. かわりに là thay cho. Ô ★ là ボーリングを.",
             "optionNotes": [
               "することに đứng cuối, trước した.",
               "ボーリングを đứng ở ô ★.",
@@ -2123,7 +2123,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "47|窓を文きた。\n1大粒の雨が2とたん3開けた4吹き込んで",
           "explanation": {
-            "vi": "Ghép 3→2→1→4: 窓を開けたとたん大粒の雨が吹き込んできた. たとたん là ngay khi vừa. Ô sao là 1.",
+            "vi": "Ghép: 窓を開けたとたん大粒の雨が吹き込んできた. たとたん là ngay khi vừa. Ô ★ là 大粒の雨が.",
             "optionNotes": [
               "大粒の雨が đứng ở ô ★.",
               "とたん đi sau 開けた.",
@@ -2166,7 +2166,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "[48|もしし4ですか。\n1空を2_何が見たい3飛べるとしたら_4上から",
           "explanation": {
-            "vi": "Ghép 1→3→4→2: もし空を飛べるとしたら上から何が見たいですか. としたら tạo giả định. Ô sao là 4.",
+            "vi": "Ghép: もし空を飛べるとしたら上から何が見たいですか. としたら tạo giả định. Ô ★ là 上から.",
             "optionNotes": [
               "空を nối ngay sau もし.",
               "何が見たい đứng cuối, trước ですか.",
@@ -2209,7 +2209,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "49|どのし大勢いる\n1もらっている2胃学多を3留学生は4大学でも\n75",
           "explanation": {
-            "vi": "Ghép 4→2→1→3: どの大学でも奨学金をもらっている留学生は大勢いる. をもらっている bổ nghĩa 留学生. Ô sao là 1.",
+            "vi": "Ghép: どの大学でも奨学金をもらっている留学生は大勢いる. をもらっている bổ nghĩa 留学生. Ô ★ là もらっている.",
             "optionNotes": [
               "もらっている đứng ở ô ★, bổ nghĩa cho 留学生.",
               "奨学金を đi sau 大学でも.",

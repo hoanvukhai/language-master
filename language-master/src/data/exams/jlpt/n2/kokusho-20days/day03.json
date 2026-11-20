@@ -2038,7 +2038,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "45|日本の大はありませんか。\n1何かい大学教育3資料に関して",
           "explanation": {
-            "vi": "Ghép 2→4→1→3: 日本の大学教育に関して何かいい資料はありませんか. に関して bổ nghĩa chủ đề; 何かいい資料 là tài liệu nào hay. Ô sao là 1.",
+            "vi": "Ghép: 日本の大学教育に関して何かいい資料はありませんか. に関して bổ nghĩa chủ đề; 何かいい資料 là tài liệu nào hay. Ô ★ là 何かいい.",
             "optionNotes": [
               "何かいい đứng ở ô ★, bổ nghĩa cho 資料.",
               "大学教育 nối ngay sau 日本の.",
@@ -2081,7 +2081,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "仕事の大人も増えている。\n1叫ばれる方3能率化が職を失う",
           "explanation": {
-            "vi": "Ghép 3→1→2→4: 仕事の能率化が叫ばれる一方、職を失う人も増えている. 一方 nêu hai thực tế trái chiều. Ô sao là 2.",
+            "vi": "Ghép: 仕事の能率化が叫ばれる一方、職を失う人も増えている. 一方 nêu hai thực tế trái chiều. Ô ★ là 一方.",
             "optionNotes": [
               "叫ばれる đi sau 能率化が.",
               "一方 đứng ở ô ★, nêu mặt trái.",
@@ -2124,7 +2124,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "47|お金と時間六わけではない。\n1一流になれるをかけた3誰もがからといって",
           "explanation": {
-            "vi": "Ghép 2→4→3→1: お金と時間をかけたからといって誰もが一流になれるわけではない. Không phải cứ đầu tư là ai cũng thành hạng nhất. Ô sao là 3.",
+            "vi": "Ghép: お金と時間をかけたからといって誰もが一流になれるわけではない. Không phải cứ đầu tư là ai cũng thành hạng nhất. Ô ★ là 誰もが.",
             "optionNotes": [
               "一流になれる đứng cuối, trước わけではない.",
               "をかけた nối ngay sau お金と時間.",
@@ -2167,7 +2167,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "48|住民たちの強い大を植えた\n1要望桜の木3に応じて",
           "explanation": {
-            "vi": "Ghép 1→3→4→2: 住民たちの強い要望に応じて公園に桜の木を植えた. に応じて là đáp ứng yêu cầu. Ô sao là 4.",
+            "vi": "Ghép: 住民たちの強い要望に応じて公園に桜の木を植えた. に応じて là đáp ứng yêu cầu. Ô ★ là 公園に.",
             "optionNotes": [
               "要望 nối ngay sau 強い.",
               "桜の木 đứng cuối, trước を植えた.",
@@ -2210,7 +2210,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "49|酒運転のい4問われている。\n1_マナーがにつれて3ドラバーの事故が増える\n27",
           "explanation": {
-            "vi": "Ghép 4→2→3→1: 飲酒運転の事故が増えるにつれてドライバーのマナーが問われている. につれて chỉ diễn biến song song. Ô sao là 3.",
+            "vi": "Ghép: 飲酒運転の事故が増えるにつれてドライバーのマナーが問われている. につれて chỉ diễn biến song song. Ô ★ là ドライバーの.",
             "optionNotes": [
               "マナーが đứng cuối, trước 問われている.",
               "につれて đi sau 事故が増える.",

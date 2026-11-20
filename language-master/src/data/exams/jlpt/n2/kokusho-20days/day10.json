@@ -2037,7 +2037,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "いけく\n45|池袋でい4が行われた\n1大会2グループによる\n3ダンスの4いくつかの人気",
           "explanation": {
-            "vi": "Ghép 4→2→3→1: 池袋でいくつかの人気グループによるダンスの大会が行われた. による nêu nhóm thực hiện. Ô sao là 3.",
+            "vi": "Ghép: 池袋でいくつかの人気グループによるダンスの大会が行われた. による nêu nhóm thực hiện. Ô ★ là ダンスの.",
             "optionNotes": [
               "大会 đứng cuối, trước が行われた.",
               "グループによる đi sau いくつかの人気.",
@@ -2080,7 +2080,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "46|かぜで太もしてもらた。\n1行った2血液検査3病院へ4ついでに",
           "explanation": {
-            "vi": "Ghép 3→1→4→2: かぜで病院へ行ったついでに血液検査もしてもらった. ついでに là nhân tiện. Ô sao là 4.",
+            "vi": "Ghép: かぜで病院へ行ったついでに血液検査もしてもらった. ついでに là nhân tiện. Ô ★ là ついでに.",
             "optionNotes": [
               "行った đi sau 病院へ.",
               "血液検査 đứng cuối, trước もしてもらった.",
@@ -2123,7 +2123,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "47|友だちは教室に太食べていた。\n1先生が2担任の3まだ弁当を4入ってきても",
           "explanation": {
-            "vi": "Ghép 2→1→4→3: 教室に担任の先生が入ってきてもまだ弁当を食べていた. ても nhượng bộ. Ô sao là 4.",
+            "vi": "Ghép: 教室に担任の先生が入ってきてもまだ弁当を食べていた. ても nhượng bộ. Ô ★ là 入ってきても.",
             "optionNotes": [
               "先生が đi sau 担任の.",
               "担任の nối ngay sau 教室に.",
@@ -2166,7 +2166,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "48|こちらへ文ください。\n1お立ち寄り2ぜひ3お出かけの4際は",
           "explanation": {
-            "vi": "Ghép 3→4→2→1: こちらへお出かけの際はぜひお立ち寄りください. 際は là khi, お立ち寄りください là kính mời ghé. Ô sao là 2.",
+            "vi": "Ghép: こちらへお出かけの際はぜひお立ち寄りください. 際は là khi, お立ち寄りください là kính mời ghé. Ô ★ là ぜひ.",
             "optionNotes": [
               "お立ち寄り đứng cuối, trước ください.",
               "ぜひ đứng ở ô ★.",
@@ -2209,7 +2209,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "49|過去のことし4しかない。\n1努力する2未来3はともかく4に向かって\n83",
           "explanation": {
-            "vi": "Ghép 3→2→4→1: 過去のことはともかく未来に向かって努力するしかない. はともかく là gác sang bên; しかない là chỉ còn cách. Ô sao là 4.",
+            "vi": "Ghép: 過去のことはともかく未来に向かって努力するしかない. はともかく là gác sang bên; しかない là chỉ còn cách. Ô ★ là に向かって.",
             "optionNotes": [
               "努力する đứng cuối, trước しかない.",
               "未来 đi sau はともかく.",

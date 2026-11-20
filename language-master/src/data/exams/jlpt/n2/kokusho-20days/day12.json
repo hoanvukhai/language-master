@@ -2039,7 +2039,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "45]そんなことを4になるよ\n1ものなら2大変な3言おう4騒ぎ",
           "explanation": {
-            "vi": "Ghép 3→1→2→4: 言おうものなら大変な騒ぎになるよ. Vようものなら giả định kéo theo hậu quả xấu. Ô sao là 2.",
+            "vi": "Ghép: 言おうものなら大変な騒ぎになるよ. Vようものなら giả định kéo theo hậu quả xấu. Ô ★ là 大変な.",
             "optionNotes": [
               "ものなら đi sau 言おう.",
               "大変な đứng ở ô ★, bổ nghĩa cho 騒ぎ.",
@@ -2082,7 +2082,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "46]稲の大だ。\n予定\n1行われる2発育調査3にわたって4全国各地",
           "explanation": {
-            "vi": "Ghép 2→4→3→1: 稲の発育調査が全国各地にわたって行われる予定だ. にわたって chỉ phạm vi. Ô sao là 3.",
+            "vi": "Ghép: 稲の発育調査が全国各地にわたって行われる予定だ. にわたって chỉ phạm vi. Ô ★ là にわたって.",
             "optionNotes": [
               "行われる đứng cuối, trước 予定だ.",
               "発育調査が nối ngay sau 稲の.",
@@ -2125,7 +2125,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "47|このことについてはいし4をえない。\n1こちらに2認めざる3責任が4あると",
           "explanation": {
-            "vi": "Ghép 1→3→4→2: こちらに責任があると認めざるをえない. ざるをえない là đành phải thừa nhận. Ô sao là 4.",
+            "vi": "Ghép: こちらに責任があると認めざるをえない. ざるをえない là đành phải thừa nhận. Ô ★ là あると.",
             "optionNotes": [
               "こちらに nối ngay sau このことについては.",
               "認めざる đứng cuối, trước をえない.",
@@ -2168,7 +2168,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "この町は4に静かだ\n1意外2店が多い3若者向けの4わりに",
           "explanation": {
-            "vi": "Ghép 3→2→4→1: 若者向けの店が多いわりに意外に静かだ. わりに là so với kỳ vọng thì ngược lại. Ô sao là 4.",
+            "vi": "Ghép: 若者向けの店が多いわりに意外に静かだ. わりに là so với kỳ vọng thì ngược lại. Ô ★ là わりに.",
             "optionNotes": [
               "意外 đứng cuối, trước に静かだ.",
               "店が多い đi sau 若者向けの.",
@@ -2211,7 +2211,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "49]足跡が太だ。\nよう\n1ここから入った_2犯人は3からて4あること\n99",
           "explanation": {
-            "vi": "Ghép 4→3→2→1: 足跡があることから見て犯人はここから入ったようだ. ことから見て nêu chứng cứ suy đoán. Ô sao là 2.",
+            "vi": "Ghép: 足跡があることから見て犯人はここから入ったようだ. ことから見て nêu chứng cứ suy đoán. Ô ★ là 犯人は.",
             "optionNotes": [
               "ここから入った đứng cuối, trước ようだ.",
               "犯人は đứng ở ô ★.",

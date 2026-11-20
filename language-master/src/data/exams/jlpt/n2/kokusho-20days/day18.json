@@ -2038,7 +2038,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "45|政治家である大べきだ。\n1考えるまず国民の3以上4ことを",
           "explanation": {
-            "vi": "Ghép 3→2→4→1: 政治家である以上まず国民のことを考えるべきだ. 以上 nêu trách nhiệm theo vai trò. Ô sao là 4.",
+            "vi": "Ghép: 政治家である以上まず国民のことを考えるべきだ. 以上 nêu trách nhiệm theo vai trò. Ô ★ là ことを.",
             "optionNotes": [
               "考える đứng cuối, trước べきだ.",
               "まず国民の đi sau 以上.",
@@ -2081,7 +2081,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "46|いくら太も責任はある。\n1生じたあなたに3にせよ4不都合が",
           "explanation": {
-            "vi": "Ghép 4→1→3→2: いくら不都合が生じたにせよあなたにも責任はある. にせよ nhượng bộ. Ô sao là 3.",
+            "vi": "Ghép: いくら不都合が生じたにせよあなたにも責任はある. にせよ nhượng bộ. Ô ★ là にせよ.",
             "optionNotes": [
               "生じた đi sau 不都合が.",
               "あなたに đứng cuối, trước も.",
@@ -2124,7 +2124,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "47|力を太しまった。\n1引っ張っら込めて3取れて4ドアノブを",
           "explanation": {
-            "vi": "Ghép 2→4→1→3: 力を込めてドアノブを引っ張ったら取れてしまった. たら dẫn kết quả bất ngờ. Ô sao là 1.",
+            "vi": "Ghép: 力を込めてドアノブを引っ張ったら取れてしまった. たら dẫn kết quả bất ngờ. Ô ★ là 引っ張ったら.",
             "optionNotes": [
               "引っ張ったら đứng ở ô ★.",
               "込めて nối ngay sau 力を.",
@@ -2167,7 +2167,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "48|日本はA国と大深めている。\n1国交をからというもの3結んで4順調に関係を",
           "explanation": {
-            "vi": "Ghép 1→3→2→4: 国交を結んでからというもの順調に関係を深めている. からというもの nêu thay đổi bền từ mốc đó. Ô sao là 2.",
+            "vi": "Ghép: 国交を結んでからというもの順調に関係を深めている. からというもの nêu thay đổi bền từ mốc đó. Ô ★ là からというもの.",
             "optionNotes": [
               "国交を nối ngay sau A国と.",
               "からというもの đứng ở ô ★.",
@@ -2210,7 +2210,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "49|山では急に雨し4こともある。\n1どころか下がる3気温が一気に4になる\n147",
           "explanation": {
-            "vi": "Ghép 4→1→3→2: 雨になるどころか気温が一気に下がることもある. どころか bổ sung mức khác mạnh hơn dự kiến. Ô sao là 3.",
+            "vi": "Ghép: 雨になるどころか気温が一気に下がることもある. どころか bổ sung mức khác mạnh hơn dự kiến. Ô ★ là 気温が一気に.",
             "optionNotes": [
               "どころか đi sau になる.",
               "下がる đứng cuối, trước こともある.",

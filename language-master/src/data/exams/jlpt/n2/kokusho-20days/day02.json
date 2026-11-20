@@ -2038,7 +2038,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "川の流れ文が川を上り始めた\nらち\n1産卵2サケ3のため4にさからって",
           "explanation": {
-            "vi": "Ghép 4→1→3→2: 川の流れにさからって産卵のためサケが川を上り始めた。にさからって là ngược dòng; 産卵のため chỉ mục đích. Ô sao thứ ba là 3 (のため).",
+            "vi": "Ghép: 川の流れにさからって産卵のためサケが川を上り始めた。にさからって là ngược dòng; 産卵のため chỉ mục đích. Ô ★ là のため.",
             "optionNotes": [
               "産卵 đi trước のため: 産卵のため (để đẻ trứng).",
               "サケ là chủ ngữ của が上り始めた, đứng cuối.",
@@ -2081,7 +2081,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "前をよく大しまった。\n1見ていなた2車に3せいで4ぶつかって",
           "explanation": {
-            "vi": "Ghép 1→3→2→4: 前をよく見ていなかったせいで車にぶつかってしまった. Vたせいで nêu nguyên nhân xấu; 車にぶつかる là đâm vào xe. Ô sao là 2.",
+            "vi": "Ghép: 前をよく見ていなかったせいで車にぶつかってしまった. Vたせいで nêu nguyên nhân xấu; 車にぶつかる là đâm vào xe. Ô ★ là 車に.",
             "optionNotes": [
               "見ていなかった nối ngay sau 前をよく.",
               "車に đứng ở ô ★, trước ぶつかって.",
@@ -2124,7 +2124,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "晴天が続いしいがよく売れた\n1暑い2うえに3水着4夏っので",
           "explanation": {
-            "vi": "Ghép 2→1→4→3: 晴天が続いたうえに暑い夏だったので水着がよく売れた. うえに bổ sung nguyên nhân, ので dẫn kết quả. Ô sao là 4.",
+            "vi": "Ghép: 晴天が続いたうえに暑い夏だったので水着がよく売れた. うえに bổ sung nguyên nhân, ので dẫn kết quả. Ô ★ là 夏だったので.",
             "optionNotes": [
               "暑い bổ nghĩa cho 夏: 暑い夏だったので.",
               "うえに nối ngay sau 晴天が続いた.",
@@ -2167,7 +2167,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "48|歌の5。4者がない。\n1にかけては2会社の中で3彼の右に出る4うまさ",
           "explanation": {
-            "vi": "Ghép 4→1→2→3: 歌のうまさにかけては会社の中で彼の右に出る者がない. Nにかけては là về mặt…, 右に出る者がない là không ai vượt hơn. Ô sao là 2.",
+            "vi": "Ghép: 歌のうまさにかけては会社の中で彼の右に出る者がない. Nにかけては là về mặt…, 右に出る者がない là không ai vượt hơn. Ô ★ là 会社の中で.",
             "optionNotes": [
               "にかけては đi sau うまさ: về mặt hát hay.",
               "会社の中で đứng ở ô ★, chỉ phạm vi.",
@@ -2210,7 +2210,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "49」またくの太はていねいすぎる\n1だとしても2この説明書3向け4しろうと\n19",
           "explanation": {
-            "vi": "Ghép 4→3→1→2: まったくのしろうと向けだとしてもこの説明書はていねいすぎる. 向け là dành cho; だとしても là cho dù. Ô sao là 1.",
+            "vi": "Ghép: まったくのしろうと向けだとしてもこの説明書はていねいすぎる. 向け là dành cho; だとしても là cho dù. Ô ★ là だとしても.",
             "optionNotes": [
               "だとしても đứng ở ô ★, sau 向け.",
               "この説明書 là chủ đề, đứng cuối trước はていねいすぎる.",

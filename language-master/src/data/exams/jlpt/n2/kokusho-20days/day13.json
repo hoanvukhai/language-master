@@ -2038,7 +2038,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "45」若いときにはし4体をことわすよ。\n1ことだが2ありがちな3飲んだら4そんなに",
           "explanation": {
-            "vi": "Ghép 2→1→4→3: 若いときにはありがちなことだがそんなに飲んだら体をこわすよ. ありがちな là thường gặp. Ô sao là 4.",
+            "vi": "Ghép: 若いときにはありがちなことだがそんなに飲んだら体をこわすよ. ありがちな là thường gặp. Ô ★ là そんなに.",
             "optionNotes": [
               "ことだが đi sau ありがちな.",
               "ありがちな nối ngay sau 若いときには.",
@@ -2081,7 +2081,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "46|仕事が大を頼むしかない。\n1部下に2終わりそうも3応接4ないので",
           "explanation": {
-            "vi": "Ghép 2→4→1→3: 仕事が終わりそうもないので部下に応援を頼むしかない. そうもない là có vẻ không thể; 応援 là hỗ trợ. Ô sao là 1.",
+            "vi": "Ghép: 仕事が終わりそうもないので部下に応援を頼むしかない. そうもない là có vẻ không thể; 応援 là hỗ trợ. Ô ★ là 部下に.",
             "optionNotes": [
               "部下に đứng ở ô ★.",
               "終わりそうも nối ngay sau 仕事が.",
@@ -2124,7 +2124,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "47Z」入試があるし4ということだ。\n1寒くなる2天気予報3によると42月は",
           "explanation": {
-            "vi": "Ghép 4→2→3→1: 入試がある2月は天気予報によると寒くなるということだ. によると dẫn nguồn dự báo. Ô sao là 3.",
+            "vi": "Ghép: 入試がある2月は天気予報によると寒くなるということだ. によると dẫn nguồn dự báo. Ô ★ là によると.",
             "optionNotes": [
               "寒くなる đứng cuối, trước ということだ.",
               "天気予報 đi sau 2月は.",
@@ -2167,7 +2167,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "48」地下鉄がしはずだ。\n1開通する2混雑が3ことによって4緩和される",
           "explanation": {
-            "vi": "Ghép 1→3→2→4: 地下鉄が開通することによって混雑が緩和されるはずだ. によって chỉ tác động dẫn kết quả. Ô sao là 2.",
+            "vi": "Ghép: 地下鉄が開通することによって混雑が緩和されるはずだ. によって chỉ tác động dẫn kết quả. Ô ★ là 混雑が.",
             "optionNotes": [
               "開通する nối ngay sau 地下鉄が.",
               "混雑が đứng ở ô ★.",
@@ -2210,7 +2210,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "49|新システムの実施大を開いている。\n1会議2工場で働く3技術者たちが4に関して\n107",
           "explanation": {
-            "vi": "Ghép 4→2→3→1: 新システムの実施に関して工場で働く技術者たちが会議を開いている. に関して nêu chủ đề. Ô sao là 3.",
+            "vi": "Ghép: 新システムの実施に関して工場で働く技術者たちが会議を開いている. に関して nêu chủ đề. Ô ★ là 技術者たちが.",
             "optionNotes": [
               "会議 đứng cuối, trước を開いている.",
               "工場で働く đi sau に関して.",

@@ -2037,7 +2037,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "45|長年の4に取り組んでいる。\n1新薬の2開発3実験データ4をもとに",
           "explanation": {
-            "vi": "Ghép 3→4→1→2: 長年の実験データをもとに新薬の開発に取り組んでいる. をもとに là dựa vào. Ô sao là 1.",
+            "vi": "Ghép: 長年の実験データをもとに新薬の開発に取り組んでいる. をもとに là dựa vào. Ô ★ là 新薬の.",
             "optionNotes": [
               "新薬の đứng ở ô ★.",
               "開発 đứng cuối, trước に取り組んでいる.",
@@ -2080,7 +2080,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "ぜんぜん太よく質問される\n1に限って2こなかた日3先生に4予習して",
           "explanation": {
-            "vi": "Ghép 4→2→1→3: 予習してこなかった日に限って先生によく質問される. に限って là đúng ngày không mong ấy. Ô sao là 1.",
+            "vi": "Ghép: 予習してこなかった日に限って先生によく質問される. に限って là đúng ngày không mong ấy. Ô ★ là に限って.",
             "optionNotes": [
               "に限って đứng ở ô ★.",
               "こなかった日 đi sau 予習して.",
@@ -2123,7 +2123,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "47|人気度しです\n1_A社の2からいうと3製品が4一番",
           "explanation": {
-            "vi": "Ghép 2→1→3→4: 人気度からいうとA社の製品が一番です. からいうと là xét phương diện độ phổ biến. Ô sao là 3.",
+            "vi": "Ghép: 人気度からいうとA社の製品が一番です. からいうと là xét phương diện độ phổ biến. Ô ★ là 製品が.",
             "optionNotes": [
               "A社の đi sau からいうと.",
               "からいうと nối ngay sau 人気度.",
@@ -2166,7 +2166,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "48」思わず声をし地震だった。\n1出して2ほどの3しまう4大きい",
           "explanation": {
-            "vi": "Ghép 1→3→2→4: 声を出してしまうほどの大きい地震だった. ほどの bổ nghĩa mức độ cho danh từ. Ô sao là 2.",
+            "vi": "Ghép: 声を出してしまうほどの大きい地震だった. ほどの bổ nghĩa mức độ cho danh từ. Ô ★ là ほどの.",
             "optionNotes": [
               "出して nối ngay sau 声を.",
               "ほどの đứng ở ô ★.",
@@ -2209,7 +2209,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "49」だいたい文と思う\n1うまくいく2彼の3において4計画は\n131",
           "explanation": {
-            "vi": "Ghép 3→2→4→1: だいたいにおいて彼の計画はうまくいくと思う. だいたいにおいて là nhìn chung. Ô sao là 4.",
+            "vi": "Ghép: だいたいにおいて彼の計画はうまくいくと思う. だいたいにおいて là nhìn chung. Ô ★ là 計画は.",
             "optionNotes": [
               "うまくいく đứng cuối, trước と思う.",
               "彼の đi sau において.",

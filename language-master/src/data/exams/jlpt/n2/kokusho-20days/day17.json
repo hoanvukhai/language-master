@@ -2040,7 +2040,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "45確かに小川氏のし信用できない。\n1どうしても2理解できた3ものの4話は",
           "explanation": {
-            "vi": "Ghép 4→2→3→1: 小川氏の話は理解できたもののどうしても信用できない. ものの là tuy… nhưng…. Ô sao là 3.",
+            "vi": "Ghép: 小川氏の話は理解できたもののどうしても信用できない. ものの là tuy… nhưng…. Ô ★ là ものの.",
             "optionNotes": [
               "どうしても đứng cuối, trước 信用できない.",
               "理解できた đi sau 話は.",
@@ -2083,7 +2083,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "46|彼は問題の大に教えてくれない。\n1知っている2私たち3解き方を4くせに",
           "explanation": {
-            "vi": "Ghép 3→1→4→2: 解き方を知っているくせに私たちに教えてくれない. くせに phê bình trái kỳ vọng. Ô sao là 4.",
+            "vi": "Ghép: 解き方を知っているくせに私たちに教えてくれない. くせに phê bình trái kỳ vọng. Ô ★ là くせに.",
             "optionNotes": [
               "知っている đi sau 解き方を.",
               "私たち đứng cuối, trước に教えてくれない.",
@@ -2126,7 +2126,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "47|あのクラスの学生は大のレベルるも高い。\n1のよさ2に加えて3出席率4日本語",
           "explanation": {
-            "vi": "Ghép 3→1→2→4: 出席率のよさに加えて日本語のレベルも高い. に加えて thêm ưu điểm thứ hai. Ô sao là 2.",
+            "vi": "Ghép: 出席率のよさに加えて日本語のレベルも高い. に加えて thêm ưu điểm thứ hai. Ô ★ là に加えて.",
             "optionNotes": [
               "のよさ đi sau 出席率.",
               "に加えて đứng ở ô ★.",
@@ -2169,7 +2169,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "48|親友が止めるし4入っていった。\n1のもかまわず2ジャングルの3彼は1人で4中",
           "explanation": {
-            "vi": "Ghép 1→3→2→4: 親友が止めるのもかまわず彼は1人でジャングルの中へ入っていった. のもかまわず bất chấp lời cản. Ô sao là 2.",
+            "vi": "Ghép: 親友が止めるのもかまわず彼は1人でジャングルの中へ入っていった. のもかまわず bất chấp lời cản. Ô ★ là ジャングルの.",
             "optionNotes": [
               "のもかまわず nối ngay sau 止める.",
               "ジャングルの đứng ở ô ★.",
@@ -2212,7 +2212,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "49|まだ12歳のしものだ。\n1参加するとは2_海外のバレエ教室に\n3彼女が4すご\n139",
           "explanation": {
-            "vi": "Ghép 3→2→1→4: まだ12歳の彼女が海外のバレエ教室に参加するとはすごいものだ. とは bộc lộ ngạc nhiên. Ô sao là 1.",
+            "vi": "Ghép: まだ12歳の彼女が海外のバレエ教室に参加するとはすごいものだ. とは bộc lộ ngạc nhiên. Ô ★ là 参加するとは.",
             "optionNotes": [
               "参加するとは đứng ở ô ★.",
               "海外のバレエ教室に đi sau 彼女が.",

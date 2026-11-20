@@ -2036,7 +2036,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "5]仕事の失敗の4なた。\n1夜ぐっすり2ことを3寝られなく4考えすぎて",
           "explanation": {
-            "vi": "Ghép 2→4→1→3: 失敗のことを考えすぎて夜ぐっすり寝られなくなった. 考えすぎる là nghĩ quá nhiều. Ô sao là 1.",
+            "vi": "Ghép: 失敗のことを考えすぎて夜ぐっすり寝られなくなった. 考えすぎる là nghĩ quá nhiều. Ô ★ là 夜ぐっすり.",
             "optionNotes": [
               "夜ぐっすり đứng ở ô ★.",
               "ことを nối ngay sau 失敗の.",
@@ -2079,7 +2079,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "46]70年代のをを思い出す。\n1聴く2青春時代3たびに4古い歌を",
           "explanation": {
-            "vi": "Ghép 4→1→3→2: 70年代の古い歌を聴くたびに青春時代を思い出す. たびに là mỗi khi. Ô sao là 3.",
+            "vi": "Ghép: 70年代の古い歌を聴くたびに青春時代を思い出す. たびに là mỗi khi. Ô ★ là たびに.",
             "optionNotes": [
               "聴く đi sau 古い歌を.",
               "青春時代 đứng cuối, trước を思い出す.",
@@ -2122,7 +2122,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "避|A社との太ならない。\n1きちんと2対応をしなければ\n3に際して4取り引き",
           "explanation": {
-            "vi": "Ghép 4→3→1→2: A社との取り引きに際してきちんと対応をしなければならない. に際して nêu dịp giao dịch. Ô sao là 1.",
+            "vi": "Ghép: A社との取り引きに際してきちんと対応をしなければならない. に際して nêu dịp giao dịch. Ô ★ là きちんと.",
             "optionNotes": [
               "きちんと đứng ở ô ★.",
               "対応をしなければ đứng cuối, trước ならない.",
@@ -2165,7 +2165,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "48|急に太をキャンセルした。\n1起こした2ものだから3めまいを4アルバイトの面接",
           "explanation": {
-            "vi": "Ghép 3→1→2→4: めまいを起こしたものだからアルバイトの面接をキャンセルした. ものだから nêu nguyên nhân. Ô sao là 2.",
+            "vi": "Ghép: めまいを起こしたものだからアルバイトの面接をキャンセルした. ものだから nêu nguyên nhân. Ô ★ là ものだから.",
             "optionNotes": [
               "起こした đi sau めまいを.",
               "ものだから đứng ở ô ★, nêu lý do.",
@@ -2208,7 +2208,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "49|彼は銀行からいししまったそうだ。\n1おろした2給料を3落として4ばかりの\n91",
           "explanation": {
-            "vi": "Ghép 1→4→2→3: 銀行からおろしたばかりの給料を落としてしまった. たばかりの bổ nghĩa tiền lương vừa rút. Ô sao là 2.",
+            "vi": "Ghép: 銀行からおろしたばかりの給料を落としてしまった. たばかりの bổ nghĩa tiền lương vừa rút. Ô ★ là 給料を.",
             "optionNotes": [
               "おろした nối ngay sau 銀行から.",
               "給料を đứng ở ô ★.",

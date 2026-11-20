@@ -2037,7 +2037,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "45」さんざん悩んだ文ことにした\n1世界から2政治の3あげく4_身を引く",
           "explanation": {
-            "vi": "Ghép 3→2→1→4: 悩んだあげく政治の世界から身を引くことにした. あげく nêu kết quả sau trăn trở. Ô sao là 1.",
+            "vi": "Ghép: 悩んだあげく政治の世界から身を引くことにした. あげく nêu kết quả sau trăn trở. Ô ★ là 世界から.",
             "optionNotes": [
               "世界から đứng ở ô ★.",
               "政治の đi sau あげく.",
@@ -2080,7 +2080,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "46|新しい大次第だ。\n1_おかげで2いたった3薬の4回復に",
           "explanation": {
-            "vi": "Ghép 3→1→4→2: 新しい薬のおかげで回復にいたった次第だ. おかげで chỉ nguyên nhân tốt, 次第だ giải trình diễn biến. Ô sao là 4.",
+            "vi": "Ghép: 新しい薬のおかげで回復にいたった次第だ. おかげで chỉ nguyên nhân tốt, 次第だ giải trình diễn biến. Ô ★ là 回復に.",
             "optionNotes": [
               "おかげで đi sau 薬の.",
               "いたった đứng cuối, trước 次第だ.",
@@ -2123,7 +2123,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "47」同じ話をしほどだ。\n1その場から2何度も3逃げたくなる4聞かされて",
           "explanation": {
-            "vi": "Ghép 2→4→1→3: 同じ話を何度も聞かされてその場から逃げたくなるほどだ. される là bị bắt nghe, ほど chỉ mức. Ô sao là 1.",
+            "vi": "Ghép: 同じ話を何度も聞かされてその場から逃げたくなるほどだ. される là bị bắt nghe, ほど chỉ mức. Ô ★ là その場から.",
             "optionNotes": [
               "その場から đứng ở ô ★.",
               "何度も nối ngay sau 同じ話を.",
@@ -2166,7 +2166,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "48|彼はし4話をした\n1前えがたい2平気な3聞くに4顔で",
           "explanation": {
-            "vi": "Ghép 2→4→3→1: 平気な顔で聞くに耐えがたい話をした. 聞くに耐えがたい là khó chịu đến không nghe nổi. Ô sao là 3.",
+            "vi": "Ghép: 平気な顔で聞くに耐えがたい話をした. 聞くに耐えがたい là khó chịu đến không nghe nổi. Ô ★ là 聞くに.",
             "optionNotes": [
               "耐えがたい đứng cuối, trước 話.",
               "平気な nối ngay sau 彼は.",
@@ -2209,7 +2209,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "49|昔の4のはなぜだろう\n1職場の2会いたくて3仲間に4たまらない\n123",
           "explanation": {
-            "vi": "Ghép 1→3→2→4: 昔の職場の仲間に会いたくてたまらない. たくてたまらない là vô cùng muốn. Ô sao là 2.",
+            "vi": "Ghép: 昔の職場の仲間に会いたくてたまらない. たくてたまらない là vô cùng muốn. Ô ★ là 会いたくて.",
             "optionNotes": [
               "職場の nối ngay sau 昔の.",
               "会いたくて đứng ở ô ★.",

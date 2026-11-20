@@ -2040,7 +2040,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "45」3週間かけてしができなかた。\n1いい発表2準備した3にしては4念人りに",
           "explanation": {
-            "vi": "Ghép 4→2→3→1: 念入りに準備したにしてはいい発表ができなかった. にしては nêu kết quả kém so với chuẩn bị kỹ. Ô sao là 3.",
+            "vi": "Ghép: 念入りに準備したにしてはいい発表ができなかった. にしては nêu kết quả kém so với chuẩn bị kỹ. Ô ★ là にしては.",
             "optionNotes": [
               "いい発表 đứng cuối, trước ができなかった.",
               "準備した đi sau 念入りに.",
@@ -2083,7 +2083,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "46|自然の文はおいしい。\n1のもとで2育った3恵み4この野菜",
           "explanation": {
-            "vi": "Ghép 3→1→2→4: 自然の恵みのもとで育ったこの野菜はおいしい. のもとで nêu điều kiện nuôi dưỡng. Ô sao là 2.",
+            "vi": "Ghép: 自然の恵みのもとで育ったこの野菜はおいしい. のもとで nêu điều kiện nuôi dưỡng. Ô ★ là 育った.",
             "optionNotes": [
               "のもとで đi sau 恵み.",
               "育った đứng ở ô ★.",
@@ -2126,7 +2126,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "47|S町はし4として有名だ。\n1劇場が2多い3文化の町4ことから",
           "explanation": {
-            "vi": "Ghép 1→2→4→3: S町は劇場が多いことから文化の町として有名だ. ことから đưa căn cứ, として là với tư cách. Ô sao là 4.",
+            "vi": "Ghép: S町は劇場が多いことから文化の町として有名だ. ことから đưa căn cứ, として là với tư cách. Ô ★ là ことから.",
             "optionNotes": [
               "劇場が nối ngay sau S町は.",
               "多い đi sau 劇場が.",
@@ -2169,7 +2169,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "48|インターネットでし4べきだ。\n1ぷやめる2書き込みは3医つけるような4人を",
           "explanation": {
-            "vi": "Ghép 4→3→2→1: インターネットで人を傷つけるような書き込みはやめるべきだ. ような bổ nghĩa 書き込み; べきだ khuyên nên. Ô sao là 2.",
+            "vi": "Ghép: インターネットで人を傷つけるような書き込みはやめるべきだ. ような bổ nghĩa 書き込み; べきだ khuyên nên. Ô ★ là 書き込みは.",
             "optionNotes": [
               "やめる đứng cuối, trước べきだ.",
               "書き込みは đứng ở ô ★.",
@@ -2212,7 +2212,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "49|君の要求を大をやりなさい。\n1わけではないが2そのためには3聞かない4やるべきこと\n67",
           "explanation": {
-            "vi": "Ghép 3→1→2→4: 君の要求を聞かないわけではないがそのためにはやるべきことをやりなさい. わけではない phủ định việc hoàn toàn không nghe. Ô sao là 2.",
+            "vi": "Ghép: 君の要求を聞かないわけではないがそのためにはやるべきことをやりなさい. わけではない phủ định việc hoàn toàn không nghe. Ô ★ là そのためには.",
             "optionNotes": [
               "わけではないが đi sau 聞かない.",
               "そのためには đứng ở ô ★.",

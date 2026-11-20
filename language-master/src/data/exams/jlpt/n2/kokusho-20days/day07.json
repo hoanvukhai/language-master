@@ -2038,7 +2038,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "45|学校のし4増やせない。\n1からすると2これ以上の3年間予算4図書は",
           "explanation": {
-            "vi": "Ghép 3→1→2→4: 学校の年間予算からするとこれ以上の図書は増やせない. からすると là xét ngân sách. Ô sao là 2.",
+            "vi": "Ghép: 学校の年間予算からするとこれ以上の図書は増やせない. からすると là xét ngân sách. Ô ★ là これ以上の.",
             "optionNotes": [
               "からすると đi sau 年間予算.",
               "これ以上の đứng ở ô ★, bổ nghĩa cho 図書.",
@@ -2081,7 +2081,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "46」何か太じゃないか。\n1やめると2途中で3気になる4言いかけて",
           "explanation": {
-            "vi": "Ghép 4→2→1→3: 何か言いかけて途中でやめると気になるじゃないか. 言いかける là nói dở, 気になる là khiến bận tâm. Ô sao là 1.",
+            "vi": "Ghép: 何か言いかけて途中でやめると気になるじゃないか. 言いかける là nói dở, 気になる là khiến bận tâm. Ô ★ là やめると.",
             "optionNotes": [
               "やめると đứng ở ô ★.",
               "途中で đi sau 言いかけて.",
@@ -2124,7 +2124,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "47|時代の_大も変わる\n1変化2結婚観3とともに4若者たちの",
           "explanation": {
-            "vi": "Ghép 1→3→4→2: 時代の変化とともに若者たちの結婚観も変わる. とともに nêu thay đổi song song. Ô sao là 4.",
+            "vi": "Ghép: 時代の変化とともに若者たちの結婚観も変わる. とともに nêu thay đổi song song. Ô ★ là 若者たちの.",
             "optionNotes": [
               "変化 nối ngay sau 時代の.",
               "結婚観 đứng cuối, trước も変わる.",
@@ -2167,7 +2167,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "48|8時間のし4ことができた。\n1打ち勝つ2大手術3彼は病気に4のすえに",
           "explanation": {
-            "vi": "Ghép 2→4→3→1: 8時間の大手術のすえに彼は病気に打ち勝つことができた. のすえに là sau quá trình; に打ち勝つ là chiến thắng. Ô sao là 3.",
+            "vi": "Ghép: 8時間の大手術のすえに彼は病気に打ち勝つことができた. のすえに là sau quá trình; に打ち勝つ là chiến thắng. Ô ★ là 彼は病気に.",
             "optionNotes": [
               "打ち勝つ đứng cuối, trước ことができた.",
               "大手術 nối ngay sau 8時間の.",
@@ -2210,7 +2210,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "49|彼はし4まい。\n1_やさしい人だから2する\n3そんなことは4まじめで\n59",
           "explanation": {
-            "vi": "Ghép 4→1→3→2: 彼はまじめでやさしい人だからそんなことはするまい. Vるまい suy đoán phủ định: chắc không làm. Ô sao là 3.",
+            "vi": "Ghép: 彼はまじめでやさしい人だからそんなことはするまい. Vるまい suy đoán phủ định: chắc không làm. Ô ★ là そんなことは.",
             "optionNotes": [
               "やさしい人だから đi sau まじめで.",
               "する đứng cuối, trước まい.",

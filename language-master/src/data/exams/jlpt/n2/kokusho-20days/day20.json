@@ -2038,7 +2038,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "45]人を太ない。\n1ことくらい2ことは3ひどい4裏切る",
           "explanation": {
-            "vi": "Ghép 4→1→3→2: 人を裏切ることくらいひどいことはない. くらい…ない nhấn mức tệ nhất. Ô sao là 3.",
+            "vi": "Ghép: 人を裏切ることくらいひどいことはない. くらい…ない nhấn mức tệ nhất. Ô ★ là ひどい.",
             "optionNotes": [
               "ことくらい nối ngay sau 裏切る.",
               "ことは đứng cuối, trước ない.",
@@ -2081,7 +2081,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "46]実際にオートバイに大はわからない。\n1運転の2ことには3おもしろさ4乗ってみない",
           "explanation": {
-            "vi": "Ghép 4→2→1→3: 乗ってみないことには運転のおもしろさはわからない. ないことには là nếu chưa làm thì không biết. Ô sao là 1.",
+            "vi": "Ghép: 乗ってみないことには運転のおもしろさはわからない. ないことには là nếu chưa làm thì không biết. Ô ★ là 運転の.",
             "optionNotes": [
               "運転の đứng ở ô ★.",
               "ことには đi sau 乗ってみない.",
@@ -2124,7 +2124,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "4Z|ドイツし4が届いた\n1絵はがき2にいる3田園風景の4友だちから",
           "explanation": {
-            "vi": "Ghép 2→4→3→1: ドイツにいる友だちから田園風景の絵はがきが届いた. にいる bổ nghĩa bạn, の bổ nghĩa bưu thiếp. Ô sao là 3.",
+            "vi": "Ghép: ドイツにいる友だちから田園風景の絵はがきが届いた. にいる bổ nghĩa bạn, の bổ nghĩa bưu thiếp. Ô ★ là 田園風景の.",
             "optionNotes": [
               "絵はがき đứng cuối, trước が.",
               "にいる nối ngay sau ドイツ.",
@@ -2167,7 +2167,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "48]あれこれ大をすることにした\n1意見を2すえに3出し合った4野球大会",
           "explanation": {
-            "vi": "Ghép 1→3→2→4: 意見を出し合ったすえに野球大会をすることにした. すえに nêu kết quả sau trao đổi. Ô sao là 2.",
+            "vi": "Ghép: 意見を出し合ったすえに野球大会をすることにした. すえに nêu kết quả sau trao đổi. Ô ★ là すえに.",
             "optionNotes": [
               "意見を nối ngay sau あれこれ.",
               "すえに đứng ở ô ★.",
@@ -2210,7 +2210,7 @@
           "transcriptionStatus": "verified",
           "ocrText": "49|川田さんがしのはなぜだろう\n1表情を2どこか3していた4寂しげな\n163",
           "explanation": {
-            "vi": "Ghép 2→4→1→3: どこか寂しげな表情をしていた. どこか là có vẻ gì đó, 寂しげな bổ nghĩa nét mặt. Ô sao là 1.",
+            "vi": "Ghép: どこか寂しげな表情をしていた. どこか là có vẻ gì đó, 寂しげな bổ nghĩa nét mặt. Ô ★ là 表情を.",
             "optionNotes": [
               "表情を đứng ở ô ★.",
               "どこか nối ngay sau 川田さんが.",
