@@ -81,7 +81,6 @@ const PRE_ANSWER_TRANSLATION: Record<string, "translationVi" | "stemTranslationV
   text_grammar: "stemTranslationVi",
 };
 /** Dạng không cho nghe trước khi trả lời (lộ cách đọc hoặc thứ tự) — mục 12.2 */
-const NO_PRE_ANSWER_SPEECH = new Set(["kanji_reading", "sentence_order", "text_grammar"]);
 /** Dạng có từ trọng tâm (Mondai 1–6) */
 const TARGET_WORD_TYPES = new Set([
   "kanji_reading",
@@ -247,8 +246,7 @@ export default function ExamQuestionCard({
     !helpBlocked &&
     !!speechText &&
     !/^\s*$/.test(speechText) &&
-    (answeredView ||
-      (mode !== "mock" && !(mondaiType && NO_PRE_ANSWER_SPEECH.has(mondaiType))));
+    answeredView;
   const canTranslate = textReady && !helpBlocked && !!displayedTranslation;
 
   const notes = q.explanation?.optionNotes;
@@ -801,7 +799,7 @@ export default function ExamQuestionCard({
       )}
       {showFeedback && !sheetMode && expanded && explanationBlock}
       {sheetMode && showFeedback && (
-        <BottomSheet open={sheetOpen} title="Lời giải" onClose={() => setSheetOpen(false)}>
+        <BottomSheet open={sheetOpen} title="Lời giải" onClose={() => setSheetOpen(false)} maxHeightClass="max-h-[58dvh]">
           {explanationBlock}
         </BottomSheet>
       )}

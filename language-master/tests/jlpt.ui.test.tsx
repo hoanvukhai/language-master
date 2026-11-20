@@ -869,7 +869,7 @@ describe("QA spec 2026-11-08 regression suite", () => {
 
   it("FIX-04: records assist only when help is shown for uncommitted questions, not on hide toggle", async () => {
     const user = setupUser();
-    // Mondai 2: có cả "Nghe câu" và "Dịch câu" trước khi trả lời
+    // Mondai 2: có "Dịch câu" trước khi trả lời, "Nghe câu" chỉ sau khi trả lời
     const q6 = exams[0].mondais[1].questions[0];
     const a = createAttempt(exams[0], "drill", [q6.id]);
     act(() => setSession(a));
@@ -888,14 +888,8 @@ describe("QA spec 2026-11-08 regression suite", () => {
     await user.click(screen.getByRole("button", { name: "Ẩn bản dịch" }));
     expect(getSession()?.assisted).toEqual([]);
 
-    // 3. Nghe câu thất bại -> không ghi; thành công -> ghi
-    vi.mocked(speakWithVoiceEngine).mockReturnValueOnce(false);
-    await user.click(screen.getByRole("button", { name: "Nghe câu" }));
-    expect(getSession()?.assisted).toEqual([]);
-
-    vi.mocked(speakWithVoiceEngine).mockReturnValueOnce(true);
-    await user.click(screen.getByRole("button", { name: "Nghe câu" }));
-    expect(getSession()?.assisted).toEqual([q6.id]);
+    // 3. Chưa trả lời thì chưa có "Nghe câu" (tránh lộ đáp án)
+    expect(screen.queryByRole("button", { name: "Nghe câu" })).toBeNull();
   });
 
   it("FIX-05 & FIX-08: sanitizes readings, detects duplicate/conflict, serializes quickSave, and separates online statuses", async () => {
