@@ -14,13 +14,15 @@ type Props = {
   wide?: boolean;
   /** Khung cao cố định: tiêu đề giữ yên, nội dung tự lo phần cuộn bên trong (không co giãn theo số mục) */
   fixedHeight?: boolean;
+  /** Class Tailwind giới hạn chiều cao trên điện thoại (mặc định max-h-[70vh]) */
+  maxHeightClass?: string;
 };
 
 /**
  * Bottom sheet cho màn hình nhỏ: nền mờ, khóa cuộn trang, Esc để đóng,
  * đưa focus vào sheet khi mở và trả focus về chỗ cũ khi đóng.
  */
-export default function BottomSheet({ open, title, onClose, children, id, centeredOnDesktop = false, wide = false, fixedHeight = false }: Props) {
+export default function BottomSheet({ open, title, onClose, children, id, centeredOnDesktop = false, wide = false, fixedHeight = false, maxHeightClass = "max-h-[70vh]" }: Props) {
   const panelRef = useRef<HTMLDivElement>(null);
   const onCloseRef = useRef(onClose);
   useLayoutEffect(() => {
@@ -79,7 +81,7 @@ export default function BottomSheet({ open, title, onClose, children, id, center
         } ${
           centeredOnDesktop
             ? `${wide ? "sm:max-w-2xl" : "sm:max-w-md"} ${fixedHeight ? "" : wide ? "max-h-[92vh]" : "max-h-[85vh]"} sm:rounded-3xl sm:border`
-            : "sm:max-w-2xl max-h-[70vh] sm:border-x"
+            : `sm:max-w-2xl ${maxHeightClass} sm:border-x`
         } bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 shadow-2xl p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] outline-none animate-in slide-in-from-bottom duration-200 text-slate-900 dark:text-slate-100`}
       >
         <div className="shrink-0 flex items-center justify-between gap-2 mb-3">
